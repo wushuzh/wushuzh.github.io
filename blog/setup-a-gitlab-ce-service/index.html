@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>GitLab CE 安装实践</title>
+<meta name="description" content="个人技术站点">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.theme.css">
+
+
+  <link href="https://wushuzh.github.io/css/style.default.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://wushuzh.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
+
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="/">小强会武术</a></h1>
+    
+      <p class="sidebar-p">工程师，居北京</p>
+    
+    <ul class="sidebar-menu">
+      
+      
+        <li><a href="https://wushuzh.github.io/">Home</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  
+  
+  
+  
+  
+  
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2017 wushuzh
+        
+        | Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="/">小强会武术</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="content-column-content">
+         <h1>GitLab CE 安装实践</h1>
+         <p>如何自行搭建 GitLab 免费获得类似 GitHub 的服务
+</p>
+
+<h2 id="git-简介">Git 简介</h2>
+
+<p>作为 Linus Torvalds 的另一个伟大发明，Git 应该已经成为当下最流行的源代码管理工具。它甚至被定位成一般意义上追踪文档变更或多人协同编辑的工具了。</p>
+
+<p>使用 Git 最大开源社区是 Linux 内核项目，向它贡献代码的开发者的人数高达 12000 人，来自全球 1200 家公司。另一个前些日子很热的新闻是微软将 Windows 开发迁移到 Git 上，并对其做了一些定制 (如 GVFS )。其他的 Git 应用案例包括</p>
+
+<ul>
+<li>应用 git-lfs 保存较大的二进制文件;</li>
+<li>查看、比较 CAD文件的变更历史 ( STL 格式保存 )；</li>
+<li>管理法案、法律文件;</li>
+</ul>
+
+<p>所有的主流源代码仓库服务提供商都支持 Git。最大最知名的当属被称为编程交友平台的 GitHub (吉祥物为一只章鱼猫 )，和它类似还有 SourceForge，Bitbucket，GitLab，CodePlex, Launchpad （排名按 2017 六月 Alexa 排名）。</p>
+
+<h2 id="gitlab-简介">GitLab 简介</h2>
+
+<p>GitLab是一个基于网页的开源 Git 仓库管理器，附送代码审核、缺陷跟踪、Wiki、编译构建等附加功能。作为少数的可以自行搭建相应服务的网站，一般的开发者只要有个VPS就可以很快搭建起来。GitHub 作为付费产品，当然也有所有这些服务，但通常你要注册为其付费会员(每月7美元)</p>
+
+<p>关于 GitLab 的新特性，其官网上有介绍视频：作者在短短十分钟内，演示了利用 GitLab 9 完成如下事项</p>
+
+<ol>
+<li>创建一个工作组，在其下创建(导入)一个实例项目</li>
+<li>设定基于 Mattermost (一个可自行搭建的类似 slack 的聊天协作工具)的自动集成部署</li>
+<li>在 Mattermost 内和组员讨论后，形成更改项目的新决议</li>
+<li>在 Mattermost 内通过 GitLab 机器人直接创建一个 issue</li>
+<li>从 Mattermost 导航到项目 issue 页，通过看板，将此 issue 从 Todo 转到 Doing 状态</li>
+<li>通过 GitLab 的内置终端，直接访问部署环境</li>
+<li>通过 GitLab 的网页端编辑器，创建新分支，并将新的提交合并到主分支（并关闭 issue， 删除临时分支）</li>
+<li>GitLab 自动触发自动部署，在其他团队成员审阅代码前，就开始了新代码的部署，这样审核代码时，就可以查看部署是否成功，并导航到新部署容器上查看改成后的界面……</li>
+<li>当分支真正被接受合并后，又一次触发了主分支上的自动集成，自动部署到待命区服务器 (staging server)</li>
+<li>之后从 Mattermost 通过 Bot 触发从待命区部署到生产环境，如果生产环境是集群，这里还可以看到当前部署到第几个实例了</li>
+<li>另外，你还可以直接查看部署服务器的负荷的曲线图，回看总结本次“从产生想法到做最终部署”各阶段所用的时间</li>
+</ol>
+
+<p>这么梦幻的一个工作流，一分钱不用花自己折腾一下就可以拥有，心动就参考下文开始行动吧</p>
+
+<h2 id="安装过程">安装过程</h2>
+
+<p>网上普遍都是基于 Ubuntu 的安装指南，那就按照最普遍的系统进行实践：</p>
+
+<ol>
+<li>所有步骤都建议再 tmux 中执行，以免网络抖动后悲剧</li>
+<li>Ubuntu 推荐版本 16.04 LTS Xerus</li>
+<li>配置 GitLab deb 源并安装最新安装包</li>
+<li>执行 GitLab 初始配置</li>
+<li>设置防火墙对 SSH 和 HTTP 链接开放</li>
+<li>登录网页，设定密码，管理员身份设定，是否全部或对某域名邮箱开发注册等等</li>
+<li>如果你有自己的域名，免费地设定 HTTPS</li>
+<li>Enjoy</li>
+</ol>
+
+<p>我自己提交代码都用 SSH，就没搞 HTTPS</p>
+
+<p>缩略语解释
+&gt; - GVFS：Git Virtual File System
+&gt; - STL: <a href="https://en.wikipedia.org/wiki/STL_(file_format">https://en.wikipedia.org/wiki/STL_(file_format</a>)
+&gt; - Xerus: 仅存于非洲的地松鼠亚科，注意不要和南非狐獴弄混，前者属于啮齿目，后者属于食肉目，除了昆虫，有时候会吃蜥蜴，蛇，蝎子什么的
+&gt; - Mattermost: 一个同样可以自行搭建的类似 slack 提供团队协作的云交流工具，但新增了不少企业级的特色功能，比如查看诸如关于配置变更，登录，用户行为等各类服务器日志，数据的合规访问，各式CI和CD集成操作。其客户有 Redhat、Intel、Mozilla、Sumsung 等等</p>
+
+<p>参考文档
+&gt; - <a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-gitlab-on-ubuntu-16-04">https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-gitlab-on-ubuntu-16-04</a>
+&gt; - <a href="https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-16-04">https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-16-04</a>
+&gt; - <a href="https://www.digitalocean.com/community/tutorials/how-to-secure-gitlab-with-let-s-encrypt-on-ubuntu-16-04">https://www.digitalocean.com/community/tutorials/how-to-secure-gitlab-with-let-s-encrypt-on-ubuntu-16-04</a>
+&gt; - <a href="https://en.wikipedia.org/wiki/Linux_kernel">https://en.wikipedia.org/wiki/Linux_kernel</a>
+&gt; - <a href="https://en.wikipedia.org/wiki/Git">https://en.wikipedia.org/wiki/Git</a>
+&gt; - <a href="https://explainxkcd.com/wiki/index.php/1597:_Git">https://explainxkcd.com/wiki/index.php/1597:_Git</a>
+&gt; - <a href="https://github.com/blog/1465-stl-file-viewing">https://github.com/blog/1465-stl-file-viewing</a>
+&gt; - <a href="https://github.com/blog/1633-3d-file-diffs">https://github.com/blog/1633-3d-file-diffs</a>
+&gt; - <a href="https://www.quora.com/Could-Git-be-used-to-track-bills-in-Congress">https://www.quora.com/Could-Git-be-used-to-track-bills-in-Congress</a>
+&gt; - <a href="https://en.wikipedia.org/wiki/GitLab">https://en.wikipedia.org/wiki/GitLab</a>
+&gt; - [GitLab9]: <a href="https://youtu.be/PoBaY_rqeKA">https://youtu.be/PoBaY_rqeKA</a></p>
+
+<p>文中图片来源网络
+GitLab 吉祥物是一个抽象的 “貉”/“狸”脸，但我觉的如果能请来 Megan Fox 为其代言，一定会大获成功</p>
+         
+      </div>
+    </div>
+  </div>
+</div>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://wushuzh.github.io/js/jquery.min.js"></script>
+<script src="https://wushuzh.github.io/js/bootstrap.min.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.cookie.js"> </script>
+<script src="https://wushuzh.github.io/js/ekko-lightbox.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://wushuzh.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/owl.carousel.min.js"></script>
+<script src="https://wushuzh.github.io/js/front.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>小强会武术</title>
+    <link>https://wushuzh.github.io/</link>
+    <description>Recent content on 小强会武术</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>&amp;copy;2017 wushuzh</copyright>
+    <lastBuildDate>Sun, 18 Jun 2017 21:18:51 +0800</lastBuildDate>
+    
+	<atom:link href="https://wushuzh.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>GitLab CE 安装实践</title>
+      <link>https://wushuzh.github.io/blog/setup-a-gitlab-ce-service/</link>
+      <pubDate>Sun, 18 Jun 2017 21:18:51 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/setup-a-gitlab-ce-service/</guid>
+      <description>&lt;p&gt;如何自行搭建 GitLab 免费获得类似 GitHub 的服务
+&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
