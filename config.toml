@@ -1,0 +1,18 @@
+baseURL = "https://wushuzh.github.io/"
+languageCode = "zh-cn"
+title = "小强会武术"
+theme = "hugo-creative-portfolio-theme"
+
+[params]
+  # Style options: default (pink), blue, green, pink, red, sea, violet
+  # Use custom.css for your custom styling
+  style = "default"
+  description = "个人技术站点"
+  copyright = "&copy;2017 wushuzh"
+  sidebarAbout = [
+    "工程师，居北京"
+  ]
+  
+  [[params.navlinks]]
+  name = "Home"
+  url = ""
