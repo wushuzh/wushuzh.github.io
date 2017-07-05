@@ -10,9 +10,9 @@ theme = "hugo-creative-portfolio-theme"
   description = "个人技术站点"
   copyright = "&copy;2017 wushuzh"
   sidebarAbout = [
-    "工程师，居北京"
+    "工程师"
   ]
-  
+
   [[params.navlinks]]
   name = "Home"
   url = ""
