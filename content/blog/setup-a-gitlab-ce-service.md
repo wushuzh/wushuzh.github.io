@@ -1,30 +1,30 @@
 +++
 date = "2017-06-18T21:18:51+08:00"
 title = "GitLab CE 安装实践"
-showonlyimage = true
-image = "/img/blog/setup-a-gitlab-ce-service/git.png"
+showonlyimage = false
+image = "/img/blog/setup-a-gitlab-ce-service/lab_notebook.png"
 draft = false
 weight = 0
 +++
 
-如何自行搭建 GitLab 免费获得类似 GitHub 的服务
+记录了我是如何搭建 GitLab 以获得类似 GitHub 的服务的
 <!--more-->
 
 ## Git 简介
-作为 Linus Torvalds 的另一个伟大发明，Git 应该已经成为当下最流行的源代码管理工具。它甚至被定位成一般意义上追踪文档变更或多人协同编辑的工具了。
+作为 Linus Torvalds 的另一个伟大发明，[Git](https://en.wikipedia.org/wiki/Git) 应该已经成为当下最流行的源代码管理工具。它甚至被定位成一般意义上追踪文档变更或多人协同编辑的工具了。
 
-使用 Git 最大开源社区是 Linux 内核项目，向它贡献代码的开发者的人数高达 12000 人，来自全球 1200 家公司。另一个前些日子很热的新闻是微软将 Windows 开发迁移到 Git 上，并对其做了一些定制 (如 GVFS )。其他的 Git 应用案例包括
+使用 Git 最大开源社区是 Linux [内核项目](https://en.wikipedia.org/wiki/Linux_kernel)，向它贡献代码的开发者的人数高达 12000 人，来自全球 1200 家公司。另一个前些日子很热的新闻是微软将 Windows 开发迁移到 Git 上，并对其做了一些定制 (如 GVFS )。其他的 Git 应用案例包括
 
 - 应用 git-lfs 保存较大的二进制文件;
 - [查看](https://github.com/blog/1465-stl-file-viewing)、[比较](https://github.com/blog/1633-3d-file-diffs) CAD文件的变更历史 ( [STL](https://en.wikipedia.org/wiki/STL_(file_format)) 格式保存 )；
-- 管理法案、法律文件;
+- 管理法案、法律文件的[探索](https://www.quora.com/Could-Git-be-used-to-track-bills-in-Congress);
 
 所有的主流源代码仓库服务提供商都支持 Git。最大最知名的当属被称为编程交友平台的 GitHub (吉祥物为一只章鱼猫 )，和它类似还有 SourceForge，Bitbucket，GitLab，CodePlex, Launchpad （排名按 2017 六月 Alexa 排名）。
 
-![GitHub Octocat](/img/blog/setup-a-gitlab-ce-service/ironcat.png)
+<img alt="GitHub Octocat" src="/img/blog/setup-a-gitlab-ce-service/ironcat.png" class="img-responsive">
 
 ## GitLab 简介
-GitLab是一个基于网页的开源 Git 仓库管理器，附送代码审核、缺陷跟踪、Wiki、编译构建等附加功能。作为少数的可以自行搭建相应服务的网站，一般的开发者只要有个VPS就可以很快搭建起来。GitHub 作为付费产品，当然也有所有这些服务，但通常你要注册为其付费会员(每月7美元)
+[GitLab](https://en.wikipedia.org/wiki/GitLab) 是一个基于网页的开源 Git 仓库管理器，附送代码审核、缺陷跟踪、Wiki、编译构建等附加功能。作为少数的可以自行搭建相应服务的网站，一般的开发者只要有个VPS就可以很快搭建起来。GitHub 作为付费产品，当然也有所有这些服务，但通常你要注册为其付费会员(每月7美元)
 
 关于 GitLab 的新特性，其官网上有[介绍视频](https://youtu.be/PoBaY_rqeKA)：作者在短短十分钟内，演示了利用 GitLab 9 完成如下事项
 
@@ -66,7 +66,7 @@ GitLab是一个基于网页的开源 Git 仓库管理器，附送代码审核、
 
 我自己提交代码都用 SSH，就没搞 HTTPS
 
-![Welcome to GitLab](/img/blog/setup-a-gitlab-ce-service/fox-snow.gif)
+<img alt="Welcome to GitLab" src="/img/blog/setup-a-gitlab-ce-service/fox-snow.gif" class="img-responsive">
 
 缩略语解释
 
@@ -77,13 +77,8 @@ GitLab是一个基于网页的开源 Git 仓库管理器，附送代码审核、
 参考文档
 
 > - Justin E.(2016-10-14). [How To Install and Configure GitLab on Ubuntu 16.04.]( https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-gitlab-on-ubuntu-16-04)
-> - https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-16-04
-> - https://en.wikipedia.org/wiki/Linux_kernel
-> - https://en.wikipedia.org/wiki/Git
-> - https://en.wikipedia.org/wiki/GitLab
+> - Mitchell A.(2016-04-21) [initial-server-setup-with-ubuntu-16.04]( https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-16-04)
 > - https://explainxkcd.com/wiki/index.php/1597:_Git
-> - https://www.quora.com/Could-Git-be-used-to-track-bills-in-Congress
-
 
 文中图片来源网络
 GitLab 吉祥物是一个抽象的 “貉”/“狸”脸，但我觉的如果能请来 Megan Fox 为其代言，一定会大获成功
