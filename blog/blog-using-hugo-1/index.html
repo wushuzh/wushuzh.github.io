@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>像雨果一样写作 1</title>
+<meta name="description" content="个人技术站点">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.theme.css">
+
+
+  <link href="https://wushuzh.github.io/css/style.sea.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://wushuzh.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
+
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="/">小强会武术</a></h1>
+    
+      <p class="sidebar-p">工程师</p>
+    
+    <ul class="sidebar-menu">
+      
+      
+        <li><a href="https://wushuzh.github.io/">Home</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  
+  
+  
+  
+  
+  
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2017 wushuzh
+        
+        | Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="/">小强会武术</a></h1>
+</div>
+
+  <div class="row">
+    <div>
+      <div class="content-column-content">
+         <h1>像雨果一样写作 1</h1>
+         <p>记录下如何用 GitHub 和 Hugo 搭建博客。
+</p>
+
+<h2 id="为什么要自行搭建">为什么要自行搭建</h2>
+
+<p>写文章当下的首选依然 1) 开通微信公众号 2) 微博的头条文章，3) 甚至知乎专栏等等。但考虑到控制权和便捷修改已发布文章等因素，个人搭建则更具优势。关于这方面更为深入的思考，见文末<a href="http://coolshell.cn/articles/17391.html">左耳老师的文章</a>。</p>
+
+<p>像博客这种类型网站的搭建，推荐使用静态站点生成器( 也许你听说过 Jekyll 或其他类似工具 )来生成站点。这么做当然需要折腾一番，但想想你可以得到的：</p>
+
+<ul>
+<li>随时选择、微调、更换主题的渲染风格</li>
+<li>能使用 Markdown 写作</li>
+<li>能定制集成各类工具提高效率</li>
+<li>能使用版本控制，查看，比较，更改已发布的文章</li>
+</ul>
+
+<h2 id="选择文具">选择文具</h2>
+
+<p>取决于你选用钢笔，毛笔还是录音笔来码字，耗费的时间，最终成文风格，都会有很大差异，因此谨慎地选择一款适合自己的静态站点生成器非常必要。我是知道了<a href="http://air.googol.im/">师兄</a>用 Hugo ，我才跟风的：一方面避免自己在选择性障碍的泥潭中挣扎，另一方面就算遇到什么诡异问题，总算是可以求教。</p>
+
+<p>和 Jekyll 用 RubyGem 管理依赖不同， Hugo 因为是用 Go 语言开发，几乎所有依赖都打入其二进制执行程序中，相比之下其安装就显得非常简单——其实压根就没有安装，直接解压就完了。大家可能都有这样的经历：刚有点激情撸码，立刻开始准备软件环境，等折腾一通终于把安装和依赖都搞定，之前的激情也正好耗光，所以干净利落的安装真的非常重要。</p>
+
+<p>Huge 使用步骤和 Jekyll 差不多：相似的创建站点命令，相似的全局配置文件，相似的扉页元数据设定，以及都用 Markdown 编写文章。</p>
+
+<p>这些初始配置完成后是设定“稿纸”样式。与 <a href="http://jekyllthemes.org/">Jekyll</a> 不同， Hugo 不提供默认的主题，所以你需要尽早从其<a href="https://themes.gohugo.io/">主题画廊</a>中选出中意的主题，克隆到新建站点的 themes 子目录中，后续当然也可以自由切换主题，定义各种细节。</p>
+
+<h2 id="选出版社">选出版社</h2>
+
+<p>除了在自己的 VPS 上发布。另一个选择就是 GitHub Pages 。虽说 GitHub 去年迫于资本压力，对此服务做了一些<a href="https://help.github.com/articles/what-is-github-pages/#usage-limits">限制</a>( 比如最大带宽使用量每月 100 GB 或 100k 请求 )，但对于普通人来说绝对够用了。</p>
+
+<p>具体步骤不再敷述，基本步骤包括</p>
+
+<ol>
+<li>新建仓库，命名为 username.github.io ，添加并设定 br:sources 为默认分支</li>
+<li>克隆仓库至本地，hugo 建站，并克隆心怡的主题</li>
+<li>一方面令分支 sources 忽略 public 子目录，同时让分支 master 仅包含 public 子目录</li>
+<li>添加开篇博客 Hello World ，在<a href="localhost:1313">本地</a>确认后将 public <a href="https://hjdskes.github.io/blog/update-deploying-hugo-on-personal-gh-pages/">部署</a>到 GitHab ，将浏览器指向<a href="https://username.github.io">远端</a>再次查看确认</li>
+</ol>
+
+<p>上述步骤仅仅是个 dry-run ，所以尽量在最短时限内完成。千万不要纠结在各种细节上不能自拔。后面有的是微调优化的时间。</p>
+
+<p>参考文档</p>
+
+<blockquote>
+<ul>
+<li>Henry Jenkins (2008-04-07) <a href="http://henryjenkins.org/2008/04/why_academics_should_blog.html">Why Academics Should Blog</a></li>
+<li>刘未鹏，(2009-02-15) <a href="http://mindhacks.cn/2009/02/15/why-you-should-start-blogging-now/">为什么你应该（从现在开始就）写博客</a></li>
+<li>阮一峰，(2006-12-22) <a href="http://www.ruanyifeng.com/blog/2006/12/why_i_keep_blogging.html">1. 为什么要写Blog</a> (2010-04-29) <a href="http://www.ruanyifeng.com/blog/2010/04/talk_with_wangjianshuo.html">2. 与王建硕的对话</a></li>
+<li>陈素封，(2014-05-03) <a href="https://zhuanlan.zhihu.com/p/19743861">为什么你要写博客</a></li>
+<li>师北宸，(2015-11-27) <a href="http://shibeichen.com/post/134060649456">如何通过写作取得职场突围</a></li>
+<li>ActionThinker, (2016-11-06) <a href="http://actionthinker.com/2016-11-06-why-i-reopen-my-blog/">我为什么要重新开始写博客</a></li>
+<li>Vultr (2016-01-05) <a href="https://www.vultr.com/docs/how-to-create-a-blog-with-hugo">How To Create A Blog With Hugo</a></li>
+<li>Justin E. (2015-11-09) <a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-hugo-a-static-site-generator-on-ubuntu-14-04">How To Install and Use Hugo, a Static Site Generator, on Ubuntu 14.04</a></li>
+<li><a href="http://www.zimustudio.com/hugo.html">字母</a> 内含 Hugo 中文翻译，但我没看，留在这里仅作参考</li>
+</ul>
+</blockquote>
+         
+      </div>
+    </div>
+  </div>
+</div>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://wushuzh.github.io/js/jquery.min.js"></script>
+<script src="https://wushuzh.github.io/js/bootstrap.min.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.cookie.js"> </script>
+<script src="https://wushuzh.github.io/js/ekko-lightbox.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://wushuzh.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/owl.carousel.min.js"></script>
+<script src="https://wushuzh.github.io/js/front.js"></script>
+
+</body>
+</html>
