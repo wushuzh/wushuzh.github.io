@@ -1,12 +1,15 @@
 +++
 date = "2017-06-01T20:09:06+08:00"
 title = "为什么需要VoLTE"
-showonlyimage = true
-image = "/img/blog/why-need-volte/xkcd_1422.png"
+showonlyimage = false
+image = "/img/blog/why-need-volte/telecom_zh.jpg"
 draft = false
 weight = 0
 
 +++
+
+已经买了 4G 套餐，还需要 VoLTE 套餐么？
+<!--more-->
 
 ![volte-word-cloud](/img/blog/why-need-volte/VoLTE_Charging_Guide-Thumbnail.jpg)
 
@@ -23,7 +26,11 @@ weight = 0
 
 <img style="width:30%; height:30%; display:block; margin: auto 10%;" src="/img/blog/why-need-volte/404_big.png">
 
-到了 2010 年，两大国际组织 GSMA 和 3GPP 共同定义了 VoLTE 的通信标准，目标是使得我们不但可以在 4G 网络之上实现语音短信服务，而且还外赠视频通话( ViLTE ) ，多方电话会议等其他服务。拿最常见的电话服务来说，普通用户能感知到两点，一、新的编码技术使得话音质量提升 40 % ；二、呼叫接通时延减小 50 % (从按下拨号到对方振铃)；
+到了 2010 年，两大国际组织 GSMA 和 3GPP 共同定义了 VoLTE 的通信标准，目标是使得我们不但可以在 4G 网络之上实现语音短信服务，而且还外赠视频通话( ViLTE ) ，多方电话会议等其他服务。拿最常见的电话服务来说，普通用户能感知到比如说：
+
+1. 话音质量提升 40 % 得益于新的编码技术；
+2. 呼叫接通的时延减小 50 % (从按下拨号到对方振铃)；
+3. 打电话的时候可以同时上网；
 
 实现了上述标准的系统叫 IP多媒体子系统( IMS )。由于前面提到 4G 网络已经是一个全 IP 通信网，因此 IMS 也就很自然的利用很多在互联网领域应用地较成熟的 IETF 各种协议：SIP、MRSP、Diameter、IPSec、RTP、RTCP……
 
