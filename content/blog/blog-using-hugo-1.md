@@ -12,7 +12,15 @@ weight = 20
 
 ## 为什么要自行搭建
 
-写文章当下的首选依然 1) 开通微信公众号 2) 微博的头条文章，3) 甚至知乎专栏等等。但考虑到控制权和便捷修改已发布文章等因素，个人搭建则更具优势。关于这方面更为深入的思考，见文末[左耳老师的文章](http://coolshell.cn/articles/17391.html)。
+写文章当下的首选依然
+
+1. 开通微信公众号
+2. 微博的头条文章
+3. 甚至知乎专栏、头条等等
+
+但考虑到控制权和便捷修改已发布文章等因素，个人搭建则更具优势。关于这方面更为深入的思考，见文末[左耳老师的文章](http://coolshell.cn/articles/17391.html)。
+
+<img alt="do it yourself" src="/img/blog/blog-using-hugo-1/diy.jpg" class="img-responsive">
 
 像博客这种类型网站的搭建，推荐使用静态站点生成器( 也许你听说过 Jekyll 或其他类似工具 )来生成站点。这么做当然需要折腾一番，但想想你可以得到的：
 
@@ -44,6 +52,7 @@ Huge 使用步骤和 Jekyll 差不多：相似的创建站点命令，相似的�
 
 上述步骤仅仅是个 dry-run ，所以尽量在最短时限内完成。千万不要纠结在各种细节上不能自拔。后面有的是微调优化的时间。
 
+<img alt="editorial-story" src="/img/blog/blog-using-hugo-1/editor.jpg"  style="width:70%; height:70%; display:block; margin: auto;"> 
 
 参考文档
 
