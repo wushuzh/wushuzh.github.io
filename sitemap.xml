@@ -3,18 +3,35 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://wushuzh.github.io/blog/blog-using-hugo-1/</loc>
+    <loc>https://wushuzh.github.io/blog/2017/06/28/%E5%83%8F%E9%9B%A8%E6%9E%9C%E4%B8%80%E6%A0%B7%E5%86%99%E4%BD%9C-1/</loc>
     <lastmod>2017-06-28T19:18:51+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wushuzh.github.io/blog/setup-a-gitlab-ce-service/</loc>
+    <loc>https://wushuzh.github.io/blog/2017/07/09/%E5%83%8F%E9%9B%A8%E6%9E%9C%E4%B8%80%E6%A0%B7%E5%86%99%E4%BD%9C-2/</loc>
+    <lastmod>2017-07-09T10:11:21+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2017/06/18/gitlab-ce-%E5%AE%89%E8%A3%85%E5%AE%9E%E8%B7%B5/</loc>
     <lastmod>2017-06-18T21:18:51+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wushuzh.github.io/blog/why-need-volte/</loc>
+    <loc>https://wushuzh.github.io/blog/2017/06/01/%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81volte/</loc>
     <lastmod>2017-06-01T20:09:06+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/series/blog-like-a-pro/</loc>
+    <lastmod>2017-06-28T19:18:51+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/tags/blogging/</loc>
+    <lastmod>2017-06-28T19:18:51+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -29,7 +46,44 @@
   </url>
   
   <url>
+    <loc>https://wushuzh.github.io/tags/github/</loc>
+    <lastmod>2017-06-28T19:18:51+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/tags/hugo/</loc>
+    <lastmod>2017-06-28T19:18:51+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/tags/image/</loc>
+    <lastmod>2017-07-09T10:11:21+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/series/</loc>
+    <lastmod>2017-06-28T19:18:51+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://wushuzh.github.io/tags/</loc>
+    <lastmod>2017-06-28T19:18:51+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/tags/video/</loc>
+    <lastmod>2017-07-09T10:11:21+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/categories/writing/</loc>
+    <lastmod>2017-06-28T19:18:51+08:00</lastmod>
     <priority>0</priority>
   </url>
   

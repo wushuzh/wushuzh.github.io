@@ -7,9 +7,55 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>&amp;copy;2017 wushuzh</copyright>
+    <lastBuildDate>Wed, 28 Jun 2017 19:18:51 +0800</lastBuildDate>
     
 	<atom:link href="https://wushuzh.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Blogging</title>
+      <link>https://wushuzh.github.io/tags/blogging/</link>
+      <pubDate>Wed, 28 Jun 2017 19:18:51 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/tags/blogging/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Github</title>
+      <link>https://wushuzh.github.io/tags/github/</link>
+      <pubDate>Wed, 28 Jun 2017 19:18:51 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/tags/github/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hugo</title>
+      <link>https://wushuzh.github.io/tags/hugo/</link>
+      <pubDate>Wed, 28 Jun 2017 19:18:51 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Image</title>
+      <link>https://wushuzh.github.io/tags/image/</link>
+      <pubDate>Sun, 09 Jul 2017 10:11:21 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/tags/image/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Video</title>
+      <link>https://wushuzh.github.io/tags/video/</link>
+      <pubDate>Sun, 09 Jul 2017 10:11:21 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/tags/video/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

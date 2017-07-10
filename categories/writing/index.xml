@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Blogs on 小强会武术</title>
-    <link>https://wushuzh.github.io/blog/</link>
-    <description>Recent content in Blogs on 小强会武术</description>
+    <title>Writing on 小强会武术</title>
+    <link>https://wushuzh.github.io/categories/writing/</link>
+    <description>Recent content in Writing on 小强会武术</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>&amp;copy;2017 wushuzh</copyright>
     <lastBuildDate>Wed, 28 Jun 2017 19:18:51 +0800</lastBuildDate>
     
-	<atom:link href="https://wushuzh.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://wushuzh.github.io/categories/writing/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -29,26 +29,6 @@
       
       <guid>https://wushuzh.github.io/blog/2017/07/09/%E5%83%8F%E9%9B%A8%E6%9E%9C%E4%B8%80%E6%A0%B7%E5%86%99%E4%BD%9C-2/</guid>
       <description>&lt;p&gt;最要紧的是准备和插入那些漂亮的图片。
-&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>GitLab CE 安装实践</title>
-      <link>https://wushuzh.github.io/blog/2017/06/18/gitlab-ce-%E5%AE%89%E8%A3%85%E5%AE%9E%E8%B7%B5/</link>
-      <pubDate>Sun, 18 Jun 2017 21:18:51 +0800</pubDate>
-      
-      <guid>https://wushuzh.github.io/blog/2017/06/18/gitlab-ce-%E5%AE%89%E8%A3%85%E5%AE%9E%E8%B7%B5/</guid>
-      <description>&lt;p&gt;记录了我是如何搭建 GitLab 以获得类似 GitHub 的服务的
-&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>为什么需要VoLTE</title>
-      <link>https://wushuzh.github.io/blog/2017/06/01/%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81volte/</link>
-      <pubDate>Thu, 01 Jun 2017 20:09:06 +0800</pubDate>
-      
-      <guid>https://wushuzh.github.io/blog/2017/06/01/%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81volte/</guid>
-      <description>&lt;p&gt;已经买了 4G 套餐，还需要 VoLTE 套餐么？
 &lt;/p&gt;</description>
     </item>
     

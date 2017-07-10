@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>像雨果一样写作 2</title>
+<meta name="description" content="个人技术站点">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.theme.css">
+
+
+  <link href="https://wushuzh.github.io/css/style.sea.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://wushuzh.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
+
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="/">小强会武术</a></h1>
+    
+      <p class="sidebar-p">工程师</p>
+    
+    <ul class="sidebar-menu">
+      
+      
+        <li><a href="https://wushuzh.github.io/">Home</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  
+  
+  <a href="https://twitter.com/Xiao_Qiang" data-animate-hover="pulse" class="external twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  
+  
+  
+  
+  
+  
+  <a href="https://www.github.com/wushuzh" data-animate-hover="pulse">
+    <i class="fa fa-github"></i>
+  </a>
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2017 wushuzh
+        
+        | Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="/">小强会武术</a></h1>
+</div>
+
+  <div class="row">
+    <div>
+      <div class="content-column-content">
+         <h1>像雨果一样写作 2</h1>
+         <p>最要紧的是准备和插入那些漂亮的图片。
+</p>
+
+<h2 id="插入图片">插入图片</h2>
+
+<p>人是视觉动物。</p>
+
+<p>“有图有真相”——比如新闻网页中一般都含有相关照片或视频截图。在网站发展初期，只要是不涉及国家领导人的新闻，其网页的边栏、底栏都会有一些清凉图片(有时配合耸人听闻的标题打包显示)，感觉多数新闻聚合类网站都会这招，这些小视频和缩略图对网站点击量也该有不小的贡献。</p>
+
+<p>“一图胜千言”——图片在解释某些复杂事物的时候优势非常明显。</p>
+
+<p><details>
+  <summary>HipHop 握手</summary>
+  <a href="https://zh.wikipedia.org/wiki/%E8%B7%AF%E4%BA%BA%E8%B6%85%E8%83%BD100"><img alt="how hiphop shake hands"  src="/img/blog/blog-using-hugo-2/shake-hand.gif"
+  class="img-responsive" ></a>
+</details></p>
+
+<p>Markdown 中直接使用 html 插入动图片:
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="background-color: #f0f0f0; padding: 0 5px 0 5px">1 </span>&lt;<span style="color: #1e90ff; font-weight: bold">a</span> <span style="color: #1e90ff">href</span>=<span style="color: #aa5500">&quot;https://zh.wikipedia.org/wiki/路人超能100&quot;</span>&gt;
+<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">2 </span>  &lt;<span style="color: #1e90ff; font-weight: bold">img</span> <span style="color: #1e90ff">src</span>=<span style="color: #aa5500">&quot;gifname&quot;</span> <span style="color: #1e90ff">class</span>=<span style="color: #aa5500">&quot;img-responsive&quot;</span> &gt;
+<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">3 </span>&lt;/<span style="color: #1e90ff; font-weight: bold">a</span>&gt;
+</pre></div>
+
+进阶教程：<a href="http://www.ebadf.net/2016/10/19/centering-images-in-hugo/">方法1</a>,
+<a href="https://www.adamwills.io/blog/responsive-images-hugo/">方法2</a></p>
+
+<h3 id="生成-gif-动图">生成 GIF 动图</h3>
+
+<ol>
+<li>动图的原始视频来源是微博，先提交URL给 <a href="https://weibomiaopai.com/download-video-parser.php">weibomiaopai</a>，将mp4下载到本地<br /></li>
+<li>在将文件上传至 <a href="https://ezgif.com/">ezgif</a>，按照网页操作提示就生成最终 GIF 文件</li>
+<li>图像处理的另外一个大杀器是 GIMP，比如将 vid 转化为 gif，就可以通过安装插件完全在本地完成
+<details>
+  <summary>油管上 GIMP GAP 教学视频</summary>
+    
+<div style="position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;">
+  <iframe src="//www.youtube.com/embed/-sZYGwfcJ3A" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" allowfullscreen frameborder="0"></iframe>
+ </div>
+
+</details></li>
+</ol>
+
+<h2 id="插入视频">插入视频</h2>
+
+<p>现状就是大多数国内的网站都不支持原生的 html5 中的 video  ，大部分都是还都是用 flash。但总体嵌入视频链接也比较简单，油管直接用 Hugo 的 shortcodes，国内的找视频下面的分享，都会提供嵌入代码。</p>
+
+<p><embed src="https://imgcache.qq.com/tencentvideo_v1/playerv3/TPout.swf?max_age=86400&v=20161117&vid=k0353qun5ey&auto=0" allowFullScreen="true" quality="high" width="480" height="400" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed></p>
+
+<h2 id="版式校对">版式校对</h2>
+
+<p>无论 Hugo 、 Jekyll 或其他任何静态站点工具无一例外都提供 serve 命令来在本机启动一个轻量级的 Web 服务器，这样你就能在提交前，很方便地预览一下最终展示的版式效果。当你对内容、配置，主题等做微调的时候，被修改的内容也是即刻在本地服务器中生效( 不用重启 )，非常方便。Huge 的内容都在 content 子目录，Jekyll 则设定了草稿和正式发布两个目录。</p>
+
+<p>值得一提我才知道通过 Chrome DevTools 可以模拟各种不同尺寸、不同分辨率的移动设备( iPhone X, Nexus Y, iPad and Laptop Z )。你也可以改写 GPS 位置和加速器的参数，甚至模拟不同网络条件( wifi，2G，3G，4G，offline )以测试终端响应。<a href="https://developers.google.com/web/tools/chrome-devtools/device-mode/">文档</a></p>
+
+<p>缩略语解释
+&gt; - GIMP：Adobe PhotoShop 的开源替代物</p>
+
+<p>参考文档</p>
+
+<blockquote>
+<ul>
+<li>本系列的所有封面图都来自<a href="https://www.awwwards.com/freebie-realistic-vector-pack-of-desktop-elements.html">AWWWARDS TEAM</a></li>
+<li><a href="https://www.behance.net">Behance</a> Adobe旗下的设计师交流网站</li>
+<li><a href="https://dribbble.com/">Dribbble</a> 平面和产品界面设计稿展示网站</li>
+<li>Harttle. [2017-2-12] <a href="http://harttle.com/2017/02/12/embeding-video-sites.html">国内主要视频网站的嵌入方式</a></li>
+</ul>
+</blockquote>
+         
+      </div>
+    </div>
+  </div>
+</div>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://wushuzh.github.io/js/jquery.min.js"></script>
+<script src="https://wushuzh.github.io/js/bootstrap.min.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.cookie.js"> </script>
+<script src="https://wushuzh.github.io/js/ekko-lightbox.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://wushuzh.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/owl.carousel.min.js"></script>
+<script src="https://wushuzh.github.io/js/front.js"></script>
+
+</body>
+</html>
