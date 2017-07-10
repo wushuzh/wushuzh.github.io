@@ -20,3 +20,11 @@ theme = "hugo-creative-portfolio-theme"
   [params.social]
     twitter      = "https://twitter.com/Xiao_Qiang"
     github       = "https://www.github.com/wushuzh"
+
+[permalinks]
+  blog = "/blog/:year/:month/:day/:title/"
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+  series = "series"
