@@ -5,6 +5,9 @@ showonlyimage = false
 image = "/img/blog/blog-using-hugo-1/desktop.png"
 draft = false
 weight = 20
+tags = [ "Blogging", "Hugo", "GitHub" ]
+categories = [ "Writing" ]
+series = [ "Blog like a Pro" ]
 +++
 
 记录下如何用 GitHub 和 Hugo 搭建博客。
@@ -52,7 +55,7 @@ Huge 使用步骤和 Jekyll 差不多：相似的创建站点命令，相似的�
 
 上述步骤仅仅是个 dry-run ，所以尽量在最短时限内完成。千万不要纠结在各种细节上不能自拔。后面有的是微调优化的时间。
 
-<img alt="editorial-story" src="/img/blog/blog-using-hugo-1/editor.jpg"  style="width:70%; height:70%; display:block; margin: auto;"> 
+<img alt="editorial-story" src="/img/blog/blog-using-hugo-1/editor.jpg"  style="width:70%; height:70%; display:block; margin: auto;">
 
 参考文档
 
