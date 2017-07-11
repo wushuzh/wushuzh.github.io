@@ -48,9 +48,30 @@ Markdown 中直接使用 html 插入动图片:
 
 ## 插入视频
 
-现状就是大多数国内的网站都不支持原生的 html5 中的 video  ，大部分都是还都是用 flash。但总体嵌入视频链接也比较简单，油管直接用 Hugo 的 shortcodes，国内的找视频下面的分享，都会提供嵌入代码。
+现状就是大多数国内的网站都不支持原生的 html5 中的 video  ，大部分都是还都是用 flash。
 
-<embed src="https://imgcache.qq.com/tencentvideo_v1/playerv3/TPout.swf?max_age=86400&v=20161117&vid=k0353qun5ey&auto=0" allowFullScreen="true" quality="high" width="480" height="400" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+- 油管直接用 Hugo 的 shortcodes ;
+- 国内视频参见文末的参考文档，我仅仅测试了一个腾讯视频，其他各位使用后还是需要测试一下；
+
+<details>
+  <summary>举个腾讯视频的例子</summary>
+  <div class="embed-responsive embed-responsive-4by3">
+    <iframe class="embed-responsive-item"
+    frameborder="0" width="640" height="498" src="https://v.qq.com/iframe/player.html?vid=k0353qun5ey&tiny=0&auto=0" allowfullscreen></iframe>
+  </div>
+</details>
+
+{{< highlight html "style=autumn,linenos=inline">}}
+<div class="embed-responsive embed-responsive-4by3">
+  <iframe
+    class="embed-responsive-item"
+    frameborder="0"
+    width="640" height="498"
+    src="https://v.qq.com/iframe/player.html?vid=k0353qun5ey&tiny=0&auto=0"
+    allowfullscreen>
+  </iframe>
+</div>
+{{< /highlight >}}
 
 ## 版式校对
 
