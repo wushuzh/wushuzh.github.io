@@ -20,9 +20,11 @@ theme = "hugo-creative-portfolio-theme"
   [params.social]
     twitter      = "https://twitter.com/Xiao_Qiang"
     github       = "https://www.github.com/wushuzh"
+    email        = "wushuzh@outlook.com"
+    rss          = "index.xml"
 
 [permalinks]
-  blog = "/blog/:year/:month/:day/:title/"
+  blog = "/blog/:year/:month/:day/:filename/"
 
 [taxonomies]
   tag = "tags"
