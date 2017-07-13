@@ -163,21 +163,31 @@
 </blockquote>
 
 <p>文中图片来源网络</p>
-         <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'wushuzh';
-    var disqus_identifier = 'https:\/\/wushuzh.github.io\/blog\/2017\/06\/01\/why-need-volte\/';
-    var disqus_title = '为什么需要VoLTE';
-    var disqus_url = 'https:\/\/wushuzh.github.io\/blog\/2017\/06\/01\/why-need-volte\/';
+         <div id="disqus_thread">
+  <a href="#" onclick="disqus();return false;">Show Comments</a>
+</div>
 
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
+<script type="text/javascript">
+var disqus_loaded = false;
+function disqus() {
+  if (!disqus_loaded) {
+    
+    
+    
+    
+
+    disqus_loaded = true;
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'wushuzh';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }
+};
 </script>
+
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
       </div>
     </div>
   </div>
