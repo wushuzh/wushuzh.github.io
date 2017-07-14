@@ -46,6 +46,8 @@ Markdown 中直接使用 html 插入动图片:
         {{< youtube -sZYGwfcJ3A >}}
     </details>
 
+除了将所有图片存放于代码仓库中 static 子目录，另一个选择是将图片存入在像七牛这样的存储服务提供商上面，这样不但节省了 repo 的空间，同时还能有访问加速，简单图片处理的附带福利，如通过其接口对图片直接做缩放、剪裁、旋转、水印等，这样对简单处理就显得非常省事了，详细说明见其[开发者文档](https://developer.qiniu.com/dora/manual/3683/img-directions-for-use)，另外，上传的步骤利用一些图床工具也可以变得非常自动化，比如我查到了[这篇](https://www.slahser.com/2016/05/31/%E5%9B%BE%E5%BA%8A%E5%B7%A5%E5%85%B7iPic%E5%AE%89%E5%88%A9/)
+
 ## 插入视频
 
 现状就是大多数国内的网站都不支持原生的 html5 中的 video  ，大部分都是还都是用 flash。
