@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>&amp;copy;2017 wushuzh</copyright>
-    <lastBuildDate>Wed, 28 Jun 2017 19:18:51 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 13 Jul 2017 20:01:51 +0800</lastBuildDate>
     
 	<atom:link href="https://wushuzh.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Analyze</title>
+      <link>https://wushuzh.github.io/tags/analyze/</link>
+      <pubDate>Thu, 13 Jul 2017 20:01:51 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/tags/analyze/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Blogging</title>
@@ -18,6 +27,24 @@
       <pubDate>Wed, 28 Jun 2017 19:18:51 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/tags/blogging/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Comment</title>
+      <link>https://wushuzh.github.io/tags/comment/</link>
+      <pubDate>Thu, 13 Jul 2017 20:01:51 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/tags/comment/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Disqus</title>
+      <link>https://wushuzh.github.io/tags/disqus/</link>
+      <pubDate>Thu, 13 Jul 2017 20:01:51 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/tags/disqus/</guid>
       <description></description>
     </item>
     

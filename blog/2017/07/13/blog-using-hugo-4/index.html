@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>像雨果一样写作 4</title>
+<meta name="description" content="个人技术站点">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.theme.css">
+
+
+  <link href="https://wushuzh.github.io/css/style.sea.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://wushuzh.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-102509506-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="/">小强会武术</a></h1>
+    
+      <p class="sidebar-p">工程师</p>
+    
+    <ul class="sidebar-menu">
+      
+      
+        <li><a href="https://wushuzh.github.io/">Home</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  
+  
+  <a href="https://twitter.com/Xiao_Qiang" data-animate-hover="pulse" class="external twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  
+  
+  
+  <a href="mailto:wushuzh@outlook.com" data-animate-hover="pulse" class="email">
+    <i class="fa fa-envelope"></i>
+  </a>
+  
+  
+  
+  
+  <a href="https://www.github.com/wushuzh" data-animate-hover="pulse">
+    <i class="fa fa-github"></i>
+  </a>
+  
+
+  
+  <a href="https://wushuzh.github.io/index.xml" data-animate-hover="pulse">
+    <i class='fa fa-rss'></i>
+  </a>
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2017 wushuzh
+        
+        | Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="/">小强会武术</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="content-column-content">
+         <h1>像雨果一样写作 4</h1>
+         <p>如何开放评论，以及知晓谁在访问我的网站
+</p>
+
+<h2 id="获取反馈">获取反馈</h2>
+
+<p>以下几种情况可能获得反馈：</p>
+
+<ol>
+<li>读者觉得文章特别有用，忍不住点个赞，或推荐到推特；</li>
+<li>读者希望就特定情境，做更为深入的交流讨论；</li>
+<li>读者发现了行文中错误，拍砖做个友情提示；</li>
+<li>无关人等发广告贴或水军的恶意评论; （据说 Disqus 就可以作为访问门槛，挡住无关人员的评论）</li>
+</ol>
+
+<p>无论如何，上述这种提交评论的 POST 操作是没法在静态网站上完成的，更何况还要对读者做身份标识，在功能和健壮之间做出平衡，仅不因为点个赞，做一轮注册操作，又不会因为缺少身份识别，让广告满天飞 。</p>
+
+<p><img alt="Disqus Comment" src="/img/blog/blog-using-hugo-4/disqus_comments.png" class="img-responsive"></p>
+
+<p>于是就出现了像 <a href="https://en.wikipedia.org/wiki/Disqus">Disqus</a> 这样的专业提供评论服务的厂商，<a href="https://disqus.com/">Disqus</a> 不仅仅被大量的个人博客站点，就连不少大中型的新闻、娱乐类网站，如 CNN、The Daily Telegraph、IGN 也都是其用户。</p>
+
+<p>作为一个第三方 Javascript 应用，通过用户浏览器，它将自己注入静态博客站点内，其内容都为动态生成，根据当前页面上的原数据（ID、URL、标题等），在隔离的 iframe 中和 Disqus 后台服务器交互数据。详情可看 Disqus forum 上的 <a href="https://help.disqus.com/customer/portal/articles/466187-how-does-disqus-work-">How Disqus Work </a> 和 Quora 上内部员工的简述 <a href="https://www.quora.com/How-does-Disqus-work">How does Disqus work</a> 。</p>
+
+<p>Hugo 的官网文档上展示了如何仅用一行代码通过预制 template 为自己的页面加上评论区。在这个基础上，参考下面两篇博客，采用了点击才展开评论区的加载方式。</p>
+
+<blockquote>
+<p>Amit A. (2014-08-25) <a href="https://www.labnol.org/internet/load-disqus-comments-on-click/28653/">Load disqus comments on click</a><br />
+Seth W. (2014-11-15) <a href="https://internet-inspired.com/wrote/load-disqus-on-demand/">Load disqus on demand</a></p>
+</blockquote>
+
+<p>关于评论显示样式的更新，参见<a href="https://blog.jamespan.me/2015/04/18/goodbye-duoshuo/">这篇博客</a>，我先标记为 TODO 放在这里</p>
+
+<p><img style="width:70%; height:70%; display:block; margin: auto 10%;" alt="Free Speech" src="/img/blog/blog-using-hugo-4/free_speech.png" class="img-responsive"></p>
+
+<h2 id="量化统计">量化统计</h2>
+
+<p>为了回答下面这些问题，我们就需要像 <a href="https://en.wikipedia.org/wiki/Google_Analytics">Google Analytics</a> 追踪网站流量的工具了。</p>
+
+<ul>
+<li>读者都来自哪里？用什么设备？</li>
+<li>哪些文章被最多围观？</li>
+<li>网站访问速度如何？</li>
+</ul>
+
+<p><img alt="Google Analytics" src="/img/blog/blog-using-hugo-4/ga_logo.png" class="img-responsive"></p>
+
+<p>只要你能访问 Google ，注册服务并获取 GA Tracking ID 非常简单。之后回到 Hugo 上也只需一行<a href="https://gohugo.io/extras/analytics/">配置代码</a>就可以让其生效。</p>
+
+<p>简单调研了一下:</p>
+
+<ul>
+<li>SEO shifu (2017-03) <a href="https://chineseseoshifu.com/blog/is-google-analytics-blocked-in-china.html">Is Google Analytics Blocked in China?</a></li>
+<li>Grizzly Panda (2017-05-10) <a href="http://grizzlypandamarketing.com/use-google-analytics-china/">How to Use Google Analytics in China</a></li>
+<li>Stackexchange (2015-09) 的问题解答 <a href="https://webmasters.stackexchange.com/a/85194">How to remove Analytics&rsquo; DoubleClick</a></li>
+</ul>
+
+<p>GA 应该是少数我们尚可部分使用的服务，但如果你想换别的，比如 <a href="https://tongji.baidu.com/web/welcome/login">百度统计</a> ，可以参考 Quora 上的这篇 <a href="https://www.quora.com/What-are-some-alternatives-to-Google-Analytics-in-China">Alternatives to GA in China</a></p>
+
+<p>关于 GA 分析管理，新手最简单的操作是：新建一个 view 把自己的访问流量屏蔽掉：</p>
+
+<ul>
+<li>无论是通过浏览器插件 ( <a href="https://chrome.google.com/webstore/detail/block-yourself-from-analy/fadgflmigmogfionelcpalhohefbnehm">插件1</a> 或 <a href="https://chrome.google.com/webstore/detail/google-analytics-opt-out/fllaojicojecljbmefodhfapmkghcbnh?hl=zh-CN">插件2</a> )<br /></li>
+<li>创建过滤器 ( <a href="http://www.daniloaz.com/en/5-ways-to-exclude-your-own-visits-from-google-analytics/">参考1</a> 以及 <a href="http://andrewmiguelez.com/exclude-yourself-from-google-analytics/">参考2</a> )</li>
+</ul>
+
+<p><img style="width:70%; height:70%; display:block; margin: auto 10%;" alt="Analytics" src="/img/blog/blog-using-hugo-4/seo-and-social-media.png" class="img-responsive"></p>
+
+<p>缩略语解释</p>
+
+<p>其他参考文档</p>
+
+<blockquote>
+<p>Tony Bai (2015-09-23) <a href="http://tonybai.com/2015/09/23/intro-of-gohugo/">使用Hugo搭建静态站点</a><br />
+Jeff Liu (2016-01-01) <a href="http://usedgoodies.com/2016/01/01/setting-up-a-simple-blog-with-a-static-website-generator---part-10-hugo-with-google-analytics/">Part 10: Hugo with Google Analytics</a></p>
+</blockquote>
+
+<p>文中图片来源网络</p>
+         <div id="disqus_thread">
+  <a href="#" onclick="disqus();return false;">Show Comments</a>
+</div>
+
+<script type="text/javascript">
+var disqus_loaded = false;
+function disqus() {
+  if (!disqus_loaded) {
+    
+    
+    
+    
+
+    disqus_loaded = true;
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'wushuzh';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }
+};
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://wushuzh.github.io/js/jquery.min.js"></script>
+<script src="https://wushuzh.github.io/js/bootstrap.min.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.cookie.js"> </script>
+<script src="https://wushuzh.github.io/js/ekko-lightbox.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://wushuzh.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/owl.carousel.min.js"></script>
+<script src="https://wushuzh.github.io/js/front.js"></script>
+
+</body>
+</html>
