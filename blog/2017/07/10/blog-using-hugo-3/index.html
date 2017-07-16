@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>像雨果一样写作 3</title>
+<meta name="description" content="个人技术站点">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.theme.css">
+
+
+  <link href="https://wushuzh.github.io/css/style.sea.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://wushuzh.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-102509506-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="/">小强会武术</a></h1>
+    
+      <p class="sidebar-p">工程师</p>
+    
+    <ul class="sidebar-menu">
+      
+      
+        <li><a href="https://wushuzh.github.io/">Home</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  
+  
+  <a href="https://twitter.com/Xiao_Qiang" data-animate-hover="pulse" class="external twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  
+  
+  
+  <a href="mailto:wushuzh@outlook.com" data-animate-hover="pulse" class="email">
+    <i class="fa fa-envelope"></i>
+  </a>
+  
+  
+  
+  
+  <a href="https://www.github.com/wushuzh" data-animate-hover="pulse">
+    <i class="fa fa-github"></i>
+  </a>
+  
+
+  
+  <a href="https://wushuzh.github.io/index.xml" data-animate-hover="pulse">
+    <i class='fa fa-rss'></i>
+  </a>
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2017 wushuzh
+        
+        | Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="/">小强会武术</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="content-column-content">
+         <h1>像雨果一样写作 3</h1>
+         <p>想写论文？那看看如何插入代码、图及公式。
+</p>
+
+<h2 id="插入代码">插入代码</h2>
+
+<p>实现代码语法高亮有两个选择：</p>
+
+<ol>
+<li>提前在本地安装 Pygments ，并将程序 pygmentize 目录加入 PATH，这样 Hugo 就会在生成网页或 RSS 的时候，将被 shortcode highlight 封装起来的代码渲染好。<br /></li>
+<li>在生成页面中加入语法高亮的 js 库，将渲染工作推到客户端去做，这样的好处是可能支持更多语言<br /></li>
+</ol>
+
+<p>在 Markdown 中写成</p>
+
+<pre><code>{{&lt; highlight go &gt;}}
+package main
+import &quot;fmt&quot;
+func main() {
+    fmt.Println(&quot;hello world&quot;)
+}
+{{&lt; / highlight &gt;}}
+</code></pre>
+
+<p>最终得到语法高亮的效果
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f92672">package</span> <span style="color: #a6e22e">main</span>
+<span style="color: #f92672">import</span> <span style="color: #e6db74">&quot;fmt&quot;</span>
+<span style="color: #66d9ef">func</span> <span style="color: #a6e22e">main</span><span style="color: #f8f8f2">()</span> <span style="color: #f8f8f2">{</span>
+    <span style="color: #a6e22e">fmt</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">Println</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;hello world&quot;</span><span style="color: #f8f8f2">)</span>
+<span style="color: #f8f8f2">}</span>
+</pre></div>
+</p>
+
+<h2 id="插入流程图">插入流程图</h2>
+
+<p><a href="https://github.com/knsv/mermaid">knsv/mermaid</a> 是一个在 GitHub 上被加星了 13k+ 的项目：它提供了类 Markdown 的方式，先通过文本形式，用特定语法描述图中元素和关系，再将其渲染为对应各类图。</p>
+
+
+<figure >
+    
+        <img src="/img/blog/blog-using-hugo-3/flow_chart.png" />
+    
+    
+    <figcaption>
+        <h4>Flow Chart</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+
+<figure >
+    
+        <img src="/img/blog/blog-using-hugo-3/seq_diagram.png" />
+    
+    
+    <figcaption>
+        <h4>Seq Diagram</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+
+<figure >
+    
+        <img src="/img/blog/blog-using-hugo-3/gantt_diagram.png" />
+    
+    
+    <figcaption>
+        <h4>Gantt  Diagram</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+
+<figure >
+    
+        <img src="/img/blog/blog-using-hugo-3/class-diagram.png" />
+    
+    
+    <figcaption>
+        <h4>Class   Diagram</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+
+<figure >
+    
+        <img src="/img/blog/blog-using-hugo-3/gitgraph.mm.png" />
+    
+    
+    <figcaption>
+        <h4>Git Graph</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<h2 id="插入公式">插入公式</h2>
+
+<p>TODO</p>
+
+<h2 id="插入表格">插入表格</h2>
+
+<p>TODO</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Age</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Bob</td>
+<td>27</td>
+</tr>
+
+<tr>
+<td>Alice</td>
+<td>23</td>
+</tr>
+</tbody>
+</table>
+
+<div class="table-responsive">
+  <table class="table">
+     <thead>
+        <tr>
+           <th>Name</th>
+           <th>Age</th>
+        </tr>
+     </thead>
+     <tbody>
+        <tr>
+           <td>Bob</td>
+           <td>27</td>
+        </tr>
+        <tr>
+           <td>Alice</td>
+           <td>23</td>
+        </tr>
+     </tbody>
+  </table>
+</div>
+
+<p>缩略语解释</p>
+
+<p>参考文档</p>
+         <div id="disqus_thread">
+  <a href="#" onclick="disqus();return false;">Show Comments</a>
+</div>
+
+<script type="text/javascript">
+var disqus_loaded = false;
+function disqus() {
+  if (!disqus_loaded) {
+    
+    
+    
+    
+
+    disqus_loaded = true;
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'wushuzh';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }
+};
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://wushuzh.github.io/js/jquery.min.js"></script>
+<script src="https://wushuzh.github.io/js/bootstrap.min.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.cookie.js"> </script>
+<script src="https://wushuzh.github.io/js/ekko-lightbox.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://wushuzh.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/owl.carousel.min.js"></script>
+<script src="https://wushuzh.github.io/js/front.js"></script>
+
+</body>
+</html>
