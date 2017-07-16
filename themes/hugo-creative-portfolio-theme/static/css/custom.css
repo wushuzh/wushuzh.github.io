@@ -1,5 +1,9 @@
 /* your styles go here */
 
+.highlight pre{
+  background-color: #424242;
+}
+
 figure {
   margin: 1em auto;
   display: -webkit-inline-box;
