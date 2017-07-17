@@ -28,8 +28,9 @@ import "fmt"
 func main() {
     fmt.Println("hello world")
 }
-{{</* / highlight */>}}
+{{</* /highlight */>}}
 ```
+
 最终得到语法高亮的效果
 {{< highlight go >}}
 package main
@@ -55,7 +56,26 @@ func main() {
 
 ## 插入公式
 
-TODO
+Hugo 通过 LaTex 语法，借助一个 JavaScript 库 [MathJax](https://www.mathjax.org/) 在各个浏览器中无差别地显示数学公式。在 Lincoln. A (2016-08-07) [Better TeX math typesetting in Hugo] (http://www.latkin.org/blog/2016/08/07/better-tex-math-typesetting-in-hugo/) 博客中相关介绍很详细，一步步跟着做即可，这里不重复，大体步骤如下：
+
+1. 在文章显示模板中引入 MathJax 库
+2. 自定义一个 Shortcodes 命名为 tex
+3. 在自己的博客正文中调用新定义的 tex mathematics
+
+> 另外，如果使用 Lincoln 的 tex 定义，就算浏览器禁用 JavaScript ，相关公式也能显示正常(通过图片)
+
+例如，在 Markdown 中写成
+```
+{{</* highlight LaTex */>}}
+{{</* tex "\sum_{n=1}^{\infty} 2^{-n} = 1" */>}} # 行文行内公式
+{{</* tex display="\int \frac{1}{x} dx = \ln |x|" */>}} # 独占一行公式
+{{</* / highlight */>}}
+```
+最终显示效果如下：
+
+1. 行文行内公式 {{< tex "\sum_{n=1}^{\infty} 2^{-n} = 1" >}}
+2. 独占一行公式
+    {{< tex display="\int \frac{1}{x} dx = \ln |x|" >}}
 
 ## 插入表格
 
@@ -90,3 +110,6 @@ Alice   | 23
 缩略语解释
 
 参考文档
+
+> - 有道云笔记 (2016-05-10) [有道云笔记PC4.9](http://note.youdao.com/iyoudao/?p=1895)
+> - 有道云笔记 (2016-04-07) [进击的Markdown教程]( https://mp.weixin.qq.com/s?__biz=MjM5NjAyNjkwMA==&mid=2723941495&idx=2&sn=eb542a9e934e3c4bbb9be4051037b73b&scene=4#wechat_redirect)
