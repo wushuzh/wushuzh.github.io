@@ -2,7 +2,7 @@
 <html lang="zh-cn">
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>像雨果一样写作 3</title>
+<title>为容器搭建操作系统</title>
 <meta name="description" content="个人技术站点">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="all,follow">
@@ -108,139 +108,74 @@ ga('send', 'pageview');
   <div class="row">
     <div class="col-lg-8">
       <div class="content-column-content">
-         <h1>像雨果一样写作 3</h1>
-         <p>想写论文？那看看如何插入代码、图及公式。
+         <h1>为容器搭建操作系统</h1>
+         <p>Docker 简介和 Atomic 服务器的搭建
 </p>
 
-<h2 id="插入代码">插入代码</h2>
+<h2 id="docker-起源">Docker 起源</h2>
 
-<p>实现代码语法高亮有两个选择：</p>
+<p>以往说起虚拟化，用的软件普遍是 VirtualBox，VMWare系，KVM，Oracle VM 。最终得到也都是 “ 完全虚拟化的 VM ”——即对整个计算机系统的仿真 ( 如利用开源 QEMU 实现的 Hypervisor )</p>
 
-<ol>
-<li>提前在本地安装 Pygments ，并将程序 pygmentize 目录加入 PATH，这样 Hugo 就会在生成网页或 RSS 的时候，将被 shortcode highlight 封装起来的代码渲染好。<br /></li>
-<li>在生成页面中加入语法高亮的 js 库，将渲染工作推到客户端去做，这样的好处是可能支持更多语言<br /></li>
-</ol>
+<p>下面的 “ 操作系统级虚拟化 ” 则是虚拟化科技树上的另一股分支：在一个内核上，分隔出多个用户空间，每个实例称为“容器” 或 “jails”。其来源是 Unix 的 chroot 操作。随着隔离安全、资源预留等 Linux 新特性的不断发展，这个新的技术解决方案开始进入我们的视野：集装箱改变世界。</p>
 
-<p>在 Markdown 中写成</p>
+<h2 id="docker-背后技术">Docker 背后技术</h2>
 
-<pre><code>{{&lt;/* highlight go */&gt;}}
-package main
-import &quot;fmt&quot;
-func main() {
-    fmt.Println(&quot;hello world&quot;)
-}
-{{&lt;/* /highlight */&gt;}}
-</code></pre>
+<p><img src="/img/blog/setup-a-container-host-env/lxc_architecture.png" alt="Key tech of container" /></p>
 
-<p>最终得到语法高亮的效果
-{{&lt; highlight go &gt;}}
-package main
-import &ldquo;fmt&rdquo;
-func main() {
-    fmt.Println(&ldquo;hello world&rdquo;)
-}
-{{&lt; /highlight &gt;}}</p>
+<ul>
+<li>Namespaces
 
-<h2 id="插入流程图">插入流程图</h2>
+<ul>
+<li>Mount NS 使容器可以拥有各自独立的文件系统</li>
+<li>UTS NS 使容器拥有独立的主机或 NIS 域名</li>
+<li>IPS NS 使容器内的进程间通信(共享内存、信号量)成为可能</li>
+<li>PID NS 使容器有独立的 PID1 以及 /proc 从宿主机会看到不同的 PID</li>
+<li>Nwk NS 使容器有各自独立的网络地址、防火墙及路由表</li>
+<li>User NS 和容器用户权限相关，RHEL7 暂时未支持</li>
+</ul></li>
+<li>cgroups 用于对 CPU，内存，网络等<a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Resource_Management_Guide/index.html">资源管控</a></li>
+<li>SELinux 可从宿主机对容器应用各种 <a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/SELinux_Users_and_Administrators_Guide/chap-Security-Enhanced_Linux-sVirt.html">SELinux 的规则和标签</a>，比如 virtd_lxc_t</li>
+</ul>
 
-<p><a href="https://github.com/knsv/mermaid">knsv/mermaid</a> 是一个在 GitHub 上被加星了 13k+ 的项目：它提供了类 Markdown 的方式，先通过文本形式，用特定语法描述图中元素和关系，再将其渲染为对应各类图。</p>
+<h2 id="docker-打开方式">Docker 打开方式</h2>
 
-<p>{{&lt; figure src=&ldquo;/img/blog/blog-using-hugo-3/flow_chart.png&rdquo; title=&ldquo;Flow Chart&rdquo; &gt;}}</p>
+<p>Docker 将目标应用和所依赖的运行环境合成于容器中，独立于宿主 OS 。
+Docker 的镜像格式底层是 device mapper thin provisioning 技术( 实现了copy-on-write 的 LVM 快照技术的演进型 )</p>
 
-<p>{{&lt; figure src=&ldquo;/img/blog/blog-using-hugo-3/seq_diagram.png&rdquo; title=&ldquo;Seq Diagram&rdquo; &gt;}}</p>
+<p><img src="/img/blog/setup-a-container-host-env/docker_structure.png" alt="Docker Image" /></p>
 
-<p>{{&lt; figure src=&ldquo;/img/blog/blog-using-hugo-3/gantt_diagram.png&rdquo; title=&ldquo;Gantt  Diagram&rdquo; &gt;}}</p>
+<ul>
+<li>Container App 运行所处的层级，基于 image 而启动，最上为可写层，可提交为新 image layer</li>
+<li>Image 则是不可更改的容器静态快照，每个 Image 都依赖于其父 Image，追溯到根源是 Platform Image (包含最最基础的指令、环境、软件包)</li>
+</ul>
 
-<p>{{&lt; figure src=&ldquo;/img/blog/blog-using-hugo-3/class-diagram.png&rdquo; title=&ldquo;Class   Diagram&rdquo; &gt;}}</p>
+<p>将隔离的应用，实现标准化的构建和部署。
+无论对于软件开发，还是基础设施，都可以创建标准可重复的流程。</p>
 
-<p>{{&lt; figure src=&ldquo;/img/blog/blog-using-hugo-3/gitgraph.mm.png&rdquo; title=&ldquo;Git Graph&rdquo; &gt;}}</p>
+<h2 id="和虚拟机的比较">和虚拟机的比较</h2>
 
-<h2 id="插入公式">插入公式</h2>
+<ul>
+<li>KVM 全面仿真硬件，独立 OS 内核，有更好的隔离和安全性，甚至仿真不同架构，安装 Windows/Mac 虚拟机</li>
+<li>容器 则是以应用为中心，所以共享宿主上的内核及关键程序，消耗更好资源，是超轻量级的虚拟化技术</li>
+</ul>
 
-<p>Hugo 通过 LaTex 语法，借助一个 JavaScript 库 <a href="https://www.mathjax.org/">MathJax</a> 在各个浏览器中无差别地显示数学公式。在 Lincoln. A (2016-08-07) <a href="http://www.latkin.org/blog/2016/08/07/better-tex-math-typesetting-in-hugo/">Better TeX math typesetting in Hugo</a> 博客中相关介绍很详细，一步步跟着做即可，这里不重复，大体步骤如下：</p>
+<h2 id="atomic-服务器">Atomic 服务器</h2>
 
-<ol>
-<li>在文章显示模板中引入 MathJax 库</li>
-<li>自定义一个 Shortcodes 命名为 tex</li>
-<li>在自己的博客正文中调用新定义的 tex mathematics</li>
-</ol>
+<p>Redhat 围绕 LDK 技术栈、基于基础设施固化的理念，将操作系统的重新设计和瘦身，Atomic Host 正是作为这样的容器 OS 而诞生出来的。</p>
 
-<blockquote>
-<p>另外，如果使用 Lincoln 的 tex 定义，就算浏览器禁用 JavaScript ，相关公式也能显示正常(通过图片)</p>
-</blockquote>
+<p>使用 rpm-ostree 而非 Yum 做操作系统中的包管理
+仅两个目录 /etc/ 和 /var/ 可写，升级时采用新老引导系统并存保留的方式
+存储由守护进程 docker-storage-setup 负责，利用 LVM 创建 root 和 docker-pool 两个逻辑卷
+特有的为容器 OS 而设定的安全特性
+其他的来自 Redhat Openshift 的管理工具全家桶</p>
 
-<p>例如，在 Markdown 中写成</p>
-
-<pre><code>{{&lt;/* highlight LaTex */&gt;}}
-{{&lt;/* tex &quot;\sum_{n=1}^{\infty} 2^{-n} = 1&quot; */&gt;}} # 行文行内公式
-{{&lt;/* tex display=&quot;\int \frac{1}{x} dx = \ln |x|&quot; */&gt;}} # 独占一行公式
-{{&lt;/* / highlight */&gt;}}
-</code></pre>
-
-<p>最终显示效果如下：</p>
-
-<ol>
-<li>行文行内公式 {{&lt; tex &ldquo;\sum_{n=1}^{\infty} 2^{-n} = 1&rdquo; &gt;}}</li>
-<li>独占一行公式
-{{&lt; tex display=&rdquo;\int \frac{1}{x} dx = \ln |x|&rdquo; &gt;}}</li>
-</ol>
-
-<h2 id="插入表格">插入表格</h2>
-
-<p>TODO</p>
-
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Age</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>Bob</td>
-<td>27</td>
-</tr>
-
-<tr>
-<td>Alice</td>
-<td>23</td>
-</tr>
-</tbody>
-</table>
-
-<div class="table-responsive">
-  <table class="table">
-     <thead>
-        <tr>
-           <th>Name</th>
-           <th>Age</th>
-        </tr>
-     </thead>
-     <tbody>
-        <tr>
-           <td>Bob</td>
-           <td>27</td>
-        </tr>
-        <tr>
-           <td>Alice</td>
-           <td>23</td>
-        </tr>
-     </tbody>
-  </table>
-</div>
+<p><a href="http://www.projectatomic.io/blog/2014/10/getting-started-with-cloud-init/">http://www.projectatomic.io/blog/2014/10/getting-started-with-cloud-init/</a></p>
 
 <p>缩略语解释</p>
 
-<p>参考文档</p>
-
-<blockquote>
-<ul>
-<li>有道云笔记 (2016-05-10) <a href="http://note.youdao.com/iyoudao/?p=1895">有道云笔记PC4.9</a></li>
-<li>有道云笔记 (2016-04-07) <a href="https://mp.weixin.qq.com/s?__biz=MjM5NjAyNjkwMA==&amp;mid=2723941495&amp;idx=2&amp;sn=eb542a9e934e3c4bbb9be4051037b73b&amp;scene=4#wechat_redirect">进击的Markdown教程</a></li>
-</ul>
-</blockquote>
+<p>其他参考文档<br />
+<a href="https://www.youtube.com/watch?v=nn79JgA-gfM">https://www.youtube.com/watch?v=nn79JgA-gfM</a>
+<a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04">https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04</a></p>
          <div id="disqus_thread">
   <a href="#" onclick="disqus();return false;">Show Comments</a>
 </div>

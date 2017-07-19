@@ -53,6 +53,16 @@
     </item>
     
     <item>
+      <title>为容器搭建操作系统</title>
+      <link>https://wushuzh.github.io/blog/2017/07/06/setup-a-container-host-env/</link>
+      <pubDate>Thu, 06 Jul 2017 09:28:56 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/07/06/setup-a-container-host-env/</guid>
+      <description>&lt;p&gt;Docker 简介和 Atomic 服务器的搭建
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>GitLab CE 安装实践</title>
       <link>https://wushuzh.github.io/blog/2017/06/18/setup-a-gitlab-ce-service/</link>
       <pubDate>Sun, 18 Jun 2017 21:18:51 +0800</pubDate>
