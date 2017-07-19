@@ -1,21 +1,24 @@
 +++
 date = "2017-07-06T09:28:56+08:00"
-title = "setup a container host env"
-showonlyimage = true
-image = "/img/blog/setup-the-container-test-env/xkcd_1764.png"
-draft = true
-weight = 0
+title = "为容器搭建操作系统"
+showonlyimage = false
+image = "/img/blog/setup-a-container-host-env/redhat-docker.png"
+draft = false
+weight = 30
 +++
+
+Docker 简介和 Atomic 服务器的搭建
+<!--more-->
 
 ## Docker 起源
 
-以往说起虚拟化，用的普遍是 VirtualBox，VMWare，KVM，Oracle VM 。最终得到也都是 “ 完全虚拟化的 VM ”，这是因为它是基于对整个计算机系统的仿真 ( 如开源 QEMU 实现的 Hypervisor )
+以往说起虚拟化，用的软件普遍是 VirtualBox，VMWare系，KVM，Oracle VM 。最终得到也都是 “ 完全虚拟化的 VM ”——即对整个计算机系统的仿真 ( 如利用开源 QEMU 实现的 Hypervisor )
 
-下面的 “ 操作系统的虚拟化 ” 则是虚拟化科技树上的另一个分支：在一个内核上，分隔出多个用户空间，每个实例称为“容器” 或 “jails”。其来源是 Unix 的 chroot 操作。随着安全、资源预留等新 Linux 特性的不断发展，新的技术解决方案开始进入我们的视野——“ Docker 改变世界 ”。
+下面的 “ 操作系统级虚拟化 ” 则是虚拟化科技树上的另一股分支：在一个内核上，分隔出多个用户空间，每个实例称为“容器” 或 “jails”。其来源是 Unix 的 chroot 操作。随着隔离安全、资源预留等 Linux 新特性的不断发展，这个新的技术解决方案开始进入我们的视野：集装箱改变世界。
 
 ## Docker 背后技术
 
-![Key tech of container](/img/blog/setup-the-container-test-env/lxc_architecture.png)
+![Key tech of container](/img/blog/setup-a-container-host-env/lxc_architecture.png)
 
 - Namespaces
   * Mount NS 使容器可以拥有各自独立的文件系统
@@ -32,7 +35,7 @@ weight = 0
 Docker 将目标应用和所依赖的运行环境合成于容器中，独立于宿主 OS 。
 Docker 的镜像格式底层是 device mapper thin provisioning 技术( 实现了copy-on-write 的 LVM 快照技术的演进型 )
 
-![Docker Image](/img/blog/setup-the-container-test-env/docker_structure.png)
+![Docker Image](/img/blog/setup-a-container-host-env/docker_structure.png)
 
 - Container App 运行所处的层级，基于 image 而启动，最上为可写层，可提交为新 image layer
 - Image 则是不可更改的容器静态快照，每个 Image 都依赖于其父 Image，追溯到根源是 Platform Image (包含最最基础的指令、环境、软件包)
@@ -55,8 +58,11 @@ Redhat 围绕 LDK 技术栈、基于基础设施固化的理念，将操作系�
 特有的为容器 OS 而设定的安全特性
 其他的来自 Redhat Openshift 的管理工具全家桶
 
+http://www.projectatomic.io/blog/2014/10/getting-started-with-cloud-init/
+
+
 缩略语解释
 
 其他参考文档  
-
+https://www.youtube.com/watch?v=nn79JgA-gfM
 https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04
