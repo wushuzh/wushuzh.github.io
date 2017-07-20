@@ -61,6 +61,11 @@ Redhat 围绕 LDK 技术栈、基于基础设施应固化的理念，将操作�
 - 能和其他来自 Redhat Openshift 的管理工具全家桶配合使用
 - https://access.redhat.com/articles/2772861
 
+<br />
+
+### 动手环节
+<img alt="XKCD #1764" src="/img/blog/setup-a-container-host-env/xkcd-1764.png" class="img-responsive">
+
 对系统尝鲜，最简便的是通过虚拟机。RedHat的订阅用户，亦或 CentOS、Fedora 各自的 Atomic SIG 都提供可用于云环境的 QCOW2 的镜像[下载](http://www.projectatomic.io/download/)。可用于 OpenStack，oVirt，virt-manager。另外还有 Vagrant 格式的镜像可以在 VirtualBox 和 libvirt/KVM 的模式使用。另外还有 AMI 格式用于 EC2 环境。
 
 按照 Matthew M. (2014-10-21) [Getting started with cloud-init](http://www.projectatomic.io/blog/2014/10/getting-started-with-cloud-init/) 介绍的步骤，我启动了一台容器宿主虚拟机。后来才发现 Atomic 文档中 [qucikstart](https://www.projectatomic.io/docs/quickstart/) 更为详尽
@@ -80,5 +85,5 @@ LDK: Linux Docker Kubernetes
 SIG：Special Interest Group
 
 其他参考文档  
-https://www.youtube.com/watch?v=nn79JgA-gfM
+
 https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04
