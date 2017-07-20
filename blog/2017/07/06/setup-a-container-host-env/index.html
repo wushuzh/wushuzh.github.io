@@ -2,7 +2,7 @@
 <html lang="zh-cn">
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>为容器搭建操作系统</title>
+<title>搭建使用容器的专属系统</title>
 <meta name="description" content="个人技术站点">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="all,follow">
@@ -108,7 +108,7 @@ ga('send', 'pageview');
   <div class="row">
     <div class="col-lg-8">
       <div class="content-column-content">
-         <h1>为容器搭建操作系统</h1>
+         <h1>搭建使用容器的专属系统</h1>
          <p>Docker 简介和 Atomic 服务器的搭建
 </p>
 
@@ -161,21 +161,51 @@ Docker 的镜像格式底层是 device mapper thin provisioning 技术( 实现�
 
 <h2 id="atomic-服务器">Atomic 服务器</h2>
 
-<p>Redhat 围绕 LDK 技术栈、基于基础设施固化的理念，将操作系统的重新设计和瘦身，Atomic Host 正是作为这样的容器 OS 而诞生出来的。</p>
+<p>Redhat 围绕 LDK 技术栈、基于基础设施应固化的理念，将操作系统进行了重新设计和瘦身，成为一个容器 OS 诞生出来，名为 Atomic Host 。</p>
 
-<p>使用 rpm-ostree 而非 Yum 做操作系统中的包管理
-仅两个目录 /etc/ 和 /var/ 可写，升级时采用新老引导系统并存保留的方式
-存储由守护进程 docker-storage-setup 负责，利用 LVM 创建 root 和 docker-pool 两个逻辑卷
-特有的为容器 OS 而设定的安全特性
-其他的来自 Redhat Openshift 的管理工具全家桶</p>
+<p>和以往操作系统的不同有：</p>
 
-<p><a href="http://www.projectatomic.io/blog/2014/10/getting-started-with-cloud-init/">http://www.projectatomic.io/blog/2014/10/getting-started-with-cloud-init/</a></p>
+<ul>
+<li>使用 rpm-ostree 而非 Yum 做操作系统中的包管理</li>
+<li>仅两个目录 /etc/ 和 /var/ 可写，升级时采用新老引导系统并存保留的方式</li>
+<li>存储由守护进程 docker-storage-setup 负责，利用 LVM 创建 root 和 docker-pool 两个逻辑卷</li>
+<li>特有的为容器 OS 而设定的安全特性</li>
+<li>能和其他来自 Redhat Openshift 的管理工具全家桶配合使用</li>
+<li><a href="https://access.redhat.com/articles/2772861">https://access.redhat.com/articles/2772861</a></li>
+</ul>
+
+<p><br /></p>
+
+<h3 id="动手环节">动手环节</h3>
+
+<p><img alt="XKCD #1764" src="/img/blog/setup-a-container-host-env/xkcd-1764.png" class="img-responsive"></p>
+
+<p>对系统尝鲜，最简便的是通过虚拟机。RedHat的订阅用户，亦或 CentOS、Fedora 各自的 Atomic SIG 都提供可用于云环境的 QCOW2 的镜像<a href="http://www.projectatomic.io/download/">下载</a>。可用于 OpenStack，oVirt，virt-manager。另外还有 Vagrant 格式的镜像可以在 VirtualBox 和 libvirt/KVM 的模式使用。另外还有 AMI 格式用于 EC2 环境。</p>
+
+<p>按照 Matthew M. (2014-10-21) <a href="http://www.projectatomic.io/blog/2014/10/getting-started-with-cloud-init/">Getting started with cloud-init</a> 介绍的步骤，我启动了一台容器宿主虚拟机。后来才发现 Atomic 文档中 <a href="https://www.projectatomic.io/docs/quickstart/">qucikstart</a> 更为详尽</p>
+
+<p>主要步骤如下：</p>
+
+<ol>
+<li>下载解压 QCOW2 的镜像到本地</li>
+<li>为 clould-init 准备 ISO ，包含 metadata、userdata 两个含如下元数据的 YAML
+
+<ul>
+<li>如虚拟机实例名，主机名</li>
+<li>如用于登录的 SSH 公钥，以及是否允许密码登录</li>
+</ul></li>
+<li>借助 virt-manager 创建虚拟机，过程和一般虚拟机无异，除了触发安装前要添加 cloud-init ISO 到 CDROM。</li>
+<li>为 VM 添加存储，登录 VM 做系统更新，开始使用 （更详尽的试用报告见本系列下篇）</li>
+</ol>
 
 <p>缩略语解释</p>
 
-<p>其他参考文档<br />
-<a href="https://www.youtube.com/watch?v=nn79JgA-gfM">https://www.youtube.com/watch?v=nn79JgA-gfM</a>
-<a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04">https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04</a></p>
+<p>LDK: Linux Docker Kubernetes
+SIG：Special Interest Group</p>
+
+<p>其他参考文档</p>
+
+<p><a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04">https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04</a></p>
          <div id="disqus_thread">
   <a href="#" onclick="disqus();return false;">Show Comments</a>
 </div>

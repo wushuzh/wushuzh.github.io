@@ -123,37 +123,97 @@ ga('send', 'pageview');
 
 <p>在 Markdown 中写成</p>
 
-<pre><code>{{&lt;/* highlight go */&gt;}}
+<pre><code>{{&lt; highlight go &gt;}}
 package main
 import &quot;fmt&quot;
 func main() {
     fmt.Println(&quot;hello world&quot;)
 }
-{{&lt;/* /highlight */&gt;}}
+{{&lt; /highlight &gt;}}
 </code></pre>
 
 <p>最终得到语法高亮的效果
-{{&lt; highlight go &gt;}}
-package main
-import &ldquo;fmt&rdquo;
-func main() {
-    fmt.Println(&ldquo;hello world&rdquo;)
-}
-{{&lt; /highlight &gt;}}</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f92672">package</span> <span style="color: #a6e22e">main</span>
+<span style="color: #f92672">import</span> <span style="color: #e6db74">&quot;fmt&quot;</span>
+<span style="color: #66d9ef">func</span> <span style="color: #a6e22e">main</span><span style="color: #f8f8f2">()</span> <span style="color: #f8f8f2">{</span>
+    <span style="color: #a6e22e">fmt</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">Println</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;hello world&quot;</span><span style="color: #f8f8f2">)</span>
+<span style="color: #f8f8f2">}</span>
+</pre></div>
+</p>
 
 <h2 id="插入流程图">插入流程图</h2>
 
 <p><a href="https://github.com/knsv/mermaid">knsv/mermaid</a> 是一个在 GitHub 上被加星了 13k+ 的项目：它提供了类 Markdown 的方式，先通过文本形式，用特定语法描述图中元素和关系，再将其渲染为对应各类图。</p>
 
-<p>{{&lt; figure src=&ldquo;/img/blog/blog-using-hugo-3/flow_chart.png&rdquo; title=&ldquo;Flow Chart&rdquo; &gt;}}</p>
 
-<p>{{&lt; figure src=&ldquo;/img/blog/blog-using-hugo-3/seq_diagram.png&rdquo; title=&ldquo;Seq Diagram&rdquo; &gt;}}</p>
+<figure >
+    
+        <img src="/img/blog/blog-using-hugo-3/flow_chart.png" />
+    
+    
+    <figcaption>
+        <h4>Flow Chart</h4>
+        
+    </figcaption>
+    
+</figure>
 
-<p>{{&lt; figure src=&ldquo;/img/blog/blog-using-hugo-3/gantt_diagram.png&rdquo; title=&ldquo;Gantt  Diagram&rdquo; &gt;}}</p>
 
-<p>{{&lt; figure src=&ldquo;/img/blog/blog-using-hugo-3/class-diagram.png&rdquo; title=&ldquo;Class   Diagram&rdquo; &gt;}}</p>
 
-<p>{{&lt; figure src=&ldquo;/img/blog/blog-using-hugo-3/gitgraph.mm.png&rdquo; title=&ldquo;Git Graph&rdquo; &gt;}}</p>
+<figure >
+    
+        <img src="/img/blog/blog-using-hugo-3/seq_diagram.png" />
+    
+    
+    <figcaption>
+        <h4>Seq Diagram</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+
+<figure >
+    
+        <img src="/img/blog/blog-using-hugo-3/gantt_diagram.png" />
+    
+    
+    <figcaption>
+        <h4>Gantt  Diagram</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+
+<figure >
+    
+        <img src="/img/blog/blog-using-hugo-3/class-diagram.png" />
+    
+    
+    <figcaption>
+        <h4>Class   Diagram</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+
+<figure >
+    
+        <img src="/img/blog/blog-using-hugo-3/gitgraph.mm.png" />
+    
+    
+    <figcaption>
+        <h4>Git Graph</h4>
+        
+    </figcaption>
+    
+</figure>
+
 
 <h2 id="插入公式">插入公式</h2>
 
@@ -171,18 +231,42 @@ func main() {
 
 <p>例如，在 Markdown 中写成</p>
 
-<pre><code>{{&lt;/* highlight LaTex */&gt;}}
-{{&lt;/* tex &quot;\sum_{n=1}^{\infty} 2^{-n} = 1&quot; */&gt;}} # 行文行内公式
-{{&lt;/* tex display=&quot;\int \frac{1}{x} dx = \ln |x|&quot; */&gt;}} # 独占一行公式
-{{&lt;/* / highlight */&gt;}}
+<pre><code>{{&lt; highlight LaTex &gt;}}
+{{&lt; tex &quot;\sum_{n=1}^{\infty} 2^{-n} = 1&quot; &gt;}} # 行文行内公式
+{{&lt; tex display=&quot;\int \frac{1}{x} dx = \ln |x|&quot; &gt;}} # 独占一行公式
+{{&lt; / highlight &gt;}}
 </code></pre>
 
 <p>最终显示效果如下：</p>
 
 <ol>
-<li>行文行内公式 {{&lt; tex &ldquo;\sum_{n=1}^{\infty} 2^{-n} = 1&rdquo; &gt;}}</li>
+<li>行文行内公式 
+<span class="jsonly">
+                  
+        \(\sum_{n=1}^{\infty} 2^{-n} = 1\)
+    
+</span>
+<noscript>
+                  
+        <img style="display:inline;vertical-align:middle;" src="https://latex.codecogs.com/gif.latex?\inline&space;%5csum_%7bn%3d1%7d%5e%7b%5cinfty%7d%202%5e%7b-n%7d%20%3d%201" title="\sum_{n=1}^{\infty} 2^{-n} = 1" />
+    
+</noscript>
+</li>
 <li>独占一行公式
-{{&lt; tex display=&rdquo;\int \frac{1}{x} dx = \ln |x|&rdquo; &gt;}}</li>
+
+<span class="jsonly">
+     
+        $$\int \frac{1}{x} dx = \ln |x|$$
+    
+</span>
+<noscript>
+     
+        <div style="text-align:center;">
+            <img src="https://latex.codecogs.com/gif.latex?%5cint%20%5cfrac%7b1%7d%7bx%7d%20dx%20%3d%20%5cln%20%7cx%7c" title="\int \frac{1}{x} dx = \ln |x|" />
+        </div>
+    
+</noscript>
+</li>
 </ol>
 
 <h2 id="插入表格">插入表格</h2>
