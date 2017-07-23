@@ -53,12 +53,22 @@
     </item>
     
     <item>
-      <title>搭建使用容器的专属系统</title>
+      <title>搭建容器的专属系统</title>
       <link>https://wushuzh.github.io/blog/2017/07/06/setup-a-container-host-env/</link>
       <pubDate>Thu, 06 Jul 2017 09:28:56 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/07/06/setup-a-container-host-env/</guid>
       <description>&lt;p&gt;Docker 简介和 Atomic 服务器的搭建
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>遇到启动错误，咋整？</title>
+      <link>https://wushuzh.github.io/blog/2017/07/19/deal-with-boot-failure/</link>
+      <pubDate>Wed, 19 Jul 2017 18:45:13 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/07/19/deal-with-boot-failure/</guid>
+      <description>&lt;p&gt;记录下最近遇到的几例和启动、存储相关错误的处理。
 &lt;/p&gt;</description>
     </item>
     

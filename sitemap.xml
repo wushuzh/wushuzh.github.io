@@ -28,6 +28,11 @@
   </url>
   
   <url>
+    <loc>https://wushuzh.github.io/blog/2017/07/19/deal-with-boot-failure/</loc>
+    <lastmod>2017-07-19T18:45:13+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://wushuzh.github.io/blog/2017/06/18/setup-a-gitlab-ce-service/</loc>
     <lastmod>2017-06-18T21:18:51+08:00</lastmod>
   </url>
@@ -85,6 +90,12 @@
   </url>
   
   <url>
+    <loc>https://wushuzh.github.io/tags/howto/</loc>
+    <lastmod>2017-07-19T18:45:13+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://wushuzh.github.io/tags/hugo/</loc>
     <lastmod>2017-06-28T19:18:51+08:00</lastmod>
     <priority>0</priority>
@@ -97,8 +108,20 @@
   </url>
   
   <url>
+    <loc>https://wushuzh.github.io/tags/linux/</loc>
+    <lastmod>2017-07-19T18:45:13+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://wushuzh.github.io/series/</loc>
     <lastmod>2017-06-28T19:18:51+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/tags/storage/</loc>
+    <lastmod>2017-07-19T18:45:13+08:00</lastmod>
     <priority>0</priority>
   </url>
   
