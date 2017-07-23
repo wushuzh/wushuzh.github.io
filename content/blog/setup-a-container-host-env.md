@@ -1,6 +1,6 @@
 +++
 date = "2017-07-06T09:28:56+08:00"
-title = "搭建使用容器的专属系统"
+title = "搭建容器的专属系统"
 showonlyimage = false
 image = "/img/blog/setup-a-container-host-env/redhat-docker.png"
 draft = false
