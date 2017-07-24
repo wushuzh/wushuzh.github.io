@@ -22,5 +22,15 @@
 &lt;/p&gt;</description>
     </item>
     
+    <item>
+      <title>遇到磁盘错误，咋整？</title>
+      <link>https://wushuzh.github.io/blog/2017/07/22/deal-with-disk-error/</link>
+      <pubDate>Sat, 22 Jul 2017 20:14:43 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/07/22/deal-with-disk-error/</guid>
+      <description>&lt;p&gt;磁盘错误导致进入紧急模式，该如何恢复？
+&lt;/p&gt;</description>
+    </item>
+    
   </channel>
 </rss>
