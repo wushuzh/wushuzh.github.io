@@ -11,9 +11,9 @@ tags = [ "Howto", "Storage", "Linux" ]
 磁盘错误导致进入紧急模式，该如何恢复？
 <!--more-->
 
-当前大数据应用的存储架构很少再采用 RAID ——此领域最常听到的是 JBOD ，隶属于[Non-RAID drive architectures](https://en.wikipedia.org/wiki/Non-RAID_drive_architectures)
+当前大数据应用的存储架构很少再采用 [RAID](https://en.wikipedia.org/wiki/RAID) ——此领域最常听到的是 JBOD ，隶属于[Non-RAID drive architectures](https://en.wikipedia.org/wiki/Non-RAID_drive_architectures)
 
-但本文涉及的老系统不但使用了 RAID，而且不是在硬件层面(智能存储阵列控制器)上直接做 RAID，而使用的是 SW-RAID，并且不是普通 RAID，而是[嵌套 RAID](https://en.wikipedia.org/wiki/Nested_RAID_levels) …… 怎么看都挺复杂的。
+但本文涉及的老系统不但使用了 [磁盘冗余阵列](https://zh.wikipedia.org/wiki/RAID)，而且不是在硬件层面(智能存储阵列控制器)上直接做 RAID，而使用的是 SW-RAID，并且不是普通 RAID，而是[嵌套 RAID](https://en.wikipedia.org/wiki/Nested_RAID_levels) …… 怎么看都挺复杂的。
 
 ### 案例 C 磁盘受损
 
