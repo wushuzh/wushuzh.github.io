@@ -68,7 +68,7 @@ Redhat 围绕 LDK 技术栈、基于基础设施应固化的理念，将操作�
 
 对系统尝鲜，最简便的是通过虚拟机。RedHat的订阅用户，亦或 CentOS、Fedora 各自的 Atomic SIG 都提供可用于云环境的 QCOW2 的镜像[下载](http://www.projectatomic.io/download/)。可用于 OpenStack，oVirt，virt-manager。另外还有 Vagrant 格式的镜像可以在 VirtualBox 和 libvirt/KVM 的模式使用。另外还有 AMI 格式用于 EC2 环境。
 
-按照 Matthew M. (2014-10-21) [Getting started with cloud-init](http://www.projectatomic.io/blog/2014/10/getting-started-with-cloud-init/) 介绍的步骤，我启动了一台容器宿主虚拟机。后来才发现 Atomic 文档中 [qucikstart](https://www.projectatomic.io/docs/quickstart/) 更为详尽
+按照 Matthew M. (2014-10-21) [Getting started with cloud-init](http://www.projectatomic.io/blog/2014/10/getting-started-with-cloud-init/) 介绍的步骤，我启动了一台容器宿主虚拟机。后来才发现 Atomic 文档中 [qucikstart](https://www.projectatomic.io/docs/quickstart/) 更为详尽，再后来发现 [RedHat Atomic](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux_atomic_host/7/html-single/installation_and_configuration_guide/)文档 VM Installation 章节中说的才叫清楚。
 
 主要步骤如下：
 
