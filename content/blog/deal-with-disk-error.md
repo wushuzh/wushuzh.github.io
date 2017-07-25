@@ -4,7 +4,7 @@ title = "遇到磁盘错误，咋整？"
 showonlyimage = false
 image = "/img/blog/deal-with-disk-error/hw-repair.png"
 draft = false
-weight = 41
+weight = 44
 tags = [ "Howto", "Storage", "Linux" ]
 +++
 
@@ -201,7 +201,7 @@ mdadm: /dev/md5 has been started with 3 drives (out of 4).
 此时再查看冗余磁盘阵列的状态，已变为 clean degraded 的状态。
 
 {{< highlight console >}}
-[root@hostC ~]#  mdadm --detail /dev/md5
+[root@hostC ~]# mdadm --detail /dev/md5
 /dev/md5:
             ... : ...
      Raid Level : raid10
@@ -227,6 +227,11 @@ Working Devices : 3
        2       8      161        2      active sync set-A   /dev/sdk1
        3       8       97        3      active sync set-B   /dev/sdg1
 
+[root@hostC ~]# cat /proc/mdstat |grep -A 3 md5
+md5 : active raid10 sds1[0] sdk1[2] sdg1[3]
+      585606144 blocks super 1.1 512K chunks 2 near-copies [4/3] [U_UU]
+      bitmap: 5/5 pages [20KB], 65536KB chunk
+      
 {{< /highlight >}}
 
 ---
@@ -271,13 +276,15 @@ Give root password for maintenance
 按提示进入执行 journalctl 查看日志，发现磁盘需要修复，大概和之前没有装载上的磁盘有点关系？
 
 {{< highlight console >}}
-some-timestamp hostC systemd-fsck[16431]:
+some-timestamp hostC systemd-fsck[1631]:
   /dev/md5: Inode xxx has a bad extended attribute block yyy.
-some-timestamp hostC systemd-fsck[16431]:
+some-timestamp hostC systemd-fsck[1631]:
   /dev/md5: UNEXPECTED INCONSISTENCY: RUN fsck MANUALLY.
-some-timestamp hostC systemd-fsck[16431]:
+some-timestamp hostC systemd-fsck[1631]:
   (i.e., without -a or -p options)
-some-timestamp hostC systemd-fsck[16431]:
+some-timestamp hostC systemd-fsck[1631]:
+  fsck failed with error code 4.
+some-timestamp hostC systemd-fsck[1631]:
   Running request emergency.target/start/replace
 some-timestamp hostC systemd[1]:
   Started File System Check on /dev/disk/by-uuid/aaa-bbb-ccc-ddd-......
@@ -305,11 +312,20 @@ e2fsck: Cannot continue, aborting.
 {{< /highlight >}}
 
 修复完毕后，将冗余阵列组装为 4 块设备，重启服务器，顺利进入系统。
+
+{{< highlight console >}}
+[root@hostC ~]# mdadm --manage /dev/md5 -a /dev/sdo1
+mdadm: added /dev/sdo1
+{{< /highlight >}}
+
 可以执行命令 ```watch -n .5 cat /proc/mdstat``` 每隔 0.5 秒监控一下冗余阵列的同步状态。
 
 {{< highlight console >}}
 [root@hostC ~]# mdadm --detail /dev/md5
 /dev/md5:
+   Raid Devices : 4
+  Total Devices : 3
+    Update Time : Fri Jul 21 10:49:52 2017
             ... : ...
           State : active, degraded, recovering
  Active Devices : 3

@@ -4,7 +4,7 @@ title = "遇到启动错误，咋整？"
 showonlyimage = false
 image = "/img/blog/deal-with-boot-failure/disk-err.gif"
 draft = false
-weight = 40
+weight = 43
 tags = [ "Howto", "Storage", "Linux" ]
 +++
 
