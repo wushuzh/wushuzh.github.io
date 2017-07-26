@@ -4,6 +4,7 @@ title = "小强会武术"
 theme = "hugo-creative-portfolio-theme"
 disqusShortname = "wushuzh"
 googleAnalytics = "UA-102509506-1"
+hasCJKLanguage = true
 
 [params]
   # Style options: default (pink), blue, green, pink, red, sea, violet

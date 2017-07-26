@@ -5,6 +5,16 @@
     <div class="col-lg-8">
       <div class="content-column-content">
          <h1>{{ .Title }}</h1>
+
+         <div>
+             <i class="fa fa-calendar fa-fw"></i>
+             <time datetime="{{ .Date }}">{{ .Date.Format "2006-01-02" }}</time>
+             &middot;
+             {{ .WordCount }} 字
+             &middot;
+             {{ .ReadingTime }} 分钟
+         </div>
+
          {{ .Content }}
          {{ partial "disqus.html" . }}
       </div>
