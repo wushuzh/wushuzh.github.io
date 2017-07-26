@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>删错了，咋整？</title>
+<meta name="description" content="个人技术站点">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.theme.css">
+
+
+  <link href="https://wushuzh.github.io/css/style.sea.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://wushuzh.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-102509506-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="/">小强会武术</a></h1>
+    
+      <p class="sidebar-p">工程师</p>
+    
+    <ul class="sidebar-menu">
+      
+      
+        <li><a href="https://wushuzh.github.io/">Home</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  
+  
+  <a href="https://twitter.com/Xiao_Qiang" data-animate-hover="pulse" class="external twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  
+  
+  
+  <a href="mailto:wushuzh@outlook.com" data-animate-hover="pulse" class="email">
+    <i class="fa fa-envelope"></i>
+  </a>
+  
+  
+  
+  
+  <a href="https://www.github.com/wushuzh" data-animate-hover="pulse">
+    <i class="fa fa-github"></i>
+  </a>
+  
+
+  
+  <a href="https://wushuzh.github.io/index.xml" data-animate-hover="pulse">
+    <i class='fa fa-rss'></i>
+  </a>
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2017 wushuzh
+        
+        | Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="/">小强会武术</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="content-column-content">
+
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="image">
+            <img src="https://wushuzh.github.io//img/blog/deal-with-violent-rm/pc-gone.png" class="img-responsive" alt="">
+          </div>
+        </div>
+        <div class="col-md-8">
+            <h2>删错了，咋整？</h2>
+                <p>
+                  小强会武术
+                </p>
+
+                <time datetime="2017-06-29 21:38:48 &#43;0800 CST">
+                <i class="fa fa-calendar-o fa-fw"></i> 2017-06-29
+                </time>
+                &middot;
+                1526 字
+                &middot;
+                4 分钟
+
+        </div>
+      </div>
+      <br />
+      
+         <p>蛮力卸载后，啥都不能用了……
+</p>
+
+<h2 id="问题背景">问题背景</h2>
+
+<p>Han 同学在虚拟机上做补丁安装测试时，蛮力将 nss 卸载后，IP尚能 ping 通，但 ssh、sftp 都不能用了，求救。</p>
+
+<p>通过 MDN 快速了解一下这个核心库：
+基本上所有和因特网安全的标准协议都离不开这个库，平时大家常用的一些集成、依赖此库的产品有 Firefox , Thunderbird , Pidgin , 开源Office , RedHat Apache SSL module , Oracle Java System 旗下的各种产品。</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>rpm -qi nss <span style="color: #75715e"># get metadata of a installed pkg</span>
+</pre></div>
+
+<br /></p>
+
+<h2 id="问题重现">问题重现</h2>
+
+<p>陷落的是一个 KVM 虚拟机，直接登录到其宿主服务器上：<code>virsh list</code>查到依然是运行状态。既然不能 ssh 登录，通过<code>virsh console guestname</code>登录其管理端口，做所有后续的维护操作。</p>
+
+<p>问题重现倒是很容易，随便执行一条ssh命令，系统日志 /var/log/message 里也充斥着类似的报错信息：</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>sshd: /usr/sbin/sshd: error while loading shared libraries:
+    libssl3.so: cannot open shared object file:
+        No such file or directory
+</pre></div>
+
+<br /></p>
+
+<h2 id="查找原因">查找原因</h2>
+
+<p>先查看 yum 的包更新历史，没有和肇事时间相符的记录。</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>yum <span style="color: #f8f8f2">history</span> <span style="color: #f92672">[</span>info someid<span style="color: #f92672">]</span>
+yum <span style="color: #f8f8f2">history</span> package-list nss
+</pre></div>
+
+
+<p>再查看 history 命令记录，找到了这条
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>rpm -e --nodeps nss
+</pre></div>
+</p>
+
+<p>这个 nodeps 参数导致跳过了 rpm 删除前的依赖性检测，是一个典型的暴力型删除。
+之后的命令历史就是试图补救：尝试用 scp 从外面拷贝一个包进来，但没了 nss 根本无法建立和外部服务器的链接。</p>
+
+<h2 id="修复过程">修复过程</h2>
+
+<p>先试着用 yum 修复：因为系统已经配置上了处在公司内网的 rpm 安装源，并通过 http 传输文件，并不需要 SSL 等安全链接。但试过才知道这也不行，同样报之前找不到 libnss3.so 错误。如此看来 yum 内部集成了更多安全校验。其首字母 Y 代表 Yellowdog 确实是超出预期的靠谱。</p>
+
+<p>之后我又试着下载了删除的安装包，直接拷到出事机器上：先将虚拟机关机，再在宿主服务器上执行 virt-copy-in 这样就不用依赖 ssh sftp scp 的安全传输链路了。但后面用 rpm 安装的时候，还是报同样的错误信息。其实也不惊讶，yum 只是封装了 rpm 的一个前端管理工具。</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>yum install --downloadonly --downloaddir<span style="color: #f92672">=</span>dir pkgname
+// 或 yumdownloader pkgname
+virt-copy-in -d guestvm srcfile-on-host targt-vm-path
+</pre></div>
+
+
+<p>最终可行的办法有两个：</p>
+
+<ol>
+<li>找一个一模一样架构的工作正常的机器，仅仅把缺失的文件直接拷过来，一旦 yum/rpm 可用不再报错，立刻通过本地 rpm 文件或 yum 源执行包安装，完善修复</li>
+<li>找不到一样的机器，就挂上安装介质，进入救援模式，进而继续安装</li>
+</ol>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>sudo virt-ls -l -d guestvm /usr/lib64/ <span style="color: #f8f8f2">|</span>wc -l
+sudo virt-ls -l -d guestvm /usr/lib64/libnss3.so
+sudo virt-copy-in -d guestvm /tmp/libnss3.so /usr/lib64/
+virsh console guestvm <span style="color: #75715e"># to exec yum install nss</span>
+rpm --root /mnt/sysimage nss
+</pre></div>
+
+<br /></p>
+
+<h2 id="经验总结">经验总结</h2>
+
+<ul>
+<li>除非明确知道自己在做什么，尽量不要用类似 nodeps 这样的参数。
+&gt; 不加上这个危险参数，这种错误就不会发生，无论 rpm 还是 yum 一定会在动手前做出检测，为你列出被执行对象现有的所有依赖。当你看到 100 行以上各式已安装在你系统内的软件依赖信息时，你也就不会真的下狠手将其删除了。</li>
+</ul>
+
+<blockquote>
+<p>通过 repoquery 命令查询一个这个给定 PKG_NAME 包被多少已经安装在当前系统中的包依赖（意味着不能轻易删除）</p>
+</blockquote>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>repoquery --whatrequires --installed --recursive PKG_NAME
+</pre></div>
+
+
+<blockquote>
+<p>这里注意不要和 <code>yum deplist PKG_NAME</code> 弄混，后者是列出给定包依赖哪些包提前安装好</p>
+</blockquote>
+
+<ul>
+<li>有 yum 就不要用 rpm : 规范的做法是设置一个本地 yum 源做各种包的更新，这会让服务器管理员，运维同事的日子好过很多。具体的好处有：
+&gt; - 历史操作查找审计，一旦有问题，可回溯当时操作的详情
+&gt; - 通过事务型的回滚，到任意之前的老版本，包括相应的依赖库的回滚
+&gt; - 非用 rpm 的话，一定要区分 install 和 upgrade，用 -i 参数会导致系统中存在统一软件的多个版本，如果是更新包，应该使用升级而非安装的参数</li>
+</ul>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>yum <span style="color: #f8f8f2">history</span>
+yum downgrade specific_pkg_ver
+rpm -U --oldpackage <span style="color: #f92672">[</span>file.rpm<span style="color: #f92672">]</span>
+</pre></div>
+
+<br /></p>
+
+<ul>
+<li>重要操作之前要做虚拟机快照
+&gt; 物理机也就算了，虚拟机打快照已经非常方便了。S/L大发好，老司机都知道。</li>
+</ul>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>virsh snapshot-create-as <span style="color: #f92672">[</span>dom<span style="color: #f92672">]</span> <span style="color: #f92672">[</span>snapname<span style="color: #f92672">]</span> &lt;desc&gt;
+</pre></div>
+
+<br /></p>
+
+<p>缩略语解释</p>
+
+<blockquote>
+<ul>
+<li>MDN: Mozilla Developer Network 开发者中心，维护了不少 Web 标准和 Mozzila 产品的文档，个人感觉比 w3schools 专业靠谱很多，另外 Alexa 排名也比后者考前不少 (128 vs 185)</li>
+<li>S/L大法: Save / Load(存储 / 读取）的简称，在某些涉及乱数、随机数、独立概率的游戏中，通过不断的存档、读档以达到玩家预期的结果。</li>
+</ul>
+</blockquote>
+
+<p>参考文档</p>
+
+<blockquote>
+<ul>
+<li>MDN   <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/Overview">Overview of NSS Open Source Crypto Libraries</a></li>
+<li>RHEL6 <a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Deployment_Guide/sec-Yum-Transaction_History.html">Working with Transaction History</a></li>
+<li>Aaron K (2017-3-15) <a href="https://www.tecmint.com/view-yum-history-to-find-packages-info/">How to Use ‘Yum History’ to Find Out Installed or Removed Packages Info</a></li>
+<li>RedHat Knowledge Base <a href="https://access.redhat.com/solutions/10154">How to use yum to download a package without installing it</a></li>
+<li>RedHat Knowledge Base <a href="https://access.redhat.com/solutions/29617">How to use yum to downgrade or rollback some package updates?</a></li>
+<li>James Olin Oden (2004-05-01) <a href="http://www.linuxjournal.com/article/7034">Transactions and Rollback with RPM</a></li>
+<li><a href="https://serverfault.com/a/274311">How do I downgrade an RPM?</a></li>
+<li>Fedora forum nucleo comments (2011-10-28) <a href="http://forums.fedoraforum.org/showthread.php?t=271492">List package dependents (not dependencies)</a></li>
+</ul>
+</blockquote>
+
+<p>文中图片来源网络</p>
+
+<p>封面图片来自 <a href="https://dribbble.com/shots/1606433-I-m-a-computa">I&rsquo;m a computa</a> <a href="https://dribbble.com/Tymn"><i class="fa fa-dribbble" aria-hidden="true"></i> Tymn Armstrong</a></p>
+         <div id="disqus_thread">
+  <a href="#" onclick="disqus();return false;">Show Comments</a>
+</div>
+
+<script type="text/javascript">
+var disqus_loaded = false;
+function disqus() {
+  if (!disqus_loaded) {
+    
+    
+    
+    
+
+    disqus_loaded = true;
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'wushuzh';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }
+};
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+      </div>
+    </div>
+  </div>
+</div>
+<noscript>
+  <style>.jsonly { display: none }</style>
+</noscript>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://wushuzh.github.io/js/jquery.min.js"></script>
+<script src="https://wushuzh.github.io/js/bootstrap.min.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.cookie.js"> </script>
+<script src="https://wushuzh.github.io/js/ekko-lightbox.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://wushuzh.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/owl.carousel.min.js"></script>
+<script src="https://wushuzh.github.io/js/front.js"></script>
+
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</body>
+</html>

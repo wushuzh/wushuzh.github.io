@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Howto on 小强会武术</title>
-    <link>https://wushuzh.github.io/tags/howto/</link>
-    <description>Recent content in Howto on 小强会武术</description>
+    <title>Rpm on 小强会武术</title>
+    <link>https://wushuzh.github.io/tags/rpm/</link>
+    <description>Recent content in Rpm on 小强会武术</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>&amp;copy;2017 wushuzh</copyright>
     <lastBuildDate>Mon, 26 Jun 2017 22:31:22 +0800</lastBuildDate>
     
-	<atom:link href="https://wushuzh.github.io/tags/howto/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://wushuzh.github.io/tags/rpm/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -29,26 +29,6 @@
       
       <guid>https://wushuzh.github.io/blog/2017/06/29/deal-with-violent-rm/</guid>
       <description>&lt;p&gt;蛮力卸载后，啥都不能用了……
-&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>遇到启动错误，咋整？</title>
-      <link>https://wushuzh.github.io/blog/2017/07/19/deal-with-boot-failure/</link>
-      <pubDate>Wed, 19 Jul 2017 18:45:13 +0800</pubDate>
-      
-      <guid>https://wushuzh.github.io/blog/2017/07/19/deal-with-boot-failure/</guid>
-      <description>&lt;p&gt;记录下最近遇到的几例和启动、存储相关错误的处理。
-&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>遇到磁盘错误，咋整？</title>
-      <link>https://wushuzh.github.io/blog/2017/07/22/deal-with-disk-error/</link>
-      <pubDate>Sat, 22 Jul 2017 20:14:43 +0800</pubDate>
-      
-      <guid>https://wushuzh.github.io/blog/2017/07/22/deal-with-disk-error/</guid>
-      <description>&lt;p&gt;磁盘错误导致进入紧急模式，该如何恢复？
 &lt;/p&gt;</description>
     </item>
     

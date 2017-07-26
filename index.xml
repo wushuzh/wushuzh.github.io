@@ -53,12 +53,22 @@
     </item>
     
     <item>
-      <title>搭建容器的专属系统</title>
-      <link>https://wushuzh.github.io/blog/2017/07/06/setup-a-container-host-env/</link>
-      <pubDate>Thu, 06 Jul 2017 09:28:56 +0800</pubDate>
+      <title>遇到内核恐慌，咋整？</title>
+      <link>https://wushuzh.github.io/blog/2017/06/26/deal-with-kernel-panic/</link>
+      <pubDate>Mon, 26 Jun 2017 22:31:22 +0800</pubDate>
       
-      <guid>https://wushuzh.github.io/blog/2017/07/06/setup-a-container-host-env/</guid>
-      <description>&lt;p&gt;Docker 简介和 Atomic 服务器的搭建
+      <guid>https://wushuzh.github.io/blog/2017/06/26/deal-with-kernel-panic/</guid>
+      <description>&lt;p&gt;这个级别的报错，应该能撑起&amp;rdquo;咋整&amp;rdquo;系列的开篇门面。
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>删错了，咋整？</title>
+      <link>https://wushuzh.github.io/blog/2017/06/29/deal-with-violent-rm/</link>
+      <pubDate>Thu, 29 Jun 2017 21:38:48 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/06/29/deal-with-violent-rm/</guid>
+      <description>&lt;p&gt;蛮力卸载后，啥都不能用了……
 &lt;/p&gt;</description>
     </item>
     
@@ -79,6 +89,16 @@
       
       <guid>https://wushuzh.github.io/blog/2017/07/22/deal-with-disk-error/</guid>
       <description>&lt;p&gt;磁盘错误导致进入紧急模式，该如何恢复？
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>搭建容器的专属系统</title>
+      <link>https://wushuzh.github.io/blog/2017/07/06/setup-a-container-host-env/</link>
+      <pubDate>Thu, 06 Jul 2017 09:28:56 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/07/06/setup-a-container-host-env/</guid>
+      <description>&lt;p&gt;Docker 简介和 Atomic 服务器的搭建
 &lt;/p&gt;</description>
     </item>
     

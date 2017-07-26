@@ -2,7 +2,7 @@
 <html lang="zh-cn">
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>为什么需要VoLTE</title>
+<title>Atomic 试用</title>
 <meta name="description" content="个人技术站点">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="all,follow">
@@ -108,92 +108,76 @@ ga('send', 'pageview');
   <div class="row">
     <div class="col-lg-8">
       <div class="content-column-content">
+         <h1>Atomic 试用</h1>
 
-      <div class="row">
-        <div class="col-sm-4">
-          <div class="image">
-            <img src="https://wushuzh.github.io//img/blog/why-need-volte/telecom_zh.jpg" class="img-responsive" alt="">
-          </div>
-        </div>
-        <div class="col-md-8">
-            <h2>为什么需要VoLTE</h2>
-                <p>
-                  小强会武术
-                </p>
+         <div>
+           <span class="pull-left">
+             <i class="fa fa-calendar"></i>
+             <time datetime="2017-07-24 14:35:02 &#43;0800 CST">2017-07-24</time>
+             &middot;
+             168 字
+             &middot;
+             1 分钟
+           </span>
+           <span class="pull-right">
+             <div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fwushuzh.github.io%2fblog%2f2017%2f07%2f24%2fget-started-with-atomic%2f"
+         target="_blank">
+        <i class="fa fa-facebook"></i>
+      </a>
+    </li>
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=Atomic%20%e8%af%95%e7%94%a8&amp;url=https%3a%2f%2fwushuzh.github.io%2fblog%2f2017%2f07%2f24%2fget-started-with-atomic%2f"
+         target="_blank">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fwushuzh.github.io%2fblog%2f2017%2f07%2f24%2fget-started-with-atomic%2f&amp;title=Atomic%20%e8%af%95%e7%94%a8"
+         target="_blank">
+        <i class="fa fa-linkedin"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fwushuzh.github.io%2fblog%2f2017%2f07%2f24%2fget-started-with-atomic%2f&amp;title=Atomic%20%e8%af%95%e7%94%a8"
+         target="_blank">
+        <i class="fa fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=Atomic%20%e8%af%95%e7%94%a8&amp;body=https%3a%2f%2fwushuzh.github.io%2fblog%2f2017%2f07%2f24%2fget-started-with-atomic%2f">
+        <i class="fa fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
 
-                <time datetime="2017-06-01 20:09:06 &#43;0800 CST">
-                <i class="fa fa-calendar-o fa-fw"></i> 2017-06-01
-                </time>
-                &middot;
-                983 字
-                &middot;
-                2 分钟
+           </span>
+         <br/>
 
-        </div>
-      </div>
-      <br />
-      
-         <p>已经买了 4G 套餐，还需要 VoLTE 套餐么？
+         <p>Atomic 服务器的维护和 Docker 运行
 </p>
 
-<p><img alt="volte-word-cloud" src="/img/blog/why-need-volte/VoLTE_Charging_Guide-Thumbnail.jpg" class="img-responsive"></p>
+<h2 id="atomic">Atomic</h2>
 
-<p>进入移动时代，我们先是通过 2G 实现了可以“移动着”接打电话；之后的 3G 使得“移动着”上网也变得可能；现在借助 4G 网络，我们甚至可以用手机去参与各大电商购物节的秒杀活动了。作为一个全 IP 包交换的网络，LTE 设计的全部焦点放在如何用最小的延迟提供最大的数据吞吐率，主要在以下两个方面发力：</p>
+<p>Atomic 主要为 Docker 提供运行环境。其上和 Docker 相关的软件、系统服务都已预装配置完毕，直接达到开袋即食的状态。</p>
 
-<blockquote>
-<ol>
-<li>如何与公共数据网的连接</li>
-<li>如何应对终端的移动性</li>
-</ol>
-</blockquote>
-
-<p>而对于传统语音服务（接打电话），它直接忽略了。</p>
-
-<p><img alt="2G-vs-3G-vs-4G" src="/img/blog/why-need-volte/Compare-1G-2G-3G-4G-5G.jpg" class="img-responsive"></p>
-
-<p>假设你有一台普通智能手机，并且还未与运营商注册使用VoLTE业务，你可以在接打电话的时候注意观察手机屏幕，在整个通话过程，无论拨号还是振铃，一直到你挂断前，平时通常位于屏幕右上角的4G标志会暂时消失不见。你被实际是暂时回退( CSFB ) 到 2G 或 3G 网络完成这些电话功能。所以如果你想边打电话边同时上网查查对方说的约会地点在哪里，做个路径规划或是查看下沿途路况，你会看到地图 App 告诉你“网络不畅，请稍后重试”。</p>
-
-<p><img style="width:50%; height:50%; display:block; margin: auto 25%;" src="/img/blog/why-need-volte/404_big.png"></p>
-
-<p>到了 2010 年，两大国际组织 GSMA 和 3GPP 共同定义了 VoLTE 的通信标准，目标是使得我们不但可以在 4G 网络之上实现语音短信服务，而且还外赠视频通话( ViLTE ) ，多方电话会议等其他服务。拿最常见的电话服务来说，普通用户能感知到比如说：</p>
-
-<ol>
-<li>话音质量提升 40 % 得益于新的编码技术；</li>
-<li>呼叫接通的时延减小 50 % (从按下拨号到对方振铃)；</li>
-<li>打电话的时候可以同时上网；</li>
-</ol>
-
-<p>实现了上述标准的系统叫 IP多媒体子系统( IMS )。由于前面提到 4G 网络已经是一个全 IP 通信网，因此 IMS 也就很自然的利用很多在互联网领域应用地较成熟的 IETF 各种协议：SIP、MRSP、Diameter、IPSec、RTP、RTCP……</p>
-
-<p><img alt="LTE-IMS" src="/img/blog/why-need-volte/VoLTE-end-to-end-architecture.jpg" class="img-responsive"></p>
-
-<p>后续我们会介绍一下为了解决上述问题引入的 IMS 系统，并重点介绍一下用信令传输的 SIP 协议。</p>
-
-<p>缩略语解释</p>
-
-<blockquote>
 <ul>
-<li>LTE：和4G等同，GSM、CDMA、UMTS 代指第二、三代移动通信</li>
-<li>CSFB: CS Fall Back 对于如何在4G网络上做传统语音传输并不清晰，厂家各自为政，3GPP选择将回退到电路域提供语音服务作为一个中间过渡方案</li>
-<li>GSMA：GSM协会的成员包括全世界运营商（甲方）和其周边厂家，当前其主攻的三方向是“
-未来网络”，“物联网”，“电子身份”</li>
-<li>3GPP: 第三代合作伙伴计划，最初是为了3G技术演进方向与另一个由高通主导的3GPP2分庭抗礼，多数电信设备制造商（乙方）都参与其中</li>
-<li>ViLTE: Video over LTE</li>
-<li>IETF: 互联网工程任务组，这是一个开放的标准化组织，非盈利性质使得它看上少了些铜臭气</li>
+<li>Docker 的相关命令可直接使用</li>
+<li>若希望 Atomic 服务器能和私有源 pull、push 容器镜像，需要安装 docker-distribution</li>
+<li>用于容器编排的 kubernetes 软件也被预装完成，只是相关服务默认不自动启</li>
 </ul>
-</blockquote>
-
-<p>参考文档</p>
 
 <blockquote>
-<ul>
-<li><a href="http://www.3glteinfo.com/volte-voice-lte/">http://www.3glteinfo.com/volte-voice-lte/</a></li>
-<li><a href="http://www.3glteinfo.com/volte-history-timeline/">http://www.3glteinfo.com/volte-history-timeline/</a></li>
-<li><a href="https://realtimecommunication.wordpress.com/2016/06/22/volte-illustrated-beginners-guide/">https://realtimecommunication.wordpress.com/2016/06/22/volte-illustrated-beginners-guide/</a></li>
-</ul>
+<p>如若希望做 Docker 镜像的开发，则最好在标准的 RHEL7 上去做，这样才能安装所需的各种工具。</p>
 </blockquote>
-
-<p>文中图片来源网络</p>
          <div id="disqus_thread">
   <a href="#" onclick="disqus();return false;">Show Comments</a>
 </div>

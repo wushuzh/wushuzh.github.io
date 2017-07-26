@@ -7,10 +7,30 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>&amp;copy;2017 wushuzh</copyright>
-    <lastBuildDate>Wed, 19 Jul 2017 18:45:13 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 26 Jun 2017 22:31:22 +0800</lastBuildDate>
     
 	<atom:link href="https://wushuzh.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>遇到内核恐慌，咋整？</title>
+      <link>https://wushuzh.github.io/blog/2017/06/26/deal-with-kernel-panic/</link>
+      <pubDate>Mon, 26 Jun 2017 22:31:22 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/06/26/deal-with-kernel-panic/</guid>
+      <description>&lt;p&gt;这个级别的报错，应该能撑起&amp;rdquo;咋整&amp;rdquo;系列的开篇门面。
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>删错了，咋整？</title>
+      <link>https://wushuzh.github.io/blog/2017/06/29/deal-with-violent-rm/</link>
+      <pubDate>Thu, 29 Jun 2017 21:38:48 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/06/29/deal-with-violent-rm/</guid>
+      <description>&lt;p&gt;蛮力卸载后，啥都不能用了……
+&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>遇到启动错误，咋整？</title>

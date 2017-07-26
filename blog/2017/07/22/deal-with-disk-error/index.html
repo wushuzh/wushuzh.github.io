@@ -108,13 +108,37 @@ ga('send', 'pageview');
   <div class="row">
     <div class="col-lg-8">
       <div class="content-column-content">
-         <h1>遇到磁盘错误，咋整？</h1>
+
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="image">
+            <img src="https://wushuzh.github.io//img/blog/deal-with-disk-error/hw-repair.png" class="img-responsive" alt="">
+          </div>
+        </div>
+        <div class="col-md-8">
+            <h2>遇到磁盘错误，咋整？</h2>
+                <p>
+                  小强会武术
+                </p>
+
+                <time datetime="2017-07-22 20:14:43 &#43;0800 CST">
+                <i class="fa fa-calendar-o fa-fw"></i> 2017-07-22
+                </time>
+                &middot;
+                2057 字
+                &middot;
+                5 分钟
+
+        </div>
+      </div>
+      <br />
+      
          <p>磁盘错误导致进入紧急模式，该如何恢复？
 </p>
 
-<p>当前大数据应用的存储架构很少再采用 RAID ——此领域最常听到的是 JBOD ，隶属于<a href="https://en.wikipedia.org/wiki/Non-RAID_drive_architectures">Non-RAID drive architectures</a></p>
+<p>当前大数据应用的存储架构很少再采用 <a href="https://en.wikipedia.org/wiki/RAID">RAID</a> ——此领域最常听到的是 JBOD ，隶属于<a href="https://en.wikipedia.org/wiki/Non-RAID_drive_architectures">Non-RAID drive architectures</a></p>
 
-<p>但本文涉及的老系统不但使用了 RAID，而且不是在硬件层面(智能存储阵列控制器)上直接做 RAID，而使用的是 SW-RAID，并且不是普通 RAID，而是<a href="https://en.wikipedia.org/wiki/Nested_RAID_levels">嵌套 RAID</a> …… 怎么看都挺复杂的。</p>
+<p>但本文涉及的老系统不但使用了 <a href="https://zh.wikipedia.org/wiki/RAID">磁盘冗余阵列</a>，而且不是在硬件层面(智能存储阵列控制器)上直接做 RAID，而使用的是 SW-RAID，并且不是普通 RAID，而是<a href="https://en.wikipedia.org/wiki/Nested_RAID_levels">嵌套 RAID</a> …… 怎么看都挺复杂的。</p>
 
 <h3 id="案例-c-磁盘受损">案例 C 磁盘受损</h3>
 
@@ -303,7 +327,7 @@ mdadm: /dev/md5 has been started with 3 drives (out of 4).
 
 <p>此时再查看冗余磁盘阵列的状态，已变为 clean degraded 的状态。</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>[root@hostC ~]#  mdadm --detail /dev/md5
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>[root@hostC ~]# mdadm --detail /dev/md5
 /dev/md5:
             ... : ...
      Raid Level : raid10
@@ -328,6 +352,12 @@ Working Devices : 3
        -       0        0        1      removed
        2       8      161        2      active sync set-A   /dev/sdk1
        3       8       97        3      active sync set-B   /dev/sdg1
+
+[root@hostC ~]# cat /proc/mdstat <span style="color: #f8f8f2">|</span>grep -A <span style="color: #ae81ff">3</span> md5
+md5 : active raid10 sds1[0] sdk1[2] sdg1[3]
+      585606144 blocks super 1.1 512K chunks 2 near-copies [4/3] [U_UU]
+      bitmap: 5/5 pages [20KB], 65536KB chunk
+      
 </pre></div>
 
 
@@ -371,13 +401,15 @@ Give root password for maintenance
 
 <p>按提示进入执行 journalctl 查看日志，发现磁盘需要修复，大概和之前没有装载上的磁盘有点关系？</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>some-timestamp hostC systemd-fsck[16431]:
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>some-timestamp hostC systemd-fsck[1631]:
   /dev/md5: Inode xxx has a bad extended attribute block yyy.
-some-timestamp hostC systemd-fsck[16431]:
+some-timestamp hostC systemd-fsck[1631]:
   /dev/md5: UNEXPECTED INCONSISTENCY: RUN fsck MANUALLY.
-some-timestamp hostC systemd-fsck[16431]:
+some-timestamp hostC systemd-fsck[1631]:
   (i.e., without -a or -p options)
-some-timestamp hostC systemd-fsck[16431]:
+some-timestamp hostC systemd-fsck[1631]:
+  fsck failed with error code 4.
+some-timestamp hostC systemd-fsck[1631]:
   Running request emergency.target/start/replace
 some-timestamp hostC systemd[1]:
   Started File System Check on /dev/disk/by-uuid/aaa-bbb-ccc-ddd-......
@@ -405,11 +437,20 @@ e2fsck: Cannot continue, aborting.
 </pre></div>
 
 
-<p>修复完毕后，将冗余阵列组装为 4 块设备，重启服务器，顺利进入系统。
-可以执行命令 <code>watch -n .5 cat /proc/mdstat</code> 每隔 0.5 秒监控一下冗余阵列的同步状态。</p>
+<p>修复完毕后，将冗余阵列组装为 4 块设备，重启服务器，顺利进入系统。</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>[root@hostC ~]# mdadm --manage /dev/md5 -a /dev/sdo1
+mdadm: added /dev/sdo1
+</pre></div>
+
+
+<p>可以执行命令 <code>watch -n .5 cat /proc/mdstat</code> 每隔 0.5 秒监控一下冗余阵列的同步状态。</p>
 
 <div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>[root@hostC ~]# mdadm --detail /dev/md5
 /dev/md5:
+   Raid Devices : 4
+  Total Devices : 3
+    Update Time : Fri Jul 21 10:49:52 2017
             ... : ...
           State : active, degraded, recovering
  Active Devices : 3
