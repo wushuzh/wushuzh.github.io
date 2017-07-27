@@ -2,7 +2,8 @@
 date = "2017-07-19T18:45:13+08:00"
 title = "遇到启动错误，咋整？"
 showonlyimage = false
-image = "/img/blog/deal-with-boot-failure/disk-err.gif"
+image = "/img/blog/deal-with-boot-failure/disk-err.png"
+topImage = "/img/blog/deal-with-boot-failure/disk-err2.gif"
 draft = false
 weight = 43
 tags = [ "Howto", "Storage", "Linux" ]
