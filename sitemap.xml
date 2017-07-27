@@ -48,13 +48,24 @@
   </url>
   
   <url>
+    <loc>https://wushuzh.github.io/blog/2017/06/01/why-need-volte/</loc>
+    <lastmod>2017-06-01T20:09:06+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2017/06/08/general-auth-concepts/</loc>
+    <lastmod>2017-06-08T21:49:02+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://wushuzh.github.io/blog/2017/06/18/setup-a-gitlab-ce-service/</loc>
     <lastmod>2017-06-18T21:18:51+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wushuzh.github.io/blog/2017/06/01/why-need-volte/</loc>
-    <lastmod>2017-06-01T20:09:06+08:00</lastmod>
+    <loc>https://wushuzh.github.io/tags/aaa/</loc>
+    <lastmod>2017-06-08T21:49:02+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -148,7 +159,13 @@
   
   <url>
     <loc>https://wushuzh.github.io/tags/</loc>
-    <lastmod>2017-07-13T20:01:51+08:00</lastmod>
+    <lastmod>2017-06-08T21:49:02+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/tags/telecom/</loc>
+    <lastmod>2017-06-08T21:49:02+08:00</lastmod>
     <priority>0</priority>
   </url>
   

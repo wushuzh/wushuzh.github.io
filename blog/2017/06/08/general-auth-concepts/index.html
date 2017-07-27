@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>认证协议简介</title>
+<meta name="description" content="个人技术站点">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.theme.css">
+
+
+  <link href="https://wushuzh.github.io/css/style.sea.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://wushuzh.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-102509506-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="/">小强会武术</a></h1>
+    
+      <p class="sidebar-p">工程师</p>
+    
+    <ul class="sidebar-menu">
+      
+      
+        <li><a href="https://wushuzh.github.io/">Home</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  
+  
+  <a href="https://twitter.com/Xiao_Qiang" data-animate-hover="pulse" class="external twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  
+  
+  
+  <a href="mailto:wushuzh@outlook.com" data-animate-hover="pulse" class="email">
+    <i class="fa fa-envelope"></i>
+  </a>
+  
+  
+  
+  
+  <a href="https://www.github.com/wushuzh" data-animate-hover="pulse">
+    <i class="fa fa-github"></i>
+  </a>
+  
+
+  
+  <a href="https://wushuzh.github.io/index.xml" data-animate-hover="pulse">
+    <i class='fa fa-rss'></i>
+  </a>
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2017 wushuzh
+        
+        | Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="/">小强会武术</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="content-column-content">
+
+      <div class="row">
+        <div class="col-sm-6">
+          
+            <div class="image">
+              <img src="https://wushuzh.github.io//img/blog/general-auth-concepts/id.gif" class="img-responsive" alt="">
+            </div>
+          
+        </div>
+        <div class="col-md-6">
+            <h2>认证协议简介</h2>
+                <p>
+                  小强会武术
+                </p>
+
+                <time datetime="2017-06-08 21:49:02 &#43;0800 CST">
+                <i class="fa fa-calendar-o fa-fw"></i> 2017-06-08
+                </time>
+                &middot;
+                1234 字
+                &middot;
+                3 分钟
+
+        </div>
+      </div>
+      <br />
+
+         <p>Diameter从属的大类是，认证协议的一种。
+</p>
+
+<p>介绍Diameter前，先退一步看一下大背景。</p>
+
+<h2 id="认证协议简介">认证协议简介</h2>
+
+<p>通常意义上的认证协议</p>
+
+<ul>
+<li>用于两点间传输那些和认证相关的请求、确认等消息</li>
+<li>进一步包含对请求方自己声称的身份的确认（或验证）的过程</li>
+</ul>
+
+<p>最简单的形式当然就是基于密码的认证：假设Alice和Bob都同意使用特定协议做身份认证，之前Bob的数据库中已保存了Alice的密码（或明文或其他形式）。</p>
+
+<ul>
+<li>Alice根据协议规则向Bob发送含有密码的报文</li>
+<li>Bob利用数据库中保存的密码对其做相应检查，然后发送认证成功或失败的结果报文</li>
+</ul>
+
+<p><img alt="alice and bob" src="/img/blog/general-auth-concepts/alice_bob.png" class="img-responsive" style="width:80%; height:80%; display:block; margin: auto;"></p>
+
+<p>上述过程可能遭遇的安全威胁有：监听、回放攻击、中间人攻击、字典攻击、暴力破解等。为了应对这些攻击，大多数应用的协议都设计的更为复杂。</p>
+
+<h2 id="认证协议类型">认证协议类型</h2>
+
+<p>比如开始是 PPP 也就是点对点的认证协议，认证过程常基于提前预设的密码，这类认证一般都是服务器客户端架构，同时随着黑客技术的提升，安全上的考虑也越来越完善：</p>
+
+<ul>
+<li>密码认证的协议 PAP ：最古老，但因为密文明文在网络中发送，易受监听和中间人攻击</li>
+<li>存疑握手认证协议 CHAP ：由服务器端发起，对发起时机和次数都不做限制。服务器先发送一串随机字符，客户端用这串字符和私有密码做为MD5函数的参数，将散列后的结果连同明文用户名一起发送。服务器端做相同计算并比较结果。</li>
+<li>可扩展的认证协议 EAP ：只定义一个框架，具体鉴权可以在其扩展中做各式定义。广泛使用在宽带，光纤网洛，局域或广域的无线网（IEEE 802.3 / 802.11/ 802.16)</li>
+</ul>
+
+<p><img alt="eavesdropping" src="/img/blog/general-auth-concepts/eavesdropping.jpg" class="img-responsive"
+style="width:70%; height:70%; display:block; margin: auto;"></p>
+
+<p>随着应用场景和伴生需求越来越丰富，如权限细分和计量计费，从A到AAA ( 你是谁，你可以干啥，你用了多久 )，认证协议也变得越来越复杂。典型场景当然就是移动通信网络，要应对的场景不仅仅是到跨省漫游，甚至出国漫游时，都要满足认证、鉴权、计量三方面的功能。</p>
+
+<ul>
+<li>TACACS: 历史最为久远的AAA协议</li>
+<li>RADIUS: 广泛被ISP互联网服务提供商使用，依然基于用户名密码，UDP传输</li>
+<li>DIAMETER: 从RADIUS演进而来，使用TCP、SCTP可靠传输和TLS加密，是一个点对点的认证架构（非传统的客户端服务器的架构）</li>
+</ul>
+
+<p>其他更为异类的，如MIT发明的Kerberos，比较复杂，需要单独讲述</p>
+
+<h2 id="单点登录">单点登录</h2>
+
+<p>当需要的服务由不同网站提供时，用户可能需要做多次注册（因为你不了解网站的密码存储策略，全部使用相同的密码又是很不安全的做法），于是SSO就来解决这一问题。它实际起到了一个中间桥梁的作用，对不同的、彼此独立应用的认证机制做相应的适配。</p>
+
+<p>相应的，你也要考虑清楚，因为有了SSO，你只需一个密码，这个密码就变得非常重要了。（英文叫法 keys to the castle 或 keys to the kingdom)，为了应对这种问题，业界建议是把SSO与OTP或智慧卡混合起来，同时服用。</p>
+
+<p>进而衍生出的SAML，以及OAuth, OpenID再单独开篇讨论……</p>
+
+<p>缩略语解释</p>
+
+<blockquote>
+<ul>
+<li>AAA：Authentication, Authorization，Accounting 分别是认证、授权和计量</li>
+<li>PPP: Point-to-Point Protocal</li>
+<li>PAP: Password Authentication Protocal</li>
+<li>CHAP: Challenge-handshake authentication protocal</li>
+<li>EAP: Extenible Authorization Protocal</li>
+<li>SSO: 单点登录</li>
+<li>OTP: One-time password 一次性密码</li>
+</ul>
+</blockquote>
+
+<p>参考文档</p>
+
+<blockquote>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Authentication_protocol">https://en.wikipedia.org/wiki/Authentication_protocol</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Single_sign-on">https://en.wikipedia.org/wiki/Single_sign-on</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Authentication">https://en.wikipedia.org/wiki/Authentication</a></li>
+<li><a href="https://youtu.be/Rt3aMJL6e0g">https://youtu.be/Rt3aMJL6e0g</a></li>
+<li><a href="https://en.wikipedia.org/wiki/One-time_password">https://en.wikipedia.org/wiki/One-time_password</a></li>
+</ul>
+</blockquote>
+
+<p>封面图片来自 <a href="https://dribbble.com/shots/3646248-HUD">HUD</a> <a href="https://dribbble.com/bifftenon"><i class="fa fa-dribbble" aria-hidden="true"></i> Biff Tenon</a></p>
+
+<p>文中图片来源网络</p>
+         <div id="disqus_thread">
+  <a href="#" onclick="disqus();return false;">Show Comments</a>
+</div>
+
+<script type="text/javascript">
+var disqus_loaded = false;
+function disqus() {
+  if (!disqus_loaded) {
+    
+    
+    
+    
+
+    disqus_loaded = true;
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'wushuzh';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }
+};
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+      </div>
+    </div>
+  </div>
+</div>
+<noscript>
+  <style>.jsonly { display: none }</style>
+</noscript>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://wushuzh.github.io/js/jquery.min.js"></script>
+<script src="https://wushuzh.github.io/js/bootstrap.min.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.cookie.js"> </script>
+<script src="https://wushuzh.github.io/js/ekko-lightbox.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://wushuzh.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/owl.carousel.min.js"></script>
+<script src="https://wushuzh.github.io/js/front.js"></script>
+
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</body>
+</html>
