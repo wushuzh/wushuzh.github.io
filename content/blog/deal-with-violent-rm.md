@@ -65,7 +65,7 @@ yum install --downloadonly --downloaddir=dir pkgname
 virt-copy-in -d guestvm srcfile-on-host targt-vm-path
 {{< /highlight >}}
 
-最终可行的办法有两个：
+最终可行的办法有[两个](https://www.centos.org/forums/viewtopic.php?t=18457#p87783)：
 
 1. 找一个一模一样架构的工作正常的机器，仅仅把缺失的文件直接拷过来，一旦 yum/rpm 可用不再报错，立刻通过本地 rpm 文件或 yum 源执行包安装，完善修复
 2. 找不到一样的机器，就挂上安装介质，进入救援模式，进而继续安装
