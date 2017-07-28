@@ -22,7 +22,6 @@ hasCJKLanguage = true
 
   [params.social]
     twitter      = "https://twitter.com/Xiao_Qiang"
-    github       = "https://www.github.com/wushuzh"
     email        = "wushuzh@outlook.com"
     rss          = "index.xml"
 
