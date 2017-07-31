@@ -1,6 +1,6 @@
 +++
 date = "2017-06-30T19:19:19+08:00"
-title = "看不懂的报错，咋整？"
+title = "看不懂报错，咋整？"
 showonlyimage = false
 image = "/img/blog/deal-with-wired-errmsgs/pc-gone-2.png"
 draft = false

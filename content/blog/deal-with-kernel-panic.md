@@ -1,6 +1,6 @@
 +++
 date = "2017-06-26T22:31:22+08:00"
-title = "遇到内核恐慌，咋整？"
+title = "内核恐慌，咋整？"
 showonlyimage = false
 image = "/img/blog/deal-with-kernel-panic/dead-comp.jpg"
 draft = false
@@ -8,7 +8,7 @@ weight = 40
 tags = [ "Howto", "rpm", "Linux" ]
 +++
 
-这个级别的报错，应该能撑起"咋整"系列的开篇门面。
+Kernel Panic，应该能撑起"咋整"系列开篇的门面。
 <!--more-->
 
 

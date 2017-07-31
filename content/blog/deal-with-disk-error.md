@@ -1,6 +1,6 @@
 +++
 date = "2017-07-22T20:14:43+08:00"
-title = "遇到磁盘错误，咋整？"
+title = "磁盘错误，咋整？"
 showonlyimage = false
 image = "/img/blog/deal-with-disk-error/hw-repair.png"
 draft = false
@@ -15,7 +15,9 @@ tags = [ "Howto", "Storage", "Linux" ]
 
 但本文涉及的老系统不但使用了 [磁盘冗余阵列](https://zh.wikipedia.org/wiki/RAID)，而且不是在硬件层面(智能存储阵列控制器)上直接做 RAID，而使用的是 SW-RAID，并且不是普通 RAID，而是[嵌套 RAID](https://en.wikipedia.org/wiki/Nested_RAID_levels) …… 怎么看都挺复杂的。
 
-### 案例 C 磁盘受损
+### 案例 3 磁盘受损
+
+(案例 1， 2 见 [启动错误，咋整？]({{< relref "blog/deal-with-boot-failure.md" >}}) )
 
 问题描述：这是一台用于模拟客户生产环境的服务器，一年多没重装，仅通过常规产品升级维护着。上电后，据说遇到了磁盘错误，被强制进入维护模式，之后管理员将问题分区从 fstab 中注释掉，系统可以正常启动，但在修复磁盘和恢复软 RAID 遇到了麻烦。
 
@@ -231,7 +233,7 @@ Working Devices : 3
 md5 : active raid10 sds1[0] sdk1[2] sdg1[3]
       585606144 blocks super 1.1 512K chunks 2 near-copies [4/3] [U_UU]
       bitmap: 5/5 pages [20KB], 65536KB chunk
-      
+
 {{< /highlight >}}
 
 ---

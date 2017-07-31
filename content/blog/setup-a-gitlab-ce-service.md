@@ -1,13 +1,13 @@
 +++
 date = "2017-06-18T21:18:51+08:00"
-title = "GitLab CE 安装实践"
+title = "GitLab CE 安装"
 showonlyimage = false
 image = "/img/blog/setup-a-gitlab-ce-service/lab_notebook.png"
 draft = false
-weight = 0
+weight = 13
 +++
 
-记录了我是如何搭建 GitLab 以获得类似 GitHub 的服务的
+如何搭建 GitLab 以获得类似 GitHub 的服务
 <!--more-->
 
 ## Git 简介
