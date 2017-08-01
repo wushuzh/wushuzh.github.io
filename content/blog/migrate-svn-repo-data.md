@@ -1,6 +1,6 @@
 +++
 date = "2017-06-15T20:50:27+08:00"
-title = "SVN 搭建及数据迁移"
+title = "SVN 数据迁移"
 showonlyimage = false
 image = "/img/blog/migrate-svn-repo-data/tran-inventory.png"
 draft = false
@@ -11,7 +11,7 @@ weight = 11
 <!--more-->
 
 ## SVN 是什么
-当然是一个版本管理工具，虽然被 Linus Torvalds 奚落，但它还是非常很有影响力的。**Apache软件基金会** 就主推 SVN ，当然 SVN 也是它旗下的一个顶级项目。
+当然是一个版本管理工具，虽然被 Linus Torvalds 奚落，但它还是非常很有影响力的。**Apache软件基金会** 就主推 SVN ，当然这也是它旗下的一个顶级项目。
 
 > Linus 在某次访谈时提到了对 CVS 的极度厌恶，并提示台下 SVN 的用户也该离开。然后他说  Subversion 是史上最没有意义的项目，SVN曾经有一段打出的口号是“正确地使用 CVS ”，这个目标毫无意思，因为照 CVS 的方式根本就不可能做的对……
 
@@ -21,8 +21,8 @@ weight = 11
 
 你的选择无非是：
 
-- 准备一个 x86 ，做好数据镜像，尝试将此 x86 作为主服务器，直至将原有 SVN 服务、数据慢慢淘汰
-- 从 SVN 迁移到 Git： 那将是一次异构 SCM 的数据迁移
+- 准备一个 x86 ，做数据迁移，并以此为主服务器，原有 SVN 服务仅作为备份和镜像、最终淘汰
+- 从 SVN 迁移到 Git：那将是一次异构 SCM 的数据迁移
 
 > 如果简单技术尝试，比较快捷的做法也可以利用 Docker
 
