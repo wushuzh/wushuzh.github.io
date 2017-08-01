@@ -1,0 +1,67 @@
++++
+date = "2017-08-01T19:48:55+08:00"
+title = "双系统 1: 微软视窗"
+showonlyimage = false
+image = "/img/blog/dual-os-1-install-win/windows_ui.png"
+draft = false
+weight = 61
++++
+
+你不太可能绕得过 Windows ……
+<!--more-->
+
+
+
+封面图片来自 [Windows UI Concept](https://dribbble.com/shots/576250-Windows-UI-Concept) <a href="https://dribbble.com/Phyek"><i class="fa fa-dribbble" aria-hidden="true"></i> Phyek</a>  
+
+
+https://support.hp.com/us-en/drivers/selfservice/hp-compaq-8180-elite-convertible-microtower-pc/4143434
+
+drop UEFI support from GPT disk
+fall back on BIOS mode from MBR/msdos disk only
+  https://wiki.archlinux.org/index.php/Dual_boot_with_Windows
+
+arch linux liveccd boot
+
+parted /dev/sda
+
+(parted) mkpart primary ext4 1MiB 20GiB
+(parted) set 1 boot on
+(parted) mkpart primary ext4 20GiB 100GiB
+
+windows 8.1 usb boot
+
+all 200 GB to windows, windows installer will create a 300 M reserve disk and a 197 GB partition
+
+30 min finish Install and then upgrade HP PC BIOS
+
+
+https://wiki.archlinux.org/index.php/GNU_Parted#BIOS.2FMBR_examples
+
+fresh start
+
+https://wiki.archlinux.org/index.php/Dual_boot_with_Windows#Using_Windows_boot_loader
+
+https://www.iceflatline.com/2009/09/how-to-dual-boot-windows-7-and-linux-using-bcdedit/
+
+https://medium.com/@ashwinkailas/arch-linux-lvm-dual-boot-with-windows-tutorial-e327ea8f3140
+
+UEFI/BIOS overview  https://support.hp.com/hk-en/document/c03801890#AbT3
+
+https://technet.microsoft.com/en-us/library/hh825112.aspx
+https://technet.microsoft.com/en-us/library/dn336946.aspx
+
+
+https://www.howtogeek.com/193669/whats-the-difference-between-gpt-and-mbr-when-partitioning-a-drive/
+
+https://lampjs.wordpress.com/2017/01/19/easy-installing-arch-linux-dual-boot-with-windows-uefi-or-mbr-for-beginners/
+
+https://onetransistor.blogspot.fr/2015/03/dual-boot-windows-and-ubuntu.html
+
+windows update
+
+chocolatey
+  cmd admin and execute a install script
+
+windows NTP
+http://xyz.cinc.biz/2015/04/windows-w32tm.html
