@@ -8,7 +8,7 @@ draft = false
 weight = 51
 +++
 
-用 Python 上手科学计算
+用 Fedora 定制版 Python 快速上手科学计算
 <!--more-->
 
 
