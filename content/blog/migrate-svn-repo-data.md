@@ -81,6 +81,7 @@ B. 使用 svnsync 在另外一台机器上生成当前数据的只读镜像
 {{< highlight bash >}}
 svnlook history REPO_PATH --show-ids --limit 10
 svnlook info -r SOME_REVISION_ID
+svnlook info REPO_PATH # 查看仓库最新一次提交
 {{< /highlight >}}  
 
 方案 B svnsync
@@ -98,6 +99,10 @@ svnsync sync file:///MIRROR_PATH
 {{< /highlight >}}
 
 但它也有一个小缺陷，即对于已同步过的历史的一些属性不会再同步，需要通过 svnsync 子命令 copy-revprops 显式完成。
+
+## 尾声
+
+数据同步了，剩下的就是把原有的用户身份认证文件拷贝到对端机器上，确认账户仍可使用。之后并重置(清空)原有机器的鉴权文件，迫使团队成员只能将代码提交到新的仓库地址。再之后，别忘了更改持续集成部分的仓库地址。
 
 ## 相关命令
 
@@ -175,11 +180,11 @@ pkginfo
 
 参考文档
 
-> - online version of [Version Control with Subversion](http://svnbook.red-bean.com/)
-> - stackoverflow [centos apache svn forbidden related to selinux](https://stackoverflow.com/a/40891894)
+> - Online Subversion free book [Version Control with Subversion](http://svnbook.red-bean.com/)
+> - Stackoverflow [centos apache svn forbidden related to selinux](https://stackoverflow.com/a/40891894)
 > - Geoffrey H. (2015-09-23) [How to use svnsync to create a mirror backup of your Subversion repository](http://www.cardinalpath.com/how-to-use-svnsync-to-create-a-mirror-backup-of-your-subversion-repository/)
 > - [Mirror a Subversion repository](http://www.microhowto.info/howto/mirror_a_subversion_repository.html)
-> - http://coolshell.cn/articles/3288.html
+> - 陈浩 (2010-11-17) [版本管理器的发展史](http://coolshell.cn/articles/3288.html)
 
 封面图片来自 [Transferring Inventory](https://dribbble.com/shots/2764840-Transferring-Inventory) <a href="https://dribbble.com/Coleman811"><i class="fa fa-dribbble" aria-hidden="true"></i> Rye</a>  
 
