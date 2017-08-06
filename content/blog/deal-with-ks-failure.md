@@ -8,44 +8,96 @@ draft = false
 weight = 45
 +++
 
-如何提问以及大公司如何调查问题
+如何提问以及大公司如何查问题
 <!--more-->
 
 ## 问题上报
 
-之前[启动错误，咋整？]要重装系统，结果 Kickstart 安装时遇到了存储问题。所报问题如下：
+之前 “[启动错误，咋整？]({{< relref "blog/deal-with-boot-failure.md" >}})”里提到的服务器终于要重装操作系统，之前听说大型服务器有重大变动，比如重启，重装，升级，搬移都最好要先看黄历、拜菩萨、挑日子，因为容易出事。而这台很长时间不曾重装过的机器在安装时果然遇到了问题。所报问题如下：
+
+{{< highlight console >}}
+Starting installer, one monent...
+anaconda 21.40.22.93-1 for Red Hat Enterprise Linux 7.3 started.
+* installation iog files are stored in /tmp during the installation
+* shell is available on TTY2
+* when reporting a bug add logs from /tmp as separate text/plain attachncnts
+91:51:09 Running pre-installation scripts
+99:56:44 Not asking for VNC because of an automated install
+99:56:44 Not asking for VNC because text mode was explicitly asked for in kickstart
+99:56:44 Not asking for VNC because we don't have a network
+Starting automated install............
+Checking software selection
+Generating updated storage configuration
+storage configuration failed: Unable to allocate requested partition scheme.
+===========================================================================
+===========================================================================
+Installation
+
+1) [x] Language settings         2) [x] Time settings
+       (English (United States))        (Asia/Shanghai timezone)
+3) Lx] Installation source       4) [x] Software selection
+       (Local media)                    (Custom software selected)
+5) [!] Installation Destination  6) [x] Xdump
+       (No disks selected)              (Kdump is enabled)
+7) [ ] Network configuration     8) [ ] User creation
+       (Not connected)                  (No user will be created)
+Not enough space in file systems for the current software selection. An additional 1793.04 NiB is needed.
+Enter 'b' to ignore the warning and attempt to install anyway.
+Please make your choice from above ['q' to quit | 'b' to begin installation | 'r' to refresh]:
+
+
+[anacoud] 1:main* 2:shell 3:log 4:storage-log 5:program-log L. Switch tab: Alt+Tab | Help: F1
+
+{{< /highlight >}}
 
 
 ## 问题分析
 
-Kickstart 安装中利用的应该也是 screen 或 tmux 这样的终端仿真器，同时支持多个终端连接，各自都记录不同类别的日志。所以除了报错时的界面，也可以通过 Ctrl + Alt + F<n> 来查看各自的日志，或通过 shell 进入当前环境中做一些调试和日志收集的工作。
+因为操作系统需要为自家产品做各种定制，为了达到部署的高效，安装使用了 Kickstart 。anancoda 作为安装程序，尤其是其 TUI 的交互界面，是使用了同时支持多个终端连接的仿真器 tmux ，将各个终端分别记录不同类别的日志。
 
+因此当出现报错时，用户可以通过 Ctrl + Alt + F<n> 来跳转到不同的终端，查看各方面的日志，也可进入 shell 环境中做一些基本的调试和日志打包收集工作。
+
+！！！
 - F1
 - F2
 - F3
 ...
 
 报错信息为：
+进入 F！！！ 查看存储方面的最新日志：
 
 进入 F2 查看系统中磁盘情况： 相关命令
 
 此系统自己有2块 SATA 盘，6块 SSD 固态硬盘，然后通过 4 个 P812 磁盘阵列控制器，外接了 4个 MSA ??? 存储，总计 48 块 SATA 盘。外部连线就挺复杂的，因此磁盘众多，为了能给系统同时提供较高的可靠性和性能，采用了硬件 RAID 和 软件 RAID 结合的方式。
 
+<img alt="ext lds" src="/img/blog/deal-with-ks-failure/ext-lds.png" class="img-responsive">
+
 ## 网上搜索
 
-没有和我特别一样的错误，但相关的几个如下：
+没有和本文完全一致的错误，有几个相关的如下：
 
-一则有可能是 anaconda 的问题，这不是第一次
-二则有的建议是用磁盘 uuid SW RAID 分区配置，我们这边ks文件也是这么做的
-...
+有的处理建议比较简单……不相关
 
+有的建议是用磁盘 uuid SW RAID 分区配置，我们这边ks文件也是这么做的
 
+！！！有可能是 anaconda 的问题，虽然是大厂出品，但仍不排除这个问题来自 anaconda 或 pyblivet
 
 ## 求援外部
 
-给 REDHAT 开 ticket 求助
+我决定让 RedHat 来帮助查看一下这个问题。大的方面来说，我们公司作为其付费订阅会员，有困难找他们咨询合情合理，RedHat 一般或是 anaconda 源码拥有者，或是其方案整合方，他们的视野和对技术理解的深度将能极大加速问题处理的进程。而对个人来说，这是一个非常重要的学习机会。
 
-如何提问
+首先，通读相关用户手册后，应该在 Google 或 Redhat 知识库中查找看这是不是已经被提出过，一个成熟软件的很多问题都源于用户对工具错误理解、不当配置或使用造成的。只有基本理解，并确认过没有相同或类似问题，或已经尝试了自己能力所及的各种调试后，才好咨询外部专家。
+
+然后，就是通过其问题上报系统，撰写问题描述，交互讨论问题。这部分做的好坏对问题处理的进度影响很大。比如，
+
+- 能否将自己的业务逻辑很好剥离，找出问题的核心？
+- 对与自身业务逻辑结合很密切的问题，如何才能最高效的帮外部专家理解当下的使用场景？
+- 能否正确执行外部专家给你的调查步骤，并将结果做高效反馈？
+
+这还是在《聪明地提问》
+
+
+之所以这么大张旗鼓的说了很多如何提问的建议，是觉得这是一个工程师非常重要的素质。从结果来看，凡是提问前做很多思考的同学，不但自身技术提高的快，而且也应该能得到其所在组织和同事的认可、肯定。
 
 ## BIOS 中的错误
 
@@ -68,27 +120,6 @@ LD1: DISKS_LIST_INTERNAL[1] raid=0
 LD2:
 
  DISKS_LIST_SSD_INTERNAL[0]},${DISKS_LIST_SSD_INTERNAL[1]},${DISKS_LIST_SSD_INTERNAL[2]},${DISKS_LIST_SSD_INTERNAL[3]},${DISKS_LIST_SSD_INTERNAL[4]},${DISKS_LIST_SSD_INTERNAL[5] raid=1+0
-LD3: ${DISKS_LIST_EXTERNAL[0]},${DISKS_LIST_EXTERNAL[1]} raid=0
-LD4: ${DISKS_LIST_EXTERNAL[12]},${DISKS_LIST_EXTERNAL[13]} raid=0
-LD5: ${DISKS_LIST_EXTERNAL[24]},${DISKS_LIST_EXTERNAL[25]} raid=0
-LD6: ${DISKS_LIST_EXTERNAL[36]},${DISKS_LIST_EXTERNAL[37]} raid=0
-LD7: ${DISKS_LIST_EXTERNAL[9]},${DISKS_LIST_EXTERNAL[10]} raid=1
-LD8: ${DISKS_LIST_EXTERNAL[21]},${DISKS_LIST_EXTERNAL[22]} raid=1
-LD9: ${DISKS_LIST_EXTERNAL[33]},${DISKS_LIST_EXTERNAL[34]} raid=1
-LD10: ${DISKS_LIST_EXTERNAL[45]},${DISKS_LIST_EXTERNAL[46]} raid=1
-
-LD11: ${DISKS_LIST_EXTERNAL[3]},${DISKS_LIST_EXTERNAL[4]},${DISKS_LIST_EXTERNAL[5]},${DISKS_LIST_EXTERNAL[6]},${DISKS_LIST_EXTERNAL[7]},${DISKS_LIST_EXTERNAL[8]} raid=1+0
-
-LD12: ${DISKS_LIST_EXTERNAL[15]},${DISKS_LIST_EXTERNAL[16]},${DISKS_LIST_EXTERNAL[17]},${DISKS_LIST_EXTERNAL[18]},${DISKS_LIST_EXTERNAL[19]},${DISKS_LIST_EXTERNAL[20]} raid=1+0
-
-LD13: ${DISKS_LIST_EXTERNAL[27]},${DISKS_LIST_EXTERNAL[28]},${DISKS_LIST_EXTERNAL[29]},${DISKS_LIST_EXTERNAL[30]},${DISKS_LIST_EXTERNAL[31]},${DISKS_LIST_EXTERNAL[32]} raid=1+0
-
-LD14: ${DISKS_LIST_EXTERNAL[39]},${DISKS_LIST_EXTERNAL[40]},${DISKS_LIST_EXTERNAL[41]},${DISKS_LIST_EXTERNAL[42]},${DISKS_LIST_EXTERNAL[43]},${DISKS_LIST_EXTERNAL[44]} raid=1+0
-
-LD15: ${DISKS_LIST_EXTERNAL[11]},${DISKS_LIST_EXTERNAL[2]} raid=1
-LD16: ${DISKS_LIST_EXTERNAL[23]},${DISKS_LIST_EXTERNAL[14]} raid=1
-LD17: ${DISKS_LIST_EXTERNAL[35]},${DISKS_LIST_EXTERNAL[26]} raid=1
-LD18: ${DISKS_LIST_EXTERNAL[47]},${DISKS_LIST_EXTERNAL[38]} raid=1
 
 [root@nio120 ~]# df -h
 Filesystem      Size  Used Avail Use% Mounted on
