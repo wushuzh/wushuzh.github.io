@@ -2,8 +2,8 @@
 date = "2017-08-01T19:12:33+08:00"
 title = "安装失败，咋整"
 showonlyimage = false
-image = "/img/blog/deal-with-ks-failure/kickstart-car.png"
-topImage = "/img/blog/deal-with-ks-failure/kickstart-car.gif"
+image = "/img/blog/deal-with-ks-failure1/kickstart-car.png"
+topImage = "/img/blog/deal-with-ks-failure1/kickstart-car.gif"
 draft = false
 weight = 45
 +++
