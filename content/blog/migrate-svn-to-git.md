@@ -2,10 +2,10 @@
 date = "2017-08-06T16:12:21+08:00"
 title = "从 SVN 迁移到 Git"
 showonlyimage = false
-image = "/img/blog/from-SVN-to-Git/upg-2-git.png"
-topImage = "/img/blog/from-SVN-to-Git/char-upd.gif"
+image = "/img/blog/migrate-svn-to-git/upg-2-git.png"
+topImage = "/img/blog/migrate-svn-to-git/char-upd.gif"
 draft = false
-weight = 11
+weight = 12
 +++
 
 以下实施过程和命令，亲测有效，供参考
