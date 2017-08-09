@@ -13,7 +13,8 @@ hasCJKLanguage = true
   description = "个人技术站点"
   copyright = "&copy;2017 wushuzh"
   sidebarAbout = [
-    "工程师"
+    "工程师",
+    "认真地记录好每一个自己踩过的坑"
   ]
 
   [[params.navlinks]]
