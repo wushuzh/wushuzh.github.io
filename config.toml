@@ -14,7 +14,7 @@ hasCJKLanguage = true
   copyright = "&copy;2017 wushuzh"
   sidebarAbout = [
     "工程师",
-    "认真记录每一个自己填过的坑"
+    "认真记录每一个自己填平的坑"
   ]
 
   [[params.navlinks]]
