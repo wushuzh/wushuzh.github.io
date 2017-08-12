@@ -4,7 +4,7 @@ title = "GitLab 数据迁移"
 showonlyimage = false
 image = "/img/blog/migrate-git-repo-data/tran-between-pc.png"
 topImage = "/img/blog/migrate-git-repo-data/tran-between-pc.gif"
-draft = false
+draft = true
 weight = 14
 +++
 

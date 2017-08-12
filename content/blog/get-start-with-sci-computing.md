@@ -4,7 +4,7 @@ title = "科学计算"
 showonlyimage = false
 image = "/img/blog/get-start-with-sci-computing/lab-boy.png"
 topImage =  "/img/blog/get-start-with-sci-computing/lab-boy.gif"
-draft = false
+draft = true
 weight = 51
 +++
 

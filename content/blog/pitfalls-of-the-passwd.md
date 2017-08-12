@@ -1,17 +1,17 @@
 +++
 date = "2017-07-27T18:31:59+08:00"
-title = "番外篇——密码演化史"
+title = "番外篇：密码演化史"
 showonlyimage = false
 image = "/img/blog/pitfalls-of-the-passwd/try-passwd.png"
 topImage = "/img/blog/pitfalls-of-the-passwd/try-passwd.gif"
-draft = false
+draft = true
 weight = 93
 +++
 
 这些年我们用过的那些密码……
 <!--more-->
 
-作为 PSP 安全审计，了解和学习安全方面的知识
+公司每个产品都有，作为 PSP 安全审计，了解和学习安全方面的知识
 
 原文地址 https://www.troyhunt.com/passwords-evolved-authentication-guidance-for-the-modern-era/
 
