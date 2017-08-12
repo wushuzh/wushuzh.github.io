@@ -1,13 +1,13 @@
 +++
 date = "2017-08-07T19:18:15+08:00"
-title = "需要外援，咋整？"
+title = "如何提问，求援于他人"
 showonlyimage = false
 image = "/img/blog/deal-with-ks-failure2/q-encil.png"
-draft = true
+draft = false
 weight = 46
 +++
 
-在搞不定而向他人求援时，该做些什么？
+因为自己搞不定而向他人求援前，该做些什么？
 <!--more-->
 
 ## 网上搜索
