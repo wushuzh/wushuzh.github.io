@@ -3,7 +3,7 @@ date = "2017-08-10T18:48:26+08:00"
 title = "双系统 2: Linux"
 showonlyimage = false
 image = "/img/blog/dual-os-2-install-linux/linux-m.png"
-draft = false
+draft = true
 weight = 63
 +++
 
