@@ -7,20 +7,10 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>&amp;copy;2017 wushuzh</copyright>
-    <lastBuildDate>Wed, 28 Jun 2017 19:18:51 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 09 Jul 2017 10:11:21 +0800</lastBuildDate>
     
 	<atom:link href="https://wushuzh.github.io/series/blog-like-a-pro/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>像雨果一样写作 1</title>
-      <link>https://wushuzh.github.io/blog/2017/06/28/blog-using-hugo-1/</link>
-      <pubDate>Wed, 28 Jun 2017 19:18:51 +0800</pubDate>
-      
-      <guid>https://wushuzh.github.io/blog/2017/06/28/blog-using-hugo-1/</guid>
-      <description>&lt;p&gt;记录下如何用 GitHub 和 Hugo 搭建博客。
-&lt;/p&gt;</description>
-    </item>
     
     <item>
       <title>像雨果一样写作 2</title>
@@ -29,6 +19,16 @@
       
       <guid>https://wushuzh.github.io/blog/2017/07/09/blog-using-hugo-2/</guid>
       <description>&lt;p&gt;最要紧的是准备和插入那些漂亮的图片。
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>像雨果一样写作 1</title>
+      <link>https://wushuzh.github.io/blog/2017/06/28/blog-using-hugo-1/</link>
+      <pubDate>Wed, 28 Jun 2017 19:18:51 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/06/28/blog-using-hugo-1/</guid>
+      <description>&lt;p&gt;记录下如何用 GitHub 和 Hugo 搭建博客。
 &lt;/p&gt;</description>
     </item>
     

@@ -7,18 +7,38 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>&amp;copy;2017 wushuzh</copyright>
-    <lastBuildDate>Wed, 28 Jun 2017 19:18:51 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 15 Jun 2017 20:50:27 +0800</lastBuildDate>
     
 	<atom:link href="https://wushuzh.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>像雨果一样写作 1</title>
-      <link>https://wushuzh.github.io/blog/2017/06/28/blog-using-hugo-1/</link>
-      <pubDate>Wed, 28 Jun 2017 19:18:51 +0800</pubDate>
+      <title>SVN 数据迁移</title>
+      <link>https://wushuzh.github.io/blog/2017/06/15/migrate-svn-repo-data/</link>
+      <pubDate>Thu, 15 Jun 2017 20:50:27 +0800</pubDate>
       
-      <guid>https://wushuzh.github.io/blog/2017/06/28/blog-using-hugo-1/</guid>
-      <description>&lt;p&gt;记录下如何用 GitHub 和 Hugo 搭建博客。
+      <guid>https://wushuzh.github.io/blog/2017/06/15/migrate-svn-repo-data/</guid>
+      <description>&lt;p&gt;以下实施过程和命令，亲测有效，供参考
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>从 SVN 迁移到 Git</title>
+      <link>https://wushuzh.github.io/blog/2017/08/06/migrate-svn-to-git/</link>
+      <pubDate>Sun, 06 Aug 2017 16:12:21 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/08/06/migrate-svn-to-git/</guid>
+      <description>&lt;p&gt;以下实施过程和命令，亲测有效，供参考
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>GitLab CE 安装</title>
+      <link>https://wushuzh.github.io/blog/2017/06/18/setup-a-gitlab-ce-service/</link>
+      <pubDate>Sun, 18 Jun 2017 21:18:51 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/06/18/setup-a-gitlab-ce-service/</guid>
+      <description>&lt;p&gt;如何搭建 GitLab 以获得类似 GitHub 的服务
 &lt;/p&gt;</description>
     </item>
     
@@ -29,6 +49,16 @@
       
       <guid>https://wushuzh.github.io/blog/2017/07/09/blog-using-hugo-2/</guid>
       <description>&lt;p&gt;最要紧的是准备和插入那些漂亮的图片。
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>像雨果一样写作 1</title>
+      <link>https://wushuzh.github.io/blog/2017/06/28/blog-using-hugo-1/</link>
+      <pubDate>Wed, 28 Jun 2017 19:18:51 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/06/28/blog-using-hugo-1/</guid>
+      <description>&lt;p&gt;记录下如何用 GitHub 和 Hugo 搭建博客。
 &lt;/p&gt;</description>
     </item>
     
@@ -53,17 +83,17 @@
     </item>
     
     <item>
-      <title>遇到内核恐慌，咋整？</title>
+      <title>内核恐慌，咋整？</title>
       <link>https://wushuzh.github.io/blog/2017/06/26/deal-with-kernel-panic/</link>
       <pubDate>Mon, 26 Jun 2017 22:31:22 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/06/26/deal-with-kernel-panic/</guid>
-      <description>&lt;p&gt;这个级别的报错，应该能撑起&amp;rdquo;咋整&amp;rdquo;系列的开篇门面。
+      <description>&lt;p&gt;Kernel Panic，应该能撑起&amp;rdquo;咋整&amp;rdquo;系列开篇的门面。
 &lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>看不懂的报错，咋整？</title>
+      <title>看不懂报错，咋整？</title>
       <link>https://wushuzh.github.io/blog/2017/06/30/deal-with-wired-errmsgs/</link>
       <pubDate>Fri, 30 Jun 2017 19:19:19 +0800</pubDate>
       
@@ -83,17 +113,17 @@
     </item>
     
     <item>
-      <title>遇到启动错误，咋整？</title>
+      <title>启动错误，咋整？</title>
       <link>https://wushuzh.github.io/blog/2017/07/19/deal-with-boot-failure/</link>
       <pubDate>Wed, 19 Jul 2017 18:45:13 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/07/19/deal-with-boot-failure/</guid>
-      <description>&lt;p&gt;记录下最近遇到的几例和启动、存储相关错误的处理。
+      <description>&lt;p&gt;记录下最近和启动、存储相关的修复处理。
 &lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>遇到磁盘错误，咋整？</title>
+      <title>磁盘错误，咋整？</title>
       <link>https://wushuzh.github.io/blog/2017/07/22/deal-with-disk-error/</link>
       <pubDate>Sat, 22 Jul 2017 20:14:43 +0800</pubDate>
       
@@ -109,6 +139,16 @@
       
       <guid>https://wushuzh.github.io/blog/2017/07/06/setup-a-container-host-env/</guid>
       <description>&lt;p&gt;Docker 简介和 Atomic 服务器的搭建
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>双系统 1: 微软视窗</title>
+      <link>https://wushuzh.github.io/blog/2017/08/03/dual-os-1-install-win/</link>
+      <pubDate>Thu, 03 Aug 2017 19:48:55 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/08/03/dual-os-1-install-win/</guid>
+      <description>&lt;p&gt;谁都不太可能绕得过 Windows ……
 &lt;/p&gt;</description>
     </item>
     
@@ -129,16 +169,6 @@
       
       <guid>https://wushuzh.github.io/blog/2017/06/08/general-auth-concepts/</guid>
       <description>&lt;p&gt;Diameter从属的大类是，认证协议的一种。
-&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>GitLab CE 安装实践</title>
-      <link>https://wushuzh.github.io/blog/2017/06/18/setup-a-gitlab-ce-service/</link>
-      <pubDate>Sun, 18 Jun 2017 21:18:51 +0800</pubDate>
-      
-      <guid>https://wushuzh.github.io/blog/2017/06/18/setup-a-gitlab-ce-service/</guid>
-      <description>&lt;p&gt;记录了我是如何搭建 GitLab 以获得类似 GitHub 的服务的
 &lt;/p&gt;</description>
     </item>
     

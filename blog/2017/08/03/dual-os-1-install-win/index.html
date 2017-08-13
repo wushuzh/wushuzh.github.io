@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>双系统 1: 微软视窗</title>
+<meta name="description" content="个人技术站点">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.theme.css">
+
+
+  <link href="https://wushuzh.github.io/css/style.sea.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://wushuzh.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-102509506-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="/">小强会武术</a></h1>
+    
+      <p class="sidebar-p">工程师</p>
+    
+      <p class="sidebar-p">认真记录每一个自己填平的坑</p>
+    
+    <ul class="sidebar-menu">
+      
+      
+        <li><a href="https://wushuzh.github.io/">Home</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  
+  
+  <a href="https://twitter.com/Xiao_Qiang" data-animate-hover="pulse" class="external twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  
+  
+  
+  <a href="mailto:wushuzh@outlook.com" data-animate-hover="pulse" class="email">
+    <i class="fa fa-envelope"></i>
+  </a>
+  
+  
+  
+  
+
+  
+  <a href="https://wushuzh.github.io/index.xml" data-animate-hover="pulse">
+    <i class='fa fa-rss'></i>
+  </a>
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2017 wushuzh
+        
+        | Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="/">小强会武术</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="content-column-content">
+
+      <div class="row">
+        <div class="col-sm-6">
+          
+            <div class="image">
+              <img src="https://wushuzh.github.io//img/blog/dual-os-1-install-win/ms_surface.gif" class="img-responsive" alt="">
+            </div>
+          
+        </div>
+        <div class="col-md-6">
+            <h2>双系统 1: 微软视窗</h2>
+                <p>
+                  小强会武术
+                </p>
+
+                <time datetime="2017-08-03 19:48:55 &#43;0800 CST">
+                <i class="fa fa-calendar-o fa-fw"></i> 2017-08-03
+                </time>
+                &middot;
+                1117 字
+                &middot;
+                3 分钟
+
+        </div>
+      </div>
+      <br />
+
+         <p>谁都不太可能绕得过 Windows ……
+</p>
+
+<h2 id="硬件评估">硬件评估</h2>
+
+<p>我感觉自己工作用的笔记本快不行了，同时开个浏览器和 IDE ，风扇的动静像直升机起飞，键盘周围也是非常暖和，每天都像是在做免费的腕部热敷。</p>
+
+<ul>
+<li>Intel i5 2.6 GHz 处理器 ( 2 核 4 线程 )</li>
+<li>DDR3 4 G 798 MHz 内存</li>
+</ul>
+
+<p>找来个老台式机分担一些工作负荷：准备装双系统，因为你总有一些时刻依赖 Windows 或 IE ，而 Linux 则用来应对偶尔 Lab 断网没服务器用的情况。</p>
+
+<ul>
+<li>Intel i5 3.2 GHz 处理器 ( 2 核 4 线程 )</li>
+<li>DDR3 8 G 665 MHz 内存</li>
+<li>Nvidia Quadro NVS 290 显卡 内含 DDR2 256 MB 显存 (不知显存能干点啥？)</li>
+</ul>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #75715e">REM CMD 直接运行</span>
+msinfo32
+dxdiag
+
+<span style="color: #75715e">REM 第三方工具 CPU-Z 或 GPU-Z 查看则需安装</span>
+</pre></div>
+
+
+<p>对于双系统，网上大部分建议都是先装 Windows，再装 Linux。而多数 PC 预装 Windows (据说少数还预装 Linux )。但我这台 PC 原装 Windows 已经没了，公司 IT 一般都是用克隆，不知道是不是绑定硬件的一种特定的批量 license 授权。</p>
+
+<p>好在我自己之前买过一份正版 Win 8，先拿来用。下载 Win 8 安装介质做成一个可启动 U 盘——这年头光驱算古董。Windows 的安装没什么可说，一步步照提示确认就能安装好。现在 Windows 安装挺简洁，半小时绝对搞定了。</p>
+
+<h2 id="系统更新">系统更新</h2>
+
+<p>安装成功后，第一步就是联网，将系统补丁打到最新。</p>
+
+<blockquote>
+<p>“控制面板-&gt;程序-&gt; Windows 更新 -&gt; 全选并下载安装-&gt;重启”。</p>
+</blockquote>
+
+<p>这个过程大概要重复几次，才能真正把系统更新完毕。要是你后面还装了 Office 、Visual Studio 记得回来再做几次系统补丁更新。</p>
+
+<p>期间还按照<a href="http://xyz.cinc.biz/2015/04/windows-w32tm.html">这篇文档</a>做了一下 NTP 时钟同步。（反正这台 PC 不能找 IT 加入域，没法用域时间同步服务器）</p>
+
+<h2 id="日常工具">日常工具</h2>
+
+<p>Windows 上除了一些一次性安装的工具，其他常用软件的安装、升级、卸载应该用微软官方的包管理工具<a href="https://en.wikipedia.org/wiki/NuGet">Chocolatey</a> ，安装很简单，到官网复制最新的安装命令，启动一个带管理员权限的命令行窗口，粘贴执行就可以了。</p>
+
+<p>之后的软件安装升级都通过命令行，cinst 将待安装软件一个个搞定。</p>
+
+<ul>
+<li>7zip</li>
+<li>ConEmu</li>
+<li>Google Chrome</li>
+<li>Firefox</li>
+<li>Git</li>
+<li>SourceTree</li>
+<li>notepadplusplus</li>
+<li>virtualbox</li>
+<li>vagrant</li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="准备-linux-分区">准备 Linux 分区</h2>
+
+<p>情报是行动的前提，先查看分区表是老式 MSDOS 或新型 GPT 。运行命令行工具<code>diskpart</code>，执行<code>list disk</code> 就可以确认。</p>
+
+<p>查到的结果我的 PC 不是 GPT。之后退出命令行工具：</p>
+
+<ul>
+<li>启动一个图形化分区工具 <code>diskmgmt.msc</code></li>
+<li>右键选了除系统保留外的唯一的 C 盘，点击“压缩卷” (Shrink Volume)，得到一个未分配的分区</li>
+<li>用一部分空间，新建一个分区用来存放数据，而剩下的部分会被用于 Linux 的安装</li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="禁止-win8-快启">禁止 Win8 快启</h2>
+
+<p>Windows 8 引入了一个新功能，就是将其内核和设备驱动保存到磁盘上。这样下次开机就省去了和冷启动相关的各种初始化，能把启动速度提升 30 % ~ 70 %。但这个技术在双系统却会导致 Linux 启动后无法访问 Windows 的分区以及一些硬件的功能异常，所以还是禁掉吧。步骤见<a href="https://www.eightforums.com/tutorials/6320-fast-startup-turn-off-windows-8-a.html">How to Turn &ldquo;Fast Startup&rdquo; On or Off for a Hybrid Boot in Windows 8 and 8.1</a></p>
+
+<h2 id="准备安装介质">准备安装介质</h2>
+
+<p>依然是准备一个可启动的 U 盘，写入 Linux 的安装介质。步骤按照<a href="https://wiki.archlinux.org/index.php/USB_flash_installation_media">USB flash installation media</a></p>
+
+
+<figure >
+    
+        <img src="/img/blog/dual-os-1-install-win/Cold_HybridBoot.png" />
+    
+    
+    <figcaption>
+        <h4>Cold vs HybridBoot</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<h3 id="参考文档">参考文档</h3>
+
+<blockquote>
+<ul>
+<li>One Transistor (2015-12-03) <a href="https://onetransistor.blogspot.fr/2015/03/dual-boot-windows-and-ubuntu.html">Dual booting Windows and Ubuntu [MBR]</a></li>
+</ul>
+</blockquote>
+
+<p>封面图片来自 <a href="https://dribbble.com/shots/3076441-Microsoft-Surface-Studio">Microsoft Surface Studio</a> <a href="https://dribbble.com/ercannailoglu"><i class="fa fa-dribbble" aria-hidden="true"></i> Ercan Nailoğlu</a></p>
+         <div id="disqus_thread">
+  <a href="#" onclick="disqus();return false;">enable VPN and click here to <i class="fa fa-comments" aria-hidden="true"></i></a>
+</div>
+
+<script type="text/javascript">
+var disqus_loaded = false;
+function disqus() {
+  if (!disqus_loaded) {
+    
+    
+    
+    
+
+    disqus_loaded = true;
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'wushuzh';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }
+};
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </div>
+  </div>
+</div>
+<noscript>
+  <style>.jsonly { display: none }</style>
+</noscript>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://wushuzh.github.io/js/jquery.min.js"></script>
+<script src="https://wushuzh.github.io/js/bootstrap.min.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.cookie.js"> </script>
+<script src="https://wushuzh.github.io/js/ekko-lightbox.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://wushuzh.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/owl.carousel.min.js"></script>
+<script src="https://wushuzh.github.io/js/front.js"></script>
+
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</body>
+</html>

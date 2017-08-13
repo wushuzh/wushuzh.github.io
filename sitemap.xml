@@ -3,13 +3,28 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://wushuzh.github.io/blog/2017/06/28/blog-using-hugo-1/</loc>
-    <lastmod>2017-06-28T19:18:51+08:00</lastmod>
+    <loc>https://wushuzh.github.io/blog/2017/06/15/migrate-svn-repo-data/</loc>
+    <lastmod>2017-06-15T20:50:27+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2017/08/06/migrate-svn-to-git/</loc>
+    <lastmod>2017-08-06T16:12:21+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2017/06/18/setup-a-gitlab-ce-service/</loc>
+    <lastmod>2017-06-18T21:18:51+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://wushuzh.github.io/blog/2017/07/09/blog-using-hugo-2/</loc>
     <lastmod>2017-07-09T10:11:21+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2017/06/28/blog-using-hugo-1/</loc>
+    <lastmod>2017-06-28T19:18:51+08:00</lastmod>
   </url>
   
   <url>
@@ -53,6 +68,11 @@
   </url>
   
   <url>
+    <loc>https://wushuzh.github.io/blog/2017/08/03/dual-os-1-install-win/</loc>
+    <lastmod>2017-08-03T19:48:55+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://wushuzh.github.io/blog/2017/06/01/why-need-volte/</loc>
     <lastmod>2017-06-01T20:09:06+08:00</lastmod>
   </url>
@@ -60,11 +80,6 @@
   <url>
     <loc>https://wushuzh.github.io/blog/2017/06/08/general-auth-concepts/</loc>
     <lastmod>2017-06-08T21:49:02+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wushuzh.github.io/blog/2017/06/18/setup-a-gitlab-ce-service/</loc>
-    <lastmod>2017-06-18T21:18:51+08:00</lastmod>
   </url>
   
   <url>
@@ -81,19 +96,19 @@
   
   <url>
     <loc>https://wushuzh.github.io/series/blog-like-a-pro/</loc>
-    <lastmod>2017-06-28T19:18:51+08:00</lastmod>
+    <lastmod>2017-07-09T10:11:21+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://wushuzh.github.io/tags/blogging/</loc>
-    <lastmod>2017-06-28T19:18:51+08:00</lastmod>
+    <lastmod>2017-07-09T10:11:21+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://wushuzh.github.io/blog/</loc>
-    <lastmod>2017-06-28T19:18:51+08:00</lastmod>
+    <lastmod>2017-06-15T20:50:27+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -128,7 +143,7 @@
   
   <url>
     <loc>https://wushuzh.github.io/tags/hugo/</loc>
-    <lastmod>2017-06-28T19:18:51+08:00</lastmod>
+    <lastmod>2017-07-09T10:11:21+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -158,7 +173,7 @@
   
   <url>
     <loc>https://wushuzh.github.io/series/</loc>
-    <lastmod>2017-06-28T19:18:51+08:00</lastmod>
+    <lastmod>2017-07-09T10:11:21+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -188,13 +203,13 @@
   
   <url>
     <loc>https://wushuzh.github.io/categories/writing/</loc>
-    <lastmod>2017-06-28T19:18:51+08:00</lastmod>
+    <lastmod>2017-07-09T10:11:21+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://wushuzh.github.io/</loc>
-    <lastmod>2017-06-28T19:18:51+08:00</lastmod>
+    <lastmod>2017-06-15T20:50:27+08:00</lastmod>
     <priority>0</priority>
   </url>
   

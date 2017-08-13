@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>SVN 数据迁移</title>
+<meta name="description" content="个人技术站点">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.theme.css">
+
+
+  <link href="https://wushuzh.github.io/css/style.sea.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://wushuzh.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-102509506-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="/">小强会武术</a></h1>
+    
+      <p class="sidebar-p">工程师</p>
+    
+      <p class="sidebar-p">认真记录每一个自己填平的坑</p>
+    
+    <ul class="sidebar-menu">
+      
+      
+        <li><a href="https://wushuzh.github.io/">Home</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  
+  
+  <a href="https://twitter.com/Xiao_Qiang" data-animate-hover="pulse" class="external twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  
+  
+  
+  <a href="mailto:wushuzh@outlook.com" data-animate-hover="pulse" class="email">
+    <i class="fa fa-envelope"></i>
+  </a>
+  
+  
+  
+  
+
+  
+  <a href="https://wushuzh.github.io/index.xml" data-animate-hover="pulse">
+    <i class='fa fa-rss'></i>
+  </a>
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2017 wushuzh
+        
+        | Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="/">小强会武术</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="content-column-content">
+
+      <div class="row">
+        <div class="col-sm-6">
+          
+            <div class="image">
+              <img src="https://wushuzh.github.io//img/blog/migrate-svn-repo-data/tran-inventory.png" class="img-responsive" alt="">
+            </div>
+          
+        </div>
+        <div class="col-md-6">
+            <h2>SVN 数据迁移</h2>
+                <p>
+                  小强会武术
+                </p>
+
+                <time datetime="2017-06-15 20:50:27 &#43;0800 CST">
+                <i class="fa fa-calendar-o fa-fw"></i> 2017-06-15
+                </time>
+                &middot;
+                1785 字
+                &middot;
+                4 分钟
+
+        </div>
+      </div>
+      <br />
+
+         <p>以下实施过程和命令，亲测有效，供参考
+</p>
+
+<h2 id="svn-是什么">SVN 是什么</h2>
+
+<p>当然是一个版本管理工具，虽然被 Linus Torvalds 奚落，但它还是非常很有影响力的。<strong>Apache软件基金会</strong> 就主推 SVN ，当然这也是它旗下的一个顶级项目。</p>
+
+<blockquote>
+<p>Linus 在某次访谈时提到了对 CVS 的极度厌恶，并提示台下 SVN 的用户也该离开。然后他说  Subversion 是史上最没有意义的项目，SVN曾经有一段打出的口号是“正确地使用 CVS ”，这个目标毫无意思，因为照 CVS 的方式根本就不可能做的对……</p>
+</blockquote>
+
+<h2 id="为啥迁移">为啥迁移</h2>
+
+<p>场景设定： N 年前，刚好有一台淘汰下来的 SPARC 架构的服务器，来做废物再利用，装个操作系统，把 SVN 服务部署到上面。就这么用了几年，但有一天忽然得知 Oracle 要停止对 <a href="https://en.wikipedia.org/wiki/Solaris_(operating_system)">OpenSolaris</a> 的开发维护，团队考虑到后续维护这些中古硬件和服务的成本，决定要尝试现有服务和数据到当下主流的解决方案上来。</p>
+
+<p>你的选择无非是：</p>
+
+<ul>
+<li>准备一个 x86 ，做数据迁移，并以此为主服务器，原有 SVN 服务仅作为备份和镜像、最终淘汰</li>
+<li>从 SVN 迁移到 Git：那将是一次异构 SCM 的数据迁移</li>
+</ul>
+
+<blockquote>
+<p>如果简单技术尝试，比较快捷的做法也可以利用 Docker</p>
+</blockquote>
+
+<h2 id="新-x86-上的准备">新 x86 上的准备</h2>
+
+<p>具体的操作步骤可以参看 vultr (2016-08-15) <a href="https://www.vultr.com/docs/how-to-setup-an-apache-subversion-svn-server-on-centos-7">How to Setup an Apache Subversion (SVN) Server on CentOS 7</a>，这里只提一下基本步骤，不重复细节。值得一提的是，这篇文章来自搬瓦工，现在各个 VPS 提供商(还有 Digital Ocean )都维护了一大批很不错的各种服务的初始安装配置文档，文档质量都很不错。</p>
+
+<ol>
+<li>安装一个 CentOS 7 的最小集，配好yum源，把所有已安装的软件包更新到最新版，重启</li>
+<li>安装配置 Apache ，如移除欢迎页，禁掉 /var/www/html 等</li>
+<li>安装 SVN 和相应 Apache 模块</li>
+<li>加载 SVN 模块，并做身份认证配置</li>
+<li>创建 SVN 用户密码文件，并严格限定读取权限</li>
+<li>设定 SVN 各个用户权限：管理员、对某仓库可读写、对某仓库只可读</li>
+<li>设定防火墙，并启动 Apache 服务</li>
+<li>打开浏览器，访问 <a href="http://ip/svn/repo">http://ip/svn/repo</a> 用相应用户密码测试访问</li>
+</ol>
+
+<p>其他，比如配置 CGI 使得可以通过网页自行更改密码，或添加删除用户，参见 Erik Mugele (2005-11) <a href="http://www.teuton.org/~ejm/svnpasswd/">Tools to Manage Subversion Users and Passwords</a></p>
+
+<h2 id="建议和常见问题">建议和常见问题</h2>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span># 日志消息 <span style="color: #ae81ff">1</span>：
+  Failed to load the AuthzSVNAccessFile:
+      Can&#39;t open file &#39;/svn/authz&#39;: Permission denied
+
+# 日志消息 <span style="color: #ae81ff">2</span>：
+  Can&#39;t open file &#39;/svn/repo1/format&#39;: Permission denied
+
+# 日志消息 <span style="color: #ae81ff">3</span>：
+  Could not open the requested SVN filesystem
+
+# 解决方式：设定相关文件的 SElinux security context
+chcon -Rv --type=httpd_sys_content_t /SVN_ROOT_PATH
+</pre></div>
+
+
+<ul>
+<li>身份验证时和浏览仓库时，浏览器提示无法访问，服务器端httpd的error日志中显示无权限。</li>
+<li>我查看日志时发现系统的时间不对，这种对外提供服务的机器最好还是做一下 ntp 时间同步，不然一边查问题看日志，还要一边做时间换算就很麻烦了。
+参见
+
+<ul>
+<li>Matei C. (2015-03-14) <a href="https://www.tecmint.com/install-ntp-server-in-centos/">Setting Up “NTP (Network Time Protocol) Server” in RHEL/CentOS 7</a>)</li>
+<li>Aaron K <a href="https://www.tecmint.com/set-time-timezone-and-synchronize-time-using-timedatectl-command/">How to Set Time, Timezone and Synchronize System Clock Using timedatectl Command</a><br /></li>
+</ul></li>
+<li>后续的数据备份，转移，导入的操作可能花费很长时间，因此建议所有操作都进入 tmux 或  screen 执行，除非你能保证绝对稳定的网络连接，比如直连服务器而不是远程登录</li>
+</ul>
+
+<h2 id="数据迁移方案">数据迁移方案</h2>
+
+<p>A. 使用 dump 选择需要的数据做备份，并在另一台服务器上做数据复原<br />
+B. 使用 svnsync 在另外一台机器上生成当前数据的只读镜像</p>
+
+<p>方案 A dump ：</p>
+
+<ol>
+<li>原服务器上暂停服务，做仓库备份</li>
+<li>新服务器上创建仓库，导入备份</li>
+<li>更改用户访问权限文件 authz , 为新建的仓库添加用户组（只给只读权限）</li>
+<li>浏览器上测试访问，看是否有 SELinux 的问题等</li>
+<li>两台服务器上执行 svnlook youngest REPO_PATH 结果应该是一样</li>
+</ol>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>svnlook <span style="color: #f8f8f2">history</span> REPO_PATH --show-ids --limit <span style="color: #ae81ff">10</span>
+svnlook info -r SOME_REVISION_ID
+svnlook info REPO_PATH <span style="color: #75715e"># 查看仓库最新一次提交</span>
+</pre></div>
+
+
+<p>方案 B svnsync</p>
+
+<ol>
+<li>创建一个用于镜像的仓库</li>
+<li>之后通过在新服务器上设定钩子，仅允许特定用户执行镜像的操作</li>
+<li>同步的初始化设置，哪个为源仓库，哪个为镜像仓库 svnsync initialize &hellip;</li>
+<li>同步进行中 svnsync synchronize &hellip;</li>
+<li>在源服务器上设定钩子，实现非交互式的自动同步</li>
+</ol>
+
+<p>这个方法也可以用于增量备份:
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>svnsync initialize --allow-non-empty file:///MIRROR_PATH SOURCE_URL
+svnsync sync file:///MIRROR_PATH
+</pre></div>
+</p>
+
+<p>但它也有一个小缺陷，即对于已同步过的历史的一些属性不会再同步，需要通过 svnsync 子命令 copy-revprops 显式完成。</p>
+
+<h2 id="尾声">尾声</h2>
+
+<p>数据同步了，剩下的就是把原有的用户身份认证文件拷贝到对端机器上，确认账户仍可使用。之后并重置(清空)原有机器的鉴权文件，迫使团队成员只能将代码提交到新的仓库地址。再之后，别忘了更改持续集成部分的仓库地址。</p>
+
+<h2 id="相关命令">相关命令</h2>
+
+<hr />
+
+<h3 id="linux">Linux</h3>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>sudo yum update
+sudo shutdown -r now
+sudo yum install httpd
+sudo sed -i <span style="color: #e6db74">&#39;s/^/#&amp;/g&#39;</span> /etc/httpd/conf.d/welcome.conf
+sudo sed -i <span style="color: #ae81ff">\</span>
+  <span style="color: #e6db74">&quot;s/Options Indexes FollowSymLinks/Options FollowSymLinks/&quot;</span> <span style="color: #ae81ff">\</span>
+  /etc/httpd/conf/httpd.conf
+</pre></div>
+
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>sudo yum install subversion mod_dav_svn
+sudo vi /etc/httpd/conf.modules.d/10-subversion.conf
+</pre></div>
+
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>sudo mkdir /svn
+<span style="color: #f8f8f2">cd</span> /svn
+sudo svnadmin create repo1
+sudo chown -R apache:apache repo1
+</pre></div>
+
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>sudo mkdir /etc/svn
+sudo htpasswd -cm /etc/svn/svn-auth user001
+sudo chown root:apache /etc/svn/svn-auth
+sudo chmod <span style="color: #ae81ff">640</span> /etc/svn/svn-auth
+sudo htpasswd -m /etc/svn/svn-auth user002
+sudo htpasswd -m /etc/svn/svn-auth user003
+sudo cp /svn/repo1/conf/authz /svn/authz
+sudo vi /svn/authz
+</pre></div>
+
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>sudo systemctl start httpd.service
+sudo systemctl <span style="color: #f8f8f2">enable</span> httpd.service
+sudo firewall-cmd --zone<span style="color: #f92672">=</span>public --permanent --add-service<span style="color: #f92672">=</span>http
+sudo firewall-cmd --reload
+</pre></div>
+
+
+<hr />
+
+<h3 id="solaris">Solaris</h3>
+
+<p>查看某个文件从属的软件包
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>pkgchk -lp /usr/local/bin/svnserve
+</pre></div>
+</p>
+
+<p>查看软件包中所有内容(文件)
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>pkgchk -l SMCsvn1612
+pkgchk -l SMCap2221
+</pre></div>
+</p>
+
+<p>查看已经系统中所有已安装的软件包
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>pkginfo
+</pre></div>
+</p>
+
+<p>缩略语解释</p>
+
+<blockquote>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/SPARC">SPARC</a>: 精简指令 RISC 集架构；和 x86 复杂指令集 CISC 相对</li>
+<li>SCM: Software configuration management 软件配置管理</li>
+<li>CVS: Concurrent Versions System 一个上个世纪的版本管理工具，据说最初是用一堆 shell 脚本实现的。</li>
+<li>ASF：Apache软件基金会，美国的非盈利组织</li>
+</ul>
+</blockquote>
+
+<p>参考文档</p>
+
+<blockquote>
+<ul>
+<li>Online Subversion free book <a href="http://svnbook.red-bean.com/">Version Control with Subversion</a></li>
+<li>Stackoverflow <a href="https://stackoverflow.com/a/40891894">centos apache svn forbidden related to selinux</a></li>
+<li>Geoffrey H. (2015-09-23) <a href="http://www.cardinalpath.com/how-to-use-svnsync-to-create-a-mirror-backup-of-your-subversion-repository/">How to use svnsync to create a mirror backup of your Subversion repository</a></li>
+<li><a href="http://www.microhowto.info/howto/mirror_a_subversion_repository.html">Mirror a Subversion repository</a></li>
+<li>陈浩 (2010-11-17) <a href="http://coolshell.cn/articles/3288.html">版本管理器的发展史</a></li>
+</ul>
+</blockquote>
+
+<p>封面图片来自 <a href="https://dribbble.com/shots/2764840-Transferring-Inventory">Transferring Inventory</a> <a href="https://dribbble.com/Coleman811"><i class="fa fa-dribbble" aria-hidden="true"></i> Rye</a></p>
+
+<p>其他图片来源网络</p>
+         <div id="disqus_thread">
+  <a href="#" onclick="disqus();return false;">enable VPN and click here to <i class="fa fa-comments" aria-hidden="true"></i></a>
+</div>
+
+<script type="text/javascript">
+var disqus_loaded = false;
+function disqus() {
+  if (!disqus_loaded) {
+    
+    
+    
+    
+
+    disqus_loaded = true;
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'wushuzh';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }
+};
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </div>
+  </div>
+</div>
+<noscript>
+  <style>.jsonly { display: none }</style>
+</noscript>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://wushuzh.github.io/js/jquery.min.js"></script>
+<script src="https://wushuzh.github.io/js/bootstrap.min.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.cookie.js"> </script>
+<script src="https://wushuzh.github.io/js/ekko-lightbox.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://wushuzh.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/owl.carousel.min.js"></script>
+<script src="https://wushuzh.github.io/js/front.js"></script>
+
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</body>
+</html>

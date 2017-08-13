@@ -2,7 +2,7 @@
 <html lang="zh-cn">
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>遇到磁盘错误，咋整？</title>
+<title>磁盘错误，咋整？</title>
 <meta name="description" content="个人技术站点">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="all,follow">
@@ -47,6 +47,8 @@ ga('send', 'pageview');
     <h1 class="sidebar-heading"><a href="/">小强会武术</a></h1>
     
       <p class="sidebar-p">工程师</p>
+    
+      <p class="sidebar-p">认真记录每一个自己填平的坑</p>
     
     <ul class="sidebar-menu">
       
@@ -114,7 +116,7 @@ ga('send', 'pageview');
           
         </div>
         <div class="col-md-6">
-            <h2>遇到磁盘错误，咋整？</h2>
+            <h2>磁盘错误，咋整？</h2>
                 <p>
                   小强会武术
                 </p>
@@ -123,7 +125,7 @@ ga('send', 'pageview');
                 <i class="fa fa-calendar-o fa-fw"></i> 2017-07-22
                 </time>
                 &middot;
-                2057 字
+                2073 字
                 &middot;
                 5 分钟
 
@@ -138,7 +140,9 @@ ga('send', 'pageview');
 
 <p>但本文涉及的老系统不但使用了 <a href="https://zh.wikipedia.org/wiki/RAID">磁盘冗余阵列</a>，而且不是在硬件层面(智能存储阵列控制器)上直接做 RAID，而使用的是 SW-RAID，并且不是普通 RAID，而是<a href="https://en.wikipedia.org/wiki/Nested_RAID_levels">嵌套 RAID</a> …… 怎么看都挺复杂的。</p>
 
-<h3 id="案例-c-磁盘受损">案例 C 磁盘受损</h3>
+<h3 id="案例-3-磁盘受损">案例 3 磁盘受损</h3>
+
+<p>(案例 1， 2 见 <a href="/blog/2017/07/19/deal-with-boot-failure/">启动错误，咋整？</a> )</p>
 
 <p>问题描述：这是一台用于模拟客户生产环境的服务器，一年多没重装，仅通过常规产品升级维护着。上电后，据说遇到了磁盘错误，被强制进入维护模式，之后管理员将问题分区从 fstab 中注释掉，系统可以正常启动，但在修复磁盘和恢复软 RAID 遇到了麻烦。</p>
 
@@ -355,7 +359,6 @@ Working Devices : 3
 md5 : active raid10 sds1[0] sdk1[2] sdg1[3]
       585606144 blocks super 1.1 512K chunks 2 near-copies [4/3] [U_UU]
       bitmap: 5/5 pages [20KB], 65536KB chunk
-      
 </pre></div>
 
 
@@ -363,7 +366,7 @@ md5 : active raid10 sds1[0] sdk1[2] sdg1[3]
 
 <p>而下属的各个磁盘，除 /dev/sdo1 以外，Event # 都已同步。</p>
 
-<h2 id="hahahugoshortcode-11hbhb"><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>[root@hostC temp]# mdadm -E /dev/sd<span style="color: #f92672">[</span>gkos<span style="color: #f92672">]</span><span style="color: #ae81ff">1</span> <span style="color: #ae81ff">\</span>
+<h2 id="hahahugoshortcode-12hbhb"><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>[root@hostC temp]# mdadm -E /dev/sd<span style="color: #f92672">[</span>gkos<span style="color: #f92672">]</span><span style="color: #ae81ff">1</span> <span style="color: #ae81ff">\</span>
     <span style="color: #f8f8f2">|</span> grep <span style="color: #f92672">[</span>Events<span style="color: #f8f8f2">|</span>Update<span style="color: #f8f8f2">|</span>Array State<span style="color: #f8f8f2">|</span><span style="color: #f92672">]</span>
 
 /dev/sdg1:

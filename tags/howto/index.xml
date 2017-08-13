@@ -13,12 +13,12 @@
     
     
     <item>
-      <title>遇到内核恐慌，咋整？</title>
+      <title>内核恐慌，咋整？</title>
       <link>https://wushuzh.github.io/blog/2017/06/26/deal-with-kernel-panic/</link>
       <pubDate>Mon, 26 Jun 2017 22:31:22 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/06/26/deal-with-kernel-panic/</guid>
-      <description>&lt;p&gt;这个级别的报错，应该能撑起&amp;rdquo;咋整&amp;rdquo;系列的开篇门面。
+      <description>&lt;p&gt;Kernel Panic，应该能撑起&amp;rdquo;咋整&amp;rdquo;系列开篇的门面。
 &lt;/p&gt;</description>
     </item>
     
@@ -33,17 +33,17 @@
     </item>
     
     <item>
-      <title>遇到启动错误，咋整？</title>
+      <title>启动错误，咋整？</title>
       <link>https://wushuzh.github.io/blog/2017/07/19/deal-with-boot-failure/</link>
       <pubDate>Wed, 19 Jul 2017 18:45:13 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/07/19/deal-with-boot-failure/</guid>
-      <description>&lt;p&gt;记录下最近遇到的几例和启动、存储相关错误的处理。
+      <description>&lt;p&gt;记录下最近和启动、存储相关的修复处理。
 &lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>遇到磁盘错误，咋整？</title>
+      <title>磁盘错误，咋整？</title>
       <link>https://wushuzh.github.io/blog/2017/07/22/deal-with-disk-error/</link>
       <pubDate>Sat, 22 Jul 2017 20:14:43 +0800</pubDate>
       
