@@ -22,7 +22,7 @@ weight = 61
 
 - Intel i5 3.2 GHz 处理器 ( 2 核 4 线程 )
 - DDR3 8 G 665 MHz 内存
-- Nvidia Quadro NVS 290 显卡 内含 DDR2 256 MB 显存 (不知显存能干点啥？)
+- Nvidia Quadro NVS 290 显卡 内含 DDR2 256 MB 显存 (不知这点显存能实验点啥？)
 
 {{< highlight bat >}}
 REM CMD 直接运行
