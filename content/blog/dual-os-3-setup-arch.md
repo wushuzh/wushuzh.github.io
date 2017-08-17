@@ -7,7 +7,7 @@ draft = false
 weight = 64
 +++
 
-从 0 到 1 设定 Archlinux 桌面
+从 0 到 1 设定 Archlinux 桌面环境
 <!--more-->
 
 后面还要安装不少软件，所以现在是优化软件镜像源的好时机。
@@ -125,6 +125,7 @@ $ git clone https://aur.archlinux.org/vertex-themes.git
 $ cd vertex-themes/
 $ makepkg -si
 
+$ cd /tmp
 $ git clone https://aur.archlinux.org/google-chrome.git
 $ cd google-chrome/
 $ makepkg -si
