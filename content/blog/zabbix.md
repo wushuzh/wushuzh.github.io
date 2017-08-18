@@ -1,5 +1,5 @@
 +++
-date = "2017-08-17T21:14:17+08:00"
+date = "2017-08-18T20:51:17+08:00"
 title = "Zabbix 监控"
 showonlyimage = false
 image = "/img/blog/dual-os-3-setup-arch/setup-Arch.png"
@@ -7,8 +7,9 @@ draft = true
 weight = 65
 +++
 
-从 0 到 1 设定 Archlinux 桌面
+
 <!--more-->
+
 
 135.252.182.76
 
@@ -105,3 +106,8 @@ https://bugzilla.redhat.com/show_bug.cgi?id=1393332
 http://cn.linux.vbird.org/linux_server/0210network-secure_4.php
 
 Job for zabbix-server.service failed because a configured resource limit was exceeded. See "systemctl status zabbix-server.service" and "journalctl -xe" for details.
+
+
+epel python-pip
+
+pip install docker-py
