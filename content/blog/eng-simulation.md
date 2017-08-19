@@ -4,7 +4,7 @@ title = "工程仿真"
 showonlyimage = false
 image = "/img/blog/dual-os-3-setup-arch/setup-Arch.png"
 draft = true
-weight =
+weight = 81
 +++
 
 
@@ -44,3 +44,11 @@ weight =
 - 做一些实验，根据实验数据做比较，但这部分各个公司都是
 
 下面讲预分析步骤
+
+第一步，预分析
+
+- 思考分析其数学模型和基于的物理原理，和显示、隐式的预设前提
+- 数值解的策略，引入了何种误差，如何将误差最小化
+- 提前手工计算出预期值，以便后续对结果、趋势的比较验证
+
+第二部，确认及验证
