@@ -1,13 +1,13 @@
 +++
 date = "2017-08-18T20:51:17+08:00"
-title = "Zabbix 监控"
+title = "搭建综合监控系统"
 showonlyimage = false
-image = "/img/blog/dual-os-3-setup-arch/setup-Arch.png"
-draft = true
+image = "/img/blog/watching-it-by-zabbix-1/power_system_icon_1x.jpg"
+draft = false
 weight = 65
 +++
 
-
+Zabbix 这个名字到底是怎么选的？
 <!--more-->
 
 
@@ -111,3 +111,5 @@ Job for zabbix-server.service failed because a configured resource limit was exc
 epel python-pip
 
 pip install docker-py
+
+封面图片来自 [Energy System Icon 02](https://dribbble.com/shots/1044323-Energy-System-Icon-02) <a href="https://dribbble.com/Kingyo"><i class="fa fa-dribbble" aria-hidden="true"></i> Kingyo</a>
