@@ -1,78 +1,42 @@
 +++
 date = "2017-08-18T20:51:17+08:00"
-title = "搭建综合监控系统"
+title = "Zabbix 综合监控"
 showonlyimage = false
 image = "/img/blog/watching-it-by-zabbix-1/power_system_icon_1x.jpg"
 draft = false
 weight = 65
 +++
 
-Zabbix 这个名字到底是怎么选的？
+其名和监控，大概能有个十万八千里的距离？
 <!--more-->
 
+## 简介
 
-135.252.182.76
+最近了解了一下系统综合监控的开源解决方案，尝试了其中一个看上去功能很均衡的产品 Zabbix。除了[维基百科](https://en.wikipedia.org/wiki/Zabbix)，还可以看下其创始人 Alexei Vladishev 的介绍
 
-./kvm-install-vm -n zabbix-server -c 2 -m 2048
+- [Zabbix: Free Software that helps](https://www.slideshare.net/xsbr/zabbix-by-alexei-vladishev-fisl12-2011)
+- [Open Source Enterprise Monitoring with Zabbix](https://web.archive.org/web/20120226220044/http://www.netways.de/uploads/media/Alexei_Vladishev_Open_Source_Monitoring_with_Zabbix.pdf)
 
-scp /etc/yum.repos.d/centos.repo centos@192.168.122.168:~
+关于其名字的由来，感觉是这样一个典型场景：想出一个名，一查已被注册，又想一个，一查又已被使用。然后胡乱编了现在这个名，网上一搜——果然完全没有人用——搜索记录为 0 ，于是就将其起名为 Zabbix
 
-ssh -lcentos 192.168.122.168
-sudo rm -f /etc/yum.repos.d/Cent*repo
-sudo mv ~/centos.repo .
+## 总体
 
-https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-centos-7
+记录一下我的搭建环境和基本过程：
 
-sudo yum install httpd
-sudo systemctl start httpd.service
-sudo systemctl enable httpd.service
+1. 创建一台虚拟机 S，安装并配置 Zabbix 核心服务器、数据库及网页前端
+2. 创建一台虚拟机 V，安装 LAMP 和 Zabbix 代理，收集其相关指标
+3. 创建一台虚拟机 D，安装 Docker 和 Zabbix 代理，收集 Docker 的相关指标
+4. 定义自有指标，调试并通过网页查看实时结果
 
-sudo yum install mariadb-server mariadb
-sudo systemctl start mariadb
-sudo mysql_secure_installation
-    root passwd mariadb
-    enter to choose default for rest question
+为了快速搭建，直接使用 CentOS 7 的 Generic Cloud 的 qcow2 的 image。借助 [giovtorres/kvm-install-vm](https://github.com/giovtorres/kvm-install-vm) ，公司内部搭建 Artifactory ，包含 CentOS Repository，将配置文件拷贝到各台机器上。基本 3 分钟之内就能创建好三台待用的虚拟机。
 
-sudo systemctl enable mariadb.service
+首先在虚拟机 S 和 V 上安装 LAMP，按照 Mitchell Anicas (2014-07-21) [How To Install Linux, Apache, MySQL, PHP (LAMP) stack On CentOS 7](https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-centos-7) 安装配置 Apache, MySQL (MariaDB) 和 PHP。
 
+> 记好 MariaDB 的 root 密码
 
-sudo yum install php php-mysql
-
-$ yum search php-                                                                        [3/1920]
-Loaded plugins: fastestmirror
-Determining fastest mirrors
-======================================================== N/S matched: php- ========================================================
-php-bcmath.x86_64 : A module for PHP applications for using the bcmath library
-php-cli.x86_64 : Command-line interface for PHP
-php-common.x86_64 : Common files for PHP
-php-dba.x86_64 : A database abstraction layer module for PHP applications
-php-devel.x86_64 : Files needed for building PHP extensions
-php-embedded.x86_64 : PHP library for embedding in applications
-php-enchant.x86_64 : Enchant spelling extension for PHP applications
-php-fpm.x86_64 : PHP FastCGI Process Manager
-php-gd.x86_64 : A module for PHP applications for using the gd graphics library
-php-intl.x86_64 : Internationalization extension for PHP applications
-php-ldap.x86_64 : A module for PHP applications that use LDAP
-php-mbstring.x86_64 : A module for PHP applications which need multi-byte string handling
-php-mysql.x86_64 : A module for PHP applications that use MySQL databases
-php-mysqlnd.x86_64 : A module for PHP applications that use MySQL databases
-php-odbc.x86_64 : A module for PHP applications that use ODBC databases
-php-pdo.x86_64 : A database access abstraction module for PHP applications
-php-pear.noarch : PHP Extension and Application Repository framework
-php-pecl-memcache.x86_64 : Extension to work with the Memcached caching daemon
-php-pgsql.x86_64 : A PostgreSQL database module for PHP
-php-process.x86_64 : Modules for PHP script using system process interfaces
-php-pspell.x86_64 : A module for PHP applications for using pspell interfaces
-php-recode.x86_64 : A module for PHP applications for using the recode library
-php-snmp.x86_64 : A module for PHP applications that query SNMP-managed devices
-php-soap.x86_64 : A module for PHP applications that use the SOAP protocol
-php-xml.x86_64 : A module for PHP applications which use XML
-php-xmlrpc.x86_64 : A module for PHP applications which use the XML-RPC protocol
+因为我使用了一台远程服务器做虚拟主机，而后续又有不少通过网页的配置，所以要在这些服务器上配置 vnc 服务。详情参见 Sadequl Hussain (2014-11-25) [How To Install and Configure VNC Remote Access for the GNOME Desktop on CentOS 7](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-vnc-remote-access-for-the-gnome-desktop-on-centos-7) 以及防火墙设置
 
 
-vncserver
-
-https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-vnc-remote-access-for-the-gnome-desktop-on-centos-7
 stop firewall enable vnc access
   https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-using-firewalld-on-centos-7
   sudo firewall-cmd --permanent --zone=public --add-service=vnc-server
