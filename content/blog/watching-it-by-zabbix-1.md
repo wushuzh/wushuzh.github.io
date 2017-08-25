@@ -4,7 +4,7 @@ title = "Zabbix 综合监控"
 showonlyimage = false
 image = "/img/blog/watching-it-by-zabbix-1/power_system_icon_1x.jpg"
 draft = false
-weight = 65
+weight = 71
 +++
 
 其名和监控，大概能有个十万八千里的距离？
@@ -17,7 +17,7 @@ weight = 65
 - [Zabbix: Free Software that helps](https://www.slideshare.net/xsbr/zabbix-by-alexei-vladishev-fisl12-2011)
 - [Open Source Enterprise Monitoring with Zabbix](https://web.archive.org/web/20120226220044/http://www.netways.de/uploads/media/Alexei_Vladishev_Open_Source_Monitoring_with_Zabbix.pdf)
 
-关于其名字的由来，感觉发生在这样一个场景：几位工程师终于完成了当天的编码任务，使得产品的核心功能已经很像那么回事了。大家觉得是时候考虑一下今后推广时该产品该叫个啥名了，然后头脑风暴式地开始了讨论。
+关于其名字的由来，推测应该是这样的：几位工程师终于完成了当天的编码任务，现在产品的核心功能已经很像那么回事了。大家都觉得应该利用茶歇的时间，考虑一下今后推广这个牛X产品时该如何称呼它，于是就开始了头脑风暴式的讨论。
 
 但没想到进入了这样一个尴尬的循环：想出一个名，一查已被注册，又想一个，一查又已被使用。好像是所有符合监控本身含义的酷名字都被用掉了。尝试了许久过后，终于大家的耐心被彻底击溃，然后开始像跟这个世界有过节似得胡乱编名字，最终找到了一个完全无意义的单词 Zabbix，而网上一搜——果然完全没有人用——连搜索引擎返回的记录数都为 0，完美，就这个了，碎觉……
 
@@ -121,9 +121,9 @@ $ sudo firewall-cmd --permanent --zone=public --add-service=vnc-server
 {{< /highlight >}}
 <br />
 
-### 安全访问
+### 安全秘钥通讯
 
-之后就是配置被监控节点，以虚拟机 V 为例，为了使得监控通信在安全的信道中完成，请安装教程中生成和配置 PSK 秘钥。
+之后就是配置被监控节点，以虚拟机 V 为例，为了使得监控通信在安全的信道中完成，请遵照教程中指令为这台虚拟机生成配置一个 PSK 秘钥。
 
 如果你在虚拟机 V 或 D 上面，启动 zabbix-agent 服务时遇到了之前在 虚拟机 S 上类似的错误，用和之前相同的方法解决。反正我试用了 centos 7 2017-08 的版本的 image ，这个和 SELinux 有关的问题仍然能复现。
 
@@ -141,7 +141,7 @@ cannot disable core dump, exiting...
 
 {{< /highlight >}}
 
-成功启动 zabbix-agent 后，就可以回到虚拟机 S 上添加这个被监控的主机了。配置 PSK 和 监控模板，查看产生的性能和告警。
+成功启动 zabbix-agent 后，就可以回到虚拟机 S 上利用网页添加这个被监控的主机了。记得使用 PSK 通信兵配置之前准备好的 PSK，最后添加监控模板，就可以在网页上查看产生的性能和告警。
 
 关于监控自定义的性能指标，再开一篇另作说明。
 
