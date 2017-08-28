@@ -137,6 +137,43 @@ https://anaconda-installer.readthedocs.io/en/latest/boot-options.html#inst-sshd
 
 ## 磁盘分析
 
+In anaconda.log:
+  16:10:46,510 ERR anaconda: storage configuration failed: Unable to allocate requested partition scheme.
+  16:10:52,831 INFO anaconda: fs space: 0 B  needed: 1748.15 MiB
+  16:10:52,850 ERR anaconda: Not enough space in file systems for the current software selection. An additional 1748.15 MiB is needed.
+
+=> This means that the it failed to allocate a partition.
+
+In storage.log:
+  16:10:46,446 DEBUG blivet: allocating partition: raid.18 ; id: 390 ; disks: [u'sdo'] ;
+  boot: False ; primary: False ; size: 314572800000 ; grow: False ; max_size: 0 B ; start: None ; end: None
+  16:10:46,447 DEBUG blivet: checking freespace on sdo
+  16:10:46,448 DEBUG blivet: current free range is 63-585871963 (286070)
+
+=> This means that it tried to allocate raid.18 with 314572800000 Bytes (=300000 MBytes) on the disk device /dev/sdo.
+   But, sdo has just 286070 MB free space. And, it could not allocate it on /dev/sdo.
+
+In parted.log:
+  Model: HP LOGICAL VOLUME (scsi)
+  Disk /dev/sdo: 300GB
+  Sector size (logical/physical): 512B/512B
+  Partition Table: unknown
+  Disk Flags:
+
+/dev/sdo has just 300GB. But, it's not possible to allocate all area for a partition, because the partitioning information and metadata of filesystem uses some area in it.
+
+I don't confirm the storage configuration in ks.cfg attached on this case, because the storage configuration is included with the following line.
+
+  %include /tmp/partitioning
+
+And, /tmp/partitioning is not given yet on this case.
+But, I guess that /dev/sdo is specified definitely for raid.18 in /tmp/partitioning, and the specified size is bigger than the free space of /dev/sdo, and it failed to allocate.
+
+Can you share /tmp/partitioning with us for confirmation?
+Please try to decrease the size of raid.18 in /tmp/partitioning and test the installation again.
+
+
+
 ## 如何提问
 
 ## 社区示例 ks 文件
