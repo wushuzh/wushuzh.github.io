@@ -13,7 +13,9 @@ weight = 45
 
 ## 问题上报
 
-之前 “[启动错误，咋整？]({{< relref "blog/deal-with-boot-failure.md" >}})”里提到的服务器终于要重装操作系统，之前听说大型服务器有重大变动，比如重启，重装，升级，搬移都最好要先看黄历、拜雍正(因为不喜欢**八阿哥**)、挑日子，因为容易出事。而这台很长时间不曾重装过的机器在安装时果然遇到了问题。所报问题如下：
+之前 “[启动错误，咋整？]({{< relref "blog/deal-with-boot-failure.md" >}})”里提到的服务器终于要被重装，之前听说服务器的重大变动，如重启，重装，升级，搬移都最好先看黄历、拜雍正(因为不喜欢**八阿哥**)，因为太容易出现意想不到的问题。
+
+而这台很长时间不曾重装过的机器在安装时果然遇到了问题。所报问题如下：
 
 {{< highlight console >}}
 Starting installer, one monent...
@@ -60,9 +62,11 @@ Please make your choice from above
 
 ## 问题分析
 
-目标操作系统是基于RHEL，但同时我们产品也做了安装选项的各种深度定制。而且为了达到部署的高效，我们借助 kickstart 将安装细节——尤其是分区挂接点的规划和磁盘冗余设置——封装起来。最终得到了一个极简的用来收集安装最基础信息的界面给最终用户的解决方案。
+安装的虽然是最常见的 RHEL，但我们也为产品做了安装中各种选项的深度优化和定制。
 
-上面看到的报错信息来自 [anancoda](https://github.com/rhinstaller/anaconda) 安装程序中的 TUI 安装界面 [python-simpleline](https://github.com/rhinstaller/python-simpleline)，隐约记得早先的文字安装界面就是直接使用 tmux (查看文档最新的 rhel7.4 仍然是[这样](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Installation_Guide/sect-consoles-logs-during-installation-x86.html))。我猜是后来 Redhat 工程团队为了让用户更易用或更便捷定制的目的，新开发这个 simpleline 。无论如何，tmux 和simpleline 效果上都创建了多个终端来分别记录不同类别的日志。比如上面报错就出现在了 1 号名为 **main** 的子页面。
+为让部署的简单高效，我们借助 kickstart 将安装细节——尤其是分区挂接点的规划和磁盘冗余设置——封装起来。最终只呈现一个仅用来收集安装最基础信息的极简界面给最终用户。
+
+上面看到的报错信息来自 [anancoda](https://github.com/rhinstaller/anaconda) 安装程序中的 TUI 安装界面 [python-simpleline](https://github.com/rhinstaller/python-simpleline)，隐约记得早先的文字安装界面就是直接使用 tmux (查看文档最新的 rhel7.4 仍然是[这样](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Installation_Guide/sect-consoles-logs-during-installation-x86.html))。应该是后来 Redhat 工程团队为了让用户更易用或更便捷定制的目的，新开发这个 simpleline 。无论如何，tmux 和simpleline 效果上都创建了多个终端来分别记录不同类别的日志。比如上面报错就出现在了 1 号名为 **main** 的子页面。
 
 而当出现报错时，用户可以按照界面的提示，按下 ```Alt + Tab``` (simpleline) 或 ```Ctrl + B then TTY# ```(tmux) 亦或 ```Ctrl + Alt + F<n> ```跳转到不同终端，查看各方面的日志，也可进入 shell 环境中做一些基本的调试和日志打包收集工作。
 
@@ -140,12 +144,12 @@ INFO anaconda: Running Thread: AnaInputThread1 (139679504647936)
 
 http://sg.danny.cz/scsi/lsscsi.html
 
-此系统内部2块 SATA 盘，6块 SSD 固态硬盘，并通过 4 个 P812 磁盘阵列控制器，外接了 4个 MSA 2040 存储，总计 48 块 SATA 盘。这么多外接磁盘，设计时需要兼顾为系统提供较高的可靠性和读写性能，我们采用了硬件 RAID 和 软件 RAID 结合的方式。
+此系统内部2块 SATA 盘，6块 SSD 固态硬盘，并通过 4 个 P812 磁盘阵列控制器，外接了 4个 MSA 2040 存储，总计 48 块 SATA 盘。这么多外接磁盘，设计时需要兼顾为系统提供较高的可靠性和读写性能，即 18 个逻辑分区采用硬件 RAID ，在其之上再用软 RAID 进行组合。
 
-<img alt="ext lds" src="/img/blog/deal-with-ks-failure/ext-lds.png" class="img-responsive">
+<img alt="ext lds" src="/img/blog/deal-with-ks-failure1/ext-lds.png" class="img-responsive">
 
-但这里的错误和这些外部磁盘关系应该不大。这里猜测是在安装操作系统的相关包时，上报没有足够空间，而这部分在 partition 的规划中是计划装在内部的 2 块 SATA 盘上。
+从日志上看，错误发生在估算操作系统的相关包后，发现没有足够空间，但这部分的 partition 规划是在服务器内置的 2 块 SATA 盘上。
 
-但从命令的输出来看，相关磁盘显然是有空间的。但不知为什么 anaconda 抛出这个错误。看到这，我准备开始找外援来帮忙查看这个问题了。下一篇我会详细复述一下我自己求助的过程。
+但从命令的输出来看，这两块盘总大小 300 GB，根分配了50 GB，就算把所有包都选中，做个完整安装也足够了。但不知为什么 anaconda 抛出这个错误。到这，我准备找外援来帮忙查看这个问题了。下一篇我会详细复述一下我自己求助的过程。
 
 封面图片来自 [Kickstart Car](https://dribbble.com/shots/2342802-Kickstart-Car) <a href="https://dribbble.com/KristianDuffy"><i class="fa fa-dribbble" aria-hidden="true"></i> Kristian Duffy</a>  
