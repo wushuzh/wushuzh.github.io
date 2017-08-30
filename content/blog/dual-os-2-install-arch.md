@@ -14,7 +14,7 @@ weight = 63
 
 {{< figure src="/img/blog/dual-os-2-install-linux/linux-flavour.jpg" title="Decision Tree" >}}
 
-上面的决策树送给犹豫不决的你。我为了促使自己不断地折腾，同时显得比较硬核，依然选择 Arch Linux。
+上面的决策树送给犹豫不决的你。为了促使自己不断地折腾，同时显得比较硬核，我依然选择 Arch Linux。
 
 ## 制作 U 盘
 

@@ -115,6 +115,8 @@ $ sudo pacman -S xorg-xinit
 $ sudo pacman -S base-devel
 {{< /highlight >}}
 
+> 刚安装好 Gnome 后，自带的 gnome-terminal 无法启动。但后来又好了，不清楚是不是和折腾了一下 UTF 还是安装了中文字体相关？反正现在已经正常启动，无法重现，具体原因待有缘后再查了
+
 ### 安装位于 AUR 的软件
 
 如果你想定制 GNOME 的桌面[主题，图标等](https://wiki.archlinux.org/index.php/GNOME#Appearance)，那其大部分安装包都被标识为 AUR。但是安装 AUR 软件是使用 Archlinux 尝鲜其他各种新软件的一个必备技能。一定要学会。(更为便捷的安装工具，比如```yaourt```官方都不正式支持)
