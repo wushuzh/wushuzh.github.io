@@ -4,7 +4,7 @@ title = "安装失败，咋整"
 showonlyimage = false
 image = "/img/blog/deal-with-ks-failure1/kickstart-car.png"
 topImage = "/img/blog/deal-with-ks-failure1/kickstart-car.gif"
-draft = true
+draft = false
 weight = 45
 +++
 
@@ -13,7 +13,7 @@ weight = 45
 
 ## 问题上报
 
-之前 “[启动错误，咋整？]({{< relref "blog/deal-with-boot-failure.md" >}})”里提到的服务器终于要被重装，之前听说服务器的重大变动，如重启，重装，升级，搬移都最好先看黄历、拜雍正(因为不喜欢**八阿哥**)，因为太容易出现意想不到的问题。
+之前 “[启动错误，咋整？]({{< relref "blog/deal-with-boot-failure.md" >}})”里提到的服务器终于要被重装，之前听说服务器的重大变动，如重启，重装，升级，搬移都最好先看黄历、拜雍正(很冷的**八阿哥**的梗)，因为太容易出现意想不到的问题。
 
 而这台很长时间不曾重装过的机器在安装时果然遇到了问题。所报问题如下：
 
@@ -140,16 +140,18 @@ INFO anaconda: Running Thread: AnaInputThread1 (139679504647936)
 
 ## 深入调查
 
-进入 2号虚拟终端 执行命令查看当前系统中磁盘情况：
-
-http://sg.danny.cz/scsi/lsscsi.html
-
 此系统内部2块 SATA 盘，6块 SSD 固态硬盘，并通过 4 个 P812 磁盘阵列控制器，外接了 4个 MSA 2040 存储，总计 48 块 SATA 盘。这么多外接磁盘，设计时需要兼顾为系统提供较高的可靠性和读写性能，即 18 个逻辑分区采用硬件 RAID ，在其之上再用软 RAID 进行组合。
 
 <img alt="ext lds" src="/img/blog/deal-with-ks-failure1/ext-lds.png" class="img-responsive">
 
-从日志上看，错误发生在估算操作系统的相关包后，发现没有足够空间，但这部分的 partition 规划是在服务器内置的 2 块 SATA 盘上。
+进入 2 号虚拟终端 执行```lsscsi -s```确认系统实际逻辑卷和和上述期待相符。关于 SG 更多使用说明，详见 Doug Gilbert (2016-7-4) [The Linux SCSI Generic (sg) Driver](http://sg.danny.cz/sg/index.html) 相关 lsscsi 的页面。
 
-但从命令的输出来看，这两块盘总大小 300 GB，根分配了50 GB，就算把所有包都选中，做个完整安装也足够了。但不知为什么 anaconda 抛出这个错误。到这，我准备找外援来帮忙查看这个问题了。下一篇我会详细复述一下我自己求助的过程。
+从日志上看，错误发生的阶段为，ks 安装程序 anaconda 在估算需要安装的 rpm 软件包后，发现没有足够空间？ 但这部分的 partition 规划是在服务器内置的 2 块 SATA 盘上。
+
+而且从命令的输出来看，这两块盘总大小 300 GB，根分配了 50 GB，就算把所有包都选中，做 10 个完整安装也足够了。但不知为什么抛出了现在这个错误。查看 ks 中对内外挂硬盘的 partition 定义——其内容达有 32 条指令之多。这些指令在指向相应磁盘时也都使用了块设备的唯一标识 uuid——感觉也很稳妥。
+
+关于 uuid 和 /dev 下对应关系，可以通过```blkid```及```lsblk```查看，参见Adrian Dinu (2014-11-23) [Linux blkid Command to Find Block Devices Details](https://linoxide.com/linux-command/linux-command-lsblk-blkid/)
+
+到这，我准备找外援来帮忙查看这个问题了。下一篇我会详细复述一下这个求助的过程。
 
 封面图片来自 [Kickstart Car](https://dribbble.com/shots/2342802-Kickstart-Car) <a href="https://dribbble.com/KristianDuffy"><i class="fa fa-dribbble" aria-hidden="true"></i> Kristian Duffy</a>  

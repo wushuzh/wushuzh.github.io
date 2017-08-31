@@ -3,7 +3,7 @@ date = "2017-08-07T19:18:15+08:00"
 title = "需要外援，咋整？"
 showonlyimage = false
 image = "/img/blog/deal-with-ks-failure2/q-encil.png"
-draft = true
+draft = false
 weight = 46
 +++
 
@@ -12,179 +12,158 @@ weight = 46
 
 ## 网上搜索
 
-没有和本文完全一致的错误，有几个相关的如下：
+首先利用好搜索引擎，寻找类似甚至一模一样的问题的已有解决方案。
+搜索范围包括但不限于 Google 搜索第一页所有链接，特别注意 StackExchange 旗下热门子站，如 Stack Overflow、Server Fault、Super User，Redhat Knowledgebase， HP Support forum ……
 
-有的处理建议比较简单……不相关
+比如 Redhat 知识库中标记为已解决的帖子
 
-有的建议是用磁盘 uuid SW RAID 分区配置，我们这边ks文件也是这么做的
+> - [Installation failed with "storage configuration failed: Unable to allocate requested partition scheme." in RHEL 7 with multipath device](https://access.redhat.com/solutions/1233263)
+> - [Installation failed with "storage configuration failed: Unable to allocate requested partition scheme." in RHEL7](https://access.redhat.com/solutions/1258933)
 
-！！！有可能是 anaconda 的问题，虽然是大厂出品，但仍不排除这个问题来自 anaconda 或 pyblivet
+其中解决方案是 a. 通过 uuid 制定磁盘、b. 显式重置磁盘元数据 ```clearpart --all --initlabel ```，这和我当下 ks 文件的做法一致。
+
+另外，从 [rhinstaller anaconda releases](https://github.com/rhinstaller/anaconda/releases) 上看，我使用的版本也并非最新版，我猜这个问题也存于安装程序的底层的块设备配置模块 [storaged-project/blivet](https://github.com/storaged-project/blivet)。
 
 ## 求援外部
 
-我决定让 RedHat 来帮助查看一下这个问题。大的方面来说，我们公司作为其付费订阅会员，有困难找他们咨询合情合理，RedHat 一般或是 anaconda 源码拥有者，或是其方案整合方，他们的视野和对技术理解的深度将能极大加速问题处理的进程。而对个人来说，这是一个非常重要的学习机会。
+RedHat 大部分产品开源，其商业模式主要来自对其产品的商业支持。你如果时它的付费订阅会员，是可以向其咨询问题，并索要技术支持的。RedHat 作为产品源码的拥有/维护者、或方案整合方，其视野和对技术理解的深度可以极大加速问题处理的进程。而对个人来说，这是一个非常重要的学习机会。
 
-首先，通读相关用户手册后，应该在 Google 或 Redhat 知识库中查找看这是不是已经被提出过，一个成熟软件的很多问题都源于用户对工具错误理解、不当配置或使用造成的。只有基本理解，并确认过没有相同或类似问题，或已经尝试了自己能力所及的各种调试后，才好咨询外部专家。
+提问前最好先通读用户手册，一个像 anaconda 这样高成熟度的软件(存在并被广泛数年)的多数问题都源于用户对工具错误理解和不当配置或使用。
+
+总之，应正确理解产品特性，同时确认过相同或类似问题的解决方案对当下情形无效，并自己尝试过所有能力所及的调试后，再咨询外部专家才是解决问题的最高效路径。
 
 然后，就是通过其问题上报系统，撰写问题描述，交互讨论问题。这部分做的好坏对问题处理的进度影响很大。比如，
 
-- 能否将自己的业务逻辑很好剥离，找出问题的核心？
-- 对与自身业务逻辑结合很密切的问题，如何才能最高效的帮外部专家理解当下的使用场景？
+- 能否将自己的业务逻辑很好剥离，简单直接的将问题的核心症状表述清楚？
 - 能否正确执行外部专家给你的调查步骤，并将结果做高效反馈？
 
-这还是在《聪明地提问》
+> 而我见到的对上报 bug 最好的建议来自 Simon Tatham (Putty作者) [How to Report Bugs Effectively](https://www.chiark.greenend.org.uk/~sgtatham/bugs.html) 这个文章有[中文翻译](https://www.chiark.greenend.org.uk/~sgtatham/bugs-cn.html)，建议打印一份放在贴在工位上，随时反复阅读。
+
+> 在更为宽泛的定下，对于如何提问的最好建议来自 Eric Steven Raymond 和 Rick Moen 的 [How To Ask Questions The Smart Way](http://www.catb.org/esr/faqs/smart-questions.html)，也有中文翻译：[ryanhanwu](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way) 和 [ZRONG](http://doc.zengrong.net/smart-questions/cn.html)
+
+这么大张旗鼓的引用了这些如何提问、提 bug 的建议，还是觉得这是技术工作者一个重要的基本素质。从结果看，凡是提问前做充分思考的同学，不但自身技术提高得快，同时也能得到其所在组织和同事的认可、肯定。
+
+## 日志收集
+
+有的同学遇到 OS 安装错误，习惯于直接拿出手机对着出错屏幕拍摄，但其实上篇 “[安装失败，咋整？]({{< relref "blog/deal-with-ks-failure1.md" >}})” 中已经提到用户可以通过进入各个预设的虚拟终端做相应的日志查看和命令执行的。
+
+比如当你撰写问题描述时不可避免的要收集服务器错误发生时已经产生的所有日志，按照 [What log files should I gather to troubleshoot a kickstart or manual installation issue with Anaconda?](https://access.redhat.com/solutions/20358) 的要求，你需要收集已有日志
+
+- /tmp/anaconda.log
+- /tmp/ifcfg.log
+- /tmp/program.log
+- /tmp/storage.log
+- /tmp/syslog
+- /tmp/yum.log
+
+执行指令产生更多的日志并打包:
+
+{{< highlight console >}}
+# dmesg &> /tmp/dmesg.log
+# fdisk -l &> /tmp/fdisk.log
+# parted -sl &> /tmp/parted.log
+# cat /proc/partitions &> /tmp/proc_part.log
+# multipath -ll &> /tmp/mpath.log
+# ls -lR /dev &> /tmp/dev.log
+# cat /proc/scsi/scsi &> /tmp/proc_scsi.log
+# tar cvf installation_logs.tar /tmp/*log*
+{{< /highlight >}}
+
+<br />
+
+## 日志回传
+
+除了上述在问题服务器 A 上逐条执行命令，最后打包的方式，还可以在其他服务器 B 上准备好一个 shell 脚本，包含所有需要执行的指令。这样只要服务器 A 配好网络，就可以将此脚本从服务器 B 上拷贝回来，执行生成日志后，在拷出到服务器 B 上。
+
+{{< highlight bash >}}
+#!/bin/bash
+# prepare this shell script named LogCapture on server B
+cd /tmp; mkdir cmd-outputs
+W() { local OutputFile=$(tr ' /' '_' <<<"$@"); $@ >cmd-outputs/$OutputFile; }
+[[ ! -f ks.cfg ]] && echo No /tmp/ks.cfg present >ks.cfg
+ls anaconda-tb-* &>/dev/null || kill -USR2 $(</var/run/anaconda.pid)
+W cat /mnt/sysimage/root/anaconda-ks.cfg
+W date
+W dmesg
+W dmidecode
+W lspci -vvnn
+W fdisk -cul
+W ls -lR /dev
+W dmsetup ls --tree
+W lvm pvs
+W lvm vgs
+W lvm lvs
+W cat /proc/partitions
+W mount
+W df -h
+W cat /proc/meminfo
+W cat /proc/cpuinfo
+W ps axf
+W lsof
+W ip -s li
+W ip a
+W ip r
+date=$(date +%F)
+tar cvjf install-logs-$date.tbz *log cmd-outputs anaconda-tb-* ks.cfg
+echo -e "\nFinished gathering data\nUpload /tmp/install-logs-$date.tbz to another system\n"
+{{< /highlight >}}
+
+查看当前你的服务器 A 是否已经获得了有效的网络地址，如果没有，你需要通过 dhcp 或是指令配置好服务器的 ip addr。然后通过 scp、rsync 将之前生成的日志回传。
+
+{{< highlight console >}}
+server A # dhclient -v eth0
+server A # ifconfig eth0 xx.xx.xx.xx/24 up
+server A # rsync -v User@Remote:LogCapture /tmp
+server A # bash /tmp/LogCapture
+server A # rsync -v /tmp/install-logs-*.tbz User@Remote:
+{{< /highlight >}}
+
+<br />
 
 
-之所以这么大张旗鼓的说了很多如何提问的建议，是觉得这是一个工程师非常重要的素质。从结果来看，凡是提问前做很多思考的同学，不但自身技术提高的快，而且也应该能得到其所在组织和同事的认可、肯定。
+> 关于网络设置，参见  
+> - [10 Useful “IP” Commands to Configure Network Interfaces](https://www.tecmint.com/ip-command-examples/)  
+> - [How to Change Your IP Address From the Command Line in Linux](https://www.howtogeek.com/118337/stupid-geek-tricks-change-your-ip-address-from-the-command-line-in-linux/)  
+> - [How To Execute Ping Command Only For N number of Packets](http://www.thegeekstuff.com/2009/11/how-to-execute-ping-command-only-for-n-number-of-packets/)
 
-## BIOS 中的错误
+另外，我发现 anaconda-installer 的文档中有更为高阶的操作，可以在服务器 A 上[启动一个 sshd 服务](https://anaconda-installer.readthedocs.io/en/latest/boot-options.html#inst-sshd)，这样只要网络调通，我们就可以远程连入做各种调试了。
 
-https://www.tecmint.com/ip-command-examples/
+## 专家分析
 
-https://www.howtogeek.com/118337/stupid-geek-tricks-change-your-ip-address-from-the-command-line-in-linux/
+最后答案揭晓，经过两位 Redhat 工程师的支持，最终发现了一块磁盘的大小设置过大的错误——一块 300 GB 的硬盘实际能使用的大小只有 286 GB。在 ```storage.log``` 中相关日志如下：
 
-http://www.thegeekstuff.com/2009/11/how-to-execute-ping-command-only-for-n-number-of-packets/?utm_source=feedburner&utm_medium=feed&utm_campaign=Feed%3A+TheGeekStuff+(The+Geek+Stuff)
+{{< highlight console >}}
+# ================= storage.log =================
 
-[root@nio120 ~]# df -h
-Filesystem      Size  Used Avail Use% Mounted on
-/dev/md0         51G  2.5G   46G   6% /
-tmpfs           127G     0  127G   0% /dev/shm
-/dev/md4        194G   60M  184G   1% /alcatel
-/dev/md6        2.7T   73M  2.6T   1% /alcatel/backup
-/dev/md5        550G   70M  522G   1% /alcatel/temp
-/dev/md1        488M   43M  421M  10% /boot
-/dev/md2         10G  114M  9.4G   2% /var
+DEBUG blivet: allocating partition: raid.18 ; id: 617 ;
+  disks: [u'sdo'] ;
+  boot: False ; primary: False ; size: 314572800000 ;
+  grow: False ; max_size: 0 B ; start: None ; end: None
+DEBUG blivet: checking freespace on sdo
+DEBUG blivet: getBestFreeSpaceRegion: disk=/dev/sdo
+  part_type=0 req_size=314572800000 boot=False
+  best=None grow=False start=None
+DEBUG blivet: checking 63-585871963 (286070)
+DEBUG blivet: current free range is 63-585871963 (286070)
+DEBUG blivet:
+  not enough free space for primary -- trying logical
 
+{{< /highlight >}}
 
-[root@nio120 ~]# lsblk
-NAME    MAJ:MIN RM   SIZE RO TYPE   MOUNTPOINT
-sr0      11:0    1  1024M  0 rom
-sda       8:0    0 279.4G  0 disk
-├─sda1    8:1    0  51.2G  0 part
-│ └─md0   9:0    0  51.2G  0 raid1  /
-├─sda2    8:2    0  20.5G  0 part
-│ └─md3   9:3    0  20.5G  0 raid1  [SWAP]
-├─sda3    8:3    0   512M  0 part
-│ └─md1   9:1    0   512M  0 raid1  /boot
-├─sda4    8:4    0     1K  0 part
-├─sda5    8:5    0  10.2G  0 part
-│ └─md2   9:2    0  10.2G  0 raid1  /var
-└─sda6    8:6    0   197G  0 part
-  └─md4   9:4    0 196.8G  0 raid1  /alcatel
-sdb       8:16   0 279.4G  0 disk
-├─sdb1    8:17   0  51.2G  0 part
-│ └─md0   9:0    0  51.2G  0 raid1  /
-├─sdb2    8:18   0  20.5G  0 part
-│ └─md3   9:3    0  20.5G  0 raid1  [SWAP]
-├─sdb3    8:19   0   512M  0 part
-│ └─md1   9:1    0   512M  0 raid1  /boot
-├─sdb4    8:20   0     1K  0 part
-├─sdb5    8:21   0  10.2G  0 part
-│ └─md2   9:2    0  10.2G  0 raid1  /var
-└─sdb6    8:22   0   197G  0 part
-  └─md4   9:4    0 196.8G  0 raid1  /alcatel
-sdd       8:48   0 558.7G  0 disk
-└─sdd1    8:49   0 558.7G  0 part
-  └─md6   9:6    0   2.7T  0 raid0  /alcatel/backup
-sdc       8:32   0 335.3G  0 disk
-└─sdc1    8:33   0 335.3G  0 part
-sde       8:64   0 279.4G  0 disk
-└─sde1    8:65   0 279.4G  0 part
-sdf       8:80   0 838.1G  0 disk
-└─sdf1    8:81   0 838.1G  0 part
-sdg       8:96   0 279.4G  0 disk
-└─sdg1    8:97   0 279.4G  0 part
-  └─md5   9:5    0 558.5G  0 raid10 /alcatel/temp
-sdh       8:112  0 558.7G  0 disk
-└─sdh1    8:113  0 558.7G  0 part
-  └─md6   9:6    0   2.7T  0 raid0  /alcatel/backup
-sdj       8:144  0 838.1G  0 disk
-└─sdj1    8:145  0 838.1G  0 part
-sdi       8:128  0 279.4G  0 disk
-└─sdi1    8:129  0 279.4G  0 part
-sdl       8:176  0 558.7G  0 disk
-└─sdl1    8:177  0 558.7G  0 part
-  └─md6   9:6    0   2.7T  0 raid0  /alcatel/backup
-sdm       8:192  0 279.4G  0 disk
-└─sdm1    8:193  0 279.4G  0 part
-sdk       8:160  0 279.4G  0 disk
-└─sdk1    8:161  0 279.4G  0 part
-  └─md5   9:5    0 558.5G  0 raid10 /alcatel/temp
-sdp       8:240  0   1.1T  0 disk
-└─sdp1    8:241  0   1.1T  0 part
-  └─md6   9:6    0   2.7T  0 raid0  /alcatel/backup
-sdn       8:208  0 838.1G  0 disk
-└─sdn1    8:209  0 838.1G  0 part
-sdo       8:224  0 279.4G  0 disk
-└─sdo1    8:225  0 279.4G  0 part
-  └─md5   9:5    0 558.5G  0 raid10 /alcatel/temp
-sds      65:32   0 558.9G  0 disk
-└─sds1   65:33   0 558.9G  0 part
-  └─md5   9:5    0 558.5G  0 raid10 /alcatel/temp
-sdr      65:16   0   1.7T  0 disk
-└─sdr1   65:17   0   1.7T  0 part
-sdq      65:0    0 558.9G  0 disk
-└─sdq1   65:1    0 558.9G  0 part
+这几行报错信息离最终爆出的磁盘不够的错误信息都在 storage.log 中，但之间相差了大概 2000 行日志，这也就是这个问题一开始我没能准确定位错误的原因。遇到存储相关的问题还是要细读 storage 日志，并考虑用下面的指令过滤出相关行做逐一分析是这次分析获得宝贵经验。
 
+{{< highlight console >}}
+# grep -e "allocatePartitions" -e "allocating partition" \
+  -e "checking freespace" -e "new free" \
+  -e "current free range is" -e max_size \
+  storage.log
+{{< /highlight >}}
 
+### 参考文档
 
-## 回传日志以及 sshd
-
-collect log
-https://access.redhat.com/solutions/20358
-
-https://anaconda-installer.readthedocs.io/en/latest/boot-options.html#inst-sshd
-
-## 磁盘分析
-
-In anaconda.log:
-  16:10:46,510 ERR anaconda: storage configuration failed: Unable to allocate requested partition scheme.
-  16:10:52,831 INFO anaconda: fs space: 0 B  needed: 1748.15 MiB
-  16:10:52,850 ERR anaconda: Not enough space in file systems for the current software selection. An additional 1748.15 MiB is needed.
-
-=> This means that the it failed to allocate a partition.
-
-In storage.log:
-  16:10:46,446 DEBUG blivet: allocating partition: raid.18 ; id: 390 ; disks: [u'sdo'] ;
-  boot: False ; primary: False ; size: 314572800000 ; grow: False ; max_size: 0 B ; start: None ; end: None
-  16:10:46,447 DEBUG blivet: checking freespace on sdo
-  16:10:46,448 DEBUG blivet: current free range is 63-585871963 (286070)
-
-=> This means that it tried to allocate raid.18 with 314572800000 Bytes (=300000 MBytes) on the disk device /dev/sdo.
-   But, sdo has just 286070 MB free space. And, it could not allocate it on /dev/sdo.
-
-In parted.log:
-  Model: HP LOGICAL VOLUME (scsi)
-  Disk /dev/sdo: 300GB
-  Sector size (logical/physical): 512B/512B
-  Partition Table: unknown
-  Disk Flags:
-
-/dev/sdo has just 300GB. But, it's not possible to allocate all area for a partition, because the partitioning information and metadata of filesystem uses some area in it.
-
-I don't confirm the storage configuration in ks.cfg attached on this case, because the storage configuration is included with the following line.
-
-  %include /tmp/partitioning
-
-And, /tmp/partitioning is not given yet on this case.
-But, I guess that /dev/sdo is specified definitely for raid.18 in /tmp/partitioning, and the specified size is bigger than the free space of /dev/sdo, and it failed to allocate.
-
-Can you share /tmp/partitioning with us for confirmation?
-Please try to decrease the size of raid.18 in /tmp/partitioning and test the installation again.
-
-
-
-## 如何提问
-
-## 社区示例 ks 文件
-https://github.com/CentOS/Community-Kickstarts
-
-https://serverfault.com/questions/391439/how-can-i-troubleshoot-a-failing-linux-kickstart-installation
-
-https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Installation_Guide/sect-simple-install-kickstart.html
-
-https://access.redhat.com/solutions/1233263
-https://access.redhat.com/solutions/1258933
-
+> - [Anaconda src intro](https://fedoraproject.org/wiki/Anaconda/SourceOverview) 对 anaconda 安装程序内部模块的简介
+> - [Fedora Blivet](https://fedoraproject.org/wiki/Blivet) 为啥选 Blivet aka 魔鬼叉子 这么彪悍的名字
+> - [Community-Kickstarts](https://github.com/CentOS/Community-Kickstarts) 有一些可供参考的 ks 配置文件
+> - [AUTOMATIC INSTALLATION with Kickstart file](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Installation_Guide/sect-simple-install-kickstart.html) 介绍了如何将一个 ks 文件加入安装介质的步骤
 
 封面图片来自 [?encil](https://dribbble.com/shots/461456--encil) <a href="https://dribbble.com/kyotux"><i class="fa fa-dribbble" aria-hidden="true"></i> Asher</a>
