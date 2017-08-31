@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 # This script allows you to easily and quickly generate and deploy your website
 # using Hugo to your personal GitHub Pages repository. This script requires a
 # certain configuration, run the `setup.sh` script to configure this. See
