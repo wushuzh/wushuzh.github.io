@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Zabbix 综合监控</title>
+<meta name="description" content="个人技术站点">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.theme.css">
+
+
+  <link href="https://wushuzh.github.io/css/style.sea.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://wushuzh.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-102509506-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="/">小强会武术</a></h1>
+    
+      <p class="sidebar-p">工程师</p>
+    
+      <p class="sidebar-p">记录每一个自己填平的坑</p>
+    
+    <ul class="sidebar-menu">
+      
+      
+        <li><a href="https://wushuzh.github.io/">Home</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  
+  
+  <a href="https://twitter.com/Xiao_Qiang" data-animate-hover="pulse" class="external twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  
+  
+  
+  <a href="mailto:wushuzh@outlook.com" data-animate-hover="pulse" class="email">
+    <i class="fa fa-envelope"></i>
+  </a>
+  
+  
+  
+  
+
+  
+  <a href="https://wushuzh.github.io/index.xml" data-animate-hover="pulse">
+    <i class='fa fa-rss'></i>
+  </a>
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2017 wushuzh
+        
+        | Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="/">小强会武术</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="content-column-content">
+
+      <div class="row">
+        <div class="col-sm-6">
+          
+            <div class="image">
+              <img src="https://wushuzh.github.io//img/blog/watching-it-by-zabbix-1/power_system_icon_1x.jpg" class="img-responsive" alt="">
+            </div>
+          
+        </div>
+        <div class="col-md-6">
+            <h2>Zabbix 综合监控</h2>
+                <p>
+                  小强会武术
+                </p>
+
+                <time datetime="2017-08-18 20:51:17 &#43;0800 CST">
+                <i class="fa fa-calendar-o fa-fw"></i> 2017-08-18
+                </time>
+                &middot;
+                1759 字
+                &middot;
+                4 分钟
+
+        </div>
+      </div>
+      <br />
+
+         <p>其名和监控，大概能有个十万八千里的距离？
+</p>
+
+<h2 id="简介">简介</h2>
+
+<p>最近学习了一些综合监控的开源解决方案，并尝试了其中一个功能比较均衡的产品 Zabbix。除了<a href="https://en.wikipedia.org/wiki/Zabbix">维基百科</a>，还可以看下其创始人 Alexei Vladishev 的介绍</p>
+
+<ul>
+<li><a href="https://www.slideshare.net/xsbr/zabbix-by-alexei-vladishev-fisl12-2011">Zabbix: Free Software that helps</a></li>
+<li><a href="https://web.archive.org/web/20120226220044/http://www.netways.de/uploads/media/Alexei_Vladishev_Open_Source_Monitoring_with_Zabbix.pdf">Open Source Enterprise Monitoring with Zabbix</a></li>
+</ul>
+
+<p>关于其名字的由来，推测应该是这样的：几位工程师终于完成了当天的编码任务，现在产品的核心功能已经很像那么回事了。大家都觉得应该利用茶歇的时间，考虑一下今后推广这个牛X产品时该如何称呼它，于是就开始了头脑风暴式的讨论。</p>
+
+<p>但没想到进入了这样一个尴尬的循环：想出一个名，一查已被注册，又想一个，一查又已被使用。好像是所有符合监控本身含义的酷名字都被用掉了。尝试了许久过后，终于大家的耐心被彻底击溃，然后开始像跟这个世界有过节似得胡乱编名字，最终找到了一个完全无意义的单词 Zabbix，而网上一搜——果然完全没有人用——连搜索引擎返回的记录数都为 0，完美，就这个了，碎觉……</p>
+
+<h2 id="总体">总体</h2>
+
+<p>记录一下我的搭建环境和基本过程：</p>
+
+<ol>
+<li>创建一台虚拟机 S，安装配置 LAMP、Zabbix 核心服务器及其前端</li>
+<li>创建一台虚拟机 V，安装 LAMP 和 Zabbix 代理，目标是收集其服务器上的相关指标</li>
+<li>创建一台虚拟机 D，安装 Docker 和 Zabbix 代理，和 V 相比，这里还要外加收集此服务器上运行容器的耗费的系统资源指标</li>
+<li>定义一些自有指标，调试并通过网页查看实时结果</li>
+</ol>
+
+<blockquote>
+<p>搭建的具体步骤，参见 Vadym Kalsin (2016-11-09) <a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-zabbix-to-securely-monitor-remote-servers-on-centos-7">How To Install and Configure Zabbix to Securely Monitor Remote Servers on CentOS 7</a></p>
+
+<p>因为 Vadym Kalsin 将安装配置写得非常细致和完善，后面只记录我在自己的环境下特定的操作配置和踩到的坑。</p>
+</blockquote>
+
+<h3 id="追加操作">追加操作</h3>
+
+<p>为了快速搭建，直接使用 CentOS 7 的 Generic Cloud 的 qcow2 的 image。借助 <a href="https://github.com/giovtorres/kvm-install-vm">giovtorres/kvm-install-vm</a> 脚本，配好 Artifactory CentOS 的 Repository。基本 3 - 5 分钟内就能建好三台待用的虚拟机。</p>
+
+<p>在虚拟机 S 和 V 上安装 LAMP，比较简答——按照 Mitchell Anicas (2014-07-21) <a href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-centos-7">How To Install Linux, Apache, MySQL, PHP (LAMP) stack On CentOS 7</a> 安装配置 Apache, MySQL (MariaDB) 和 PHP 即可。</p>
+
+<blockquote>
+<p>记好 MariaDB 的 root 密码，后面为 Zabbix 初始化数据库时要用到</p>
+</blockquote>
+
+<h3 id="踩到的坑">踩到的坑</h3>
+
+<p>配置 Zabbix 服务器的过程主要涉及两方面：</p>
+
+<ul>
+<li>数据库的创建，专属用户，初始化表结构导入，同时更新 zabbix_server.conf 告知 DB 密码</li>
+<li>PHP 服务端则需要配置时区</li>
+</ul>
+
+<p>但之后你试图启动 zabbix-server 的时候却有可能碰到下面的错误。</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>$ systemctl status zabbix-server
+  Job for zabbix-server.service failed
+    because a configured resource limit was exceeded.
+  See &quot;systemctl status zabbix-server.service&quot;
+    and &quot;journalctl -xe&quot; for details.
+
+# /var/log/zabbix/zabbix_server.log
+Starting Zabbix Server. Zabbix 3.0.10 (revision 70208).
+****** Enabled features ******
+SNMP monitoring:           YES
+IPMI monitoring:           YES
+Web monitoring:            YES
+VMware monitoring:         YES
+SMTP authentication:       YES
+Jabber notifications:      YES
+Ez Texting notifications:  YES
+ODBC:                      YES
+SSH2 support:              YES
+IPv6 support:              YES
+TLS support:               YES
+******************************
+using configuration file: /etc/zabbix/zabbix_server.conf
+cannot set resource limit: [13] Permission denied
+cannot disable core dump, exiting...
+</pre></div>
+
+
+<p>此问题是由于系统 coredump 设置，SELinux 相关策略以及 Zabbix 启动检测的冲突引起。欲知详情，配合 Zabbix 的 JIRA <a href="https://support.zabbix.com/browse/ZBX-10542">zabbix-server can not start on rhel 7.1</a> 和 <a href="https://www.digitalocean.com/community/tutorial_series/an-introduction-to-selinux-on-centos-7">An Introduction to SELinux on CentOS 7</a> 可做深入解读。</p>
+
+<p>粗暴的解决方法可以禁掉 SELinux ，但这么做毕竟不专业，所以至少先安装了 setroubleshoot 并启动相应服务：</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>sudo yum install setroubleshoot
+sudo systemctl restart auditd.service
+  # <span style="color: #f92672">=====================================================</span>
+  # <span style="color: #66d9ef">if</span> you found error when start auditd
+  #   Failed to restart auditd.service: Operation refused,
+  #       unit auditd.service may be requested by dependency only.
+  #   See system logs and
+  #       <span style="color: #e6db74">&#39;systemctl status auditd.service&#39;</span> <span style="color: #66d9ef">for</span> details.
+  # <span style="color: #66d9ef">then</span> execute following instead
+  #   <span style="color: #e6db74">&#39;sudo service auditd restart&#39;</span>
+  # check more details on
+  #    https://access.redhat.com/solutions/2664811
+  # <span style="color: #f92672">=====================================================</span>
+</pre></div>
+
+
+<p>然后根据<code>/var/log/messsage</code>中的提示为本地创建例外规则，放行我们可预期的服务。
+操作参见:</p>
+
+<ul>
+<li><a href="https://www.server-world.info/en/note?os=CentOS_7&amp;p=selinux&amp;f=8">SELinux : Use SETroubleShoot</a></li>
+<li><a href="http://cn.linux.vbird.org/linux_server/0210network-secure_4.php">鸟哥的 Linux 私房菜 第七章、网络安全与主机基本防护：限制端口, 网络升级与 SELinux</a></li>
+<li><a href="https://bugzilla.redhat.com/show_bug.cgi?id=1323518">Red Hat bugzilla 1323818 Zabbix agent fails to start due to being unable to disable coredumps</a></li>
+<li><a href="https://bugzilla.redhat.com/show_bug.cgi?id=1393332">Red Hat bugzilla 1393332 unable to start zabbix agent after upgrade to RHEL 7.3</a></li>
+</ul>
+
+<h3 id="访问vm网络">访问VM网络</h3>
+
+<p>成功启动了 Zabbix 和 httpd 服务，你需要打开浏览器，指向 Zabbix 服务所在虚拟机的地址<code>http://your_zabbix_server_ip_addr/zabbix/</code>，做 Zabbix 的首次启动配置(这次用到了 MariaDB 的 Zabbix 用户的密码)。</p>
+
+<p>而因为我使用一台性能强劲一些的远程服务器(而非自己的笔记本)做虚拟机的宿主服务器，而后续可能有一些需要访问启动在虚拟机上的网页来实现 Zabbix 配置，所以提前在宿主服务器上配置好 vnc 服务及防火墙。</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>$ sudo yum install tigervnc-server
+$ sudo firewall-cmd --get-services
+$ sudo firewall-cmd --permanent --zone<span style="color: #f92672">=</span>public --add-service<span style="color: #f92672">=</span>vnc-server
+</pre></div>
+
+<br /></p>
+
+<h3 id="安全秘钥通讯">安全秘钥通讯</h3>
+
+<p>之后就是配置被监控节点，以虚拟机 V 为例，为了使得监控通信在安全的信道中完成，请遵照教程中指令为这台虚拟机生成配置一个 PSK 秘钥。</p>
+
+<p>如果你在虚拟机 V 或 D 上面，启动 zabbix-agent 服务时遇到了之前在 虚拟机 S 上类似的错误，用和之前相同的方法解决。反正我试用了 centos 7 2017-08 的版本的 image ，这个和 SELinux 有关的问题仍然能复现。</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span># /var/log/zabbix/zabbix_agentd.log
+Starting Zabbix Agent [Zabbix server]. Zabbix 3.0.10 (revision 70208).
+**** Enabled features ****
+IPv6 support:          YES
+TLS support:           YES
+**************************
+using configuration file: /etc/zabbix/zabbix_agentd.conf
+cannot set resource limit: [13] Permission denied
+cannot disable core dump, exiting...
+</pre></div>
+
+
+<p>成功启动 zabbix-agent 后，就可以回到虚拟机 S 上利用网页添加这个被监控的主机了。记得使用 PSK 通信兵配置之前准备好的 PSK，最后添加监控模板，就可以在网页上查看产生的性能和告警。</p>
+
+<p>关于监控自定义的性能指标，再开一篇另作说明。</p>
+
+<p>参考文档</p>
+
+<blockquote>
+<ul>
+<li>Sadequl Hussain (2014-11-25) <a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-vnc-remote-access-for-the-gnome-desktop-on-centos-7">How To Install and Configure VNC Remote Access for the GNOME Desktop on CentOS 7</a></li>
+<li>Justin Ellingwood (2015-06-18) <a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-using-firewalld-on-centos-7">How To Set Up a Firewall Using FirewallD on CentOS 7</a></li>
+</ul>
+</blockquote>
+
+<p>封面图片来自 <a href="https://dribbble.com/shots/1044323-Energy-System-Icon-02">Energy System Icon 02</a> <a href="https://dribbble.com/Kingyo"><i class="fa fa-dribbble" aria-hidden="true"></i> Kingyo</a></p>
+         <div id="disqus_thread">
+  <a href="#" onclick="disqus();return false;">enable VPN and click here to <i class="fa fa-comments" aria-hidden="true"></i></a>
+</div>
+
+<script type="text/javascript">
+var disqus_loaded = false;
+function disqus() {
+  if (!disqus_loaded) {
+    
+    
+    
+    
+
+    disqus_loaded = true;
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'wushuzh';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }
+};
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </div>
+  </div>
+</div>
+<noscript>
+  <style>.jsonly { display: none }</style>
+</noscript>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://wushuzh.github.io/js/jquery.min.js"></script>
+<script src="https://wushuzh.github.io/js/bootstrap.min.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.cookie.js"> </script>
+<script src="https://wushuzh.github.io/js/ekko-lightbox.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://wushuzh.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/owl.carousel.min.js"></script>
+<script src="https://wushuzh.github.io/js/front.js"></script>
+
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</body>
+</html>

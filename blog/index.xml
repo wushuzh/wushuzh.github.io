@@ -133,6 +133,26 @@
     </item>
     
     <item>
+      <title>安装失败，咋整</title>
+      <link>https://wushuzh.github.io/blog/2017/08/01/deal-with-ks-failure1/</link>
+      <pubDate>Tue, 01 Aug 2017 19:12:33 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/08/01/deal-with-ks-failure1/</guid>
+      <description>&lt;p&gt;如何调查 RedHat 上失败的 Kickstart 安装？
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>需要外援，咋整？</title>
+      <link>https://wushuzh.github.io/blog/2017/08/07/deal-with-ks-failure2/</link>
+      <pubDate>Mon, 07 Aug 2017 19:18:15 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/08/07/deal-with-ks-failure2/</guid>
+      <description>&lt;p&gt;在搞不定而向他人求援时，该做些什么？
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>搭建容器的专属系统</title>
       <link>https://wushuzh.github.io/blog/2017/07/06/setup-a-container-host-env/</link>
       <pubDate>Thu, 06 Jul 2017 09:28:56 +0800</pubDate>
@@ -169,6 +189,36 @@
       
       <guid>https://wushuzh.github.io/blog/2017/08/15/dual-os-3-setup-arch/</guid>
       <description>&lt;p&gt;从 0 到 1 设定 Archlinux 桌面环境
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Archlinux 中文</title>
+      <link>https://wushuzh.github.io/blog/2017/08/29/dual-os-4-setup-arch/</link>
+      <pubDate>Tue, 29 Aug 2017 22:07:31 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/08/29/dual-os-4-setup-arch/</guid>
+      <description>&lt;p&gt;重点是在 Archlinux Gnome 中显示和输入中文
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>装配实时仪表盘</title>
+      <link>https://wushuzh.github.io/blog/2017/08/23/viewing-it-by-grafana-2/</link>
+      <pubDate>Wed, 23 Aug 2017 21:00:32 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/08/23/viewing-it-by-grafana-2/</guid>
+      <description>&lt;p&gt;狂拽酷炫的 Grafana 前端仪表盘
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Zabbix 综合监控</title>
+      <link>https://wushuzh.github.io/blog/2017/08/18/watching-it-by-zabbix-1/</link>
+      <pubDate>Fri, 18 Aug 2017 20:51:17 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/08/18/watching-it-by-zabbix-1/</guid>
+      <description>&lt;p&gt;其名和监控，大概能有个十万八千里的距离？
 &lt;/p&gt;</description>
     </item>
     

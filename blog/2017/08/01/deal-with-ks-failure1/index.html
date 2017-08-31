@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>安装失败，咋整</title>
+<meta name="description" content="个人技术站点">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.theme.css">
+
+
+  <link href="https://wushuzh.github.io/css/style.sea.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://wushuzh.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-102509506-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="/">小强会武术</a></h1>
+    
+      <p class="sidebar-p">工程师</p>
+    
+      <p class="sidebar-p">记录每一个自己填平的坑</p>
+    
+    <ul class="sidebar-menu">
+      
+      
+        <li><a href="https://wushuzh.github.io/">Home</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  
+  
+  <a href="https://twitter.com/Xiao_Qiang" data-animate-hover="pulse" class="external twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  
+  
+  
+  <a href="mailto:wushuzh@outlook.com" data-animate-hover="pulse" class="email">
+    <i class="fa fa-envelope"></i>
+  </a>
+  
+  
+  
+  
+
+  
+  <a href="https://wushuzh.github.io/index.xml" data-animate-hover="pulse">
+    <i class='fa fa-rss'></i>
+  </a>
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2017 wushuzh
+        
+        | Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="/">小强会武术</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="content-column-content">
+
+      <div class="row">
+        <div class="col-sm-6">
+          
+            <div class="image">
+              <img src="https://wushuzh.github.io//img/blog/deal-with-ks-failure1/kickstart-car.gif" class="img-responsive" alt="">
+            </div>
+          
+        </div>
+        <div class="col-md-6">
+            <h2>安装失败，咋整</h2>
+                <p>
+                  小强会武术
+                </p>
+
+                <time datetime="2017-08-01 19:12:33 &#43;0800 CST">
+                <i class="fa fa-calendar-o fa-fw"></i> 2017-08-01
+                </time>
+                &middot;
+                1752 字
+                &middot;
+                4 分钟
+
+        </div>
+      </div>
+      <br />
+
+         <p>如何调查 RedHat 上失败的 Kickstart 安装？
+</p>
+
+<h2 id="问题上报">问题上报</h2>
+
+<p>之前 “<a href="/blog/2017/07/19/deal-with-boot-failure/">启动错误，咋整？</a>”里提到的服务器终于要被重装，之前听说服务器的重大变动，如重启，重装，升级，搬移都最好先看黄历、拜雍正(很冷的<strong>八阿哥</strong>的梗)，因为太容易出现意想不到的问题。</p>
+
+<p>而这台很长时间不曾重装过的机器在安装时果然遇到了问题。所报问题如下：</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>Starting installer, one monent...
+anaconda 21.40.22.93-1 for Red Hat Enterprise Linux 7.3 started.
+* installation iog files are stored in /tmp during the installation
+* shell is available on TTY2
+* when reporting a bug add logs from /tmp
+      as separate text/plain attachments
+91:51:09 Running pre-installation scripts
+99:56:44 Not asking for VNC because of an automated install
+99:56:44 Not asking for VNC because text mode was explicitly asked
+             for in kickstart
+99:56:44 Not asking for VNC because we don&#39;t have a network
+Starting automated install............
+Checking software selection
+Generating updated storage configuration
+storage configuration failed:
+    Unable to allocate requested partition scheme.
+=================================================================
+=================================================================
+Installation
+
+1) [x] Language settings         2) [x] Time settings
+       (English (United States))        (Asia/Shanghai timezone)
+3) Lx] Installation source       4) [x] Software selection
+       (Local media)                    (Custom software selected)
+5) [!] Installation Destination  6) [x] Xdump
+       (No disks selected)              (Kdump is enabled)
+7) [ ] Network configuration     8) [ ] User creation
+       (Not connected)                  (No user will be created)
+Not enough space in file systems for the current software selection.
+    An additional 1793.04 NiB is needed.
+Enter &#39;b&#39; to ignore the warning and attempt to install anyway.
+Please make your choice from above
+[&#39;q&#39; to quit | &#39;b&#39; to begin installation | &#39;r&#39; to refresh]:
+
+
+[anaconda] 1:main* 2:shell 3:log 4:storage-log 5:program-log   
+                                   Switch tab: Alt+Tab | Help: F1
+</pre></div>
+
+
+<p><br /></p>
+
+<h2 id="问题分析">问题分析</h2>
+
+<p>安装的虽然是最常见的 RHEL，但我们也为产品做了安装中各种选项的深度优化和定制。</p>
+
+<p>为让部署的简单高效，我们借助 kickstart 将安装细节——尤其是分区挂接点的规划和磁盘冗余设置——封装起来。最终只呈现一个仅用来收集安装最基础信息的极简界面给最终用户。</p>
+
+<p>上面看到的报错信息来自 <a href="https://github.com/rhinstaller/anaconda">anancoda</a> 安装程序中的 TUI 安装界面 <a href="https://github.com/rhinstaller/python-simpleline">python-simpleline</a>，隐约记得早先的文字安装界面就是直接使用 tmux (查看文档最新的 rhel7.4 仍然是<a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Installation_Guide/sect-consoles-logs-during-installation-x86.html">这样</a>)。应该是后来 Redhat 工程团队为了让用户更易用或更便捷定制的目的，新开发这个 simpleline 。无论如何，tmux 和simpleline 效果上都创建了多个终端来分别记录不同类别的日志。比如上面报错就出现在了 1 号名为 <strong>main</strong> 的子页面。</p>
+
+<p>而当出现报错时，用户可以按照界面的提示，按下 <code>Alt + Tab</code> (simpleline) 或 <code>Ctrl + B then TTY#</code>(tmux) 亦或 <code>Ctrl + Alt + F&lt;n&gt;</code>跳转到不同终端，查看各方面的日志，也可进入 shell 环境中做一些基本的调试和日志打包收集工作。</p>
+
+<ul>
+<li>1 号：安装主窗口</li>
+<li>2 号：进入一个拥有 root 权限的可以执行有限命令的 shell</li>
+<li>3 号：显示安装日志，其内容也存储在 /tmp/anaconda.log</li>
+<li>4 号：显示存储日志，其内容也存储在 /tmp/storage.log</li>
+<li>5 号：显示其他日志，其内容也存储在 /tmp/program.log</li>
+</ul>
+
+<p>比如4号虚拟终端中，存储相关的报错信息为：</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>INFO anaconda: Parsing kickstart : /run/install/ks.cfg
+DEBUG anaconda: scripts found for locale en_US.UTF-8: [&#39;Latn&#39;]
+DEBUG anaconda: console fonts found for locale en_US.UTF-8: [&#39;lat...
+DEBUG anaconda: setting console font to latarcyrheb-sunl6
+DEBUG anaconda: console font set successfullj to latarcyrheb-sunl6
+DEBUG anaconda: setting locale to: en_US.UTF-8
+DEBUG anaconda: network: devices found [&#39;eth0&#39;, &#39;eth1&#39;, &#39;eth...
+DEBUG anaconda: network: ifcfg file for eth0 not found
+DEBUG anaconda: network: pre kickstart - adding connection for eth0
+DEBUG anaconda: network: kickstart pre section applied for dev ...
+DEBUG anaconda: network: ifcfg file for ethl not found
+DEBUG anaconda: network: ifcfg file for eth2 not found
+DEBUG anaconda: network: ifcfg file for eth3 not found
+DEBUG anaconda: network: missing ifcfgs created for devices [&#39;eth1&#39;...
+DEBUG anaconda: network: setting ONBOOT value of eth0 to True
+DEBUG anaconda: network: real kickstart ONBOOT value set for dev ...
+INFO anaconda: Running Thread: Anat4aitForConnectingNMThread ...
+WARN anaconda.stdout: Not asking for VNC because of an automated ...
+WARN anaconda.stdout: Not asking for VNC because text mode was ...
+WARN anaconda.stdout: Not asking for VNC because we don&#39;t have ...
+INFO anaconda: Thread Done: AnaWaitForConnectingNMThread ...
+INFO anaconda: Display mode = t
+INFO anaconda: 264241152 kB (258040 MB) are available
+INFO anaconda: check_memory(): total:250040, needed:320, graphical:410
+INFO anaconda: Red Hat Enterprise Linux is the highest priority, ...
+INFO anaconda: boot loader GRUB2 on X86 platform
+INFO anaconda: boot loader GRUB2 on X86 platform
+INFO anaconda: Running Thread: AnaStorageThread (139679552460736)
+INFO anaconda: Running Thread: AnaTimeInitThread (139679504647936)
+INFO anaconda: Running Thread: AnaPayloadRestartThread ...
+INFO anaconda: Running Thread: AnaPayloadThread (139679187862528)
+INFO anaconda: Thread Done: AnaPayloadRestartThread (139679496255232)
+INFO anaconda: Thread Done: AnaTimeInitThread (139679504647936)
+INFO anaconda: Running Thread: AnaSourceWatcher (139679584647936)
+INFO anaconda: Running Thread: AnaStorageWatcher (139679496255232)
+INFO anaconda: Thread Done: AnaStorageThread (139679552468736)
+INFO anaconda: Thread Done: AnaStorageWatcher (139679496255232)
+INFO anaconda: Thread Done: AnaPayloadThread (139679487862528)
+INFO anaconda: Thread Done: AnaSourceWatcher (139679504647936)
+DEBUG anaconda: new disk order: [u&#39;sda&#39;, u&#39;sdb&#39;]
+DEBUG anaconda: Boot loader: use &#39;sda&#39; first disk from driveorder
+                    as boot drive, dry run True
+ERR anaconda: storage configuration failed:
+                  Unable to allocate requested partition scheme.
+INFO anaconda: fs space: 0 B needed: 1793.84 MiB
+ERR anaconda: Not enough space in file systems
+    for the current software selection.
+        An additional 1793.84 NiB is needed
+INFO anaconda: Running Thread: AnaInputThread1 (139679504647936)
+
+
+
+[anaconda] 1:main 2:shell- 3:log* 4:storaqe-log 5:program-log
+                                     Switch tab: Alt+Tab | Help: F1
+</pre></div>
+
+
+<p>对于界面上产生的错误，你同样也可以做屏幕截图 <code>Shift + Print Screen</code>。相关的问题会被保存在 <code>/tmp/anaconda-screenshots/</code> 目录下</p>
+
+<h2 id="深入调查">深入调查</h2>
+
+<p>此系统内部2块 SATA 盘，6块 SSD 固态硬盘，并通过 4 个 P812 磁盘阵列控制器，外接了 4个 MSA 2040 存储，总计 48 块 SATA 盘。这么多外接磁盘，设计时需要兼顾为系统提供较高的可靠性和读写性能，即 18 个逻辑分区采用硬件 RAID ，在其之上再用软 RAID 进行组合。</p>
+
+<p><img alt="ext lds" src="/img/blog/deal-with-ks-failure1/ext-lds.png" class="img-responsive"></p>
+
+<p>进入 2 号虚拟终端 执行<code>lsscsi -s</code>确认系统实际逻辑卷和和上述期待相符。关于 SG 更多使用说明，详见 Doug Gilbert (2016-7-4) <a href="http://sg.danny.cz/sg/index.html">The Linux SCSI Generic (sg) Driver</a> 相关 lsscsi 的页面。</p>
+
+<p>从日志上看，错误发生的阶段为，ks 安装程序 anaconda 在估算需要安装的 rpm 软件包后，发现没有足够空间？ 但这部分的 partition 规划是在服务器内置的 2 块 SATA 盘上。</p>
+
+<p>而且从命令的输出来看，这两块盘总大小 300 GB，根分配了 50 GB，就算把所有包都选中，做 10 个完整安装也足够了。但不知为什么抛出了现在这个错误。查看 ks 中对内外挂硬盘的 partition 定义——其内容达有 32 条指令之多。这些指令在指向相应磁盘时也都使用了块设备的唯一标识 uuid——感觉也很稳妥。</p>
+
+<p>关于 uuid 和 /dev 下对应关系，可以通过<code>blkid</code>及<code>lsblk</code>查看，参见Adrian Dinu (2014-11-23) <a href="https://linoxide.com/linux-command/linux-command-lsblk-blkid/">Linux blkid Command to Find Block Devices Details</a></p>
+
+<p>到这，我准备找外援来帮忙查看这个问题了。下一篇我会详细复述一下这个求助的过程。</p>
+
+<p>封面图片来自 <a href="https://dribbble.com/shots/2342802-Kickstart-Car">Kickstart Car</a> <a href="https://dribbble.com/KristianDuffy"><i class="fa fa-dribbble" aria-hidden="true"></i> Kristian Duffy</a></p>
+         <div id="disqus_thread">
+  <a href="#" onclick="disqus();return false;">enable VPN and click here to <i class="fa fa-comments" aria-hidden="true"></i></a>
+</div>
+
+<script type="text/javascript">
+var disqus_loaded = false;
+function disqus() {
+  if (!disqus_loaded) {
+    
+    
+    
+    
+
+    disqus_loaded = true;
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'wushuzh';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }
+};
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </div>
+  </div>
+</div>
+<noscript>
+  <style>.jsonly { display: none }</style>
+</noscript>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://wushuzh.github.io/js/jquery.min.js"></script>
+<script src="https://wushuzh.github.io/js/bootstrap.min.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.cookie.js"> </script>
+<script src="https://wushuzh.github.io/js/ekko-lightbox.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://wushuzh.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/owl.carousel.min.js"></script>
+<script src="https://wushuzh.github.io/js/front.js"></script>
+
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</body>
+</html>

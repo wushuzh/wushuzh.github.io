@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Archlinux 中文</title>
+<meta name="description" content="个人技术站点">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.theme.css">
+
+
+  <link href="https://wushuzh.github.io/css/style.sea.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://wushuzh.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-102509506-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="/">小强会武术</a></h1>
+    
+      <p class="sidebar-p">工程师</p>
+    
+      <p class="sidebar-p">记录每一个自己填平的坑</p>
+    
+    <ul class="sidebar-menu">
+      
+      
+        <li><a href="https://wushuzh.github.io/">Home</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  
+  
+  <a href="https://twitter.com/Xiao_Qiang" data-animate-hover="pulse" class="external twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  
+  
+  
+  <a href="mailto:wushuzh@outlook.com" data-animate-hover="pulse" class="email">
+    <i class="fa fa-envelope"></i>
+  </a>
+  
+  
+  
+  
+
+  
+  <a href="https://wushuzh.github.io/index.xml" data-animate-hover="pulse">
+    <i class='fa fa-rss'></i>
+  </a>
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2017 wushuzh
+        
+        | Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="/">小强会武术</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="content-column-content">
+
+      <div class="row">
+        <div class="col-sm-6">
+          
+            <div class="image">
+              <img src="https://wushuzh.github.io//img/blog/dual-os-4-i18n-arch/journey-chinese-chars.png" class="img-responsive" alt="">
+            </div>
+          
+        </div>
+        <div class="col-md-6">
+            <h2>Archlinux 中文</h2>
+                <p>
+                  小强会武术
+                </p>
+
+                <time datetime="2017-08-29 22:07:31 &#43;0800 CST">
+                <i class="fa fa-calendar-o fa-fw"></i> 2017-08-29
+                </time>
+                &middot;
+                1092 字
+                &middot;
+                3 分钟
+
+        </div>
+      </div>
+      <br />
+
+         <p>重点是在 Archlinux Gnome 中显示和输入中文
+</p>
+
+<h2 id="扩展-chrome">扩展 Chrome</h2>
+
+<p><a href="/blog/2017/08/15/dual-os-3-setup-arch/">&ldquo;上篇&rdquo;</a>
+的最后安装了 Chrome 浏览器，为了能上网，首先要正确的设置代理。如果设置浏览器代理的时候发现这样的报错信息<code>The NetworkManager needs to be running</code>，则需要确认系统是否安装并启动了相应的网络管理服务。</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>pacman -Q networkmanager
+systemctl status NetworkManager
+</pre></div>
+
+
+<p>为了让浏览掐用的更顺手，还需要安装一些扩展插件。
+&gt; 如果你的 Chrome 已经用的很顺手，那 google 自己的浏览器同步服务可以很好的将你的书签，浏览历史，安装插件都无差别的同步到新登录的浏览器上。</p>
+
+<ul>
+<li><a href="https://github.com/FelisCatus/SwitchyOmega">SwitchOmega</a> 我都没注意 <a href="https://github.com/FelisCatus/switchysharp">switchysharp</a> 已经不再维护，这是它的升级版</li>
+<li><a href="https://www.one-tab.com/">OneTab</a> 将打开的一堆 tab 页的 URL 保存一下，瞬间减少 9 成以上的内存</li>
+<li><a href="https://getfireshot.com/">Fireshot</a> 一个做网页截图、标注的拓展工具</li>
+<li><a href="http://vimium.github.io/">Vimium</a> 能让你使用 Vim 的快捷键完成最常见的浏览器控制，上下翻页，Tab 切换</li>
+<li><a href="https://momentumdash.com/">Momentum</a> 每天一幅风景画</li>
+<li><a href="https://chrome.google.com/webstore/detail/world-clocks/innfmeekncjandlanpgdmmogkcimekgo">World Clocks</a> 如果需要查看多个时区时间</li>
+<li><a href="https://chrome.google.com/webstore/detail/google-dictionary-by-goog/mgijmajocgfcbeboacabfgobmjgjcoja">Google Dict</a> 有时候确实会遇到不认识的各国单词</li>
+<li><a href="https://github.com/buunguyen/octotree">Octotree</a> 通过树形结构查看 github 项目的文件，挺方便</li>
+<li><a href="http://markdown-here.com/">Markdown Here</a> 将 Markdown 文本转化为网页</li>
+<li><a href="https://www.igorware.com/extensions/block-yourself-from-analytics">Block U from GA</a> 让 Google Analyze 忽略来自自己的访问</li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="中文显示">中文显示</h2>
+
+<p>首先查看任何一个含有中日韩的网页，如果你看到乱码，则说明你的系统中还未安装中文字体。</p>
+
+<blockquote>
+<p>关于字体知识的拓展阅读，推荐收听不定期更新的 podcast <a href="https://kernelpanic.fm/">内核恐慌</a> 上 <a href="https://kernelpanic.fm/39">字谈字串(一)</a> 等过往节目。</p>
+</blockquote>
+
+<p>在 Archlinux Wiki 的 <a href="https://wiki.archlinux.org/index.php/Fonts">Font</a> 页面中非拉丁字符中挑选自己喜欢的字体。比如我选择了一揽子解决方案 Adobe 的 <a href="https://github.com/adobe-fonts/source-han-sans">Source Han Sans</a></p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>$ sudo pacman -S adobe-source-han-sans-otc-fonts
+</pre></div>
+
+
+<p><br /></p>
+
+<h2 id="中文输入">中文输入</h2>
+
+<p>在之后就该考虑中文的输入了。首先要从<a href="https://wiki.archlinux.org/index.php/Fcitx">Fcitx (Flexible Input Method Framework)</a>、<a href="https://wiki.archlinux.org/index.php/IBus">IBus (Intelligent Input Bus)</a>、<a href="https://wiki.archlinux.org/index.php/Smart_Common_Input_Method_platform">SCIM (Smart Common Input Method platform)</a> 三种常见的输入法框架中选出一个。</p>
+
+<p>Fcitx 由国内的开发者发明维护。这次试用了一下，除了首次安装时需要折腾一下，后期日常使用起来，无论从调用时输入法切换速度，到键入拼音后备选词列表的显示，体验都很不错。</p>
+
+<p>如果你系统中尚未安装、激活其他的输入法框架，比如 ibus，那 fcitx 对应的安装、配置应该很简单直接。执行完 pacman ，重新进入 GNOME 下应该能看到 fcitx-configtool 处于界面的左下角——fcitx 似乎没有系统托盘的图标。一开始只能看到英语作为唯一的输入法，点击加号通过关键字 Pinyin 搜索输入法。选中后就应该能生效了。</p>
+
+<blockquote>
+<ul>
+<li>我习惯 startx 式启动，还要在 <code>/etc/enviroment</code> 中添加环境变量，明确将 fcitx 指定为 GTK、QT 下的输入法模块<br /></li>
+<li>fcitx wiki 官网上<a href="https://fcitx-im.org/wiki/Note_for_GNOME_Later_than_3.6">对于 Gnome 3.6 版本以上的相关建议</a>也可以尝试一下(除了第一步)</li>
+</ul>
+</blockquote>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>$ sudo pacman -Syu fcitx-im fcitx-configtool
+<span style="color: #75715e"># when U in trouble, exec diagnosis tool and focus on red lines</span>
+$ fcitx-diagnose
+</pre></div>
+
+
+<p><br /></p>
+
+<h3 id="文本编辑器">文本编辑器</h3>
+
+<p>作为一名不太坚定的 vim 用户。我优先安装了 atom ，并且我发现年纪越大，对这种将那些最基本的设置在出厂时就配置个八九不离十的编辑器有了由衷的好感。唉，是不是老了……下定了半点决心，还是决定安装 oni : 一个尚处于初级阶段，但集成了前端和常用插件的 neovim</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>$ sudo pacman -S atom
+
+$ <span style="color: #f8f8f2">cd</span> /tmp
+$ git clone https://aur.archlinux.org/oni.git
+$ <span style="color: #f8f8f2">cd</span> oni
+$ makepkg -si
+
+$ sudo pacman -S hugo gimp ...
+</pre></div>
+
+
+<p><br /></p>
+
+<h3 id="参考文档">参考文档</h3>
+
+<blockquote>
+<ul>
+<li>Zhang Fan (2015-10-10) <a href="http://www.fanz.io/2015/10/10/fcitx-notes.html">Installing fcitx (a Chinese IME) on Arch Linux</a></li>
+</ul>
+</blockquote>
+
+<p>封面图片来自 <a href="https://dribbble.com/shots/3588846-A-Journey-of-Chinese-Characters">A Journey of Chinese Characters</a> <a href="https://dribbble.com/siyangli"><i class="fa fa-dribbble" aria-hidden="true"></i> Siyang Li</a></p>
+         <div id="disqus_thread">
+  <a href="#" onclick="disqus();return false;">enable VPN and click here to <i class="fa fa-comments" aria-hidden="true"></i></a>
+</div>
+
+<script type="text/javascript">
+var disqus_loaded = false;
+function disqus() {
+  if (!disqus_loaded) {
+    
+    
+    
+    
+
+    disqus_loaded = true;
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'wushuzh';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }
+};
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </div>
+  </div>
+</div>
+<noscript>
+  <style>.jsonly { display: none }</style>
+</noscript>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://wushuzh.github.io/js/jquery.min.js"></script>
+<script src="https://wushuzh.github.io/js/bootstrap.min.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.cookie.js"> </script>
+<script src="https://wushuzh.github.io/js/ekko-lightbox.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://wushuzh.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/owl.carousel.min.js"></script>
+<script src="https://wushuzh.github.io/js/front.js"></script>
+
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</body>
+</html>
