@@ -1,6 +1,6 @@
 +++
 date = "2017-09-04T23:32:27+08:00"
-title = "跨系统共享输入设备"
+title = "跨系统超级键鼠"
 showonlyimage = false
 image = "/img/blog/dual-os-6-soft-kvm/computer_desk.png"
 draft = false

@@ -19,7 +19,10 @@ weight = 64
 # sed -i 's/^#Server/Server/' /etc/pacman.d/mirrorlist.backup
 # rankmirrors -n 6 /etc/pacman.d/mirrorlist.backup \
         > /etc/pacman.d/mirrorlist
+
 {{< /highlight >}}
+
+> 如果希望 pacman 安装进度条像吃豆人一样，在 /etc/pacman.conf 的 Options 中增加 ILoveCandy 选项
 
 <br />
 
@@ -131,6 +134,17 @@ $ cd /tmp
 $ git clone https://aur.archlinux.org/google-chrome.git
 $ cd google-chrome/
 $ makepkg -si
+{{< /highlight >}}
+
+确认安装成功——列出所有已安装在系统中的 AUR 软件包
+{{< highlight console >}}
+$ pacman -Qm
+google-chrome 60.0.3112.101-1
+oni 0.2.8-1
+vertex-themes 20170128-1
+
+# remove pkg from AUR is as same as official ones
+$ pacman -R pkgname-to-be-removed
 {{< /highlight >}}
 
 ### 参考文档
