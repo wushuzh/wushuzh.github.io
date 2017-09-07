@@ -133,7 +133,7 @@
     </item>
     
     <item>
-      <title>安装失败，咋整</title>
+      <title>安装失败，咋整？</title>
       <link>https://wushuzh.github.io/blog/2017/08/01/deal-with-ks-failure1/</link>
       <pubDate>Tue, 01 Aug 2017 19:12:33 +0800</pubDate>
       
@@ -194,11 +194,31 @@
     
     <item>
       <title>Archlinux 中文</title>
-      <link>https://wushuzh.github.io/blog/2017/08/29/dual-os-4-setup-arch/</link>
+      <link>https://wushuzh.github.io/blog/2017/08/29/dual-os-4-i18n-arch/</link>
       <pubDate>Tue, 29 Aug 2017 22:07:31 +0800</pubDate>
       
-      <guid>https://wushuzh.github.io/blog/2017/08/29/dual-os-4-setup-arch/</guid>
+      <guid>https://wushuzh.github.io/blog/2017/08/29/dual-os-4-i18n-arch/</guid>
       <description>&lt;p&gt;重点是在 Archlinux Gnome 中显示和输入中文
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>软件定义热点 1</title>
+      <link>https://wushuzh.github.io/blog/2017/09/01/dual-os-5-wifi-ap/</link>
+      <pubDate>Fri, 01 Sep 2017 22:01:43 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/09/01/dual-os-5-wifi-ap/</guid>
+      <description>&lt;p&gt;利用无线网卡共享网络访问
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>跨系统超级键鼠</title>
+      <link>https://wushuzh.github.io/blog/2017/09/04/dual-os-6-soft-kvm/</link>
+      <pubDate>Mon, 04 Sep 2017 23:32:27 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/09/04/dual-os-6-soft-kvm/</guid>
+      <description>&lt;p&gt;使用一套鼠标键盘操作多个系统
 &lt;/p&gt;</description>
     </item>
     

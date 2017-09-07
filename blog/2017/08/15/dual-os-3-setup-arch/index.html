@@ -125,9 +125,9 @@ ga('send', 'pageview');
                 <i class="fa fa-calendar-o fa-fw"></i> 2017-08-15
                 </time>
                 &middot;
-                988 字
+                1063 字
                 &middot;
-                2 分钟
+                3 分钟
 
         </div>
       </div>
@@ -146,6 +146,10 @@ ga('send', 'pageview');
         &gt; /etc/pacman.d/mirrorlist
 </pre></div>
 
+
+<blockquote>
+<p>如果希望 pacman 安装进度条像吃豆人一样，在 /etc/pacman.conf 的 Options 中增加 ILoveCandy 选项</p>
+</blockquote>
 
 <p><br /></p>
 
@@ -264,6 +268,17 @@ $ <span style="color: #f8f8f2">cd</span> google-chrome/
 $ makepkg -si
 </pre></div>
 
+
+<p>确认安装成功——列出所有已安装在系统中的 AUR 软件包
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>$ pacman -Qm
+google-chrome 60.0.3112.101-1
+oni 0.2.8-1
+vertex-themes 20170128-1
+
+# remove pkg from AUR is as same as official ones
+$ pacman -R pkgname-to-be-removed
+</pre></div>
+</p>
 
 <h3 id="参考文档">参考文档</h3>
 

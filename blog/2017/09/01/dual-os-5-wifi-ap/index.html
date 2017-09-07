@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>软件定义热点 1</title>
+<meta name="description" content="个人技术站点">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.theme.css">
+
+
+  <link href="https://wushuzh.github.io/css/style.sea.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://wushuzh.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-102509506-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="/">小强会武术</a></h1>
+    
+      <p class="sidebar-p">工程师</p>
+    
+      <p class="sidebar-p">记录每一个自己填平的坑</p>
+    
+    <ul class="sidebar-menu">
+      
+      
+        <li><a href="https://wushuzh.github.io/">Home</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  
+  
+  <a href="https://twitter.com/Xiao_Qiang" data-animate-hover="pulse" class="external twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  
+  
+  
+  <a href="mailto:wushuzh@outlook.com" data-animate-hover="pulse" class="email">
+    <i class="fa fa-envelope"></i>
+  </a>
+  
+  
+  
+  
+
+  
+  <a href="https://wushuzh.github.io/index.xml" data-animate-hover="pulse">
+    <i class='fa fa-rss'></i>
+  </a>
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2017 wushuzh
+        
+        | Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="/">小强会武术</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="content-column-content">
+
+      <div class="row">
+        <div class="col-sm-6">
+          
+            <div class="image">
+              <img src="https://wushuzh.github.io//img/blog/dual-os-5-wifi-ap/freewifi.png" class="img-responsive" alt="">
+            </div>
+          
+        </div>
+        <div class="col-md-6">
+            <h2>软件定义热点 1</h2>
+                <p>
+                  小强会武术
+                </p>
+
+                <time datetime="2017-09-01 22:01:43 &#43;0800 CST">
+                <i class="fa fa-calendar-o fa-fw"></i> 2017-09-01
+                </time>
+                &middot;
+                1907 字
+                &middot;
+                4 分钟
+
+        </div>
+      </div>
+      <br />
+
+         <p>利用无线网卡共享网络访问
+</p>
+
+<h2 id="无线-ap">无线 AP</h2>
+
+<p>安装 ArchLinux 系统时，用户手册会建议使用可靠的<strong>有线</strong>网络连接。</p>
+
+<p>但一个装好的日用笔记本，wifi 显得更为方便。因此配置无线设备的驱动就成了基本技能。尤其我们还可以借助通过无线网卡建立热点，让手机共享计算机的网络——这样有又能省下不少移动流量。</p>
+
+<p>这篇就是尝试自行为网卡安装配置的流水帐系列的第一篇。记录了我对 AUR 安装包的一通折腾，最终还没有成功的操作过程。</p>
+
+<p>我手上有一个小米随身 wifi，Win8 下安装小米自己的驱动程序，确认可以当作 AP 使用。</p>
+
+<blockquote>
+<p>说起来，需要用户自行安装、配置声/显卡等设备的驱动，大概是上世纪攒过电脑，装过“温八”同学的专属记忆了。而好像从 Win7 开始，不知是设备接口的标准逐渐统一，还是操作系统中预置了不少大厂驱动的缘故，自行安装成了非常罕见的操作。</p>
+</blockquote>
+
+<p>小米需要安装 Windows 下的私有驱动当然有它的理由，但也预示着在 Linux 下的过程不会特别顺利。Linux 上各种配置的攻略文档可能会分散在github、论坛，个人博客上，不可避免地需要自己到处查找，但好处是你可以从中学到不少新东西，同时也许获得了对硬件最大程度的知情权和控制权。</p>
+
+<h3 id="查找设备">查找设备</h3>
+
+<p>在 Linux ，一般是在 kernel 启动时，由 udev 为检测到的设备载入相应模块(驱动)。udev 面对成千上万种或来自正规大厂，或来自山寨创客的硬件无疑也可能出错，另外，linux-firmware 中很可能未能包含一些特殊硬件额外需要的固件。这也是为什么你需要首先确认当下的驱动状态是否正确。</p>
+
+<p>依据你的无线网卡插入方式，选择执行 <code>lspci -k</code> 或 <code>lsusb</code> 确认设备当前的驱动。例如我用的是小米随身wifi，插在 usb 口上。</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>$ lsusb -t
+/:Bus 02.Port 1: Dev 1, Class=root_hub, Driver=ehci-pci/3p, 480M
+  |_Port 1: Dev 2, If 0, Class=Hub, Driver=hub/8p, 480M
+    |_ Port 6: Dev 3, If 0, Class=Vendor Specific Class, Driver=mt7601u, 480M
+    |_ Port 7: Dev 4, If 0, Class=Human Interface Device, Driver=usbhid, 12M
+    |_ Port 7: Dev 4, If 1, Class=Human Interface Device, Driver=usbhid, 12M
+/:Bus 01.Port 1: Dev 1, Class=root_hub, Driver=ehci-pci/3p, 480M
+  |_Port 1: Dev 2, If 0, Class=Hub, Driver=hub/6p, 480M
+    |_ Port 2: Dev 3, If 0, Class=Audio, Driver=snd-usb-audio, 12M
+    |_ Port 2: Dev 3, If 1, Class=Audio, Driver=snd-usb-audio, 12M
+    |_ Port 2: Dev 3, If 2, Class=Audio, Driver=snd-usb-audio, 12M
+    |_ Port 2: Dev 3, If 3, Class=Human Interface Device, Driver=usbhid, 12M
+
+$ lsusb
+Bus 002 Device 004: ID 046d:c52e Logitech, Inc. MK260 Wireless Combo Receiver
+Bus 002 Device 003: ID 2717:4106
+Bus 002 Device 002: ID 8087:0020 Intel Corp. Integrated Rate Matching Hub
+Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 001 Device 003: ID 0b0e:0301 GN Netcom
+Bus 001 Device 002: ID 8087:0020 Intel Corp. Integrated Rate Matching Hub
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+</pre></div>
+
+
+<blockquote>
+<p>执行 <code>lsusb -s busid:devid -v</code>可以显示单个设备更详细的各式参数。</p>
+</blockquote>
+
+<p>网上通过 ID 2717：4106 查找设备，比如这里 <a href="https://wikidevi.com/wiki/MediaTek_MT7601U">wikidevi MediaTek MT7601U</a> 提到了这个设备被用在了小米 wifi 上。</p>
+
+<h3 id="确认驱动">确认驱动</h3>
+
+<p>在 dmesg 中过滤 usbcore 关键字，找出被注册为网络接口的设备，也能找到 mt7601u 和 wlp0s29u1u6 就是这个迷你 wifi 设备。</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>$ dmesg <span style="color: #f8f8f2">|</span> grep usbcore
+[  0.878139] usbcore: registered new interface driver usbfs
+[  0.878149] usbcore: registered new interface driver hub
+[  0.878176] usbcore: registered new device driver usb
+[  1.743256] usbcore: registered new interface driver usbhid
+[ 10.266685] usbcore: registered new interface driver snd-usb-audio
+[ 11.906657] usbcore: registered new interface driver mt7601u
+
+$ dmesg <span style="color: #f8f8f2">|</span>grep mt7601u
+[ 10.967420] mt7601u 2-1.6:1.0: ASIC revision: 76010001 MAC revision: 76010500
+[ 11.005029] mt7601u 2-1.6:1.0: Warning: unsupported EEPROM version 0d
+[ 11.005033] mt7601u 2-1.6:1.0: EEPROM ver:0d fae:00
+[ 11.005651] mt7601u 2-1.6:1.0: EEPROM country region 01 (channels 1-13)
+[ 11.906657] usbcore: registered new interface driver mt7601u
+[ 12.177970] mt7601u 2-1.6:1.0 wlp0s29u1u6: renamed from wlan0
+</pre></div>
+
+
+<p>执行<code>ip link</code>确实能看到网口，<code>sudo ip link set wlp0s29u1u6 up</code>，没报错。</p>
+
+<p>但 dmesg 中 <code>grep wlp0s29u1u6</code>有一堆 <code>IPv6: ADDRCONF(NETDEV_UP): wlp0s29u1u6: link is not ready</code>，进而为了确认设备支持的接口模式，安装 iw 工具，显示当下不支持 AP 模式。</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>$ iw list
+Wiphy phy0
+...
+  Supported interface modes:
+    * managed
+    * monitor
+  Band 1:
+    Capabilities: 0x17e
+...
+  Supported commands:
+    ...
+    * start_ap
+    ...
+	Supported TX frame types:
+    ...
+    * AP: 0x00 0x10 0x20 0x30 0x40 0x50 0x60 0x70 0x80 0x90 0xa0 0xb0 0xc0 0xd0 0xe0 0xf0
+    * AP/VLAN: 0x00 0x10 0x20 0x30 0x40 0x50 0x60 0x70 0x80 0x90 0xa0 0xb0 0xc0 0xd0 0xe0 0xf0
+    ...
+	Supported RX frame types:
+    ...
+    * AP: 0x00 0x20 0x40 0xa0 0xb0 0xc0 0xd0
+    * AP/VLAN: 0x00 0x20 0x40 0xa0 0xb0 0xc0 0xd0
+    ...
+	software interface modes (can always be added):
+    * monitor
+    ...
+	Device supports AP scan.
+...
+</pre></div>
+
+
+<h2 id="安装驱动">安装驱动</h2>
+
+<p>首先到 Archlinux 官方和 AUR 上搜索，果然找到了一个来自 <a href="https://aur.archlinux.org/account/nous">nous</a> 的 <a href="https://aur.archlinux.org/packages/mt7601u-ap-dkms/">mt7601u-ap-dkms </a> 版本 3.0.0.3-1 但从评论上看，貌似会装不成。</p>
+
+<p>无论如何，先试试再说。
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>$ git clone https://aur.archlinux.org/mt7601u-ap-dkms.git
+$ <span style="color: #f8f8f2">cd</span> mt7601u-ap-dkms
+$ makepkg -si
+==&gt; Making package: mt7601u-ap-dkms 3.0.0.3-1 (some date)
+==&gt; Checking runtime dependencies...
+==&gt; Checking buildtime dependencies...
+==&gt; Retrieving sources...
+  -&gt; Downloading master.zip...
+  -&gt; Found mt7601u-ap.conf
+  -&gt; Found dkms.conf
+==&gt; Validating source files with sha256sums...
+    master.zip ... FAILED
+    mt7601u-ap.conf ... Passed
+    dkms.conf ... Passed
+==&gt; ERROR: One or more files did not pass the validity check!
+</pre></div>
+</p>
+
+<p>先查看 PKGBUILD 内容，确认是现在从 github 下载的 zip 文件的 sha256sum 的值变化了导致的。</p>
+
+<p>AUR 上 shyokou (貌似是位中国同学)的评论，也确认了 sha256sum 对 git 没意义。之后 pcjason 将一个补丁直接贴到了评论区，更新了 mt7601u 的 github 驱动下载地址，并采用了 rin (2016-03-16) <a href="https://lo-li.net/1290.html">在树莓派2上使用MT7601芯片USB网卡搭建AP</a> 提到的 C 代码补丁。既然如此将补丁内容保存为 pcjason.patch 文件尝试一下。</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>$ git apply pcjason.patch
+error: corrupt patch at line 7
+</pre></div>
+
+
+<p>又查了下报错 应该是粘贴到评论区时行首空格行尾换行字符丢失造成的。尝试更改后，&ndash;stat 可以，但 apply 仍然报错。</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>$ git apply --stat pajason.patch
+ PKGBUILD         |   19 ++++++++++---------
+ mt7601u-ap.patch |   17 +++++++++++++++++
+ 2 files changed, 27 insertions(+), 9 deletions(-)
+</pre></div>
+
+
+<p>最后实在没有耐心调整各种空格了，更改行数也不太多，手动修改搞定貌似更容易一些。而后为了编译又安装了 linux-headers ，涉及内核升级，还重启了一次系统，但最终安装时还是报错。报错结果贴在了原 AUR 评论区。</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>(1/1) installing mt7601u-ap-dkms [----------------------] 100%
+Creating symlink /var/lib/dkms/mt7601u-ap/3.0.0.4/source -&gt;
+/usr/src/mt7601u-ap-3.0.0.4
+
+DKMS: add completed.
+
+Kernel preparation unnecessary for this kernel. Skipping...
+
+Building module:
+cleaning build area...
+make -j4 KERNELRELEASE=4.12.10-1-ARCH.....(bad exit status: 2)
+Error! Bad return status for module build on kernel: 4.12.10-1-ARCH (x86_64)
+Consult /var/lib/dkms/mt7601u-ap/3.0.0.4/build/make.log for more information.
+&gt;&gt;&gt; You might need to modprobe mt7601Uap manually.
+&gt;&gt;&gt; Also, you *must* change the default values <span style="color: #f92672">(</span>especially WPAPSK<span style="color: #f92672">)</span>
+&gt;&gt;&gt; in /etc/Wireless/RT2870AP/RT2870AP.dat
+&gt;&gt;&gt; Read the documentation in /usr/src/mt7601u-ap-3.0.0.3/doc.
+:: Running post-transaction hooks...
+(1/2) Install DKMS modules
+==&gt; dkms install mt7601u-ap/3.0.0.4 -k 4.12.10-1-ARCH
+Error! Bad return status for module build on kernel: 4.12.10-1-ARCH (x86_64)
+Consult /var/lib/dkms/mt7601u-ap/3.0.0.4/build/make.log for more information.
+(2/2) Arming ConditionNeedsUpdate...
+</pre></div>
+
+
+<h2 id="小结">小结</h2>
+
+<p>虽然安装失败，但仍然挺有意思。以后有时间继续填这个坑。</p>
+
+<h3 id="参考文档">参考文档</h3>
+
+<blockquote>
+<ul>
+<li>Archlinux wiki <a href="https://wiki.archlinux.org/index.php/Wireless_network_configuration">Wireless network configuration</a><br /></li>
+<li>Archlinux wiki <a href="https://wiki.archlinux.org/index.php/Software_access_point">Software access point</a></li>
+<li>Wikipedia <a href="https://en.wikipedia.org/wiki/Diff_utility">diff utility</a></li>
+<li>ariejan de vroom (2009-10-26）<a href="https://www.devroom.io/2009/10/26/how-to-create-and-apply-a-patch-with-git/">How to create and apply a patch with Git</a></li>
+<li>nixCraft (2005-12-14) <a href="https://www.cyberciti.biz/tips/how-can-i-zipping-and-unzipping-files-under-linux.html">Zipping and Unzipping Files under Linux</a></li>
+</ul>
+</blockquote>
+
+<p>封面图片来自 <a href="https://dribbble.com/shots/842806-Free-Wifi">Free Wifi</a> <a href="https://dribbble.com/Tuttle"><i class="fa fa-dribbble" aria-hidden="true"></i> Tuttle</a></p>
+         <div id="disqus_thread">
+  <a href="#" onclick="disqus();return false;">enable VPN and click here to <i class="fa fa-comments" aria-hidden="true"></i></a>
+</div>
+
+<script type="text/javascript">
+var disqus_loaded = false;
+function disqus() {
+  if (!disqus_loaded) {
+    
+    
+    
+    
+
+    disqus_loaded = true;
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'wushuzh';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }
+};
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </div>
+  </div>
+</div>
+<noscript>
+  <style>.jsonly { display: none }</style>
+</noscript>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://wushuzh.github.io/js/jquery.min.js"></script>
+<script src="https://wushuzh.github.io/js/bootstrap.min.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.cookie.js"> </script>
+<script src="https://wushuzh.github.io/js/ekko-lightbox.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://wushuzh.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/owl.carousel.min.js"></script>
+<script src="https://wushuzh.github.io/js/front.js"></script>
+
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</body>
+</html>
