@@ -139,9 +139,13 @@ $ makepkg -si
 确认安装成功——列出所有已安装在系统中的 AUR 软件包
 {{< highlight console >}}
 $ pacman -Qm
+gnome-shell-extension-dash-to-dock 60-1
+gnome-shell-extension-drop-down-terminal 23-1
 google-chrome 60.0.3112.101-1
+numix-icon-theme-git 0.r1947.dc833c839-1
 oni 0.2.8-1
 vertex-themes 20170128-1
+xcursor-human 0.6-4
 
 # remove pkg from AUR is as same as official ones
 $ pacman -R pkgname-to-be-removed
