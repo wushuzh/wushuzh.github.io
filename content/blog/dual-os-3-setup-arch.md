@@ -118,7 +118,9 @@ $ sudo pacman -S xorg-xinit
 $ sudo pacman -S base-devel
 {{< /highlight >}}
 
-> 刚安装好 Gnome 后，自带的 gnome-terminal 无法启动。但后来又好了，不清楚是不是和折腾了一下 UTF 还是安装了中文字体相关？反正现在已经正常启动，无法重现，具体原因待有缘后再查了
+> 刚安装好 Gnome 后，自带的 gnome-terminal 无法启动。但后来又好了，不清楚是不是和折腾了一下 UTF 还是安装了中文字体相关？反正现在已经正常启动，无法重现，具体原因待有缘后再查了  
+>         
+> 也许安装 [Guake](https://wiki.archlinux.org/index.php/Guake) 替代 Gnome-terminal 时更好的选择？
 
 ### 安装位于 AUR 的软件
 
@@ -139,8 +141,11 @@ $ makepkg -si
 确认安装成功——列出所有已安装在系统中的 AUR 软件包
 {{< highlight console >}}
 $ pacman -Qm
+gnome-shell-extension-arch-update 23-1
+gnome-shell-extension-coverflow-alt-tab 1.4-1
 gnome-shell-extension-dash-to-dock 60-1
 gnome-shell-extension-drop-down-terminal 23-1
+gnome-shell-extension-system-monitor-git 801.746f33d-1
 google-chrome 60.0.3112.101-1
 numix-icon-theme-git 0.r1947.dc833c839-1
 oni 0.2.8-1
