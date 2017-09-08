@@ -4,7 +4,7 @@ title = "服务器远程管理"
 showonlyimage = false
 image = "/img/blog/intro-server-remote-ctrl/remote-ctrl.jpg"
 draft = true
-weight = 31
+weight = 75
 +++
 
 应该该如何实现服务器的远程管理

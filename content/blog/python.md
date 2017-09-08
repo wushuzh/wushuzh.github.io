@@ -15,6 +15,8 @@ weight = 100
 
 [Full Stack Python Explains ORMs](https://www.fullstackpython.com/object-relational-mappers-orms.html)
 
+[The most comprehensive Data Science learning plan for 2017](https://www.analyticsvidhya.com/blog/2017/01/the-most-comprehensive-data-science-learning-plan-for-2017/)
+
 ## 经验
 
 Python Practices for Efficient Code: Performance, Memory, and Usability
