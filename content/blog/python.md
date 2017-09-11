@@ -17,6 +17,14 @@ weight = 100
 
 [The most comprehensive Data Science learning plan for 2017](https://www.analyticsvidhya.com/blog/2017/01/the-most-comprehensive-data-science-learning-plan-for-2017/)
 
+[Building Web Applications with Django and AngularJS](https://thinkster.io/django-angularjs-tutorial)
+
+[Docker to create a RESTful API by Postgres and Flask](http://testdriven.io/part-one-intro/)
+
+[A Complete Beginner's Guide to Django - Part1](https://simpleisbetterthancomplex.com/series/2017/09/04/a-complete-beginners-guide-to-django-part-1.html)
+
+[Fundamental Data Structures in Python](https://dbader.org/blog/fundamental-data-structures-in-python)
+
 ## 经验
 
 Python Practices for Efficient Code: Performance, Memory, and Usability

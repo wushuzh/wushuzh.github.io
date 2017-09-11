@@ -7,7 +7,7 @@ draft = false
 weight = 101
 +++
 
-观看大神现场震撼演示
+观看大神 David Beazley 的震撼演示
 <!--more-->
 
 ## 兔子数列
@@ -21,17 +21,18 @@ def fib(n):
         return fib(n-1) + fib(n-2)
 {{< /highlight >}}
 
-{{< highlight python >}}
-python3
-
-from fib import fib
-
-fib(1)
-
-fib(10)
-
-fib(20)
-
+{{< highlight console >}}
+$ python3
+Python 3.6.2 (default, Jul 20 2017, 03:52:27)
+[GCC 7.1.1 20170630] on linux
+Type "help", "copyright", "credits" or "license" for more info  
+>>> from fib import fib
+>>> fib(1)
+1
+>>> fib(10)
+55
+>>> fib(20)
+6765
 {{< /highlight >}}
 
 随着求解的数列位置越来越靠后，运算的时间也会指数级加长。
@@ -70,12 +71,32 @@ fib_server(('', 25000))
 
 {{< /highlight >}}
 
-{{< highlight python >}}
+{{< highlight console >}}
 
-tty1 python3 server.py
+tty1 $ python3 server.py
+Connected  ('127.0.0.1', 46310)
 
-tty2 nc localhost 25000 # telnet
-
+tty2 $ telnet localhost 25000 # netcat/nc also works
+1
+1
+10
+55
+20
+6765
 {{< /highlight >}}
+
+但问题是这个服务器版本无法同时为多个 client 服务。
+
+{{< highlight console >}}
+
+tty1 $ python3 server.py
+Connected  ('127.0.0.1', 46310)
+
+tty3 $ telnet localhost 25000
+10
+(no response unless tty2 kill its connection)
+{{< /highlight >}}
+
+因此我们要引入多线程
 
 封面图片来自 [Sorting factory](https://dribbble.com/shots/3326497-Sorting-factory) <a href="https://dribbble.com/Frizler"><i class="fa fa-dribbble" aria-hidden="true"></i> Anton Fritsler (kit8)</a>

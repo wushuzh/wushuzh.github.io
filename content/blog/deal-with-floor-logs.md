@@ -62,6 +62,8 @@ RHEL7 中 /var/log/ 目录下 messages 和 secure 两个文件中存在大量的
 [The Linux-PAM System Administrators' Guide](http://www.linux-pam.org/Linux-PAM-html/Linux-PAM_SAG.html)
 [pam_succeed_if(8) - Linux man page](https://linux.die.net/man/8/pam_succeed_if)
 
+[How to Perform Security Audits With Lynis on Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-perform-security-audits-with-lynis-on-ubuntu-16-04)
+https://wiki.archlinux.org/index.php/List_of_applications/Security#Threat_and_vulnerability_detection
 audit 日志的查看方法
 [How can I log all process launches in Linux](https://superuser.com/questions/222912/how-can-i-log-all-process-launches-in-linux/)
 [How To Use the Linux Auditing System on CentOS 7](https://www.digitalocean.com/community/tutorials/how-to-use-the-linux-auditing-system-on-centos-7)
