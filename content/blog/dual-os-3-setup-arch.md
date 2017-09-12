@@ -124,7 +124,7 @@ $ sudo pacman -S base-devel
 
 ### 安装位于 AUR 的软件
 
-如果你想定制 GNOME 的桌面[主题，图标等](https://wiki.archlinux.org/index.php/GNOME#Appearance)，那其大部分安装包都被标识为 AUR。但是安装 AUR 软件是使用 Archlinux 尝鲜其他各种新软件的一个必备技能。一定要学会。(更为便捷的安装工具，比如```yaourt```官方都不正式支持)
+如果你想定制 GNOME 的桌面[主题，图标等](https://wiki.archlinux.org/index.php/GNOME#Appearance)，那其大部分安装包都被标识为 AUR。但是安装 AUR 软件是使用 Archlinux 尝鲜其他各种新软件的一个必备技能。一定要学会。(更为便捷的安装工具，比如```pacaur```或```yaourt```官方都不正式支持，而新手应该先用熟 makepkg，之后也许开始试试 [Cower](https://github.com/falconindy/cower) )
 
 {{< highlight console >}}
 $ cd /tmp
@@ -141,20 +141,51 @@ $ makepkg -si
 确认安装成功——列出所有已安装在系统中的 AUR 软件包
 {{< highlight console >}}
 $ pacman -Qm
+cower 17-2
 gnome-shell-extension-arch-update 23-1
 gnome-shell-extension-coverflow-alt-tab 1.4-1
 gnome-shell-extension-dash-to-dock 60-1
 gnome-shell-extension-drop-down-terminal 23-1
 gnome-shell-extension-system-monitor-git 801.746f33d-1
-google-chrome 60.0.3112.101-1
+google-chrome 61.0.3163.79-1
 numix-icon-theme-git 0.r1947.dc833c839-1
 oni 0.2.8-1
+pyenv 1.1.3-1
+pyenv-virtualenv 1:1.0.0-1
 vertex-themes 20170128-1
 xcursor-human 0.6-4
 
 # remove pkg from AUR is as same as official ones
 $ pacman -R pkgname-to-be-removed
 {{< /highlight >}}
+
+安装 AUR 上的软件时，也许会遇到了 GPG 验证错误(比如安装 cower 时)，这时需要向系统[导入公钥](https://unix.stackexchange.com/questions/361213/unable-to-add-gpg-key-with-apt-key-behind-a-proxy)。
+
+{{< highlight console >}}
+...
+==> Verifying source file signatures with gpg...
+    cower-17.tar.gz ... FAILED (unknown public key 1EB2638FF56C0C53)
+==> ERROR: One or more PGP signatures could not be verified!
+
+$ gpg --recv-keys \
+    --keyserver hkp://pgp.mit.edu
+    --keyserver-options http-proxy=http://127.0.0.1:xxxx
+    1EB2638FF56C0C53
+key 1EB2638FF56C0C53:
+26 signatures not checked due to missing keys
+gpg: key 1EB2638FF56C0C53: public key "Dave Reisner <d@falconindy.com>" imported
+gpg: no ultimately trusted keys found
+gpg: Total number processed: 1
+gpg:               imported: 1
+
+# continue install cower
+
+# check aur updates 
+$ cower -vdu
+{{< /highlight >}}
+
+> GPG(GNU Privacy Guard) 使用 PGP 协议 (Pretty Good Privacy) 的开源工具。和《三体》不同，它依靠的不是猜疑链，而是信任链: The Web of Trust。  
+> [简单说就是](https://www.reddit.com/r/GnuPG/comments/6tkcnq/eli5_whats_key_signing_and_howwhy_to_sign_a_key/) 当老师检查前一天要家长签字的卷子时，一眼看穿了你的假签名，就是因为他们在家长会的时候交换了彼此的墨宝。而当你把病假条带给校长时，虽然他不认识你爸妈的签名，但他转而通过你的班主任求证，这样只需验证班主任的签名就知道假条是否为仿造。
 
 ### 参考文档
 
@@ -167,6 +198,7 @@ $ pacman -R pkgname-to-be-removed
 > - Arch wiki [GNOME # Xorg sessions](https://wiki.archlinux.org/index.php/GNOME#Xorg_sessions)
 > - Arch wiki [xinit](https://wiki.archlinux.org/index.php/Xinit)
 > - Arch wiki [Arch User Repo](https://wiki.archlinux.org/index.php/Arch_User_Repository#Installing_packages)
+> - reddit [What is the recommended way to update packages installed by the AUR? (And how do you do it?)](https://www.reddit.com/r/archlinux/comments/2kgkfb/what_is_the_recommended_way_to_update_packages/)
 
 
 封面图片来自 [Two Easy Steps](https://dribbble.com/shots/2266220-Two-Easy-Steps) <a href="https://dribbble.com/iandickens"><i class="fa fa-dribbble" aria-hidden="true"></i> Ian Dickens</a>  
