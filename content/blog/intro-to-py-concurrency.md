@@ -7,7 +7,7 @@ draft = false
 weight = 101
 +++
 
-观看大神 David Beazley 的震撼演示
+观看牛人 [David Beazley](http://www.dabeaz.com/) 的[代码直播](https://www.youtube.com/watch?v=MCs5OvhV9S4)
 <!--more-->
 
 ## 兔子数列
@@ -46,6 +46,7 @@ Type "help", "copyright", "credits" or "license" for more info
 from socket import *
 from fib import fib
 
+
 def fib_server(address):
     sock = socket(AF_INET, SOCK_STREAM)
     sock.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
@@ -55,6 +56,7 @@ def fib_server(address):
         client, addr = sock.accept()
         print("Connected ", addr)
         fib_handler(client)
+
 
 def fib_handler(client):
     while True:
@@ -66,6 +68,7 @@ def fib_handler(client):
         resq = str(result).encode('ascii') + b'\n'
         client.send(resp)
     print("Closed")
+
 
 fib_server(('', 25000))
 
@@ -85,7 +88,7 @@ tty2 $ telnet localhost 25000 # netcat/nc also works
 6765
 {{< /highlight >}}
 
-但问题是这个服务器版本无法同时为多个 client 服务。
+但问题是这个服务器版本不能同时为多个 client 服务。
 
 {{< highlight console >}}
 
@@ -97,6 +100,259 @@ tty3 $ telnet localhost 25000
 (no response unless tty2 kill its connection)
 {{< /highlight >}}
 
-因此我们要引入多线程
+需要引入多线程，才能实现为多个 client 同时服务。
+
+> ```git format-patch -n HEAD^``` 或 ```git show HEAD```生成或查看 delta
+
+{{< highlight diff >}}
+...
+Subject: [PATCH 1/1] use thread to support multi clients
+
+---
+ server.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/server.py b/server.py
+index 8e98d26..25aed6f 100644
+--- a/server.py
++++ b/server.py
+@@ -3,6 +3,7 @@
+
+ from socket import *
+ from fib import fib
++from threading import Thread
+
+
+ def fib_server(address):
+@@ -13,7 +14,7 @@ def fib_server(address):
+     while True:
+         client, addr = sock.accept()
+         print("Connected ", addr)
+-        fib_handler(client)
++        Thread(target=fib_handler, args=(client,), daemon=True).start()
+
+
+ def fib_handler(client):
+--
+2.14.1
+{{< /highlight >}}
+
+{{< highlight console >}}
+tty1 $ python3 server.py
+Connected  ('127.0.0.1', 50142)
+Connected  ('127.0.0.1', 50146)
+
+tty2 $ telnet 127.0.0.1 25000
+10
+55
+20
+6765
+
+tty3 $ telnet 127.0.0.1 25000
+20
+6765
+30
+832040
+
+{{< /highlight >}}
+
+## GIL 性能瓶颈
+
+CPython 的 thread 直接使用操作系统上的线程，但内存管理并非线程安全，需要借助 GIL (globla interpreter lock)，会导致一些性能上的问题。
+
+比如，下面的程序持续地向服务器发出计算请求:
+
+{{< highlight python >}}
+# perf1.py
+# Time of a long running request
+
+from socket import *
+import time
+
+sock = socket(AF_INET, SOCK_STREAM)
+sock.connect(('localhost', 25000))
+
+while True:
+    start = time.time()
+    sock.send(b'30')
+    resp = sock.recv(100)
+    end = time.time()
+    print(end-start)
+{{< /highlight >}}
+
+如果单独执行，平均处理时间大概是 1/5 秒。
+
+{{< highlight console >}}
+tty 4 $ python3 perf1.py
+0.26836633682250977
+0.24056386947631836
+0.23276972770690918
+0.23243498802185059
+0.23028111457824707
+0.22887349128723145
+0.2297065258026123
+0.22983860969543457
+0.22971153259277344
+
+{{< /highlight >}}
+
+但如果同时启动 n 个这样的 clients，处理时长就会(线性?)增长——所有请求仅能经单核处理。David Beazley 演示的时候，其 Mac 确实是线性增长。但我实验的结果性能下降更多(5倍)，不知是不是我后台运行程序太多的缘故。
+
+{{< highlight console >}}
+tty 5 $ python3 perf1.py
+1.29852294921875
+1.2276148796081543
+1.3492326736450195
+1.3649957180023193
+
+tty 4
+...
+0.22785305976867676
+0.2288191318511963
+0.2296619415283203
+1.1391808986663818
+1.277223825454712
+1.2258660793304443
+1.0844104290008545
+1.3383533954620361
+
+{{< /highlight >}}
+
+## GIL 优先级瓶颈
+
+另一个现象可以借助下面的程序展示。在tty2上用多线程模拟密集而运算量极小的 client，得到当前机器平均每秒可以处理的请求数量。我实验的结果是 2～3 万请求每秒。
+
+然后再在 tty 3 上启动一个 telnet ，单独提交一个请求，比如 42。你会发现原来 tty 2 上每秒处理的请求瞬间下降了100倍，直到这个单独的请求被处理完毕，才恢复回之前每秒处理量级。
+
+{{< highlight python >}}
+# perf2.py
+# requests/sec of fast requests
+
+from socket import *
+import time
+
+
+sock = socket(AF_INET, SOCK_STREAM)
+sock.connect(('localhost', 25000))
+
+n = 0
+
+
+from threading import Thread
+def monitor():
+    global n
+    while True:
+        time.sleep(1)
+        print(n, 'reqs/sec')
+        n = 0
+Thread(target=monitor).start()
+
+
+while True:
+    sock.send(b'1')
+    resp = sock.recv(100)
+    n += 1
+{{< /highlight >}}
+
+{{< highlight console >}}
+tty 2 $ python3 perf2.py
+35318 reqs/sec
+33660 reqs/sec
+25461 reqs/sec
+22900 reqs/sec
+10340 reqs/sec
+224 reqs/sec
+108 reqs/sec
+100 reqs/sec
+6402 reqs/sec
+28553 reqs/sec
+20865 reqs/sec
+21104 reqs/sec
+31101 reqs/sec
+
+tty 3 $ telnet localhost 25000
+36
+14930352
+
+{{< /highlight >}}
+
+这个现象背后原因是 GIL 有个特性是其内部会做优先级排序，将计算量较大的设为高优先级，但这种行为其实和操作系统产生了较大差别。
+
+假设通过如下这种方式在 tty 3 上启动另一个线程出发计算，原有的 tty 2 上的压测数值就不会发生变化。就是说操作系统其实更愿意为短小计算设置高优先级。
+
+{{< highlight console >}}
+tty 3 $ python3 -i fib.py
+>>> fib(36)
+14930352
+
+tty2
+32687 reqs/sec
+38291 reqs/sec
+40569 reqs/sec
+34638 reqs/sec
+36722 reqs/sec
+35463 reqs/sec
+30825 reqs/sec
+28908 reqs/sec
+33111 reqs/sec
+
+{{< /highlight >}}
+
+想象你开设了类似的 Web 服务，大部分的请求时短小的，但忽然的一个大计算量的请求会把整个系统服务的请求数压到非常低。
+
+一般性的解决方案是使用线程池，这样每秒能处理的小请求的数量会减少（1/10），但好处是将由于 GIL 的任务优先级特性，在大运算量请求来临时影响降到了很小。
+
+{{< highlight diff >}}
+
+$ git diff
+diff --git a/server.py b/server.py
+index 25aed6f..61885ed 100644
+--- a/server.py
++++ b/server.py
+@@ -4,7 +4,9 @@
+ from socket import *
+ from fib import fib
+ from threading import Thread
++from concurrent.futures import ProcessPoolExecutor as Pool
+
++pool = Pool(4)
+
+ def fib_server(address):
+     sock = socket(AF_INET, SOCK_STREAM)
+@@ -23,7 +25,8 @@ def fib_handler(client):
+         if not req:
+             break
+         n = int(req)
+-        result = fib(n)
++        future = pool.submit(fib, n)
++        result = future.result()
+         resq = str(result).encode('ascii') + b'\n'
+         client.send(resq)
+     print("Closed")
+
+{{< /highlight >}}
+
+{{< highlight console >}}
+tty2
+...
+1829 reqs/sec
+2090 reqs/sec
+2124 reqs/sec
+2161 reqs/sec
+2110 reqs/sec
+2174 reqs/sec
+...
+
+tty 3 $ telnet localhost 25000
+36
+14930352
+
+{{< /highlight >}}
+
+参考文档
+
+> - python wiki [GIL](https://wiki.python.org/moin/GlobalInterpreterLock)
+> - David Beazley [code@github](https://github.com/dabeaz/concurrencylive)
+> - Michael Domanski (2016-06-09) [How Celery fixed Python's GIL problem](http://blog.domanski.me/how-celery-fixed-pythons-gil-problem/)
 
 封面图片来自 [Sorting factory](https://dribbble.com/shots/3326497-Sorting-factory) <a href="https://dribbble.com/Frizler"><i class="fa fa-dribbble" aria-hidden="true"></i> Anton Fritsler (kit8)</a>
