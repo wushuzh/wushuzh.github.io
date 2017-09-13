@@ -39,7 +39,7 @@ Type "help", "copyright", "credits" or "license" for more info
 
 ## 微服务版本
 
-{{< highlight python >}}
+{{< highlight python "linenos=table">}}
 # server.py
 # Fib microservice
 
@@ -74,6 +74,12 @@ fib_server(('', 25000))
 
 {{< /highlight >}}
 
+socket 算是 python 网络编程领域较为底层的模块。
+
+第 9 行初始化的时候```socket(AF_INET, SOCK_STREAM)```可指定套接字的传输协议，这里两个参数都是默认值——不明写也行```sock = socket()```。AF 就是 Addr Family，第一个参数 AF_INET ≃ IPv4 。第二个参数 SOCK_STREAM 用于 TCP，与之相对还有 SOCK_DGRAM 用于 UDP。
+
+第 10 行设置 Socket Level 的选项，将 SO_REUSEADDR 置为 yes 。主要是因为后续我们将不断调试程序，如此设置使得即便杀掉服务端程序后立即重启也不会出现因为连接拒绝建立的情况。详见 [What is the meaning of SO_REUSEADDR (setsockopt option) - Linux](https://stackoverflow.com/questions/3229860/what-is-the-meaning-of-so-reuseaddr-setsockopt-option-linux)
+
 {{< highlight console >}}
 
 tty1 $ python3 server.py
@@ -88,16 +94,12 @@ tty2 $ telnet localhost 25000 # netcat/nc also works
 6765
 {{< /highlight >}}
 
-但问题是这个服务器版本不能同时为多个 client 服务。
+但问题是这个服务器版本不能同时为多个 client 服务。这是由于代码仅由[单一处理进程处理所有请求](https://stackoverflow.com/a/11344212/4393386)，仅当由 client 2 参与建立的 socket 链接（五元组）拆链后，才能处理来自 client 3 的另一个 socket 链接。
 
 {{< highlight console >}}
-
-tty1 $ python3 server.py
-Connected  ('127.0.0.1', 46310)
-
 tty3 $ telnet localhost 25000
 10
-(no response unless tty2 kill its connection)
+(hung with no response unless tty2 kill its connection)
 {{< /highlight >}}
 
 需要引入多线程，才能实现为多个 client 同时服务。
@@ -222,7 +224,7 @@ tty 4
 
 另一个现象可以借助下面的程序展示。在tty2上用多线程模拟密集而运算量极小的 client，得到当前机器平均每秒可以处理的请求数量。我实验的结果是 2～3 万请求每秒。
 
-然后再在 tty 3 上启动一个 telnet ，单独提交一个请求，比如 42。你会发现原来 tty 2 上每秒处理的请求瞬间下降了100倍，直到这个单独的请求被处理完毕，才恢复回之前每秒处理量级。
+然后再在 tty 3 上启动一个 telnet ，单独提交一个请求，比如 42。你会发现原来 tty 2 上每秒处理的请求瞬间下降了100倍（从2～3万到100）——几乎是个断崖式的下降，而直到这个单独的请求被处理完毕，才恢复回之前每秒处理量级。
 
 {{< highlight python >}}
 # perf2.py
@@ -300,7 +302,7 @@ tty2
 
 想象你开设了类似的 Web 服务，大部分的请求时短小的，但忽然的一个大计算量的请求会把整个系统服务的请求数压到非常低。
 
-一般性的解决方案是使用线程池，这样每秒能处理的小请求的数量会减少（1/10），但好处是将由于 GIL 的任务优先级特性，在大运算量请求来临时影响降到了很小。
+一般性的解决方案是使用线程池，这样每秒能处理的小请求的数量会减少 1/10 (从2～3万到2千)——因为 Pool 引入了不少间接成本，但好处是将由于 GIL 的任务优先级特性，在大运算量请求来临时影响降到了很小。
 
 {{< highlight diff >}}
 
@@ -354,5 +356,6 @@ tty 3 $ telnet localhost 25000
 > - python wiki [GIL](https://wiki.python.org/moin/GlobalInterpreterLock)
 > - David Beazley [code@github](https://github.com/dabeaz/concurrencylive)
 > - Michael Domanski (2016-06-09) [How Celery fixed Python's GIL problem](http://blog.domanski.me/how-celery-fixed-pythons-gil-problem/)
+> - [Socket options SO_REUSEADDR and SO_REUSEPORT, how do they differ? Do they mean the same across all major operating systems?](https://stackoverflow.com/questions/14388706/socket-options-so-reuseaddr-and-so-reuseport-how-do-they-differ-do-they-mean-t)
 
 封面图片来自 [Sorting factory](https://dribbble.com/shots/3326497-Sorting-factory) <a href="https://dribbble.com/Frizler"><i class="fa fa-dribbble" aria-hidden="true"></i> Anton Fritsler (kit8)</a>
