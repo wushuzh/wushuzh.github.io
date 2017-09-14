@@ -2,7 +2,7 @@
 date = "2017-09-08T23:27:52+08:00"
 title = "python 并发 (1)"
 showonlyimage = false
-image = "/img/blog/intro-to-py-concurrency/sorting_kit8-net.png"
+image = "/img/blog/intro-to-py-socket/sorting_kit8-net.png"
 draft = false
 weight = 101
 +++
@@ -114,7 +114,7 @@ tty3 $ telnet localhost 25000
 (hung with no response unless tty2 kill its connection)
 {{< /highlight >}}
 
-<img alt="Py Socket Workflow" src="/img/blog/intro-to-py-concurrency/Py-Socket-WorkFlow.png"  style="width:70%; height:70%; display:block; margin: auto;">
+<img alt="Py Socket Workflow" src="/img/blog/intro-to-py-socket/Py-Socket-WorkFlow.png"  style="width:70%; height:70%; display:block; margin: auto;">
 
 需要引入多线程，才能实现为多个 client 同时服务。
 

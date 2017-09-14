@@ -28,6 +28,6 @@ weight = 102
 
 > - Full Stack Python [Development Environments](https://www.fullstackpython.com/development-environments.html)
 > - Henrique Bastos (2017-01-07) [The definitive guide to setup my Python workspace](https://medium.com/@henriquebastos/the-definitive-guide-to-setup-my-python-workspace-628d68552e14)
-
+> - David Robinson (2017-09-06) [The Incredible Growth of Python](https://stackoverflow.blog/2017/09/06/incredible-growth-python/)
 
 封面图片来自 [Wrapping Your Head Around Python](https://dribbble.com/shots/2758651-Wrapping-Your-Head-Around-Python) <a href="https://dribbble.com/whoiskatja"><i class="fa fa-dribbble" aria-hidden="true"></i> Kat Bak</a>

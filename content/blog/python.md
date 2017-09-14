@@ -9,8 +9,6 @@ weight = 100
 
 ## 入门
 
-[David Beazley - Python Concurrency From the Ground Up: LIVE! - PyCon 2015](https://www.youtube.com/watch?v=MCs5OvhV9S4)
-
 [Pandas in a Nutshell](http://kanoki.org/2017/07/16/pandas-in-a-nutshell/)
 
 [Full Stack Python Explains ORMs](https://www.fullstackpython.com/object-relational-mappers-orms.html)
