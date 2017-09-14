@@ -1,6 +1,6 @@
 +++
 date = "2017-09-08T23:27:52+08:00"
-title = "python 并发简介"
+title = "python 并发 (1)"
 showonlyimage = false
 image = "/img/blog/intro-to-py-concurrency/sorting_kit8-net.png"
 draft = false
@@ -9,6 +9,8 @@ weight = 101
 
 观看牛人 [David Beazley](http://www.dabeaz.com/) 的[代码直播](https://www.youtube.com/watch?v=MCs5OvhV9S4)
 <!--more-->
+
+免责声明: 因为代码是 dabeza 在 2015 Pycon 上的现场演示，所以他特别提示观众他为了将 Python 并发的最核心概念在短短 40 分钟内展现出来，不得不放弃了软件工程上所有的最佳实践、防御性编程。
 
 ## 兔子数列
 
@@ -76,9 +78,19 @@ fib_server(('', 25000))
 
 socket 算是 python 网络编程领域较为底层的模块。
 
-第 9 行初始化的时候```socket(AF_INET, SOCK_STREAM)```可指定套接字的传输协议，这里两个参数都是默认值——不明写也行```sock = socket()```。AF 就是 Addr Family，第一个参数 AF_INET ≃ IPv4 。第二个参数 SOCK_STREAM 用于 TCP，与之相对还有 SOCK_DGRAM 用于 UDP。
+第 9 行初始化的时候```socket(AF_INET, SOCK_STREAM)```可指定套接字(插座)的传输协议，这里两个参数都是默认值——不明写也行```sock = socket()```。AF 就是 Addr Family，第一个参数 AF_INET ≃ IPv4 。第二个参数 SOCK_STREAM 用于 TCP，与之相对还有 SOCK_DGRAM 用于 UDP。
 
 第 10 行设置 Socket Level 的选项，将 SO_REUSEADDR 置为 yes 。主要是因为后续我们将不断调试程序，如此设置使得即便杀掉服务端程序后立即重启也不会出现因为连接拒绝建立的情况。详见 [What is the meaning of SO_REUSEADDR (setsockopt option) - Linux](https://stackoverflow.com/questions/3229860/what-is-the-meaning-of-so-reuseaddr-setsockopt-option-linux)
+
+第 11 行给出一个 socket 五元组的其中二项，即服务器端的网络地址和端口:{PROTOCOL, SRC-IP, SRC-PORT, DEST-IP, DEST-PORT}
+
+第 12 行让服务端开始监听来自客户端(插头)的连接。参数选填，及连接队列的最大槽位。
+
+第 14 行是个阻塞调用，仅在有客户端连接时返回 (conn, address)，其中 conn 是一个新的 socket 对象，专用于和此客户端收、发消息。addr 就是客户端的网络地址了。
+
+第 21 行的 recv 同样是个阻塞调用，专用于 TCP 连接，参数为一次收下的最大数据长度。建议取值是不太大的 2 的指数幂。
+
+第 27 行的 send 是阻塞调用，也专用于 TCP 连接。
 
 {{< highlight console >}}
 
@@ -94,13 +106,15 @@ tty2 $ telnet localhost 25000 # netcat/nc also works
 6765
 {{< /highlight >}}
 
-但问题是这个服务器版本不能同时为多个 client 服务。这是由于代码仅由[单一处理进程处理所有请求](https://stackoverflow.com/a/11344212/4393386)，仅当由 client 2 参与建立的 socket 链接（五元组）拆链后，才能处理来自 client 3 的另一个 socket 链接。
+但问题是这个服务器版本不能同时为多个 client 服务。这是由于代码仅由[单一处理进程处理所有请求](https://stackoverflow.com/a/11344212/4393386)，只有 client 2 参与建立的 socket 链接（五元组）拆链后，才能继续处理早已处于等待状态的来自 client 3 的另一个 socket 链接。
 
 {{< highlight console >}}
 tty3 $ telnet localhost 25000
 10
 (hung with no response unless tty2 kill its connection)
 {{< /highlight >}}
+
+<img alt="Py Socket Workflow" src="/img/blog/intro-to-py-concurrency/Py-Socket-WorkFlow.png"  style="width:70%; height:70%; display:block; margin: auto;">
 
 需要引入多线程，才能实现为多个 client 同时服务。
 
@@ -160,7 +174,7 @@ tty3 $ telnet 127.0.0.1 25000
 
 ## GIL 性能瓶颈
 
-CPython 的 thread 直接使用操作系统上的线程，但内存管理并非线程安全，需要借助 GIL (globla interpreter lock)，会导致一些性能上的问题。
+CPython 的 thread 直接使用操作系统上的线程，但因为 python 的内存管理并非线程安全，需要借助 GIL (globla interpreter lock)，会导致一些性能上的问题。
 
 比如，下面的程序持续地向服务器发出计算请求:
 
@@ -351,11 +365,17 @@ tty 3 $ telnet localhost 25000
 
 {{< /highlight >}}
 
+篇幅有限，未完待续
+
 参考文档
 
 > - python wiki [GIL](https://wiki.python.org/moin/GlobalInterpreterLock)
 > - David Beazley [code@github](https://github.com/dabeaz/concurrencylive)
 > - Michael Domanski (2016-06-09) [How Celery fixed Python's GIL problem](http://blog.domanski.me/how-celery-fixed-pythons-gil-problem/)
+> - Python Doc socket [Low-level networking itf](https://docs.python.org/3/library/socket.html)
 > - [Socket options SO_REUSEADDR and SO_REUSEPORT, how do they differ? Do they mean the same across all major operating systems?](https://stackoverflow.com/questions/14388706/socket-options-so-reuseaddr-and-so-reuseport-how-do-they-differ-do-they-mean-t)
+> - Harsh S. (2016-10-31) [Essentials Of Python Socket Programming You Should Know](http://www.techbeamers.com/python-tutorial-essentials-of-python-socket-programming/)
+> - Silver Moon (2014-01-09) [Python socket – network programming tutorial](http://www.binarytides.com/python-socket-programming-tutorial/) and (2016-08-06) [Programming udp sockets in python](http://www.binarytides.com/programming-udp-sockets-in-python/)
+> - M. Jones (2005-10-04) [Sockets programming in Python](https://www.ibm.com/developerworks/linux/tutorials/l-pysocks/index.html)
 
 封面图片来自 [Sorting factory](https://dribbble.com/shots/3326497-Sorting-factory) <a href="https://dribbble.com/Frizler"><i class="fa fa-dribbble" aria-hidden="true"></i> Anton Fritsler (kit8)</a>

@@ -79,6 +79,9 @@ $ sudo pacman -S samba
 $ sudo cp /etc/samba/smb.conf.default /etc/samba/smb.conf
 ...
 $ sudo smbpasswd -a wushuzh
+$ sudo systemctl start smbd
+$ sudo systemctl enable smbd
+Created symlink /etc/systemd/system/multi-user.target.wants/smbd.service → /usr/lib/systemd/system/smbd.service.
 {{< /highlight >}}
 
 <br />
@@ -180,7 +183,7 @@ gpg:               imported: 1
 
 # continue install cower
 
-# check aur updates 
+# check aur updates
 $ cower -vdu
 {{< /highlight >}}
 
