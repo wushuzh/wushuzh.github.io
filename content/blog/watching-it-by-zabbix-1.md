@@ -17,9 +17,9 @@ weight = 71
 - [Zabbix: Free Software that helps](https://www.slideshare.net/xsbr/zabbix-by-alexei-vladishev-fisl12-2011)
 - [Open Source Enterprise Monitoring with Zabbix](https://web.archive.org/web/20120226220044/http://www.netways.de/uploads/media/Alexei_Vladishev_Open_Source_Monitoring_with_Zabbix.pdf)
 
-关于其名字的由来，推测应该是这样的：几位工程师终于完成了当天的编码任务，现在产品的核心功能已经很像那么回事了。大家都觉得应该利用茶歇的时间，考虑一下今后推广这个牛X产品时该如何称呼它，于是就开始了头脑风暴式的讨论。
+关于其名字的由来，推测应该是这样的：几位工程师终于完成了当天的编码任务，现在产品的核心功能已经很像那么回事了。有人提议利用茶歇时间，为这个这个牛X产品求个名，于是大家就开始了热烈地讨论。
 
-但没想到进入了这样一个尴尬的循环：想出一个名，一查已被注册，又想一个，一查又已被使用。好像是所有符合监控本身含义的酷名字都被用掉了。尝试了许久过后，终于大家的耐心被彻底击溃，然后开始像跟这个世界有过节似得胡乱编名字，最终找到了一个完全无意义的单词 Zabbix，而网上一搜——果然完全没有人用——连搜索引擎返回的记录数都为 0，完美，就这个了，碎觉……
+但 n 个茶歇过去了，他们却进入了这样一个尴尬的循环：想出一个名，一搜已被注册，又想一个，一查又已被使用。好像是所有符合监控本身含义的酷名字都被用掉了。尝试了许久过后，终于大家的耐心被彻底击溃，然后开始像跟这个世界有过节似得胡乱编名字，最终找到了一个完全无意义的单词 Zabbix，而网上一搜——果然完全没有人用——连搜索引擎返回的记录数都为 0，完美，就这个了，碎觉……
 
 ## 总体
 
@@ -27,7 +27,7 @@ weight = 71
 
 1. 创建一台虚拟机 S，安装配置 LAMP、Zabbix 核心服务器及其前端
 2. 创建一台虚拟机 V，安装 LAMP 和 Zabbix 代理，目标是收集其服务器上的相关指标
-3. 创建一台虚拟机 D，安装 Docker 和 Zabbix 代理，和 V 相比，这里还要外加收集此服务器上运行容器的耗费的系统资源指标
+3. 创建一台虚拟机 D，安装 Docker 和 Zabbix 代理，和 V 不同的是，我们要自定义专用于收集此服务器上和容器相关的资源指标，相关过程在 ["Zabbix 自定义指标"]({{< relref "blog/watching-it-by-zabbix-2.md" >}}) 详述
 4. 定义一些自有指标，调试并通过网页查看实时结果
 
 > 搭建的具体步骤，参见 Vadym Kalsin (2016-11-09) [How To Install and Configure Zabbix to Securely Monitor Remote Servers on CentOS 7](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-zabbix-to-securely-monitor-remote-servers-on-centos-7)
@@ -78,9 +78,9 @@ cannot set resource limit: [13] Permission denied
 cannot disable core dump, exiting...
 {{< /highlight >}}
 
-此问题是由于系统 coredump 设置，SELinux 相关策略以及 Zabbix 启动检测的冲突引起。欲知详情，配合 Zabbix 的 JIRA [zabbix-server can not start on rhel 7.1](https://support.zabbix.com/browse/ZBX-10542) 和 [An Introduction to SELinux on CentOS 7](https://www.digitalocean.com/community/tutorial_series/an-introduction-to-selinux-on-centos-7) 可做深入解读。
+经查此问题是由于系统 coredump 设置，SELinux 相关策略以及 Zabbix 启动检测的冲突引起。欲知详情，配合 Zabbix 的 JIRA [zabbix-server can not start on rhel 7.1](https://support.zabbix.com/browse/ZBX-10542) 和 [An Introduction to SELinux on CentOS 7](https://www.digitalocean.com/community/tutorial_series/an-introduction-to-selinux-on-centos-7) 可做深入解读。
 
-粗暴的解决方法可以禁掉 SELinux ，但这么做毕竟不专业，所以至少先安装了 setroubleshoot 并启动相应服务：
+粗暴的解决方法可以禁掉 SELinux ，但这么做很不专业，正确的做法是安装 setroubleshoot 并启动相应服务：
 
 {{< highlight console >}}
 
@@ -89,9 +89,9 @@ sudo systemctl restart auditd.service
   # =====================================================
   # if you found error when start auditd
   #   Failed to restart auditd.service: Operation refused,
-  #       unit auditd.service may be requested by dependency only.
+  #     unit auditd.service may be requested by dependency only.
   #   See system logs and
-  #       'systemctl status auditd.service' for details.
+  #     'systemctl status auditd.service' for details.
   # then execute following instead
   #   'sudo service auditd restart'
   # check more details on
@@ -100,7 +100,7 @@ sudo systemctl restart auditd.service
 
 {{< /highlight >}}
 
-然后根据```/var/log/messsage```中的提示为本地创建例外规则，放行我们可预期的服务。
+然后根据```/var/log/messsage```中的提示为服务器创建本地例外规则，放行我们可预期的服务。
 操作参见:
 
 - [SELinux : Use SETroubleShoot](https://www.server-world.info/en/note?os=CentOS_7&p=selinux&f=8)
@@ -117,7 +117,8 @@ sudo systemctl restart auditd.service
 {{< highlight bash >}}
 $ sudo yum install tigervnc-server
 $ sudo firewall-cmd --get-services
-$ sudo firewall-cmd --permanent --zone=public --add-service=vnc-server
+$ sudo firewall-cmd --permanent --zone=public \
+    --add-service=vnc-server
 {{< /highlight >}}
 <br />
 
@@ -143,7 +144,7 @@ cannot disable core dump, exiting...
 
 成功启动 zabbix-agent 后，就可以回到虚拟机 S 上利用网页添加这个被监控的主机了。记得使用 PSK 通信兵配置之前准备好的 PSK，最后添加监控模板，就可以在网页上查看产生的性能和告警。
 
-关于监控自定义的性能指标，再开一篇另作说明。
+关于监控自定义的性能指标，见 ["Zabbix 自定义指标"]({{< relref "blog/watching-it-by-zabbix-2.md" >}})。
 
 参考文档
 
