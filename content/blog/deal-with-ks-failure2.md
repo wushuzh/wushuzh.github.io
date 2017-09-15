@@ -22,7 +22,7 @@ weight = 46
 
 其中解决方案是 a. 通过 uuid 制定磁盘、b. 显式重置磁盘元数据 ```clearpart --all --initlabel ```，这和我当下 ks 文件的做法一致。
 
-另外，从 [rhinstaller anaconda releases](https://github.com/rhinstaller/anaconda/releases) 上看，我使用的版本也并非最新版，我猜这个问题也存于安装程序的底层的块设备配置模块 [storaged-project/blivet](https://github.com/storaged-project/blivet)。
+另外，从 [rhinstaller anaconda releases](https://github.com/rhinstaller/anaconda/releases) 上看，我使用的版本也并非最新版，所以我觉得也许这个问题来自安装程序的底层的块设备的配置模块 [storaged-project/blivet](https://github.com/storaged-project/blivet)。
 
 ## 求援外部
 
@@ -39,7 +39,7 @@ RedHat 大部分产品开源，其商业模式主要来自对其产品的商业�
 
 > 而我见到的对上报 bug 最好的建议来自 Simon Tatham (Putty作者) [How to Report Bugs Effectively](https://www.chiark.greenend.org.uk/~sgtatham/bugs.html) 这个文章有[中文翻译](https://www.chiark.greenend.org.uk/~sgtatham/bugs-cn.html)，建议打印一份放在贴在工位上，随时反复阅读。
 
-> 在更为宽泛的定下，对于如何提问的最好建议来自 Eric Steven Raymond 和 Rick Moen 的 [How To Ask Questions The Smart Way](http://www.catb.org/esr/faqs/smart-questions.html)，也有中文翻译：[ryanhanwu](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way) 和 [ZRONG](http://doc.zengrong.net/smart-questions/cn.html)
+> 在更为宽泛的定下，对于如何提问的最好建议来自 Eric Steven Raymond 和 Rick Moen 的 [How To Ask Questions The Smart Way](http://www.catb.org/esr/faqs/smart-questions.html)，也有中文翻译：[ryanhanwu](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way) 和 [ZRONG](http://doc.zengrong.net/smart-questions/cn.html) 两个版本
 
 这么大张旗鼓的引用了这些如何提问、提 bug 的建议，还是觉得这是技术工作者一个重要的基本素质。从结果看，凡是提问前做充分思考的同学，不但自身技术提高得快，同时也能得到其所在组织和同事的认可、肯定。
 
@@ -150,7 +150,7 @@ DEBUG blivet:
 
 {{< /highlight >}}
 
-这几行报错信息离最终爆出的磁盘不够的错误信息都在 storage.log 中，但之间相差了大概 2000 行日志，这也就是这个问题一开始我没能准确定位错误的原因。遇到存储相关的问题还是要细读 storage 日志，并考虑用下面的指令过滤出相关行做逐一分析是这次分析获得宝贵经验。
+这几行报错信息和最后爆出磁盘不够的错误信息都在 storage.log 中，但它们之间居然相差了大概 2000 行日志，这也就是这个问题一开始我没能准确定位错误的原因。遇到存储相关的问题还是要细读 storage 日志，并考虑用下面的指令过滤出相关行做逐一分析是这次分析获得宝贵经验。
 
 {{< highlight console >}}
 # grep -e "allocatePartitions" -e "allocating partition" \
