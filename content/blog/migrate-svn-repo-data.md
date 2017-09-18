@@ -11,9 +11,11 @@ weight = 11
 <!--more-->
 
 ## SVN 是什么
-当然是一个版本管理工具，虽然被 Linus Torvalds 奚落，但它还是非常很有影响力的。**Apache软件基金会** 就主推 SVN ，当然这也是它旗下的一个顶级项目。
+当然是一个版本管理工具，虽然被 Linus Torvalds 奚落:
 
-> Linus 在某次访谈时提到了对 CVS 的极度厌恶，并提示台下 SVN 的用户也该离开。然后他说  Subversion 是史上最没有意义的项目，SVN曾经有一段打出的口号是“正确地使用 CVS ”，这个目标毫无意思，因为照 CVS 的方式根本就不可能做的对……
+> Linus 在某次访谈时提到了对 CVS 的极度厌恶，并提示台下 SVN 的用户也该离开。然后他说  Subversion 是史上最没有意义的项目，SVN(作为 CVS 理念的继任者和替代品)曾经有一段打出的口号是“正确地使用 CVS ”，但这个目标毫无意思，因为以 CVS 的方式管理源代码根本就不可能做对……
+
+但它还是非常很有影响力的。**Apache软件基金会** 就主推 SVN ，当然这也许是因为它本身就是这个基金会旗下的顶级项目。
 
 ## 为啥迁移
 
@@ -83,6 +85,8 @@ svnlook history REPO_PATH --show-ids --limit 10
 svnlook info -r SOME_REVISION_ID
 svnlook info REPO_PATH # 查看仓库最新一次提交
 {{< /highlight >}}  
+
+> 如果是 svn client，则使用```svn info```查看远端中央仓库的 URL 以及最后当下仓库的最后更新时间。
 
 方案 B svnsync
 
