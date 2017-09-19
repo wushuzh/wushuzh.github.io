@@ -1,6 +1,6 @@
 +++
 date = "2017-09-15T20:55:02+08:00"
-title = "虚拟环境实验厂"
+title = "打造虚拟实验厂"
 showonlyimage = false
 image = "/img/blog/dual-os-7-ve/400.png"
 topImage = "/img/blog/dual-os-7-ve/400.gif"
@@ -8,7 +8,7 @@ draft = false
 weight = 68
 +++
 
-利用 Vagrant 管理多种虚拟环境
+QEMU/KVM、Libvirt、Vagrant 的安装配置
 <!--more-->
 
 ## 虚拟层
@@ -114,11 +114,11 @@ $ sudo pacman -S qemu libvirt dnsmasq ebtables
 
 ## 鉴权和服务
 
-所以作为虚拟机管理员，我放弃使用过于底层的 qemu 指令，转而作为一个“客户端”，首先连接守护服务进程 libvirt ，再进而管理。
+虚拟机管理的最佳实践是放弃过于底层的 qemu 指令，而将自己作为一个“客户端”，首先连接守护服务进程 libvirt ，再进而使用 virsh 和相应 API 完成管理维护。
 
-有连接就有鉴权，libvirt 安装时提供了相应的 policy 文件 ```/usr/share/polkit-1/actions/org.libvirt.unix.policy```。只要属于 wheel 组，用户就可以做 VM 管理。
+有连接就有鉴权，libvirt 软件包提供了 policy 文件 ```/usr/share/polkit-1/actions/org.libvirt.unix.policy```。而在 arch 中只要是属于 wheel 组的用户就可以做 VM 管理。
 
-还记得在之前的一篇 ["Archlinux 配置"]({{< relref "blog/dual-os-3-setup-arch.md" >}}) 中专門建立了 kvm 用户组，通过创建```/etc/polkit-1/rules.d/50-libvirt.rules```的 polkit rule 文件为 kvm 的组成员做免密配置。
+在之前的一篇 ["Archlinux 配置"]({{< relref "blog/dual-os-3-setup-arch.md" >}}) 中专門建立了 kvm 用户组，这里则通过创建```/etc/polkit-1/rules.d/50-libvirt.rules```的 polkit rule 文件为 kvm 的组成员做免密配置。
 
 {{< highlight javascript >}}
 // Allow users in kvm group to manage
@@ -132,31 +132,64 @@ polkit.addRule(function(action, subject) {
 
 {{< /highlight >}}
 
-配置完毕，启动服务即可:
+另外，由于 [FS#54943 - [systemd] [qemu] [libvirt] Two or more conflicting lines for kvm configured, ignoring.](https://bugs.archlinux.org/task/54943) 你需要编辑 ```/etc/libvirt/qemu.conf``` 将 group 的值从 78 调整为 kvm，这样你就不会在以后面启动虚拟机时遇到```Could not access KVM kernel module: Permission denied```错误。
+
+配置完毕，启动服务，并测试一下 virsh 是否工作正常:
 
 {{< highlight console >}}
 
 $ sudo systemctl start libvirtd.service
 $ sudo systemctl start virtlogd.service
 $ sudo systemctl enable libvirtd.service
+$ virsh -c qemu:///system
+
+# add env to avoid typing -c uri every time
+$ echo "export LIBVIRT_DEFAULT_URI=qemu:///system" >> ~/.bashrc
+{{< /highlight >}}
+
+建议配置到这里我们要重启一次系统，以便缺省的 Storage pools 名为 default 指向目录 ```/var/lib/libvirt/images/``` 已真正被创建并生效。不然后续调用 vagrant up 时会遇到```Error while uploading image to storage pool: undefined method `upload' for #<Libvirt::StorageVol:0x007f04b9022730>```错误。
+
+{{< highlight console >}}
+$ virsh pool-list
+$ virsh pool-info default
+$ virsh pool-dumpxml default
 
 {{< /highlight >}}
 
+<br />
+
 ## Vagrant 安装配置
+
+首先安装 vagrant 主程序。
+
+{{< highlight console >}}
+$ sudo pacman -S vagrant rsync
+$ pacman -Q |grep vagrant
+vagrant 2.0.0-1
+vagrant-substrate 726.d082972-1
+{{< /highlight >}}
+
+{{< figure src="/img/blog/dual-os-7-ve/env.png" title="output of screenfetch" >}}
+
+截至 2017 年 9 月，[arch wiki](https://wiki.archlinux.org/index.php/Vagrant#vagrant-libvirt) 中仍保留了插件 vagrant-libvirt 安装所需的特定 workaround。而我安装时觉得 vagrant 已非 wiki 中提示的版本，尝试直接运行插件安装指令，结果在后面 vagrant 启动 VM 时各种失败，都是各种找不到 API 的错误，如```undefined method `persistent?' for #<Libvirt::StoragePool:xxx```。解决办法是阅读 [gist](https://gist.github.com/j883376/d90933620c7ed14daa4e0963e005377f) 并创造性地按相应步骤卸载，重装按照插件才可以。
+
+> 另外我后来发现 AUR 有这个插件的[软件包](https://aur.archlinux.org/packages/vagrant-libvirt/)，有点纳闷到底是该自行安装，还是通过 AUR 安装。
+
+启动 VM 时，基本步骤时先联网下载 image ，然后根据 Vagrantfile 中的配置启动 VM ，可能踩的坑主要时获取从 dnsmasq 为虚拟机分配 IP。常见的 debug 的方法可以通过 vnc 和 wireshark
 
 {{< highlight console >}}
 
-$ sudo pacman -S vagrant
-$ CONFIGURE_ARGS='with-ldflags=-L/opt/vagrant/embedded/lib with-libvirt-include=/usr/include/libvirt with-libvirt-lib=/usr/lib' \
-  GEM_HOME=~/.vagrant.d/gems GEM_PATH=$GEM_HOME:/opt/vagrant/embedded/gems PATH=/opt/vagrant/embedded/bin:$PATH \
-  vagrant plugin install vagrant-libvirt
-
-$ echo "export VAGRANT_DEFAULT_PROVIDER=libvirt" >> ~/.bashrc
+$ export VAGRANT_DEFAULT_PROVIDER=libvirt
 
 $ mkdir testbed
 $ cd testbed
 $ vagrant init centos/7
-$ vagrant up
+$ vagrant up --debug
+Bringing machine 'default' up with 'libvirt' provider...
+==> default: Starting domain.
+==> default: Waiting for domain to get an IP address...
+==> default: Removing domain...
+~/.vagrant.d/gems/2.3.4/gems/fog-core-1.43.0/lib/fog/core/wait_for.rb:9:in `block in wait_for': The specified wait_for timeout
 {{< /highlight >}}
 
 
