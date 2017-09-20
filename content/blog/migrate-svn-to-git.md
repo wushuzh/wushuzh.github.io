@@ -58,12 +58,14 @@ java -jar ~/svn-migration-scripts.jar authors \
 
 ### 其次 2
 
-{{< highlight bash >}}
+{{< highlight console >}}
 git --version
 git version 2.13.3
-# due to svn-migration-scripts.jar only work for git versions v1.x
-#    you need to add options '--prefix=""' with git svn clone cmd
-#    otherwise you cannot generate local branches in later step
+# =====================================================
+# due to svn-migration-scripts.jar only work for git v1.x
+#   you need to add options '--prefix=""' to git svn clone cmd
+#   otherwise you cannot generate local branches needed
+# =====================================================
 git svn clone --prefix="" --stdlayout --authors-file=authors.txt
     <svn-repo>/<project> <git-repo-name>
 {{< /highlight >}}
@@ -101,6 +103,7 @@ java -Dfile.encoding=utf-8 -jar ~/svn-migration-scripts.jar \
 # after the remote shared git repo is created, do following
 git remote add origin https://<user>@host/.../<repo>.git
 git push -u origin --all
+# git push --set-upstream origin master -f
 git push --tags
 
 # grant the access rights for team members
@@ -117,10 +120,18 @@ git clone https://<user>@host/.../<project>.git <localdest>
 # freeze svn and make a final backup
 svnadmin dump <svn-repo> | gzip -9 > <backup-file>
 
+# ==== option 1 ====
 # editing your SVN repo’s conf/svnserve.conf file.
 # It’s [general] section should contain the following lines:
 anon-access = read
 auth-access = read
+
+# ==== option 2 ====
+# edit authz for project
+# https://stackoverflow.com/a/2411347/4393386
+[reponame:/]
+* = r
+
 {{< /highlight >}}
 <br />
 

@@ -132,7 +132,7 @@ polkit.addRule(function(action, subject) {
 
 {{< /highlight >}}
 
-另外，由于 [FS#54943 - [systemd] [qemu] [libvirt] Two or more conflicting lines for kvm configured, ignoring.](https://bugs.archlinux.org/task/54943) 你需要编辑 ```/etc/libvirt/qemu.conf``` 将 group 的值从 78 调整为 kvm，这样你就不会在以后面启动虚拟机时遇到```Could not access KVM kernel module: Permission denied```错误。
+如果你执行```getent group kvm```发现 kvm 的 gid 不是固定值 78 而是一个较大值，比如动态分配从 999 开始，详见 [FS#54943 - [systemd] [qemu] [libvirt] Two or more conflicting lines for kvm configured, ignoring.](https://bugs.archlinux.org/task/54943) 你需要编辑 ```/etc/libvirt/qemu.conf``` 将 group 的值从 78 调整为 kvm，这样你就不会在以后面启动虚拟机时遇到```Could not access KVM kernel module: Permission denied```错误。
 
 配置完毕，启动服务，并测试一下 virsh 是否工作正常:
 
@@ -143,11 +143,11 @@ $ sudo systemctl start virtlogd.service
 $ sudo systemctl enable libvirtd.service
 $ virsh -c qemu:///system
 
-# add env to avoid typing -c uri every time
+# add env var to avoid typing “-c uri” each time
 $ echo "export LIBVIRT_DEFAULT_URI=qemu:///system" >> ~/.bashrc
 {{< /highlight >}}
 
-建议配置到这里我们要重启一次系统，以便缺省的 Storage pools 名为 default 指向目录 ```/var/lib/libvirt/images/``` 已真正被创建并生效。不然后续调用 vagrant up 时会遇到```Error while uploading image to storage pool: undefined method `upload' for #<Libvirt::StorageVol:0x007f04b9022730>```错误。
+建议配置到这里重启一次系统，以便缺省的 Storage pools 名为 default 指向目录 ```/var/lib/libvirt/images/``` 已真正被创建并生效。不然后续调用 vagrant up 时会遇找不到 pool 的错误。
 
 {{< highlight console >}}
 $ virsh pool-list
@@ -171,11 +171,11 @@ vagrant-substrate 726.d082972-1
 
 {{< figure src="/img/blog/dual-os-7-ve/env.png" title="output of screenfetch" >}}
 
-截至 2017 年 9 月，[arch wiki](https://wiki.archlinux.org/index.php/Vagrant#vagrant-libvirt) 中仍保留了插件 vagrant-libvirt 安装所需的特定 workaround。而我安装时觉得 vagrant 已非 wiki 中提示的版本，尝试直接运行插件安装指令，结果在后面 vagrant 启动 VM 时各种失败，都是各种找不到 API 的错误，如```undefined method `persistent?' for #<Libvirt::StoragePool:xxx```。解决办法是阅读 [gist](https://gist.github.com/j883376/d90933620c7ed14daa4e0963e005377f) 并创造性地按相应步骤卸载，重装按照插件才可以。
+截至 2017 年 9 月，[arch wiki](https://wiki.archlinux.org/index.php/Vagrant#vagrant-libvirt) 中仍保留了插件 vagrant-libvirt 安装所需的特定 workaround。而我安装时觉得 vagrant 已非 wiki 中提示的版本，尝试直接运行插件安装指令，结果在后面 vagrant 启动 VM 时各种失败，都是各种找不到 API 的错误，如```undefined method `persistent?' for #<Libvirt::StoragePool:xxx```。解决办法是阅读 [gist](https://gist.github.com/j883376/d90933620c7ed14daa4e0963e005377f) 并按相应步骤卸载，反复重装插件才最终搞定。
 
 > 另外我后来发现 AUR 有这个插件的[软件包](https://aur.archlinux.org/packages/vagrant-libvirt/)，有点纳闷到底是该自行安装，还是通过 AUR 安装。
 
-启动 VM 时，基本步骤时先联网下载 image ，然后根据 Vagrantfile 中的配置启动 VM ，可能踩的坑主要时获取从 dnsmasq 为虚拟机分配 IP。常见的 debug 的方法可以通过 vnc 和 wireshark
+启动 VM 时，基本流程是先联网下载 image ，然后根据 Vagrantfile 中的配置启动 VM 。
 
 {{< highlight console >}}
 
@@ -184,20 +184,129 @@ $ export VAGRANT_DEFAULT_PROVIDER=libvirt
 $ mkdir testbed
 $ cd testbed
 $ vagrant init centos/7
-$ vagrant up --debug
 Bringing machine 'default' up with 'libvirt' provider...
-==> default: Starting domain.
-==> default: Waiting for domain to get an IP address...
-==> default: Removing domain...
-~/.vagrant.d/gems/2.3.4/gems/fog-core-1.43.0/lib/fog/core/wait_for.rb:9:in `block in wait_for': The specified wait_for timeout
+=> default: Box 'centos/7' could not be found. Attempting to find and install...
+   default: Box Provider: libvirt
+   default: Box Version: >= 0
+=> default: Loading metadata for box 'centos/7'
+   default: URL: https://vagrantcloud.com/centos/7
+=> default: Adding box 'centos/7' (v1708.01) for provider: libvirt
+   default: Downloading: https://vagrantcloud.com/centos/boxes/7/versions/1708.01/providers/libvirt.box
+=> default: Successfully added box 'centos/7' (v1708.01) for 'libvirt'!
+=> default: Uploading base box image as volume into libvirt storage...
+=> default: Creating image (snapshot of base box volume).
+=> default: Creating domain with the following settings...
+=> default:  -- Name:              testbed_default
+=> default:  -- Domain type:       kvm
+=> default:  -- Cpus:              1
+=> default:  -- Feature:           acpi
+=> default:  -- Feature:           apic
+=> default:  -- Feature:           pae
+=> default:  -- Memory:            512M
+=> default:  -- Management MAC:    
+=> default:  -- Loader:            
+=> default:  -- Base box:          centos/7
+=> default:  -- Storage pool:      default
+=> default:  -- Image:             /var/lib/libvirt/images/testbed_default.img (41G)
+=> default:  -- Volume Cache:      default
+=> default:  -- Kernel:            
+=> default:  -- Initrd:            
+=> default:  -- Graphics Type:     vnc
+=> default:  -- Graphics Port:     5900
+=> default:  -- Graphics IP:       0.0.0.0
+=> default:  -- Graphics Password: Not defined
+=> default:  -- Video Type:        cirrus
+=> default:  -- Video VRAM:        9216
+=> default:  -- Sound Type:
+=> default:  -- Keymap:            en-us
+=> default:  -- TPM Path:          
+=> default:  -- INPUT:             type=mouse, bus=ps2
+=> default: Creating shared folders metadata...
+=> default: Starting domain.
+=> default: Waiting for domain to get an IP address...
+=> default: Waiting for SSH to become available...
+   default:
+   default: Vagrant insecure key detected. Vagrant will automatically replace
+   default: this with a newly generated keypair for better security.
+   default:
+   default: Inserting generated public key within guest...
+   default: Removing insecure key from the guest if it's present...
+   default: Key inserted! Disconnecting and reconnecting using new SSH key...
+=> default: Configuring and enabling network interfaces...
+   default: SSH address: 192.168.121.51:22
+   default: SSH username: vagrant
+   default: SSH auth method: private key
+=> default: Rsyncing folder: ~/testbed/ => /vagrant
+
 {{< /highlight >}}
 
+我在这里遇到了一个很诡异的坑，启动 VM 时进程挂死在``` Waiting for domain to get an IP address...``` 处。之前 dnsmasq 已经正确安装，并不需要任何手动配置——因为 vagrant 会创建一个名为 vagrant-libvirt 的专用网络。在 vagrant up 运行时可以执行下面的命令验证:
 
-篇幅有限，未完待续
+{{< highlight console >}}
+$ virsh net-list --all
+Name                 State      Autostart     Persistent
+----------------------------------------------------------
+default              inactive   no            yes
+vagrant-libvirt      active     no            yes
+
+$ virsh net-info vagrant-libvirt
+Name:           vagrant-libvirt
+UUID:           bc5e692b-9850-4117-b140-30e0f2935685
+Active:         yes
+Persistent:     yes
+Autostart:      no
+Bridge:         virbr1
+
+$ virsh net-dumpxml vagrant-libvirt
+<network connections='2' ipv6='yes'>
+  <name>vagrant-libvirt</name>
+  <uuid>bc5e692b-9850-4117-b140-30e0f2935685</uuid>
+  <forward mode='nat'>
+    <nat>
+      <port start='1024' end='65535'/>
+    </nat>
+  </forward>
+  <bridge name='virbr1' stp='on' delay='0'/>
+  <mac address='52:54:00:3d:22:16'/>
+  <ip address='192.168.121.1' netmask='255.255.255.0'>
+    <dhcp>
+      <range start='192.168.121.1' end='192.168.121.254'/>
+    </dhcp>
+  </ip>
+</network>
+
+$ ip a
+# ==== virbr1 should be available in output ===
+{{< /highlight >}}
+
+> 关于网络，我之前使用的是 NetworkManager ，但对于容器、虚拟机来说 [systemd-networkd](https://wiki.archlinux.org/index.php/Systemd-networkd) 也许是更好的选择，这里先挖个坑，今后找机会再填。
+
+vagrant up 可以加 debug 参数查看详情。通过报错的关键字在 github vagrant-libvirt issues 中搜索，相关问题上报还挺多的，
+
+- [Public networking is waiting endlessly for IP information #97](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/97)
+- [How to get more detail & solutions to resolve it about "libvirt: Waiting for domain to get an IP address..." ? #560](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/560)
+- [Waiting for IP fails silently after a long time #673](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/673)
+- [New box created using create_box.sh - gets stuck at Waiting for domain to get an IP address... #784](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/784)
+
+查问题的方法也很多，如 #560 中建议使用 wireshark 尝试网络抓包。而 #784 中建议的通过 vnc 连接到 VM 对我这个问题起到了关键性作用。
+
+启动 vinagre 连接 VM 可以看到其内核载入启动部分。结果我发现这个 VM 居然报的错误是 boot from disk failure。然后就不用再和 DHCP 较劲了。转而一查 ```/var/lib/libvirt/images/```，大概是下载 image 时的网络问题，下载的介质并不完整。于是重新删除后下载果然就好了。
+
+{{< highlight console >}}
+$ vagrant destroy testbed
+$ vagrant box list
+$ vagrant box remote centos/7
+$ virsh vol-list default
+$ virsh vol-delete some.img
+{{< /highlight >}}
+
+vagrant ssh enjoy
 
 参考文档
 
 > - https://wiki.archlinux.org/index.php/QEMU
-> -
+> - https://wiki.archlinux.org/index.php/Libvirt
+> - https://wiki.archlinux.org/index.php/KVM
+> - https://wiki.archlinux.org/index.php/Vagrant
 
 封面图片来自 [Space Frolicking](https://dribbble.com/shots/2618501-Space-Frolicking) <a href="https://dribbble.com/TomasBrunsdon"><i class="fa fa-dribbble" aria-hidden="true"></i> Tomas Brunsdon</a>
