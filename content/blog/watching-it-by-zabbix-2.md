@@ -55,7 +55,9 @@ $COUNT_FUNCTION
 
 ## 原理
 
-Jérôme Petazzoni (2013-10-08) [Gathering LXC and Docker Containers Metrics](https://blog.docker.com/2013/10/gathering-lxc-docker-containers-metrics/)
+Docker Inc 的官博 Jérôme Petazzoni (2013-10-08) [Gathering LXC and Docker Containers Metrics](https://blog.docker.com/2013/10/gathering-lxc-docker-containers-metrics/) 值得阅读。Control groups 从 Redhat 6/7 被引入，可以通过 df 查看是否存在 /cgroup 或 /sys/fs/cgroup 挂载点来判决。
+
+
 
 ## 集成
 
