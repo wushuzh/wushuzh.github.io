@@ -13,6 +13,8 @@ QEMU/KVM、Libvirt、Vagrant 的安装配置
 
 ## 虚拟层
 
+### KVM
+
 KVM 无疑是最流行的开源虚拟层。为 archlinux 配置好虚拟实验环境，能让我们以极低的成本模拟各类系统和应用。相关概念有 QEMU 和 libvirt，前者是比 KVM 更为通用的虚拟仿真层，后者则为它们提供了一个统一的包含命令行、API 的管理工具库。更多详情见:
 
 - Peeyush Gupta (2014-02-14) [KVM vs QEMU vs Libvirt](http://thegeekyway.com/kvm-vs-qemu-vs-libvirt/)
@@ -110,6 +112,30 @@ $ lsmod |grep virtio
 
 $ sudo pacman -S qemu libvirt dnsmasq ebtables
 
+{{< /highlight >}}
+
+### Virtualbox
+
+vagrant 的默认虚拟层使用的是 virtualbox，这里也记录一下相关的安装配置。
+
+{{< highlight console >}}
+
+$ sudo pacman -S virtualbox
+# choose vitualbox-host-modules-arch for linux kernel
+# reboot so virtualbox kernel modules auto loaded, see file
+# /usr/lib/modules-load.d/virtualbox-host-modules-arch.conf
+# lsmod to list already loaded
+# modinfo to get any module details even not loaded
+
+$ sudo pacman -S net-tools virtualbox-guest-iso
+# net-tools contains cli ifconfig and route
+# iso contains additional guest tools
+
+$ sudo pacman -S virtualbox-guest-utils
+# /usr/lib/modules-load.d/virtualbox-guest-modules-arch.conf
+# improve video, input, sharing etc, reboot is needed
+
+$ sudo usermod -a -G vboxsf user
 {{< /highlight >}}
 
 ## 鉴权和服务
