@@ -132,8 +132,12 @@ $ sudo pacman -S net-tools virtualbox-guest-iso
 # iso contains additional guest tools
 
 $ sudo pacman -S virtualbox-guest-utils
+# manually load the modules in
 # /usr/lib/modules-load.d/virtualbox-guest-modules-arch.conf
-# improve video, input, sharing etc, reboot is needed
+# modprobe -a vboxguest vboxsf vboxvideo
+# improve video, input, sharing etc, launching
+$ VBoxClient --clipboard --draganddrop \
+        --seamless --display --checkhostversion
 
 $ sudo usermod -a -G vboxsf user
 {{< /highlight >}}
@@ -334,5 +338,6 @@ vagrant ssh enjoy
 > - https://wiki.archlinux.org/index.php/Libvirt
 > - https://wiki.archlinux.org/index.php/KVM
 > - https://wiki.archlinux.org/index.php/Vagrant
+> - https://wiki.archlinux.org/index.php/VirtualBox
 
 封面图片来自 [Space Frolicking](https://dribbble.com/shots/2618501-Space-Frolicking) <a href="https://dribbble.com/TomasBrunsdon"><i class="fa fa-dribbble" aria-hidden="true"></i> Tomas Brunsdon</a>

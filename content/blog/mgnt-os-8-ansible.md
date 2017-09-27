@@ -46,6 +46,17 @@ $ sudo pacman -S ansible
 4. 创建本地 ansible.cfg 设定指向第 1, 2 步准备的 private_key_file 和 inventory 文件
 5. 创建 playbook 运行 ping 模块，记得要设定 remote_user = cloud-user
 
+## 模块
+
+ping
+timezone
+# ntp client later
+filesystem
+mount
+yum_repository
+copy
+blockinfile
+
 
 参考文档
 

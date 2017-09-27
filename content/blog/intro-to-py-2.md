@@ -13,7 +13,13 @@ weight = 101
 
 ## 生成器简介
 
-在上篇 ["python 并发 (1)"]({{< relref "blog/intro-to-py-socket.md" >}}) ，我们之所以要引入线程，就是用于等待 socket 连接的 accept 调用，建立的 socket 连接无论时 recv 还是 send，都是阻塞调用。本篇我们尝试通过引入 geneartor —— Python 为方便定制循环而引入的概念，来解决上述阻塞问题。
+在上篇 ["python 并发 (1)"]({{< relref "blog/intro-to-py-socket.md" >}}) ，我们之所以要引入线程，是因为下列三个阻塞调用：
+
+- 用于等待 socket 连接的 accept
+- 建立的 socket 连接后等待 client 发送时的 recv
+- 发送给 client 回应时的 send
+
+本篇我们尝试通过引入 geneartor —— 一个为方便定制循环而引入的概念，来解决上述阻塞问题。
 
 首先复习 generator
 
@@ -101,7 +107,7 @@ Task # l9
 
 ## 魔法时刻
 
-借助 generator 我们试图自己实现一个调度器，来解决 socket 编程中阻塞调用的问题。
+借助 generator 外加一个我们自己实现的调度器，来解决 socket 编程中调用阻塞的问题。
 
 {{< highlight diff "linenos=table">}}
 --- a/aserver.py
@@ -163,11 +169,11 @@ Task # l9
 +tasks.append(fib_server(('', 25000)))
 {{< /highlight >}}
 
-关键是从 14 到 27 行的 run 函数，它是真正的主函数，从 deque 的头部取出一个 task ，这个 task 一定是一个 generator ，随后的 next 调用会把当前程序的执行交给这个 generator 从而流转到 yield 处。
+关键是从 14 到 27 行的 run 函数，它是真正的主函数，从 deque 的头部取出一个 task ，这个 task 的类型是 generator ，在它的 next 调用下将会把当前程序的执行流转到这个 generator 的 yield 处——借此来公平调度所有已知 socket 上的每一个阻塞调用。
 
-通过在第 35、44、51 行，即阻塞调用前插入 yield ，fib_server 和 fib_handler 都被变为了 generator。要注意的是 yield 返回了两个值: 值 1 是对**等待接收**和**等待发送**两个动作做出标记，值 2 是记录特定的 socket 对象。
+第 35、44、51 行，在阻塞调用前插入 yield ，fib_server 和 fib_handler 都被变为了 generator。要注意的是 yield 返回了两个值: 值 1 是对**等待接收**和**等待发送**两个动作做出标记，值 2 是记录特定的 socket 对象。
 
-之后，第 39、57 行则是在原始 socket 程序中，同时不断地向 deque 的末尾将那些阻塞时刻作为新的任务放入任务队列中。
+最后，第 39、57 行是将原始 socket 程序中所有不同的 socket 连接加入到 deque 的末尾，成为新的轮循任务。
 
 
 {{< highlight console >}}
