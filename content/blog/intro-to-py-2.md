@@ -169,12 +169,11 @@ Task # l9
 +tasks.append(fib_server(('', 25000)))
 {{< /highlight >}}
 
-关键是从 14 到 27 行的 run 函数，它是真正的主函数，从 deque 的头部取出一个 task ，这个 task 的类型是 generator ，在它的 next 调用下将会把当前程序的执行流转到这个 generator 的 yield 处——借此来公平调度所有已知 socket 上的每一个阻塞调用。
+从 14 到 27 行的 run 是真正的主函数，从 deque 的头部取出一个 task ，这个 task 的类型是 generator ，在它的 next 调用下将会把当前程序的执行暂停在这个 generator 的 yield 处——我们也是借此来实现公调度所有已知 socket 上的收/发阻塞调用。
 
 第 35、44、51 行，在阻塞调用前插入 yield ，fib_server 和 fib_handler 都被变为了 generator。要注意的是 yield 返回了两个值: 值 1 是对**等待接收**和**等待发送**两个动作做出标记，值 2 是记录特定的 socket 对象。
 
 最后，第 39、57 行是将原始 socket 程序中所有不同的 socket 连接加入到 deque 的末尾，成为新的轮循任务。
-
 
 {{< highlight console >}}
 $ python3 -i aserver.py
@@ -185,6 +184,8 @@ deque([<generator object fib_server at 0x7fccb7c96468>])
 >>> send_wait
 {}
 >>> run()
+>>> tasks
+deque([])
 >>> recv_wait
 {<socket.socket
     fd=3,
@@ -194,13 +195,63 @@ deque([<generator object fib_server at 0x7fccb7c96468>])
     laddr=('0.0.0.0', 25000)>:
 <generator object fib_server at 0x7fccb7c96468>}
 
-
 {{< /highlight >}}
 
+进入 python 的交互模式，试运行当前的半成品。运行前 tasks 队列含有一个 socket 。开始运行后，它被放置到 recv_wait 中，等待一个新的 client 来连接。这里的 recv_wait 和 send_wait 被 David 比作冰球比赛中将球员发送到受罚席。
 
+## 免线程版本
+
+加上下面的 patch ，一个完全不借助线程的原型程序就可以工作了。
+
+{{< highlight diff >}}
+--- a/aserver.py
++++ b/aserver.py
+@@ -4,13 +4,23 @@
+ from socket import *
+ from fib import fib
+ from collections import deque
++from select import select
+
+ tasks = deque()
+ recv_wait = { }   # Mapping sockets -> tasks (generators)
+ send_wait = { }
+
+ def run():
+-    while tasks:
++    while any([tasks, recv_wait, send_wait]):
++        while not tasks:
++            # No active task to run
++            # wait for I/O
++            can_recv,can_send,_ =select(recv_wait,send_wait,[])
++            for s in can_recv:
++                tasks.append(recv_wait.pop(s))
++            for s in can_send:
++                tasks.append(send_wait.pop(s))
++
+         task = tasks.popleft()
+         try:
+             why, what = next(task)  # Run to the yield
+@@ -52,4 +62,4 @@ def fib_handler(client):
+
+
+ tasks.append(fib_server(('', 25000)))
+-
++run()
+{{< /highlight >}}
+
+其中用到了 [select](https://docs.python.org/3/library/select.html) 模块，让它来代理检测哪些 socket 已处于准备好了的状态。
+
+> 关于 IO 复用的更多细节，文末的参考文档中列出了一些博客和代码实例。
+
+这样我们就可以将其重新加回到任务队列中，这样紧随其后的 next 调用也能将之前暂停的 generator 代码继续向下执行，直到下一个 yield 。
+
+下一篇将继续讨论当前原型中存在的问题。
 
 参考文档
 
-> -
+> - [如何看懂冰球比赛？ “Hockey酱”的回答](https://www.zhihu.com/question/48783686)
+> - [High-level I/O multiplexing example code](https://docs.python.org/3/library/selectors.html#examples)
+> - 糖拌咸鱼 (2012-01-06) [Python网络编程中的select 和 poll I/O复用的简单使用](http://www.cnblogs.com/coser/archive/2012/01/06/2315216.html)
+> - Vaidik Kapoor (2015-05-31) [Understanding Non Blocking I/O with Python - Part 1](https://vaidik.in/blog/understanding-non-blocking-io-with-python-part-1.html)
 
 封面图片来自 [Pantone Color Picker](https://dribbble.com/shots/2511494-Pantone-Color-Picker) <a href="https://dribbble.com/marcoscv"><i class="fa fa-dribbble" aria-hidden="true"></i> Marcos Castro</a>
