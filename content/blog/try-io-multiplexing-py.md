@@ -2,8 +2,8 @@
 date = "2017-09-14T21:28:44+08:00"
 title = "python 并发 (2)"
 showonlyimage = false
-image = "/img/blog/intro-to-py-2/pantone_color_picker.png"
-topImage = "/img/blog/intro-to-py-2/pantone_color_picker.gif"
+image = "/img/blog/try-io-multiplexing-py/pantone_color_picker.png"
+topImage = "/img/blog/try-io-multiplexing-py/pantone_color_picker.gif"
 draft = false
 weight = 101
 +++
