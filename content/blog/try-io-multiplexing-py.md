@@ -250,6 +250,7 @@ deque([])
 参考文档
 
 > - [如何看懂冰球比赛？ “Hockey酱”的回答](https://www.zhihu.com/question/48783686)
+> - cizixs (2015-03-28）answer for [can't understand polling/select in python](https://stackoverflow.com/a/29315348/4393386)
 > - [High-level I/O multiplexing example code](https://docs.python.org/3/library/selectors.html#examples)
 > - 糖拌咸鱼 (2012-01-06) [Python网络编程中的select 和 poll I/O复用的简单使用](http://www.cnblogs.com/coser/archive/2012/01/06/2315216.html)
 > - Vaidik Kapoor (2015-05-31) [Understanding Non Blocking I/O with Python - Part 1](https://vaidik.in/blog/understanding-non-blocking-io-with-python-part-1.html)
