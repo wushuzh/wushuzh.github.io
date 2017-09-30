@@ -2,8 +2,8 @@
 date = "2017-09-21T20:19:58+08:00"
 title = "python 并发 (3)"
 showonlyimage = false
-Image = "/img/blog/intro-to-py-3/seatedsuperman.png"
-topImage = "/img/blog/intro-to-py-3/seatedsuperman.gif"
+Image = "/img/blog/py-async-socket/seatedsuperman.png"
+topImage = "/img/blog/py-async-socket/seatedsuperman.gif"
 draft = false
 weight = 101
 +++
@@ -302,7 +302,7 @@ run()
 
 {{< /highlight >}}
 
-TODO1: pydocs [asyncio Asynchronous I/O, event loop, coroutines and tasks](https://docs.python.org/3/library/asyncio.html)
+TODO1: pydocs [asyncio Asynchronous I/O, event loop, coroutines and tasks](https://docs.python.org/3/library/asyncio.html)  
 TODO2: [A Curious Course on Coroutines and Concurrency](http://www.dabeaz.com/coroutines/)
 
 参考文档
