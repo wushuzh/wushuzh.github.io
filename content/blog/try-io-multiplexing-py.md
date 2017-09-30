@@ -8,7 +8,7 @@ draft = false
 weight = 101
 +++
 
-观看牛人 [David Beazley](http://www.dabeaz.com/) 的[代码直播](https://www.youtube.com/watch?v=MCs5OvhV9S4)
+仅通过调度器实现服务复用——免线程版
 <!--more-->
 
 ## 生成器简介

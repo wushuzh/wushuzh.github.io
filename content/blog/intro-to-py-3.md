@@ -8,7 +8,7 @@ draft = false
 weight = 101
 +++
 
-观看牛人 [David Beazley](http://www.dabeaz.com/) 的[代码直播](https://www.youtube.com/watch?v=MCs5OvhV9S4)
+最终版本的 AsyncSocket 及总结
 <!--more-->
 
 ## 性能问题
@@ -196,6 +196,8 @@ tty3 $ telnet localhost 25000
 
 ## 完整示例
 
+最后我们通过定义类 AsyncSocket 封装原生 Socket 。
+
 {{< highlight python >}}
 # server.py
 # Fib microservice
@@ -300,7 +302,8 @@ run()
 
 {{< /highlight >}}
 
-TODO: 完整学习一遍 pydocs [asyncio Asynchronous I/O, event loop, coroutines and tasks](https://docs.python.org/3/library/asyncio.html)
+TODO1: pydocs [asyncio Asynchronous I/O, event loop, coroutines and tasks](https://docs.python.org/3/library/asyncio.html)
+TODO2: [A Curious Course on Coroutines and Concurrency](http://www.dabeaz.com/coroutines/)
 
 参考文档
 

@@ -7,7 +7,7 @@ draft = false
 weight = 101
 +++
 
-观看牛人 [David Beazley](http://www.dabeaz.com/) 的[代码直播](https://www.youtube.com/watch?v=MCs5OvhV9S4)
+[David Beazley](http://www.dabeaz.com/) 的[直播讲解](https://www.youtube.com/watch?v=MCs5OvhV9S4) Socket 并发
 <!--more-->
 
 本文介绍了 socket 编程的阻塞问题，多线程的 GIL 问题，传统的线程池解决方案。
