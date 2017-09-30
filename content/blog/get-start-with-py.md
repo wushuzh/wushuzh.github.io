@@ -3,7 +3,7 @@ date = "2017-09-11T23:00:07+08:00"
 title = "搭建 py 开发环境"
 showonlyimage = false
 image = "/img/blog/get-start-with-py/python.png"
-draft = false
+draft = true
 weight = 102
 +++
 

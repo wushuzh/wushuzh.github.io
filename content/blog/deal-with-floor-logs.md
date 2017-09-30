@@ -52,41 +52,61 @@ RHEL7 中 /var/log/ 目录下 messages 和 secure 两个文件中存在大量的
 - 用户创建文件时属于初始群组还是次要群组，该如何切换有效群组;
 - /etc/default/useradd 在不同 Linux 版本如何设定“私有群组”和“公共群组”
 - ACL 的 setfacl 和 SUID/SGID/SBIT 权限有何分别？chattr 又是做啥的？
-- PAM 模块
+- PAM 模块简介: 配置和控制流程
 
-改变PAM配置
+### Linux PAM
 
-[How to stop sudo PAM messages in auth.log for a specific user](https://unix.stackexchange.com/questions/224370/how-to-stop-sudo-pam-messages-in-auth-log-for-a-specific-user)
-[How PAM works](http://www.tuxradar.com/content/how-pam-works)
-[PAM Explanation](http://pig.made-it.com/pam.html)
-[The Linux-PAM System Administrators' Guide](http://www.linux-pam.org/Linux-PAM-html/Linux-PAM_SAG.html)
-[pam_succeed_if(8) - Linux man page](https://linux.die.net/man/8/pam_succeed_if)
+Linux 作为服务器操作系统，必然同时运行着多种服务——但如果让每个服务定义各自的账户、密码和验证机制无疑是一种浪费。于是 PAM (可嵌入认证模块)就被设计成一种提供通用的、可定制需求的认证接口。开发者只要定义设定其服务的认证需求，PAM 就按相应流程结合登录时的实际情况向服务和应用返回认证结果。
 
-[How to Perform Security Audits With Lynis on Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-perform-security-audits-with-lynis-on-ubuntu-16-04)
-https://wiki.archlinux.org/index.php/List_of_applications/Security#Threat_and_vulnerability_detection
-audit 日志的查看方法
-[How can I log all process launches in Linux](https://superuser.com/questions/222912/how-can-i-log-all-process-launches-in-linux/)
-[How To Use the Linux Auditing System on CentOS 7](https://www.digitalocean.com/community/tutorials/how-to-use-the-linux-auditing-system-on-centos-7)
-[How To Write Custom System Audit Rules on CentOS 7](https://www.digitalocean.com/community/tutorials/how-to-write-custom-system-audit-rules-on-centos-7)
+PAM 的设定配置文件都存放于 /etc/pam.d/ ，配置文件一般三列
 
+第一列是验证类别 type（设定顺序的一般也同下）:
 
-过滤日志的方法
+1. 身份认证/auth
+2. 账户授权/account
+3. 登入登出/session
+4. 密码变更/password
 
-[Logs flooded with systemd messages: Created slice & Starting Session](https://access.redhat.com/solutions/1564823)
-[BASIC CONFIGURATION OF RSYSLOG](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/System_Administrators_Guide/s1-basic_configuration_of_rsyslog.html)
+第二列是控制标志 flag
 
-### 日志样例
+- required 无论当前判定结果如何，都会进行后续步骤
+- requisite 一旦当前判定失败，立刻终止，不进行后续步骤
+- sufficient 一旦当前判定陈宫，立刻终止，不进行后续步骤
+- optional 一般用于日志记录
+
+{{< figure src="/img/blog/deal-with-flood-logs/pam-run_stack.png" title="ctrl flow from Oracle" >}}
+
+可以断定的是，之前 message 和 security 中看到的大量 session 切换的日志，就源自 PAM 验证中的日志记录。
+
+我按照 [How to stop sudo PAM messages in auth.log for a specific user](https://unix.stackexchange.com/a/224444) 中的解决方案，发现借助 [pam_succeed_if(8)](https://linux.die.net/man/8/pam_succeed_if) 修改 su、su-l 等配置也确实可以屏蔽掉一部分日志。但直接修改系统预设定的 pam 配置文件是很有风险的。如果对整个验证流程理解不透彻，则可能造成
+
+- 验证逻辑错误，原本该被判定合法的认证授权被误判为非法
+- 验证逻辑漏洞，非法登录被忽略记录，乃至放行，给系统引入安全审计漏洞
+
+## rsyslog
+
+除了上述更改鉴权流程本身，更为保险的方法是更改输出日志的配置。显式地制定可以忽略的日志规则，存入配置文件，例如 /etc/rsyslog.d/ignore-su-session-slice.conf，然后重启服务``` systemctl restart rsyslog```
 
 {{< highlight console >}}
-
+if ($programname == "su" and ($msg contains "root on none"))
+  or ($programname == "systemd"
+      and ($msg contains "Starting Session"
+           or $msg contains "Started Session"))
+  or ($programname == "systemd-logind"
+      and ($msg contains "New session"
+           or $msg contains "Removed session")))
+then stop
 {{< /highlight >}}
-
-
 
 参考文档
 
-> -
-
+> - Wikipedia [Pluggable authentication module](https://en.wikipedia.org/wiki/Pluggable_authentication_module) and [Linux PAM](https://en.wikipedia.org/wiki/Linux_PAM)
+> - Serverfault [Understand PAM and NSS](https://serverfault.com/a/538503)
+> - Vishal Srivastava (2009-03-10) [Understanding and configuring PAM](https://www.ibm.com/developerworks/library/l-pam/index.html)
+> - [How PAM works](http://www.tuxradar.com/content/how-pam-works)
+> - [PAM Explanation](http://pig.made-it.com/pam.html)
+> - Andrew G. Morgan and Thorsten Kukuk [The Linux-PAM System Administrators' Guide](http://www.linux-pam.org/Linux-PAM-html/Linux-PAM_SAG.html)
+> - [Rsyslog conf](http://www.rsyslog.com/doc/v8-stable/configuration/index.html)
 
 封面图片来自 [Current paperwork status: doing my taxes…](https://dribbble.com/shots/2082740-Current-paperwork-status-doing-my-taxes) <a href="https://dribbble.com/jan-hendrikholst"><i class="fa fa-dribbble" aria-hidden="true"></i> Jan-Hendrik Holst</a>  
 

@@ -1,13 +1,13 @@
 +++
 date = "2017-06-04T20:40:13+08:00"
-title = "syslog 标准及其实现"
+title = "syslog 标准和实现"
 showonlyimage = false
 image = "/img/blog/syslog-std-in-general/ps_largeconsole.png"
 draft = false
 weight = 31
 +++
 
-syslog 标准及其实现
+syslog 标准和常见工业实现
 <!--more-->
 
 ## syslog是什么
