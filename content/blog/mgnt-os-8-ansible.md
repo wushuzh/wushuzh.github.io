@@ -17,11 +17,11 @@ weight = 69
 
 提升效率最关键的办法就是将“一次投入，多次使用”
 
-- 向制造业学习，软件操作的标准化可以将开发、测试、生产环境无限趋向于一致
+- 向制造业学习，通过标准化操作倒逼软件开发、测试、生产环境无限趋向于一致
 - 模块化抽象和封装是实现更为复杂的自动操作的基石
 - 人有极限，会犯错，让机器去执行重复任务才更靠谱
 
-ansible 最大的特点大概就是它不需要 agent，非常容易上手。
+ansible 最大的特点是它不需要 agent，文档健全，容易上手。
 
 {{< highlight console >}}
 $ sudo pacman -S ansible
@@ -49,8 +49,7 @@ $ sudo pacman -S ansible
 ## 模块
 
 ping
-timezone
-# ntp client later
+timezone # setup ntp
 filesystem
 mount
 yum_repository
@@ -60,8 +59,12 @@ blockinfile
 
 参考文档
 
+> - Justin Weissig Ansible series
+  - [1 Intro  Ansible](https://sysadmincasts.com/episodes/43-19-minutes-with-ansible-part-1-4)
+  - [2 Learning with Vagrant ](https://sysadmincasts.com/episodes/45-learning-ansible-with-vagrant-part-2-4)
+  - [3 Conf Mgmt](https://sysadmincasts.com/episodes/46-configuration-management-with-ansible-part-3-4)
+  - [4 Zero-downtime Deployment](https://sysadmincasts.com/episodes/47-zero-downtime-deployments-with-ansible-part-4-4)
 > - http://www.intigua.com/blog/puppet-vs.-chef-vs.-ansible-vs.-saltstack
 > - http://blog.takipi.com/deployment-management-tools-chef-vs-puppet-vs-ansible-vs-saltstack-vs-fabric/
-
 
 封面图片来自 [Voice recognition process exploration for AI product](https://dribbble.com/shots/3477540-Voice-recognition-process-exploration-for-AI-product) <a href="https://dribbble.com/glebich"><i class="fa fa-dribbble" aria-hidden="true"></i> Gleb Kuznetsov✈</a>

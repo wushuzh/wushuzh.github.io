@@ -209,6 +209,10 @@ vagrant-substrate 726.d082972-1
 
 {{< highlight console >}}
 
+$ vagrant plugin list
+vagrant-libvirt (0.0.40)
+vagrant-proxyconf (1.5.2)
+
 $ export VAGRANT_DEFAULT_PROVIDER=libvirt
 
 $ mkdir testbed
@@ -331,6 +335,16 @@ $ virsh vol-delete some.img
 {{< /highlight >}}
 
 vagrant ssh enjoy
+
+{{< highlight console >}}
+vagrant status
+vagrant up
+vagrant ssh
+vagrant halt
+vagrant destroy
+vagrant provision
+vagrant reload
+{{< /highlight >}}
 
 参考文档
 
