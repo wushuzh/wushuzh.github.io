@@ -27,7 +27,7 @@ weight = 71
 
 1. 创建一台虚拟机 S，安装配置 LAMP、Zabbix 核心服务器及其前端
 2. 创建一台虚拟机 V，安装 LAMP 和 Zabbix 代理，目标是收集其服务器上的相关指标
-3. 创建一台虚拟机 D，安装 Docker 和 Zabbix 代理，和 V 不同的是，我们要自定义专用于收集此服务器上和容器相关的资源指标，相关过程在 ["Zabbix 自定义指标"]({{< relref "blog/watching-it-by-zabbix-2.md" >}}) 详述
+3. 创建一台虚拟机 D，安装 Docker 和 Zabbix 代理，和 V 不同的是，我们要自定义专用于收集此服务器上和容器相关的资源指标，相关过程在 下篇详述
 4. 定义一些自有指标，调试并通过网页查看实时结果
 
 > 搭建的具体步骤，参见 Vadym Kalsin (2016-11-09) [How To Install and Configure Zabbix to Securely Monitor Remote Servers on CentOS 7](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-zabbix-to-securely-monitor-remote-servers-on-centos-7)
@@ -144,7 +144,7 @@ cannot disable core dump, exiting...
 
 成功启动 zabbix-agent 后，就可以回到虚拟机 S 上利用网页添加这个被监控的主机了。记得使用 PSK 通信兵配置之前准备好的 PSK，最后添加监控模板，就可以在网页上查看产生的性能和告警。
 
-关于监控自定义的性能指标，见 ["Zabbix 自定义指标"]({{< relref "blog/watching-it-by-zabbix-2.md" >}})。
+关于监控自定义的性能指标，见下篇
 
 参考文档
 

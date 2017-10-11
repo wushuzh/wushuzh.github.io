@@ -187,6 +187,10 @@ gpg:               imported: 1
 $ cower -vdu
 {{< /highlight >}}
 
+### 关于 keyring
+
+你每次打开 Chrome 等应用时，系统可能都会提示你输入 keyring 密码。按照 [GNOME/Keyring Passwords are not remembered](https://wiki.archlinux.org/index.php/GNOME/Keyring#Passwords_are_not_remembered) 可以了解更多，并设定为无密码提示。
+
 > GPG(GNU Privacy Guard) 使用 PGP 协议 (Pretty Good Privacy) 的开源工具。和《三体》不同，它依靠的不是猜疑链，而是信任链: The Web of Trust。  
 > [简单说就是](https://www.reddit.com/r/GnuPG/comments/6tkcnq/eli5_whats_key_signing_and_howwhy_to_sign_a_key/) 当老师检查前一天要家长签字的卷子时，一眼看穿了你的假签名，就是因为他们在家长会的时候交换了彼此的墨宝。而当你把病假条带给校长时，虽然他不认识你爸妈的签名，但他转而通过你的班主任求证，这样只需验证班主任的签名就知道假条是否为仿造。
 
