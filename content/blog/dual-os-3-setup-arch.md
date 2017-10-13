@@ -123,7 +123,7 @@ $ sudo pacman -S base-devel
 
 > 刚安装好 Gnome 后，自带的 gnome-terminal 无法启动。但后来又好了，不清楚是不是和折腾了一下 UTF 还是安装了中文字体相关？反正现在已经正常启动，无法重现，具体原因待有缘后再查了  
 >         
-> 也许安装 [Guake](https://wiki.archlinux.org/index.php/Guake) 替代 Gnome-terminal 时更好的选择？
+> 现在觉得使用 [Guake](https://wiki.archlinux.org/index.php/Guake) 替代 Gnome-terminal 也是不错的选择，自带 drop-down-terminal 功能。
 
 ### 安装位于 AUR 的软件
 
@@ -147,14 +147,15 @@ $ pacman -Qm
 cower 17-2
 gnome-shell-extension-arch-update 23-1
 gnome-shell-extension-coverflow-alt-tab 1.4-1
-gnome-shell-extension-dash-to-dock 60-1
+gnome-shell-extension-dash-to-dock 61-1
 gnome-shell-extension-drop-down-terminal 23-1
 gnome-shell-extension-system-monitor-git 801.746f33d-1
-google-chrome 61.0.3163.79-1
+google-chrome 61.0.3163.100-1
 numix-icon-theme-git 0.r1947.dc833c839-1
 oni 0.2.8-1
 pyenv 1.1.3-1
-pyenv-virtualenv 1:1.0.0-1
+pyenv-virtualenv 1:1.1.1-2
+pyenv-virtualenvwrapper 20140609-1
 vertex-themes 20170128-1
 xcursor-human 0.6-4
 
