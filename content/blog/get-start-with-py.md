@@ -55,6 +55,16 @@ $ pyenv versions
   3.6.2
 {{< /highlight >}}
 
+## virtualenvwrapper
+
+在 .bashrc 中激活插件，并重新进入 shell
+
+{{< highlight bash >}}
+# add the following to end of .bashrc
+pyenv virtualenvwrapper_lazy
+{{< /highlight >}}
+
+
 参考文档
 
 > - Full Stack Python [Development Environments](https://www.fullstackpython.com/development-environments.html)
