@@ -146,7 +146,7 @@ tty1 $ python manage.py runserver
 
 ## 容器封装
 
-### 虚拟容器主机
+### 宿主服务器
 
 {{< highlight console >}}
 $ sudo pacman -S docker docker-compose docker-machine
@@ -164,7 +164,7 @@ docker-machine version 0.12.2, build HEAD
 
 这样的好处是不会弄乱你本机的配置，搞砸了直接删除虚拟机，不会留下过多垃圾在系统中。但可能给后续 debug 造成一些问题。但 docker-machine 指令貌似支持很多选型，是不是可以将相关服务的日志 rsyslog 转入本机使得后续查看更为方便。
 
-虚拟机的相关配置在 ```$HOME\.docker\machine\machines\default\config.json```，更改后需要执行 ```docker-machine provision```
+虚拟机的相关配置在 ```$HOME\.docker\machine\machines\default\config.json```，更改后需要执行 ```docker-machine provision``` (待验证)
 
 {{< highlight console >}}
 $ docker-machine create \
@@ -202,6 +202,10 @@ export no_proxy="localhost,192.168.99.100,127.0.0.1,192.168.99.102"
 $ docker run hello-world
 {{< /highlight >}}
 
+### 服务容器化
+
+创建 Docker 镜像: 含当前代码及其运行环境，并启动 web 服务
+
 {{< highlight dockerfile >}}
 FROM python:3.6.1
 
@@ -225,6 +229,8 @@ ADD . /usr/src/app
 CMD python manage.py runserver -h 0.0.0.0
 {{< /highlight >}}
 
+在 compose 中将上面镜像打包为服务，并做端口映射
+
 {{< highlight yaml >}}
 version: '2.1'
 
@@ -235,11 +241,13 @@ services:
     build: .
 #    volumes:
 #      - '.:/usr/src/app'
+# https://github.com/docker/compose/issues/1616#issuecomment-117716753
     ports:
       - 5001:5000 # expose ports - HOST:CONTAINER
 
 {{< /highlight >}}
 
+构建镜像，启动服务，最后用 curl 验证。
 
 {{< highlight console >}}
 $ docker-compose build
@@ -254,8 +262,41 @@ $ curl http://ip-addr:5001/ping
 
 {{< /highlight >}}
 
+通过在 compose yaml 中制定环境变量，从而达到切换不同阶段(开发、测试、生产)配置的目的
+
+{{< highlight diff >}}
+diff --git a/docker-compose.yml b/docker-compose.yml
+index ec660ec..a7d474b 100644
+--- a/docker-compose.yml
++++ b/docker-compose.yml
+@@ -9,3 +9,5 @@ services:
+ #      - '.:/usr/src/app'
+     ports:
+       - 5001:5000 # expose ports - HOST:CONTAINER
++    environment:
++      - APP_SETTINGS=project.config.DevelopmentConfig
+diff --git a/project/__init__.py b/project/__init__.py
+index d3355e2..1566c3d 100644
+--- a/project/__init__.py
++++ b/project/__init__.py
+@@ -8,7 +8,8 @@ from flask import Flask, jsonify
+ app = Flask(__name__)
+
+ # set config
+-app.config.from_object('project.config.DevelopmentConfig')
++app_settings = os.getenv('APP_SETTINGS')
++app.config.from_object(app_settings)
+
+ @app.route('/ping', methods=['GET'])
+ def ping_pong():
+{{< /highlight >}}
+
+### 查错专用指令
+
+如果上述过程中遇到了错误，用于查错和清理的指令。
 
 {{< highlight console >}}
+$ docker logs ???
 
 $ docker-compose down
 
@@ -269,6 +310,221 @@ $ docker images -f dangling=true
 $ docker rmi $(docker images -f dangling=true -q)
 
 {{< /highlight >}}
+
+### 数据持久
+
+首先加入数据库相关的包，在 User 类中定义 model : 表名，各列类型定义。
+
+{{< highlight diff >}}
+diff --git a/requirements.txt b/requirements.txt
+index 9390a0b..73d1689 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -1,2 +1,4 @@
+ Flask==0.12.1
+ Flask-Script==2.0.5
++Flask-SQLAlchemy==2.2
++psycopg2==2.7.1
+
+diff --git a/project/__init__.py b/project/__init__.py
+index 1566c3d..bbdb3ba 100644
+--- a/project/__init__.py
++++ b/project/__init__.py
+@@ -1,7 +1,9 @@
+ # project/__init__.py
+
+-
++import os
++import datetime
+ from flask import Flask, jsonify
++from flask_sqlalchemy import SQLAlchemy
+
+
+ # instantiate the app
+@@ -11,6 +13,25 @@ app = Flask(__name__)
+ app_settings = os.getenv('APP_SETTINGS')
+ app.config.from_object(app_settings)
+
++# instantiate the db
++db = SQLAlchemy(app)
++
++# model
++class User(db.Model):
++    __tablename__ = "users"
++    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
++    username = db.Column(db.String(128), nullable=False)
++    email = db.Column(db.String(128), nullable=False)
++    active = db.Column(db.Boolean(), default=False, nullable=False)
++    created_at = db.Column(db.DateTime, nullable=False)
++
++    def __init__(self, username, email):
++        self.username = username
++        self.email = email
++        self.created_at = datetime.datetime.utcnow()
++
++
++# routes
+ @app.route('/ping', methods=['GET'])
+ def ping_pong():
+     return jsonify({
+
+{{< /highlight >}}
+
+### 容器数据库
+
+
+引入 DB 容器，并分别为开发、测试、生产创建数据库。
+
+{{< highlight diff >}}
+diff --git a/project/db/Dockerfile b/project/db/Dockerfile
+new file mode 100644
+index 0000000..5107468
+--- /dev/null
++++ b/project/db/Dockerfile
+@@ -0,0 +1,4 @@
++FROM postgres
++
++# run create.sql on init
++ADD create.sql /docker-entrypoint-initdb.d
+diff --git a/project/db/create.sql b/project/db/create.sql
+new file mode 100644
+index 0000000..dc1815a
+--- /dev/null
++++ b/project/db/create.sql
+@@ -0,0 +1,3 @@
++CREATE DATABASE users_prod;
++CREATE DATABASE users_dev;
++CREATE DATABASE users_test;
+{{< /highlight >}}
+
+在 compose yaml 中，定义服务: users-db 作为被依赖服务，和原有 users-service 相连，最后添加环境变量:定义数据库的连接串。
+
+{{< highlight diff >}}
+diff --git a/docker-compose.yml b/docker-compose.yml
+index a7d474b..2f66cb2 100644
+--- a/docker-compose.yml
++++ b/docker-compose.yml
+@@ -2,6 +2,17 @@ version: '2.1'
+
+ services:
+
++  users-db:
++    container_name: users-db
++    build: ./project/db
++    ports:
++      - 5435:5432  # expose ports - HOST:CONTAINER
++    environment:
++      - POSTGRES_USER=postgres
++      - POSTGRES_PASSWORD=postgres
++    healthcheck:
++      test: exit 0
++
+   users-service:
+     container_name: users-service
+     build: .
+@@ -11,3 +22,10 @@ services:
+       - 5001:5000 # expose ports - HOST:CONTAINER
+     environment:
+       - APP_SETTINGS=project.config.DevelopmentConfig
++      - DATABASE_URL=postgres://postgres:postgres@users-db:5432/users_dev
++      - DATABASE_TEST_URL=postgres://postgres:postgres@users-db:5432/users_test
++    depends_on:
++      users-db:
++        condition: service_healthy
++    links:
++      - users-db
+diff --git a/project/config.py b/project/config.py
+index b92979b..9feb7ea 100644
+--- a/project/config.py
++++ b/project/config.py
+@@ -1,22 +1,28 @@
+ # project/config.py
++import os
+
+
+ class BaseConfig:
+     """Base configuration"""
+     DEBUG = False
+     TESTING = False
++    SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+
+ class DevelopmentConfig(BaseConfig):
+     """Development configuration"""
+     DEBUG = True
++    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
+
+
+ class TestingConfig(BaseConfig):
+     """Testing configuration"""
+     DEBUG = True
+     TESTING = True
++    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_TEST_URL')
+
+
+ class ProductionConfig(BaseConfig):
++    """Production configuration"""
+     DEBUG = False
++    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
+{{< /highlight >}}
+
+测试当前配置 ```docker-compose up -d --build```
+
+最后，为数据库注册新指令 recreate_db :
+
+{{< highlight diff >}}
+diff --git a/manage.py b/manage.py
+index 6cd23e3..88c8283 100644
+--- a/manage.py
++++ b/manage.py
+@@ -1,9 +1,18 @@
+ # manage.py
+
+ from flask_script import Manager
+-from project import app
++from project import app, db
+
+ manager = Manager(app)
+
++
++@manager.command
++def recreate_db():
++    """Recreates a database."""
++    db.drop_all()
++    db.create_all()
++    db.session.commit()
++
++
+ if __name__ == '__main__':
+     manager.run()
+
+{{< /highlight >}}
+
+测试执行指令，创建 users 表，进入 psql 查看结果:
+
+{{< highlight console >}}
+$ docker-compose run users-service python manage.py recreate_db
+
+$ docker exec -ti $(docker ps -aqf "name=users-db") psql -U postgres
+
+psql (10.0)
+Type "help" for help.
+
+postgres=# \c users_dev
+You are now connected to database "users_dev" as user "postgres".
+users_dev=# \dt
+         List of relations
+ Schema | Name  | Type  |  Owner   
+--------+-------+-------+----------
+ public | users | table | postgres
+(1 row)
+
+users_dev=# \q
+
+
+{{< /highlight >}}
+
+
 
 https://www.quora.com/Why-does-the-logo-of-Bottle-web-framework-look-like-Flask-Python-framework-Why-does-the-logo-of-Flask-Python-framework-not-look-like-a-flask
 
