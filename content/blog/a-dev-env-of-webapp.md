@@ -258,6 +258,11 @@ services:
 #    volumes:
 #      - '.:/usr/src/app'
 # https://github.com/docker/compose/issues/1616#issuecomment-117716753
+#    why duplicated 
+# https://stackoverflow.com/a/32030385/4393386 
+#    mount issue to be verified
+# https://github.com/docker/machine/issues/179#issue-53144018
+#   a nice proposal for historical
     ports:
       - 5001:5000 # expose ports - HOST:CONTAINER
 
