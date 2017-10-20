@@ -10,9 +10,21 @@ weight = 101
 麻雀虽小但五脏俱全的开发环境
 <!--more-->
 
-## 容器化项目
+本系列是 [Microservices with Docker, Flask, and React](https://testdriven.io/) 我的实践版——只要能达到相同效果，我会尝试替换更新原教程中的工具，升级版本，并简述填过或待填的坑。
 
-### 虚拟环境
+项目架构
+
+<img alt="Architeture" src="/img/blog/a-dev-env-of-webapp/architecture.png" class="img-responsive">
+
+代码高层组织分为 5 个微服务: main, users, client, swapper, eval
+
+## 虚拟环境
+
+为每一个项目创建独立虚拟环境并引入 requirements.txt 已成为 python 开发的标准操作。而当下可用于创建虚拟环境的模块很多，详见[What is the difference between venv, pyvenv, pyenv, virtualenv, virtualenvwrapper, pipenv, etc?](https://stackoverflow.com/a/41573588/4393386)
+
+Kenneth Reitz 在 (2016-02-25) [A Better Pip Workflow™](https://www.kennethreitz.org/essays/a-better-pip-workflow) 提到了 requirements.txt 中常见的使用方式的问题，在提出了一个暂时解决方案后，作者在 (2017-01-22) [Announcing Pipenv!](https://www.kennethreitz.org/essays/announcing-pipenv) 又发布了一个旨在完美解决此问题的工具。新方案简洁有效、安全，得到了 python 官方的推荐。
+
+> TODO: 尝试使用 pipenv
 
 通过 virtualenvwrapper 创建一个示例项目(flask-microservices-users)关联的同名虚拟环境。
 
@@ -62,6 +74,8 @@ def ping_pong():
         'message': 'pong!'
     })
 {{< /highlight >}}
+
+TODO: flask-script 貌似不准备再维护下去了，因为 flask 从 0.11 开始内置命令行工具。
 
 {{< highlight console >}}
 (flask-microservices-users) $ pip install flask-script==2.0.5
@@ -147,6 +161,8 @@ tty1 $ python manage.py runserver
 ## 容器封装
 
 ### 宿主服务器
+
+TODO: 编排组织各个 container 和微服务当然可以用 docker-compose ，但也应该尝试一下 k8s 的配置方式。
 
 {{< highlight console >}}
 $ sudo pacman -S docker docker-compose docker-machine
@@ -524,6 +540,9 @@ users_dev=# \q
 
 {{< /highlight >}}
 
+参考文档
+
+> - [Python's Official Repository Included 10 'Malicious' Typo-Squatting Modules](https://developers.slashdot.org/story/17/09/16/2030229/pythons-official-repository-included-10-malicious-typo-squatting-modules)
 
 
 https://www.quora.com/Why-does-the-logo-of-Bottle-web-framework-look-like-Flask-Python-framework-Why-does-the-logo-of-Flask-Python-framework-not-look-like-a-flask

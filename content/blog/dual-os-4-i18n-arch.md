@@ -71,19 +71,46 @@ $ fcitx-diagnose
 
 ### 文本编辑器
 
-作为一名不太坚定的 vim 用户。我优先安装了 atom ，并且我发现年纪越大，对这种将那些最基本的设置在出厂时就配置个八九不离十的编辑器有了由衷的好感。唉，是不是老了……下定了半点决心，还是决定安装 oni : 一个尚处于初级阶段，但集成了前端和常用插件的 neovim
+作为一名不太坚定的 vim 用户。我优先安装了 atom 。
 
 {{< highlight bash >}}
 $ sudo pacman -S atom
+{{< /highlight >}}
 
+我发现年纪越大，对这种将那些最基本的设置在出厂时就配置个八九不离十的编辑器有了由衷的好感。唉，是不是老了……下定了半点决心，还是决定安装 oni : 一个尚处于初级阶段，但集成了前端和常用插件的 neovim:
+
+- 如 <C-p> 激活 Fuzzy Finder ，在当前工作目录下查找查找文件
+- 如 <C-c> <C-v> 复制、粘贴，并默认工作在系统剪切板
+- 出厂集成代码补全，安装[相应的 Language Server Protocal](https://github.com/bryphe/oni/wiki/Language-Support)即支持其他语言
+- 注意 oni 界面上的 tab 和 vim 的 buffer 不同，尝试用 [b 切换而不是 gt[T]
+- 其他配置通过 config.js 配置
+
+{{< highlight javascript >}}
+// $HOME/.oni/config.js
+const activate = (oni) => {};
+
+module.exports = {
+    activate,
+    "editor.fontSize": "14px",
+    "editor.maximizeScreenOnStart": true
+}
+{{< /highlight >}}
+
+{{< highlight bash >}}
 $ cd /tmp
-$ git clone https://aur.archlinux.org/oni.git
-$ cd oni
-$ makepkg -si
+$ cower -d oni neovim-git
+# install one by one
+
+$ cower -d python-language-server python-json-rpc pydocstyle
+# install one by one
+$ which pysl
+/usr/bin/pysl
 
 $ sudo pacman -S hugo gimp ...
 
 {{< /highlight >}}
+
+
 
 <br />
 
