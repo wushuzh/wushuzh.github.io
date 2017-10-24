@@ -1,6 +1,6 @@
 +++
 date = "2017-10-16T20:26:19+08:00"
-title = "Python Web 开发"
+title = "Flask 开发 1"
 showonlyimage = false
 image = "/img/blog/a-dev-env-of-webapp/multitasking.png"
 draft = false
@@ -18,46 +18,26 @@ weight = 101
 
 代码高层组织分为 5 个微服务: main, users, client, swapper, eval
 
-## 虚拟环境
+## 脚手架
+### 虚拟环境
 
 为每一个项目创建独立虚拟环境并引入 requirements.txt 已成为 python 开发的标准操作。而当下可用于创建虚拟环境的模块很多，详见[What is the difference between venv, pyvenv, pyenv, virtualenv, virtualenvwrapper, pipenv, etc?](https://stackoverflow.com/a/41573588/4393386)
 
 Kenneth Reitz 在 (2016-02-25) [A Better Pip Workflow™](https://www.kennethreitz.org/essays/a-better-pip-workflow) 提到了 requirements.txt 中常见的使用方式的问题，在提出了一个暂时解决方案后，作者在 (2017-01-22) [Announcing Pipenv!](https://www.kennethreitz.org/essays/announcing-pipenv) 又发布了一个旨在完美解决此问题的工具。新方案简洁有效、安全，得到了 python 官方的推荐。
 
-> TODO: 尝试使用 pipenv
-
-通过 virtualenvwrapper 创建一个示例项目(flask-microservices-users)关联的同名虚拟环境。
-
 {{< highlight console >}}
-~$ mkproject flask-microservices-users
-creating ~/.ve/...
-Using base prefix '/usr'
-New python executable in ...
-Also creating executable in ...
-Installing setuptools, pip, wheel...done.
-(may hung up for a while)
-creating ~/.ve/flask-microservices-users/...
-...
-Creating ~/pywork/flask-microservices-users
-Setting project for flask-microservices-users to ~/pywork/flask-microservices-users
-
+$ mkdir users && cd users
+# pipenv install --three flask==0.12.2
+$ pipenv install flask==0.12.2
+$ mkdir project && touch project/__init__.py
 {{< /highlight >}}
 
-{{< highlight console >}}
-(flask-microservices-users) $ pip install flask==0.12.2
-
-Installing collected packages:
-  click, itsdangerous, Werkzeug, MarkupSafe, Jinja2, flask
-Successfully installed
-  Jinja2-2.9.6 MarkupSafe-1.0 Werkzeug-0.12.2
-  click-6.7 flask-0.12.2 itsdangerous-0.24
-
-{{< /highlight >}}
 <br />
 
-### 项目脚手架
+### hello world
 
-> 后续应该按照 Robert Picard 的开源书 Explore Flask 中 [Organizing your project](https://exploreflask.com/en/latest/organizing.html) 微调下面的文件位置。
+> TODO: 后续应该按照 Robert Picard 的开源书 Explore Flask 中 [Organizing your project](https://exploreflask.com/en/latest/organizing.html) 微调下面的文件位置。
+
 
 {{< highlight python >}}
 # project/__init__.py
@@ -67,6 +47,7 @@ from flask import Flask, jsonify
 # instantiate the app
 app = Flask(__name__)
 
+
 @app.route('/ping', method=['GET'])
 def ping_pong():
     return jsonify({
@@ -75,35 +56,22 @@ def ping_pong():
     })
 {{< /highlight >}}
 
-TODO: flask-script 貌似不准备再维护下去了，因为 flask 从 0.11 开始内置命令行工具。
+原始教程又额外安装了 flask-script，但 flask 从 0.11 开始内置已经了命令行工具，因此可以跳过此步。
 
 {{< highlight console >}}
-(flask-microservices-users) $ pip install flask-script==2.0.5
-
-Installing collected packages:
-  click, itsdangerous, Werkzeug, MarkupSafe, Jinja2, flask
-Successfully installed
-  Jinja2-2.9.6 MarkupSafe-1.0 Werkzeug-0.12.2
-  click-6.7 flask-0.12.2 itsdangerous-0.24
-
-$ pip freeze > requirements.txt
+$ pipenv shell
+# enter into virutalenv
+$ export FLASK_APP=./project/__init__.py
+$ flask run
+ * Serving Flask app "project"
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+127.0.0.1 - - [DateTime] "GET / HTTP/1.1" 404 -
+127.0.0.1 - - [DateTime] "GET /ping HTTP/1.1" 200 -
 {{< /highlight >}}
 
-{{< highlight python >}}
-# manage.py
+确认通过浏览器访问 http://localhost:5000/ping 可以获得下面 json 后，继续为项目添加 config.py。
 
-from flask_script import Manager
-from project import app
-
-manager = Manager(app)
-
-if __name__ == '__main__':
-    manager.run()
-{{< /highlight >}}
-
-{{< highlight console >}}
-tty1 $ python manage.py runserver
-tty2 $ curl localhost:5000/ping
+{{< highlight json >}}
 {
   "message": "pong!",
   "status": "success"
@@ -111,93 +79,98 @@ tty2 $ curl localhost:5000/ping
 {{< /highlight >}}
 <br />
 
-### 灰度发布
+
+### 配置隔离
 
 {{< highlight python >}}
-# project/config.py
-
-
-class BaseConfig:
-    """Base configuration"""
-    DEBUG = False
-    TESTING = False
-
-
-class DevelopmentConfig(BaseConfig):
-    """Development configuration"""
-    DEBUG = True
-
-
-class TestingConfig(BaseConfig):
-    """Testing configuration"""
-    DEBUG = True
-    TESTING = True
-
-
-class ProductionConfig(BaseConfig):
-    DEBUG = False
-
-{{< /highlight >}}
-
-{{< highlight python >}}
-# project/__init__.py
-#...
-
-# line 10-11: set config
-app.config.from_object('project.config.DevelopmentConfig')
-
-#...
+diff --git a/project/__init__.py b/project/__init__.py
+index 4cc950a..614cbbc 100644
+--- a/project/__init__.py
++++ b/project/__init__.py
+@@ -5,6 +5,9 @@ from flask import Flask, jsonify
+ # instantiate the app
+ app = Flask(__name__)
+ 
++# set conf
++app.config.from_object('project.config.DevelopmentConfig')
++
+ 
+ @app.route('/ping', methods=['GET'])
+ def ping_pong():
+diff --git a/project/config.py b/project/config.py
+new file mode 100644
+index 0000000..0f9cd90
+--- /dev/null
++++ b/project/config.py
+@@ -0,0 +1,23 @@
++# project/config.py
++
++
++class BaseConfig:
++    """Base conf"""
++    DEBUG = False
++    TESTING = False
++
++
++class DevelopmentConfig(BaseConfig):
++    """Dev conf"""
++    DEBUG = True
++
++
++class TestingConfig(BaseConfig):
++    """Testing conf"""
++    DEBUG = True
++    TESTING = True
++
++
++class ProductionConfig(BaseConfig):
++    """Production conf"""
++    DEBUG = False
 {{< /highlight >}}
 
 {{< highlight console >}}
-tty1 $ python manage.py runserver
-* Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
-* Restarting with stat
-* Debugger is active!
-* Debugger PIN: 145-598-075
-
+$ export FLASK_DEBUG=1
+$ flask run
+ * Serving Flask app "project"
+ * Forcing debug mode on
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 110-739-931
 {{< /highlight >}}
+
+> TODO: 当环境 FLASK_DEBUG 为 1 时，console 才明确打印出 Debugger 状态和 PIN。但没有 FLASK_DEBUG 变量时，若打印 app.config 其中的 DEBUG 也确实为 True。不知有何区别，待查
 
 ## 容器封装
 
 ### 宿主服务器
 
-TODO: 编排组织各个 container 和微服务当然可以用 docker-compose ，但也应该尝试一下 k8s 的配置方式。
+TODO: 编排组织各个 container 和微服务当然可以用 docker-compose ，但也应该尝试一下 minikube 的配置方式。
 
 {{< highlight console >}}
 $ sudo pacman -S docker docker-compose docker-machine
 $ sudo usermod -aG docker wushuzh
 
 $ docker -v
-Docker version 17.09.0-ce, build afdb6d44a8
+Docker version 17.10.0-ce, build f4ffd2511c
 $ docker-compose -v
 docker-compose version 1.16.1, build unknown
 $ docker-machine -v
-docker-machine version 0.12.2, build HEAD
+docker-machine version 0.13.0, build HEAD
+
 {{< /highlight >}}
 
-下面指令将创建一个名为 dev 的虚拟机，作为所有容器的宿主服务器。之后进行的各种操作都是通过本地 docker 客户端 cli 连接处于虚拟机 dev 上的远端 docker 服务端捣鼓完成的。
+docker-machine 首先下载最新宿主服务器iso，并以此创建虚拟机，比如名为 dev。这之后所有操作都是通过 docker 客户端联系远端虚拟机 docker 守护进程完成的。
 
-这样的好处是不会弄乱你本机的配置，搞砸了直接删除虚拟机，不会留下过多垃圾在系统中。但可能给后续 debug 造成一些问题。但 docker-machine 指令貌似支持很多选型，是不是可以将相关服务的日志 rsyslog 转入本机使得后续查看更为方便。
+好处是不会弄乱你本机配置，搞砸了直接删除虚拟机，不会留下过多垃圾在系统中。但引入的虚拟机使得 debug 变得繁琐。但 docker-machine 指令支持很多选项，是不是可以将相关服务的日志 rsyslog 转入本机使得后续查看更为方便。
 
 虚拟机的相关配置在 ```$HOME\.docker\machine\machines\default\config.json```，更改后需要执行 ```docker-machine provision``` (待验证)
 
 {{< highlight console >}}
-$ docker-machine create \
+$ docker-machine create -d "virtualbox" \
     --engine-env HTTP_PROXY=your_proxy  \
     --engine-env HTTPS_PROXY=your_proxy \
     dev
-...
-(dev) Creating VirtualBox VM...
-(dev) Creating SSH key...
-(dev) Starting the VM...
-(dev) Check network ...
-...
-Copying certs ...
-Setting Docker configuration on the remote daemon...
-Checking connection to Docker...
-Docker is up and running!
-...
 
 $ docker-machine ls
 
@@ -208,11 +181,11 @@ $ docker-machine ls
 {{< highlight console >}}
 $ docker-machine env --no-proxy dev
 export DOCKER_TLS_VERIFY="1"
-export DOCKER_HOST="tcp://192.168.99.102:2376"
-export DOCKER_CERT_PATH="~/.docker/machine/machines/dev"
+export DOCKER_HOST="tcp://192.168.99.100:2376"
+export DOCKER_CERT_PATH="/home/wushuzh/.docker/machine/machines/dev"
 export DOCKER_MACHINE_NAME="dev"
-export no_proxy="localhost,192.168.99.100,127.0.0.1,192.168.99.102"
-# Run this command to configure your shell:
+export NO_PROXY="192.168.99.100"
+# Run this command to configure your shell: 
 # eval $(docker-machine env --no-proxy dev)
 
 $ docker run hello-world
@@ -225,9 +198,6 @@ $ docker run hello-world
 {{< highlight dockerfile >}}
 FROM python:3.6.1
 
-ENV http_proxy your_proxy
-ENV https_proxy your_proxy
-
 # set working directory
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
@@ -236,13 +206,28 @@ WORKDIR /usr/src/app
 ADD ./requirements.txt /usr/src/app/requirements.txt
 
 # install requirements
+ENV HTTP_PROXY your_proxy
+ENV HTTPS_PROXY your_proxy
 RUN pip install -r requirements.txt
 
 # add app
 ADD . /usr/src/app
 
+EXPOSE 5000
+
+ENV FLASK_APP project/__init__.py
+
 # run server
-CMD python manage.py runserver -h 0.0.0.0
+CMD flask run -h 0.0.0.0
+{{< /highlight >}}
+
+{{< highlight console >}}
+docker build -t test-users .
+docker images
+docker run -d -p 5001:5000 test-users
+docker ps
+docker stop <hash>
+docker kill <hash>
 {{< /highlight >}}
 
 在 compose 中将上面镜像打包为服务，并做端口映射
