@@ -2,8 +2,8 @@
 date = "2017-10-24T22:20:04+08:00"
 title = "K8s容器管理"
 showonlyimage = false
-image = "/img/blog/microservices-and-kubernetes/captain_dock.png"
-topImage = "/img/blog/microservices-and-kubernetes/captain_dock.gif"
+image = "/img/blog/microservices-and-K8s/captain_dock.png"
+topImage = "/img/blog/microservices-and-K8s/captain_dock.gif"
 draft = true
 weight = 102
 +++
