@@ -191,9 +191,11 @@ export NO_PROXY="192.168.99.100"
 $ docker run hello-world
 {{< /highlight >}}
 
-### 服务容器化
+### 容器化
 
 创建 Docker 镜像: 含当前代码及其运行环境，并启动 web 服务
+
+原教程中直接上了 docker-compose ，而我是先用原生 Dockerfile 完成，之后再转化为 compose 模式。
 
 {{< highlight dockerfile >}}
 FROM python:3.6.1
@@ -206,8 +208,6 @@ WORKDIR /usr/src/app
 ADD ./requirements.txt /usr/src/app/requirements.txt
 
 # install requirements
-ENV HTTP_PROXY your_proxy
-ENV HTTPS_PROXY your_proxy
 RUN pip install -r requirements.txt
 
 # add app
@@ -222,51 +222,105 @@ CMD flask run -h 0.0.0.0
 {{< /highlight >}}
 
 {{< highlight console >}}
-docker build -t test-users .
+docker build \
+  -t test-users \
+  --build-arg HTTPS_PROXY=your_proxy \
+  . 
 docker images
 docker run -d -p 5001:5000 test-users
 docker ps
-docker stop <hash>
-docker kill <hash>
+curl http://$(docker-machine ip dev):5001/ping
+docker stop/kill <hash>
+docker rm <hash>
+docker rmi test-users
 {{< /highlight >}}
 
-在 compose 中将上面镜像打包为服务，并做端口映射
+### 服务化
 
 {{< highlight yaml >}}
-version: '2.1'
+version: "3.2"
 
 services:
-
-  users-service:
-    container_name: users-service
-    build: .
-#    volumes:
-#      - '.:/usr/src/app'
-# https://github.com/docker/compose/issues/1616#issuecomment-117716753
-#    why duplicated 
-# https://stackoverflow.com/a/32030385/4393386 
-#    mount issue to be verified
-# https://github.com/docker/machine/issues/179#issue-53144018
-#   a nice proposal for historical
-    ports:
-      - 5001:5000 # expose ports - HOST:CONTAINER
-
+    users-service:
+        container_name: users-service
+        build: .
+        volumes:
+            - type: bind
+              source: .
+              target: /usr/src/app
+        ports:
+            - 5001:5000 # expose ports - HOST:CONTAINER
+        environment:
+            - FLASK_APP=project/__init__.py
 {{< /highlight >}}
+> 我安装的 docker 版本很新，所以直接将原教程中 version 2 换为 3
 
-构建镜像，启动服务，最后用 curl 验证。
+注意上面写法将原 Dockerfile 中 EXPOSE 和 ENV 等指令转到了 compose yaml 文件中，并引入了 volumes , 而且是 bind-mount 模式，这里并不和之前 Dockerfile 中的 ADD [冲突](https://github.com/docker/compose/issues/1616#issuecomment-117716753): 这个设定将本地的代码修改就能直接映射到容器中，无需重新 build 镜像。关于 volume 、bind mount、tmpfs mount 的细节和各自用例，详见 [Manage data in Docker](https://docs.docker.com/engine/admin/volumes/)
+
 
 {{< highlight console >}}
-$ docker-compose build
+$ docker-compose build \
+    --build-arg HTTPS_PROXY=10.144.1.10:8080 \
+    users-service
 $ docker-compose up -d
-$ docker-machine ip dev
+$ docker ps -a
 
-$ curl http://ip-addr:5001/ping
-{
-  "message": "pong!",
-  "status": "success"
-}
+$ docker logs <hash>
+Usage: flask run [OPTIONS]
+
+Error: The file/path provided (project/__init__.py) 
+  does not appear to exist.  Please verify the path is correct. 
+If app is not on PYTHONPATH, ensure the extension is .py
+
+$ docker inspect <hash> |grep -A 9 Mounts
+        "Mounts": [
+            {
+                "Type": "bind",
+                "Source": "/myhome/pywork/try-flask/users",
+                "Destination": "/usr/src/app",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": "rprivate"
+            }
+        ],
+{{< /highlight >}}
+
+> TODO: 上面的报错应该时 bind-mount 没有正确的工作，这个问题我还没有查找到原因。
+
+关于共享目录，首先是查到 nathanleclaire (2014-12-31) [Proposal: machine share](https://github.com/docker/machine/issues/179#issue-53144018) 而当下环境是通过 virtualbox 创建容器宿主机 dev ，登录上是可以看到当前用户的家目录已经通过 vboxsf 协议共享，所以问题大概仍在 dev 和容器之间？
+
+{{< highlight console >}}
+$ docker-machine ssh dev
+docker@dev:~$ df -Th|grep vboxsf
+hosthome   vboxsf   78.2G   22.5G  55.7G  29% /hosthome
 
 {{< /highlight >}}
+
+### 其他管理指令
+
+如果上述过程中遇到了错误，下面指令可用于清理残余垃圾。
+
+{{< highlight console >}}
+
+$ docker-compose down
+
+# after <C-q> <C-q> detach from a container 
+$ docker attach <hash>
+# try to start a stop container again
+$ docker start <hash>
+
+# remove exited container
+$ docker ps -a
+$ docker ps -a -f status=exited
+$ docker rm $(docker ps -a -f status=exited -q)
+
+# remove dangling images
+$ docker images -f dangling=true
+$ docker rmi $(docker images -f dangling=true -q)
+
+{{< /highlight >}}
+
+### 环境变量
 
 通过在 compose yaml 中制定环境变量，从而达到切换不同阶段(开发、测试、生产)配置的目的
 
@@ -297,27 +351,8 @@ index d3355e2..1566c3d 100644
  def ping_pong():
 {{< /highlight >}}
 
-### 查错专用指令
 
-如果上述过程中遇到了错误，用于查错和清理的指令。
-
-{{< highlight console >}}
-$ docker logs ???
-
-$ docker-compose down
-
-# remove exited container
-docker ps -a
-docker ps -a -f status=exited
-docker rm $(docker ps -a -f status=exited -q)
-
-# remove dangling images
-$ docker images -f dangling=true
-$ docker rmi $(docker images -f dangling=true -q)
-
-{{< /highlight >}}
-
-### 数据持久
+## 数据持久化
 
 首先加入数据库相关的包，在 User 类中定义 model : 表名，各列类型定义。
 
@@ -533,13 +568,9 @@ users_dev=# \q
 参考文档
 
 > - [Python's Official Repository Included 10 'Malicious' Typo-Squatting Modules](https://developers.slashdot.org/story/17/09/16/2030229/pythons-official-repository-included-10-malicious-typo-squatting-modules)
-
-
-https://www.quora.com/Why-does-the-logo-of-Bottle-web-framework-look-like-Flask-Python-framework-Why-does-the-logo-of-Flask-Python-framework-not-look-like-a-flask
-
-https://www.fullstackpython.com/flask.html
-
-https://testdriven.io/part-one-intro/
-
+> - [Why does the logo of Flask (Python framework) not look like a flask?](https://www.quora.com/Why-does-the-logo-of-Bottle-web-framework-look-like-Flask-Python-framework-Why-does-the-logo-of-Flask-Python-framework-not-look-like-a-flask)
+> - Full Stack Python [Flask](https://www.fullstackpython.com/flask.html)
+> - [why local bind mount not work with container on docker machine](https://bbs.archlinux.org/viewtopic.php?id=231232)
+> - Amy Hoy (2006-12-22) [Help Vampires: A Spotter’s Guide](http://slash7.com/2006/12/22/vampires/)
 
 封面图片来自 [Multitasking](https://dribbble.com/shots/3491993-Multitasking) <a href="https://dribbble.com/kunchevsky"><i class="fa fa-dribbble" aria-hidden="true"></i> Alex Kunchevsky</a>  
