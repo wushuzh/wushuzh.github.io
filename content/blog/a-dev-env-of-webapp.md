@@ -304,8 +304,9 @@ hosthome   vboxsf   78.2G   22.5G  55.7G  29% /hosthome
 
 $ docker-compose down
 
-# after <C-q> <C-q> detach from a container 
 $ docker attach <hash>
+# type <C-p> <C-q> detach from interactive mode 
+
 # try to start a stop container again
 $ docker start <hash>
 
