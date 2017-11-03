@@ -149,6 +149,7 @@ TODO: 编排组织各个 container 和微服务当然可以用 docker-compose �
 
 {{< highlight console >}}
 $ sudo pacman -S docker docker-compose docker-machine
+# install docker-machine-kvm plugin if needed
 $ sudo usermod -aG docker wushuzh
 
 $ docker -v
@@ -167,7 +168,7 @@ docker-machine 首先下载最新宿主服务器iso，并以此创建虚拟机�
 虚拟机的相关配置在 ```$HOME\.docker\machine\machines\default\config.json```，更改后需要执行 ```docker-machine provision``` (待验证)
 
 {{< highlight console >}}
-$ docker-machine create -d "virtualbox" \
+$ docker-machine create [-d virtualbox or kvm] \
     --engine-env HTTP_PROXY=your_proxy  \
     --engine-env HTTPS_PROXY=your_proxy \
     dev
@@ -227,7 +228,9 @@ docker build \
   --build-arg HTTPS_PROXY=your_proxy \
   . 
 docker images
-docker run -d -p 5001:5000 test-users
+docker run -d -p 5001:5000 \
+    -e "FLASK_APP=project/__init__.py" \
+    test-users
 docker ps
 curl http://$(docker-machine ip dev):5001/ping
 docker stop/kill <hash>
