@@ -85,17 +85,84 @@ $ curl http://localhost:5000/42/
 - 不使用 AWS ，但会做容器化封装
 - 尝试更换数据库 mariadb
 
+### 准备数据库
+
 {{< highlight console >}}
 $ pipenv install bokeh pandas psycopg2 --three
 $ mkdir -p project/db
 $ touch project/db/create.sql
 $ touch project/db/Dockerfile
+# prepare content for db
+
+$ docker build -t stock-db .
+# hava a try
+$ docker run --rm -d -e POSTGRES_PASSWORD=postgres stock-db
+<hash-id>
+# note it takes a while for db full startup, so it need to 
+#   add check health when we turn it into a service 
+
+$ docker exec -ti <hash-id> psql -U postgres
+psql (10.0)
+Type "help" for help.
+
+postgres=# \c stocks
+You are now connected to database "stocks" as user "postgres".
+postgres=# \dt
+              List of relations
+ Schema |       Name       | Type  |  Owner   
+--------+------------------+-------+----------
+ public | stock_highlow    | table | postgres
+ public | stock_image_urls | table | postgres
+ public | stock_prices     | table | postgres
+(3 rows)
+
+postgres=# \q
 
 {{< /highlight >}}
+
+### 抓取程序
+
+通过股票代码获得其价格使用了 IEX API，按照原教程，将其封装为一个通用的接口，使得我们保有将其替换为其他 API 的能力。具体做法首先利用 abc 模块创建一个抽象类 StockFetcher 并定义好抓取不同信息的接口。
+
+之后就可以编写 IEXStockFetcher 类了。 通过 urllib.request ，参考 [IEX API](https://iextrading.com/developer/docs) URL 格式和返回 json 数据结构，返回当前价，股票标志，年内价格区间。注意:
+
+1. urllib 会自动应用系统的网络代理。
+2. 原教程的无限重试 try except 会产生 stack overflow ，我尝试了其他几种的重试方式:
+    - [循环休眠跳出](https://github.com/wushuzh/stockstreamer/commit/995bfa2c73fac357c270102c59092695912b6ce7)
+    - [函数式调用](https://github.com/wushuzh/stockstreamer/commit/2f6aef5011b31a7ce2b223d45f7f9bb9663045c4)
+    - [借助 retrying 模块](https://github.com/wushuzh/stockstreamer/commit/54ff0d2474ec20583b91d05fd7f3a0b039745ea4)
+
+{{< highlight console >}}
+Fatal Python error: Cannot recover from stack overflow.
+
+Current thread 0x00007ff742c72540 (most recent call first):
+  ...
+  File "~/somepath/stockstreamer/project/data_fetcher.py", line xx in fetchPrice
+  ...
+Aborted (core dumped)
+
+{{< /highlight >}}
+
+完成了抓取解析数据的核心功能，下面开始考虑怎么做的更有效率。一个基本需求是获取一系列的股票的信息，但是使用普通循环的问题是每个查询请求在获得结果前都会阻塞余下的查询。
+
+- 这个问题可以通过引入线程解决: 即等待网络结果的时候，线程调度器自动切换到各个线程上下文执行相应工作。
+- 考虑到从线程获得返回值比较麻烦，所有这里采用的方法是就向每个线程传入同一个 dict 集成所有的结果。
+- functools.partial 使得目标函数可以直接通过实例方法引用(即便没有将 IEXStockFetcher 实例化)
+
+这部分代码见 [5131772](https://github.com/wushuzh/stockstreamer/commit/513177294464dcf6f8f3a7a214efb927ad61c15a)
+
+### 存储数据
+
+本节是将抓好的数据入库表，构建基类 Manager 调用 Fetcher 并入库，和原教程不同，我打算后续尝试换后端数据库——怀疑即使换成 mariadb 但只要使用标准 SQL 语法，这个子类 PostgreSQLStockManager 就可以通用，但也许后续可以再尝试换成 Mongodb 或 Cassandra 。
+
+### 展示程序
+
+
 参考文档
 
 > - RealPython [Flask Bokeh Example](https://github.com/realpython/flask-bokeh-example/)
 > - Ethan Cerami (2017-04-13) [Creating Interactive Bokeh Applications with Flask](http://biobits.org/bokeh-flask.html)
+> - Dan Bader [Abstract Base Classes in Python](https://dbader.org/blog/abstract-base-classes-in-python)
 
 {{< speakerdeck a2d86983ff634ac3871ad4e5a308a67b >}}
 
