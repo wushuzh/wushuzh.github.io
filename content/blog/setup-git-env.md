@@ -45,19 +45,27 @@ $ cd git_immersion/git_tutorial/html/index.html && \
 
 ### 基本操作
 
-- 设置全局用户名和邮箱，根据 OS 做 CRLF 相关设置
-- 将项目加入版本库，跟踪、提交到版本库，查询状态 add
-- 更新文件，区分提交、已暂存和未暂存三个状态: git 关注变化而非文件 commit、status
-- 各种花哨的查看历史的方法，定义常用命令别名 log、alias
-- 回退到某一历史版本，返回到最新版本 checkout
-- 为某一版本打标签，查看标签、回退到某标签的版本 tag
-- 放弃未暂存/已暂存的更改 checkout、reset
-- 放弃已提交的更改的最安全方法 revert
+- 1-2 设置全局用户名和邮箱，根据 OS 做 CRLF 相关设置
+- 3-4 将项目加入版本库，跟踪、提交到版本库，查询状态 add
+- 5-9 更新文件，区分提交、已暂存和未暂存三个状态: git 关注变化而非文件 commit、status
+- 10-11 各种花哨的查看历史的方法，定义常用命令别名 log、alias
+- 12 回退到某一历史版本，返回到最新版本 checkout
+- 13 为某一版本打标签，查看标签、回退到某标签的版本 tag
+- 14-15 放弃未暂存/已暂存的更改 checkout、reset
+- 16-18 放弃已提交的更改的方法和风险 revert、reset
+- 19 立刻更新最新提交版本 commit --amend
+- 20-21 移动、改名操作 mv
+- 22-23 窥视 .git 内部
+- 24-27 创建切换分支 checkout -b、查看所有分支 -all
+- 28-30 合并(冲突)分支 merge
+- 31-35 另一种合并方式 rebase
+- 36-40 克隆版本库、远端库/分支 clone、remote -a、branch -a
+- 41-44 获取、合并远端的新增提交 fetch and merge、pull
+- 45 本地追踪远端分支 branch --track
+- 46-50 原始仓库 --bare、remote add、push、pull --track、daemon
 
 
-
-
-
+参考文档
 
 > - [Pro Git 中文版] 2014 (https://git-scm.com/book/zh/v2)
 > - answer [Difference between CR LF, LF and CR line break types?](https://stackoverflow.com/a/1552775/4393386)
