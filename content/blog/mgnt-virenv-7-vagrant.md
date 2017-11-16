@@ -341,6 +341,12 @@ vagrant status
 vagrant up
 vagrant ssh
 vagrant halt
+
+# to save a snapshot with name "clean"
+vagrant snapshot save clean
+# to restore the snapshot
+vagrant snapshot restore clean --no-provision
+
 vagrant destroy
 vagrant provision
 vagrant reload

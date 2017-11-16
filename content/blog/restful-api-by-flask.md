@@ -1,6 +1,6 @@
 +++
 date = "2017-10-30T11:24:09+08:00"
-title = "RestFul API 开发"
+title = "RestFul API"
 showonlyimage = false
 image = "/img/blog/restful-api-by-flask/rest.png"
 topImage =  "/img/blog/restful-api-by-flask/rest.gif"

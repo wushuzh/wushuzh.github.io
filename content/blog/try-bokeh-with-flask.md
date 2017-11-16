@@ -102,6 +102,9 @@ $ docker run --rm -d -e POSTGRES_PASSWORD=postgres stock-db
 #   add check health when we turn it into a service 
 
 $ docker exec -ti <hash-id> psql -U postgres
+{{< /highlight >}}
+
+{{< highlight psql >}}
 psql (10.0)
 Type "help" for help.
 
@@ -151,9 +154,16 @@ Aborted (core dumped)
 
 这部分代码见 [5131772](https://github.com/wushuzh/stockstreamer/commit/513177294464dcf6f8f3a7a214efb927ad61c15a)
 
+> TODO: 貌似 IEX API 只能获得美股情报，以后找找是否有适用于全球(尤其中国、香港)的 API
+
 ### 存储数据
 
-本节是将抓好的数据入库表，构建基类 Manager 调用 Fetcher 并入库，和原教程不同，我打算后续尝试换后端数据库——怀疑即使换成 mariadb 但只要使用标准 SQL 语法，这个子类 PostgreSQLStockManager 就可以通用，但也许后续可以再尝试换成 Mongodb 或 Cassandra 。
+本节是将抓好的数据入库表，构建基类 Manager 调用 Fetcher 并入库，和原教程不同，我打算后续尝试更换数据库——换成 mariadb 的意义可能不大，甚至子类 PostgreSQLStockManager 基本可以改造为通吃的方式(根据 dburl 判定使用连接驱动？)，但如果尝试换成 Mongodb 或 Cassandra 可能变得更为简单。
+
+针对每个表:
+
+1. 首先获取所有股票代码的数据
+2. 将每股的数据逐一拆出入库，然后休眠一定时间无限重复
 
 ### 展示程序
 
@@ -163,6 +173,7 @@ Aborted (core dumped)
 > - RealPython [Flask Bokeh Example](https://github.com/realpython/flask-bokeh-example/)
 > - Ethan Cerami (2017-04-13) [Creating Interactive Bokeh Applications with Flask](http://biobits.org/bokeh-flask.html)
 > - Dan Bader [Abstract Base Classes in Python](https://dbader.org/blog/abstract-base-classes-in-python)
+> - Quora [Are there any open APIs for free, accurate, real-time financial market data?](https://www.quora.com/Are-there-any-open-APIs-for-free-accurate-real-time-financial-market-data)
 
 {{< speakerdeck a2d86983ff634ac3871ad4e5a308a67b >}}
 

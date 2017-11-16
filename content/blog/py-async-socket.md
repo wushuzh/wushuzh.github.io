@@ -118,7 +118,7 @@ tty3 $ telnet localhost 25000
 
 解决方案是为 ```future``` 修补**事件循环调度器**。
 
-{{< highlight diff "linenos=table">}}
+{{< highlight diff "linenos=inline">}}
 --- a/aserver.py
 +++ b/aserver.py
 @@ -10,6 +10,20 @@ from concurrent.futures import ThreadPoolExecutor as Pool

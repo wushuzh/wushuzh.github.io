@@ -295,4 +295,4 @@ OK
 > - [docker-compose run](https://docs.docker.com/compose/reference/run/)
 > - [docker-compose build](https://docs.docker.com/compose/reference/build/)
 
-封面图片来自 [Multitasking](https://dribbble.com/shots/3491993-Multitasking) <a href="https://dribbble.com/kunchevsky"><i class="fa fa-dribbble" aria-hidden="true"></i> Alex Kunchevsky</a>  
+封面图片来自 [User Testing](https://dribbble.com/shots/3000461-User-Testing) <a href="https://dribbble.com/asia-paczkowska"><i class="fa fa-dribbble" aria-hidden="true"></i> Asia Paczkowska</a>  

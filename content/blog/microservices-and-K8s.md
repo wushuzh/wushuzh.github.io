@@ -5,7 +5,7 @@ showonlyimage = false
 image = "/img/blog/microservices-and-K8s/captain_dock.png"
 topImage = "/img/blog/microservices-and-K8s/captain_dock.gif"
 draft = false
-weight = 102
+weight = 110
 +++
 
 啊，船长，啊，我的船长……
@@ -127,6 +127,7 @@ Machine stopped.
 > - Tom Krazit (2017-10-17) [Docker acknowledges reality, adds support for Kubernetes to its container technology](https://www.geekwire.com/2017/docker-acknowledges-reality-adds-support-kubernetes-container-technology/)
 > - Wikipedia [Kubernetes](https://en.wikipedia.org/wiki/Kubernetes)
 > - Udacity ud615 [Scalable Microservices with Kubernetes](https://classroom.udacity.com/courses/ud615)
+> - Kelsey Hightower Pycon 2017 [Kubernetes for Pythonistas](https://youtu.be/u_iAXzy3xBA)
 > - [The Twelve-Factors App](https://12factor.net/)
 > - 蝈蝈俊 (2016-07-25) [Conway's law(康威定律)](http://www.cnblogs.com/ghj1976/p/5703462.html)
 > - Wikipedia JSON Web Token [JWT](https://en.wikipedia.org/wiki/JSON_Web_Token) and [Introduction to JSON Web Tokens](https://jwt.io/introduction/)

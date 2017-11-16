@@ -1,6 +1,6 @@
 +++
 date = "2017-10-09T22:14:57+08:00"
-title = "5G 多快，何时到来？"
+title = "5G 何时到来？"
 showonlyimage = false
 image = "img/blog/telecom-transition-to-5g/tip_illo.jpg"
 draft = false
@@ -8,7 +8,7 @@ weight = 92
 
 +++
 
-未来通信会是啥样？
+5G 通信多快，未来会是啥样？
 <!--more-->
 
 http://www.miaopai.com/u/mob_19092551

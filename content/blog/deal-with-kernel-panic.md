@@ -8,7 +8,7 @@ weight = 40
 tags = [ "Howto", "rpm", "Linux" ]
 +++
 
-Kernel Panic，应该能撑起"咋整"系列开篇的门面。
+Kernel Panic 才能撑起"咋整"系列开篇的门面。
 <!--more-->
 
 
