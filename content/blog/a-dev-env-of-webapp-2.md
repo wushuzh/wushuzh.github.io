@@ -196,6 +196,8 @@ users_dev=# \q
 
 {{< /highlight >}}
 
+> 测试至此，其实就可以关闭 ymal 中 ports 的配置了，这样后续 users-service 向 db-service 插入记录时才能通过 5432 端口连接
+
 ### 添加测试集
 
 {{< highlight python >}}
@@ -270,9 +272,9 @@ compose 中指定应用的配置为 development，而我们可以通过测试重
 {{< highlight console >}}
 $ docker build -t users-service --build-arg https_proxy=ip:port .
 ...
-$ docker-compose restart 
-Restarting users-service ... done
-Restarting users-db      ... done
+# restart won't take new built image into account
+$ docker-compose down 
+$ docker-compose up -d
 
 $ docker-compose run users-service flask test
 Starting users-db ... done
