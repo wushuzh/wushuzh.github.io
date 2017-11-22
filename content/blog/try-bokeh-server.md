@@ -134,7 +134,7 @@ curdoc().add_periodic_callback(update_figure, 5000)
 
 因为中美时区相差较大，如果你在美股闭市时开发测试脚本，就无法获得当下动态的股价，因此增加一个 pestgresql function (存储过程) 用来模拟向数据库中插入几条数据，然后测试 bokeh 服务器的动态加载数据的功能:
 
-- 插入数据的时间戳要保持从老到新，不然画图时会出现横向的折返线
+- 插入数据的时间戳要保持从老到新，不然画图时会出现横向折返(尤其是 data_fetcher.py 同时运行时)
 - 因为使用了容器数据库，所以其内部的时区和外部不同
 - 因为 bokeh 服务器会不断通过数据库链接读取数据，不要妄图做表的重建、改名等操作
 - Postgresql 的存储过程不仅可用 plpgsql，也可以用 python
@@ -144,11 +144,11 @@ CREATE OR REPLACE FUNCTION add_records() RETURNS VOID AS $$
   BEGIN
     SET TIMEZONE='Asia/Shanghai';
     INSERT INTO stock_prices
-      SELECT distinct on (stock_name)
+      SELECT 
         stock_name,
-        price + round(random()*100+1) as price,
-        now() + '10 second'::interval
-      FROM stock_prices;
+        max(price) + round(random()*100+1) as price,
+        max(time) + '1 second'::interval
+      FROM stock_prices group by stock_name;
   END;
 $$ LANGUAGE plpgsql;
 
@@ -181,8 +181,78 @@ WHERE updhl.stock_name = hl.stock_name and updhl.min < hl.low_val52wk
 
 ### 容器封装
 
-TODO
+这部分是跟当下容器的风，将上述的各个组件封装到容器中，通过 docker-compose 定义服务整体启动执行。
 
+按照基本功能的划分，将抓取程序、展示程序和数据库作为 3 个容器，前两个共享一个镜像， 后一个数据库镜像则加入初始化库表及存储过程的sql脚本。
+
+注意: 以前数据库链接串是硬编码在源程序中，现在则需要通过环境变量读入，并将 host 替换为服务容器名
+
+{{< highlight Dockerfile >}}
+FROM python:3
+
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
+ADD ./requirements.txt /usr/src/app/requirements.txt
+
+RUN pip install -r requirements.txt
+
+ADD ./project/data_fetcher.py /usr/src/app
+ADD ./project/stockstreamer.py /usr/src/app
+
+CMD python data_fetcher.py
+{{< /highlight >}}
+
+{{< highlight console >}}
+docker build -t bokeh-service --build-arg https_proxy=ip:port .
+{{< /highlight >}}
+
+除了引入 wait-for-it 等待数据库，chart-service 也应该等待 fetch-service 插入数据后再启动比较合适，通过在程序内部增加检测等待实现。
+
+{{< highlight yaml >}}
+version: "3.2"
+
+services:
+
+    stock-db:
+        container_name: stock-db
+        # build: ./project/db
+        image: stock-db
+        #ports:
+        #    - 5435:5432 # expose ports - HOST:CONTAINER
+        environment:
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=postgres
+        healthcheck:
+            test: "pg_isready -U postgres"
+
+    fetch-service:
+        container_name: fetch-service
+        image: bokeh-service
+        environment:
+            - DATABASE_URL=postgres://postgres:postgres@stock-db:5432/stocks
+            - HTTPS_PROXY=proxyip:port
+        depends_on:
+            - stock-db
+        command: ["./wait-for-it.sh", "stock-db:5432", "-t", "90", "--", "python", "data_fetcher.py"]
+        links:
+            - stock-db
+
+    chart-service:
+        container_name: chart-service
+        image: bokeh-service
+        ports:
+            - 5006:5006 # expose ports - HOST:CONTAINER
+        environment:
+            - DATABASE_URL=postgres://postgres:postgres@stock-db:5432/stocks
+        depends_on:
+            - fetch-service
+        command: ["./wait-for-it.sh", "stock-db:5432", "-t", "90", "--", "bokeh", "serve", "stockstreamer.py", "--allow-websocket-origin=192.168.99.100:5006"]
+        links:
+            - stock-db
+
+
+{{< /highlight >}}
 参考文档
 
 > - Bokeh User Guide [Running a Bokeh Server](https://bokeh.pydata.org/en/latest/docs/user_guide/server.html)
