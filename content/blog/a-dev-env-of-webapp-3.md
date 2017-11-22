@@ -184,7 +184,36 @@ OK
 
 {{< /highlight >}}
 
-最后是获取所有用户
+最后是获取所有用户，同样是 GET 操作，访问 endpoint /users 时，借助 Model 的 API 查询到所有记录，转换格式后返回即可。开发流程上仍然是先写测试，再实现代码。另外，创建一个新指令 seed_db，用于插入 2 条种子记录到数据库中。
+
+{{< highlight console>}}
+$ docker-compose run users-service flask recreate_db
+$ docker-compose run users-service flask seed_db
+$ curl http://$(docker-machine ip vdev):5001/users
+{{< /highlight >}}
+{{< highlight json>}}
+{
+  "data": {
+    "users": [
+      {
+        "created_at": "Sun, 12 Nov 2017 02:02:41 GMT",
+        "email": "me@wushuzh.com",
+        "id": 1,
+        "username": "me"
+      },
+      {
+        "created_at": "Sun, 12 Nov 2017 02:02:41 GMT",
+        "email": "me2@wushuzh.io",
+        "id": 2,
+        "username": "me2"
+      }
+    ]
+  },
+  "status": "success"
+}
+{{< /highlight >}}
+
+
 
 
 参考文档

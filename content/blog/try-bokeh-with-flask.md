@@ -1,6 +1,6 @@
 +++
 date = "2017-10-31T20:59:31+08:00"
-title = "Bokeh 数据可视化"
+title = "Bokeh 可视化入门"
 showonlyimage = false
 image = "/img/blog/try-bokeh-with-flask/bokeh-bgs.png"
 topImage = "/img/blog/try-bokeh-with-flask/bokeh-bgs.gif"
@@ -164,9 +164,6 @@ Aborted (core dumped)
 
 1. 首先获取所有股票代码的数据
 2. 将每股的数据逐一拆出入库，然后休眠一定时间无限重复
-
-### 展示程序
-
 
 参考文档
 
