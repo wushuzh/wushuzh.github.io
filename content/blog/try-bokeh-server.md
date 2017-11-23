@@ -2,7 +2,7 @@
 date = "2017-11-20T21:02:10+08:00"
 title = "Bokeh 服务器"
 showonlyimage = false
-image = "/img/blog/try-bokeh-server/stock.png"
+image = "/img/blog/try-bokeh-server/wired-money.png"
 draft = false
 weight = 110
 +++

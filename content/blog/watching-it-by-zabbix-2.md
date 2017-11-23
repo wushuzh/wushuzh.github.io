@@ -1,6 +1,6 @@
 +++
 date = "2017-08-24T22:24:51+08:00"
-title = "Zabbix 自定义指标"
+title = "Zabbix自定义指标"
 showonlyimage = false
 image = "/img/blog/watching-it-by-zabbix-2/energy_system_icon_03.png"
 draft = false
