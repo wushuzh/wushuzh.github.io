@@ -253,9 +253,10 @@ services:
 
 
 {{< /highlight >}}
+
 参考文档
 
 > - Bokeh User Guide [Running a Bokeh Server](https://bokeh.pydata.org/en/latest/docs/user_guide/server.html)
 > - Tutorialspoint [PostgreSQL - Functions](https://www.tutorialspoint.com/postgresql/postgresql_functions.htm)
 
-封面图片来自 [Stock Market Viewer](https://dribbble.com/shots/2247998-Stock-Market-Viewer) <a href="https://dribbble.com/6noran"><i class="fa fa-dribbble" aria-hidden="true"></i> MΛT</a>
+封面图片来自 [Wired Money](https://dribbble.com/shots/993632-Wired-Money) <a href="https://dribbble.com/goranfactory"><i class="fa fa-dribbble" aria-hidden="true"></i> Marco Goran Romano</a>
