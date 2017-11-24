@@ -1,6 +1,6 @@
 +++
 date = "2017-08-06T16:12:21+08:00"
-title = "从 SVN 迁移到 Git"
+title = "从 SVN 到 Git"
 showonlyimage = false
 image = "/img/blog/migrate-svn-to-git/upg-2-git.png"
 topImage = "/img/blog/migrate-svn-to-git/char-upd.gif"
