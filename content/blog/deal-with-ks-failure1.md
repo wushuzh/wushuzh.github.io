@@ -2,8 +2,7 @@
 date = "2017-08-01T19:12:33+08:00"
 title = "安装失败，咋整？"
 showonlyimage = false
-image = "/img/blog/deal-with-ks-failure1/kickstart-car.png"
-topImage = "/img/blog/deal-with-ks-failure1/kickstart-car.gif"
+image = "/img/blog/deal-with-ks-failure1/it_specialist.png"
 draft = false
 weight = 45
 +++
@@ -154,4 +153,4 @@ INFO anaconda: Running Thread: AnaInputThread1 (139679504647936)
 
 到这，我准备找外援来帮忙查看这个问题了。下一篇我会详细复述一下这个求助的过程。
 
-封面图片来自 [Kickstart Car](https://dribbble.com/shots/2342802-Kickstart-Car) <a href="https://dribbble.com/KristianDuffy"><i class="fa fa-dribbble" aria-hidden="true"></i> Kristian Duffy</a>  
+封面图片来自 [It Specialist](https://dribbble.com/shots/2528925-It-Specialist) <a href="https://dribbble.com/Frizler"><i class="fa fa-dribbble" aria-hidden="true"></i> Anton Fritsler (kit8)</a>
