@@ -90,6 +90,10 @@ $ sudo systemctl stop tomcat8
 
 查看 catalina.sh 的运行选项支持 Java Platform Debugger Architecture (JPDA)，在 Intellij 中配置
 
+TODO: 查看 Intellij 的两个 tomcat 插件
+
+### Docker
+
 参考文档
 
 > - Archlinux wiki 
@@ -98,5 +102,7 @@ $ sudo systemctl stop tomcat8
 > - Jan Steffens (2014-12-11) [ca-certificates update](https://www.archlinux.org/news/ca-certificates-update/)
 > - Apache Tomcat 8 [Manager App HOW-TO](http://tomcat.apache.org/tomcat-8.0-doc/manager-howto.html#Configuring_Manager_Application_Access)
 > - Olaf Kock (2015-05-01) [Whats the difference between service tomcat start/stop and ./catalina.sh run/stop](https://stackoverflow.com/a/29992541/4393386)
+> - markiewb (2017-04-06) [IDEA: Build your own Tomcat integration for the free IntelliJ IDEA Community Edition](https://benkiew.wordpress.com/2017/06/04/idea-build-your-own-tomcat-integration-for-the-free-intellij-idea-community-edition/)
+> - [Deploying a web app into an app server container](https://www.jetbrains.com/help/idea/2017.2/deploying-a-web-app-into-an-app-server-container.html)
 
 封面图片来自 [Java Developer Joke](https://dribbble.com/shots/3530278-Java-Developer-Joke) <a href="https://dribbble.com/browserling"><i class="fa fa-dribbble" aria-hidden="true"></i> Browserling</a>
