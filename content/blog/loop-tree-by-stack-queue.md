@@ -90,7 +90,7 @@ n8.set_parent(n5)
 - 若不是，则将其子节点全压入 stack ，并向左继续查找
 
 {{< highlight python >}}
-def DFSBinary(root: BinaryTree, fcn) -> bool:
+def DFS_binary(root: BinaryTree, fcn) -> bool:
     stack: List[BinaryTree] = [root]
     while len(stack) > 0:
         print('at node {}'.format(stack[0].get_value()))
@@ -114,6 +114,86 @@ pipenv install mypy
 
 1. 从跟节点开始
 2. 逐层逐个搜寻
+
+实现代码的区别仅仅在于当前节点不是目标节点时:
+
+- 从 List 的首部取得下一个查找节点
+- 记录待查找节点时，插入位置为队列的尾部
+> 这里是借用 List 模拟 Queue 的 FIFO 特性。
+
+{{< highlight python >}}
+def BFS_binary(root: BinaryTree, fcn) -> bool:
+    queue: List[BFSBinary] = [root]
+    while len(queue) > 0:
+        print('at node {}'.format(queue[0].get_value()))
+        if fcn(queue[0]):
+            return True
+        else:
+            temp = queue.pop(0)
+            if temp.get_left_branch():
+                queue.append(temp.get_left_branch())
+            if temp.get_right_branch():
+                queue.append(temp.get_right_branch())
+    return False
+
+{{< /highlight >}}
+
+### 获取路经
+
+如果不仅仅是知晓节点是否找到，还要获得达到节点的路徑，只需添加一个辅助函数回溯父节点即可:
+
+{{< highlight python >}}
+def trace_path(node: BinaryTree) -> List[BinaryTree]:
+    if not node.get_parent():
+        return [node]
+    else:
+        return [node] + trace_path(node.get_parent())
+
+
+def BFS_binary_path(root: BinaryTree, fcn) -> List[BinaryTree]:
+    queue: Deque[BinaryTree] = deque([root])
+    while len(queue) > 0:
+        if fcn(queue[0]):
+            return trace_path(queue[0])
+        else:
+            temp = queue.popleft()
+            if temp.get_left_branch():
+                queue.append(temp.get_left_branch())
+            if temp.get_right_branch():
+                queue.append(temp.get_right_branch())
+    return []
+{{< /highlight >}}
+
+### 有序树搜索
+
+特别的，如果任意节点将比它小的数据存放于其左侧分支上的子节点，比它大放在其右侧分支。简单的修改我们就可以获得很大的搜索效率的提升。
+
+{{< highlight python >}}
+def DFS_ordbinary(root: BinaryTree, fcn, ltfcn) -> bool:
+    stack: List[BinaryTree] = [root]
+    while len(stack) > 0:
+        print('at node {}'.format(stack[0].get_value()))
+        if fcn(stack[0]) > 0:
+            return True
+        elif ltfcn(stack[0]):
+            temp = stack.pop(0)
+            if temp.get_left_branch():
+                stack.insert(0, temp.get_left_branch())
+        else:
+            temp = stack.pop(0)
+            if temp.get_right_branch():
+                stack.insert(0, temp.get_right_branch())
+    return False
+
+
+DFS_ordbinary(n5,
+              lambda n: n == n6,
+              lambda n: n.get_value() > 6)
+# at node 5
+# at node 8
+# at node 6
+
+{{< /highlight >}}
 
 参考文档
 
