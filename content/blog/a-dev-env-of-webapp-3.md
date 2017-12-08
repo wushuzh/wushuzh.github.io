@@ -4,7 +4,7 @@ title = "Flask 开发 3"
 showonlyimage = false
 image = "/img/blog/a-dev-env-of-webapp-3/blue-print.png"
 draft = false
-weight = 102
+weight = 602
 +++
 
 运用蓝图和测试集将原应用拆解为多个组件

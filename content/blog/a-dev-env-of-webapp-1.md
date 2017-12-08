@@ -4,7 +4,7 @@ title = "Flask 开发 1"
 showonlyimage = false
 image = "/img/blog/a-dev-env-of-webapp-1/multitasking.png"
 draft = false
-weight = 102
+weight = 602
 +++
 
 麻雀虽小但五脏俱全的开发环境
