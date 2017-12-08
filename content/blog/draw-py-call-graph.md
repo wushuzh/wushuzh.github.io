@@ -89,10 +89,85 @@ OK
 
 ### 调用关系
 
+{{< highlight python >}}
+def f():
+    for i in range(10):
+        g(i)
+
+def g(n):
+    return h(n) + i(n)
+
+def h(n):
+    return n + 10
+
+def i(n):
+    return n * 8
+
+
+if __name__ == '__main__':
+    import trace
+    
+    t = trace.Trace(count=1, trace=0, countfuncs=1, countcallers=1)
+    t.runfunc(f)
+    r = t.results()
+    print(dir(r))
+    print(r.callers)
+
+{{< /highlight >}}
+
+上面跟踪了函数逐条语句执行情况，我们还可以通过向 Trace 传入其他各种开关跟踪函数调用情况。这样产生的 CoverageResults 对象的 key 也会包含不同粒度对象的调用情况。CoverageResults 的类型貌似总是 dict，其值也总为被调用次数。而 key 就因情况而异了，本例中为 tuple of tuples，第一层 tuple 为 (caller, callee) ，然后 caller 和 callee 又都为 tuple 起组成为 (filename, module, funcname)
+
+> python 一直以文档完善而著称，但关于 trace 模块的文档却不是很详尽，你需要使用 python 的各种自省查看其内部的数据结构。这种不详尽的主要原因可能是因为只有资深开发者会使用这个模块追踪代码调用情况。或者其数据结构仍可能在未来变化?
+
+### JSPlumb
+
+这个 JS 库主要用于连接各种元素，其基础概念有
+
+- Anchor 用户无法自行创建，但它标识了某一元素的 Endpoints 可存在的位置
+- Endpoint 代表一个连接(Connection) 的某一端
+- Connector 代表一个连接两个元素的连线
+- Overlay 可用于装饰连线(Connector)，比如箭头、文本框
+- Connection = Endpoint + Connector + Endpoint + Overlay
+
+API 都暴露在 Connection 和 Endpoint 上，但你最终需要通过它们调整 Anchor, Connector 和 Overlay。
+
+相比 nodejs 官方的 npm 工具，更推荐使用 Facebook 出品的包管理工具 yarn : 
+
+- 速度快
+- 去除不不必要的选项、指令短
+- 支持缓存离线安装
+
+> bower 项目已经停止。
+
+{{< highlight console >}}
+$ pacman -Q nodejs npm
+nodejs 9.2.0-1
+npm 5.5.1-2
+
+$ pacman -Ss yarn
+community/yarn 1.3.2-1
+    Fast, reliable, and secure dependency management
+$ pacman -S yarn
+
+$ yarn config set proxy http://ip:port
+$ yarn config set https-proxy http://ip:port
+
+$ yarn info jsplumb
+$ yarn add jsplumb
+
+{{< /highlight >}}
+
+
 参考文档
 
 > - Michel J. Anders 
     - (2011-05-01) [Coverage Testing in Python: Combining the unittest and trace Modules](http://michelanders.blogspot.fi/2011/05/coverage-testing-in-python-combining.html) 
     - (2011-05-29) [Visualizing Python Call Graphs With Jsplumb](http://michelanders.blogspot.fi/2011/05/visualizing-python-call-graphs-with.html)
+> - Dilinl Mampitiya (2016-03-04) [Implement a Flowchart Editor using jsPlumb – Part 1](https://dilinimampitiya.wordpress.com/2016/03/04/implement-a-flowchart-editor-using-jsplumb-part-1/)
+> - Free Dev Tutorials [jsPlumb Tutorial](http://www.freedevelopertutorials.com/jsplumb-tutorial/)
+> - Real Python (2014-05-03) [Primer on Jinja Templating](https://realpython.com/blog/python/primer-on-jinja-templating/)
+> - [npm Tutorial for Beginners](https://www.youtube.com/playlist?list=PLC3y8-rFHvwhgWwm5J3KqzX47n7dwWNrq)
+> - [Configuring a corporate proxy](http://www.jhipster.tech/configuring-a-corporate-proxy/)
+> - [Creating Network Graphs with Python](https://www.udacity.com/wiki/creating-network-graphs-with-python)
 
 封面图片来自 [Information design](https://dribbble.com/shots/2235198-Information-design-Theatre-Personal-project-WIP) <a href="https://dribbble.com/federicafragapane"><i class="fa fa-dribbble" aria-hidden="true"></i> Federica Fragapane</a>
