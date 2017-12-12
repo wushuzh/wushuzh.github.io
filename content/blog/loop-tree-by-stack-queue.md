@@ -5,7 +5,7 @@ showonlyimage = false
 image = "/img/blog/loop-tree-by-stack-queue/tree.png"
 topImage = "/img/blog/loop-tree-by-stack-queue/tree.gif"
 draft = false
-weight = 1000
+weight = 401
 +++
 
 学习栈和队列在树搜索中的使用
@@ -58,6 +58,12 @@ class BinaryTree():
 
 {{< /highlight >}}
 
+> 为了更为清晰的表示函数的输入参数和返回值的类型，这里代码加入了类型标注，而 Dropbox 出品的第三方工具 [mypy](http://mypy-lang.org/) 则可以利用这些标注实现类型检测。
+
+{{< highlight console >}}
+pipenv install mypy
+{{< /highlight >}}
+
 ### 二叉树
 
 使用上面的定义，创建一个二叉树。
@@ -106,9 +112,6 @@ def DFS_binary(root: BinaryTree, fcn) -> bool:
 
 {{< /highlight >}}
 
-{{< highlight console >}}
-pipenv install mypy
-{{< /highlight >}}
 
 ### 广度搜索
 
@@ -166,7 +169,7 @@ def BFS_binary_path(root: BinaryTree, fcn) -> List[BinaryTree]:
 
 ### 有序树搜索
 
-特别的，如果任意节点将比它小的数据存放于其左侧分支上的子节点，比它大放在其右侧分支。简单的修改我们就可以获得很大的搜索效率的提升。
+特别的，如果树的任意节点都遵从比它小的数据存放于其左侧子节点上，而比它大都处于右侧分支。一个简单的修改我们就可以获得巨大的搜索效率提升。
 
 {{< highlight python >}}
 def DFS_ordbinary(root: BinaryTree, fcn, ltfcn) -> bool:
@@ -195,8 +198,15 @@ DFS_ordbinary(n5,
 
 {{< /highlight >}}
 
+### 总结
+
+- 不变更程序逻辑，仅通过数据结构 stack/queue ，就能在深度和广度的搜索方式间切换
+- 若需要获得节点路径，添加一个辅助函数就能做到
+- 若树上节点是有序存放的，微小改变就能大大提升搜索效率
+
 参考文档
 
 > - Paulo Scardine answer [How do I specify that the return type of a method is the same as the class itself in python?](https://stackoverflow.com/a/33533514/4393386)
+> - Dan Poirier (2017-02-22) [Python type annotations](https://www.caktusgroup.com/blog/2017/02/22/python-type-annotations/)
 
 封面图片来自 [Heraldry 4](https://dribbble.com/shots/3454908-Heraldry-4) <a href="https://dribbble.com/federicafragapane"><i class="fa fa-dribbble" aria-hidden="true"></i> Forbender</a>

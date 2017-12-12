@@ -25,7 +25,7 @@ yarn add remarker
 - 标准页分割符: ---
 - 增量页分割符: -- 新页内容 = 前一页内容 + 新内容
 
-{{< highlight markdown >}}
+{{< highlight md >}}
 
 {{< /highlight >}}
 
@@ -38,7 +38,7 @@ yarn add remarker
 - background-image 用于设定背景图
 - count 值为 false 表示当前页不计入总页数
 
-{{< highlight markdown >}}
+{{< highlight md >}}
 
 {{< /highlight >}}
 

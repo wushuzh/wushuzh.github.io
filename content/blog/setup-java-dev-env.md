@@ -4,7 +4,7 @@ title = "Java 开发环境"
 showonlyimage = false
 image = "/img/blog/setup-java-dev-env/dev.png"
 draft = false
-weight = 110
+weight = 701
 +++
 
 设定 JDK 和 Intellij 集成开发环境
@@ -104,5 +104,9 @@ TODO: 查看 Intellij 的两个 tomcat 插件
 > - Olaf Kock (2015-05-01) [Whats the difference between service tomcat start/stop and ./catalina.sh run/stop](https://stackoverflow.com/a/29992541/4393386)
 > - markiewb (2017-04-06) [IDEA: Build your own Tomcat integration for the free IntelliJ IDEA Community Edition](https://benkiew.wordpress.com/2017/06/04/idea-build-your-own-tomcat-integration-for-the-free-intellij-idea-community-edition/)
 > - [Deploying a web app into an app server container](https://www.jetbrains.com/help/idea/2017.2/deploying-a-web-app-into-an-app-server-container.html)
+> - Holly Cummins (2017-10-11) [Using webpack watch with the Gradle and the Liberty Application Server](http://garage.mybluemix.net/posts/webpackwatchliberty/)
+> - Justin Calleja (2016-04-17) [Serving a Webpack bundle in Spring Boot](http://justincalleja.com/2016/04/17/serving-a-webpack-bundle-in-spring-boot/)
+> - John Doe (2015-09-29) [Deployment ready websites with Spring Boot](https://www.michael-bull.com/blog/2015/09/29/deployment-ready-websites-with-spring-boot)
+> - Bharat Tiwari [A beginner’s guide to Webpack 2](https://medium.com/a-beginners-guide-for-webpack-2)
 
 封面图片来自 [Java Developer Joke](https://dribbble.com/shots/3530278-Java-Developer-Joke) <a href="https://dribbble.com/browserling"><i class="fa fa-dribbble" aria-hidden="true"></i> Browserling</a>
