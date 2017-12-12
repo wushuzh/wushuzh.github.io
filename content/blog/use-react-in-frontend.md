@@ -10,6 +10,30 @@ weight = 602
 从现在开始 React 复杂前端
 <!--more-->
 
+### Setup React
+
+{{< highlight console >}}
+$ yarn global add create-react-app
+success Installed "create-react-app@1.4.3" with binaries:
+      - create-react-app
+
+$ yarn global list
+info "create-react-app@1.4.3" has binaries:
+   - create-react-app
+
+$ mkdir client && cd client
+$ yarn global bin
+$ ~/.yarn/bin/create-react-app .
+$ yarn start
+
+{{< /highlight >}}
+
+### first Compontent JSX
+
+### Class-based Component
+
+### Ajax call to Flask App
+
 
 参考文档
 
