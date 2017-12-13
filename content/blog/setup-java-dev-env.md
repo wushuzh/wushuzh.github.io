@@ -80,13 +80,23 @@ $ sudo gpasswd -a wushuzh tomcat8
 {{< /highlight >}}
 
 配置完毕，尝试首次启动 tomcat8 服务，并使用浏览器查看 localhost:8080 ，应该看到的是花花绿绿的恭喜信息。
+
 {{< highlight console >}}
 $ systemctl status tomcat8
 $ sudo systemctl start tomcat8
 # check with chrome with localhost:8080
 $ sudo systemctl stop tomcat8
+{{< /highlight >}}
+
+测试用 manager 用户通过 curl 上传部署一个应用
+{{< highlight console >}}
+$ curl -T sampleapp.war \
+    "http://manager:change_me@localhost:8080/manager/text/deploy?path=/sampleapp&update=true"
+OK - Deployed application at context path /sampleapp
 
 {{< /highlight >}}
+
+
 
 查看 catalina.sh 的运行选项支持 Java Platform Debugger Architecture (JPDA)，在 Intellij 中配置
 
