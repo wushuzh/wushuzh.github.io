@@ -123,7 +123,10 @@ $ sudo pacman -S base-devel
 
 > 刚安装好 Gnome 后，自带的 gnome-terminal 无法启动。但后来又好了，不清楚是不是和折腾了一下 UTF 还是安装了中文字体相关？反正现在已经正常启动，无法重现，具体原因待有缘后再查了  
 >         
-> 现在觉得使用 [Guake](https://wiki.archlinux.org/index.php/Guake) 替代 Gnome-terminal 也是不错的选择，自带 drop-down-terminal 功能。
+我现在用基于 python 的 [Guake](https://wiki.archlinux.org/index.php/Guake) 替代 Gnome-terminal ，也一样是 drop-down-terminal 。叫 Guake 是因为它是受游戏《雷神之锤 Quake 》中显示方式启发开发的: 默认用 F12 唤出。对于选项设定:
+
+1. 通用: 解除 Use VTE titles for tab names，使用快捷键 Ctrl + F2 对当前 tab 命令。 
+2. 显示: 将调色盘设定为 Solarized Dark 以便和 vim 插件[vim-colors-solazied](https://vimawesome.com/plugin/vim-colors-solarized-ours)配合
 
 ### 安装位于 AUR 的软件
 
