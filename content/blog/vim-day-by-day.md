@@ -135,6 +135,16 @@ local/python-pyflakes 1.6.0-1
     A lint-like tool for Python to identify common errors quickly without executing code
 {{< /highlight >}}
 
+surround.vim 插件用于处理小括号、中括号、单双引号、XML 标签。假设已有 “Hi Vim!" 常见操作: 
+
+- 处于单词中，敲入 cs“‘ 即更改引用——双引号变单引号
+- 继续敲入 cs’<q> 将单引号改为标签引用
+- 继续敲入 cst" 将标签改为双引号，恢复最初状态
+- 继续敲入 ds" 删除引用 ...
+- ysiw" 将光标所在单词用双引号括起
+- yss"  将光标所在整行用双引号括起
+
+
 vim-javascript (TODO)
 
 参考文档
