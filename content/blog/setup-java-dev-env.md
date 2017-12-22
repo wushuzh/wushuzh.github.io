@@ -7,7 +7,7 @@ draft = false
 weight = 701
 +++
 
-设定 JDK 和 Intellij 集成开发环境
+设定 JDK 和 Eclipse 集成开发环境
 <!--more-->
 
 ### JDK 和 IDE
@@ -21,15 +21,22 @@ $ archlinux-java status
 Available Java environments:
   java-8-openjdk (default)
 
+$ pacman -S eclipse-java
 $ cower -u intellij-idea-ce
 
 $ sudo pacman -S gradle
 
 {{< /highlight >}}
 
-启动初始化设置，安装常用插件，新建或导入 maven/gradle 项目。设定项目的 SDK 为 /usr/lib/jvm/default-runtime 即可。 
+Eclipse 安装后的配置建议:
 
-- [IdeaVim](http://plugins.jetbrains.com/plugin/164) 
+- 在系统使用暗色背景时如果显示诡异，需要手动按照 Windows > Preferences > General > Appearance 明确选择 Dark 主题。另外最好修改 /usr/lib/eclipse/eclipse.ini 将 GTK+ 3 禁止。
+- 项目在包管理器中的顺序可通过右键项目，Build Path > Conf Build Path，在对话框 Order and Export 中明确顺序。
+- 如果项目涉及前端，需要编辑 HTML、CSS、JSON 和 Javascript 文件，建议通过 Help > Install New Software 选择 Eclipse Web Developer Tools。否则默认双击相关文件 Eclipse 会试图将工作代理给系统相关编辑器。
+
+IntelliJ 启动初始化设置，安装常用插件，新建或导入 maven/gradle 项目。设定项目的 SDK 为 /usr/lib/jvm/default-runtime 即可。因为社区版对于 Spring 项目默认不支持，所以你可能会花费大量时间在网上查找相关绕路的奇技淫巧，其实也挺不值的。
+
+- [IdeaVim](http://plugins.jetbrains.com/plugin/164)
 
 ### CA
 
@@ -106,7 +113,7 @@ TODO: 查看 Intellij 的两个 tomcat 插件
 
 参考文档
 
-> - Archlinux wiki 
+> - Archlinux wiki
     - [OpenSSL](https://wiki.archlinux.org/index.php/OpenSSL)
     - [Tomcat](https://wiki.archlinux.org/index.php/Tomcat)
 > - Jan Steffens (2014-12-11) [ca-certificates update](https://www.archlinux.org/news/ca-certificates-update/)
