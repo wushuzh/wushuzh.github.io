@@ -67,6 +67,13 @@ $ config push -u origin master
 :h vundle
 :h fugitive
 
+### 编辑
+
+基于 X11 的系统有两个独立的剪贴板:
+
+- PRIMARY: 通过框选复制，使用鼠标的中间粘贴，访问可用 “*
+- CLIPBOARD: 和 MS Windows 中的系统剪贴版同义，访问可用 "+
+
 ### 特殊字符
 
 插件 vim-airline 在编辑器底部显示当前文件信息: 模式、版本、文件名、文件类新、编码、位置和警告信息。
@@ -135,7 +142,7 @@ local/python-pyflakes 1.6.0-1
     A lint-like tool for Python to identify common errors quickly without executing code
 {{< /highlight >}}
 
-surround.vim 插件用于处理小括号、中括号、单双引号、XML 标签。假设已有 “Hi Vim!" 常见操作: 
+surround.vim 插件用于处理小括号、中括号、单双引号、XML 标签。假设已有 “Hi Vim!" 常见操作:
 
 - 处于单词中，敲入 cs“‘ 即更改引用——双引号变单引号
 - 继续敲入 cs’<q> 将单引号改为标签引用
@@ -143,7 +150,6 @@ surround.vim 插件用于处理小括号、中括号、单双引号、XML 标签
 - 继续敲入 ds" 删除引用 ...
 - ysiw" 将光标所在单词用双引号括起
 - yss"  将光标所在整行用双引号括起
-
 
 vim-javascript (TODO)
 
