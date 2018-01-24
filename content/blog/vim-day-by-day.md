@@ -16,7 +16,10 @@ weight = 1000
 $ pacman -Qs -q vim
 gvim
 neovim-git
+nerd-fonts-complete
 oni
+python-neovim
+python2-neovim
 vim-runtime
 {{< /highlight >}}
 
@@ -62,7 +65,7 @@ $ config push -u origin master
 - [#32 working with the git index](http://vimcasts.org/episodes/fugitive-vim-working-with-the-git-index/)
 - [#33 resolving merge conflicts with vimdiff](http://vimcasts.org/episodes/fugitive-vim-resolving-merge-conflicts-with-vimdiff/)
 - [#34 browsing the git object database](http://vimcasts.org/episodes/fugitive-vim-browsing-the-git-object-database/)
-- [#35 exploring the history of a git repo](http://vimcasts.org/episodes/fugitive-vim-exploring-the-history-of-a-git-repository/)
+- [#35 exploring the history of a git repo](http://vimcasts.org/episodes/fugitive-vim-exploring-the-history-of-a-git-repository/) Glog 指令配合 UNIMPAIRED 插件能很方便地启动一个新 tab 页，查看该文件的所有历史修改版本
 
 :h vundle
 :h fugitive
@@ -112,7 +115,7 @@ endif
 
 依赖视觉的查找其实效率不高，因此 nerdtree 仅被用文件系统添改删操作。详见 :h nerdtree
 
-EasyMotion 是一个依赖视觉的瞬移光标插件。详见 :h easymotion.txt
+EasyMotion 是一个依赖视觉的瞬移光标插件, 敲入 <Leader><Leader>w 就会触发用于跳转的提示字母。详见 :h easymotion.txt
 
 
 ### 折叠
@@ -152,6 +155,31 @@ surround.vim 插件用于处理小括号、中括号、单双引号、XML 标签
 - yss"  将光标所在整行用双引号括起
 
 vim-javascript (TODO)
+
+### 迁移到 neovim
+
+安装 AUR neovim-git，是为了和最新版本同步，每次同步时借用 AUR 的 makepkg 脚本克隆最新代码、编译、打包、安装即可。
+
+另一个 AUR neovim-gnome-terminal-wrapper 则会在一个无菜单的 gnome-terminal windows 中启动 neovim。
+
+为了让 vim 和 neovim 使用相同的配置文件，可为 neovim 做如下配置:
+
+{{< highlight vim >}}
+" ~/.config/nvim/init.vim
+set runtimepath+=~/.vim,~/.vim/after
+set packpath+=~/.vim
+source ~/.vimrc
+{{< /highlight >}}
+
+neovim 的一个很吸引人的特性是拥有了内置的终端窗口。
+
+- [#71 Meet Neovim](http://vimcasts.org/episodes/meet-neovim/)
+- [#74 Neovim's terminal emulator](http://vimcasts.org/episodes/neovim-terminal/)
+- [#75 Creating mappings for :terminal](http://vimcasts.org/episodes/neovim-terminal-mappings/)
+
+neovim 依赖外部工具才能访问系统剪贴板，所以首先安装 xclip , 这样 + 就会直接和系统剪贴板绑定。详见:h clipboard
+
+- [How can I copy text to the system clipboard from Vim](https://vi.stackexchange.com/questions/84/how-can-i-copy-text-to-the-system-clipboard-from-vim)
 
 参考文档
 
