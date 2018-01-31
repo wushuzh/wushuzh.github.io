@@ -226,12 +226,22 @@ def login():
     return render_template('login.html', title='Sign In', form=form)
 {{< /highlight >}}
 
+`get_flashed_messages()` 用于获取 flash 消息列表，检测存在后将消息逐一显示。
+
+针对表单中一些字段已经使用了检验器，以此对于不合法的数据，服务端 `form.validate_on_form()` 返回 False 从而拒绝接受。但为了提升用户体验，我们应该将字段检验结果在前端模板显示给用户。
+
+最后 flask 中有一个用于生成超链接的函数 `url_for()`，可以应对各类需要 URL 的情形，这里就将模板和路由模块中成功登录后的重定向都使用这个函数来生成相应链接。
+
 {{< highlight htmldjango>}}
-<!-- filename: base.html -->
+<!-- filename: app/templates/base.html -->
 <html>
     <!-- header -->
     <body>
-        <!-- ahref -->
+        <div>
+            Microblog:
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('login') }}">Login</a>
+        </div>
         <hr>
         {% with messages = get_flashed_messages() %}
         {% if messages %}
@@ -245,7 +255,22 @@ def login():
         {% block content %}{% endblock %}
     </body>
 </html>
+
+
+<!-- filename: app/templates/login.html -->
+{% extends "base.html" %}
+{% block content %}
+    <form action="" method="post">
+      <!-- -->
+      {% for error in form.field.errors %}
+      <span style="color: red;">[{{ error }}]</span>
+      {% endfor %}
+    </form>
+{% endblock %}
+
 {{< /highlight >}}
+
+
 
 参考文档
 
