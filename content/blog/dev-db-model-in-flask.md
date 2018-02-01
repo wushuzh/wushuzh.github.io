@@ -106,9 +106,12 @@ INFO  [alembic.runtime.migration] Running upgrade  -> 398e0b87f3af, users table
 
 下面我们引入了另个一个对微博的模型 Post ，除了常规的内部唯一 ID 标识，内容，发布时间，还有一个用于标识发帖用户的外键。
 
-这里的模型关系是一个典型的 1 对多的关系: 一个用户可以发多个帖子。
+这里的模型关系是一个典型 1 对 n 的关系: 一个用户可以发多个帖子。
 
-- 在 User 模型添加一个虚拟的字段 posts
+- 在原有 User 模型(关系中的1)中，用 `db.relationship`定义一个虚拟字段 posts: 这样实际访问 (关系中的n) 时会比较方便;
+- 参数 backref 则是标识了通过 Post 对象(关系中的n)访问 User 对象时使用的虚拟字段;
+- 新建 Post 模型中定义时间戳字段，传入 default 的参数为函数引用，SQLAlchemy 就可以在实例化 Post 时代为调用该函数;
+- 最后 Post 模型中的 user_id 字段是一个数据库实际字段，将借用 User 表中 id 字段，同时作为 Post 模型的外键。
 
 
 {{< highlight python >}}
@@ -132,6 +135,20 @@ class Post(db.Model):
         return '<Post {}>'.format(self.body)
 {{< /highlight >}}
 
+{{< highlight console >}}
+
+(venv) [microblog-flask]$ flask db migrate -m "posts table"
+INFO  [alembic.runtime.migration] Context impl SQLiteImpl.
+INFO  [alembic.runtime.migration] Will assume non-transactional DDL.
+INFO  [alembic.autogenerate.compare] Detected added table 'post'
+INFO  [alembic.autogenerate.compare] Detected added index 'ix_post_timestamp' on '['timestamp']'
+  Generating /p/microblog-flask/migrations/versions/fceea7a95e54_posts_table.py ... done
+(venv) [microblog-flask]$ flask db upgrade
+INFO  [alembic.runtime.migration] Context impl SQLiteImpl.
+INFO  [alembic.runtime.migration] Will assume non-transactional DDL.
+INFO  [alembic.runtime.migration] Running upgrade 398e0b87f3af -> fceea7a95e54, posts table
+
+{{< /highlight >}}
 参考文档
 
 Miguel Grinberg
