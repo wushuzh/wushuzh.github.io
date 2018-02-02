@@ -143,12 +143,90 @@ INFO  [alembic.runtime.migration] Will assume non-transactional DDL.
 INFO  [alembic.autogenerate.compare] Detected added table 'post'
 INFO  [alembic.autogenerate.compare] Detected added index 'ix_post_timestamp' on '['timestamp']'
   Generating /p/microblog-flask/migrations/versions/fceea7a95e54_posts_table.py ... done
+
 (venv) [microblog-flask]$ flask db upgrade
 INFO  [alembic.runtime.migration] Context impl SQLiteImpl.
 INFO  [alembic.runtime.migration] Will assume non-transactional DDL.
 INFO  [alembic.runtime.migration] Running upgrade 398e0b87f3af -> fceea7a95e54, posts table
 
 {{< /highlight >}}
+
+## 后端调试
+
+在 python 终端导入数据库和 User、Post 模型。创建 2 个用户和 1 个帖子。
+> 注意新建帖子的代码，只需给出反向引用的 author 对象，SQLAlchemy 会自动从中提取 user.id
+
+{{< highlight pycon>}}
+>>> from app import db
+>>> from app.models import User, Post
+>>>
+>>> u = User(username='john', email='j@e.c')
+>>> db.session.add(u)
+>>> db.session.add(User(username='susan', email='s@e.com'))
+>>> db.session.commit()
+>>>
+>>> User.query.all()
+[<User john>, <User susan>]
+>>> u = User.query.get(1)
+>>> u
+<User john>
+>>> u.email
+'j@m.c'
+>>>
+>>> p = Post(body='first post', author=u)
+>>> db.session.add(p)
+>>> db.session.commit()
+>>> u.posts.all()
+[<Post first post>]
+>>> p.author.email
+'j@m.c'
+>>>
+>>> users = User.query.all()
+>>> for u in users:
+...   db.session.delete(u)
+...
+>>> posts = Post.query.all()
+>>> for p in posts:
+...   db.session.delete(p)
+...
+>>> db.session.commit()
+>>> User.query.all()
+[]
+>>> Post.query.all()
+[]
+>>>
+{{< /highlight >}}
+
+flask 提供了另一个核心命令 `shell`，使开发者能进入直接带有预定义导入的类变量方便调试。
+
+{{< highlight python >}}
+# filename: microblog.py
+from app import app, db
+from app.models import User, Post
+
+
+@app.shell_context_processor
+def make_shell_context():
+    return {'db': db, 'User': User, 'Post': Post}
+
+{{< /highlight >}}
+
+{{< highlight pycon >}}
+(venv) [microblog-flask]$ export FLASK_APP=microblog.py
+(venv) [microblog-flask]$ flask shell
+Python 3.6.3 (default, Oct 24 2017, 14:48:20)
+[GCC 7.2.0] on linux
+App: app
+Instance: /p/microblog-flask/instance
+>>> db
+<SQLAlchemy engine=sqlite:////p/microblog-flask/app.db>
+>>> User
+<class 'app.models.User'>
+>>> Post
+<class 'app.models.Post'>
+>>>
+{{< /highlight >}}
+
 参考文档
 
 Miguel Grinberg
