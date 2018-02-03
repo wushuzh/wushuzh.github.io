@@ -32,9 +32,9 @@ $ cd microblog-flask/
 最终站点封装于一个名为 app 的包中。
 
 - `__init__.py` 定义了包对外暴露的所有符号，在导入时执行，内部用`__name__` (预定义变量代表模块名)创建了 flask 实例 ;
-- 之后导入的 routes.py 中定义了 view 函数，放在第三行是因为它不能先于实例 app 存在;
-- 装饰器 @app.route 将自定义函数`index`注册为该 URL 的回调;
-- 在最外层创建 `microblog.py` 导入包，将其定义为 FLASK_APP 变量，使用 flask 命令行运行即可。
+- 之后导入的 routes.py 中含有 url 和关联的 view 函数，注意它不能先于实例 app 存在;
+- 装饰器 @app.route 的作用是为 ROOT URL 注册其回调函数;
+- flask 命令 run 通过环境变量 FLASK_APP 找到应用入口文件: 处于 app 包之外的 `microblog.py`
 
 {{< highlight python >}}
 # filename: __init__.py
@@ -62,9 +62,12 @@ from app import app
 {{< /highlight >}}
 
 <br/>
+
 ## 网页模板
 
-模板文件可用于分离保存展示层的网页布局，在其内部使用`{{ variable }}` 或 `{% statement %}` 内嵌 python 变量和语句，实现动态的页面内容生成。
+一般 view 函数的返回值决定了用户请求的响应。但通过 `return` 返回大量 html 并不推荐。所以模板文件应运而生，利用它来分离请求的处理逻辑和响应网页的基本布局。
+
+模板中可以使用`{{ variable }}` 或 `{% statement %}` ，完成页面内容的动态生成。
 
 {{< highlight python >}}
 from flask import render_template
@@ -88,7 +91,8 @@ def index():
     return render_template('index.html', title='Home', user=user, posts=posts)
 {{< /highlight >}}
 
-将网页的公共部分抽取作为基础，在其中留出占位块。针对每个具体页面使用模板继承语法，将特定内容块定义好即可。
+模板继承是指从多个网页中抽取公共部分作为基础模板，在其中留出占位块。然后针对每个具体页面继承基础模板的布局，仅仅将其特定内容块定义好即可。
+
 {{< highlight htmldjango >}}
 <!-- filename: app/templates/base.html -->
 <html>
@@ -124,11 +128,13 @@ flask 生态中一个重要的部分就是拓展，比如针对 WTForms 的封�
 
 ### 表单提交与防伪
 
-CSRF/XSRF (跨站请求伪造) 是一种常见于表单的攻击。恶意站点会利用某些网站对已登录用户的信任，伪造请求执行非用户本意的操作。一般的防御方式就是利用密钥生成一个一次性的令牌嵌入网页，和表单中其他输入项一起提交。只要这个密钥不暴露，就可以对此种攻击免疫。
+CSRF/XSRF (跨站请求伪造) 是一种常见于表单的攻击。恶意站点会利用某些网站对已登录用户的信任，伪造请求执行非用户本意的操作。一般的防御方式就是使用预设密钥生成一个一次性的令牌嵌入本站的交互网页中，使其和表单中其他显式输入项一并提交，这样就能区分外站的伪造请求。
+
+而只要这个密钥不暴露，站点就能对此种攻击免疫。
 
 - 将密钥在独立模块 config 中 Config 类中定义，之后赋给 app.config 即可;
-- 将表单定义都存放在模块 forms 中, 如登录表单类 LoginForm 继承自 FlaskForm ，然后将每个输入域定义为类变量即可;
-- 每类输入在 wtforms 中都有相应类负责对应，给出显示表述以及可选的验证器列表即可;
+- 将所有表单定义都存放在模块 forms 中：登录表单类 LoginForm 继承自 FlaskForm ，然后将每个输入项定义为该表单的类变量即可;
+- 各类输入项在 wtforms 中都有相应类负责对应，其初始化参数为网页标签和验证器列表(可选);
 
 {{< highlight python >}}
 # filename: config.py
@@ -173,9 +179,9 @@ def login():
 
 上面最后是对路由 `/login` 建立的 view 函数。引入 LoginForm 并用指代变量 form 传入模板渲染函数。
 
-下面就是 login 页面模板，form 的 action 处为提交表单信息时，浏览器应提交给 URL，空字符串标识浏览器地址栏中的 URL，而 `method` 标识了提交请求的类型，默认的 GET 会导致 URL 上跟随一大堆参数，POST 则能将表单参数放入请求体内而不污染 URL，是推荐做法:
+下面就是 login 页面模板，表单的 action 属性值为表单提交的 URL，空表示浏览器当下地址栏的 URL，而 `method` 注明了提交的类型: 默认为 GET —— 这会导致 URL 上跟随一大堆参数，推荐使用 POST —— 将表单参数放入请求体内而不污染 URL:
 
-- `form.hidden_tag()` 用于生成防止 CSRF 攻击的隐藏令牌;
+- `form.hidden_tag()` 会生成防止 CSRF 攻击的隐藏令牌;
 - `form.any_field.label` 指代字段描述，`form.any_field()` 生成真正的输入组件，可接受 html 属性，css 类，id 名等值;
 
 {{< highlight htmldjango >}}
@@ -205,8 +211,8 @@ def login():
 
 客户端浏览器以 POST 方式提交了表单数据，因此要对此路由开放 POST 请求和相应处理，即:
 
-- 浏览器发来 GET 请求，`form.validate_on_sumbit()`返回 False ，直接返回空表单;
-- 用户发来 POST 请求，若数据验证完毕为 True，所提交的数据就可以通过类变量获得;
+- 浏览器若发来 GET 请求，`form.validate_on_sumbit()`返回 False ，直接返回空表单;
+- 若用户发来含有表单数据的 POST 请求，若数据验证无误，用户提交的数据就可以通过表单的类变量获得;
 - `flash(msg)` 调用常用于交互提示，需要在前端模板中要作出相应判断和调用才能正确显示;
 - `redirect(url)` 调用将页面导航到指定的页面;
 
