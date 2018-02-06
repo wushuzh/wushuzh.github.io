@@ -33,7 +33,7 @@ True
 - is_anonymous 布尔值标识否为特有匿名用户;
 - get_id() 函数获取用户唯一标识;
 
-我们可以用 flask-login 自带的通用实现来完成相关设定。
+我们可以用 flask-login 自带的 minix 类中的通用实现来完成相关设定。
 
 登录的流程:
 
@@ -49,11 +49,35 @@ True
 之后那些需要登录查看的 URL 装饰器后面加入 `@login_required` 装饰器;
 最后是在鉴权成功后将用户返回之前的页面;
 
+## 模板中动态显示登录用户
+
+{{< highlight pycon >}}
+>>> u = User(username='susan', email='susan@example.com')
+>>> u.set_password('supasswd')
+>>>
+>>> db.session.add(u)
+>>> db.session.commit()
+{{< /highlight >}}
+
+
+## 用户注册
+
+
+## 查看用户详情
+
+和 weibo 或 twitter 类似，我们系统上的用户是可以互相查看用户详情页。
+
+为此我们引入了带有动态组件的路由 `/user/<username>`。这样 Flask 就会把符合规则的路由,解析出动态部分，作为参数交给对应的 view 函数。
+
+## 用户头像
+
+借助 Gravatar 服务，我们通过用户邮箱的 md5 散列获取其头像。
 
 参考文档
 
 Miguel Grinberg
 
 > - (2018-01-03) [The Flask Mega-Tutorial Part Ⅴ: User Logins](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-v-user-logins)
+> - (2018-01-10) [The Flask Mega-Tutorial Part Ⅵ: Profile Page](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-vi-profile-page-and-avatars)
 
 封面图片来自 [Pingu - Login Animation GIF](https://dribbble.com/shots/3064060-Pingu-Login-Animation-GIF) <a href="https://dribbble.com/vineetarora94"><i class="fa fa-dribbble" aria-hidden="true"></i> Vineet Arora</a>
