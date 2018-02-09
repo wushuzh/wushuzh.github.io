@@ -13,6 +13,8 @@ weight = 603
 cower -d pdftk-bin
 man pdftk
 
+pdftk in.pdf cat 1-enddown output out.pdf
+
 参考文档
 
 > -

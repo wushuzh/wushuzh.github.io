@@ -65,7 +65,7 @@ $ ip a
 $ sudo pacman -S openssh
 # ### edit /etc/ssh/sshd_config as needed
 # ### enable/start sshd.service if lots of connections
-$ sudo systemctl enable sshd.socket  
+$ sudo systemctl enable sshd.socket
 $ sudo systemctl start sshd.socket
 
 # ### conf Encrypted SOCKS tunnel
@@ -106,7 +106,7 @@ $ sudo pacman -S nvidia-340xx
 $ sudo reboot
 {{< /highlight >}}
 
-> 看好 Nvidia 的股票，人工智能时代，这种卖硬件的厂商应该能赚大钱。截止到发稿前 2017-08-16 股价为 166.98 刀。从今年一月到现在涨了 50~60%  
+> 看好 Nvidia 的股票，人工智能时代，这种卖硬件的厂商应该能赚大钱。截止到发稿前 2017-08-16 股价为 166.98 刀。从今年一月到现在涨了 50~60%
 > 而 AMD 的前景应该也不错，单股价格也便宜，13.02 刀。留此存照，看一年后能涨多少。
 
 <br />
@@ -121,11 +121,13 @@ $ sudo pacman -S xorg-xinit
 $ sudo pacman -S base-devel
 {{< /highlight >}}
 
-> 刚安装好 Gnome 后，自带的 gnome-terminal 无法启动。但后来又好了，不清楚是不是和折腾了一下 UTF 还是安装了中文字体相关？反正现在已经正常启动，无法重现，具体原因待有缘后再查了  
->         
-我现在用基于 python 的 [Guake](https://wiki.archlinux.org/index.php/Guake) 替代 Gnome-terminal ，也一样是 drop-down-terminal 。叫 Guake 是因为它是受游戏《雷神之锤 Quake 》中显示方式启发开发的: 默认用 F12 唤出。对于选项设定:
+> 刚安装好 Gnome 后，自带的 gnome-terminal 无法启动。但后来又好了，不清楚是不是和折腾了一下 UTF 还是安装了中文字体相关？反正现在已经正常启动，无法重现，具体原因待有缘后再查了
+>
+我现在用基于 python 的 [Guake](https://wiki.archlinux.org/index.php/Guake) 替代 Gnome-terminal ，也一样是 drop-down-terminal 。叫 Guake 是因为它是受游戏《雷神之锤 Quake 》中显示方式启发开发的: 默认用 F12 唤出。
 
-1. 通用: 解除 Use VTE titles for tab names，使用快捷键 Ctrl + F2 对当前 tab 命令。 
+呼出 dconf editor 按路径 app/guake 进行偏好设定:
+
+1. 通用: 解除 Use VTE titles for tab names，使用快捷键 Ctrl + F2 对当前 tab 重命名。
 2. 显示: 将调色盘设定为 Solarized Dark 以便和 vim 插件[vim-colors-solazied](https://vimawesome.com/plugin/vim-colors-solarized-ours)配合
 
 ### 安装位于 AUR 的软件
@@ -195,7 +197,7 @@ $ cower -vdu
 
 你每次打开 Chrome 等应用时，系统可能都会提示你输入 keyring 密码。按照 [GNOME/Keyring Passwords are not remembered](https://wiki.archlinux.org/index.php/GNOME/Keyring#Passwords_are_not_remembered) 可以了解更多，并设定为无密码提示。
 
-> GPG(GNU Privacy Guard) 使用 PGP 协议 (Pretty Good Privacy) 的开源工具。和《三体》不同，它依靠的不是猜疑链，而是信任链: The Web of Trust。  
+> GPG(GNU Privacy Guard) 使用 PGP 协议 (Pretty Good Privacy) 的开源工具。和《三体》不同，它依靠的不是猜疑链，而是信任链: The Web of Trust。
 > [简单说就是](https://www.reddit.com/r/GnuPG/comments/6tkcnq/eli5_whats_key_signing_and_howwhy_to_sign_a_key/) 当老师检查前一天要家长签字的卷子时，一眼看穿了你的假签名，就是因为他们在家长会的时候交换了彼此的墨宝。而当你把病假条带给校长时，虽然他不认识你爸妈的签名，但他转而通过你的班主任求证，这样只需验证班主任的签名就知道假条是否为仿造。
 
 ### 参考文档
@@ -212,4 +214,4 @@ $ cower -vdu
 > - reddit [What is the recommended way to update packages installed by the AUR? (And how do you do it?)](https://www.reddit.com/r/archlinux/comments/2kgkfb/what_is_the_recommended_way_to_update_packages/)
 
 
-封面图片来自 [Two Easy Steps](https://dribbble.com/shots/2266220-Two-Easy-Steps) <a href="https://dribbble.com/iandickens"><i class="fa fa-dribbble" aria-hidden="true"></i> Ian Dickens</a>  
+封面图片来自 [Two Easy Steps](https://dribbble.com/shots/2266220-Two-Easy-Steps) <a href="https://dribbble.com/iandickens"><i class="fa fa-dribbble" aria-hidden="true"></i> Ian Dickens</a>

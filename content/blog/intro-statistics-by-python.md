@@ -1,13 +1,13 @@
 +++
 date = "2018-02-07T14:15:32+08:00"
-title = "数据分析基础"
+title = "数据分析预备"
 showonlyimage = false
 image = "/img/blog/intro-statistics-by-python/math.png"
 draft = false
 weight = 51
 +++
 
-格式化字符串、统计模块
+复习统计基础知识、常用编程技巧
 <!--more-->
 
 ## f-Strings
