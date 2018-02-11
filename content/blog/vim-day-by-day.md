@@ -77,6 +77,8 @@ $ config push -u origin master
 - PRIMARY: 通过框选复制，使用鼠标的中间粘贴，访问可用 “*
 - CLIPBOARD: 和 MS Windows 中的系统剪贴版同义，访问可用 "+
 
+插件 Goyo (韩语中宁静之意) 可用于 Markdown 写作
+
 ### 特殊字符
 
 插件 vim-airline 在编辑器底部显示当前文件信息: 模式、版本、文件名、文件类新、编码、位置和警告信息。
@@ -189,5 +191,8 @@ neovim 依赖外部工具才能访问系统剪贴板，所以首先安装 xclip 
 > - Jeff Kreeftmeijer [Vim's absolute, relative and hybrid line numbers](https://jeffkreeftmeijer.com/vim-number/)
 > - Archlinx wiki [Fonts](https://wiki.archlinux.org/index.php/Fonts)
 > - 希锐亚 (2011-06-20) [在Gvim中给中文英文设置不同的字体](http://xxxcjr.blogspot.fi/2011/06/gvim.html)
+> - Marco Hinz [vim-galore](https://github.com/mhinz/vim-galore)
+> - [UPCASE](https://thoughtbot.com/upcase/vim)
+> - [VimGolf](http://www.vimgolf.com/)
 
 封面图片来自 [Up & Running with Vim](https://dribbble.com/shots/2668712-Up-Running-with-Vim) <a href="https://dribbble.com/federicafragapane"><i class="fa fa-dribbble" aria-hidden="true"></i> Federica Fragapane</a>
