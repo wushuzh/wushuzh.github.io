@@ -84,6 +84,40 @@ $ sudo systemctl enable smbd
 Created symlink /etc/systemd/system/multi-user.target.wants/smbd.service → /usr/lib/systemd/system/smbd.service.
 {{< /highlight >}}
 
+此外，还可以设置无需输入用户名和密码的 samba 共享目录。但这需要将磁盘配合打开，避免硬盘被占满。
+
+{{< highlight console >}}
+
+# cat /etc/samba/smb.conf
+
+guest account = pcguest
+
+security = user
+map to guest = Bad User
+
+interfaces = lo enp0s25
+bind interfaces only = true
+
+[Public]
+path = /home/samba
+available = yes
+browsable = yes
+public = yes
+writable = yes
+
+# useradd -c "Guest User" -d /dev/null -s /bin/false pcguest
+# mkdir /home/samba
+# chown pcguest /home/samba
+# chmod u+w /home/samba
+
+# systemctl restart smbd
+# systemctl restart nmbd
+
+{{< /highlight >}}
+
+
+若是从其他 Windows 访问同时打开了鉴权和匿名的 samba 共享。需要点击 Computer 下的 Map network driver 设定相应的鉴权信息。或是使用[命令行完成]("https://superuser.com/questions/727944/accessing-a-windows-share-with-a-different-username")
+
 <br />
 
 ## 配置声卡显卡
