@@ -3,7 +3,7 @@ date = "2017-09-05T22:50:33+08:00"
 title = "Linux 安全审计"
 showonlyimage = false
 image = "/img/blog/intro-linux-log-audit/audit-guide.png"
-draft = true
+draft = false
 weight = 48
 +++
 

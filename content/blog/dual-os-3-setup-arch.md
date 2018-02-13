@@ -143,17 +143,26 @@ $ sudo reboot
 > 看好 Nvidia 的股票，人工智能时代，这种卖硬件的厂商应该能赚大钱。截止到发稿前 2017-08-16 股价为 166.98 刀。从今年一月到现在涨了 50~60%
 > 而 AMD 的前景应该也不错，单股价格也便宜，13.02 刀。留此存照，看一年后能涨多少。
 
+> 2018-02-13 背景美股普跌 NVDA: 228.03 AMD: 11.68
+
 <br />
+
+
+## U 盘挂载
+
+一般而言，插入的 U 盘系统可以自动识别挂载。但是如果磁盘是通过 NTFS 做的格式化，就算挂载上也无法对其中文件目录进行操作。需要安装 [ntfs-3g](https://wiki.archlinux.org/index.php/NTFS-3G) 重新挂载后才可以。
 
 ## 图形化桌面
 
-安装配置 GNOME 下载的时间比较久，但安装配置并不算太困难。
+安装配置 GNOME 下载的时间比较久，但安装配置并不困难。
 
 {{< highlight console >}}
 $ sudo pacman -S gnome gnome-extra
 $ sudo pacman -S xorg-xinit
 $ sudo pacman -S base-devel
 {{< /highlight >}}
+
+从 bash 中启动默认的文件管理器可以通过 `xdg-open .`，我有安装了 [midnight Commander](https://wiki.archlinux.org/index.php/Midnight_Commander) 作为辅助文件管理器。
 
 > 刚安装好 Gnome 后，自带的 gnome-terminal 无法启动。但后来又好了，不清楚是不是和折腾了一下 UTF 还是安装了中文字体相关？反正现在已经正常启动，无法重现，具体原因待有缘后再查了
 >

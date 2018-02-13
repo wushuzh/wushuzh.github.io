@@ -2,8 +2,9 @@
 date = "2017-08-25T21:00:32+08:00"
 title = "替换 Zabbix 前端"
 showonlyimage = false
-image = "/img/blog/viewing-it-by-grafana-3/grafana.png"
-draft = true
+image = "/img/blog/viewing-it-by-grafana-3/scifi-itf.png"
+topImage = "/img/blog/viewing-it-by-grafana-3/scifi-itf.gif"
+draft = false
 weight = 73
 +++
 

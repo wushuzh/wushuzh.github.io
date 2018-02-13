@@ -4,7 +4,7 @@ title = "番外篇：密码演化史"
 showonlyimage = false
 image = "/img/blog/pitfalls-of-the-passwd/try-passwd.png"
 topImage = "/img/blog/pitfalls-of-the-passwd/try-passwd.gif"
-draft = true
+draft = false
 weight = 93
 +++
 
