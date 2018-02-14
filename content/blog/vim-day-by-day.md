@@ -46,6 +46,10 @@ RTFM 是 Read The Fucking Manual 的缩写。无论是 vim 核心还是拓展插
 
 ### 插件管理
 
+之前我使用 Vundle 管理 vim 插件。但后来安装 fzf 的时候偶然发现 Vundle 已处于长期招募维护者的状态。vim 社区中当下更为流行的管理工具是 [Vim-Plug](https://github.com/junegunn/vim-plug) 其作者 Junegunn Choi 也是多个 vim 插件的作者。
+
+为了避免后续迁移太麻烦，我还是趁早做了迁移。迁移基本操作可以参考 Adam Garrett-Harris (2015-03-10) [How to Switch from Vundle to vim-plug](http://www.adamwadeharris.com/how-to-switch-from-vundle-to-vim-plug/) 过程很平滑简单。
+
 {{< highlight console >}}
 $ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 $ vim ~/.vimrc
@@ -59,7 +63,7 @@ $ config push -u origin master
 
 {{< /highlight >}}
 
-按照 [VimAwesome](https://vimawesome.com) 排名，首先通过 Vundle 安装 Fugitive 插件。而基本使用可以观看
+按照 [VimAwesome](https://vimawesome.com) 排名，安装 Fugitive 插件: vim 中完成 git 的各种操作。基本使用可以观看
 
 - [#31 a complement to command line git](http://vimcasts.org/episodes/fugitive-vim---a-complement-to-command-line-git/)
 - [#32 working with the git index](http://vimcasts.org/episodes/fugitive-vim-working-with-the-git-index/)
@@ -84,6 +88,8 @@ $ config push -u origin master
 插件 vim-airline 在编辑器底部显示当前文件信息: 模式、版本、文件名、文件类新、编码、位置和警告信息。
 
 插件 vim-devicons 可以为不同类型文件加上图表，但安装前要对字体修正，可直接安装 nerd-fonts-complete ，并在 .vimrc 中对双字节字符(中文)使用特定字体
+
+nerd-fonts 中各种字体都可以[单独下载](https://github.com/ryanoasis/nerd-fonts#patched-fonts)安装，比如在 putty 中就可以通过 Windows -> Appearance 将刚安装的字体设置为渲染字体。这样 vim 中相应图表就能正确显示。
 
 {{< highlight console >}}
 $ cower -d nerd-fonts-complete
@@ -147,10 +153,10 @@ local/python-pyflakes 1.6.0-1
     A lint-like tool for Python to identify common errors quickly without executing code
 {{< /highlight >}}
 
-surround.vim 插件用于处理小括号、中括号、单双引号、XML 标签。假设已有 “Hi Vim!" 常见操作:
+surround.vim 插件用于处理小括号、中括号、单双引号、XML 标签。假设已有 "Hi Vim!" 常见操作:
 
-- 处于单词中，敲入 cs“‘ 即更改引用——双引号变单引号
-- 继续敲入 cs’<q> 将单引号改为标签引用
+- 处于单词中，敲入 cs"' 即更改引用——双引号变单引号
+- 继续敲入 cs'<q> 将单引号改为标签引用
 - 继续敲入 cst" 将标签改为双引号，恢复最初状态
 - 继续敲入 ds" 删除引用 ...
 - ysiw" 将光标所在单词用双引号括起
@@ -194,5 +200,6 @@ neovim 依赖外部工具才能访问系统剪贴板，所以首先安装 xclip 
 > - Marco Hinz [vim-galore](https://github.com/mhinz/vim-galore)
 > - [UPCASE](https://thoughtbot.com/upcase/vim)
 > - [VimGolf](http://www.vimgolf.com/)
+> - gmarik (2014-02-04) [Why I stopped contributing to vundle](http://www.gmarik.info/blog/2014/why-i-stopped-contributing-to-vundle/)
 
 封面图片来自 [Up & Running with Vim](https://dribbble.com/shots/2668712-Up-Running-with-Vim) <a href="https://dribbble.com/federicafragapane"><i class="fa fa-dribbble" aria-hidden="true"></i> Federica Fragapane</a>
