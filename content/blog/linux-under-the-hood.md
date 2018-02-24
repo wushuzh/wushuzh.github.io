@@ -4,7 +4,7 @@ title = "Linux 内幕"
 showonlyimage = false
 image = "/img/blog/linux-under-the-hood/supercomputer.png"
 draft = false
-weight = 603
+weight = 701
 +++
 
 深入探索 Linux 系统的各种细节

@@ -4,10 +4,10 @@ title = "操作 PDF"
 showonlyimage = false
 image = "/img/blog/manipulate-with-pdfs/pdf-squeezer.png"
 draft = false
-weight = 603
+weight = 604
 +++
 
-转向、合并和文字识别操作
+PDF 文件的页面转向、合并和其他高阶操作
 <!--more-->
 
 cower -d pdftk-bin
