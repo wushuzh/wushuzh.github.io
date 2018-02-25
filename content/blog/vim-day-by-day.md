@@ -130,6 +130,9 @@ EasyMotion 是一个依赖视觉的瞬移光标插件, 敲入 <Leader><Leader>w 
 
 [#37 How to fold](http://vimcasts.org/episodes/how-to-fold/)
 
+将当前行放置到窗口顶部、中间、底部 zt、zz、zb
+
+
 ### 前端
 
 Emmet 支持所有主流编辑器，是网页开发的利器:

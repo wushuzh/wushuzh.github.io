@@ -128,8 +128,16 @@ vi /etc/locale.gen
 locale-gen
 
 # 配置主机名
-/etc/hostname
-/etc/hosts  
+hostnamectl set-hostname wushuzh
+cat /etc/hostname
+# exit current session and relogin to chk
+/etc/hosts
+
+# 配置键盘布局
+localectl set-keymap us
+cat /etc/vconsole.conf
+localectl set-locale LANG=en_US.UTF-8
+cat /etc/locale.conf
 
 # 配置 root 密码
 passwd
@@ -176,4 +184,4 @@ bcdedit /timeout 30
 > - iceflatline 2009-09-16 [How to Dual Boot Windows 7 and Linux using BCDEdit](https://www.iceflatline.com/2009/09/how-to-dual-boot-windows-7-and-linux-using-bcdedit/)
 > - Ashwin Kailas (2016-11-16) [Arch Linux (LVM) dual-boot with Windows tutorial](https://medium.com/@ashwinkailas/arch-linux-lvm-dual-boot-with-windows-tutorial-e327ea8f3140) 文中涉及更先进的 EFI 引导模式，但可参考 LVM 的划分方式
 
-封面图片来自 [Introduction to Linux](https://dribbble.com/shots/1862256-Introduction-to-Linux) <a href="https://dribbble.com/kabojanowska"><i class="fa fa-dribbble" aria-hidden="true"></i> Kasia</a>  
+封面图片来自 [Introduction to Linux](https://dribbble.com/shots/1862256-Introduction-to-Linux) <a href="https://dribbble.com/kabojanowska"><i class="fa fa-dribbble" aria-hidden="true"></i> Kasia</a>
