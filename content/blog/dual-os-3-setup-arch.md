@@ -133,10 +133,11 @@ $ lspci -k | grep -A 2 -E "(VGA|3D)"
         Kernel driver in use: nvidia
 {{< /highlight >}}
 
-到英伟达官网上查看这块显卡的 code name 或是其所属家族，然后选择安装对应驱动安装包。
+到英伟达官网上查看这块显卡的 code name (NV86/G86) 或是其所属家族(NV50 family - Tesla)，然后选择安装对应驱动安装包 ( nvidia-340xx )。进而生成一个 xorg 的配置文件。进入图形界面后，nvidia-settings 可启动图形化配置程序。我的双显示器不需配置，开箱可用。详见 arch wiki 的 [NVIDIA#Multiple_monitors](https://wiki.archlinux.org/index.php/NVIDIA#Multiple_monitors) 和 [Multihead](https://wiki.archlinux.org/index.php/Multihead) 页面。
 
 {{< highlight console >}}
 $ sudo pacman -S nvidia-340xx
+$ sudo nvidia-xconfig
 $ sudo reboot
 {{< /highlight >}}
 
