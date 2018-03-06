@@ -8,9 +8,11 @@ draft = false
 weight = 703
 +++
 
-利用中间服务器做 HTTP 反向代理
+利用中间服务器做 HTTP(S) 反向代理
 <!--more-->
 
+Apache 配置
+Ngnix 配置
 
 参考文档
 
@@ -19,7 +21,10 @@ weight = 703
 > - Aaron Kili (2016-07-16) [How to Disable SELinux Temporarily or Permanently in RHEL/CentOS 7/6](https://www.tecmint.com/disable-selinux-temporarily-permanently-in-centos-rhel-fedora/)
 > - H. Haider [Configure Reverse Proxy Apache On (RHEL7/CentOS7)](http://broexperts.com/reverse-proxy-apache-centos-rhel/)
 > - Curtis K (2017-09-30) [How to Configure Apache HTTPS Reverse Proxy on CentOS Linux](https://www.centosblog.com/configure-apache-https-reverse-proxy-centos-linux/)
-> - Justin Ellingwood (2014-03-31) [How to Migrate your Apache Configuration from 2.2 to 2.4 Syntax](https://www.digitalocean.com/community/tutorials/migrating-your-apache-configuration-from-2-2-to-2-4-syntax)
+> - Justin Ellingwood
+    - (2014-03-31) [How to Migrate your Apache Configuration from 2.2 to 2.4 Syntax](https://www.digitalocean.com/community/tutorials/migrating-your-apache-configuration-from-2-2-to-2-4-syntax)
+    - (2015-04-01) [Web Caching Basics: Terminology, HTTP Headers, and Caching Strategies](https://www.digitalocean.com/community/tutorials/web-caching-basics-terminology-http-headers-and-caching-strategies)
+    - (2015-04-13) [How To Configure Apache Content Caching on CentOS 7](https://www.digitalocean.com/community/tutorials/how-to-configure-apache-content-caching-on-centos-7)
 > - Sam Halicke answer on SO [Apache ProxyPass with SSL](https://serverfault.com/questions/84821/apache-proxypass-with-ssl)
 
 封面图片来自 [The Middle Man](https://dribbble.com/shots/785991-The-Middle-Man) <a href="https://dribbble.com/poofstyle"><i class="fa fa-dribbble" aria-hidden="true"></i> Zohaib Waliany</a>
