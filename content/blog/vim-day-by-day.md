@@ -125,6 +125,10 @@ endif
 
 EasyMotion 是一个依赖视觉的瞬移光标插件, 敲入 <Leader><Leader>w 就会触发用于跳转的提示字母。详见 :h easymotion.txt
 
+### 写入文件
+
+有时打开了一个只有读权限的文件却忽然决定修改。已经在 vim buffer 中更改了很多，然而保存的时候却提示缺少写入权限。网上搜索到一个技巧 Vivek Gite (2017-09-26) [How To Save A File In Vim / Vi Without Root Permission With sudo](https://www.cyberciti.biz/faq/vim-vi-text-editor-save-file-without-root-permission/) 和 Nathan Long 在 SO 上的[解释](https://stackoverflow.com/a/7078429) ，并且可以将这个指令写入 vimrc 简化为 `w!!` 或 `W` 指令。
+
 
 ### 折叠
 
