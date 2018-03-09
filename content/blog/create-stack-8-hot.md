@@ -1,6 +1,6 @@
 +++
 date = "2018-03-06T20:52:04+08:00"
-title = "Openstack 复杂部署编排"
+title = "HEAT 部署编排"
 showonlyimage = false
 image = "/img/blog/create-stack-8-hot/stack.png"
 draft = false
