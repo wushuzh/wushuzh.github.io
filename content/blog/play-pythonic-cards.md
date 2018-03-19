@@ -25,6 +25,8 @@ Writing default config to: ~/.jupyter/jupyter_notebook_config.py
 
 $ jupyter notebook
 {{< /highlight >}}
+> 还可以通过 [Docker](https://hub.docker.com/r/jupyter/datascience-notebook/) 快速启动一个 notebook 或 直接使用 [Azure 的在线版本](https://notebooks.azure.com/)
+> 
 
 为了让编辑更为方便，建议打印 [cheatsheet](https://www.cheatography.com/weidadeyue/cheat-sheets/jupyter-notebook/) 贴在案前。
 
