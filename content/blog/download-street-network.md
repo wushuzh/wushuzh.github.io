@@ -10,10 +10,30 @@ weight = 605
 获取开源地图行政区域和接到数据
 <!--more-->
 
+首先安装
+
+cower -d spatialindex
+cd osmnx_demo
+pipenv install jupyter osmnx
+pipenv run jupyter notebook
+
+- 获取行政区域的shapefiles
+- 获取街道数据:可以获得一定区域内的机动车道，自行车道，步行道等
+- 简化街道拓扑
+- 保存街道网络
+- 对网络做计算分析
+
+
+
+
 
 参考文档
 
-- Geoff Boeing [OSMnx: Python for Street Networks](http://geoffboeing.com/2016/11/osmnx-python-street-networks/)
+Geoff Boeing 
+- [OSMnx: Python for Street Networks](http://geoffboeing.com/2016/11/osmnx-python-street-networks/)
+- [Examples demonstrating the usage of OSMnx](https://github.com/gboeing/osmnx-examples)
+
+- Matthew Bilyeu (2018-01-21) [Python environment with Pipenv, Jupyter, and EIN](https://matthewbilyeu.com/blog/python-environment-with-pipenv-jupyter-and-ein/)
 
 
 封面图片来自 [A Map](https://dribbble.com/shots/2207264-A-Map) <a href="https://dribbble.com/JustinMezzell"><i class="fa fa-dribbble" aria-hidden="true"></i> Justin Mezzell</a>
