@@ -10,6 +10,9 @@ weight = 603
 为应用加入全文搜索
 <!--more-->
 
+sudo pacman -S elasticsearch
+sytemctl start elasticsearch
+
 
 参考文档
 

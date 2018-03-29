@@ -32,6 +32,9 @@ pipenv run jupyter notebook
 Geoff Boeing 
 - [OSMnx: Python for Street Networks](http://geoffboeing.com/2016/11/osmnx-python-street-networks/)
 - [Examples demonstrating the usage of OSMnx](https://github.com/gboeing/osmnx-examples)
+Emacsen
+- (2018-01-04) [Why the world needs OpenStreetMap](https://blog.emacsen.net/blog/2014/01/04/why-the-world-needs-openstreetmap/)
+- (2018-02-16) [Why OpenStreetMap is in Serious Trouble](https://blog.emacsen.net/blog/2018/02/16/osm-is-in-trouble/)
 
 - Matthew Bilyeu (2018-01-21) [Python environment with Pipenv, Jupyter, and EIN](https://matthewbilyeu.com/blog/python-environment-with-pipenv-jupyter-and-ein/)
 
