@@ -117,6 +117,8 @@ endif
 
 [#2 Tabs and Spaces](http://vimcasts.org/episodes/tabs-and-spaces/):
 
+另外和数学有关的特殊字符，如字母上角标：插入模式下，键入 ctrl-k + 数字 + S ，更多信息查询 :h digraphs
+
 ### 打开文件
 
 用于查找文件的插件 [ctrlp.vim](https://vimawesome.com/plugin/ctrlp-vim-red) 可以通过文件名模糊匹配定位所需文件。详见 :h ctrlp

@@ -10,6 +10,15 @@ weight = 51
 复习统计基础知识、常用编程技巧
 <!--more-->
 
+统计分为 descriptive 和 inference： 描述统计学是对已有数据的压缩总结，推论统计学是试图超越现有数据，对更大范围进行假设推断。统计学中最为重要的是培养数学思维，它能避免人类对过大/小数据的感知无能，在上下文中理解和提取出关键问题，从而作出正确决策。
+
+和[集中趋势](https://en.wikipedia.org/wiki/Central_tendency)相关的测量：左右对称，且最常见数值分布在最中间的数据集称作正态分布，与此相关的计算是平均值，而挑选中间值则可以去除少数异类对整体数据的影响，中值和平均值重合时数据的[偏度](https://en.wikipedia.org/wiki/Skewness)为 0 。最后[众数](https://en.wikipedia.org/wiki/Mode_(statistics))是从数据集中找出最最常出现的一个或多个样本(甚至不是数)。
+
+和[离散程度](https://en.wikipedia.org/wiki/Statistical_dispersion)常用“距离”度量：比如[全距](https://en.wikipedia.org/wiki/Range_(statistics))、[四分位距](https://en.wikipedia.org/wiki/Interquartile_range) (IQR) 还有[方差](https://en.wikipedia.org/wiki/Variance)，即将实际值和平均值之差为边长的正方形面积之和再除以样本数量，记作 Var(X) 或 σ²(读作 sigma squared) 
+
+> 为了获得 Unbiased Variance，最后会除以 n-1
+
+
 ## f-Strings
 
 % formatting .format()  f''
@@ -155,6 +164,7 @@ sample(outcomes, k=len(outcomes))
 参考文档
 
 
+> - YouTube playlist [Crash Course on Statistics](https://www.youtube.com/watch?v=zouPoc49xbk&list=PL8dPuuaLjXtNM_Y-bUAhblSAdWRnmBUcr)
 > - Raymond Hettinger (2017) [Modern Python](https://github.com/rhettinger/modernpython)
 
 封面图片来自 [Shiba Inu - Math](https://dribbble.com/shots/3818487-Shiba-Inu-Math) <a href="https://dribbble.com/vaneltia"><i class="fa fa-dribbble" aria-hidden="true"></i> Alfrey Davilla | vaneltia</a>
