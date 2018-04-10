@@ -37,6 +37,7 @@ Emacsen
 - (2018-02-16) [Why OpenStreetMap is in Serious Trouble](https://blog.emacsen.net/blog/2018/02/16/osm-is-in-trouble/)
 
 - Matthew Bilyeu (2018-01-21) [Python environment with Pipenv, Jupyter, and EIN](https://matthewbilyeu.com/blog/python-environment-with-pipenv-jupyter-and-ein/)
+- Department of Geosciences & Geography, University of Helsinki [Automating GIS processes course](https://automating-gis-processes.github.io/2017/)
 
 
 封面图片来自 [A Map](https://dribbble.com/shots/2207264-A-Map) <a href="https://dribbble.com/JustinMezzell"><i class="fa fa-dribbble" aria-hidden="true"></i> Justin Mezzell</a>
