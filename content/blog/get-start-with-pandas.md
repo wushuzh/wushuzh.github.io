@@ -19,13 +19,33 @@ pd.Series pd.DataFrame
 df = pd.read_csv('file.csv', index_col='colname', usecols=[collist])
 df.to_pickle('file.picle')
 
+user_cols = ['user_id', 'age', 'gender', 'occupation', 'zip_code']
+pd.read_table('http://bit.ly/moviesusers', sep='|', header=None, names=user_cols)
+
 ## read json
 pd.DataFrame.from_records()
 
 ## basic
 
-column selection: df['colname'] or df[['col1', 'col2']]
+ufo = read.csv('http://bit.ly/uforeports')
+
+ufo['Location'] = ufo.City + ', ' + ufo.State
+
+column selection/creation: 
+  bracket notation: df['colname'] or df[['col1', 'col2']]
+  dot notation: 仅仅列名不和内置属性重名(如shape)或含特殊字符(如空格) df.colname 为DataFrame 创建新列时不能使用。
+
 pd.unique(pdSeries)
+
+movies = pd.read_csv('http://bit.ly/imdbratings')
+
+movies.shape 和 movies.dtypes
+movies.describe()
+
+列改名
+
+ufo.columns
+ufo.rename(columns={'Colors Reported': 'Colors_Reported', 'Shape Reported': 'Shape_Reported'}, inplace=True)
 
 ## filtering
 
@@ -62,5 +82,7 @@ df.loc[df['area'].idxmax(), :]
 参考文档
 
 > - Ted Petrou (2017-11-15) [How to Learn Pandas](https://medium.com/dunder-data/how-to-learn-pandas-108905ab4955)
+> - Quentin Gaudron @ PyData Seattle 2017 [Introduction to Data Analytics With Pandas](https://youtu.be/5XGycFIe8qE) 
+> - data school (2016-05-10) [Easier data analysis in Python with pandas(video series)](http://www.dataschool.io/easier-data-analysis-with-pandas/)
 
 封面图片来自 [Pandas for Pornhub](https://dribbble.com/shots/3367311-Pandas-for-Pornhub) <a href="https://dribbble.com/cjiabka"><i class="fa fa-dribbble" aria-hidden="true"></i> Yaroslav Kuryanovich</a>

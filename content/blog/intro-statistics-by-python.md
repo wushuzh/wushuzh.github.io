@@ -167,5 +167,6 @@ sample(outcomes, k=len(outcomes))
 
 > - YouTube playlist [Crash Course on Statistics](https://www.youtube.com/watch?v=zouPoc49xbk&list=PL8dPuuaLjXtNM_Y-bUAhblSAdWRnmBUcr)
 > - Raymond Hettinger (2017) [Modern Python](https://github.com/rhettinger/modernpython)
+> - Dominic Walliman (2017-02-01) [The Map of Mathematics](https://youtu.be/OmJ-4B-mS-Y)
 
 封面图片来自 [Shiba Inu - Math](https://dribbble.com/shots/3818487-Shiba-Inu-Math) <a href="https://dribbble.com/vaneltia"><i class="fa fa-dribbble" aria-hidden="true"></i> Alfrey Davilla | vaneltia</a>
