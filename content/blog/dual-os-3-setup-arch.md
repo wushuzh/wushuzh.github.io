@@ -54,6 +54,8 @@ weight = 64
 
 ## 远程连接
 
+### 命令行
+
 我需要能从笔记本连到这个台式机上，所以 ssh 的配置当然不能缺。
 
 {{< highlight console >}}
@@ -71,6 +73,8 @@ $ sudo systemctl start sshd.socket
 # ### conf Encrypted SOCKS tunnel
 # ### conf user level unit service
 {{< /highlight >}}
+
+### 文件共享
 
 除了 sftp 传输文件，samba 应该是更为方便的传输模式。
 
@@ -116,9 +120,51 @@ writable = yes
 {{< /highlight >}}
 
 
-若是从其他 Windows 访问同时打开了鉴权和匿名的 samba 共享。需要点击 Computer 下的 Map network driver 设定相应的鉴权信息。或是使用[命令行完成]("https://superuser.com/questions/727944/accessing-a-windows-share-with-a-different-username")
+若是从其他 Windows 访问同时打开了鉴权和匿名的 samba 共享。Windows 我的电脑下，首先点击 Computer 下的 Map network driver , 输入相应地址后，比如 \\\\xx.xx.xx.xx\username ，然后 Windows 会弹出窗口等待你输入相应的鉴权账户密码。或是使用[命令行完成]("https://superuser.com/questions/727944/accessing-a-windows-share-with-a-different-username")
 
 <br />
+
+### 远程桌面
+
+有时需要通过 vnc 的方式连接已经在本地启动的 Linux GNOME 会话。可以安装一个 tigervnc 。 运行 vncserver 创建密码和配置，都存放于 `~/.vnc`, 然后通过 x0vncserver 指令，测试从远程连接端口:0 (5900)，控制当前已经打开的 X 会话，待测试通过后将其做成一个服务，在你暂时需要离开电脑时启动此服务，以备不时之需。
+
+{{< highlight console >}}
+$ vncserver
+# env conf and passwd will be generated in ~/.vnc/
+
+$ vncserver -kill :1
+
+$ x0vncserver -display :0 -passwordfile ~/.vnc/passwd
+
+$ vi /etc/systemd/system/x0vncserver.service 
+[Unit]
+Description=Remote desktop service (VNC)
+After=syslog.target network.target
+
+[Service]
+Type=forking
+User=wushuzh
+ExecStart=/usr/bin/sh -c '/usr/bin/x0vncserver -display :0 -rfbport 5900 -passwordfile /home/wushuzh/.vnc/passwd &'
+
+[Install]
+WantedBy=multi-user.target
+
+$ systemctl daemon-reload
+
+$ systemctl status x0vncserver
+● x0vncserver.service - Remote desktop service (VNC)
+   Loaded: loaded (/etc/systemd/system/x0vncserver.service...
+   Active: active (running) since Tue 2018-05-08 16:01:37 CST...
+  Process: 23070 ExecStart=/usr/bin/sh -c /usr/bin/x0vncserver...
+ Main PID: 23071 (x0vncserver)
+    Tasks: 1 (limit: 4915)
+   Memory: 12.1M
+   CGroup: /system.slice/x0vncserver.service
+           └─23071 /usr/bin/x0vncserver -display :0 ...
+
+May 08 16:01:37 pc systemd[1]: Starting Remote desktop... 
+May 08 16:01:37 pc systemd[1]: Started Remote desktop...
+{{< /highlight >}}
 
 ## 配置声卡显卡
 
