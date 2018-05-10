@@ -24,6 +24,7 @@ weight = 110
 {{< highlight console >}}
 $ cower -d docker-machine-kvm
 # note host folder sharing is not supported in kvm yet
+
 $ cower -d kubectl-bin
 $ cower -d minikube
 # install above aur pkg ...
@@ -32,7 +33,9 @@ $ export http_proxy=ip:port
 $ export https_proxy=ip:port
 $ minikube start 
     --docker-env HTTP_PROXY=ip:port \
-    --docker-env HTTPS_PROXY=ip:port
+    --docker-env HTTPS_PROXY=ip:port \
+    --docker-env NO_PROXY=192.168.99.0/24 \
+    --vm-driver=virtualbox
 
 $ minikube ip
 192.168.99.100
@@ -41,8 +44,29 @@ minikube: Running
 cluster: Running
 kubectl: Correctly Configured: pointing to minikube-vm at 192.168.99.100
 
+$ export no_proxy=192.168.99.100
+
 $ kubectl config use-context minikube
+$ kubectl config current-context
+minikube
+
 $ kubectl cluster-info
+Kubernetes master is running at https://192.168.99.100:8443
+KubeDNS is running at https://192.168.99.100:8443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+
+To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+
+$ kubectl get nodes
+NAME       STATUS    ROLES     AGE       VERSION
+minikube   Ready     master    47m       v1.10.0
+
+$ kubectl get cs
+NAME                 STATUS    MESSAGE              ERROR
+scheduler            Healthy   ok                   
+controller-manager   Healthy   ok                   
+etcd-0               Healthy   {"health": "true"}   
+
+
 {{< /highlight >}}
 
 ### 打包
@@ -55,7 +79,7 @@ $ touch hellonode/server.js
 $ touch hellonode/Dockerfile
 # get the code done
 $ eval $(minikube docker-env --no-proxy)
-$ docker build -t hello-node:v1 .
+$ docker build -t hello-node:v1 --build-arg HTTPS_PROXY=ip:port .
 $ docker images
 {{< /highlight >}}
 
