@@ -14,7 +14,7 @@ weight = 602
 
 项目架构
 
-<img alt="Architeture" src="/img/blog/a-dev-env-of-webapp/architecture.png" class="img-responsive">
+<img alt="Architeture" src="/img/blog/a-dev-env-of-webapp-1/architecture.png" class="img-responsive">
 
 代码高层组织分为 5 个微服务: main, users, client, swapper, eval
 
