@@ -17,6 +17,8 @@ weight = 110
 
 本地搭建，并最快上手的路经就是运行一遍其官方发布的 [hello-minikube](https://kubernetes.io/docs/tutorials/stateless-application/hello-minikube/) 
 
+## Archlinux 
+
 ### 准备
 
 首先是通过 minikube 工具创建/模拟一个本地集群。
@@ -133,7 +135,6 @@ $ minikube service hello-node
 
 ### 下架清除
 
-
 {{< highlight console>}}
 $ kubectl delete service hello-node
 service "hello-node" deleted
@@ -144,6 +145,53 @@ $ minikube stop
 Stopping local Kubernetes cluster...
 Machine stopped.
 
+{{< /highlight >}}
+
+### Helm
+
+{{< highlight console>}}
+$ cower -d kubernetes-helm
+# makepkg and install
+$ helm version
+
+
+{{< /highlight >}}
+
+<br />
+
+## Windows 10
+
+如果是 Windows 7 这样老系统，通常依赖 Virtualbox 作为 Hypervisor 来创建相应的虚拟机及网络。Docker 这边配合安装的工具是 [Docker Toolbox](https://docs.docker.com/toolbox/toolbox_install_windows/)
+
+而现在 Windows 10 中微软内置了 Hyper-V ，Docker 为此发布了新的工具 [Docker For Windows](https://store.docker.com/editions/community/docker-ce-desktop-windows) ,其中 Edge 版本内置了 Kubernetes 的支持，省去了自行下载安装 kubectl 和 minikube 的操作，也很值得尝试。
+
+上述两种方式我自己或是身边同事都有成功的经验。但我自己在 Windows 10 上的最终的安装方式却有点像上述两种的混合体——没有使用 Docker Toolbox 或是 Docker For Windows Edge 版本， 而是用 choco 直接安装 docker、kubernetes-cli 和 minikube 。
+
+先是试图打开 Windows 10 的 HyperV 功能，用 minikube 创建基于 HyperV 的 VM，但当前版本貌似仍不稳定——首先是网上主流教程对于建立 HyperV Switch 分为两种方式: 
+
+- 直接创建一个附着于网卡的 External 类型的 vSwitch
+- 或者创建一个 Internal 类型的 vSwitch 然后通过 [NAT 方式](https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/user-guide/setup-nat-network)和已有连接共享互联网
+
+后来有人提到 Windows 10 的 1703 版本建议都使用默认 vSwitch —— 自带 NAT 功能。但使用后又遇到启动虚拟机拿不到 ipv4 地址的情况——需要通过手动关闭 vSwitch 的 ipv6 才能一定程度上解决这个问题，但得到的 ipv4 地址每次并不固定，而且启动后期在对 k8s.gcr.io 相应容器镜像的下载又总不成功。
+
+最终我关闭了 HyperV 后转而使用 Virtualbox ，清除之前 .kube 和 .minikube 下的配置文件，设置一下 VBox 的代理，然后重新启动 minikube 虚拟机顺利创建配置，各种镜像下载也很顺利。
+
+打开一个有管理员权限的 Powershell
+
+{{< highlight console >}}
+
+REM netsh winhttp set proxy "proxyip:port"
+REM netsh winhttp show proxy
+
+REM New-VMSwitch -SwitchName "minikube" -SwitchType Internal
+REM Get-NetAdapter
+REM New-NetIPAddress -IPAddress 192.168.0.1 -PrefixLength 24 -InterfaceIndex ??
+REM New-NetNat -Name miniNAT -InternalIPInterfaceAddressPrefix 192.168.0.0/24
+REM minikube start -v 9999 --vm-driver=hyperv --hyperv-virtual-switch="minikube" --docker-env http_proxy=proxyip:proxy --docker-env https_proxy=proxyip:port --docker-env no_proxy=192.168.0.0/24
+REM 
+REM minikube start -v 9999 --vm-driver="hyperv" --hyperv-virtual-switch="Default Switch" --alsologtostderr --docker-env http_proxy=proxyip:port --docker-env https_proxy=proxyip:port
+
+minikube start -v 9999 --alsologtostderr --docker-env http_proxy=proxyip:port --docker-env https_proxy=proxyip:port --docker-env no_proxy=192.168.0.0/24
 {{< /highlight >}}
 
 参考文档
