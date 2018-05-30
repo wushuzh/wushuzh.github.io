@@ -15,14 +15,18 @@ weight = 61
 
 我感觉自己工作用的笔记本快不行了，同时开个浏览器和 IDE ，风扇的动静像直升机起飞，键盘周围也是非常暖和，每天都像是在做免费的腕部热敷。
 
-- Intel i5 2.6 GHz 处理器 ( 2 核 4 线程 )
-- DDR3 4 G 798 MHz 内存
+- ~~Intel i5 2.6 GHz 处理器 ( 2 核 4 线程 ) DDR3 4G 内存 ( HP 6470b Win7)~~
+- Intel i5-7300U 2.6 GHz ( 2 核 4 线程 ) DDR4 8G 内存 (201805 联想 T470 Win10）
 
-找来个老台式机分担一些工作负荷：准备装双系统，因为你总有一些时刻依赖 Windows 或 IE ，而 Linux 则用来应对偶尔 Lab 断网没服务器用的情况。
+于是找来个老台式机分担一些工作负荷：准备装双系统，因为你总有一些时刻依赖 Windows 或 IE ，而 Linux 则用来应对偶尔 Lab 断网没服务器用的情况。
 
-- Intel i5 3.2 GHz 处理器 ( 2 核 4 线程 )
-- DDR3 8 G 665 MHz 内存
-- Nvidia Quadro NVS 290 显卡 内含 DDR2 256 MB 显存 (不知这点显存能实验点啥？)
+- ~~Intel i5 3.2 GHz 处理器 ( 2 核 4 线程 )~~
+- ~~DDR3 8G 665 MHz 内存~~
+- ~~Nvidia Quadro [NVS 290] 256MB显存~~
+- Intel Xeon X5650 2.67 GHz
+- DDR3 12G 内存
+- NVIDIA GT218 [NVS 300] 512MB
+- NVIDIA GT216GL [Quadro 400] 512MB
 
 {{< highlight bat >}}
 REM CMD 直接运行
@@ -35,6 +39,8 @@ REM 第三方工具 CPU-Z 或 GPU-Z 查看则需安装
 对于双系统，网上大部分建议都是先装 Windows，再装 Linux。而多数 PC 预装 Windows (据说少数还预装 Linux )。但我这台 PC 原装 Windows 已经没了，公司 IT 一般都是用克隆，不知道是不是绑定硬件的一种特定的批量 license 授权。
 
 好在我自己之前买过一份正版 Win 8，先拿来用。下载 Win 8 安装介质做成一个可启动 U 盘——这年头光驱算古董。Windows 的安装没什么可说，一步步照提示确认就能安装好。现在 Windows 安装挺简洁，半小时绝对搞定了。
+
+硬件大换血后 Windows 系统需要重新人工认证，这部分大概需要联系微软，回头走一边流程后再补上来。
 
 ## 系统更新
 
@@ -58,10 +64,10 @@ Windows 上除了一些一次性安装的工具，其他常用软件的安装、
 - Google Chrome
 - Firefox
 - Git
-- SourceTree
-- notepadplusplus
 - virtualbox
 - vagrant
+- SourceTree
+- notepadplusplus
 
 <br />
 

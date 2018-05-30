@@ -22,6 +22,8 @@ weight = 64
 
 {{< /highlight >}}
 
+上述步骤还可以通过 [Reflector](https://wiki.archlinux.org/index.php/Reflector) 自动化，比如设置为 pacman 钩子抑或是系统任务手动或定时执行。
+
 > 如果希望 pacman 安装进度条像吃豆人一样，在 /etc/pacman.conf 的 Options 中增加 ILoveCandy 选项
 
 <br />
@@ -83,9 +85,8 @@ $ sudo pacman -S samba
 $ sudo cp /etc/samba/smb.conf.default /etc/samba/smb.conf
 ...
 $ sudo smbpasswd -a wushuzh
-$ sudo systemctl start smbd
-$ sudo systemctl enable smbd
-Created symlink /etc/systemd/system/multi-user.target.wants/smbd.service → /usr/lib/systemd/system/smbd.service.
+$ sudo systemctl start smb
+$ sudo systemctl enable smb
 {{< /highlight >}}
 
 此外，还可以设置无需输入用户名和密码的 samba 共享目录。但这需要将磁盘配合打开，避免硬盘被占满。
@@ -114,13 +115,15 @@ writable = yes
 # chown pcguest /home/samba
 # chmod u+w /home/samba
 
-# systemctl restart smbd
-# systemctl restart nmbd
+# systemctl restart smb
+# systemctl restart nmb
 
 {{< /highlight >}}
 
 
 若是从其他 Windows 访问同时打开了鉴权和匿名的 samba 共享。Windows 我的电脑下，首先点击 Computer 下的 Map network driver , 输入相应地址后，比如 \\\\xx.xx.xx.xx\username ，然后 Windows 会弹出窗口等待你输入相应的鉴权账户密码。或是使用[命令行完成]("https://superuser.com/questions/727944/accessing-a-windows-share-with-a-different-username")
+
+> 服务 smbd/nmbd 2018-05 已更名为 smb/nmb
 
 <br />
 
@@ -136,7 +139,7 @@ $ vncserver -kill :1
 
 $ x0vncserver -display :0 -passwordfile ~/.vnc/passwd
 
-$ vi /etc/systemd/system/x0vncserver.service 
+$ vi /etc/systemd/system/x0vncserver.service
 [Unit]
 Description=Remote desktop service (VNC)
 After=syslog.target network.target
@@ -162,7 +165,7 @@ $ systemctl status x0vncserver
    CGroup: /system.slice/x0vncserver.service
            └─23071 /usr/bin/x0vncserver -display :0 ...
 
-May 08 16:01:37 pc systemd[1]: Starting Remote desktop... 
+May 08 16:01:37 pc systemd[1]: Starting Remote desktop...
 May 08 16:01:37 pc systemd[1]: Started Remote desktop...
 {{< /highlight >}}
 
