@@ -111,6 +111,23 @@ TODO: 查看 Intellij 的两个 tomcat 插件
 
 ### Docker
 
+Debug
+[Spring Boot with Docker](https://spring.io/guides/gs/spring-boot-docker/)
+Hot Reload
+[Development environment in Spring Boot with Docker](https://medium.com/@lhartikk/development-environment-in-spring-boot-with-docker-734ad6c50b34)
+[Hot Reload Spring Boot in Docker](https://github.com/ntsim/hot-spring-docker)
+
+[Running Spring Boot Applications With Minikube](http://www.baeldung.com/spring-boot-minikube)
+
+
+## Windows 10
+
+{{< highlight console >}}
+choco install eclipse
+{{< /highlight >}}
+
+
+
 参考文档
 
 > - Archlinux wiki
