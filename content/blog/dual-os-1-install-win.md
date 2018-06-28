@@ -60,16 +60,25 @@ Windows 上除了一些一次性安装的工具，其他常用软件的安装、
 之后的软件安装升级都通过命令行，cinst 将待安装软件一个个搞定。
 
 - 7zip
-- ConEmu
+- listary
+- Cmder (但中文内容显示的问题尚未解决)
+- openssh
 - Google Chrome
 - Firefox
-- Git
-- virtualbox
+- vlc
 - vagrant
-- SourceTree
+- virtualbox
+- vim
 - notepadplusplus
+- gimp
+- greenshot
 
 <br />
+
+{{< figure src="/img/blog/dual-os-1-install-win/platinum.png" title="linux foundation platinum member" >}}
+
+> 最近(2018-06)新闻提到腾讯成为了 Linux 基金会的铂金会员(最高等级)，然后去查看了一下当下 [15 个白金玩家](https://www.linuxfoundation.org/membership/)，这里面居然有微软……不过公平的说，微软这几年确实在开源世界屡放大招，代码编辑器 vscode 可用于全平台，开发出 [Windows Subsystem for Linux (WSL)](https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux) ，包括最近收购 github，而其股价也从 2014 年初的 40 升至 2018年6月 100 美元每股)
+
 
 ## 准备 Linux 分区
 
@@ -97,5 +106,7 @@ Windows 8 引入了一个新功能，就是将其内核和设备驱动保存到�
 
 > - One Transistor (2015-12-03) [Dual booting Windows and Ubuntu [MBR]](
 https://onetransistor.blogspot.fr/2015/03/dual-boot-windows-and-ubuntu.html)
+> - jdhao (2017-12-29) [cmder --- the Ultimate Command Line Tool for Windows](https://jdhao.github.io/2017/12/29/cmder-usage/)
+> - jdhao (2017-03-01) [An Introduction to Listary: A Blazing Fast Search Tool](https://jdhao.github.io/2017/03/01/Listary_intro/)
 
 封面图片来自 [Microsoft Surface Studio](https://dribbble.com/shots/3076441-Microsoft-Surface-Studio) <a href="https://dribbble.com/ercannailoglu"><i class="fa fa-dribbble" aria-hidden="true"></i> Ercan Nailoğlu</a>  

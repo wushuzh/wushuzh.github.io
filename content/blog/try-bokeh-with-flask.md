@@ -171,7 +171,6 @@ Aborted (core dumped)
 > - Ethan Cerami (2017-04-13) [Creating Interactive Bokeh Applications with Flask](http://biobits.org/bokeh-flask.html)
 > - Dan Bader [Abstract Base Classes in Python](https://dbader.org/blog/abstract-base-classes-in-python)
 > - Quora [Are there any open APIs for free, accurate, real-time financial market data?](https://www.quora.com/Are-there-any-open-APIs-for-free-accurate-real-time-financial-market-data)
-
-{{< speakerdeck a2d86983ff634ac3871ad4e5a308a67b >}}
+> - Jake VanderPlas (PyCon2017 2017-05-21) [Python's Visualization Landscape](https://speakerdeck.com/jakevdp/pythons-visualization-landscape-pycon-2017)
 
 封面图片来自 [Free Bokeh Backgrounds](https://dribbble.com/shots/2056186-Free-Bokeh-Backgrounds) <a href="https://dribbble.com/Graphicsoulz"><i class="fa fa-dribbble" aria-hidden="true"></i> Graphicsoulz</a>
