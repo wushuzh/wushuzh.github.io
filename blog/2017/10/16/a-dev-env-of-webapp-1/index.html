@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Flask 开发 1</title>
+<meta name="description" content="个人技术站点">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.theme.css">
+
+
+  <link href="https://wushuzh.github.io/css/style.sea.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://wushuzh.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-102509506-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="/">小强会武术</a></h1>
+    
+      <p class="sidebar-p">工程师</p>
+    
+      <p class="sidebar-p">记录每一个自己填平的坑</p>
+    
+    <ul class="sidebar-menu">
+      
+      
+        <li><a href="https://wushuzh.github.io/">Home</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  
+  
+  <a href="https://twitter.com/Xiao_Qiang" data-animate-hover="pulse" class="external twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  
+  
+  
+  <a href="mailto:wushuzh@outlook.com" data-animate-hover="pulse" class="email">
+    <i class="fa fa-envelope"></i>
+  </a>
+  
+  
+  
+  
+
+  
+  <a href="https://wushuzh.github.io/index.xml" data-animate-hover="pulse">
+    <i class='fa fa-rss'></i>
+  </a>
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2017 wushuzh
+        
+        | Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="/">小强会武术</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="content-column-content">
+
+      <div class="row">
+        <div class="col-sm-6">
+          
+            <div class="image">
+              <img src="https://wushuzh.github.io//img/blog/a-dev-env-of-webapp-1/multitasking.png" class="img-responsive" alt="">
+            </div>
+          
+        </div>
+        <div class="col-md-6">
+            <h2>Flask 开发 1</h2>
+                <p>
+                  小强会武术
+                </p>
+
+                <time datetime="2017-10-16 20:26:19 &#43;0800 CST">
+                <i class="fa fa-calendar-o fa-fw"></i> 2017-10-16
+                </time>
+                &middot;
+                2037 字
+                &middot;
+                5 分钟
+
+        </div>
+      </div>
+      <br />
+
+         <p>麻雀虽小但五脏俱全的开发环境
+</p>
+
+<p>本系列是 <a href="https://testdriven.io/">Microservices with Docker, Flask, and React</a> 我的实践版——只要能达到相同效果，我会尝试替换更新原教程中的工具，升级版本，并简述填过或待填的坑。</p>
+
+<p>项目架构</p>
+
+<p><img alt="Architeture" src="/img/blog/a-dev-env-of-webapp-1/architecture.png" class="img-responsive"></p>
+
+<p>代码高层组织分为 5 个微服务: main, users, client, swapper, eval</p>
+
+<h2 id="脚手架">脚手架</h2>
+
+<h3 id="虚拟环境">虚拟环境</h3>
+
+<p>为每一个项目创建独立虚拟环境并引入 requirements.txt 已成为 python 开发的标准操作。而当下可用于创建虚拟环境的模块很多，详见<a href="https://stackoverflow.com/a/41573588/4393386">What is the difference between venv, pyvenv, pyenv, virtualenv, virtualenvwrapper, pipenv, etc?</a></p>
+
+<p>Kenneth Reitz 在 (2016-02-25) <a href="https://www.kennethreitz.org/essays/a-better-pip-workflow">A Better Pip Workflow™</a> 提到了 requirements.txt 中常见的使用方式的问题，在提出了一个暂时解决方案后，作者在 (2017-01-22) <a href="https://www.kennethreitz.org/essays/announcing-pipenv">Announcing Pipenv!</a> 又发布了一个旨在完美解决此问题的工具。新方案简洁有效、安全，得到了 python 官方的推荐。</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ mkdir users &amp;&amp; cd users
+# pipenv install --three flask==0.12.2
+$ pipenv install flask==0.12.2
+$ mkdir project &amp;&amp; touch project/__init__.py</code></pre></div>
+
+<p><br /></p>
+
+<h3 id="hello-world">hello world</h3>
+
+<blockquote>
+<p>TODO: 后续应该按照 Robert Picard 的开源书 Explore Flask 中 <a href="https://exploreflask.com/en/latest/organizing.html">Organizing your project</a> 微调下面的文件位置。</p>
+</blockquote>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># project/__init__.py</span>
+
+<span style="color:#f92672">from</span> flask <span style="color:#f92672">import</span> Flask, jsonify
+
+<span style="color:#75715e"># instantiate the app</span>
+app <span style="color:#f92672">=</span> Flask(__name__)
+
+
+<span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#39;/ping&#39;</span>, method<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;GET&#39;</span>])
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ping_pong</span>():
+    <span style="color:#66d9ef">return</span> jsonify({
+        <span style="color:#e6db74">&#39;status&#39;</span>: <span style="color:#e6db74">&#39;success&#39;</span>,
+        <span style="color:#e6db74">&#39;message&#39;</span>: <span style="color:#e6db74">&#39;pong!&#39;</span>
+    })</code></pre></div>
+
+<p>原始教程又额外安装了 flask-script，但 flask 从 0.11 开始内置已经了命令行工具，因此可以跳过此步。</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ pipenv shell
+# enter into virutalenv
+$ export FLASK_APP=./project/__init__.py
+$ flask run
+ * Serving Flask app &#34;project&#34;
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+127.0.0.1 - - [DateTime] &#34;GET / HTTP/1.1&#34; 404 -
+127.0.0.1 - - [DateTime] &#34;GET /ping HTTP/1.1&#34; 200 -</code></pre></div>
+
+<p>确认通过浏览器访问 <a href="http://localhost:5000/ping">http://localhost:5000/ping</a> 可以获得下面 json 后，继续为项目添加 config.py。</p>
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="color:#f92672">&#34;message&#34;</span>: <span style="color:#e6db74">&#34;pong!&#34;</span>,
+  <span style="color:#f92672">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;success&#34;</span>
+}</code></pre></div>
+<br /></p>
+
+<h3 id="配置隔离">配置隔离</h3>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">diff <span style="color:#f92672">--</span>git a<span style="color:#f92672">/</span>project<span style="color:#f92672">/</span>__init__<span style="color:#f92672">.</span>py b<span style="color:#f92672">/</span>project<span style="color:#f92672">/</span>__init__<span style="color:#f92672">.</span>py
+index <span style="color:#ae81ff">4</span>cc950a<span style="color:#f92672">..</span><span style="color:#ae81ff">614</span>cbbc <span style="color:#ae81ff">100644</span>
+<span style="color:#f92672">---</span> a<span style="color:#f92672">/</span>project<span style="color:#f92672">/</span>__init__<span style="color:#f92672">.</span>py
+<span style="color:#f92672">+++</span> b<span style="color:#f92672">/</span>project<span style="color:#f92672">/</span>__init__<span style="color:#f92672">.</span>py
+<span style="color:#960050;background-color:#1e0010">@@</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">6</span> <span style="color:#f92672">+</span><span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">9</span> <span style="color:#960050;background-color:#1e0010">@@</span> <span style="color:#f92672">from</span> flask <span style="color:#f92672">import</span> Flask, jsonify
+ <span style="color:#75715e"># instantiate the app</span>
+ app <span style="color:#f92672">=</span> Flask(__name__)
+ 
+<span style="color:#f92672">+</span><span style="color:#75715e"># set conf</span>
+<span style="color:#f92672">+</span>app<span style="color:#f92672">.</span>config<span style="color:#f92672">.</span>from_object(<span style="color:#e6db74">&#39;project.config.DevelopmentConfig&#39;</span>)
+<span style="color:#f92672">+</span>
+ 
+ <span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#39;/ping&#39;</span>, methods<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;GET&#39;</span>])
+ <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ping_pong</span>():
+diff <span style="color:#f92672">--</span>git a<span style="color:#f92672">/</span>project<span style="color:#f92672">/</span>config<span style="color:#f92672">.</span>py b<span style="color:#f92672">/</span>project<span style="color:#f92672">/</span>config<span style="color:#f92672">.</span>py
+new file mode <span style="color:#ae81ff">100644</span>
+index <span style="color:#ae81ff">0000000.</span><span style="color:#f92672">.</span><span style="color:#ae81ff">0</span>f9cd90
+<span style="color:#f92672">---</span> <span style="color:#f92672">/</span>dev<span style="color:#f92672">/</span>null
+<span style="color:#f92672">+++</span> b<span style="color:#f92672">/</span>project<span style="color:#f92672">/</span>config<span style="color:#f92672">.</span>py
+<span style="color:#960050;background-color:#1e0010">@@</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span> <span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">23</span> <span style="color:#960050;background-color:#1e0010">@@</span>
+<span style="color:#f92672">+</span><span style="color:#75715e"># project/config.py</span>
+<span style="color:#f92672">+</span>
+<span style="color:#f92672">+</span>
+<span style="color:#f92672">+</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">BaseConfig</span>:
+<span style="color:#f92672">+</span>    <span style="color:#e6db74">&#34;&#34;&#34;Base conf&#34;&#34;&#34;</span>
+<span style="color:#f92672">+</span>    DEBUG <span style="color:#f92672">=</span> False
+<span style="color:#f92672">+</span>    TESTING <span style="color:#f92672">=</span> False
+<span style="color:#f92672">+</span>
+<span style="color:#f92672">+</span>
+<span style="color:#f92672">+</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DevelopmentConfig</span>(BaseConfig):
+<span style="color:#f92672">+</span>    <span style="color:#e6db74">&#34;&#34;&#34;Dev conf&#34;&#34;&#34;</span>
+<span style="color:#f92672">+</span>    DEBUG <span style="color:#f92672">=</span> True
+<span style="color:#f92672">+</span>
+<span style="color:#f92672">+</span>
+<span style="color:#f92672">+</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TestingConfig</span>(BaseConfig):
+<span style="color:#f92672">+</span>    <span style="color:#e6db74">&#34;&#34;&#34;Testing conf&#34;&#34;&#34;</span>
+<span style="color:#f92672">+</span>    DEBUG <span style="color:#f92672">=</span> True
+<span style="color:#f92672">+</span>    TESTING <span style="color:#f92672">=</span> True
+<span style="color:#f92672">+</span>
+<span style="color:#f92672">+</span>
+<span style="color:#f92672">+</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ProductionConfig</span>(BaseConfig):
+<span style="color:#f92672">+</span>    <span style="color:#e6db74">&#34;&#34;&#34;Production conf&#34;&#34;&#34;</span>
+<span style="color:#f92672">+</span>    DEBUG <span style="color:#f92672">=</span> False</code></pre></div>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ export FLASK_DEBUG=1
+$ flask run
+ * Serving Flask app &#34;project&#34;
+ * Forcing debug mode on
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 110-739-931</code></pre></div>
+
+<blockquote>
+<p>TODO: 当环境 FLASK_DEBUG 为 1 时，console 才明确打印出 Debugger 状态和 PIN。但没有 FLASK_DEBUG 变量时，若打印 app.config 其中的 DEBUG 也确实为 True。不知有何区别，待查</p>
+</blockquote>
+
+<h2 id="容器封装">容器封装</h2>
+
+<h3 id="宿主服务器">宿主服务器</h3>
+
+<p>TODO: 编排组织各个 container 和微服务当然可以用 docker-compose ，但也应该尝试一下 minikube 的配置方式。</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ sudo pacman -S docker docker-compose docker-machine
+# install docker-machine-kvm plugin if needed
+$ sudo usermod -aG docker wushuzh
+
+$ docker -v
+Docker version 17.10.0-ce, build f4ffd2511c
+$ docker-compose -v
+docker-compose version 1.16.1, build unknown
+$ docker-machine -v
+docker-machine version 0.13.0, build HEAD</code></pre></div>
+
+<p>docker-machine 首先下载最新宿主服务器iso，并以此创建虚拟机，比如名为 dev。这之后所有操作都是通过 docker 客户端联系远端虚拟机 docker 守护进程完成的。</p>
+
+<p>好处是不会弄乱你本机配置，搞砸了直接删除虚拟机，不会留下过多垃圾在系统中。但引入的虚拟机使得 debug 变得繁琐。但 docker-machine 指令支持很多选项，是不是可以将相关服务的日志 rsyslog 转入本机使得后续查看更为方便。</p>
+
+<p>虚拟机的相关配置在 <code>$HOME\.docker\machine\machines\default\config.json</code>，更改后需要执行 <code>docker-machine provision</code> (待验证)</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ docker-machine create [-d virtualbox or kvm] \
+    --engine-env HTTP_PROXY=your_proxy  \
+    --engine-env HTTPS_PROXY=your_proxy \
+    dev
+
+$ docker-machine ls</code></pre></div>
+
+<p>通过执行 eval 指令更改当前的环境变量，将后面的 docker 指令传送到虚拟机 dev 上执行。</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ docker-machine env --no-proxy dev
+export DOCKER_TLS_VERIFY=&#34;1&#34;
+export DOCKER_HOST=&#34;tcp://192.168.99.100:2376&#34;
+export DOCKER_CERT_PATH=&#34;/home/wushuzh/.docker/machine/machines/dev&#34;
+export DOCKER_MACHINE_NAME=&#34;dev&#34;
+export NO_PROXY=&#34;192.168.99.100&#34;
+# Run this command to configure your shell: 
+# eval $(docker-machine env --no-proxy dev)
+
+$ docker run hello-world</code></pre></div>
+
+<h3 id="容器化">容器化</h3>
+
+<p>创建 Docker 镜像: 含当前代码及其运行环境，并启动 web 服务</p>
+
+<p>原教程中直接上了 docker-compose ，而我是先用原生 Dockerfile 完成，之后再转化为 compose 模式。</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dockerfile" data-lang="dockerfile"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> python:3.6.1</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># set working directory</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> mkdir -p /usr/src/app<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">WORKDIR</span><span style="color:#e6db74"> /usr/src/app</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># add requirements (to leverage Docker cache)</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ADD</span><span style="color:#e6db74"> ./requirements.txt /usr/src/app/requirements.txt</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># install requirements</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> pip install -r requirements.txt<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># add app</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ADD</span><span style="color:#e6db74"> . /usr/src/app</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">EXPOSE</span><span style="color:#e6db74"> 5000</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span><span style="color:#e6db74"> FLASK_APP project/__init__.py</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># run server</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">CMD</span><span style="color:#e6db74"> flask run -h 0.0.0.0</span></code></pre></div>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">docker build \
+  -t users-service \
+  --build-arg HTTPS_PROXY=your_proxy \
+  . 
+docker images
+docker run -d -p 5001:5000 \
+    -e &#34;FLASK_APP=project/__init__.py&#34; \
+    users-service
+docker ps
+curl http://$(docker-machine ip dev):5001/ping
+docker stop/kill &lt;hash&gt;
+docker rm &lt;hash&gt;
+docker rmi test-users</code></pre></div>
+
+<h3 id="服务化">服务化</h3>
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">version: <span style="color:#e6db74">&#34;3.2&#34;</span>
+
+services:
+    users-service:
+        <span style="color:#75715e"># build: .</span>
+        image: users-service
+        container_name: users-service
+        volumes:
+            - type: bind
+              source: .
+              target: /usr/src/app
+        ports:
+            - <span style="color:#ae81ff">5001</span>:<span style="color:#ae81ff">5000</span> <span style="color:#75715e"># expose ports - HOST:CONTAINER</span>
+        environment:
+            - FLASK_APP=project/__init__.py</code></pre></div>
+&gt; 我安装的 docker 版本很新，所以直接将原教程中 version 2 换为 3</p>
+
+<p>注意上面写法将原 Dockerfile 中 EXPOSE 和 ENV 等指令转到了 compose yaml 文件中，并引入了 volumes (但因为问题暂时注释掉), 使用 bind-mount 模式，这个设定并不和之前 Dockerfile 中的 ADD <a href="https://github.com/docker/compose/issues/1616#issuecomment-117716753">冲突</a>: 这个设定将本地的代码修改就能直接映射到容器中，无需重新 build 镜像。关于 volume 、bind mount、tmpfs mount 的细节和各自用例，详见 <a href="https://docs.docker.com/engine/admin/volumes/">Manage data in Docker</a></p>
+
+<p>因为不可描述的原因，volume 在我的环境中运行时出错，只有注释掉这些设定，直接执行。另外和原文不同，这里直接显示制定了 image 使得 docker-compose 无需再度创建上面已经可用的镜像。</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ docker-compose up -d
+$ docker ps -a
+
+$ docker logs &lt;hash&gt;
+Usage: flask run [OPTIONS]
+
+Error: The file/path provided (project/__init__.py) 
+  does not appear to exist.  Please verify the path is correct. 
+If app is not on PYTHONPATH, ensure the extension is .py
+
+$ docker inspect &lt;hash&gt; |grep -A 9 Mounts
+        &#34;Mounts&#34;: [
+            {
+                &#34;Type&#34;: &#34;bind&#34;,
+                &#34;Source&#34;: &#34;/myhome/pywork/try-flask/users&#34;,
+                &#34;Destination&#34;: &#34;/usr/src/app&#34;,
+                &#34;Mode&#34;: &#34;rw&#34;,
+                &#34;RW&#34;: true,
+                &#34;Propagation&#34;: &#34;rprivate&#34;
+            }
+        ],
+
+$ docker-compose down
+# comment out the volume 
+$ docker-compose up -d
+Creating network &#34;users_default&#34; with the default driver
+Creating users-service ... 
+Creating users-service ... done
+
+$  curl http://$(docker-machine ip vdev):5001/ping
+{
+  &#34;message&#34;: &#34;pong!&#34;, 
+  &#34;status&#34;: &#34;success&#34;
+}
+
+$ docker-compose logs -f users-service
+Attaching to users-service
+users-service    |  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+users-service    | 192.168.99.1 - - [15/Nov/2017 06:21:48] &#34;GET /ping HTTP/1.1&#34; 200 -</code></pre></div>
+
+<blockquote>
+<p>TODO: 上面的报错应该时 bind-mount 没有正确的工作，这个问题我还没有查找到原因。</p>
+</blockquote>
+
+<p>关于共享目录，首先是查到 nathanleclaire (2014-12-31) <a href="https://github.com/docker/machine/issues/179#issue-53144018">Proposal: machine share</a> 而当下环境是通过 virtualbox 创建容器宿主机 dev ，登录上是可以看到当前用户的家目录已经通过 vboxsf 协议共享，所以问题大概仍在 dev 和容器之间？</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ docker-machine ssh dev
+docker@dev:~$ df -Th|grep vboxsf
+hosthome   vboxsf   78.2G   22.5G  55.7G  29% /hosthome</code></pre></div>
+
+<h3 id="其他管理指令">其他管理指令</h3>
+
+<p>如果上述过程中遇到了错误，下面指令可用于清理残余垃圾。</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ docker-compose down
+
+$ docker attach &lt;hash&gt;
+# type &lt;C-p&gt; &lt;C-q&gt; detach from interactive mode 
+
+# try to start a stop container again
+$ docker start &lt;hash&gt;
+
+# remove exited container
+$ docker ps -a
+$ docker ps -a -f status=exited
+$ docker rm $(docker ps -a -f status=exited -q)
+
+# remove dangling images
+$ docker images -f dangling=true
+$ docker rmi $(docker images -f dangling=true -q)</code></pre></div>
+
+<h3 id="环境变量">环境变量</h3>
+
+<p>通过在 compose yaml 中制定环境变量，从而达到切换不同阶段(开发、测试、生产)配置的目的</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">diff --git a/docker-compose.yml b/docker-compose.yml
+index 2044a95..2369320 100644
+<span style="color:#f92672">--- a/docker-compose.yml
+</span><span style="color:#f92672"></span><span style="color:#a6e22e">+++ b/docker-compose.yml
+</span><span style="color:#a6e22e"></span><span style="color:#75715e">@@ -13,3 +13,4 @@ services:
+</span><span style="color:#75715e"></span>             - 5001:5000 # expose ports - HOST:CONTAINER
+         environment:
+             - FLASK_APP=project/__init__.py
+<span style="color:#a6e22e">+            - APP_SETTINGS=project.config.DevelopmentConfig
+</span><span style="color:#a6e22e"></span>diff --git a/project/__init__.py b/project/__init__.py
+index 614cbbc..45cd669 100644
+<span style="color:#f92672">--- a/project/__init__.py
+</span><span style="color:#f92672"></span><span style="color:#a6e22e">+++ b/project/__init__.py
+</span><span style="color:#a6e22e"></span><span style="color:#75715e">@@ -1,12 +1,14 @@
+</span><span style="color:#75715e"></span> # project/__init__.py
+ 
+<span style="color:#a6e22e">+import os
+</span><span style="color:#a6e22e"></span> from flask import Flask, jsonify
+ 
+ # instantiate the app
+ app = Flask(__name__)
+ 
+ # set conf
+<span style="color:#f92672">-app.config.from_object(&#39;project.config.DevelopmentConfig&#39;)
+</span><span style="color:#f92672"></span><span style="color:#a6e22e">+app_settings = os.getenv(&#39;APP_SETTINGS&#39;)
+</span><span style="color:#a6e22e">+app.config.from_object(app_settings)
+</span><span style="color:#a6e22e"></span> 
+ 
+ @app.route(&#39;/ping&#39;, methods=[&#39;GET&#39;])
+</code></pre></div>
+
+<p>参考文档</p>
+
+<blockquote>
+<ul>
+<li>Michael Herman (2017-05-11) <a href="http://mherman.org/blog/2017/05/11/developing-microservices-node-react-docker">Developing Microservices - Node, Ract, and Docker</a></li>
+<li><a href="https://developers.slashdot.org/story/17/09/16/2030229/pythons-official-repository-included-10-malicious-typo-squatting-modules">Python&rsquo;s Official Repository Included 10 &lsquo;Malicious&rsquo; Typo-Squatting Modules</a></li>
+<li><a href="https://www.quora.com/Why-does-the-logo-of-Bottle-web-framework-look-like-Flask-Python-framework-Why-does-the-logo-of-Flask-Python-framework-not-look-like-a-flask">Why does the logo of Flask (Python framework) not look like a flask?</a></li>
+<li>Full Stack Python <a href="https://www.fullstackpython.com/flask.html">Flask</a></li>
+<li><a href="https://bbs.archlinux.org/viewtopic.php?id=231232">why local bind mount not work with container on docker machine</a></li>
+<li>Amy Hoy (2006-12-22) <a href="http://slash7.com/2006/12/22/vampires/">Help Vampires: A Spotter’s Guide</a></li>
+</ul>
+</blockquote>
+
+<p>封面图片来自 <a href="https://dribbble.com/shots/3491993-Multitasking">Multitasking</a> <a href="https://dribbble.com/kunchevsky"><i class="fa fa-dribbble" aria-hidden="true"></i> Alex Kunchevsky</a></p>
+         <div id="disqus_thread">
+  <a href="#" onclick="disqus();return false;">enable VPN and click here to <i class="fa fa-comments" aria-hidden="true"></i></a>
+</div>
+
+<script type="text/javascript">
+var disqus_loaded = false;
+function disqus() {
+  if (!disqus_loaded) {
+    
+    
+    
+    
+
+    disqus_loaded = true;
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'wushuzh';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }
+};
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </div>
+  </div>
+</div>
+<noscript>
+  <style>.jsonly { display: none }</style>
+</noscript>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://wushuzh.github.io/js/jquery.min.js"></script>
+<script src="https://wushuzh.github.io/js/bootstrap.min.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.cookie.js"> </script>
+<script src="https://wushuzh.github.io/js/ekko-lightbox.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://wushuzh.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/owl.carousel.min.js"></script>
+<script src="https://wushuzh.github.io/js/front.js"></script>
+
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</body>
+</html>

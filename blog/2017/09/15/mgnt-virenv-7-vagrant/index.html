@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>打造虚拟实验厂</title>
+<meta name="description" content="个人技术站点">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.theme.css">
+
+
+  <link href="https://wushuzh.github.io/css/style.sea.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://wushuzh.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-102509506-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="/">小强会武术</a></h1>
+    
+      <p class="sidebar-p">工程师</p>
+    
+      <p class="sidebar-p">记录每一个自己填平的坑</p>
+    
+    <ul class="sidebar-menu">
+      
+      
+        <li><a href="https://wushuzh.github.io/">Home</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  
+  
+  <a href="https://twitter.com/Xiao_Qiang" data-animate-hover="pulse" class="external twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  
+  
+  
+  <a href="mailto:wushuzh@outlook.com" data-animate-hover="pulse" class="email">
+    <i class="fa fa-envelope"></i>
+  </a>
+  
+  
+  
+  
+
+  
+  <a href="https://wushuzh.github.io/index.xml" data-animate-hover="pulse">
+    <i class='fa fa-rss'></i>
+  </a>
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2017 wushuzh
+        
+        | Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="/">小强会武术</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="content-column-content">
+
+      <div class="row">
+        <div class="col-sm-6">
+          
+            <div class="image">
+              <img src="https://wushuzh.github.io//img/blog/mgnt-virenv-7-vagrant/400.gif" class="img-responsive" alt="">
+            </div>
+          
+        </div>
+        <div class="col-md-6">
+            <h2>打造虚拟实验厂</h2>
+                <p>
+                  小强会武术
+                </p>
+
+                <time datetime="2017-09-15 20:55:02 &#43;0800 CST">
+                <i class="fa fa-calendar-o fa-fw"></i> 2017-09-15
+                </time>
+                &middot;
+                2329 字
+                &middot;
+                5 分钟
+
+        </div>
+      </div>
+      <br />
+
+         <p>QEMU/KVM、Libvirt、Vagrant 的安装配置
+</p>
+
+<h2 id="虚拟层">虚拟层</h2>
+
+<h3 id="kvm">KVM</h3>
+
+<p>KVM 无疑是最流行的开源虚拟层。为 archlinux 配置好虚拟实验环境，能让我们以极低的成本模拟各类系统和应用。相关概念有 QEMU 和 libvirt，前者是比 KVM 更为通用的虚拟仿真层，后者则为它们提供了一个统一的包含命令行、API 的管理工具库。更多详情见:</p>
+
+<ul>
+<li>Peeyush Gupta (2014-02-14) <a href="http://thegeekyway.com/kvm-vs-qemu-vs-libvirt/">KVM vs QEMU vs Libvirt</a></li>
+<li>Sriram S (2014-03-10) <a href="http://www.innervoice.in/blogs/2014/03/10/kvm-and-qemu/">KVM and QEMU – do you know the connection?</a></li>
+<li>Serverfault ans of <a href="https://serverfault.com/a/208788">Difference between KVM and QEMU</a></li>
+</ul>
+
+<p>只要宿主服务器支持虚拟化，VT-x 或 AMD-V，就意味着可以通过 KVM 为虚拟化加速。（ BIOS 中要启用该选项 ）
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ lscpu
+Architecture:        x86_64
+CPU op-mode(s):      32-bit, 64-bit
+Byte Order:          Little Endian
+CPU(s):              4
+On-line CPU(s) list: 0-3
+Thread(s) per core:  2
+Core(s) per socket:  2
+Socket(s):           1
+NUMA node(s):        1
+Vendor ID:           GenuineIntel
+CPU family:          6
+Model:               37
+Model name:          Intel(R) Core(TM) i5 CPU    650  @ 3.20GHz
+Stepping:            5
+CPU MHz:             1866.000
+CPU max MHz:         3333.0000
+CPU min MHz:         1199.0000
+BogoMIPS:            6386.65
+Virtualization:      VT-x
+L1d cache:           32K
+L1i cache:           32K
+L2 cache:            256K
+L3 cache:            4096K
+NUMA node0 CPU(s):   0-3
+Flags:               fpu vme de pse tsc msr pae mce cx8 apic
+sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr
+sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc
+arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc
+cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl
+vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2
+popcnt aes lahf_lm tpr_shadow vnmi flexpriority ept vpid
+dtherm ida arat</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ zgrep CONFIG_KVM /proc/config.gz
+CONFIG_KVM_GUEST=y
+# CONFIG_KVM_DEBUG_FS is not set
+CONFIG_KVM_MMIO=y
+CONFIG_KVM_ASYNC_PF=y
+CONFIG_KVM_VFIO=y
+CONFIG_KVM_GENERIC_DIRTYLOG_READ_PROTECT=y
+CONFIG_KVM_COMPAT=y
+CONFIG_KVM=m
+CONFIG_KVM_INTEL=m
+CONFIG_KVM_AMD=m
+CONFIG_KVM_MMU_AUDIT=y
+
+$ lsmod |grep kvm
+kvm_intel             192512  0
+kvm                   520192  1 kvm_intel
+irqbypass              16384  1 kvm</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ zgrep VIRTIO /proc/config.gz
+CONFIG_BLK_MQ_VIRTIO=y
+CONFIG_VIRTIO_VSOCKETS=m
+CONFIG_VIRTIO_VSOCKETS_COMMON=m
+CONFIG_NET_9P_VIRTIO=m
+CONFIG_VIRTIO_BLK=m
+# CONFIG_VIRTIO_BLK_SCSI is not set
+CONFIG_SCSI_VIRTIO=m
+CONFIG_VIRTIO_NET=m
+CONFIG_CAIF_VIRTIO=m
+CONFIG_VIRTIO_CONSOLE=m
+CONFIG_HW_RANDOM_VIRTIO=m
+CONFIG_DRM_VIRTIO_GPU=m
+CONFIG_VIRTIO=m
+CONFIG_VIRTIO_PCI=m
+CONFIG_VIRTIO_PCI_LEGACY=y
+CONFIG_VIRTIO_BALLOON=m
+CONFIG_VIRTIO_INPUT=m
+CONFIG_VIRTIO_MMIO=m
+CONFIG_VIRTIO_MMIO_CMDLINE_DEVICES=y
+CONFIG_CRYPTO_DEV_VIRTIO=m
+
+$ lsmod |grep virtio
+# === nothing yet ====
+# see more https://wiki.archlinux.org/index.php/Kernel_modules</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ sudo pacman -S qemu libvirt dnsmasq ebtables</code></pre></div></p>
+
+<h3 id="virtualbox">Virtualbox</h3>
+
+<p>vagrant 的默认虚拟层使用的是 virtualbox，这里也记录一下相关的安装配置。</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ sudo pacman -S virtualbox
+# choose vitualbox-host-modules-arch for linux kernel
+# reboot so virtualbox kernel modules auto loaded, see file
+# /usr/lib/modules-load.d/virtualbox-host-modules-arch.conf
+# lsmod to list already loaded
+# modinfo to get any module details even not loaded
+
+$ sudo pacman -S net-tools virtualbox-guest-iso
+# net-tools contains cli ifconfig and route
+# iso contains additional guest tools
+
+$ sudo pacman -S virtualbox-guest-utils
+# manually load the modules in
+# /usr/lib/modules-load.d/virtualbox-guest-modules-arch.conf
+# modprobe -a vboxguest vboxsf vboxvideo
+# improve video, input, sharing etc, launching
+$ VBoxClient --clipboard --draganddrop \
+        --seamless --display --checkhostversion
+
+$ sudo usermod -a -G vboxsf user</code></pre></div>
+
+<h2 id="鉴权和服务">鉴权和服务</h2>
+
+<p>虚拟机管理的最佳实践是放弃过于底层的 qemu 指令，而将自己作为一个“客户端”，首先连接守护服务进程 libvirt ，再进而使用 virsh 和相应 API 完成管理维护。</p>
+
+<p>有连接就有鉴权，libvirt 软件包提供了 policy 文件 <code>/usr/share/polkit-1/actions/org.libvirt.unix.policy</code>。而在 arch 中只要是属于 wheel 组的用户就可以做 VM 管理。</p>
+
+<p>在之前的一篇 <a href="/blog/2017/08/15/dual-os-3-setup-arch/">&ldquo;Archlinux 配置&rdquo;</a> 中专門建立了 kvm 用户组，这里则通过创建<code>/etc/polkit-1/rules.d/50-libvirt.rules</code>的 polkit rule 文件为 kvm 的组成员做免密配置。</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// Allow users in kvm group to manage
+</span><span style="color:#75715e">//   the libvirt daemon without authentication
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">polkit</span>.<span style="color:#a6e22e">addRule</span>(<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">action</span>, <span style="color:#a6e22e">subject</span>) {
+    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">action</span>.<span style="color:#a6e22e">id</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;org.libvirt.unix.manage&#34;</span> <span style="color:#f92672">&amp;&amp;</span>
+        <span style="color:#a6e22e">subject</span>.<span style="color:#a6e22e">isInGroup</span>(<span style="color:#e6db74">&#34;kvm&#34;</span>)) {
+            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">polkit</span>.<span style="color:#a6e22e">Result</span>.<span style="color:#a6e22e">YES</span>;
+    }
+});
+</code></pre></div>
+
+<p>如果你执行<code>getent group kvm</code>发现 kvm 的 gid 不是固定值 78 而是一个较大值，比如动态分配从 999 开始，详见 <a href="https://bugs.archlinux.org/task/54943">FS#54943 - [systemd] [qemu] [libvirt] Two or more conflicting lines for kvm configured, ignoring.</a> 你需要编辑 <code>/etc/libvirt/qemu.conf</code> 将 group 的值从 78 调整为 kvm，这样你就不会在以后面启动虚拟机时遇到<code>Could not access KVM kernel module: Permission denied</code>错误。</p>
+
+<p>配置完毕，启动服务，并测试一下 virsh 是否工作正常:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ sudo systemctl start libvirtd.service
+$ sudo systemctl start virtlogd.service
+$ sudo systemctl enable libvirtd.service
+$ virsh -c qemu:///system
+
+# add env var to avoid typing “-c uri” each time
+$ echo &#34;export LIBVIRT_DEFAULT_URI=qemu:///system&#34; &gt;&gt; ~/.bashrc</code></pre></div>
+
+<p>建议配置到这里重启一次系统，以便缺省的 Storage pools 名为 default 指向目录 <code>/var/lib/libvirt/images/</code> 已真正被创建并生效。不然后续调用 vagrant up 时会遇找不到 pool 的错误。</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ virsh pool-list
+$ virsh pool-info default
+$ virsh pool-dumpxml default</code></pre></div>
+
+<p><br /></p>
+
+<h2 id="vagrant-安装配置">Vagrant 安装配置</h2>
+
+<p>首先安装 vagrant 主程序。</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ sudo pacman -S vagrant rsync
+$ pacman -Q |grep vagrant
+vagrant 2.0.0-1
+vagrant-substrate 726.d082972-1</code></pre></div>
+
+
+<figure>
+    
+        <img src="/img/blog/mgnt-virenv-7-vagrant/env.png" />
+    
+    
+    <figcaption>
+        <h4>output of screenfetch</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<p>截至 2017 年 9 月，<a href="https://wiki.archlinux.org/index.php/Vagrant#vagrant-libvirt">arch wiki</a> 中仍保留了插件 vagrant-libvirt 安装所需的特定 workaround。而我安装时觉得 vagrant 已非 wiki 中提示的版本，尝试直接运行插件安装指令，结果在后面 vagrant 启动 VM 时各种失败，都是各种找不到 API 的错误，如<code>undefined method `persistent?' for #&lt;Libvirt::StoragePool:xxx</code>。解决办法是阅读 <a href="https://gist.github.com/j883376/d90933620c7ed14daa4e0963e005377f">gist</a> 并按相应步骤卸载，反复重装插件才最终搞定。</p>
+
+<blockquote>
+<p>另外我后来发现 AUR 有这个插件的<a href="https://aur.archlinux.org/packages/vagrant-libvirt/">软件包</a>，有点纳闷到底是该自行安装，还是通过 AUR 安装。</p>
+</blockquote>
+
+<p>启动 VM 时，基本流程是先联网下载 image ，然后根据 Vagrantfile 中的配置启动 VM 。</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ vagrant plugin list
+vagrant-libvirt (0.0.40)
+vagrant-proxyconf (1.5.2)
+
+$ export VAGRANT_DEFAULT_PROVIDER=libvirt
+
+$ mkdir testbed
+$ cd testbed
+$ vagrant init centos/7
+Bringing machine &#39;default&#39; up with &#39;libvirt&#39; provider...
+=&gt; default: Box &#39;centos/7&#39; could not be found. Attempting to find and install...
+   default: Box Provider: libvirt
+   default: Box Version: &gt;= 0
+=&gt; default: Loading metadata for box &#39;centos/7&#39;
+   default: URL: https://vagrantcloud.com/centos/7
+=&gt; default: Adding box &#39;centos/7&#39; (v1708.01) for provider: libvirt
+   default: Downloading: https://vagrantcloud.com/centos/boxes/7/versions/1708.01/providers/libvirt.box
+=&gt; default: Successfully added box &#39;centos/7&#39; (v1708.01) for &#39;libvirt&#39;!
+=&gt; default: Uploading base box image as volume into libvirt storage...
+=&gt; default: Creating image (snapshot of base box volume).
+=&gt; default: Creating domain with the following settings...
+=&gt; default:  -- Name:              testbed_default
+=&gt; default:  -- Domain type:       kvm
+=&gt; default:  -- Cpus:              1
+=&gt; default:  -- Feature:           acpi
+=&gt; default:  -- Feature:           apic
+=&gt; default:  -- Feature:           pae
+=&gt; default:  -- Memory:            512M
+=&gt; default:  -- Management MAC:    
+=&gt; default:  -- Loader:            
+=&gt; default:  -- Base box:          centos/7
+=&gt; default:  -- Storage pool:      default
+=&gt; default:  -- Image:             /var/lib/libvirt/images/testbed_default.img (41G)
+=&gt; default:  -- Volume Cache:      default
+=&gt; default:  -- Kernel:            
+=&gt; default:  -- Initrd:            
+=&gt; default:  -- Graphics Type:     vnc
+=&gt; default:  -- Graphics Port:     5900
+=&gt; default:  -- Graphics IP:       0.0.0.0
+=&gt; default:  -- Graphics Password: Not defined
+=&gt; default:  -- Video Type:        cirrus
+=&gt; default:  -- Video VRAM:        9216
+=&gt; default:  -- Sound Type:
+=&gt; default:  -- Keymap:            en-us
+=&gt; default:  -- TPM Path:          
+=&gt; default:  -- INPUT:             type=mouse, bus=ps2
+=&gt; default: Creating shared folders metadata...
+=&gt; default: Starting domain.
+=&gt; default: Waiting for domain to get an IP address...
+=&gt; default: Waiting for SSH to become available...
+   default:
+   default: Vagrant insecure key detected. Vagrant will automatically replace
+   default: this with a newly generated keypair for better security.
+   default:
+   default: Inserting generated public key within guest...
+   default: Removing insecure key from the guest if it&#39;s present...
+   default: Key inserted! Disconnecting and reconnecting using new SSH key...
+=&gt; default: Configuring and enabling network interfaces...
+   default: SSH address: 192.168.121.51:22
+   default: SSH username: vagrant
+   default: SSH auth method: private key
+=&gt; default: Rsyncing folder: ~/testbed/ =&gt; /vagrant</code></pre></div>
+
+<p>我在这里遇到了一个很诡异的坑，启动 VM 时进程挂死在<code>Waiting for domain to get an IP address...</code> 处。之前 dnsmasq 已经正确安装，并不需要任何手动配置——因为 vagrant 会创建一个名为 vagrant-libvirt 的专用网络。在 vagrant up 运行时可以执行下面的命令验证:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ virsh net-list --all
+Name                 State      Autostart     Persistent
+----------------------------------------------------------
+default              inactive   no            yes
+vagrant-libvirt      active     no            yes
+
+$ virsh net-info vagrant-libvirt
+Name:           vagrant-libvirt
+UUID:           bc5e692b-9850-4117-b140-30e0f2935685
+Active:         yes
+Persistent:     yes
+Autostart:      no
+Bridge:         virbr1
+
+$ virsh net-dumpxml vagrant-libvirt
+&lt;network connections=&#39;2&#39; ipv6=&#39;yes&#39;&gt;
+  &lt;name&gt;vagrant-libvirt&lt;/name&gt;
+  &lt;uuid&gt;bc5e692b-9850-4117-b140-30e0f2935685&lt;/uuid&gt;
+  &lt;forward mode=&#39;nat&#39;&gt;
+    &lt;nat&gt;
+      &lt;port start=&#39;1024&#39; end=&#39;65535&#39;/&gt;
+    &lt;/nat&gt;
+  &lt;/forward&gt;
+  &lt;bridge name=&#39;virbr1&#39; stp=&#39;on&#39; delay=&#39;0&#39;/&gt;
+  &lt;mac address=&#39;52:54:00:3d:22:16&#39;/&gt;
+  &lt;ip address=&#39;192.168.121.1&#39; netmask=&#39;255.255.255.0&#39;&gt;
+    &lt;dhcp&gt;
+      &lt;range start=&#39;192.168.121.1&#39; end=&#39;192.168.121.254&#39;/&gt;
+    &lt;/dhcp&gt;
+  &lt;/ip&gt;
+&lt;/network&gt;
+
+$ ip a
+# ==== virbr1 should be available in output ===</code></pre></div>
+
+<blockquote>
+<p>关于网络，我之前使用的是 NetworkManager ，但对于容器、虚拟机来说 <a href="https://wiki.archlinux.org/index.php/Systemd-networkd">systemd-networkd</a> 也许是更好的选择，这里先挖个坑，今后找机会再填。</p>
+</blockquote>
+
+<p>vagrant up 可以加 debug 参数查看详情。通过报错的关键字在 github vagrant-libvirt issues 中搜索，相关问题上报还挺多的，</p>
+
+<ul>
+<li><a href="https://github.com/vagrant-libvirt/vagrant-libvirt/issues/97">Public networking is waiting endlessly for IP information #97</a></li>
+<li><a href="https://github.com/vagrant-libvirt/vagrant-libvirt/issues/560">How to get more detail &amp; solutions to resolve it about &ldquo;libvirt: Waiting for domain to get an IP address&hellip;&rdquo; ? #560</a></li>
+<li><a href="https://github.com/vagrant-libvirt/vagrant-libvirt/issues/673">Waiting for IP fails silently after a long time #673</a></li>
+<li><a href="https://github.com/vagrant-libvirt/vagrant-libvirt/issues/784">New box created using create_box.sh - gets stuck at Waiting for domain to get an IP address&hellip; #784</a></li>
+</ul>
+
+<p>查问题的方法也很多，如 #560 中建议使用 wireshark 尝试网络抓包。而 #784 中建议的通过 vnc 连接到 VM 对我这个问题起到了关键性作用。</p>
+
+<p>启动 vinagre 连接 VM 可以看到其内核载入启动部分。结果我发现这个 VM 居然报的错误是 boot from disk failure。然后就不用再和 DHCP 较劲了。转而一查 <code>/var/lib/libvirt/images/</code>，大概是下载 image 时的网络问题，下载的介质并不完整。于是重新删除后下载果然就好了。</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ vagrant destroy testbed
+$ vagrant box list
+$ vagrant box remote centos/7
+$ virsh vol-list default
+$ virsh vol-delete some.img</code></pre></div>
+
+<p>vagrant ssh enjoy</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">vagrant status
+vagrant up
+vagrant ssh
+vagrant halt
+
+# to save a snapshot with name &#34;clean&#34;
+vagrant snapshot save clean
+# to restore the snapshot
+vagrant snapshot restore clean --no-provision
+
+vagrant destroy
+vagrant provision
+vagrant reload</code></pre></div>
+
+<p>参考文档</p>
+
+<blockquote>
+<ul>
+<li><a href="https://wiki.archlinux.org/index.php/QEMU">https://wiki.archlinux.org/index.php/QEMU</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/Libvirt">https://wiki.archlinux.org/index.php/Libvirt</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/KVM">https://wiki.archlinux.org/index.php/KVM</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/Vagrant">https://wiki.archlinux.org/index.php/Vagrant</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/VirtualBox">https://wiki.archlinux.org/index.php/VirtualBox</a></li>
+</ul>
+</blockquote>
+
+<p>封面图片来自 <a href="https://dribbble.com/shots/2618501-Space-Frolicking">Space Frolicking</a> <a href="https://dribbble.com/TomasBrunsdon"><i class="fa fa-dribbble" aria-hidden="true"></i> Tomas Brunsdon</a></p>
+         <div id="disqus_thread">
+  <a href="#" onclick="disqus();return false;">enable VPN and click here to <i class="fa fa-comments" aria-hidden="true"></i></a>
+</div>
+
+<script type="text/javascript">
+var disqus_loaded = false;
+function disqus() {
+  if (!disqus_loaded) {
+    
+    
+    
+    
+
+    disqus_loaded = true;
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'wushuzh';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }
+};
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </div>
+  </div>
+</div>
+<noscript>
+  <style>.jsonly { display: none }</style>
+</noscript>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://wushuzh.github.io/js/jquery.min.js"></script>
+<script src="https://wushuzh.github.io/js/bootstrap.min.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.cookie.js"> </script>
+<script src="https://wushuzh.github.io/js/ekko-lightbox.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://wushuzh.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/owl.carousel.min.js"></script>
+<script src="https://wushuzh.github.io/js/front.js"></script>
+
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</body>
+</html>

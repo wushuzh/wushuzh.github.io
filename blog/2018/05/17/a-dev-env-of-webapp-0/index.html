@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Flask 开发 0</title>
+<meta name="description" content="个人技术站点">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.theme.css">
+
+
+  <link href="https://wushuzh.github.io/css/style.sea.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://wushuzh.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-102509506-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="/">小强会武术</a></h1>
+    
+      <p class="sidebar-p">工程师</p>
+    
+      <p class="sidebar-p">记录每一个自己填平的坑</p>
+    
+    <ul class="sidebar-menu">
+      
+      
+        <li><a href="https://wushuzh.github.io/">Home</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  
+  
+  <a href="https://twitter.com/Xiao_Qiang" data-animate-hover="pulse" class="external twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  
+  
+  
+  <a href="mailto:wushuzh@outlook.com" data-animate-hover="pulse" class="email">
+    <i class="fa fa-envelope"></i>
+  </a>
+  
+  
+  
+  
+
+  
+  <a href="https://wushuzh.github.io/index.xml" data-animate-hover="pulse">
+    <i class='fa fa-rss'></i>
+  </a>
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2017 wushuzh
+        
+        | Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="/">小强会武术</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="content-column-content">
+
+      <div class="row">
+        <div class="col-sm-6">
+          
+            <div class="image">
+              <img src="https://wushuzh.github.io//img/blog/a-dev-env-of-webapp-0/flask-do.png" class="img-responsive" alt="">
+            </div>
+          
+        </div>
+        <div class="col-md-6">
+            <h2>Flask 开发 0</h2>
+                <p>
+                  小强会武术
+                </p>
+
+                <time datetime="2018-05-17 21:17:18 &#43;0800 CST">
+                <i class="fa fa-calendar-o fa-fw"></i> 2018-05-17
+                </time>
+                &middot;
+                357 字
+                &middot;
+                1 分钟
+
+        </div>
+      </div>
+      <br />
+
+         <p>按官方教程，用TDD的方式写一个迷你博客
+</p>
+
+<p>Flask 的<a href="http://flask.pocoo.org/docs/1.0/tutorial/">官方教程</a>: 一个包含用户注册和登录、帖子的创建、修改、删除功能的迷你博客被包含在了<a href="https://github.com/pallets/flask/tree/1.0.2/examples/tutorial">其源代码仓库中</a>。</p>
+
+<ul>
+<li><a href="http://flask.pocoo.org/docs/1.0/tutorial/layout/">项目结构</a>: 和原教程稍微不同的是，用 pipenv 来管理虚拟环境，可以省去 venv 目录，仅有如下两个子目录: flaskr 和 tests 分别放置项目和测试代码;</li>
+<li><a href="http://flask.pocoo.org/docs/1.0/tutorial/factory/">创建应用</a>: 一个 Flask 类的实例即为我们要构建的应用程序，为了避免全局变量，教程封装了一个 application factory 函数。用于完成所有和应用实例相关的配置、组件注册等初始化操作;</li>
+<li><a href="http://flask.pocoo.org/docs/1.0/tutorial/database/">创建库表</a>: 定义所需的数据库表 DDL，关联到一个自定义指令上 init-db ，最后注册到应用实例，方便命令行使用;</li>
+<li><a href="http://flask.pocoo.org/docs/1.0/tutorial/views/">组织视图</a>: View 函数内部是对请求的应答逻辑。而功能相关的一组视图可以定义在一个 Blueprint 内。本节中将身份验证作为一个 Blueprint 的组件注册至应用，包含了注册、登录、退出等功能;</li>
+</ul>
+
+<p>参考文档</p>
+
+<blockquote>
+<ul>
+<li>David Lord (2018-04-26) <a href="https://www.palletsprojects.com/blog/flask-1-0-released/">Flask 1.0 Released</a></li>
+<li><a href="https://github.com/mjhea0/flaskr-tdd">Flaskr: Intro to Flask, Test-Driven Development(TDD), and JavaScript</a></li>
+</ul>
+</blockquote>
+
+<p>封面图片来自 <a href="https://dribbble.com/shots/2018912-Flask">Flask</a> <a href="https://dribbble.com/amostov"><i class="fa fa-dribbble" aria-hidden="true"></i> Alex S. Mostov</a></p>
+         <div id="disqus_thread">
+  <a href="#" onclick="disqus();return false;">enable VPN and click here to <i class="fa fa-comments" aria-hidden="true"></i></a>
+</div>
+
+<script type="text/javascript">
+var disqus_loaded = false;
+function disqus() {
+  if (!disqus_loaded) {
+    
+    
+    
+    
+
+    disqus_loaded = true;
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'wushuzh';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }
+};
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </div>
+  </div>
+</div>
+<noscript>
+  <style>.jsonly { display: none }</style>
+</noscript>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://wushuzh.github.io/js/jquery.min.js"></script>
+<script src="https://wushuzh.github.io/js/bootstrap.min.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.cookie.js"> </script>
+<script src="https://wushuzh.github.io/js/ekko-lightbox.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://wushuzh.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/owl.carousel.min.js"></script>
+<script src="https://wushuzh.github.io/js/front.js"></script>
+
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</body>
+</html>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>搜索二叉树</title>
+<meta name="description" content="个人技术站点">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.theme.css">
+
+
+  <link href="https://wushuzh.github.io/css/style.sea.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://wushuzh.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-102509506-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="/">小强会武术</a></h1>
+    
+      <p class="sidebar-p">工程师</p>
+    
+      <p class="sidebar-p">记录每一个自己填平的坑</p>
+    
+    <ul class="sidebar-menu">
+      
+      
+        <li><a href="https://wushuzh.github.io/">Home</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  
+  
+  <a href="https://twitter.com/Xiao_Qiang" data-animate-hover="pulse" class="external twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  
+  
+  
+  <a href="mailto:wushuzh@outlook.com" data-animate-hover="pulse" class="email">
+    <i class="fa fa-envelope"></i>
+  </a>
+  
+  
+  
+  
+
+  
+  <a href="https://wushuzh.github.io/index.xml" data-animate-hover="pulse">
+    <i class='fa fa-rss'></i>
+  </a>
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2017 wushuzh
+        
+        | Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="/">小强会武术</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="content-column-content">
+
+      <div class="row">
+        <div class="col-sm-6">
+          
+            <div class="image">
+              <img src="https://wushuzh.github.io//img/blog/loop-tree-by-stack-queue/tree.gif" class="img-responsive" alt="">
+            </div>
+          
+        </div>
+        <div class="col-md-6">
+            <h2>搜索二叉树</h2>
+                <p>
+                  小强会武术
+                </p>
+
+                <time datetime="2017-12-01 20:11:31 &#43;0800 CST">
+                <i class="fa fa-calendar-o fa-fw"></i> 2017-12-01
+                </time>
+                &middot;
+                1019 字
+                &middot;
+                3 分钟
+
+        </div>
+      </div>
+      <br />
+
+         <p>学习栈和队列在树搜索中的使用
+</p>
+
+<h3 id="数据结构-tree">数据结构 Tree</h3>
+
+<p>Tree 可用于存放有层级的数据，使我们很自然地采用决策方式思考问题。定义如下</p>
+
+<ul>
+<li>一个树由一个或以上的节点组成，每个节点可用于存储数据</li>
+<li>各个节点通过分支相连接</li>
+<li>除了叶子，其他节点都会有一个或以上子节点，有子节点的节点叫父节点</li>
+<li>在简单树中，每个子节点只有一个父节点，否则就叫图</li>
+</ul>
+
+<p>Binary Tree 作为一个特例，其约束为每个节点至多能有两个子节点，它在存放有序数据时特别有用。</p>
+
+<p>数据结构可以定义如下</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">BinaryTree</span>():
+    <span style="color:#66d9ef">def</span> __init__(self, value):
+        self<span style="color:#f92672">.</span>value <span style="color:#f92672">=</span> value
+        self<span style="color:#f92672">.</span>left_branch <span style="color:#f92672">=</span> None
+        self<span style="color:#f92672">.</span>right_branch <span style="color:#f92672">=</span> None
+        self<span style="color:#f92672">.</span>parent <span style="color:#f92672">=</span> None
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">set_left_branch</span>(self, node: <span style="color:#e6db74">&#39;BinaryTree&#39;</span>) <span style="color:#f92672">-&gt;</span> None:
+        self<span style="color:#f92672">.</span>left_branch <span style="color:#f92672">=</span> node
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_left_branch</span>(self) <span style="color:#f92672">-&gt;</span> <span style="color:#e6db74">&#39;BinaryTree&#39;</span>:
+        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>left_branch
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">set_right_branch</span>(self, node: <span style="color:#e6db74">&#39;BinaryTree&#39;</span>) <span style="color:#f92672">-&gt;</span> None:
+        self<span style="color:#f92672">.</span>right_branch <span style="color:#f92672">=</span> node
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_right_branch</span>(self) <span style="color:#f92672">-&gt;</span> <span style="color:#e6db74">&#39;BinaryTree&#39;</span>:
+        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>right_branch
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">set_parent</span>(self, parent: <span style="color:#e6db74">&#39;BinaryTree&#39;</span>) <span style="color:#f92672">-&gt;</span> None:
+        self<span style="color:#f92672">.</span>parent <span style="color:#f92672">=</span> parent
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_parent</span>(self) <span style="color:#f92672">-&gt;</span> <span style="color:#e6db74">&#39;BinaryTree&#39;</span>:
+        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>parent
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_value</span>(self):
+        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>value
+
+    <span style="color:#66d9ef">def</span> __str__(self):
+        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>value</code></pre></div>
+
+<blockquote>
+<p>为了更为清晰的表示函数的输入参数和返回值的类型，这里代码加入了类型标注，而 Dropbox 出品的第三方工具 <a href="http://mypy-lang.org/">mypy</a> 则可以利用这些标注实现类型检测。</p>
+</blockquote>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">pipenv install mypy</code></pre></div>
+
+<h3 id="二叉树">二叉树</h3>
+
+<p>使用上面的定义，创建一个二叉树。</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">...</span>
+n2 <span style="color:#f92672">=</span> BinaryTree(<span style="color:#ae81ff">2</span>)
+n5 <span style="color:#f92672">=</span> BinaryTree(<span style="color:#ae81ff">5</span>)
+n8 <span style="color:#f92672">=</span> BinaryTree(<span style="color:#ae81ff">8</span>)
+
+
+n5<span style="color:#f92672">.</span>set_left_branch(n2)
+n2<span style="color:#f92672">.</span>set_parent(n5)
+n5<span style="color:#f92672">.</span>set_right_branch(n8)
+n8<span style="color:#f92672">.</span>set_parent(n5)
+<span style="color:#f92672">...</span></code></pre></div>
+
+<h3 id="深度搜索">深度搜索</h3>
+
+<ol>
+<li>从跟节点开始</li>
+<li>任何节点，若非目标，先向左搜索</li>
+<li>当达到叶子节点后，回溯到最近一个决策点向右搜索</li>
+</ol>
+
+<p>实现算法:</p>
+
+<ul>
+<li>借助 stack 保存尚未检查的节点——可用父节点代指所有未检查的子节点</li>
+<li>DFSBinary 设计为高阶函数，可接受一个自定义函数来判定当前节点是否为目标节点</li>
+<li>若不是，则将其子节点全压入 stack ，并向左继续查找</li>
+</ul>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">DFS_binary</span>(root: BinaryTree, fcn) <span style="color:#f92672">-&gt;</span> bool:
+    stack: List[BinaryTree] <span style="color:#f92672">=</span> [root]
+    <span style="color:#66d9ef">while</span> len(stack) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>:
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;at node {}&#39;</span><span style="color:#f92672">.</span>format(stack[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>get_value()))
+        <span style="color:#66d9ef">if</span> fcn(stack[<span style="color:#ae81ff">0</span>]):
+            <span style="color:#66d9ef">return</span> True
+        <span style="color:#66d9ef">else</span>:
+            temp <span style="color:#f92672">=</span> stack<span style="color:#f92672">.</span>pop(<span style="color:#ae81ff">0</span>)
+            <span style="color:#66d9ef">if</span> temp<span style="color:#f92672">.</span>get_right_branch():
+                stack<span style="color:#f92672">.</span>insert(<span style="color:#ae81ff">0</span>, temp<span style="color:#f92672">.</span>get_right_branch())
+            <span style="color:#66d9ef">if</span> temp<span style="color:#f92672">.</span>get_left_branch():
+                stack<span style="color:#f92672">.</span>insert(<span style="color:#ae81ff">0</span>, temp<span style="color:#f92672">.</span>get_left_branch())
+    <span style="color:#66d9ef">return</span> False</code></pre></div>
+
+<h3 id="广度搜索">广度搜索</h3>
+
+<ol>
+<li>从跟节点开始</li>
+<li>逐层逐个搜寻</li>
+</ol>
+
+<p>实现代码的区别仅仅在于当前节点不是目标节点时:</p>
+
+<ul>
+<li>从 List 的首部取得下一个查找节点</li>
+<li>记录待查找节点时，插入位置为队列的尾部
+&gt; 这里是借用 List 模拟 Queue 的 FIFO 特性。</li>
+</ul>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">BFS_binary</span>(root: BinaryTree, fcn) <span style="color:#f92672">-&gt;</span> bool:
+    queue: List[BFSBinary] <span style="color:#f92672">=</span> [root]
+    <span style="color:#66d9ef">while</span> len(queue) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>:
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;at node {}&#39;</span><span style="color:#f92672">.</span>format(queue[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>get_value()))
+        <span style="color:#66d9ef">if</span> fcn(queue[<span style="color:#ae81ff">0</span>]):
+            <span style="color:#66d9ef">return</span> True
+        <span style="color:#66d9ef">else</span>:
+            temp <span style="color:#f92672">=</span> queue<span style="color:#f92672">.</span>pop(<span style="color:#ae81ff">0</span>)
+            <span style="color:#66d9ef">if</span> temp<span style="color:#f92672">.</span>get_left_branch():
+                queue<span style="color:#f92672">.</span>append(temp<span style="color:#f92672">.</span>get_left_branch())
+            <span style="color:#66d9ef">if</span> temp<span style="color:#f92672">.</span>get_right_branch():
+                queue<span style="color:#f92672">.</span>append(temp<span style="color:#f92672">.</span>get_right_branch())
+    <span style="color:#66d9ef">return</span> False</code></pre></div>
+
+<h3 id="获取路经">获取路经</h3>
+
+<p>如果不仅仅是知晓节点是否找到，还要获得达到节点的路徑，只需添加一个辅助函数回溯父节点即可:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">trace_path</span>(node: BinaryTree) <span style="color:#f92672">-&gt;</span> List[BinaryTree]:
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> node<span style="color:#f92672">.</span>get_parent():
+        <span style="color:#66d9ef">return</span> [node]
+    <span style="color:#66d9ef">else</span>:
+        <span style="color:#66d9ef">return</span> [node] <span style="color:#f92672">+</span> trace_path(node<span style="color:#f92672">.</span>get_parent())
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">BFS_binary_path</span>(root: BinaryTree, fcn) <span style="color:#f92672">-&gt;</span> List[BinaryTree]:
+    queue: Deque[BinaryTree] <span style="color:#f92672">=</span> deque([root])
+    <span style="color:#66d9ef">while</span> len(queue) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>:
+        <span style="color:#66d9ef">if</span> fcn(queue[<span style="color:#ae81ff">0</span>]):
+            <span style="color:#66d9ef">return</span> trace_path(queue[<span style="color:#ae81ff">0</span>])
+        <span style="color:#66d9ef">else</span>:
+            temp <span style="color:#f92672">=</span> queue<span style="color:#f92672">.</span>popleft()
+            <span style="color:#66d9ef">if</span> temp<span style="color:#f92672">.</span>get_left_branch():
+                queue<span style="color:#f92672">.</span>append(temp<span style="color:#f92672">.</span>get_left_branch())
+            <span style="color:#66d9ef">if</span> temp<span style="color:#f92672">.</span>get_right_branch():
+                queue<span style="color:#f92672">.</span>append(temp<span style="color:#f92672">.</span>get_right_branch())
+    <span style="color:#66d9ef">return</span> []</code></pre></div>
+
+<h3 id="有序树搜索">有序树搜索</h3>
+
+<p>特别的，如果树的任意节点都遵从比它小的数据存放于其左侧子节点上，而比它大都处于右侧分支。一个简单的修改我们就可以获得巨大的搜索效率提升。</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">DFS_ordbinary</span>(root: BinaryTree, fcn, ltfcn) <span style="color:#f92672">-&gt;</span> bool:
+    stack: List[BinaryTree] <span style="color:#f92672">=</span> [root]
+    <span style="color:#66d9ef">while</span> len(stack) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>:
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;at node {}&#39;</span><span style="color:#f92672">.</span>format(stack[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>get_value()))
+        <span style="color:#66d9ef">if</span> fcn(stack[<span style="color:#ae81ff">0</span>]) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>:
+            <span style="color:#66d9ef">return</span> True
+        <span style="color:#66d9ef">elif</span> ltfcn(stack[<span style="color:#ae81ff">0</span>]):
+            temp <span style="color:#f92672">=</span> stack<span style="color:#f92672">.</span>pop(<span style="color:#ae81ff">0</span>)
+            <span style="color:#66d9ef">if</span> temp<span style="color:#f92672">.</span>get_left_branch():
+                stack<span style="color:#f92672">.</span>insert(<span style="color:#ae81ff">0</span>, temp<span style="color:#f92672">.</span>get_left_branch())
+        <span style="color:#66d9ef">else</span>:
+            temp <span style="color:#f92672">=</span> stack<span style="color:#f92672">.</span>pop(<span style="color:#ae81ff">0</span>)
+            <span style="color:#66d9ef">if</span> temp<span style="color:#f92672">.</span>get_right_branch():
+                stack<span style="color:#f92672">.</span>insert(<span style="color:#ae81ff">0</span>, temp<span style="color:#f92672">.</span>get_right_branch())
+    <span style="color:#66d9ef">return</span> False
+
+
+DFS_ordbinary(n5,
+              <span style="color:#66d9ef">lambda</span> n: n <span style="color:#f92672">==</span> n6,
+              <span style="color:#66d9ef">lambda</span> n: n<span style="color:#f92672">.</span>get_value() <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">6</span>)
+<span style="color:#75715e"># at node 5</span>
+<span style="color:#75715e"># at node 8</span>
+<span style="color:#75715e"># at node 6</span></code></pre></div>
+
+<h3 id="总结">总结</h3>
+
+<ul>
+<li>不变更程序逻辑，仅通过数据结构 stack/queue ，就能在深度和广度的搜索方式间切换</li>
+<li>若需要获得节点路径，添加一个辅助函数就能做到</li>
+<li>若树上节点是有序存放的，微小改变就能大大提升搜索效率</li>
+</ul>
+
+<p>参考文档</p>
+
+<blockquote>
+<ul>
+<li>Paulo Scardine answer <a href="https://stackoverflow.com/a/33533514/4393386">How do I specify that the return type of a method is the same as the class itself in python?</a></li>
+<li>Dan Poirier (2017-02-22) <a href="https://www.caktusgroup.com/blog/2017/02/22/python-type-annotations/">Python type annotations</a></li>
+</ul>
+</blockquote>
+
+<p>封面图片来自 <a href="https://dribbble.com/shots/3454908-Heraldry-4">Heraldry 4</a> <a href="https://dribbble.com/federicafragapane"><i class="fa fa-dribbble" aria-hidden="true"></i> Forbender</a></p>
+         <div id="disqus_thread">
+  <a href="#" onclick="disqus();return false;">enable VPN and click here to <i class="fa fa-comments" aria-hidden="true"></i></a>
+</div>
+
+<script type="text/javascript">
+var disqus_loaded = false;
+function disqus() {
+  if (!disqus_loaded) {
+    
+    
+    
+    
+
+    disqus_loaded = true;
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'wushuzh';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }
+};
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </div>
+  </div>
+</div>
+<noscript>
+  <style>.jsonly { display: none }</style>
+</noscript>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://wushuzh.github.io/js/jquery.min.js"></script>
+<script src="https://wushuzh.github.io/js/bootstrap.min.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.cookie.js"> </script>
+<script src="https://wushuzh.github.io/js/ekko-lightbox.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://wushuzh.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/owl.carousel.min.js"></script>
+<script src="https://wushuzh.github.io/js/front.js"></script>
+
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</body>
+</html>

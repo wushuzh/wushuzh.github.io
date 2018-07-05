@@ -31,11 +31,15 @@
 
 
 <script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-102509506-1', 'auto');
-ga('send', 'pageview');
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-102509506-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 </head>
 <body>
@@ -125,7 +129,7 @@ ga('send', 'pageview');
                 <i class="fa fa-calendar-o fa-fw"></i> 2017-06-26
                 </time>
                 &middot;
-                1129 字
+                1123 字
                 &middot;
                 3 分钟
 
@@ -133,7 +137,7 @@ ga('send', 'pageview');
       </div>
       <br />
 
-         <p>Kernel Panic，应该能撑起&rdquo;咋整&rdquo;系列开篇的门面。
+         <p>Kernel Panic 才能撑起&rdquo;咋整&rdquo;系列开篇的门面。
 </p>
 
 <h3 id="前言">前言</h3>
@@ -151,13 +155,11 @@ ga('send', 'pageview');
 <li>现象2：无法登入新用户，再重启系统后，直接挂起，直接显示 kernel panic</li>
 </ul>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>/bin/login: relocation error: /usr/lib64/libc.so.6:
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">/bin/login: relocation error: /usr/lib64/libc.so.6:
     symbol _ dl_starting_up, version GLIBC_PRIVATE not defined
-    in file ld-linux-x86-64.so.2 with link time reference
-</pre></div>
+    in file ld-linux-x86-64.so.2 with link time reference</code></pre></div>
 
-
-<figure >
+<figure>
     
         <img src="/img/blog/deal-with-kernel-panic/panic-snap.png" />
     
@@ -186,7 +188,7 @@ ga('send', 'pageview');
 <p>这里第五步稍微复杂些，有点像法医探伤，一般的方法就是阅读直接相关的脚本程序，查看相关 rpm 包中文件内容，和其他正常系统文件做比对，经过多轮猜测和尝试，最终你就一定能靠运气修好系统( 逃…… )</p>
 
 
-<figure >
+<figure>
     
         <img src="/img/blog/deal-with-kernel-panic/centos-7-rescue-2.png" />
     
@@ -211,11 +213,9 @@ ga('send', 'pageview');
 <li>查看 rpm 中 spec 文件中关于安装过程的文件拷贝及权限设置等等，参考 Stackoverflow <a href="https://stackoverflow.com/a/14168474">extract the spec file from rpm package</a></li>
 </ul>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>// rpmrebuild is available in EPEL repo
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">// rpmrebuild is available in EPEL repo
 rpmrebuild -s pkg.spec installed-pkg
-rpmrebuild -e -p pkg.rpm
-</pre></div>
-
+rpmrebuild -e -p pkg.rpm</code></pre></div>
 
 <h3 id="事后总结">事后总结</h3>
 
@@ -228,7 +228,7 @@ rpmrebuild -e -p pkg.rpm
 </ol>
 
 
-<figure >
+<figure>
     
         <img src="/img/blog/deal-with-kernel-panic/spiderman.jpg" />
     

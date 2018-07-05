@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>python 并发 (2)</title>
+<meta name="description" content="个人技术站点">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.theme.css">
+
+
+  <link href="https://wushuzh.github.io/css/style.sea.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://wushuzh.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-102509506-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="/">小强会武术</a></h1>
+    
+      <p class="sidebar-p">工程师</p>
+    
+      <p class="sidebar-p">记录每一个自己填平的坑</p>
+    
+    <ul class="sidebar-menu">
+      
+      
+        <li><a href="https://wushuzh.github.io/">Home</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  
+  
+  <a href="https://twitter.com/Xiao_Qiang" data-animate-hover="pulse" class="external twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  
+  
+  
+  <a href="mailto:wushuzh@outlook.com" data-animate-hover="pulse" class="email">
+    <i class="fa fa-envelope"></i>
+  </a>
+  
+  
+  
+  
+
+  
+  <a href="https://wushuzh.github.io/index.xml" data-animate-hover="pulse">
+    <i class='fa fa-rss'></i>
+  </a>
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2017 wushuzh
+        
+        | Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="/">小强会武术</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="content-column-content">
+
+      <div class="row">
+        <div class="col-sm-6">
+          
+            <div class="image">
+              <img src="https://wushuzh.github.io//img/blog/try-io-multiplexing-py/pantone_color_picker.gif" class="img-responsive" alt="">
+            </div>
+          
+        </div>
+        <div class="col-md-6">
+            <h2>python 并发 (2)</h2>
+                <p>
+                  小强会武术
+                </p>
+
+                <time datetime="2017-09-14 21:28:44 &#43;0800 CST">
+                <i class="fa fa-calendar-o fa-fw"></i> 2017-09-14
+                </time>
+                &middot;
+                1385 字
+                &middot;
+                3 分钟
+
+        </div>
+      </div>
+      <br />
+
+         <p>仅通过调度器实现服务复用——免线程版
+</p>
+
+<h2 id="生成器简介">生成器简介</h2>
+
+<p>在上篇 <a href="/blog/2017/09/08/intro-to-py-socket/">&ldquo;python 并发 (1)&rdquo;</a> ，我们之所以要引入线程，是因为下列三个阻塞调用：</p>
+
+<ul>
+<li>用于等待 socket 连接的 accept</li>
+<li>建立的 socket 连接后等待 client 发送时的 recv</li>
+<li>发送给 client 回应时的 send</li>
+</ul>
+
+<p>本篇我们尝试通过引入 geneartor —— 一个为方便定制循环而引入的概念，来解决上述阻塞问题。</p>
+
+<p>首先复习 generator</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ python3
+Python 3.6.2 (default, Jul 20 2017, 03:52:27)
+[GCC 7.1.1 20170630] on linux
+Type &#34;help&#34;, &#34;copyright&#34;, &#34;credits&#34; or &#34;license&#34; for more
+&gt;&gt;&gt; def countdown(n):
+...     while n &gt; 0:
+...         yield n
+...         n -= 1
+...
+&gt;&gt;&gt; c = countdown(5)
+&gt;&gt;&gt; print(c)
+&lt;generator object countdown at 0x7f23959ee468&gt;
+&gt;&gt;&gt; for i in c:
+...     print(i)
+...
+5
+4
+3
+2
+1
+&gt;&gt;&gt; c = countdown(3)
+&gt;&gt;&gt; next(c)
+3
+&gt;&gt;&gt; next(c)
+2
+&gt;&gt;&gt; next(c)
+1
+&gt;&gt;&gt; next(c)
+Traceback (most recent call last):
+  File &#34;&lt;stdin&gt;&#34;, line 1, in &lt;module&gt;
+StopIteration</code></pre></div>
+
+<p>下面示例中 run 方法的逻辑和典型的循环调度器的机制类似，以 round-robin 的方式轮循三个 generators 。</p>
+
+<p>需要知晓的是 collections.deque 对象( double-ended queue ) 线程安全，无论基于头还是尾的 append 和 pop 都是 O(1)</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">&gt;&gt;&gt; from collections import deque
+&gt;&gt;&gt; tasks = deque()
+&gt;&gt;&gt;
+&gt;&gt;&gt; tasks.extend([countdown(5), countdown(8), countdown(3)])
+&gt;&gt;&gt; tasks
+deque([&lt;generator object countdown at 0x7f23959ee990&gt;,
+       &lt;generator object countdown at 0x7f23959eea40&gt;,
+       &lt;generator object countdown at 0x7f23959eef10&gt;])
+
+&gt;&gt;&gt; def run():
+...     while tasks:
+...         task = tasks.popleft()
+...         try:
+...             x = next(task)
+...             print(x)
+...             tasks.append(task)
+...         except StopIteration:
+...             print(&#34;Task&#34;)
+...
+&gt;&gt;&gt; run()
+5
+8
+3    # l1
+4
+7
+2    # l2
+3
+6
+1    # l3
+2
+5
+Task # l4
+1
+4    # l5
+Task
+3    # l6
+2    # l7
+1    # l8
+Task # l9</code></pre></div>
+
+<h2 id="魔法时刻">魔法时刻</h2>
+
+<p>借助 generator 外加一个我们自己实现的调度器，来解决 socket 编程中调用阻塞的问题。</p>
+
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">37
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">38
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">39
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">40
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">41
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">42
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">43
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">44
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">45
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">46
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">47
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">48
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">49
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">50
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">51
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">52
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">53
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">54
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">55
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">56
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">57
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">58
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff"><span style="color:#f92672">--- a/aserver.py
+</span><span style="color:#f92672"></span><span style="color:#a6e22e">+++ b/aserver.py
+</span><span style="color:#a6e22e"></span><span style="color:#75715e">@@ -3,7 +3,26 @@
+</span><span style="color:#75715e"></span>
+ from socket import *
+ from fib import fib
+<span style="color:#f92672">-
+</span><span style="color:#f92672"></span><span style="color:#a6e22e">+from collections import deque
+</span><span style="color:#a6e22e">+
+</span><span style="color:#a6e22e">+tasks = deque()
+</span><span style="color:#a6e22e">+recv_wait = { } # Mapping sockets -&gt; tasks (generators)
+</span><span style="color:#a6e22e">+send_wait = { }
+</span><span style="color:#a6e22e">+
+</span><span style="color:#a6e22e">+def run():
+</span><span style="color:#a6e22e">+    while tasks:
+</span><span style="color:#a6e22e">+        task = tasks.popleft()
+</span><span style="color:#a6e22e">+        try:
+</span><span style="color:#a6e22e">+            why, what = next(task)  # Run to the yield
+</span><span style="color:#a6e22e">+            if why == &#39;recv&#39;:
+</span><span style="color:#a6e22e">+                # Must go wait somewhere
+</span><span style="color:#a6e22e">+                recv_wait[what] = task
+</span><span style="color:#a6e22e">+            elif why == &#39;send&#39;:
+</span><span style="color:#a6e22e">+                send_wait[what] = task
+</span><span style="color:#a6e22e">+            else:
+</span><span style="color:#a6e22e">+                raise RuntimeError(&#34;ARG!&#34;)
+</span><span style="color:#a6e22e">+        except StopIteration:
+</span><span style="color:#a6e22e">+            print(&#34;task done&#34;)
+</span><span style="color:#a6e22e"></span>
+ def fib_server(address):
+     #sock = socket(AF_INET, SOCK_STREAM)
+<span style="color:#75715e">@@ -12,22 +31,25 @@ def fib_server(address):
+</span><span style="color:#75715e"></span>     sock.bind(address)
+     sock.listen(5)
+     while True:
+<span style="color:#a6e22e">+        yield &#39;recv&#39;, sock
+</span><span style="color:#a6e22e"></span>         client, addr = sock.accept()  # blocking
+         print(&#34;Connected &#34;, addr)
+<span style="color:#f92672">-        fib_handler(client)
+</span><span style="color:#f92672"></span><span style="color:#a6e22e">+        tasks.append(fib_handler(client))
+</span><span style="color:#a6e22e"></span>
+
+ def fib_handler(client):
+     while True:
+<span style="color:#a6e22e">+        yield &#39;recv&#39;, client
+</span><span style="color:#a6e22e"></span>         req = client.recv(100)    # blocking
+         if not req:
+             break
+         n = int(req)
+         result = fib(n)
+         resq = str(result).encode(&#39;ascii&#39;) + b&#39;\n&#39;
+<span style="color:#a6e22e">+        yield &#39;send&#39;, client
+</span><span style="color:#a6e22e"></span>         client.send(resq)    # blocking
+     print(&#34;Closed&#34;)
+
+
+<span style="color:#f92672">-fib_server((&#39;&#39;, 25000))    
+</span><span style="color:#f92672"></span><span style="color:#a6e22e">+tasks.append(fib_server((&#39;&#39;, 25000)))
+</span><span style="color:#a6e22e"></span></code></pre></td></tr></table>
+</div>
+</div>
+
+<p>从 14 到 27 行的 run 是真正的主函数，从 deque 的头部取出一个 task ，这个 task 的类型是 generator ，在它的 next 调用下将会把当前程序的执行暂停在这个 generator 的 yield 处——我们也是借此来实现公调度所有已知 socket 上的收/发阻塞调用。</p>
+
+<p>第 35、44、51 行，在阻塞调用前插入 yield ，fib_server 和 fib_handler 都被变为了 generator。要注意的是 yield 返回了两个值: 值 1 是对<strong>等待接收</strong>和<strong>等待发送</strong>两个动作做出标记，值 2 是记录特定的 socket 对象。</p>
+
+<p>最后，第 39、57 行是将原始 socket 程序中所有不同的 socket 连接加入到 deque 的末尾，成为新的轮循任务。</p>
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ python3 -i aserver.py
+&gt;&gt;&gt; tasks
+deque([&lt;generator object fib_server at 0x7fccb7c96468&gt;])
+&gt;&gt;&gt; recv_wait
+{}
+&gt;&gt;&gt; send_wait
+{}
+&gt;&gt;&gt; run()
+&gt;&gt;&gt; tasks
+deque([])
+&gt;&gt;&gt; recv_wait
+{&lt;socket.socket
+    fd=3,
+    family=AddressFamily.AF_INET,
+    type=SocketKind.SOCK_STREAM,
+    proto=0,
+    laddr=(&#39;0.0.0.0&#39;, 25000)&gt;:
+&lt;generator object fib_server at 0x7fccb7c96468&gt;}</code></pre></div></p>
+
+<p>进入 python 的交互模式，试运行当前的半成品。运行前 tasks 队列含有一个 socket 。开始运行后，它被放置到 recv_wait 中，等待一个新的 client 来连接。这里的 recv_wait 和 send_wait 被 David 比作冰球比赛中将球员发送到受罚席。</p>
+
+<h2 id="免线程版本">免线程版本</h2>
+
+<p>加上下面的 patch ，一个完全不借助线程的原型程序就可以工作了。</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff"><span style="color:#f92672">--- a/aserver.py
+</span><span style="color:#f92672"></span><span style="color:#a6e22e">+++ b/aserver.py
+</span><span style="color:#a6e22e"></span><span style="color:#75715e">@@ -4,13 +4,23 @@
+</span><span style="color:#75715e"></span> from socket import *
+ from fib import fib
+ from collections import deque
+<span style="color:#a6e22e">+from select import select
+</span><span style="color:#a6e22e"></span>
+ tasks = deque()
+ recv_wait = { }   # Mapping sockets -&gt; tasks (generators)
+ send_wait = { }
+
+ def run():
+<span style="color:#f92672">-    while tasks:
+</span><span style="color:#f92672"></span><span style="color:#a6e22e">+    while any([tasks, recv_wait, send_wait]):
+</span><span style="color:#a6e22e">+        while not tasks:
+</span><span style="color:#a6e22e">+            # No active task to run
+</span><span style="color:#a6e22e">+            # wait for I/O
+</span><span style="color:#a6e22e">+            can_recv,can_send,_ =select(recv_wait,send_wait,[])
+</span><span style="color:#a6e22e">+            for s in can_recv:
+</span><span style="color:#a6e22e">+                tasks.append(recv_wait.pop(s))
+</span><span style="color:#a6e22e">+            for s in can_send:
+</span><span style="color:#a6e22e">+                tasks.append(send_wait.pop(s))
+</span><span style="color:#a6e22e">+
+</span><span style="color:#a6e22e"></span>         task = tasks.popleft()
+         try:
+             why, what = next(task)  # Run to the yield
+<span style="color:#75715e">@@ -52,4 +62,4 @@ def fib_handler(client):
+</span><span style="color:#75715e"></span>
+
+ tasks.append(fib_server((&#39;&#39;, 25000)))
+<span style="color:#f92672">-
+</span><span style="color:#f92672"></span><span style="color:#a6e22e">+run()
+</span><span style="color:#a6e22e"></span></code></pre></div>
+
+<p>其中用到了 <a href="https://docs.python.org/3/library/select.html">select</a> 模块，让它来代理检测哪些 socket 已处于准备好了的状态。</p>
+
+<blockquote>
+<p>关于 IO 复用的更多细节，文末的参考文档中列出了一些博客和代码实例。</p>
+</blockquote>
+
+<p>这样我们就可以将其重新加回到任务队列中，这样紧随其后的 next 调用也能将之前暂停的 generator 代码继续向下执行，直到下一个 yield 。</p>
+
+<p>下一篇将继续讨论当前原型中存在的问题。</p>
+
+<p>参考文档</p>
+
+<blockquote>
+<ul>
+<li><a href="https://www.zhihu.com/question/48783686">如何看懂冰球比赛？ “Hockey酱”的回答</a></li>
+<li>cizixs (2015-03-28）answer for <a href="https://stackoverflow.com/a/29315348/4393386">can&rsquo;t understand polling/select in python</a></li>
+<li><a href="https://docs.python.org/3/library/selectors.html#examples">High-level I/O multiplexing example code</a></li>
+<li>糖拌咸鱼 (2012-01-06) <a href="http://www.cnblogs.com/coser/archive/2012/01/06/2315216.html">Python网络编程中的select 和 poll I/O复用的简单使用</a></li>
+<li>Vaidik Kapoor (2015-05-31) <a href="https://vaidik.in/blog/understanding-non-blocking-io-with-python-part-1.html">Understanding Non Blocking I/O with Python - Part 1</a></li>
+</ul>
+</blockquote>
+
+<p>封面图片来自 <a href="https://dribbble.com/shots/2511494-Pantone-Color-Picker">Pantone Color Picker</a> <a href="https://dribbble.com/marcoscv"><i class="fa fa-dribbble" aria-hidden="true"></i> Marcos Castro</a></p>
+         <div id="disqus_thread">
+  <a href="#" onclick="disqus();return false;">enable VPN and click here to <i class="fa fa-comments" aria-hidden="true"></i></a>
+</div>
+
+<script type="text/javascript">
+var disqus_loaded = false;
+function disqus() {
+  if (!disqus_loaded) {
+    
+    
+    
+    
+
+    disqus_loaded = true;
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'wushuzh';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }
+};
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </div>
+  </div>
+</div>
+<noscript>
+  <style>.jsonly { display: none }</style>
+</noscript>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://wushuzh.github.io/js/jquery.min.js"></script>
+<script src="https://wushuzh.github.io/js/bootstrap.min.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.cookie.js"> </script>
+<script src="https://wushuzh.github.io/js/ekko-lightbox.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://wushuzh.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/owl.carousel.min.js"></script>
+<script src="https://wushuzh.github.io/js/front.js"></script>
+
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</body>
+</html>

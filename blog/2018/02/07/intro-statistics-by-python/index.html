@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>数据分析预备</title>
+<meta name="description" content="个人技术站点">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.theme.css">
+
+
+  <link href="https://wushuzh.github.io/css/style.sea.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://wushuzh.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-102509506-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="/">小强会武术</a></h1>
+    
+      <p class="sidebar-p">工程师</p>
+    
+      <p class="sidebar-p">记录每一个自己填平的坑</p>
+    
+    <ul class="sidebar-menu">
+      
+      
+        <li><a href="https://wushuzh.github.io/">Home</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  
+  
+  <a href="https://twitter.com/Xiao_Qiang" data-animate-hover="pulse" class="external twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  
+  
+  
+  <a href="mailto:wushuzh@outlook.com" data-animate-hover="pulse" class="email">
+    <i class="fa fa-envelope"></i>
+  </a>
+  
+  
+  
+  
+
+  
+  <a href="https://wushuzh.github.io/index.xml" data-animate-hover="pulse">
+    <i class='fa fa-rss'></i>
+  </a>
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2017 wushuzh
+        
+        | Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="/">小强会武术</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="content-column-content">
+
+      <div class="row">
+        <div class="col-sm-6">
+          
+            <div class="image">
+              <img src="https://wushuzh.github.io//img/blog/intro-statistics-by-python/math.png" class="img-responsive" alt="">
+            </div>
+          
+        </div>
+        <div class="col-md-6">
+            <h2>数据分析预备</h2>
+                <p>
+                  小强会武术
+                </p>
+
+                <time datetime="2018-02-07 14:15:32 &#43;0800 CST">
+                <i class="fa fa-calendar-o fa-fw"></i> 2018-02-07
+                </time>
+                &middot;
+                1062 字
+                &middot;
+                3 分钟
+
+        </div>
+      </div>
+      <br />
+
+         <p>复习统计基础知识、常用编程技巧
+</p>
+
+<p>统计分为 descriptive 和 inference： 描述统计学是对已有数据的压缩总结，推论统计学是试图超越现有数据，对更大范围进行假设推断。统计学中最为重要的是培养数学思维，它能避免人类对过大/小数据的感知无能，在上下文中理解和提取出关键问题，从而作出正确决策。</p>
+
+<p>和<a href="https://en.wikipedia.org/wiki/Central_tendency">集中趋势</a>相关的测量：左右对称，且最常见数值分布在最中间的数据集称作正态分布，与此相关的计算是平均值，而挑选中间值则可以去除少数异类对整体数据的影响，中值和平均值重合时数据的<a href="https://en.wikipedia.org/wiki/Skewness">偏度</a>为 0 。最后<a href="https://en.wikipedia.org/wiki/Mode_(statistics)">众数</a>是从数据集中找出最最常出现的一个或多个样本(甚至不是数)。</p>
+
+<p>和<a href="https://en.wikipedia.org/wiki/Statistical_dispersion">离散程度</a>常用“距离”度量：比如<a href="https://en.wikipedia.org/wiki/Range_(statistics)">全距</a>描述的是全体数据、<a href="https://en.wikipedia.org/wiki/Interquartile_range">四分位距</a>(IQR)则是去除了极限值后,仅考虑中间 50% 核心数据范围。上述测量仅仅考虑数据中的两点，而<a href="https://en.wikipedia.org/wiki/Variance">方差</a>“综合考虑”了所有的数据点，即计算每个实际值和平均值之差为边长的正方形面积后，求和，再除以样本数量，记作 Var(X) 或 σ²(读作 sigma squared) 注意最终结果的计量单位是被平方的结果。为了把测量单位降维，将方差开方得到<a href="https://en.wikipedia.org/wiki/Standard_deviation">标准差</a>。总之，这些值都是越大表明数据的离散程度越大。</p>
+
+<blockquote>
+<p>为了获得 Unbiased Variance，最后会除以 n-1</p>
+</blockquote>
+
+<p>对无法区分顺序/互做加减云散的分类数据(Category Data)，可用(相对)频度分布对每个类别进行统计、在<a href="https://en.wikipedia.org/wiki/Bar_chart">柱状图</a>上可视化后进行描述比较。而最常见的定量数据(Quantitavie Data)，其间距相等，可以划分多个连续范围(Binning)后用直方图(Histogram)统计描述。为了不丧失任何原始数据，还可以用 <a href="https://en.wikipedia.org/wiki/Stem-and-leaf_display">Stem-and-Leaf图</a> 来标记所有的数据点。<a href="https://en.wikipedia.org/wiki/Box_plot">箱线图</a> 综合了中值，最大最小值，四分位距，异常点等信息。</p>
+
+<h2 id="f-strings">f-Strings</h2>
+
+<p>% formatting .format()  f&rdquo;</p>
+
+<p>x = 10
+print(&lsquo;The answer is %d today&rsquo; % x)
+print(&lsquo;The answer is {0} today&rsquo;.format(x))
+print(&lsquo;The answer is {x} today&rsquo;.foramt(x=x))
+print(f&rsquo;The answer is {x} today&rsquo;)
+print(f&rsquo;The answer is {x: 08d} today&rsquo;)
+print(f&rsquo;The answer is {x ** 2: 08d} today&rsquo;)</p>
+
+<p>raise ValueError(f&rsquo;Expected {x!r} to a float not a {type(x).<strong>name</strong>}&lsquo;)</p>
+
+<h2 id="counter-vs-dict">Counter vs dict</h2>
+
+<p>from collections import Counter</p>
+
+<p>c = Counter()
+c[&lsquo;dragons&rsquo;] += 1</p>
+
+<p>c = Counter(&lsquo;red green red blue red blue green&rsquo;.split())
+c.most_common(1)
+c.most_common(2)
+list(c.elements()) # same group together
+list&copy;
+list(c.values())
+list(c.items())</p>
+
+<h2 id="stdev-vs-pstdev-in-statistics-module">stdev vs pstdev in statistics module</h2>
+
+<p>from statistics import mean, median, mode, stdev, pstdev</p>
+
+<p>mean([50, 52, 53])
+median([50, 52, 53])
+mode([50, 51, 51, 51, 52, 53])</p>
+
+<h2 id="list-concatenation-vs-numpy-plus">list concatenation vs numpy plus</h2>
+
+<p>s = [10, 20, 30]
+t = [40, 50, 60]
+u = s + t
+u[:2] +  u[-2:]</p>
+
+<p>s = &lsquo;abracadabra&rsquo;
+i = s.index(&lsquo;c&rsquo;)
+s[i] == s[4]
+s.count(&lsquo;a&rsquo;) == 5</p>
+
+<p>s = [10, 5, 70, 2]
+s.sort()
+t = sorted(s)</p>
+
+<p>sorted(&lsquo;cat&rsquo;)</p>
+
+<h2 id="lambda">lambda</h2>
+
+<p>100 + (lambda x: x**2)(5) + 50 == 175</p>
+
+<p>f = lambda x, y: 3*x + y
+f(3, 8) == 17</p>
+
+<p>x = 5
+y = 2
+f = lambda: x ** y
+f() # make a promise in future</p>
+
+<h2 id="chained-comparisons">Chained comparisons</h2>
+
+<p>x = 15
+x &gt; 6 and x &lt; 20
+6 &lt; x &lt; 20</p>
+
+<h2 id="random-and-distribution">random and distribution</h2>
+
+<p>from random import *</p>
+
+<p>seed(someint)
+random()
+random()
+random()
+seed(sameint)
+random()
+random()
+random()</p>
+
+<p>data = [triangular(1000, 1100) for i in range(1000)]
+mean(data)
+stdev(data)</p>
+
+<p>data = [uniform(1000, 1100) for i in range(1000)]
+mean(data)
+stdev(data)</p>
+
+<p>data = [gauss(100, 15) for i in range(1000)]
+mean(data)
+stdev(data)</p>
+
+<p>data = [expovariate(20) for i in range(1000)]
+mean(data)
+stdev(data)</p>
+
+<h2 id="discret-distribution">discret distribution</h2>
+
+<p>from random import choice, choices, sample, shuffle</p>
+
+<p>outcomes = [&lsquo;win&rsquo;, &lsquo;lose&rsquo;, &lsquo;draw&rsquo;, &lsquo;play again&rsquo;, &lsquo;double win&rsquo;]</p>
+
+<p>choice(outcomes)
+choice(outcomes)
+choice(outcomes)</p>
+
+<p>choices(outcomes, k=10)</p>
+
+<p>from collections import Counter</p>
+
+<p>Counter(choices(outcomes, k=10))
+Counter(choices(outcomes, k=10000))
+Counter(choices(outcomes, [5, 4, 3, 2, 1], k=10000))</p>
+
+<p>outcomes
+shuffle(outcomes)
+outcomes</p>
+
+<p>sample(outcomes, k=4) # choices (dup) vs sample (no dup)
+sample(outcomes, k=4)
+sample(outcomes, k=4)</p>
+
+<p>sorted(sample(range(1, 57), k=6)) # lattory</p>
+
+<p>sample(outcomes, k=1)[0]
+choice(outcomes)</p>
+
+<p>shuffle(outcomes); outcomes
+sample(outcomes, k=len(outcomes))</p>
+
+<p>参考文档</p>
+
+<blockquote>
+<ul>
+<li>YouTube playlist <a href="https://www.youtube.com/watch?v=zouPoc49xbk&amp;list=PL8dPuuaLjXtNM_Y-bUAhblSAdWRnmBUcr">Crash Course on Statistics</a></li>
+<li>Raymond Hettinger (2017) <a href="https://github.com/rhettinger/modernpython">Modern Python</a></li>
+<li>Dominic Walliman (2017-02-01) <a href="https://youtu.be/OmJ-4B-mS-Y">The Map of Mathematics</a></li>
+</ul>
+</blockquote>
+
+<p>封面图片来自 <a href="https://dribbble.com/shots/3818487-Shiba-Inu-Math">Shiba Inu - Math</a> <a href="https://dribbble.com/vaneltia"><i class="fa fa-dribbble" aria-hidden="true"></i> Alfrey Davilla | vaneltia</a></p>
+         <div id="disqus_thread">
+  <a href="#" onclick="disqus();return false;">enable VPN and click here to <i class="fa fa-comments" aria-hidden="true"></i></a>
+</div>
+
+<script type="text/javascript">
+var disqus_loaded = false;
+function disqus() {
+  if (!disqus_loaded) {
+    
+    
+    
+    
+
+    disqus_loaded = true;
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'wushuzh';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }
+};
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </div>
+  </div>
+</div>
+<noscript>
+  <style>.jsonly { display: none }</style>
+</noscript>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://wushuzh.github.io/js/jquery.min.js"></script>
+<script src="https://wushuzh.github.io/js/bootstrap.min.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.cookie.js"> </script>
+<script src="https://wushuzh.github.io/js/ekko-lightbox.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://wushuzh.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/owl.carousel.min.js"></script>
+<script src="https://wushuzh.github.io/js/front.js"></script>
+
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Flask 教程3</title>
+<meta name="description" content="个人技术站点">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.theme.css">
+
+
+  <link href="https://wushuzh.github.io/css/style.sea.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://wushuzh.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-102509506-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="/">小强会武术</a></h1>
+    
+      <p class="sidebar-p">工程师</p>
+    
+      <p class="sidebar-p">记录每一个自己填平的坑</p>
+    
+    <ul class="sidebar-menu">
+      
+      
+        <li><a href="https://wushuzh.github.io/">Home</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  
+  
+  <a href="https://twitter.com/Xiao_Qiang" data-animate-hover="pulse" class="external twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  
+  
+  
+  <a href="mailto:wushuzh@outlook.com" data-animate-hover="pulse" class="email">
+    <i class="fa fa-envelope"></i>
+  </a>
+  
+  
+  
+  
+
+  
+  <a href="https://wushuzh.github.io/index.xml" data-animate-hover="pulse">
+    <i class='fa fa-rss'></i>
+  </a>
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2017 wushuzh
+        
+        | Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="/">小强会武术</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="content-column-content">
+
+      <div class="row">
+        <div class="col-sm-6">
+          
+            <div class="image">
+              <img src="https://wushuzh.github.io//img/blog/usr-login-and-register/pingu-login.png" class="img-responsive" alt="">
+            </div>
+          
+        </div>
+        <div class="col-md-6">
+            <h2>Flask 教程3</h2>
+                <p>
+                  小强会武术
+                </p>
+
+                <time datetime="2018-02-01 20:19:27 &#43;0800 CST">
+                <i class="fa fa-calendar-o fa-fw"></i> 2018-02-01
+                </time>
+                &middot;
+                628 字
+                &middot;
+                2 分钟
+
+        </div>
+      </div>
+      <br />
+
+         <p>flask 教程: 创建一个类微博原型站点
+</p>
+
+<h2 id="密码散列">密码散列</h2>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; u = User(username=&#39;susan&#39;, email=&#39;susan@example.com&#39;)
+&gt;&gt;&gt; u.set_password(&#39;supasswd&#39;)
+&gt;&gt;&gt; u.check_password(&#39;notsupasswd&#39;)
+False
+&gt;&gt;&gt; u.check_password(&#39;supasswd&#39;)
+True</code></pre></div>
+
+<h2 id="密码验证">密码验证</h2>
+
+<p>首先安装 Flask-Login 拓展并像其他拓展一样进行初始化，只有用它来管理用户登录状态。</p>
+
+<p>登录必然和 User 模型联合使用，只要实现了下面三个属性和一个方法, 我们就可以利用 Flask-Login 设计登录了:</p>
+
+<ul>
+<li>is_authenticated：布尔值标识用户是否有合法鉴权;</li>
+<li>is_active 布尔值标识账户是否激活;</li>
+<li>is_anonymous 布尔值标识否为特有匿名用户;</li>
+<li>get_id() 函数获取用户唯一标识;</li>
+</ul>
+
+<p>我们可以用 flask-login 自带的 minix 类中的通用实现来完成相关设定。</p>
+
+<p>登录的流程:</p>
+
+<ol>
+<li>用户通过浏览器，提交含有用户名、密码等字段的表单给后台;</li>
+<li>在后端通过用户名获取其预设密码的散列，然后使用此次提交的密码验证;</li>
+<li>成功，将用户传入 login_user 函数并回主页，否则警告并重回登录页;</li>
+</ol>
+
+<h2 id="强制登录">强制登录</h2>
+
+<p>当用户访问被保护页面时，Flask-Login 自动将用户重定向到登录页，并仅在鉴权成功后自动返回之前保护页面:</p>
+
+<p>首先告知 Flask-Login 拓展哪个 view 函数负责处理登录;
+之后那些需要登录查看的 URL 装饰器后面加入 <code>@login_required</code> 装饰器;
+最后是在鉴权成功后将用户返回之前的页面;</p>
+
+<h2 id="模板中动态显示登录用户">模板中动态显示登录用户</h2>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; u = User(username=&#39;susan&#39;, email=&#39;susan@example.com&#39;)
+&gt;&gt;&gt; u.set_password(&#39;supasswd&#39;)
+&gt;&gt;&gt;
+&gt;&gt;&gt; db.session.add(u)
+&gt;&gt;&gt; db.session.commit()</code></pre></div>
+
+<h2 id="用户注册">用户注册</h2>
+
+<h2 id="查看用户详情">查看用户详情</h2>
+
+<p>和 weibo 或 twitter 类似，我们系统上的用户是可以互相查看用户详情页。</p>
+
+<p>为此我们引入了带有动态组件的路由 <code>/user/&lt;username&gt;</code>。这样 Flask 就会把符合规则的路由,解析出动态部分，作为参数交给对应的 view 函数。</p>
+
+<h2 id="用户头像">用户头像</h2>
+
+<p>借助 Gravatar 服务，我们通过用户邮箱的 md5 散列获取其头像。</p>
+
+<p>参考文档</p>
+
+<p>Miguel Grinberg</p>
+
+<blockquote>
+<ul>
+<li>(2018-01-03) <a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-v-user-logins">The Flask Mega-Tutorial Part Ⅴ: User Logins</a></li>
+<li>(2018-01-10) <a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-vi-profile-page-and-avatars">The Flask Mega-Tutorial Part Ⅵ: Profile Page</a></li>
+</ul>
+</blockquote>
+
+<p>封面图片来自 <a href="https://dribbble.com/shots/3064060-Pingu-Login-Animation-GIF">Pingu - Login Animation GIF</a> <a href="https://dribbble.com/vineetarora94"><i class="fa fa-dribbble" aria-hidden="true"></i> Vineet Arora</a></p>
+         <div id="disqus_thread">
+  <a href="#" onclick="disqus();return false;">enable VPN and click here to <i class="fa fa-comments" aria-hidden="true"></i></a>
+</div>
+
+<script type="text/javascript">
+var disqus_loaded = false;
+function disqus() {
+  if (!disqus_loaded) {
+    
+    
+    
+    
+
+    disqus_loaded = true;
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'wushuzh';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }
+};
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </div>
+  </div>
+</div>
+<noscript>
+  <style>.jsonly { display: none }</style>
+</noscript>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://wushuzh.github.io/js/jquery.min.js"></script>
+<script src="https://wushuzh.github.io/js/bootstrap.min.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.cookie.js"> </script>
+<script src="https://wushuzh.github.io/js/ekko-lightbox.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://wushuzh.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/owl.carousel.min.js"></script>
+<script src="https://wushuzh.github.io/js/front.js"></script>
+
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</body>
+</html>

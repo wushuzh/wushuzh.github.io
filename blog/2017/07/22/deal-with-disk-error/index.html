@@ -31,11 +31,15 @@
 
 
 <script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-102509506-1', 'auto');
-ga('send', 'pageview');
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-102509506-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 </head>
 <body>
@@ -156,13 +160,11 @@ ga('send', 'pageview');
 <p>另有配置文件 /etc/mdadm.conf</p>
 </blockquote>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>[root@hostC ~]# cat /proc/mdstat <span style="color: #f8f8f2">|</span>grep -A <span style="color: #ae81ff">3</span> md5
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">[root@hostC ~]# cat /proc/mdstat |grep -A 3 md5
 md5 : inactive sds1[0](S) sdo1[1](S) sdk1[2](S) sdg1[3](S)
       1464306688 blocks super 1.1
 
-[root@hostC ~]#
-</pre></div>
-
+[root@hostC ~]#</code></pre></div>
 
 <hr />
 
@@ -170,7 +172,7 @@ md5 : inactive sds1[0](S) sdo1[1](S) sdk1[2](S) sdg1[3](S)
 <li>mdadm 命令查看此冗余阵列的磁盘分区详情，RAID Level 为 raid0，查看产品设计文档，此处应该为 raid10 ，即需要重新将下属 4 个分区做 RAID 组装。</li>
 </ul>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>[root@hostC ~]# mdadm --detail /dev/md5
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">[root@hostC ~]# mdadm --detail /dev/md5
 /dev/md5:
         Version : 1.1
      Raid Level : raid0
@@ -188,9 +190,7 @@ md5 : inactive sds1[0](S) sdo1[1](S) sdk1[2](S) sdg1[3](S)
        -       8       97        -        /dev/sdg1
        -       8      161        -        /dev/sdk1
        -       8      225        -        /dev/sdo1
-       -      65       33        -        /dev/sds1
-</pre></div>
-
+       -      65       33        -        /dev/sds1</code></pre></div>
 
 <hr />
 
@@ -198,7 +198,7 @@ md5 : inactive sds1[0](S) sdo1[1](S) sdk1[2](S) sdg1[3](S)
 <li>检查( -E &ndash;examine )下属各个磁盘的状态，几个下属块设备也都印证了他们应为 raid10 ，但各个盘的 event 标号都不一致，更新时间有的追溯到很早，另外各个磁盘的状态也都不是 AAAA，猜测这块磁盘已经带病工作很久了，这次搬家，运输过程中一颠一震，再也坚持不下去，撂挑子休息了……</li>
 </ul>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>[root@hostC ~]# mdadm -E /dev/sd<span style="color: #f92672">[</span>gkos<span style="color: #f92672">]</span><span style="color: #ae81ff">1</span>
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">[root@hostC ~]# mdadm -E /dev/sd[gkos]1
 /dev/sdg1:
           Magic : a92b4efc
         Version : 1.1
@@ -227,10 +227,8 @@ Internal Bitmap : 8 sectors from superblock
      Chunk Size : 512K
 
  Device Role : Active device 3
- Array State : A..A (&#39;A&#39; == active, &#39;.&#39; == missing, &#39;R&#39; == replacing)
-</pre></div>
-
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span> /dev/sdk1:
+ Array State : A..A (&#39;A&#39; == active, &#39;.&#39; == missing, &#39;R&#39; == replacing)</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console"> /dev/sdk1:
 
              ... : ...
            State : clean
@@ -245,11 +243,9 @@ Internal Bitmap : 8 sectors from superblock
       Chunk Size : 512K
 
   Device Role : Active device 2
-  Array State : A.AA (&#39;A&#39; == active, &#39;.&#39; == missing, &#39;R&#39; == replacing)
-</pre></div>
-</p>
+  Array State : A.AA (&#39;A&#39; == active, &#39;.&#39; == missing, &#39;R&#39; == replacing)</code></pre></div></p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span> /dev/sdo1:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console"> /dev/sdo1:
 
              ... : ...
            State : clean
@@ -264,11 +260,9 @@ Internal Bitmap : 8 sectors from superblock
       Chunk Size : 512K
 
   Device Role : Active device 1
-  Array State : AAAA (&#39;A&#39; == active, &#39;.&#39; == missing, &#39;R&#39; == replacing)
-</pre></div>
+  Array State : AAAA (&#39;A&#39; == active, &#39;.&#39; == missing, &#39;R&#39; == replacing)</code></pre></div>
 
-
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span> /dev/sds1:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console"> /dev/sds1:
 
              ... : ...
            State : clean
@@ -283,9 +277,7 @@ Internal Bitmap : 8 sectors from superblock
       Chunk Size : 512K
 
   Device Role : Active device 0
-  Array State : A..A (&#39;A&#39; == active, &#39;.&#39; == missing, &#39;R&#39; == replacing)
-</pre></div>
-
+  Array State : A..A (&#39;A&#39; == active, &#39;.&#39; == missing, &#39;R&#39; == replacing)</code></pre></div>
 
 <hr />
 
@@ -293,43 +285,37 @@ Internal Bitmap : 8 sectors from superblock
 <li>先将相应冗余阵列停掉，再重新组装。</li>
 </ul>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>[root@hostC ~]# mdadm --stop /dev/md5
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">[root@hostC ~]# mdadm --stop /dev/md5
 mdadm: stopped /dev/md5
 
 [root@hostC ~]# mdadm --assemble --scan
-mdadm: /dev/md/5 assembled from 1 drive - not enough to start the array.
-</pre></div>
-
+mdadm: /dev/md/5 assembled from 1 drive - not enough to start the array.</code></pre></div>
 
 <p>这里的报错应该是因为 mdadm 还不够智能(或者不想担责任)，需要我们将其下属磁盘都显示指定，才能继续组装。</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>[root@hostC ~]# mdadm --assemble /dev/md5 /dev/sd<span style="color: #f92672">[</span>gkos<span style="color: #f92672">]</span><span style="color: #ae81ff">1</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">[root@hostC ~]# mdadm --assemble /dev/md5 /dev/sd[gkos]1
 mdadm: /dev/sdg1 is busy - skipping
 mdadm: /dev/sdk1 is busy - skipping
 mdadm: /dev/sdo1 is busy - skipping
-mdadm: /dev/sds1 is busy - skipping
-</pre></div>
-
+mdadm: /dev/sds1 is busy - skipping</code></pre></div>
 
 <p>手动显式指定了，但又遇到设备正忙的错误。之后我又执行了一次 mdadm 停止命令，之后立即执行组装命令，成功了。但仍然显示仅仅组装上了总共 4 块磁盘中的 3 块。</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>[root@hostC ~]# mdadm --manage /dev/md5 --stop
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">[root@hostC ~]# mdadm --manage /dev/md5 --stop
 mdadm: stopped /dev/md5
 
-[root@hostC ~]# mdadm --assemble --force /dev/md5 /dev/sd<span style="color: #f92672">[</span>gkos<span style="color: #f92672">]</span><span style="color: #ae81ff">1</span>
+[root@hostC ~]# mdadm --assemble --force /dev/md5 /dev/sd[gkos]1
 mdadm: forcing event count in /dev/sds1(0) from 24562577 upto 24562603
 mdadm: forcing event count in /dev/sdk1(2) from 3408 upto 24562603
 mdadm: clearing FAULTY flag for device 1 in /dev/md5 for /dev/sdk1
 mdadm: Marking array /dev/md5 as &#39;clean&#39;
-mdadm: /dev/md5 has been started with 3 drives (out of 4).
-</pre></div>
-
+mdadm: /dev/md5 has been started with 3 drives (out of 4).</code></pre></div>
 
 <hr />
 
 <p>此时再查看冗余磁盘阵列的状态，已变为 clean degraded 的状态。</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>[root@hostC ~]# mdadm --detail /dev/md5
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">[root@hostC ~]# mdadm --detail /dev/md5
 /dev/md5:
             ... : ...
      Raid Level : raid10
@@ -355,19 +341,17 @@ Working Devices : 3
        2       8      161        2      active sync set-A   /dev/sdk1
        3       8       97        3      active sync set-B   /dev/sdg1
 
-[root@hostC ~]# cat /proc/mdstat <span style="color: #f8f8f2">|</span>grep -A <span style="color: #ae81ff">3</span> md5
+[root@hostC ~]# cat /proc/mdstat |grep -A 3 md5
 md5 : active raid10 sds1[0] sdk1[2] sdg1[3]
       585606144 blocks super 1.1 512K chunks 2 near-copies [4/3] [U_UU]
-      bitmap: 5/5 pages [20KB], 65536KB chunk
-</pre></div>
-
+      bitmap: 5/5 pages [20KB], 65536KB chunk</code></pre></div>
 
 <hr />
 
 <p>而下属的各个磁盘，除 /dev/sdo1 以外，Event # 都已同步。</p>
 
-<h2 id="hahahugoshortcode-12hbhb"><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>[root@hostC temp]# mdadm -E /dev/sd<span style="color: #f92672">[</span>gkos<span style="color: #f92672">]</span><span style="color: #ae81ff">1</span> <span style="color: #ae81ff">\</span>
-    <span style="color: #f8f8f2">|</span> grep <span style="color: #f92672">[</span>Events<span style="color: #f8f8f2">|</span>Update<span style="color: #f8f8f2">|</span>Array State<span style="color: #f8f8f2">|</span><span style="color: #f92672">]</span>
+<h2 id="hahahugoshortcode-0xc0428d0500-12-hbhb"><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">[root@hostC temp]# mdadm -E /dev/sd[gkos]1 \
+    | grep [Events|Update|Array State|]
 
 /dev/sdg1:
     Update Time : Wed Jul 19 16:49:45 2017
@@ -384,25 +368,21 @@ md5 : active raid10 sds1[0] sdk1[2] sdg1[3]
 /dev/sds1:
     Update Time : Wed Jul 19 16:49:45 2017
          Events : 24562841
-   Array State : A.AA (&#39;A&#39; == active, &#39;.&#39; == missing, &#39;R&#39; == replacing)
-</pre></div>
-</h2>
+   Array State : A.AA (&#39;A&#39; == active, &#39;.&#39; == missing, &#39;R&#39; == replacing)</code></pre></div></h2>
 
 <p>之后将 fstab 中拿掉的行重新拿回，重启服务器，但又一次被强制进入维护模式</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>Welcome to emergency mode! After logging in, type &quot;journalctl -xb&quot; to view
-system logs, &quot;systemctl reboot&quot; to reboot, &quot;systemctl default&quot; or ^D to
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">Welcome to emergency mode! After logging in, type &#34;journalctl -xb&#34; to view
+system logs, &#34;systemctl reboot&#34; to reboot, &#34;systemctl default&#34; or ^D to
 try again to boot into default mode.
 Give root password for maintenance
-(or type Crontrol-D to continue):
-</pre></div>
-
+(or type Crontrol-D to continue):</code></pre></div>
 
 <hr />
 
 <p>按提示进入执行 journalctl 查看日志，发现磁盘需要修复，大概和之前没有装载上的磁盘有点关系？</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>some-timestamp hostC systemd-fsck[1631]:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">some-timestamp hostC systemd-fsck[1631]:
   /dev/md5: Inode xxx has a bad extended attribute block yyy.
 some-timestamp hostC systemd-fsck[1631]:
   /dev/md5: UNEXPECTED INCONSISTENCY: RUN fsck MANUALLY.
@@ -413,41 +393,35 @@ some-timestamp hostC systemd-fsck[1631]:
 some-timestamp hostC systemd-fsck[1631]:
   Running request emergency.target/start/replace
 some-timestamp hostC systemd[1]:
-  Started File System Check on /dev/disk/by-uuid/aaa-bbb-ccc-ddd-......
-</pre></div>
-
+  Started File System Check on /dev/disk/by-uuid/aaa-bbb-ccc-ddd-......</code></pre></div>
 
 <p>因为系统已经处于维护模式，之后的修复相对简单。可以参考 Antoine (2014-03-14) <a href="http://bitsofmymind.com/2014/03/14/how-to-fix-fsck-your-root-file-system-that-you-have-to-boot-into-on-linux/">how-to-fix-fsck-your-root-file-system-that-you-have-to-boot-into-on-linux</a></p>
 
 <p>其中一个可能遇到的问题是 fsck 命令相应设备已经挂载，无法继续执行的错误，可以将相应报错的设备或挂机点重挂载为只读，然后再执行磁盘检测。</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>[root@hostC ~]# df -h <span style="color: #f8f8f2">|</span>grep md5
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">[root@hostC ~]# df -h |grep md5
 /dev/md5    550G    56G    467G    11%    /somefolder
 [root@hostC ~]# fsck /dev/md5
 e2fsck 1.42.9 (28-Dec-2013)
 /dev/md5 is mounted.
 e2fsck: Cannot continue, aborting.
 
-[root@hostC ~]# cat /proc/mounts <span style="color: #f8f8f2">|</span>grep md5
+[root@hostC ~]# cat /proc/mounts |grep md5
 /dev/md5 /somefolder ext4 rw,nodev,relatime,stripe=256,data=ordered 0 0
 [root@hostC ~]# mount -o remount,ro /somefolder
-[root@hostC ~]# cat /proc/mounts <span style="color: #f8f8f2">|</span>grep md5
+[root@hostC ~]# cat /proc/mounts |grep md5
 /dev/md5 /somefolder ext4 ro  ,nodev,relatime,stripe=256,data=ordered 0 0
 [root@hostC ~]# fsck -y /dev/md5
-...
-</pre></div>
-
+...</code></pre></div>
 
 <p>修复完毕后，将冗余阵列组装为 4 块设备，重启服务器，顺利进入系统。</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>[root@hostC ~]# mdadm --manage /dev/md5 -a /dev/sdo1
-mdadm: added /dev/sdo1
-</pre></div>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">[root@hostC ~]# mdadm --manage /dev/md5 -a /dev/sdo1
+mdadm: added /dev/sdo1</code></pre></div>
 
 <p>可以执行命令 <code>watch -n .5 cat /proc/mdstat</code> 每隔 0.5 秒监控一下冗余阵列的同步状态。</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>[root@hostC ~]# mdadm --detail /dev/md5
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">[root@hostC ~]# mdadm --detail /dev/md5
 /dev/md5:
    Raid Devices : 4
   Total Devices : 3
@@ -467,8 +441,8 @@ Rebuild Status : 59% complete
        2       8      161        2      active sync set-A   /dev/sdk1
        3       8       97        3      active sync set-B   /dev/sdg1
 
-[root@hostC ~]# mdadm -E /dev/sd<span style="color: #f92672">[</span>sokg<span style="color: #f92672">]</span><span style="color: #ae81ff">1</span> <span style="color: #ae81ff">\</span>
-    <span style="color: #f8f8f2">|</span> grep <span style="color: #f92672">[</span>dev<span style="color: #f8f8f2">|</span>Array State<span style="color: #f92672">]</span>
+[root@hostC ~]# mdadm -E /dev/sd[sokg]1 \
+    | grep [dev|Array State]
 /dev/sdg1:
    Array State : AAAA (&#39;A&#39; == active, &#39;.&#39; == missing, &#39;R&#39; == replacing)
 /dev/sdk1:
@@ -476,9 +450,7 @@ Rebuild Status : 59% complete
 /dev/sdo1:
    Array State : AAAA (&#39;A&#39; == active, &#39;.&#39; == missing, &#39;R&#39; == replacing)
 /dev/sds1:
-   Array State : AAAA (&#39;A&#39; == active, &#39;.&#39; == missing, &#39;R&#39; == replacing)
-</pre></div>
-
+   Array State : AAAA (&#39;A&#39; == active, &#39;.&#39; == missing, &#39;R&#39; == replacing)</code></pre></div>
 
 <p>缩略语解释</p>
 

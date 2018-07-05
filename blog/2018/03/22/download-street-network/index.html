@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>获取OSM街道信息</title>
+<meta name="description" content="个人技术站点">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.theme.css">
+
+
+  <link href="https://wushuzh.github.io/css/style.sea.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://wushuzh.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-102509506-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="/">小强会武术</a></h1>
+    
+      <p class="sidebar-p">工程师</p>
+    
+      <p class="sidebar-p">记录每一个自己填平的坑</p>
+    
+    <ul class="sidebar-menu">
+      
+      
+        <li><a href="https://wushuzh.github.io/">Home</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  
+  
+  <a href="https://twitter.com/Xiao_Qiang" data-animate-hover="pulse" class="external twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  
+  
+  
+  <a href="mailto:wushuzh@outlook.com" data-animate-hover="pulse" class="email">
+    <i class="fa fa-envelope"></i>
+  </a>
+  
+  
+  
+  
+
+  
+  <a href="https://wushuzh.github.io/index.xml" data-animate-hover="pulse">
+    <i class='fa fa-rss'></i>
+  </a>
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2017 wushuzh
+        
+        | Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="/">小强会武术</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="content-column-content">
+
+      <div class="row">
+        <div class="col-sm-6">
+          
+            <div class="image">
+              <img src="https://wushuzh.github.io//img/blog/download-street-network/map.png" class="img-responsive" alt="">
+            </div>
+          
+        </div>
+        <div class="col-md-6">
+            <h2>获取OSM街道信息</h2>
+                <p>
+                  小强会武术
+                </p>
+
+                <time datetime="2018-03-22 20:55:21 &#43;0800 CST">
+                <i class="fa fa-calendar-o fa-fw"></i> 2018-03-22
+                </time>
+                &middot;
+                398 字
+                &middot;
+                1 分钟
+
+        </div>
+      </div>
+      <br />
+
+         <p>获取开源地图行政区域和接到数据
+</p>
+
+<p>Geo 字根为地球，graphy 意为描述。按照 Dr. Heath Robinson 的宏大说法，地理学的核心可以描述为对我们的世界综合而全面的理解。(A comprehensive and holistic understanding of the entire world)。而其最常见的问题都是以 Where 开头，相应的分析分为两个层次:
+  1. 对事实收集、描述 (What is it like ?)
+  2. 在上下文环境下，对上面事实的解释/分析、推断/预测</p>
+
+<p>以公元前希腊全才人物<a href="https://en.wikipedia.org/wiki/Eratosthenes">埃拉托斯特尼</a>为例，他测算了分别位于南北两城的方尖塔、深井、和城距，推测地球是圆的，并结合几何和三角学，计算出地球周长。(2%误差)</p>
+
+<h2 id="经纬度">经纬度</h2>
+
+<p>Introduction to GIS I: Fundamentals and Mapping 8-13</p>
+
+<p>首先安装</p>
+
+<p>cower -d spatialindex
+cd osmnx_demo
+pipenv install jupyter osmnx
+pipenv run jupyter notebook</p>
+
+<ul>
+<li>获取行政区域的shapefiles</li>
+<li>获取街道数据:可以获得一定区域内的机动车道，自行车道，步行道等</li>
+<li>简化街道拓扑</li>
+<li>保存街道网络</li>
+<li>对网络做计算分析</li>
+</ul>
+
+<p>参考文档</p>
+
+<p>Geoff Boeing
+- <a href="http://geoffboeing.com/2016/11/osmnx-python-street-networks/">OSMnx: Python for Street Networks</a>
+- <a href="https://github.com/gboeing/osmnx-examples">Examples demonstrating the usage of OSMnx</a>
+Emacsen
+- (2018-01-04) <a href="https://blog.emacsen.net/blog/2014/01/04/why-the-world-needs-openstreetmap/">Why the world needs OpenStreetMap</a>
+- (2018-02-16) <a href="https://blog.emacsen.net/blog/2018/02/16/osm-is-in-trouble/">Why OpenStreetMap is in Serious Trouble</a></p>
+
+<ul>
+<li>Dr. Heath Robinson <a href="https://www.youtube.com/playlist?list=PLRNNjIk9ArAovzZ_6c5TSeggFBhw-gxLE">What is Geoprahy ?</a></li>
+<li>Matthew Bilyeu (2018-01-21) <a href="https://matthewbilyeu.com/blog/python-environment-with-pipenv-jupyter-and-ein/">Python environment with Pipenv, Jupyter, and EIN</a></li>
+<li>Department of Geosciences &amp; Geography, University of Helsinki <a href="https://automating-gis-processes.github.io/2017/">Automating GIS processes course</a></li>
+</ul>
+
+<p>封面图片来自 <a href="https://dribbble.com/shots/2207264-A-Map">A Map</a> <a href="https://dribbble.com/JustinMezzell"><i class="fa fa-dribbble" aria-hidden="true"></i> Justin Mezzell</a></p>
+         <div id="disqus_thread">
+  <a href="#" onclick="disqus();return false;">enable VPN and click here to <i class="fa fa-comments" aria-hidden="true"></i></a>
+</div>
+
+<script type="text/javascript">
+var disqus_loaded = false;
+function disqus() {
+  if (!disqus_loaded) {
+    
+    
+    
+    
+
+    disqus_loaded = true;
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'wushuzh';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }
+};
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </div>
+  </div>
+</div>
+<noscript>
+  <style>.jsonly { display: none }</style>
+</noscript>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://wushuzh.github.io/js/jquery.min.js"></script>
+<script src="https://wushuzh.github.io/js/bootstrap.min.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.cookie.js"> </script>
+<script src="https://wushuzh.github.io/js/ekko-lightbox.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://wushuzh.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/owl.carousel.min.js"></script>
+<script src="https://wushuzh.github.io/js/front.js"></script>
+
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</body>
+</html>

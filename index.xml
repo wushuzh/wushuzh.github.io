@@ -6,7 +6,6 @@
     <description>Recent content on 小强会武术</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <copyright>&amp;copy;2017 wushuzh</copyright>
     <lastBuildDate>Thu, 15 Jun 2017 20:50:27 +0800</lastBuildDate>
     
 	<atom:link href="https://wushuzh.github.io/index.xml" rel="self" type="application/rss+xml" />
@@ -23,7 +22,7 @@
     </item>
     
     <item>
-      <title>从 SVN 迁移到 Git</title>
+      <title>从 SVN 到 Git</title>
       <link>https://wushuzh.github.io/blog/2017/08/06/migrate-svn-to-git/</link>
       <pubDate>Sun, 06 Aug 2017 16:12:21 +0800</pubDate>
       
@@ -43,12 +42,12 @@
     </item>
     
     <item>
-      <title>像雨果一样写作 2</title>
-      <link>https://wushuzh.github.io/blog/2017/07/09/blog-using-hugo-2/</link>
-      <pubDate>Sun, 09 Jul 2017 10:11:21 +0800</pubDate>
+      <title>Git 上手</title>
+      <link>https://wushuzh.github.io/blog/2017/11/08/setup-git-env/</link>
+      <pubDate>Wed, 08 Nov 2017 20:11:49 +0800</pubDate>
       
-      <guid>https://wushuzh.github.io/blog/2017/07/09/blog-using-hugo-2/</guid>
-      <description>&lt;p&gt;最要紧的是准备和插入那些漂亮的图片。
+      <guid>https://wushuzh.github.io/blog/2017/11/08/setup-git-env/</guid>
+      <description>&lt;p&gt;简单介绍 git 入門向导和协作流程
 &lt;/p&gt;</description>
     </item>
     
@@ -59,6 +58,16 @@
       
       <guid>https://wushuzh.github.io/blog/2017/06/28/blog-using-hugo-1/</guid>
       <description>&lt;p&gt;记录下如何用 GitHub 和 Hugo 搭建博客。
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>像雨果一样写作 2</title>
+      <link>https://wushuzh.github.io/blog/2017/07/09/blog-using-hugo-2/</link>
+      <pubDate>Sun, 09 Jul 2017 10:11:21 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/07/09/blog-using-hugo-2/</guid>
+      <description>&lt;p&gt;最要紧的是准备和插入那些漂亮的图片。
 &lt;/p&gt;</description>
     </item>
     
@@ -83,12 +92,22 @@
     </item>
     
     <item>
+      <title>syslog 简介</title>
+      <link>https://wushuzh.github.io/blog/2017/06/04/syslog-std-in-general/</link>
+      <pubDate>Sun, 04 Jun 2017 20:40:13 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/06/04/syslog-std-in-general/</guid>
+      <description>&lt;p&gt;syslog 标准和常见工业实现
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>内核恐慌，咋整？</title>
       <link>https://wushuzh.github.io/blog/2017/06/26/deal-with-kernel-panic/</link>
       <pubDate>Mon, 26 Jun 2017 22:31:22 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/06/26/deal-with-kernel-panic/</guid>
-      <description>&lt;p&gt;Kernel Panic，应该能撑起&amp;rdquo;咋整&amp;rdquo;系列开篇的门面。
+      <description>&lt;p&gt;Kernel Panic 才能撑起&amp;rdquo;咋整&amp;rdquo;系列开篇的门面。
 &lt;/p&gt;</description>
     </item>
     
@@ -153,6 +172,66 @@
     </item>
     
     <item>
+      <title>洪水报文，咋整？</title>
+      <link>https://wushuzh.github.io/blog/2017/09/05/deal-with-floor-logs/</link>
+      <pubDate>Tue, 05 Sep 2017 22:50:33 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/09/05/deal-with-floor-logs/</guid>
+      <description>&lt;p&gt;如何过滤无用的系统日志……
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux 启动过程</title>
+      <link>https://wushuzh.github.io/blog/2018/02/01/intro-linux-startup/</link>
+      <pubDate>Thu, 01 Feb 2018 18:22:09 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2018/02/01/intro-linux-startup/</guid>
+      <description>&lt;p&gt;Linux 引导的关键步骤和相关工具简介
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux 安全审计</title>
+      <link>https://wushuzh.github.io/blog/2017/09/05/intro-linux-log-audit/</link>
+      <pubDate>Tue, 05 Sep 2017 22:50:33 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/09/05/intro-linux-log-audit/</guid>
+      <description>&lt;p&gt;如何过滤无用的系统日志……
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>数据分析预备</title>
+      <link>https://wushuzh.github.io/blog/2018/02/07/intro-statistics-by-python/</link>
+      <pubDate>Wed, 07 Feb 2018 14:15:32 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2018/02/07/intro-statistics-by-python/</guid>
+      <description>&lt;p&gt;复习统计基础知识、常用编程技巧
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Scipy 学习笔记</title>
+      <link>https://wushuzh.github.io/blog/2017/10/10/get-start-with-scipy/</link>
+      <pubDate>Tue, 10 Oct 2017 19:18:20 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/10/10/get-start-with-scipy/</guid>
+      <description>&lt;p&gt;python 科学计算生态的体系化学习
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>上手科学计算</title>
+      <link>https://wushuzh.github.io/blog/2017/08/03/get-start-with-sci-computing/</link>
+      <pubDate>Thu, 03 Aug 2017 20:48:43 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/08/03/get-start-with-sci-computing/</guid>
+      <description>&lt;p&gt;使用 Fedora 定制版也能快速上手科学计算
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>搭建容器的专属系统</title>
       <link>https://wushuzh.github.io/blog/2017/07/06/setup-a-container-host-env/</link>
       <pubDate>Thu, 06 Jul 2017 09:28:56 +0800</pubDate>
@@ -208,7 +287,7 @@
       <pubDate>Fri, 01 Sep 2017 22:01:43 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/09/01/dual-os-5-wifi-ap/</guid>
-      <description>&lt;p&gt;利用无线网卡共享网络访问
+      <description>&lt;p&gt;利用无线网卡创建热点，共享网络访问
 &lt;/p&gt;</description>
     </item>
     
@@ -223,12 +302,92 @@
     </item>
     
     <item>
+      <title>视频下载</title>
+      <link>https://wushuzh.github.io/blog/2018/04/16/download-vids-using-youtube-dl/</link>
+      <pubDate>Mon, 16 Apr 2018 22:45:31 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2018/04/16/download-vids-using-youtube-dl/</guid>
+      <description>&lt;p&gt;油管视频下载和播放的利器
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>打造虚拟实验厂</title>
+      <link>https://wushuzh.github.io/blog/2017/09/15/mgnt-virenv-7-vagrant/</link>
+      <pubDate>Fri, 15 Sep 2017 20:55:02 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/09/15/mgnt-virenv-7-vagrant/</guid>
+      <description>&lt;p&gt;QEMU/KVM、Libvirt、Vagrant 的安装配置
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>GNOME桌面环境</title>
+      <link>https://wushuzh.github.io/blog/2018/05/29/setup-gnome-on-arch/</link>
+      <pubDate>Tue, 29 May 2018 20:13:36 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2018/05/29/setup-gnome-on-arch/</guid>
+      <description>&lt;p&gt;多显示器、图形化工作环境的设置
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>HEAT 部署编排</title>
+      <link>https://wushuzh.github.io/blog/2018/03/06/create-stack-8-hot/</link>
+      <pubDate>Tue, 06 Mar 2018 20:52:04 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2018/03/06/create-stack-8-hot/</guid>
+      <description>&lt;p&gt;利用编排模板初始化一个复杂的集群
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>用安赛波自动化管理</title>
+      <link>https://wushuzh.github.io/blog/2017/09/21/mgnt-os-8-ansible/</link>
+      <pubDate>Thu, 21 Sep 2017 21:07:09 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/09/21/mgnt-os-8-ansible/</guid>
+      <description>&lt;p&gt;学着像 Ender 一样高效操控战队
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Zabbix 综合监控</title>
       <link>https://wushuzh.github.io/blog/2017/08/18/watching-it-by-zabbix-1/</link>
       <pubDate>Fri, 18 Aug 2017 20:51:17 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/08/18/watching-it-by-zabbix-1/</guid>
       <description>&lt;p&gt;其名和监控，大概能有个十万八千里的距离？
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Zabbix自定义指标</title>
+      <link>https://wushuzh.github.io/blog/2017/08/24/watching-it-by-zabbix-2/</link>
+      <pubDate>Thu, 24 Aug 2017 22:24:51 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/08/24/watching-it-by-zabbix-2/</guid>
+      <description>&lt;p&gt;定制监控指标的高阶操作和注意事项
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>替换 Zabbix 前端</title>
+      <link>https://wushuzh.github.io/blog/2017/08/25/viewing-it-by-grafana-3/</link>
+      <pubDate>Fri, 25 Aug 2017 21:00:32 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/08/25/viewing-it-by-grafana-3/</guid>
+      <description>&lt;p&gt;狂拽酷炫的 Grafana 前端仪表盘
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>服务器远程管理</title>
+      <link>https://wushuzh.github.io/blog/2017/08/04/intro-server-remote-ctrl/</link>
+      <pubDate>Fri, 04 Aug 2017 22:24:11 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/08/04/intro-server-remote-ctrl/</guid>
+      <description>&lt;p&gt;应该该如何实现服务器的远程管理
 &lt;/p&gt;</description>
     </item>
     
@@ -243,12 +402,472 @@
     </item>
     
     <item>
+      <title>5G 何时到来？</title>
+      <link>https://wushuzh.github.io/blog/2017/10/09/telecom-transition-to-5g/</link>
+      <pubDate>Mon, 09 Oct 2017 22:14:57 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/10/09/telecom-transition-to-5g/</guid>
+      <description>&lt;p&gt;5G 通信多快，未来会是啥样？
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>认证协议简介</title>
       <link>https://wushuzh.github.io/blog/2017/06/08/general-auth-concepts/</link>
       <pubDate>Thu, 08 Jun 2017 21:49:02 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/06/08/general-auth-concepts/</guid>
       <description>&lt;p&gt;Diameter从属的大类是，认证协议的一种。
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>番外篇：密码演化史</title>
+      <link>https://wushuzh.github.io/blog/2017/07/27/pitfalls-of-the-passwd/</link>
+      <pubDate>Thu, 27 Jul 2017 18:31:59 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/07/27/pitfalls-of-the-passwd/</guid>
+      <description>&lt;p&gt;这些年我们用过的那些密码……
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>python 并发 (3)</title>
+      <link>https://wushuzh.github.io/blog/2017/09/21/py-async-socket/</link>
+      <pubDate>Thu, 21 Sep 2017 20:19:58 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/09/21/py-async-socket/</guid>
+      <description>&lt;p&gt;最终版本的 AsyncSocket 及总结
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>python 并发 (2)</title>
+      <link>https://wushuzh.github.io/blog/2017/09/14/try-io-multiplexing-py/</link>
+      <pubDate>Thu, 14 Sep 2017 21:28:44 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/09/14/try-io-multiplexing-py/</guid>
+      <description>&lt;p&gt;仅通过调度器实现服务复用——免线程版
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>python 并发 (1)</title>
+      <link>https://wushuzh.github.io/blog/2017/09/08/intro-to-py-socket/</link>
+      <pubDate>Fri, 08 Sep 2017 23:27:52 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/09/08/intro-to-py-socket/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://www.dabeaz.com/&#34;&gt;David Beazley&lt;/a&gt; 的&lt;a href=&#34;https://www.youtube.com/watch?v=MCs5OvhV9S4&#34;&gt;直播讲解&lt;/a&gt; Socket 并发
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>搭建 py 开发环境</title>
+      <link>https://wushuzh.github.io/blog/2017/09/11/get-start-with-py/</link>
+      <pubDate>Mon, 11 Sep 2017 23:00:07 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/09/11/get-start-with-py/</guid>
+      <description>&lt;p&gt;如何在不同的环境下自由穿行
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>流利 python</title>
+      <link>https://wushuzh.github.io/blog/2017/11/06/play-pythonic-cards/</link>
+      <pubDate>Mon, 06 Nov 2017 21:18:21 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/11/06/play-pythonic-cards/</guid>
+      <description>&lt;p&gt;愿敲代码终有一天能比斗地主更 666
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>RestFul API</title>
+      <link>https://wushuzh.github.io/blog/2017/10/30/restful-api-by-flask/</link>
+      <pubDate>Mon, 30 Oct 2017 11:24:09 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/10/30/restful-api-by-flask/</guid>
+      <description>&lt;p&gt;当下还在流行使用的远程通信方式
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Nmap 扫描</title>
+      <link>https://wushuzh.github.io/blog/2017/11/28/use-nmap-to-scan/</link>
+      <pubDate>Tue, 28 Nov 2017 20:44:11 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/11/28/use-nmap-to-scan/</guid>
+      <description>&lt;p&gt;成片扫描网段和端口/服务的快捷方法
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>“调用”可视化</title>
+      <link>https://wushuzh.github.io/blog/2017/11/24/draw-py-call-graph/</link>
+      <pubDate>Fri, 24 Nov 2017 11:37:35 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/11/24/draw-py-call-graph/</guid>
+      <description>&lt;p&gt;追踪代码调用，生成 call grapy
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>JWT 身份认证</title>
+      <link>https://wushuzh.github.io/blog/2017/11/22/try-jwt-in-flask/</link>
+      <pubDate>Wed, 22 Nov 2017 23:13:51 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/11/22/try-jwt-in-flask/</guid>
+      <description>&lt;p&gt;JSON Web Token 身份验证
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>数据可视化</title>
+      <link>https://wushuzh.github.io/blog/2017/11/21/make-amazing-charts/</link>
+      <pubDate>Tue, 21 Nov 2017 22:37:31 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/11/21/make-amazing-charts/</guid>
+      <description>&lt;p&gt;跟着知名民调网站学数据可视化
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Bokeh 服务器</title>
+      <link>https://wushuzh.github.io/blog/2017/11/20/try-bokeh-server/</link>
+      <pubDate>Mon, 20 Nov 2017 21:02:10 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/11/20/try-bokeh-server/</guid>
+      <description>&lt;p&gt;用 Bokeh 服务器对可视化进行控制
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Bokeh 可视化入门</title>
+      <link>https://wushuzh.github.io/blog/2017/10/31/try-bokeh-with-flask/</link>
+      <pubDate>Tue, 31 Oct 2017 20:59:31 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/10/31/try-bokeh-with-flask/</guid>
+      <description>&lt;p&gt;使用 Python 生成交互式图表
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>K8s容器管理</title>
+      <link>https://wushuzh.github.io/blog/2017/10/24/microservices-and-k8s/</link>
+      <pubDate>Tue, 24 Oct 2017 22:20:04 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/10/24/microservices-and-k8s/</guid>
+      <description>&lt;p&gt;啊，船长，啊，我的船长……
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>搜索二叉树</title>
+      <link>https://wushuzh.github.io/blog/2017/12/01/loop-tree-by-stack-queue/</link>
+      <pubDate>Fri, 01 Dec 2017 20:11:31 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/12/01/loop-tree-by-stack-queue/</guid>
+      <description>&lt;p&gt;学习栈和队列在树搜索中的使用
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>决策树:背包问题</title>
+      <link>https://wushuzh.github.io/blog/2017/12/06/knapsack-decision-problem/</link>
+      <pubDate>Wed, 06 Dec 2017 20:11:31 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/12/06/knapsack-decision-problem/</guid>
+      <description>&lt;p&gt;如何高效解决经典的背包问题
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Flask 开发 0</title>
+      <link>https://wushuzh.github.io/blog/2018/05/17/a-dev-env-of-webapp-0/</link>
+      <pubDate>Thu, 17 May 2018 21:17:18 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2018/05/17/a-dev-env-of-webapp-0/</guid>
+      <description>&lt;p&gt;按官方教程，用TDD的方式写一个迷你博客
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>网页式的演讲文稿</title>
+      <link>https://wushuzh.github.io/blog/2017/12/07/make-slides-by-markdown/</link>
+      <pubDate>Thu, 07 Dec 2017 13:17:31 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/12/07/make-slides-by-markdown/</guid>
+      <description>&lt;p&gt;转化 Markdown 为 HTML slides
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Flask 开发 4</title>
+      <link>https://wushuzh.github.io/blog/2017/12/07/use-react-in-frontend/</link>
+      <pubDate>Thu, 07 Dec 2017 22:01:09 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/12/07/use-react-in-frontend/</guid>
+      <description>&lt;p&gt;从现在开始 React 复杂前端
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Flask 开发 4</title>
+      <link>https://wushuzh.github.io/blog/2017/12/01/a-dev-env-of-webapp-4/</link>
+      <pubDate>Fri, 01 Dec 2017 21:27:56 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/12/01/a-dev-env-of-webapp-4/</guid>
+      <description>&lt;p&gt;集成容器数据库，为应用创建测试集
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Flask 开发 3</title>
+      <link>https://wushuzh.github.io/blog/2017/11/15/a-dev-env-of-webapp-3/</link>
+      <pubDate>Wed, 15 Nov 2017 19:01:33 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/11/15/a-dev-env-of-webapp-3/</guid>
+      <description>&lt;p&gt;运用蓝图和测试集将原应用拆解为多个组件
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Flask 开发 2</title>
+      <link>https://wushuzh.github.io/blog/2017/11/14/a-dev-env-of-webapp-2/</link>
+      <pubDate>Tue, 14 Nov 2017 22:47:09 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/11/14/a-dev-env-of-webapp-2/</guid>
+      <description>&lt;p&gt;集成容器数据库，为应用创建测试集
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Flask 开发 1</title>
+      <link>https://wushuzh.github.io/blog/2017/10/16/a-dev-env-of-webapp-1/</link>
+      <pubDate>Mon, 16 Oct 2017 20:26:19 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/10/16/a-dev-env-of-webapp-1/</guid>
+      <description>&lt;p&gt;麻雀虽小但五脏俱全的开发环境
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>全文搜索</title>
+      <link>https://wushuzh.github.io/blog/2018/03/20/flask-full-text-search/</link>
+      <pubDate>Tue, 20 Mar 2018 20:34:43 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2018/03/20/flask-full-text-search/</guid>
+      <description>&lt;p&gt;利用 ELK 为应用加入全文搜索
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>组织代码架构</title>
+      <link>https://wushuzh.github.io/blog/2018/03/14/org-flask-app-structure/</link>
+      <pubDate>Wed, 14 Mar 2018 21:47:15 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2018/03/14/org-flask-app-structure/</guid>
+      <description>&lt;p&gt;为代码结构做更好的蓝图设计
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>异步翻译</title>
+      <link>https://wushuzh.github.io/blog/2018/03/13/ajax-in-spa-translation/</link>
+      <pubDate>Tue, 13 Mar 2018 22:29:29 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2018/03/13/ajax-in-spa-translation/</guid>
+      <description>&lt;p&gt;使用 Ajax 做在线翻译页面部分更新
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Flask 教程7</title>
+      <link>https://wushuzh.github.io/blog/2018/02/28/flask-integrate-bootstrap/</link>
+      <pubDate>Wed, 28 Feb 2018 21:48:56 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2018/02/28/flask-integrate-bootstrap/</guid>
+      <description>&lt;p&gt;利用 Bootstrap 美化界面元素，简化表单
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Flask 教程6</title>
+      <link>https://wushuzh.github.io/blog/2018/02/22/flask-email-notification/</link>
+      <pubDate>Thu, 22 Feb 2018 22:17:34 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2018/02/22/flask-email-notification/</guid>
+      <description>&lt;p&gt;实现邮件注册、密码重置等自助功能
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Flask 教程6</title>
+      <link>https://wushuzh.github.io/blog/2018/02/22/flask-pagination-long-list/</link>
+      <pubDate>Thu, 22 Feb 2018 21:45:12 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2018/02/22/flask-pagination-long-list/</guid>
+      <description>&lt;p&gt;提交微博，通过分页处理长列表
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Flask 教程5</title>
+      <link>https://wushuzh.github.io/blog/2018/02/06/add-the-follower-model/</link>
+      <pubDate>Tue, 06 Feb 2018 20:17:19 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2018/02/06/add-the-follower-model/</guid>
+      <description>&lt;p&gt;如何添加更为复杂的多对多关系模型
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Flask 教程4</title>
+      <link>https://wushuzh.github.io/blog/2018/02/04/flask-debug-and-log/</link>
+      <pubDate>Sun, 04 Feb 2018 19:37:21 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2018/02/04/flask-debug-and-log/</guid>
+      <description>&lt;p&gt;如何进行错误排查和记录日志、及邮件通知
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Flask 教程3</title>
+      <link>https://wushuzh.github.io/blog/2018/02/01/usr-login-and-register/</link>
+      <pubDate>Thu, 01 Feb 2018 20:19:27 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2018/02/01/usr-login-and-register/</guid>
+      <description>&lt;p&gt;flask 教程: 创建一个类微博原型站点
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Flask 教程2</title>
+      <link>https://wushuzh.github.io/blog/2018/01/30/dev-db-model-in-flask/</link>
+      <pubDate>Tue, 30 Jan 2018 21:17:49 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2018/01/30/dev-db-model-in-flask/</guid>
+      <description>&lt;p&gt;flask 教程: 创建一个类微博原型站点
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Flask 教程1</title>
+      <link>https://wushuzh.github.io/blog/2018/01/29/hello-flask-mega-tutorial/</link>
+      <pubDate>Mon, 29 Jan 2018 22:07:11 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2018/01/29/hello-flask-mega-tutorial/</guid>
+      <description>&lt;p&gt;flask 教程: 创建一个类微博原型站点
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>操作 PDF</title>
+      <link>https://wushuzh.github.io/blog/2018/02/09/manipulate-with-pdfs/</link>
+      <pubDate>Fri, 09 Feb 2018 11:16:59 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2018/02/09/manipulate-with-pdfs/</guid>
+      <description>&lt;p&gt;PDF 文件的页面转向、合并和其他高阶操作
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>地理空间数据分析</title>
+      <link>https://wushuzh.github.io/blog/2018/03/26/machine-learning-for-mobility/</link>
+      <pubDate>Mon, 26 Mar 2018 21:19:28 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2018/03/26/machine-learning-for-mobility/</guid>
+      <description>&lt;p&gt;空间地理基础介绍和移动迁移预测
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>获取OSM街道信息</title>
+      <link>https://wushuzh.github.io/blog/2018/03/22/download-street-network/</link>
+      <pubDate>Thu, 22 Mar 2018 20:55:21 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2018/03/22/download-street-network/</guid>
+      <description>&lt;p&gt;获取开源地图行政区域和接到数据
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>容器化的Openstack</title>
+      <link>https://wushuzh.github.io/blog/2018/03/28/k8s-with-openstack/</link>
+      <pubDate>Wed, 28 Mar 2018 22:24:01 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2018/03/28/k8s-with-openstack/</guid>
+      <description>&lt;p&gt;女王来临
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux 内幕</title>
+      <link>https://wushuzh.github.io/blog/2018/02/08/linux-under-the-hood/</link>
+      <pubDate>Thu, 08 Feb 2018 10:39:04 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2018/02/08/linux-under-the-hood/</guid>
+      <description>&lt;p&gt;深入探索 Linux 系统的各种细节
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java 开发环境</title>
+      <link>https://wushuzh.github.io/blog/2017/11/24/setup-java-dev-env/</link>
+      <pubDate>Fri, 24 Nov 2017 11:37:35 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/11/24/setup-java-dev-env/</guid>
+      <description>&lt;p&gt;设定 JDK 和 Eclipse 集成开发环境
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>设置反向代理</title>
+      <link>https://wushuzh.github.io/blog/2018/02/23/setup-the-reverse-proxy/</link>
+      <pubDate>Fri, 23 Feb 2018 21:35:44 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2018/02/23/setup-the-reverse-proxy/</guid>
+      <description>&lt;p&gt;利用中间服务器做 HTTP(S) 反向代理
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Pandas 入门</title>
+      <link>https://wushuzh.github.io/blog/2017/12/03/get-start-with-pandas/</link>
+      <pubDate>Sun, 03 Dec 2017 09:04:10 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/12/03/get-start-with-pandas/</guid>
+      <description>&lt;p&gt;Python 中 Excel 级别的数据操作库
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Vim 学习</title>
+      <link>https://wushuzh.github.io/blog/2017/11/29/vim-day-by-day/</link>
+      <pubDate>Wed, 29 Nov 2017 11:37:35 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/11/29/vim-day-by-day/</guid>
+      <description>&lt;p&gt;珍爱生命，每天学一点 vim 技巧
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>测试驱动开发</title>
+      <link>https://wushuzh.github.io/blog/2018/07/01/head-first-cucumber/</link>
+      <pubDate>Sun, 01 Jul 2018 22:13:07 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2018/07/01/head-first-cucumber/</guid>
+      <description>&lt;p&gt;使用&lt;a href=&#34;https://en.wikipedia.org/wiki/Domain-specific_language&#34;&gt;业务术语&lt;/a&gt;定义测试产品行为
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>流处理平台 Kakfa</title>
+      <link>https://wushuzh.github.io/blog/2018/06/25/head-first-kafka/</link>
+      <pubDate>Mon, 25 Jun 2018 21:12:23 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2018/06/25/head-first-kafka/</guid>
+      <description>&lt;p&gt;全新的分布式平台设计思路
 &lt;/p&gt;</description>
     </item>
     

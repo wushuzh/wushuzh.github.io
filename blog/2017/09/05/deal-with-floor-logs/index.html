@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>洪水报文，咋整？</title>
+<meta name="description" content="个人技术站点">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.theme.css">
+
+
+  <link href="https://wushuzh.github.io/css/style.sea.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://wushuzh.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-102509506-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="/">小强会武术</a></h1>
+    
+      <p class="sidebar-p">工程师</p>
+    
+      <p class="sidebar-p">记录每一个自己填平的坑</p>
+    
+    <ul class="sidebar-menu">
+      
+      
+        <li><a href="https://wushuzh.github.io/">Home</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  
+  
+  <a href="https://twitter.com/Xiao_Qiang" data-animate-hover="pulse" class="external twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  
+  
+  
+  <a href="mailto:wushuzh@outlook.com" data-animate-hover="pulse" class="email">
+    <i class="fa fa-envelope"></i>
+  </a>
+  
+  
+  
+  
+
+  
+  <a href="https://wushuzh.github.io/index.xml" data-animate-hover="pulse">
+    <i class='fa fa-rss'></i>
+  </a>
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2017 wushuzh
+        
+        | Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="/">小强会武术</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="content-column-content">
+
+      <div class="row">
+        <div class="col-sm-6">
+          
+            <div class="image">
+              <img src="https://wushuzh.github.io//img/blog/deal-with-flood-logs/taxes.png" class="img-responsive" alt="">
+            </div>
+          
+        </div>
+        <div class="col-md-6">
+            <h2>洪水报文，咋整？</h2>
+                <p>
+                  小强会武术
+                </p>
+
+                <time datetime="2017-09-05 22:50:33 &#43;0800 CST">
+                <i class="fa fa-calendar-o fa-fw"></i> 2017-09-05
+                </time>
+                &middot;
+                1345 字
+                &middot;
+                3 分钟
+
+        </div>
+      </div>
+      <br />
+
+         <p>如何过滤无用的系统日志……
+</p>
+
+<p><a href="/blog/2017/06/04/syslog-std-in-general/">&ldquo;syslog 标准及其实现&rdquo;</a> 中最后提到了一种 syslog 的实现:“快火箭日志”。本篇就针对它说说遇到“洪水报文消息”的处理方法。</p>
+
+<blockquote>
+<p>所谓洪水报文消息，就是系统日志被大量重复信息充斥，导致正常日志被淹没其中，容易被错过忽略，影响系统安全审计。</p>
+</blockquote>
+
+<h2 id="现象描述">现象描述</h2>
+
+<p>RHEL7 中 /var/log/ 目录下 messages 和 secure 两个文件中存在大量的相似的登录会话日志。每秒都出现大量的会话打开、关闭，从 root 转换到 root 等日志。</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console"># tailf secure
+... HH:MM:31 ... su: pam_unix(su-l:session): session closed for user root
+... HH:MM:32 ... su: pam_unix(su-l:session): session opened for user root by (uid=0)
+... HH:MM:32 ... su: pam_unix(su-l:session): session closed for user root
+... HH:MM:33 ... su: pam_unix(su-l:session): session opened for user root by (uid=0)
+... HH:MM:34 ... su: pam_unix(su-l:session): session closed for user root
+... HH:MM:36 ... su: pam_unix(su-l:session): session opened for user root by (uid=0)
+... HH:MM:37 ... su: pam_unix(su-l:session): session opened for user root by (uid=0)
+... HH:MM:37 ... su: pam_unix(su-l:session): session closed for user root
+
+# tailf messages
+... HH:MM:32 ... su: (to root) root on none
+... HH:MM:32 ... systemd: Started Session c802966 of user root.
+... HH:MM:32 ... systemd: Starting Session c802966 of user root.
+... HH:MM:33 ... su: (to root) root on none
+... HH:MM:33 ... systemd: Started Session c802967 of user root.
+... HH:MM:33 ... systemd: Starting Session c802967 of user root.
+... HH:MM:34 ... su: (to root) root on none
+... HH:MM:34 ... systemd: Started Session c802968 of user root.
+... HH:MM:34 ... systemd: Starting Session c802968 of user root.</code></pre></div>
+
+<h2 id="来源分析">来源分析</h2>
+
+<p>关于登录、认证、鉴权，建议完整阅读 鸟哥的Linux私房菜 <a href="http://linux.vbird.org/linux_basic/0410accountmanager.php#">第十三章、Linux 帳號管理與 ACL 權限設定</a> 不少细节你可能都不知道，比如:</p>
+
+<ul>
+<li>系统和登入 UID 的各自取值范围，如何设定一个系统账户(&lt;1000);</li>
+<li>shadow 含密码更改日，锁定天数，更改天数、过期警告/宽限天数、账户失效日;</li>
+<li>万一 root 密码忘了，咋整？;</li>
+<li>用户创建文件时属于初始群组还是次要群组，该如何切换有效群组;</li>
+<li>/etc/default/useradd 在不同 Linux 版本如何设定“私有群组”和“公共群组”</li>
+<li>ACL 的 setfacl 和 SUID/SGID/SBIT 权限有何分别？chattr 又是做啥的？</li>
+<li>PAM 模块简介: 配置和控制流程</li>
+</ul>
+
+<h3 id="linux-pam">Linux PAM</h3>
+
+<p>Linux 作为服务器操作系统，必然同时运行着多种服务——但如果让每个服务定义各自的账户、密码和验证机制无疑是一种浪费。于是 PAM (可嵌入认证模块)就被设计成一种提供通用的、可定制需求的认证接口。开发者只要定义设定其服务的认证需求，PAM 就按相应流程结合登录时的实际情况向服务和应用返回认证结果。</p>
+
+<p>PAM 的设定配置文件都存放于 /etc/pam.d/ ，配置文件一般三列</p>
+
+<p>第一列是验证类别 type（设定顺序的一般也同下）:</p>
+
+<ol>
+<li>身份认证/auth</li>
+<li>账户授权/account</li>
+<li>登入登出/session</li>
+<li>密码变更/password</li>
+</ol>
+
+<p>第二列是控制标志 flag</p>
+
+<ul>
+<li>required 无论当前判定结果如何，都会进行后续步骤</li>
+<li>requisite 一旦当前判定失败，立刻终止，不进行后续步骤</li>
+<li>sufficient 一旦当前判定陈宫，立刻终止，不进行后续步骤</li>
+<li>optional 一般用于日志记录</li>
+</ul>
+
+
+<figure>
+    
+        <img src="/img/blog/deal-with-flood-logs/pam-run_stack.png" />
+    
+    
+    <figcaption>
+        <h4>ctrl flow from Oracle</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<p>可以断定的是，之前 message 和 security 中看到的大量 session 切换的日志，就源自 PAM 验证中的日志记录。</p>
+
+<p>我按照 <a href="https://unix.stackexchange.com/a/224444">How to stop sudo PAM messages in auth.log for a specific user</a> 中的解决方案，发现借助 <a href="https://linux.die.net/man/8/pam_succeed_if">pam_succeed_if(8)</a> 修改 su、su-l 等配置也确实可以屏蔽掉一部分日志。但直接修改系统预设定的 pam 配置文件是很有风险的。如果对整个验证流程理解不透彻，则可能造成</p>
+
+<ul>
+<li>验证逻辑错误，原本该被判定合法的认证授权被误判为非法</li>
+<li>验证逻辑漏洞，非法登录被忽略记录，乃至放行，给系统引入安全审计漏洞</li>
+</ul>
+
+<h2 id="rsyslog">rsyslog</h2>
+
+<p>除了上述更改鉴权流程本身，更为保险的方法是更改输出日志的配置。显式地制定可以忽略的日志规则，存入配置文件，例如 /etc/rsyslog.d/ignore-su-session-slice.conf，然后重启服务<code>systemctl restart rsyslog</code></p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">if ($programname == &#34;su&#34; and ($msg contains &#34;root on none&#34;))
+  or ($programname == &#34;systemd&#34;
+      and ($msg contains &#34;Starting Session&#34;
+           or $msg contains &#34;Started Session&#34;))
+  or ($programname == &#34;systemd-logind&#34;
+      and ($msg contains &#34;New session&#34;
+           or $msg contains &#34;Removed session&#34;)))
+then stop</code></pre></div>
+
+<p>参考文档</p>
+
+<blockquote>
+<ul>
+<li>Wikipedia <a href="https://en.wikipedia.org/wiki/Pluggable_authentication_module">Pluggable authentication module</a> and <a href="https://en.wikipedia.org/wiki/Linux_PAM">Linux PAM</a></li>
+<li>Serverfault <a href="https://serverfault.com/a/538503">Understand PAM and NSS</a></li>
+<li>Vishal Srivastava (2009-03-10) <a href="https://www.ibm.com/developerworks/library/l-pam/index.html">Understanding and configuring PAM</a></li>
+<li><a href="http://www.tuxradar.com/content/how-pam-works">How PAM works</a></li>
+<li><a href="http://pig.made-it.com/pam.html">PAM Explanation</a></li>
+<li>Andrew G. Morgan and Thorsten Kukuk <a href="http://www.linux-pam.org/Linux-PAM-html/Linux-PAM_SAG.html">The Linux-PAM System Administrators&rsquo; Guide</a></li>
+<li><a href="http://www.rsyslog.com/doc/v8-stable/configuration/index.html">Rsyslog conf</a></li>
+</ul>
+</blockquote>
+
+<p>封面图片来自 <a href="https://dribbble.com/shots/2082740-Current-paperwork-status-doing-my-taxes">Current paperwork status: doing my taxes…</a> <a href="https://dribbble.com/jan-hendrikholst"><i class="fa fa-dribbble" aria-hidden="true"></i> Jan-Hendrik Holst</a></p>
+
+<p>其他图片来源网络</p>
+         <div id="disqus_thread">
+  <a href="#" onclick="disqus();return false;">enable VPN and click here to <i class="fa fa-comments" aria-hidden="true"></i></a>
+</div>
+
+<script type="text/javascript">
+var disqus_loaded = false;
+function disqus() {
+  if (!disqus_loaded) {
+    
+    
+    
+    
+
+    disqus_loaded = true;
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'wushuzh';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }
+};
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </div>
+  </div>
+</div>
+<noscript>
+  <style>.jsonly { display: none }</style>
+</noscript>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://wushuzh.github.io/js/jquery.min.js"></script>
+<script src="https://wushuzh.github.io/js/bootstrap.min.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.cookie.js"> </script>
+<script src="https://wushuzh.github.io/js/ekko-lightbox.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://wushuzh.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/owl.carousel.min.js"></script>
+<script src="https://wushuzh.github.io/js/front.js"></script>
+
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</body>
+</html>

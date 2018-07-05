@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Git 上手</title>
+<meta name="description" content="个人技术站点">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.theme.css">
+
+
+  <link href="https://wushuzh.github.io/css/style.sea.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://wushuzh.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-102509506-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="/">小强会武术</a></h1>
+    
+      <p class="sidebar-p">工程师</p>
+    
+      <p class="sidebar-p">记录每一个自己填平的坑</p>
+    
+    <ul class="sidebar-menu">
+      
+      
+        <li><a href="https://wushuzh.github.io/">Home</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  
+  
+  <a href="https://twitter.com/Xiao_Qiang" data-animate-hover="pulse" class="external twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  
+  
+  
+  <a href="mailto:wushuzh@outlook.com" data-animate-hover="pulse" class="email">
+    <i class="fa fa-envelope"></i>
+  </a>
+  
+  
+  
+  
+
+  
+  <a href="https://wushuzh.github.io/index.xml" data-animate-hover="pulse">
+    <i class='fa fa-rss'></i>
+  </a>
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2017 wushuzh
+        
+        | Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="/">小强会武术</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="content-column-content">
+
+      <div class="row">
+        <div class="col-sm-6">
+          
+            <div class="image">
+              <img src="https://wushuzh.github.io//img/blog/setup-git-env/kimonotocat.png" class="img-responsive" alt="">
+            </div>
+          
+        </div>
+        <div class="col-md-6">
+            <h2>Git 上手</h2>
+                <p>
+                  小强会武术
+                </p>
+
+                <time datetime="2017-11-08 20:11:49 &#43;0800 CST">
+                <i class="fa fa-calendar-o fa-fw"></i> 2017-11-08
+                </time>
+                &middot;
+                781 字
+                &middot;
+                2 分钟
+
+        </div>
+      </div>
+      <br />
+
+         <p>简单介绍 git 入門向导和协作流程
+</p>
+
+<h3 id="准备工作">准备工作</h3>
+
+<p><a href="http://gitimmersion.com/">Git Immersion</a> 的设定是编写 ruby 脚本的场景，类似的还有 <a href="https://githowto.com">Git Howto</a> 。无论操作什么文件，这些教程的本质是相同的，都是帮初学者尽快掌握 git 日程操作。直觉是一个工具 20% 的用法有着极为高频的使用率，先把他们掌握从而尽快入門。而随着操作的日趋熟练，再慢慢地去探索更高阶的操作。</p>
+
+<blockquote>
+<p>Immersion 的好处是它提供了教程本身的 html 文件，这使得就算是没有网络，你可以本地调出内容目录，随时继续/重温相关内容。</p>
+</blockquote>
+
+<p>用 curl 下载时请注意，有时访问原始连接得到 3xx 相应，为了让 curl 继续访问更新的地址，需要加上 -L 选项，仅用 -O 下载得到的文件当然是不对的。</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ curl -O http://githowto.com/git_tutorial.zip
+$ unzip git-tutorial.zip
+Archive:  git_tutorial.zip
+  End-of-central-directory signature not found.
+  Either this file is not a zipfile, or it constitutes
+  one disk of a multi-part archive.
+  In the latter case the central directory
+  and zipfile comment will be found
+  on the last disk(s) of this archive.
+
+unzip: cannot find zipfile directory in
+  one of git_tutorial.zip or git_tutorial.zip.zip,
+  and cannot find git_tutorial.zip.ZIP, period.
+
+$ curl -LOk http://githowto.com/git_tutorial.zip
+$ unzip git-tutorial.zip
+...
+
+
+$ cd git_immersion/git_tutorial/html/index.html &amp;&amp; \
+  google-chrome-stable index.html</code></pre></div>
+
+<h3 id="基本操作">基本操作</h3>
+
+<ul>
+<li>1-2 设置全局用户名和邮箱，根据 OS 做 CRLF 相关设置</li>
+<li>3-4 将项目加入版本库，跟踪、提交到版本库，查询状态 add</li>
+<li>5-9 更新文件，区分提交、已暂存和未暂存三个状态: git 关注变化而非文件 commit、status</li>
+<li>10-11 各种花哨的查看历史的方法，定义常用命令别名 log、alias</li>
+<li>12 回退到某一历史版本，返回到最新版本 checkout</li>
+<li>13 为某一版本打标签，查看标签、回退到某标签的版本 tag</li>
+<li>14-15 放弃未暂存/已暂存的更改 checkout、reset</li>
+<li>16-18 放弃已提交的更改的方法和风险 revert、reset</li>
+<li>19 立刻更新最新提交版本 commit &ndash;amend</li>
+<li>20-21 移动、改名操作 mv</li>
+<li>22-23 窥视 .git 内部</li>
+<li>24-27 创建切换分支 checkout -b、查看所有分支 -all</li>
+<li>28-30 合并(冲突)分支 merge</li>
+<li>31-35 另一种合并方式 rebase</li>
+<li>36-40 克隆版本库、远端库/分支 clone、remote -a、branch -a</li>
+<li>41-44 获取、合并远端的新增提交 fetch and merge、pull</li>
+<li>45 本地追踪远端分支 branch &ndash;track</li>
+<li>46-50 原始仓库 &ndash;bare、remote add、push、pull &ndash;track、daemon</li>
+</ul>
+
+<p>参考文档</p>
+
+<blockquote>
+<ul>
+<li>[Pro Git 中文版] 2014 (<a href="https://git-scm.com/book/zh/v2">https://git-scm.com/book/zh/v2</a>)</li>
+<li>answer <a href="https://stackoverflow.com/a/1552775/4393386">Difference between CR LF, LF and CR line break types?</a></li>
+<li>Wikipedia <a href="https://en.wikipedia.org/wiki/Newline">Newline</a></li>
+</ul>
+</blockquote>
+
+<p>封面图片来自 <a href="https://octodex.github.com/Kimonotocat">Kimonotocat</a> <a href="https://github.com/jeejkang"><i class="fa fa-github" aria-hidden="true"></i> jeejkang</a></p>
+         <div id="disqus_thread">
+  <a href="#" onclick="disqus();return false;">enable VPN and click here to <i class="fa fa-comments" aria-hidden="true"></i></a>
+</div>
+
+<script type="text/javascript">
+var disqus_loaded = false;
+function disqus() {
+  if (!disqus_loaded) {
+    
+    
+    
+    
+
+    disqus_loaded = true;
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'wushuzh';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }
+};
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </div>
+  </div>
+</div>
+<noscript>
+  <style>.jsonly { display: none }</style>
+</noscript>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://wushuzh.github.io/js/jquery.min.js"></script>
+<script src="https://wushuzh.github.io/js/bootstrap.min.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.cookie.js"> </script>
+<script src="https://wushuzh.github.io/js/ekko-lightbox.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://wushuzh.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/owl.carousel.min.js"></script>
+<script src="https://wushuzh.github.io/js/front.js"></script>
+
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</body>
+</html>

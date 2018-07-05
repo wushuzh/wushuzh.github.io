@@ -31,11 +31,15 @@
 
 
 <script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-102509506-1', 'auto');
-ga('send', 'pageview');
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-102509506-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 </head>
 <body>
@@ -140,54 +144,48 @@ ga('send', 'pageview');
 
 <p>Lucy 的服务器才从内核恐慌中恢复过来，接着创建虚拟机的时候，出现错误，对应报错信息邮件转发如下：</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>```
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">```
 Traceback (most recent call last):
-  File &quot;/usr/share/virt-manager/virtManager/asyncjob.py&quot;, line 44,
+  File &#34;/usr/share/virt-manager/virtManager/asyncjob.py&#34;, line 44,
     in cb_wrapper callback(asyncjob, *args, **kwargs)
-  File &quot;/usr/share/virt-manager/virtManager/create.py&quot;, line 1932,
+  File &#34;/usr/share/virt-manager/virtManager/create.py&#34;, line 1932,
     in do_install guest.start_install(False, meter=meter)
-  File &quot;/usr/lib/python2.6/site-packages/virtinst/Guest.py&quot;, line 1229,
+  File &#34;/usr/lib/python2.6/site-packages/virtinst/Guest.py&#34;, line 1229,
     in start_install noboot)
-  File &quot;/usr/lib/python2.6/site-packages/virtinst/Guest.py&quot;, line 1297,
+  File &#34;/usr/lib/python2.6/site-packages/virtinst/Guest.py&#34;, line 1297,
     in _create_guest dom = self.conn.createLinux(start_xml or final_xml, 0)
-  File &quot;/usr/lib64/python2.6/site-packages/libvirt.py&quot;, line 2686,
+  File &#34;/usr/lib64/python2.6/site-packages/libvirt.py&#34;, line 2686,
     in createLinux if ret is None:
       raise libvirtError(&#39;virDomainCreateLinux() failed&#39;, conn=self)
 libvirtError: Unable to read from monitor: Connection reset by peer
-```
-</pre></div>
-
+```</code></pre></div>
 
 <p>服务器是一台 KVM 宿主服务器，virsh 查看正在运行的虚拟机一切正常。Lucy 并没说安装那台机器，<strong>但查问题总需要一个问题重现步骤</strong> ，好在通过 kickstart 创建安装一台虚拟机也不麻烦，直接试一下。下面的步骤将触发一个标准的 kickstart 安装，并将安装过程直接输出到终端，供用户监控安装过程。</p>
 
 <h3 id="尝试问题重现">尝试问题重现</h3>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>qemu-img create -f qcow2 wushuzh.qcow2 10G
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">qemu-img create -f qcow2 wushuzh.qcow2 10G
 
-<span style="color: #75715e"># prepare a kickstart file, a few notes:</span>
-<span style="color: #75715e">#  1. set cdrom as the installation media</span>
-<span style="color: #75715e">#  2. set text so no vnc/gui is needed</span>
-<span style="color: #75715e">#  3. use dhcp for network (activate) , set local ntp</span>
-<span style="color: #75715e">#  4. set hostname and crypted passwd of root</span>
-<span style="color: #75715e">#  5. use autopart and minimal installation to speed up progress</span>
-
-virt-install --name wushuzh  --vcpus<span style="color: #f92672">=</span><span style="color: #ae81ff">2</span> --ram <span style="color: #ae81ff">4096</span> <span style="color: #ae81ff">\</span>
-  --os-type<span style="color: #f92672">=</span>linux --os-variant rhel7 <span style="color: #ae81ff">\</span>
-  --disk /kvm/vmimg/wushuzh.qcow2,device<span style="color: #f92672">=</span>disk,bus<span style="color: #f92672">=</span>virtio <span style="color: #ae81ff">\</span>
-  --location /repo/isos/rhel-server-7.3-x86_64-dvd.iso <span style="color: #ae81ff">\</span>
-  --extra-args<span style="color: #f92672">=</span><span style="color: #e6db74">&quot;ks=file:/wushuzh.ks console=tty0 console=ttyS0,115200n8&quot;</span> <span style="color: #ae81ff">\</span>
-  --network network:default --initrd-inject<span style="color: #f92672">=</span>wushuzh.ks  --nographics
-</pre></div>
-
+<span style="color:#75715e"># prepare a kickstart file, a few notes:
+</span><span style="color:#75715e">#  1. set cdrom as the installation media
+</span><span style="color:#75715e">#  2. set text so no vnc/gui is needed
+</span><span style="color:#75715e">#  3. use dhcp for network (activate) , set local ntp
+</span><span style="color:#75715e">#  4. set hostname and crypted passwd of root
+</span><span style="color:#75715e">#  5. use autopart and minimal installation to speed up progress
+</span><span style="color:#75715e"></span>
+virt-install --name wushuzh  --vcpus<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span> --ram <span style="color:#ae81ff">4096</span> <span style="color:#ae81ff">\</span>
+  --os-type<span style="color:#f92672">=</span>linux --os-variant rhel7 <span style="color:#ae81ff">\</span>
+  --disk /kvm/vmimg/wushuzh.qcow2,device<span style="color:#f92672">=</span>disk,bus<span style="color:#f92672">=</span>virtio <span style="color:#ae81ff">\</span>
+  --location /repo/isos/rhel-server-7.3-x86_64-dvd.iso <span style="color:#ae81ff">\</span>
+  --extra-args<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ks=file:/wushuzh.ks console=tty0 console=ttyS0,115200n8&#34;</span> <span style="color:#ae81ff">\</span>
+  --network network:default --initrd-inject<span style="color:#f92672">=</span>wushuzh.ks  --nographics</code></pre></div>
 
 <p>结果安装一切顺利，虚拟机成功启动。</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #75715e"># consider add this into /etc/profile</span>
-<span style="color: #f8f8f2">export</span> <span style="color: #f8f8f2">LIBVIRT_DEFAULT_URI</span><span style="color: #f92672">=</span>qemu:///system
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># consider add this into /etc/profile
+</span><span style="color:#75715e"></span>export LIBVIRT_DEFAULT_URI<span style="color:#f92672">=</span>qemu:///system
 
-virsh console wushuzh
-</pre></div>
-
+virsh console wushuzh</code></pre></div>
 
 <h3 id="深入查找日志">深入查找日志</h3>
 
@@ -197,26 +195,22 @@ virsh console wushuzh
 
 <p>带着这个信息，去问了下 Lucy ，观看了一下她的操作过程：通过 virt-manager 图形界面安装服务器。全部配置完成，在最后点击安装的时候，界面出现了错误。赶快去看一下相应的 libvirt 日志。</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>[root@kvmhost qemu]# tail -4 some-vmname.log
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">[root@kvmhost qemu]# tail -4 some-vmname.log
 Domain id=28 is tainted: host-cpu
 char device redirected to /dev/pts/11
 2017-06-28T05:57:05.872745Z qemu-kvm:
   -drive file=/some-base-folder/some-iso,
     if=none,media=cdrom,id=drive-ide0-1-0,readonly=on,format=raw:
   could not open disk image /some-base-folder/some-iso: Permission denied
-2017-06-28 05:57:06.188+0000: shutting down
-</pre></div>
-
+2017-06-28 05:57:06.188+0000: shutting down</code></pre></div>
 
 <p>权限有问题，继续查看 /var/log/message 或 security，果然也有相应错误。</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>[root@kvmhost log]# tail -3 /var/log/messages
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">[root@kvmhost log]# tail -3 /var/log/messages
 Jun 28 13:57:13 kvmhost setroubleshoot:
   SELinux is preventing /usr/libexec/qemu-kvm from read access
     on the lnk_file releases. For complete SELinux messages.
-      run sealert -l ccc9f19d-f2b2-4a1e-b991-af6de737f285
-</pre></div>
-
+      run sealert -l ccc9f19d-f2b2-4a1e-b991-af6de737f285</code></pre></div>
 
 <p>这个错误由 selinux 导致，但这个设置在最初搭建此服务器的时候，创建第一台虚拟机的时候遇到过——selinux认为安装介质通过含有 link 的目录进行应用会产生潜在的安全问题——但当时我就添加了相应规则。但这次又一次出现，猜测可能是之前替换系统文件或 rpm 安装包，由此产生的非常规更新导致？</p>
 
@@ -224,7 +218,7 @@ Jun 28 13:57:13 kvmhost setroubleshoot:
 
 <p>这个错误的修复也很简单。root 按照日志中建议为本地建立放行规则即可。</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>[root@kvmhost log]# sealert -l ccc9f19d-f2b2-4a1e-b991-af6de737f285
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">[root@kvmhost log]# sealert -l ccc9f19d-f2b2-4a1e-b991-af6de737f285
 PuTTY X11 proxy: Unsupported authorisation protocol
 SELinux is preventing /usr/libexec/qemu-kvm from read access
   on the lnk_file some-folder.
@@ -234,7 +228,7 @@ SELinux is preventing /usr/libexec/qemu-kvm from read access
 If you want to allow qemu-kvm to have read access on the releases lnk_file
 Then you need to change the label on releases
 Do
-# semanage fcontext -a -t FILE_TYPE <span style="color: #e6db74">&#39;releases&#39;</span>
+# semanage fcontext -a -t FILE_TYPE &#39;releases&#39;
 where FILE_TYPE is one of the following: proc_t, mnt_t, usr_t,
 user_home_type, virt_etc_rw_t, textrel_shlib_t, rpm_script_tmp_t,
 home_root_t, configfile, user_home_dir_t, cert_type, device_t,
@@ -255,7 +249,7 @@ Then you should report this as a bug.
 You can generate a local policy module to allow this access.
 Do
 allow this access for now by executing:
-# grep qemu-kvm /var/log/audit/audit.log <span style="color: #f8f8f2">|</span> audit2allow -M mypol
+# grep qemu-kvm /var/log/audit/audit.log | audit2allow -M mypol
 # semodule -i mypol.pp
 
 Additional Information:
@@ -281,7 +275,7 @@ Local ID                      ccc9f19d-f2b2-4a1e-b991-af6de737f285
 
 Raw Audit Messages
 type=AVC msg=audit(1498629425.872:3540): avc:  
-denied  { read } for  pid=11332 comm=&quot;qemu-kvm&quot; name=&quot;some-folder&quot;
+denied  { read } for  pid=11332 comm=&#34;qemu-kvm&#34; name=&#34;some-folder&#34;
 dev=sdd3 ino=1572866
   scontext=system_u:system_r:svirt_t:s0:c282,c505
   tcontext=system_u:object_r:default_t:s0 tclass=lnk_file
@@ -297,15 +291,13 @@ Hash: qemu-kvm,svirt_t,default_t,lnk_file,read
 
 audit2allow
 
-#<span style="color: #f92672">=============</span> <span style="color: #f8f8f2">svirt_t</span> <span style="color: #f92672">==============</span>
+#============= svirt_t ==============
 allow svirt_t default_t:lnk_file read;
 
 audit2allow -R
 
-#<span style="color: #f92672">=============</span> <span style="color: #f8f8f2">svirt_t</span> <span style="color: #f92672">==============</span>
-allow svirt_t default_t:lnk_file read;
-</pre></div>
-
+#============= svirt_t ==============
+allow svirt_t default_t:lnk_file read;</code></pre></div>
 
 <p>最后查看一下安装中 ks 文件 nfs 共享是否依然生效。<code>showmount -e localhost</code> 更多参见 <a href="http://cn.linux.vbird.org/linux_server/0330nfs_2.php">鸟哥的 linux 私房菜 NFS 章节</a></p>
 

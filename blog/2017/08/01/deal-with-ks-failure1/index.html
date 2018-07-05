@@ -31,11 +31,15 @@
 
 
 <script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-102509506-1', 'auto');
-ga('send', 'pageview');
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-102509506-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 </head>
 <body>
@@ -111,7 +115,7 @@ ga('send', 'pageview');
         <div class="col-sm-6">
           
             <div class="image">
-              <img src="https://wushuzh.github.io//img/blog/deal-with-ks-failure1/kickstart-car.gif" class="img-responsive" alt="">
+              <img src="https://wushuzh.github.io//img/blog/deal-with-ks-failure1/it_specialist.png" class="img-responsive" alt="">
             </div>
           
         </div>
@@ -125,7 +129,7 @@ ga('send', 'pageview');
                 <i class="fa fa-calendar-o fa-fw"></i> 2017-08-01
                 </time>
                 &middot;
-                1752 字
+                1753 字
                 &middot;
                 4 分钟
 
@@ -142,7 +146,7 @@ ga('send', 'pageview');
 
 <p>而这台很长时间不曾重装过的机器在安装时果然遇到了问题。所报问题如下：</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>Starting installer, one monent...
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">Starting installer, one monent...
 anaconda 21.40.22.93-1 for Red Hat Enterprise Linux 7.3 started.
 * installation iog files are stored in /tmp during the installation
 * shell is available on TTY2
@@ -178,9 +182,7 @@ Please make your choice from above
 
 
 [anaconda] 1:main* 2:shell 3:log 4:storage-log 5:program-log   
-                                   Switch tab: Alt+Tab | Help: F1
-</pre></div>
-
+                                   Switch tab: Alt+Tab | Help: F1</code></pre></div>
 
 <p><br /></p>
 
@@ -204,7 +206,7 @@ Please make your choice from above
 
 <p>比如4号虚拟终端中，存储相关的报错信息为：</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>INFO anaconda: Parsing kickstart : /run/install/ks.cfg
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">INFO anaconda: Parsing kickstart : /run/install/ks.cfg
 DEBUG anaconda: scripts found for locale en_US.UTF-8: [&#39;Latn&#39;]
 DEBUG anaconda: console fonts found for locale en_US.UTF-8: [&#39;lat...
 DEBUG anaconda: setting console font to latarcyrheb-sunl6
@@ -257,9 +259,7 @@ INFO anaconda: Running Thread: AnaInputThread1 (139679504647936)
 
 
 [anaconda] 1:main 2:shell- 3:log* 4:storaqe-log 5:program-log
-                                     Switch tab: Alt+Tab | Help: F1
-</pre></div>
-
+                                     Switch tab: Alt+Tab | Help: F1</code></pre></div>
 
 <p>对于界面上产生的错误，你同样也可以做屏幕截图 <code>Shift + Print Screen</code>。相关的问题会被保存在 <code>/tmp/anaconda-screenshots/</code> 目录下</p>
 
@@ -279,7 +279,7 @@ INFO anaconda: Running Thread: AnaInputThread1 (139679504647936)
 
 <p>到这，我准备找外援来帮忙查看这个问题了。下一篇我会详细复述一下这个求助的过程。</p>
 
-<p>封面图片来自 <a href="https://dribbble.com/shots/2342802-Kickstart-Car">Kickstart Car</a> <a href="https://dribbble.com/KristianDuffy"><i class="fa fa-dribbble" aria-hidden="true"></i> Kristian Duffy</a></p>
+<p>封面图片来自 <a href="https://dribbble.com/shots/2528925-It-Specialist">It Specialist</a> <a href="https://dribbble.com/Frizler"><i class="fa fa-dribbble" aria-hidden="true"></i> Anton Fritsler (kit8)</a></p>
          <div id="disqus_thread">
   <a href="#" onclick="disqus();return false;">enable VPN and click here to <i class="fa fa-comments" aria-hidden="true"></i></a>
 </div>

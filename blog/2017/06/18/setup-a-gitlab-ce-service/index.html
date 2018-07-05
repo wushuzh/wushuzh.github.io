@@ -31,11 +31,15 @@
 
 
 <script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-102509506-1', 'auto');
-ga('send', 'pageview');
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-102509506-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 </head>
 <body>
@@ -173,7 +177,7 @@ ga('send', 'pageview');
 </ol>
 
 <p>
-<figure >
+<figure>
     
         <img src="/img/blog/setup-a-gitlab-ce-service/gitlab-pages.png" />
     
@@ -186,7 +190,7 @@ ga('send', 'pageview');
 </figure>
 
 
-<figure >
+<figure>
     
         <img src="/img/blog/setup-a-gitlab-ce-service/gitlab-issues.png" />
     
@@ -199,7 +203,7 @@ ga('send', 'pageview');
 </figure>
 
 
-<figure >
+<figure>
     
         <img src="/img/blog/setup-a-gitlab-ce-service/gitlab-issue-board.png" />
     
@@ -212,7 +216,7 @@ ga('send', 'pageview');
 </figure>
 
 
-<figure >
+<figure>
     
         <img src="/img/blog/setup-a-gitlab-ce-service/gitlab-merge-conflicts.png" />
     
@@ -225,7 +229,7 @@ ga('send', 'pageview');
 </figure>
 
 
-<figure >
+<figure>
     
         <img src="/img/blog/setup-a-gitlab-ce-service/gitlab-review-apps.png" />
     
@@ -238,7 +242,7 @@ ga('send', 'pageview');
 </figure>
 
 
-<figure >
+<figure>
     
         <img src="/img/blog/setup-a-gitlab-ce-service/gitlab-pipelines.png" />
     
@@ -251,7 +255,7 @@ ga('send', 'pageview');
 </figure>
 
 
-<figure >
+<figure>
     
         <img src="/img/blog/setup-a-gitlab-ce-service/gitlab-cycle-analytics.png" />
     
@@ -271,7 +275,7 @@ ga('send', 'pageview');
 <p>网上普遍都是<a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-gitlab-on-ubuntu-16-04">基于 Ubuntu 的安装指南</a>，那就按照最普遍的系统进行实践：</p>
 
 
-<figure >
+<figure>
     
         <img src="/img/blog/setup-a-gitlab-ce-service/ubuntu-16-04-xenial-xerus-squirrel.jpg" />
     
@@ -322,7 +326,7 @@ ga('send', 'pageview');
 <p>文中图片来源网络
 GitLab 吉祥物是一个抽象的 “貉”/“狸”脸，但我觉的如果能请来 Megan Fox 为其代言，一定会大获成功
 
-<figure >
+<figure>
     
         <img src="/img/blog/setup-a-gitlab-ce-service/megan-fox.jpg" />
     

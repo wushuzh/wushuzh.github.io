@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Flask 教程1</title>
+<meta name="description" content="个人技术站点">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.theme.css">
+
+
+  <link href="https://wushuzh.github.io/css/style.sea.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://wushuzh.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-102509506-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="/">小强会武术</a></h1>
+    
+      <p class="sidebar-p">工程师</p>
+    
+      <p class="sidebar-p">记录每一个自己填平的坑</p>
+    
+    <ul class="sidebar-menu">
+      
+      
+        <li><a href="https://wushuzh.github.io/">Home</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  
+  
+  <a href="https://twitter.com/Xiao_Qiang" data-animate-hover="pulse" class="external twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  
+  
+  
+  <a href="mailto:wushuzh@outlook.com" data-animate-hover="pulse" class="email">
+    <i class="fa fa-envelope"></i>
+  </a>
+  
+  
+  
+  
+
+  
+  <a href="https://wushuzh.github.io/index.xml" data-animate-hover="pulse">
+    <i class='fa fa-rss'></i>
+  </a>
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2017 wushuzh
+        
+        | Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="/">小强会武术</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="content-column-content">
+
+      <div class="row">
+        <div class="col-sm-6">
+          
+            <div class="image">
+              <img src="https://wushuzh.github.io//img/blog/hello-flask-mega-tutorial/list.gif" class="img-responsive" alt="">
+            </div>
+          
+        </div>
+        <div class="col-md-6">
+            <h2>Flask 教程1</h2>
+                <p>
+                  小强会武术
+                </p>
+
+                <time datetime="2018-01-29 22:07:11 &#43;0800 CST">
+                <i class="fa fa-calendar-o fa-fw"></i> 2018-01-29
+                </time>
+                &middot;
+                1741 字
+                &middot;
+                4 分钟
+
+        </div>
+      </div>
+      <br />
+
+         <p>flask 教程: 创建一个类微博原型站点
+</p>
+
+<h2 id="hello-flask">Hello Flask</h2>
+
+<p>python3 内置了 venv 模块，先建立虚拟环境，安装 flask 。</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ cd microblog-flask/
+[microblog-flask]$ python -m venv venv
+[microblog-flask]$ source venv/bin/activate
+(venv) [microblog-flask]$ pip install flask
+(venv) [microblog-flask]$ tree -L 2
+.
+├── app
+│   ├── __init__.py
+│   └── routes.py
+├── microblog.py
+└── venv</code></pre></div>
+
+<p>最终站点封装于一个名为 app 的包中。</p>
+
+<ul>
+<li><code>__init__.py</code> 定义了包对外暴露的所有符号，在导入时执行，内部用<code>__name__</code> (预定义变量代表模块名)创建了 flask 实例 ;</li>
+<li>之后导入的 routes.py 中含有 url 和关联的 view 函数，注意它不能先于实例 app 存在;</li>
+<li>装饰器 @app.route 的作用是为 ROOT URL 注册其回调函数;</li>
+<li>flask 命令 run 通过环境变量 FLASK_APP 找到应用入口文件: 处于 app 包之外的 <code>microblog.py</code></li>
+</ul>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># filename: __init__.py</span>
+<span style="color:#f92672">from</span> flask <span style="color:#f92672">import</span> Flask
+
+app <span style="color:#f92672">=</span> Flask(__name__)
+
+<span style="color:#f92672">from</span> app <span style="color:#f92672">import</span> routes
+
+<span style="color:#75715e"># filename: routes.py</span>
+<span style="color:#f92672">from</span> app <span style="color:#f92672">import</span> app
+
+
+<span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#39;/&#39;</span>)
+<span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#39;/index&#39;</span>)
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">index</span>():
+    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Hello, World!&#34;</span>
+
+<span style="color:#75715e"># filename: microblog.py</span>
+<span style="color:#f92672">from</span> app <span style="color:#f92672">import</span> app
+<span style="color:#75715e"># export FLASK_APP=microblog.py</span>
+<span style="color:#75715e"># flask run</span>
+<span style="color:#75715e"># curl http://localhost:5000</span></code></pre></div>
+
+<p><br/></p>
+
+<h2 id="网页模板">网页模板</h2>
+
+<p>一般 view 函数的返回值决定了用户请求的响应。但通过 <code>return</code> 返回大量 html 并不推荐。所以模板文件应运而生，利用它来分离请求的处理逻辑和响应网页的基本布局。</p>
+
+<p>模板中可以使用<code>{{ variable }}</code> 或 <code>{% statement %}</code> ，完成页面内容的动态生成。</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> flask <span style="color:#f92672">import</span> render_template
+<span style="color:#f92672">from</span> app <span style="color:#f92672">import</span> app
+
+
+<span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#39;/&#39;</span>)
+<span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#39;/index&#39;</span>)
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">index</span>():
+    user <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;username&#39;</span>: <span style="color:#e6db74">&#39;wushuzh&#39;</span>}
+    posts <span style="color:#f92672">=</span> [
+        {
+            <span style="color:#e6db74">&#39;author&#39;</span>: {<span style="color:#e6db74">&#39;username&#39;</span>: <span style="color:#e6db74">&#39;John&#39;</span>},
+            <span style="color:#e6db74">&#39;body&#39;</span>: <span style="color:#e6db74">&#39;Beautiful day in Wanderland!&#39;</span>
+        },
+        {
+            <span style="color:#e6db74">&#39;author&#39;</span>: {<span style="color:#e6db74">&#39;username&#39;</span>: <span style="color:#e6db74">&#39;Susan&#39;</span>},
+            <span style="color:#e6db74">&#39;body&#39;</span>: <span style="color:#e6db74">&#39;The movie was so cool!&#39;</span>
+        }
+    ]
+    <span style="color:#66d9ef">return</span> render_template(<span style="color:#e6db74">&#39;index.html&#39;</span>, title<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Home&#39;</span>, user<span style="color:#f92672">=</span>user, posts<span style="color:#f92672">=</span>posts)</code></pre></div>
+
+<p>模板继承是指从多个网页中抽取公共部分作为基础模板，在其中留出占位块。然后针对每个具体页面继承基础模板的布局，仅仅将其特定内容块定义好即可。</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-htmldjango" data-lang="htmldjango">&lt;!-- filename: app/templates/base.html --&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        {% if title %}
+        &lt;title&gt;{{ title }} - Microblog&lt;/title&gt;
+        {% else %}
+        &lt;title&gt;Welcome - Microblog&lt;/title&gt;
+        {% endif %}
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div&gt;Microblog: &lt;a href=&#34;/index&#34;&gt;Home&lt;/a&gt;&lt;/div&gt;
+        &lt;hr&gt;
+        {% block content %}{% endblock %}
+    &lt;/body&gt;
+&lt;/html&gt;
+
+
+&lt;!-- filename: app/templates/index.html --&gt;
+{% extends &#34;base.html&#34; %}
+
+{% block content %}
+    &lt;h1&gt;Hello, {{ user.username }} !&lt;/h1&gt;
+    {% for post in posts %}
+    &lt;div&gt;&lt;p&gt;{{ post.author.username }} says: &lt;b&gt;{{ post.body }}&lt;/b&gt;&lt;/p&gt;&lt;/div&gt;
+    {% endfor %}
+{% endblock %}</code></pre></div>
+
+<h2 id="输入表单">输入表单</h2>
+
+<p>flask 生态中一个重要的部分就是拓展，比如针对 WTForms 的封装 flask-wtf ，依然通过 pip 在 venv 中安装。</p>
+
+<h3 id="表单提交与防伪">表单提交与防伪</h3>
+
+<p>CSRF/XSRF (跨站请求伪造) 是一种常见于表单的攻击。恶意站点会利用某些网站对已登录用户的信任，伪造请求执行非用户本意的操作。一般的防御方式就是使用预设密钥生成一个一次性的令牌嵌入本站的交互网页中，使其和表单中其他显式输入项一并提交，这样就能区分外站的伪造请求。</p>
+
+<p>而只要这个密钥不暴露，站点就能对此种攻击免疫。</p>
+
+<ul>
+<li>将密钥在独立模块 config 中 Config 类中定义，之后赋给 app.config 即可;</li>
+<li>将所有表单定义都存放在模块 forms 中：登录表单类 LoginForm 继承自 FlaskForm ，然后将每个输入项定义为该表单的类变量即可;</li>
+<li>各类输入项在 wtforms 中都有相应类负责对应，其初始化参数为网页标签和验证器列表(可选);</li>
+</ul>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># filename: config.py</span>
+<span style="color:#f92672">import</span> os
+
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Config</span>(object):
+    SECRET_KEY <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>environ<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;SECRET_KEY&#34;</span>) <span style="color:#f92672">or</span> <span style="color:#e6db74">&#39;my-secret-key&#39;</span>
+
+<span style="color:#75715e"># filename: __init__.py</span>
+<span style="color:#f92672">from</span> flask <span style="color:#f92672">import</span> Flask
+<span style="color:#f92672">from</span> config <span style="color:#f92672">import</span> Config
+
+app <span style="color:#f92672">=</span> Flask(__name__)
+app<span style="color:#f92672">.</span>config<span style="color:#f92672">.</span>from_object(Config)
+
+<span style="color:#f92672">from</span> app <span style="color:#f92672">import</span> routes
+
+<span style="color:#75715e"># filename: app/forms.py</span>
+<span style="color:#f92672">from</span> flask_wtf <span style="color:#f92672">import</span> FlaskForm
+<span style="color:#f92672">from</span> wtforms <span style="color:#f92672">import</span> StringField, PasswordField, BooleanField, SubmitField
+<span style="color:#f92672">from</span> wtforms.validators <span style="color:#f92672">import</span> DataRequired
+
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">LoginForm</span>(FlaskForm):
+    username <span style="color:#f92672">=</span> StringField(<span style="color:#e6db74">&#39;Username&#39;</span>, validators<span style="color:#f92672">=</span>[DataRequired()])
+    password <span style="color:#f92672">=</span> PasswordField(<span style="color:#e6db74">&#39;Password&#39;</span>, validators<span style="color:#f92672">=</span>[DataRequired()])
+    remember_me <span style="color:#f92672">=</span> BooleanField(<span style="color:#e6db74">&#39;Remember Me&#39;</span>)
+    submit <span style="color:#f92672">=</span> SubmitField(<span style="color:#e6db74">&#39;Sign In&#39;</span>)
+
+<span style="color:#75715e"># filename: app/route.py</span>
+<span style="color:#f92672">from</span> app.forms <span style="color:#f92672">import</span> LoginForm
+
+<span style="color:#75715e"># ...</span>
+
+<span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#39;/login&#39;</span>)
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">login</span>():
+    form <span style="color:#f92672">=</span> LoginForm()
+    <span style="color:#66d9ef">return</span> render_template(<span style="color:#e6db74">&#39;login.html&#39;</span>, title<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Sign In&#39;</span>, form<span style="color:#f92672">=</span>form)</code></pre></div>
+
+<p>上面最后是对路由 <code>/login</code> 建立的 view 函数。引入 LoginForm 并用指代变量 form 传入模板渲染函数。</p>
+
+<p>下面就是 login 页面模板，表单的 action 属性值为表单提交的 URL，空表示浏览器当下地址栏的 URL，而 <code>method</code> 注明了提交的类型: 默认为 GET —— 这会导致 URL 上跟随一大堆参数，推荐使用 POST —— 将表单参数放入请求体内而不污染 URL:</p>
+
+<ul>
+<li><code>form.hidden_tag()</code> 会生成防止 CSRF 攻击的隐藏令牌;</li>
+<li><code>form.any_field.label</code> 指代字段描述，<code>form.any_field()</code> 生成真正的输入组件，可接受 html 属性，css 类，id 名等值;</li>
+</ul>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-htmldjango" data-lang="htmldjango"># filename: app/templates/login.html
+{% extends &#34;base.html&#34; %}
+
+
+{% block content %}
+    &lt;h1&gt;Sign In&lt;/h1&gt;
+    &lt;form action=&#34;&#34; method=&#34;post&#34;&gt;
+        {{ form.hidden_tag() }}
+        &lt;p&gt;
+            {{ form.username.label }}&lt;br&gt;
+            {{ form.username(size=32) }}
+        &lt;/p&gt;
+        &lt;p&gt;
+            {{ form.password.label }}&lt;br&gt;
+            {{ form.password(size=32) }}
+        &lt;/p&gt;
+        &lt;p&gt;{{ form.remember_me() }} {{ form.remember_me.label }}&lt;/p&gt;
+        &lt;p&gt;{{ form.submit() }}&lt;/p&gt;
+    &lt;/form&gt;
+{% endblock %}</code></pre></div>
+
+<h3 id="表单处理和数据验证">表单处理和数据验证</h3>
+
+<p>客户端浏览器以 POST 方式提交了表单数据，因此要对此路由开放 POST 请求和相应处理，即:</p>
+
+<ul>
+<li>浏览器若发来 GET 请求，<code>form.validate_on_sumbit()</code>返回 False ，直接返回空表单;</li>
+<li>若用户发来含有表单数据的 POST 请求，若数据验证无误，用户提交的数据就可以通过表单的类变量获得;</li>
+<li><code>flash(msg)</code> 调用常用于交互提示，需要在前端模板中要作出相应判断和调用才能正确显示;</li>
+<li><code>redirect(url)</code> 调用将页面导航到指定的页面;</li>
+</ul>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># filename: app/route.py</span>
+<span style="color:#f92672">from</span> flask <span style="color:#f92672">import</span> render_template, flash, redirect
+
+<span style="color:#75715e"># ...</span>
+
+<span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#39;/login&#39;</span>, methods<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;GET&#39;</span>, <span style="color:#e6db74">&#39;POST&#39;</span>])
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">login</span>():
+    form <span style="color:#f92672">=</span> LoginForm()
+    <span style="color:#66d9ef">if</span> form<span style="color:#f92672">.</span>validate_on_submit():
+        flash(<span style="color:#e6db74">&#39;Login requested for user {}, remember_me={}&#39;</span><span style="color:#f92672">.</span>format(
+            form<span style="color:#f92672">.</span>username<span style="color:#f92672">.</span>data, form<span style="color:#f92672">.</span>remember_me<span style="color:#f92672">.</span>data))
+        <span style="color:#66d9ef">return</span> redirect(<span style="color:#e6db74">&#39;/index&#39;</span>)
+    <span style="color:#66d9ef">return</span> render_template(<span style="color:#e6db74">&#39;login.html&#39;</span>, title<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Sign In&#39;</span>, form<span style="color:#f92672">=</span>form)</code></pre></div>
+
+<p><code>get_flashed_messages()</code> 用于获取 flash 消息列表，检测存在后将消息逐一显示。</p>
+
+<p>针对表单中一些字段已经使用了检验器，以此对于不合法的数据，服务端 <code>form.validate_on_form()</code> 返回 False 从而拒绝接受。但为了提升用户体验，我们应该将字段检验结果在前端模板显示给用户。</p>
+
+<p>最后 flask 中有一个用于生成超链接的函数 <code>url_for()</code>，可以应对各类需要 URL 的情形，这里就将模板和路由模块中成功登录后的重定向都使用这个函数来生成相应链接。</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-htmldjango" data-lang="htmldjango">&lt;!-- filename: app/templates/base.html --&gt;
+&lt;html&gt;
+    &lt;!-- header --&gt;
+    &lt;body&gt;
+        &lt;div&gt;
+            Microblog:
+            &lt;a href=&#34;{{ url_for(&#39;index&#39;) }}&#34;&gt;Home&lt;/a&gt;
+            &lt;a href=&#34;{{ url_for(&#39;login&#39;) }}&#34;&gt;Login&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;hr&gt;
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        &lt;ul&gt;
+            {% for message in messages %}
+            &lt;li&gt;{{ message }}&lt;/li&gt;
+            {% endfor %}
+        &lt;/ul&gt;
+        {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    &lt;/body&gt;
+&lt;/html&gt;
+
+
+&lt;!-- filename: app/templates/login.html --&gt;
+{% extends &#34;base.html&#34; %}
+{% block content %}
+    &lt;form action=&#34;&#34; method=&#34;post&#34;&gt;
+      &lt;!-- --&gt;
+      {% for error in form.field.errors %}
+      &lt;span style=&#34;color: red;&#34;&gt;[{{ error }}]&lt;/span&gt;
+      {% endfor %}
+    &lt;/form&gt;
+{% endblock %}</code></pre></div>
+
+<p>参考文档</p>
+
+<p>Miguel Grinberg</p>
+
+<blockquote>
+<ul>
+<li>(2017-12-06) <a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world">The Flask Mega-Tutorial Part Ⅰ: Hello, World!</a></li>
+<li>(2017-12-13) <a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-ii-templates">The Flask Mega-Tutorial Part Ⅱ: Templates</a></li>
+<li>(2017-12-20) <a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iii-web-forms">The Flask Mega-Tutorial Part Ⅲ: Web Forms</a></li>
+</ul>
+</blockquote>
+
+<p>封面图片来自 <a href="https://dribbble.com/shots/2258225-UI-Animation-Concept">UI Animation Concept</a> <a href="https://dribbble.com/Kualla"><i class="fa fa-dribbble" aria-hidden="true"></i> Alla Kudin</a></p>
+         <div id="disqus_thread">
+  <a href="#" onclick="disqus();return false;">enable VPN and click here to <i class="fa fa-comments" aria-hidden="true"></i></a>
+</div>
+
+<script type="text/javascript">
+var disqus_loaded = false;
+function disqus() {
+  if (!disqus_loaded) {
+    
+    
+    
+    
+
+    disqus_loaded = true;
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'wushuzh';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }
+};
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </div>
+  </div>
+</div>
+<noscript>
+  <style>.jsonly { display: none }</style>
+</noscript>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://wushuzh.github.io/js/jquery.min.js"></script>
+<script src="https://wushuzh.github.io/js/bootstrap.min.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.cookie.js"> </script>
+<script src="https://wushuzh.github.io/js/ekko-lightbox.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://wushuzh.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/owl.carousel.min.js"></script>
+<script src="https://wushuzh.github.io/js/front.js"></script>
+
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</body>
+</html>

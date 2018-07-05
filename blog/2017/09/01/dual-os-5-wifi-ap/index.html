@@ -31,11 +31,15 @@
 
 
 <script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-102509506-1', 'auto');
-ga('send', 'pageview');
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-102509506-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 </head>
 <body>
@@ -125,7 +129,7 @@ ga('send', 'pageview');
                 <i class="fa fa-calendar-o fa-fw"></i> 2017-09-01
                 </time>
                 &middot;
-                1907 字
+                1912 字
                 &middot;
                 4 分钟
 
@@ -133,7 +137,7 @@ ga('send', 'pageview');
       </div>
       <br />
 
-         <p>利用无线网卡共享网络访问
+         <p>利用无线网卡创建热点，共享网络访问
 </p>
 
 <h2 id="无线-ap">无线 AP</h2>
@@ -158,7 +162,7 @@ ga('send', 'pageview');
 
 <p>依据你的无线网卡插入方式，选择执行 <code>lspci -k</code> 或 <code>lsusb</code> 确认设备当前的驱动。例如我用的是小米随身wifi，插在 usb 口上。</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>$ lsusb -t
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ lsusb -t
 /:Bus 02.Port 1: Dev 1, Class=root_hub, Driver=ehci-pci/3p, 480M
   |_Port 1: Dev 2, If 0, Class=Hub, Driver=hub/8p, 480M
     |_ Port 6: Dev 3, If 0, Class=Vendor Specific Class, Driver=mt7601u, 480M
@@ -178,9 +182,7 @@ Bus 002 Device 002: ID 8087:0020 Intel Corp. Integrated Rate Matching Hub
 Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
 Bus 001 Device 003: ID 0b0e:0301 GN Netcom
 Bus 001 Device 002: ID 8087:0020 Intel Corp. Integrated Rate Matching Hub
-Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
-</pre></div>
-
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub</code></pre></div>
 
 <blockquote>
 <p>执行 <code>lsusb -s busid:devid -v</code>可以显示单个设备更详细的各式参数。</p>
@@ -192,7 +194,7 @@ Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
 
 <p>在 dmesg 中过滤 usbcore 关键字，找出被注册为网络接口的设备，也能找到 mt7601u 和 wlp0s29u1u6 就是这个迷你 wifi 设备。</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>$ dmesg <span style="color: #f8f8f2">|</span> grep usbcore
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ dmesg | grep usbcore
 [  0.878139] usbcore: registered new interface driver usbfs
 [  0.878149] usbcore: registered new interface driver hub
 [  0.878176] usbcore: registered new device driver usb
@@ -200,21 +202,19 @@ Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
 [ 10.266685] usbcore: registered new interface driver snd-usb-audio
 [ 11.906657] usbcore: registered new interface driver mt7601u
 
-$ dmesg <span style="color: #f8f8f2">|</span>grep mt7601u
+$ dmesg |grep mt7601u
 [ 10.967420] mt7601u 2-1.6:1.0: ASIC revision: 76010001 MAC revision: 76010500
 [ 11.005029] mt7601u 2-1.6:1.0: Warning: unsupported EEPROM version 0d
 [ 11.005033] mt7601u 2-1.6:1.0: EEPROM ver:0d fae:00
 [ 11.005651] mt7601u 2-1.6:1.0: EEPROM country region 01 (channels 1-13)
 [ 11.906657] usbcore: registered new interface driver mt7601u
-[ 12.177970] mt7601u 2-1.6:1.0 wlp0s29u1u6: renamed from wlan0
-</pre></div>
-
+[ 12.177970] mt7601u 2-1.6:1.0 wlp0s29u1u6: renamed from wlan0</code></pre></div>
 
 <p>执行<code>ip link</code>确实能看到网口，<code>sudo ip link set wlp0s29u1u6 up</code>，没报错。</p>
 
 <p>但 dmesg 中 <code>grep wlp0s29u1u6</code>有一堆 <code>IPv6: ADDRCONF(NETDEV_UP): wlp0s29u1u6: link is not ready</code>，进而为了确认设备支持的接口模式，安装 iw 工具，显示当下不支持 AP 模式。</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>$ iw list
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ iw list
 Wiphy phy0
 ...
   Supported interface modes:
@@ -241,17 +241,15 @@ Wiphy phy0
     * monitor
     ...
 	Device supports AP scan.
-...
-</pre></div>
-
+...</code></pre></div>
 
 <h2 id="安装驱动">安装驱动</h2>
 
 <p>首先到 Archlinux 官方和 AUR 上搜索，果然找到了一个来自 <a href="https://aur.archlinux.org/account/nous">nous</a> 的 <a href="https://aur.archlinux.org/packages/mt7601u-ap-dkms/">mt7601u-ap-dkms </a> 版本 3.0.0.3-1 但从评论上看，貌似会装不成。</p>
 
 <p>无论如何，先试试再说。
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>$ git clone https://aur.archlinux.org/mt7601u-ap-dkms.git
-$ <span style="color: #f8f8f2">cd</span> mt7601u-ap-dkms
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ git clone https://aur.archlinux.org/mt7601u-ap-dkms.git
+$ cd mt7601u-ap-dkms
 $ makepkg -si
 ==&gt; Making package: mt7601u-ap-dkms 3.0.0.3-1 (some date)
 ==&gt; Checking runtime dependencies...
@@ -264,31 +262,25 @@ $ makepkg -si
     master.zip ... FAILED
     mt7601u-ap.conf ... Passed
     dkms.conf ... Passed
-==&gt; ERROR: One or more files did not pass the validity check!
-</pre></div>
-</p>
+==&gt; ERROR: One or more files did not pass the validity check!</code></pre></div></p>
 
 <p>先查看 PKGBUILD 内容，确认是现在从 github 下载的 zip 文件的 sha256sum 的值变化了导致的。</p>
 
 <p>AUR 上 shyokou (貌似是位中国同学)的评论，也确认了 sha256sum 对 git 没意义。之后 pcjason 将一个补丁直接贴到了评论区，更新了 mt7601u 的 github 驱动下载地址，并采用了 rin (2016-03-16) <a href="https://lo-li.net/1290.html">在树莓派2上使用MT7601芯片USB网卡搭建AP</a> 提到的 C 代码补丁。既然如此将补丁内容保存为 pcjason.patch 文件尝试一下。</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>$ git apply pcjason.patch
-error: corrupt patch at line 7
-</pre></div>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ git apply pcjason.patch
+error: corrupt patch at line 7</code></pre></div>
 
 <p>又查了下报错 应该是粘贴到评论区时行首空格行尾换行字符丢失造成的。尝试更改后，&ndash;stat 可以，但 apply 仍然报错。</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>$ git apply --stat pajason.patch
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ git apply --stat pajason.patch
  PKGBUILD         |   19 ++++++++++---------
  mt7601u-ap.patch |   17 +++++++++++++++++
- 2 files changed, 27 insertions(+), 9 deletions(-)
-</pre></div>
-
+ 2 files changed, 27 insertions(+), 9 deletions(-)</code></pre></div>
 
 <p>最后实在没有耐心调整各种空格了，更改行数也不太多，手动修改搞定貌似更容易一些。而后为了编译又安装了 linux-headers ，涉及内核升级，还重启了一次系统，但最终安装时还是报错。报错结果贴在了原 AUR 评论区。</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>(1/1) installing mt7601u-ap-dkms [----------------------] 100%
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">(1/1) installing mt7601u-ap-dkms [----------------------] 100%
 Creating symlink /var/lib/dkms/mt7601u-ap/3.0.0.4/source -&gt;
 /usr/src/mt7601u-ap-3.0.0.4
 
@@ -302,7 +294,7 @@ make -j4 KERNELRELEASE=4.12.10-1-ARCH.....(bad exit status: 2)
 Error! Bad return status for module build on kernel: 4.12.10-1-ARCH (x86_64)
 Consult /var/lib/dkms/mt7601u-ap/3.0.0.4/build/make.log for more information.
 &gt;&gt;&gt; You might need to modprobe mt7601Uap manually.
-&gt;&gt;&gt; Also, you *must* change the default values <span style="color: #f92672">(</span>especially WPAPSK<span style="color: #f92672">)</span>
+&gt;&gt;&gt; Also, you *must* change the default values (especially WPAPSK)
 &gt;&gt;&gt; in /etc/Wireless/RT2870AP/RT2870AP.dat
 &gt;&gt;&gt; Read the documentation in /usr/src/mt7601u-ap-3.0.0.3/doc.
 :: Running post-transaction hooks...
@@ -310,9 +302,7 @@ Consult /var/lib/dkms/mt7601u-ap/3.0.0.4/build/make.log for more information.
 ==&gt; dkms install mt7601u-ap/3.0.0.4 -k 4.12.10-1-ARCH
 Error! Bad return status for module build on kernel: 4.12.10-1-ARCH (x86_64)
 Consult /var/lib/dkms/mt7601u-ap/3.0.0.4/build/make.log for more information.
-(2/2) Arming ConditionNeedsUpdate...
-</pre></div>
-
+(2/2) Arming ConditionNeedsUpdate...</code></pre></div>
 
 <h2 id="小结">小结</h2>
 

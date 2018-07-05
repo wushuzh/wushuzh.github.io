@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Vim 学习</title>
+<meta name="description" content="个人技术站点">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.theme.css">
+
+
+  <link href="https://wushuzh.github.io/css/style.sea.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://wushuzh.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-102509506-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="/">小强会武术</a></h1>
+    
+      <p class="sidebar-p">工程师</p>
+    
+      <p class="sidebar-p">记录每一个自己填平的坑</p>
+    
+    <ul class="sidebar-menu">
+      
+      
+        <li><a href="https://wushuzh.github.io/">Home</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  
+  
+  <a href="https://twitter.com/Xiao_Qiang" data-animate-hover="pulse" class="external twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  
+  
+  
+  <a href="mailto:wushuzh@outlook.com" data-animate-hover="pulse" class="email">
+    <i class="fa fa-envelope"></i>
+  </a>
+  
+  
+  
+  
+
+  
+  <a href="https://wushuzh.github.io/index.xml" data-animate-hover="pulse">
+    <i class='fa fa-rss'></i>
+  </a>
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2017 wushuzh
+        
+        | Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="/">小强会武术</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="content-column-content">
+
+      <div class="row">
+        <div class="col-sm-6">
+          
+            <div class="image">
+              <img src="https://wushuzh.github.io//img/blog/vim-day-by-day/vim.png" class="img-responsive" alt="">
+            </div>
+          
+        </div>
+        <div class="col-md-6">
+            <h2>Vim 学习</h2>
+                <p>
+                  小强会武术
+                </p>
+
+                <time datetime="2017-11-29 11:37:35 &#43;0800 CST">
+                <i class="fa fa-calendar-o fa-fw"></i> 2017-11-29
+                </time>
+                &middot;
+                1785 字
+                &middot;
+                4 分钟
+
+        </div>
+      </div>
+      <br />
+
+         <p>珍爱生命，每天学一点 vim 技巧
+</p>
+
+<h3 id="版本控制">版本控制</h3>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ pacman -Qs -q vim
+gvim
+neovim-git
+nerd-fonts-complete
+oni
+python-neovim
+python2-neovim
+vim-runtime</code></pre></div>
+
+<p>Nicola Paolucci 发表了博客 (2016-02-17) <a href="https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/">The best way to store your dotfiles: A bare Git repository</a> 介绍在从 Hacker News 上了解到 StreakyCobra 分享的<a href="https://news.ycombinator.com/item?id=11071754">管理私有配置的思路</a> ，他的迁移过程。这种做法的优势有</p>
+
+<ul>
+<li>无需其他工具和软连接，将文件置于版本控制之下</li>
+<li>不同的机器使用不同的分支</li>
+<li>在新安装的机器上配置简单</li>
+</ul>
+
+<p>下面的指令只需在首次创建仓库时执行一次: 设定 git 别名 config 专用于操作此仓库，设定此仓库仅显示明确要求追踪文件的状态。</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git init --bare $HOME/.cfg
+alias config<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME&#39;</span>
+config config --local status.showUntrackedFiles no
+echo <span style="color:#e6db74">&#34;alias config=&#39;/usr/bin/git --git-dir=</span>$HOME<span style="color:#e6db74">/.cfg/ --work-tree </span>$HOME<span style="color:#e6db74">&#39;&#34;</span> &gt;&gt; $HOME/.bashrc</code></pre></div>
+
+<blockquote>
+<p>为 vimrc 1) 修改设置快捷键 2) 自动生效新设置 见<a href="http://vimcasts.org/episodes/updating-your-vimrc-file-on-the-fly/">#24 Updating your vimrc file on the fly</a></p>
+</blockquote>
+
+<h3 id="阅读文档">阅读文档</h3>
+
+<p>RTFM 是 Read The Fucking Manual 的缩写。无论是 vim 核心还是拓展插件都有使用文档，逐字逐句地阅读相关手册其实是更有效快捷的学习方法。没有网络的时候你就可以在 vim 中敲入 :h 获得帮助文档。</p>
+
+<h3 id="插件管理">插件管理</h3>
+
+<p>之前我使用 Vundle 管理 vim 插件。但后来安装 fzf 的时候偶然发现 Vundle 已处于长期招募维护者的状态。vim 社区中当下更为流行的管理工具是 <a href="https://github.com/junegunn/vim-plug">Vim-Plug</a> 其作者 Junegunn Choi 也是多个 vim 插件的作者。</p>
+
+<p>为了避免后续迁移太麻烦，我还是趁早做了迁移。迁移基本操作可以参考 Adam Garrett-Harris (2015-03-10) <a href="http://www.adamwadeharris.com/how-to-switch-from-vundle-to-vim-plug/">How to Switch from Vundle to vim-plug</a> 过程很平滑简单。</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+$ vim ~/.vimrc
+# ask vundle to install tpope/vim-fugitive
+
+$ config add .vimrc
+$ config st
+$ config commit -m &#34;add init vimrc&#34;
+$ config remote add origin https://github.com/wushuzh/.cfg.git
+$ config push -u origin master</code></pre></div>
+
+<p>按照 <a href="https://vimawesome.com">VimAwesome</a> 排名，安装 Fugitive 插件: vim 中完成 git 的各种操作。基本使用可以观看</p>
+
+<ul>
+<li><a href="http://vimcasts.org/episodes/fugitive-vim---a-complement-to-command-line-git/">#31 a complement to command line git</a></li>
+<li><a href="http://vimcasts.org/episodes/fugitive-vim-working-with-the-git-index/">#32 working with the git index</a></li>
+<li><a href="http://vimcasts.org/episodes/fugitive-vim-resolving-merge-conflicts-with-vimdiff/">#33 resolving merge conflicts with vimdiff</a></li>
+<li><a href="http://vimcasts.org/episodes/fugitive-vim-browsing-the-git-object-database/">#34 browsing the git object database</a></li>
+<li><a href="http://vimcasts.org/episodes/fugitive-vim-exploring-the-history-of-a-git-repository/">#35 exploring the history of a git repo</a> Glog 指令配合 UNIMPAIRED 插件能很方便地启动一个新 tab 页，查看该文件的所有历史修改版本</li>
+</ul>
+
+<p>:h vundle
+:h fugitive</p>
+
+<h3 id="编辑">编辑</h3>
+
+<p>基于 X11 的系统有两个独立的剪贴板:</p>
+
+<ul>
+<li>PRIMARY: 通过框选复制，使用鼠标的中间粘贴，访问可用 “*</li>
+<li>CLIPBOARD: 和 MS Windows 中的系统剪贴版同义，访问可用 &ldquo;+</li>
+</ul>
+
+<p>插件 Goyo (韩语中宁静之意) 可用于 Markdown 写作</p>
+
+<h3 id="特殊字符">特殊字符</h3>
+
+<p>插件 vim-airline 在编辑器底部显示当前文件信息: 模式、版本、文件名、文件类新、编码、位置和警告信息。</p>
+
+<p>插件 vim-devicons 可以为不同类型文件加上图表，但安装前要对字体修正，可直接安装 nerd-fonts-complete ，并在 .vimrc 中对双字节字符(中文)使用特定字体</p>
+
+<p>nerd-fonts 中各种字体都可以<a href="https://github.com/ryanoasis/nerd-fonts#patched-fonts">单独下载</a>安装，比如在 putty 中就可以通过 Windows -&gt; Appearance 将刚安装的字体设置为渲染字体。这样 vim 中相应图表就能正确显示。</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ cower -d nerd-fonts-complete
+$ fc-list :lang=zh</code></pre></div>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#66d9ef">if</span> <span style="color:#a6e22e">has</span>(<span style="color:#e6db74">&#39;gui_running&#39;</span>)<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>  <span style="color:#a6e22e">set</span> <span style="color:#a6e22e">background</span>=light<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>  <span style="color:#a6e22e">set</span> <span style="color:#a6e22e">lines</span>=<span style="color:#ae81ff">999</span> <span style="color:#a6e22e">columns</span>=<span style="color:#ae81ff">999</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>  <span style="color:#a6e22e">set</span> <span style="color:#a6e22e">guifont</span>=<span style="color:#a6e22e">DroidSansMono</span>\ <span style="color:#a6e22e">Nerd</span>\ <span style="color:#a6e22e">Font</span>\ <span style="color:#ae81ff">11</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>  <span style="color:#a6e22e">set</span> <span style="color:#a6e22e">guifontwide</span>=<span style="color:#a6e22e">Source</span>\ <span style="color:#a6e22e">Han</span>\ <span style="color:#a6e22e">Sans</span>\ <span style="color:#ae81ff">12</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">else</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>  <span style="color:#a6e22e">set</span> <span style="color:#a6e22e">background</span>=dark<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">endif</span></code></pre></div>
+
+<blockquote>
+<p>:h air-line</p>
+</blockquote>
+
+<p><a href="http://vimcasts.org/episodes/show-invisibles/">#1 Show invisibles</a></p>
+
+<ul>
+<li>将不可见字符 tab: ^I eol: $ 改为 ▸ (U+25B8) ¬ (U+00AC)</li>
+<li>用 ctrl-vu 数字 插入 Unicode 字符</li>
+<li>将 solarized 配色方案中 solarized_visibility 设为 low，淡化这类字符的显示</li>
+</ul>
+
+<p><a href="http://vimcasts.org/episodes/tabs-and-spaces/">#2 Tabs and Spaces</a>:</p>
+
+<p>另外和数学有关的特殊字符，如字母上角标：插入模式下，键入 ctrl-k + 数字 + S ，更多信息查询 :h digraphs</p>
+
+<h3 id="打开文件">打开文件</h3>
+
+<p>用于查找文件的插件 <a href="https://vimawesome.com/plugin/ctrlp-vim-red">ctrlp.vim</a> 可以通过文件名模糊匹配定位所需文件。详见 :h ctrlp</p>
+
+<p>依赖视觉的查找其实效率不高，因此 nerdtree 仅被用文件系统添改删操作。详见 :h nerdtree</p>
+
+<p>EasyMotion 是一个依赖视觉的瞬移光标插件, 敲入 <Leader><Leader>w 就会触发用于跳转的提示字母。详见 :h easymotion.txt</p>
+
+<h3 id="写入文件">写入文件</h3>
+
+<p>有时打开了一个只有读权限的文件却忽然决定修改。已经在 vim buffer 中更改了很多，然而保存的时候却提示缺少写入权限。网上搜索到一个技巧 Vivek Gite (2017-09-26) <a href="https://www.cyberciti.biz/faq/vim-vi-text-editor-save-file-without-root-permission/">How To Save A File In Vim / Vi Without Root Permission With sudo</a> 和 Nathan Long 在 SO 上的<a href="https://stackoverflow.com/a/7078429">解释</a> ，并且可以将这个指令写入 vimrc 简化为 <code>w!!</code> 或 <code>W</code> 指令。</p>
+
+<h3 id="折叠">折叠</h3>
+
+<p><a href="http://vimcasts.org/episodes/how-to-fold/">#37 How to fold</a></p>
+
+<p>将当前行放置到窗口顶部、中间、底部 zt、zz、zb</p>
+
+<h3 id="前端">前端</h3>
+
+<p>Emmet 支持所有主流编辑器，是网页开发的利器:</p>
+
+<ul>
+<li>快速插入 html 模板，标签可附加 #id 及 .class</li>
+<li>生成插入 n 个单词的随机假文 lorem[n]</li>
+<li>同层: + 子层: &gt; 父层: ^ 递增编号: $</li>
+<li><c-y>comma 拓展, <c-y>/ 注释</li>
+</ul>
+
+<p>:h emmet</p>
+
+<h3 id="编码">编码</h3>
+
+<p>Syntastic 插件可调用各种不同的语法检查器提示代码中错误和潜在问题，和 vim-airline 自动集成，无需配置。详见 :h syntastic</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ pacman -Qs lint
+local/eslint 4.13.1-1
+    An AST-based pattern checker for JavaScript
+local/python-pyflakes 1.6.0-1
+    A lint-like tool for Python to identify common errors quickly without executing code</code></pre></div>
+
+<p>surround.vim 插件用于处理小括号、中括号、单双引号、XML 标签。假设已有 &ldquo;Hi Vim!&rdquo; 常见操作:</p>
+
+<ul>
+<li>处于单词中，敲入 cs&rdquo;&rsquo; 即更改引用——双引号变单引号</li>
+<li>继续敲入 cs&rsquo;<q> 将单引号改为标签引用</li>
+<li>继续敲入 cst&rdquo; 将标签改为双引号，恢复最初状态</li>
+<li>继续敲入 ds&rdquo; 删除引用 &hellip;</li>
+<li>ysiw&rdquo; 将光标所在单词用双引号括起</li>
+<li>yss&rdquo;  将光标所在整行用双引号括起</li>
+</ul>
+
+<p>vim-javascript (TODO)</p>
+
+<h3 id="迁移到-neovim">迁移到 neovim</h3>
+
+<p>安装 AUR neovim-git，是为了和最新版本同步，每次同步时借用 AUR 的 makepkg 脚本克隆最新代码、编译、打包、安装即可。</p>
+
+<p>另一个 AUR neovim-gnome-terminal-wrapper 则会在一个无菜单的 gnome-terminal windows 中启动 neovim。</p>
+
+<p>为了让 vim 和 neovim 使用相同的配置文件，可为 neovim 做如下配置:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#75715e">&#34; ~/.config/nvim/init.vim</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">set</span> <span style="color:#a6e22e">runtimepath</span>+=~<span style="color:#e6db74">/.vim,~/</span>.<span style="color:#a6e22e">vim</span>/<span style="color:#a6e22e">after</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">set</span> <span style="color:#a6e22e">packpath</span>+=~/.<span style="color:#a6e22e">vim</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">source</span> ~/.<span style="color:#a6e22e">vimrc</span></code></pre></div>
+
+<p>neovim 的一个很吸引人的特性是拥有了内置的终端窗口。</p>
+
+<ul>
+<li><a href="http://vimcasts.org/episodes/meet-neovim/">#71 Meet Neovim</a></li>
+<li><a href="http://vimcasts.org/episodes/neovim-terminal/">#74 Neovim&rsquo;s terminal emulator</a></li>
+<li><a href="http://vimcasts.org/episodes/neovim-terminal-mappings/">#75 Creating mappings for :terminal</a></li>
+</ul>
+
+<p>neovim 依赖外部工具才能访问系统剪贴板，所以首先安装 xclip , 这样 + 就会直接和系统剪贴板绑定。详见:h clipboard</p>
+
+<ul>
+<li><a href="https://vi.stackexchange.com/questions/84/how-can-i-copy-text-to-the-system-clipboard-from-vim">How can I copy text to the system clipboard from Vim</a></li>
+</ul>
+
+<p>参考文档</p>
+
+<blockquote>
+<ul>
+<li>Drew Neil <a href="http://vimcasts.org/episodes">Vim Casts</a></li>
+<li>Greg Hurrel <a href="https://www.youtube.com/playlist?list=PLwJS-G75vM7kFO-yUkyNphxSIdbi_1NKX">Vim screencast</a></li>
+<li>Archlinux wiki <a href="https://wiki.archlinux.org/index.php/Dotfiles">dotfiles</a></li>
+<li>Jeff Kreeftmeijer <a href="https://jeffkreeftmeijer.com/vim-number/">Vim&rsquo;s absolute, relative and hybrid line numbers</a></li>
+<li>Archlinx wiki <a href="https://wiki.archlinux.org/index.php/Fonts">Fonts</a></li>
+<li>希锐亚 (2011-06-20) <a href="http://xxxcjr.blogspot.fi/2011/06/gvim.html">在Gvim中给中文英文设置不同的字体</a></li>
+<li>Marco Hinz <a href="https://github.com/mhinz/vim-galore">vim-galore</a></li>
+<li><a href="https://thoughtbot.com/upcase/vim">UPCASE</a></li>
+<li><a href="http://www.vimgolf.com/">VimGolf</a></li>
+<li>gmarik (2014-02-04) <a href="http://www.gmarik.info/blog/2014/why-i-stopped-contributing-to-vundle/">Why I stopped contributing to vundle</a></li>
+</ul>
+</blockquote>
+
+<p>封面图片来自 <a href="https://dribbble.com/shots/2668712-Up-Running-with-Vim">Up &amp; Running with Vim</a> <a href="https://dribbble.com/federicafragapane"><i class="fa fa-dribbble" aria-hidden="true"></i> Federica Fragapane</a></p>
+         <div id="disqus_thread">
+  <a href="#" onclick="disqus();return false;">enable VPN and click here to <i class="fa fa-comments" aria-hidden="true"></i></a>
+</div>
+
+<script type="text/javascript">
+var disqus_loaded = false;
+function disqus() {
+  if (!disqus_loaded) {
+    
+    
+    
+    
+
+    disqus_loaded = true;
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'wushuzh';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }
+};
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </div>
+  </div>
+</div>
+<noscript>
+  <style>.jsonly { display: none }</style>
+</noscript>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://wushuzh.github.io/js/jquery.min.js"></script>
+<script src="https://wushuzh.github.io/js/bootstrap.min.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.cookie.js"> </script>
+<script src="https://wushuzh.github.io/js/ekko-lightbox.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://wushuzh.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/owl.carousel.min.js"></script>
+<script src="https://wushuzh.github.io/js/front.js"></script>
+
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</body>
+</html>

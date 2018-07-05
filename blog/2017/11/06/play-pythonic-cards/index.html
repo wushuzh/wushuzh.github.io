@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>流利 python</title>
+<meta name="description" content="个人技术站点">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.theme.css">
+
+
+  <link href="https://wushuzh.github.io/css/style.sea.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://wushuzh.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-102509506-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="/">小强会武术</a></h1>
+    
+      <p class="sidebar-p">工程师</p>
+    
+      <p class="sidebar-p">记录每一个自己填平的坑</p>
+    
+    <ul class="sidebar-menu">
+      
+      
+        <li><a href="https://wushuzh.github.io/">Home</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  
+  
+  <a href="https://twitter.com/Xiao_Qiang" data-animate-hover="pulse" class="external twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  
+  
+  
+  <a href="mailto:wushuzh@outlook.com" data-animate-hover="pulse" class="email">
+    <i class="fa fa-envelope"></i>
+  </a>
+  
+  
+  
+  
+
+  
+  <a href="https://wushuzh.github.io/index.xml" data-animate-hover="pulse">
+    <i class='fa fa-rss'></i>
+  </a>
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2017 wushuzh
+        
+        | Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="/">小强会武术</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="content-column-content">
+
+      <div class="row">
+        <div class="col-sm-6">
+          
+            <div class="image">
+              <img src="https://wushuzh.github.io//img/blog/play-pythonic-cards/playing-cards.png" class="img-responsive" alt="">
+            </div>
+          
+        </div>
+        <div class="col-md-6">
+            <h2>流利 python</h2>
+                <p>
+                  小强会武术
+                </p>
+
+                <time datetime="2017-11-06 21:18:21 &#43;0800 CST">
+                <i class="fa fa-calendar-o fa-fw"></i> 2017-11-06
+                </time>
+                &middot;
+                1449 字
+                &middot;
+                3 分钟
+
+        </div>
+      </div>
+      <br />
+
+         <p>愿敲代码终有一天能比斗地主更 666
+</p>
+
+<p>Luciano Ramalho著有 fluent python 一书。最近看了他在 <a href="https://youtu.be/M4gPxbo6G6k">PyBay 2017 的分享</a> 关于 namedtuple 的介绍，核心内容都在 <a href="https://github.com/fluentpython/think-like-a-pythonista/blob/master/think-like-a-pythonista.ipynb">Jupyter Notebook</a> 上。</p>
+
+<p>首先是在自己的机器上安装 jupyter ，并设置 Chrome 为默认打开浏览器:</p>
+
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ sudo pacman -S jupyter-notebook jupyter-nbconvert
+$ jupyter notebook --generate-config
+Writing default config to: ~/.jupyter/jupyter_notebook_config.py
+
+# manuall edit ~/.jupyter/jupyter_notebook_config.py 
+# and uncomment item 
+#    c.NotebookApp.browser = &#39;/usr/bin/google-chrome-stable %s&#39;
+
+$ jupyter notebook</code></pre></div>
+&gt; 还可以通过 <a href="https://hub.docker.com/r/jupyter/datascience-notebook/">Docker</a> 快速启动一个 notebook 或 直接使用 <a href="https://notebooks.azure.com/">Azure 的在线版本</a>
+&gt;</p>
+
+<p>为了让编辑更为方便，建议打印 <a href="https://www.cheatography.com/weidadeyue/cheat-sheets/jupyter-notebook/">cheatsheet</a> 贴在案前。</p>
+
+<p>我试图尝试将 jupyter notebook 键入博客，试了网上的各种方法，感觉最简单的是建立一个 gist 利用 github 自动转换到 html 服务嵌入文中，但要看着顺眼还需要 CSS 调整，或许结合 nbconvert 定制化模板是个比较好的解决方案，下文还是通过普通 python 代码展示概念。</p>
+
+<h3 id="轻量级-namedtuple-类">轻量级 namedtuple 类</h3>
+
+<p>通过 collections.namedtuple 可用来定义集合中的一个元素类型，他们不像标准类那么“重”，但却能增加不少类对象的功能，定义使用起来都非常方便。</p>
+
+<p>假设定义每张扑克牌，
+- 第一个参数，类名 Card
+- 第二个参数，定义对象属性/字段: 这里是牌值和花色，放在一个字符串中并用空格/逗号分割即可，如&rsquo;rank suit&rsquo;</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; Card = namedtuple(&#39;Card&#39;, &#39;rank suit&#39;)
+&gt;&gt;&gt; beer_card = Card(&#39;7&#39;, &#39;diamonds&#39;)
+&gt;&gt;&gt; beer_card
+Card(rank=&#39;7&#39;, suit=&#39;diamonds&#39;)
+&gt;&gt;&gt; rank, suit = beer_card
+&gt;&gt;&gt; rank, suit
+(&#39;7&#39;, &#39;diamonds&#39;)
+&gt;&gt;&gt; beer_card.suit
+&#39;diamonds&#39;
+&gt;&gt;&gt; beer_card.rank
+&#39;7&#39;</code></pre></div>
+
+<h3 id="成套花色">成套花色</h3>
+
+<p>上面定义好了每张牌，接下来就可以定义一幅牌的集合了。尤其是 list comprehensive 快速生成一个 list ，并且两个 lists 还可以做相加: 合并为一个 list。</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; SUITS = &#39;clubs diamonds spades hearts&#39;.split()
+&gt;&gt;&gt; SUITS
+[&#39;clubs&#39;, &#39;diamonds&#39;, &#39;spades&#39;, &#39;hearts&#39;]
+&gt;&gt;&gt; RANKS = [ str(n) for n in range(2, 11)] + list(&#39;JQKA&#39;)
+&gt;&gt;&gt; RANKS
+[&#39;2&#39;, &#39;3&#39;, &#39;4&#39;, &#39;5&#39;, &#39;6&#39;, &#39;7&#39;, &#39;8&#39;, &#39;9&#39;, &#39;10&#39;, &#39;J&#39;, &#39;Q&#39;, &#39;K&#39;, &#39;A&#39;]
+&gt;&gt;&gt; CARDS = [Card(r, s) for s in SUITS for r in RANKS]
+&gt;&gt;&gt; len(CARDS)
+52
+&gt;&gt;&gt; CARDS[:3]
+[Card(rank=&#39;2&#39;, suit=&#39;clubs&#39;), Card(rank=&#39;3&#39;, suit=&#39;clubs&#39;), Card(rank=&#39;4&#39;, suit=&#39;clubs&#39;)]</code></pre></div>
+
+<h3 id="集合类-deck">集合类 Deck</h3>
+
+<p>只要有一些特定的 Dunder 方法，我们就能在应用中对这个类的对象使用类似数组通过索引或区间取值的特有语法:</p>
+
+<blockquote>
+<p>注意我们在初始化的时候，对 CARDS 做了一次拷贝，这样一个不可变更的序列才能安全的做各种操作。</p>
+</blockquote>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; class Deck:
+...   def __init__(self):
+...     self._cards = list(CARDS)
+...
+&gt;&gt;&gt; class Deck:
+...   def __init__(self):
+...     self._cards = list(CARDS)
+...   def __len__(self):
+...     return len(self._cards)
+...   def __getitem__(self, i):
+...     return self._cards[i]
+...
+&gt;&gt;&gt;
+&gt;&gt;&gt; deck = Deck()
+&gt;&gt;&gt; len(deck)
+52
+&gt;&gt;&gt; deck[0], deck[-1]
+(Card(rank=&#39;2&#39;, suit=&#39;clubs&#39;), Card(rank=&#39;A&#39;, suit=&#39;hearts&#39;))
+&gt;&gt;&gt; deck[:3]
+[Card(rank=&#39;2&#39;, suit=&#39;clubs&#39;), Card(rank=&#39;3&#39;, suit=&#39;clubs&#39;), Card(rank=&#39;4&#39;, suit=&#39;clubs&#39;)]</code></pre></div>
+
+<blockquote>
+<p>dunder 方法 len 的调用方式并不是作为对象方法调用，而通过一个通用方法 len ，这其实是基于性能考量，获取集合长度这个操作如此常见，以至于在对象中我们常常定义一个字段，而不是使用一个方法调用来获取。比如 Java 中 length 也是字段，而非方法调用。因此我们在实现的时候要和系统的设定保持一致。</p>
+</blockquote>
+
+<p>因为可以基于 index 取值，当然也可以循环和排序</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; for card in deck[:3]:
+...   print(card)
+...
+Card(rank=&#39;2&#39;, suit=&#39;clubs&#39;)
+Card(rank=&#39;3&#39;, suit=&#39;clubs&#39;)
+Card(rank=&#39;4&#39;, suit=&#39;clubs&#39;)
+&gt;&gt;&gt;
+&gt;&gt;&gt; it = iter(deck)
+&gt;&gt;&gt; it
+&lt;iterator object at 0x7f85efbd6710&gt;
+&gt;&gt;&gt; next(it)
+Card(rank=&#39;2&#39;, suit=&#39;clubs&#39;)
+&gt;&gt;&gt;
+&gt;&gt;&gt;
+&gt;&gt;&gt; SUITS
+[&#39;clubs&#39;, &#39;diamonds&#39;, &#39;spades&#39;, &#39;hearts&#39;]
+&gt;&gt;&gt; SPADES_HIGH = sorted(SUITS)
+&gt;&gt;&gt; SPADES_HIGH
+[&#39;clubs&#39;, &#39;diamonds&#39;, &#39;hearts&#39;, &#39;spades&#39;]
+&gt;&gt;&gt; def index(card):
+...   &#34;&#34;&#34;Card pos in spades high ordering&#34;&#34;&#34;
+...   rank_value = RANKS.index(card.rank)
+...   return rank_value * len(SPADES_HIGH) + SPADES_HIGH.index(card.suit)
+...
+&gt;&gt;&gt; index(Card(&#39;2&#39;, &#39;clubs&#39;))
+0
+&gt;&gt;&gt; index(Card(&#39;A&#39;, &#39;spades&#39;))
+51
+&gt;&gt;&gt; sorted(deck, key=index)[:5]
+[Card(rank=&#39;2&#39;, suit=&#39;clubs&#39;), Card(rank=&#39;2&#39;, suit=&#39;diamonds&#39;), Card(rank=&#39;2&#39;, suit=&#39;hearts&#39;), Card(rank=&#39;2&#39;, suit=&#39;spades&#39;), Card(rank=&#39;3&#39;, suit=&#39;clubs&#39;)]</code></pre></div>
+
+<h3 id="洗牌和动态补丁">洗牌和动态补丁</h3>
+
+<p>抽取一张牌应该可以利用内置包 random</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; import random
+&gt;&gt;&gt; random.choice(&#39;ABCDE&#39;)
+&#39;E&#39;
+&gt;&gt;&gt;
+&gt;&gt;&gt; random.choice(deck)
+Card(rank=&#39;5&#39;, suit=&#39;hearts&#39;)</code></pre></div>
+
+<p>random 包中也有 shuffle 操作，但应用到 Deck 却会出错:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; num = list(range(5))
+&gt;&gt;&gt; random.shuffle(num)
+&gt;&gt;&gt; num
+[4, 0, 2, 1, 3]
+&gt;&gt;&gt;
+&gt;&gt;&gt; try:
+...   random.shuffle(deck)
+... except TypeError as e:
+...   print(repr(e))
+...
+TypeError(&#34;&#39;Deck&#39; object does not support item assignment&#34;,)</code></pre></div>
+
+<p>这是因为 Deck 是不可变的集合，作为动态语言，python 当然支持在运行时对类定义做修改</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; def put(deck, position, card):
+...   deck._cards[position] = card
+...
+&gt;&gt;&gt; Deck.__setitem__ = put
+&gt;&gt;&gt;
+&gt;&gt;&gt; deck[:3]
+[Card(rank=&#39;2&#39;, suit=&#39;clubs&#39;), Card(rank=&#39;3&#39;, suit=&#39;clubs&#39;), Card(rank=&#39;4&#39;, suit=&#39;clubs&#39;)]
+&gt;&gt;&gt; random.shuffle(deck)
+&gt;&gt;&gt; deck[:3]
+[Card(rank=&#39;K&#39;, suit=&#39;hearts&#39;), Card(rank=&#39;2&#39;, suit=&#39;diamonds&#39;), Card(rank=&#39;2&#39;, suit=&#39;hearts&#39;)]</code></pre></div>
+
+<h3 id="操作符重载">操作符重载</h3>
+
+<p>总结 Deck 的定义:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> itertools <span style="color:#f92672">import</span> chain
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Deck</span>:
+    <span style="color:#66d9ef">def</span> __init__(self, cards<span style="color:#f92672">=</span>CARDS):
+        self<span style="color:#f92672">.</span>_cards <span style="color:#f92672">=</span> list(cards)
+
+    <span style="color:#66d9ef">def</span> __len__(self):
+        <span style="color:#66d9ef">return</span> len(self<span style="color:#f92672">.</span>_cards)
+
+    <span style="color:#66d9ef">def</span> __getitem__(self, i):
+        <span style="color:#66d9ef">if</span> isinstance(i, slice):
+            <span style="color:#66d9ef">return</span> Deck(self<span style="color:#f92672">.</span>_cards[i])
+        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>_cards[i]
+
+    <span style="color:#66d9ef">def</span> __setitem__(self, i, card):
+        self<span style="color:#f92672">.</span>_cards[i] <span style="color:#f92672">=</span> card
+
+    <span style="color:#66d9ef">def</span> __add__(self, other):
+        <span style="color:#75715e">#return Deck(list(self) + list(other))</span>
+        <span style="color:#75715e">#return Deck(self._cards + list(other))</span>
+        <span style="color:#66d9ef">return</span> Deck(chain(self<span style="color:#f92672">.</span>_cards, other))
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">deal</span>(self, num_players):
+        <span style="color:#66d9ef">return</span> [self[i::num_players] <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(num_players)]</code></pre></div>
+
+<p>第一个改动是 dunder getitem 方法: 作为一个集合类，用户可以选择选取一打 Cards，而 Deck 作为 Cards 的容器，第一候选返回类型当然是一个 Deck 而非 List。
+第二个改动是 dunder add 方法: 这是对 + 操作符重载的关键。选用最终 <a href="https://docs.python.org/3/library/itertools.html#itertools.chain">chain 的方式</a>是从内存占用效率的考量。</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; deck = Deck()
+&gt;&gt;&gt; top3 = deck[:3]
+&gt;&gt;&gt; top3
+&lt;__main__.Deck object at 0x7f85efbcfe10&gt;
+&gt;&gt;&gt; bottom3 = deck[-3:]
+&gt;&gt;&gt; top3 + bottom3
+&lt;__main__.Deck object at 0x7f85efbe5518&gt;
+&gt;&gt;&gt; [ _ for _ in top3 + bottom3]
+[Card(rank=&#39;2&#39;, suit=&#39;clubs&#39;), Card(rank=&#39;3&#39;, suit=&#39;clubs&#39;), Card(rank=&#39;4&#39;, suit=&#39;clubs&#39;), Card(rank=&#39;Q&#39;, suit=&#39;hearts&#39;), Card(rank=&#39;K&#39;, suit=&#39;hearts&#39;), Card(rank=&#39;A&#39;, suit=&#39;hearts&#39;)]
+&gt;&gt;&gt; 
+&gt;&gt;&gt; random.shuffle(deck)
+&gt;&gt;&gt; a, b, c, d = deck.deal(4)
+&gt;&gt;&gt; len(a), len(b)
+(13, 13)
+&gt;&gt;&gt; for card in c[:3]:
+...   print(card)
+... 
+Card(rank=&#39;2&#39;, suit=&#39;diamonds&#39;)
+Card(rank=&#39;5&#39;, suit=&#39;diamonds&#39;)
+Card(rank=&#39;6&#39;, suit=&#39;diamonds&#39;)</code></pre></div>
+
+<h3 id="操作符重载之美">操作符重载之美</h3>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
+<span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#f92672">as</span> plt
+
+v0 <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>
+g <span style="color:#f92672">=</span> <span style="color:#ae81ff">9.81</span>
+t <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linspace(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1001</span>)
+
+y <span style="color:#f92672">=</span> v0 <span style="color:#f92672">*</span> t <span style="color:#f92672">-</span> g <span style="color:#f92672">*</span> t<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>
+
+plt<span style="color:#f92672">.</span>plot(t, y)
+plt<span style="color:#f92672">.</span>xlabel(<span style="color:#e6db74">&#39;t (s)&#39;</span>)
+plt<span style="color:#f92672">.</span>ylabel(<span style="color:#e6db74">&#39;y (m)&#39;</span>)
+plt<span style="color:#f92672">.</span>show()</code></pre></div>
+
+
+<figure>
+    
+        <img src="/img/blog/play-pythonic-cards/round-trip.png" />
+    
+    
+    <figcaption>
+        <h4>Fall back</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<p>参考文档</p>
+
+<blockquote>
+<ul>
+<li>Shahriar Tajbakhsh (2015-02-17) <a href="https://shahriar.svbtle.com/underscores-in-python">Underscores in Python</a></li>
+<li>Mohit Sharma (2016-07-12) <a href="https://sharmamohit.com/post/jupyter-notebooks-in-blog/">Jupyter notebooks in blog</a></li>
+<li>Nbconvert doc <a href="http://nbconvert.readthedocs.io/en/latest/customizing.html">Customizing nbconvert</a></li>
+</ul>
+</blockquote>
+
+<p>封面图片来自 <a href="https://dribbble.com/shots/2112339-Playing-Arts">Playing Arts</a> <a href="https://dribbble.com/creativemints"><i class="fa fa-dribbble" aria-hidden="true"></i> Mike | Creative Mints</a></p>
+         <div id="disqus_thread">
+  <a href="#" onclick="disqus();return false;">enable VPN and click here to <i class="fa fa-comments" aria-hidden="true"></i></a>
+</div>
+
+<script type="text/javascript">
+var disqus_loaded = false;
+function disqus() {
+  if (!disqus_loaded) {
+    
+    
+    
+    
+
+    disqus_loaded = true;
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'wushuzh';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }
+};
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </div>
+  </div>
+</div>
+<noscript>
+  <style>.jsonly { display: none }</style>
+</noscript>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://wushuzh.github.io/js/jquery.min.js"></script>
+<script src="https://wushuzh.github.io/js/bootstrap.min.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.cookie.js"> </script>
+<script src="https://wushuzh.github.io/js/ekko-lightbox.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://wushuzh.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/owl.carousel.min.js"></script>
+<script src="https://wushuzh.github.io/js/front.js"></script>
+
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</body>
+</html>

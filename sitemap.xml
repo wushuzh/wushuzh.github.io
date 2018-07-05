@@ -18,13 +18,18 @@
   </url>
   
   <url>
-    <loc>https://wushuzh.github.io/blog/2017/07/09/blog-using-hugo-2/</loc>
-    <lastmod>2017-07-09T10:11:21+08:00</lastmod>
+    <loc>https://wushuzh.github.io/blog/2017/11/08/setup-git-env/</loc>
+    <lastmod>2017-11-08T20:11:49+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://wushuzh.github.io/blog/2017/06/28/blog-using-hugo-1/</loc>
     <lastmod>2017-06-28T19:18:51+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2017/07/09/blog-using-hugo-2/</loc>
+    <lastmod>2017-07-09T10:11:21+08:00</lastmod>
   </url>
   
   <url>
@@ -35,6 +40,11 @@
   <url>
     <loc>https://wushuzh.github.io/blog/2017/07/13/blog-using-hugo-4/</loc>
     <lastmod>2017-07-13T20:01:51+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2017/06/04/syslog-std-in-general/</loc>
+    <lastmod>2017-06-04T20:40:13+08:00</lastmod>
   </url>
   
   <url>
@@ -73,6 +83,36 @@
   </url>
   
   <url>
+    <loc>https://wushuzh.github.io/blog/2017/09/05/deal-with-floor-logs/</loc>
+    <lastmod>2017-09-05T22:50:33+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2018/02/01/intro-linux-startup/</loc>
+    <lastmod>2018-02-01T18:22:09+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2017/09/05/intro-linux-log-audit/</loc>
+    <lastmod>2017-09-05T22:50:33+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2018/02/07/intro-statistics-by-python/</loc>
+    <lastmod>2018-02-07T14:15:32+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2017/10/10/get-start-with-scipy/</loc>
+    <lastmod>2017-10-10T19:18:20+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2017/08/03/get-start-with-sci-computing/</loc>
+    <lastmod>2017-08-03T20:48:43+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://wushuzh.github.io/blog/2017/07/06/setup-a-container-host-env/</loc>
     <lastmod>2017-07-06T09:28:56+08:00</lastmod>
   </url>
@@ -108,8 +148,48 @@
   </url>
   
   <url>
+    <loc>https://wushuzh.github.io/blog/2018/04/16/download-vids-using-youtube-dl/</loc>
+    <lastmod>2018-04-16T22:45:31+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2017/09/15/mgnt-virenv-7-vagrant/</loc>
+    <lastmod>2017-09-15T20:55:02+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2018/05/29/setup-gnome-on-arch/</loc>
+    <lastmod>2018-05-29T20:13:36+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2018/03/06/create-stack-8-hot/</loc>
+    <lastmod>2018-03-06T20:52:04+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2017/09/21/mgnt-os-8-ansible/</loc>
+    <lastmod>2017-09-21T21:07:09+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://wushuzh.github.io/blog/2017/08/18/watching-it-by-zabbix-1/</loc>
     <lastmod>2017-08-18T20:51:17+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2017/08/24/watching-it-by-zabbix-2/</loc>
+    <lastmod>2017-08-24T22:24:51+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2017/08/25/viewing-it-by-grafana-3/</loc>
+    <lastmod>2017-08-25T21:00:32+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2017/08/04/intro-server-remote-ctrl/</loc>
+    <lastmod>2017-08-04T22:24:11+08:00</lastmod>
   </url>
   
   <url>
@@ -118,8 +198,238 @@
   </url>
   
   <url>
+    <loc>https://wushuzh.github.io/blog/2017/10/09/telecom-transition-to-5g/</loc>
+    <lastmod>2017-10-09T22:14:57+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://wushuzh.github.io/blog/2017/06/08/general-auth-concepts/</loc>
     <lastmod>2017-06-08T21:49:02+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2017/07/27/pitfalls-of-the-passwd/</loc>
+    <lastmod>2017-07-27T18:31:59+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2017/09/21/py-async-socket/</loc>
+    <lastmod>2017-09-21T20:19:58+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2017/09/14/try-io-multiplexing-py/</loc>
+    <lastmod>2017-09-14T21:28:44+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2017/09/08/intro-to-py-socket/</loc>
+    <lastmod>2017-09-08T23:27:52+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2017/09/11/get-start-with-py/</loc>
+    <lastmod>2017-09-11T23:00:07+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2017/11/06/play-pythonic-cards/</loc>
+    <lastmod>2017-11-06T21:18:21+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2017/10/30/restful-api-by-flask/</loc>
+    <lastmod>2017-10-30T11:24:09+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2017/11/28/use-nmap-to-scan/</loc>
+    <lastmod>2017-11-28T20:44:11+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2017/11/24/draw-py-call-graph/</loc>
+    <lastmod>2017-11-24T11:37:35+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2017/11/22/try-jwt-in-flask/</loc>
+    <lastmod>2017-11-22T23:13:51+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2017/11/21/make-amazing-charts/</loc>
+    <lastmod>2017-11-21T22:37:31+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2017/11/20/try-bokeh-server/</loc>
+    <lastmod>2017-11-20T21:02:10+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2017/10/31/try-bokeh-with-flask/</loc>
+    <lastmod>2017-10-31T20:59:31+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2017/10/24/microservices-and-k8s/</loc>
+    <lastmod>2017-10-24T22:20:04+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2017/12/01/loop-tree-by-stack-queue/</loc>
+    <lastmod>2017-12-01T20:11:31+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2017/12/06/knapsack-decision-problem/</loc>
+    <lastmod>2017-12-06T20:11:31+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2018/05/17/a-dev-env-of-webapp-0/</loc>
+    <lastmod>2018-05-17T21:17:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2017/12/07/make-slides-by-markdown/</loc>
+    <lastmod>2017-12-07T13:17:31+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2017/12/07/use-react-in-frontend/</loc>
+    <lastmod>2017-12-07T22:01:09+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2017/12/01/a-dev-env-of-webapp-4/</loc>
+    <lastmod>2017-12-01T21:27:56+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2017/11/15/a-dev-env-of-webapp-3/</loc>
+    <lastmod>2017-11-15T19:01:33+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2017/11/14/a-dev-env-of-webapp-2/</loc>
+    <lastmod>2017-11-14T22:47:09+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2017/10/16/a-dev-env-of-webapp-1/</loc>
+    <lastmod>2017-10-16T20:26:19+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2018/03/20/flask-full-text-search/</loc>
+    <lastmod>2018-03-20T20:34:43+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2018/03/14/org-flask-app-structure/</loc>
+    <lastmod>2018-03-14T21:47:15+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2018/03/13/ajax-in-spa-translation/</loc>
+    <lastmod>2018-03-13T22:29:29+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2018/02/28/flask-integrate-bootstrap/</loc>
+    <lastmod>2018-02-28T21:48:56+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2018/02/22/flask-email-notification/</loc>
+    <lastmod>2018-02-22T22:17:34+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2018/02/22/flask-pagination-long-list/</loc>
+    <lastmod>2018-02-22T21:45:12+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2018/02/06/add-the-follower-model/</loc>
+    <lastmod>2018-02-06T20:17:19+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2018/02/04/flask-debug-and-log/</loc>
+    <lastmod>2018-02-04T19:37:21+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2018/02/01/usr-login-and-register/</loc>
+    <lastmod>2018-02-01T20:19:27+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2018/01/30/dev-db-model-in-flask/</loc>
+    <lastmod>2018-01-30T21:17:49+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2018/01/29/hello-flask-mega-tutorial/</loc>
+    <lastmod>2018-01-29T22:07:11+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2018/02/09/manipulate-with-pdfs/</loc>
+    <lastmod>2018-02-09T11:16:59+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2018/03/26/machine-learning-for-mobility/</loc>
+    <lastmod>2018-03-26T21:19:28+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2018/03/22/download-street-network/</loc>
+    <lastmod>2018-03-22T20:55:21+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2018/03/28/k8s-with-openstack/</loc>
+    <lastmod>2018-03-28T22:24:01+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2018/02/08/linux-under-the-hood/</loc>
+    <lastmod>2018-02-08T10:39:04+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2017/11/24/setup-java-dev-env/</loc>
+    <lastmod>2017-11-24T11:37:35+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2018/02/23/setup-the-reverse-proxy/</loc>
+    <lastmod>2018-02-23T21:35:44+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2017/12/03/get-start-with-pandas/</loc>
+    <lastmod>2017-12-03T09:04:10+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2017/11/29/vim-day-by-day/</loc>
+    <lastmod>2017-11-29T11:37:35+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2018/07/01/head-first-cucumber/</loc>
+    <lastmod>2018-07-01T22:13:07+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wushuzh.github.io/blog/2018/06/25/head-first-kafka/</loc>
+    <lastmod>2018-06-25T21:12:23+08:00</lastmod>
   </url>
   
   <url>
@@ -136,13 +446,13 @@
   
   <url>
     <loc>https://wushuzh.github.io/series/blog-like-a-pro/</loc>
-    <lastmod>2017-07-09T10:11:21+08:00</lastmod>
+    <lastmod>2017-06-28T19:18:51+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://wushuzh.github.io/tags/blogging/</loc>
-    <lastmod>2017-07-09T10:11:21+08:00</lastmod>
+    <lastmod>2017-06-28T19:18:51+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -183,7 +493,7 @@
   
   <url>
     <loc>https://wushuzh.github.io/tags/hugo/</loc>
-    <lastmod>2017-07-09T10:11:21+08:00</lastmod>
+    <lastmod>2017-06-28T19:18:51+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -213,7 +523,7 @@
   
   <url>
     <loc>https://wushuzh.github.io/series/</loc>
-    <lastmod>2017-07-09T10:11:21+08:00</lastmod>
+    <lastmod>2017-06-28T19:18:51+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -243,7 +553,7 @@
   
   <url>
     <loc>https://wushuzh.github.io/categories/writing/</loc>
-    <lastmod>2017-07-09T10:11:21+08:00</lastmod>
+    <lastmod>2017-06-28T19:18:51+08:00</lastmod>
     <priority>0</priority>
   </url>
   

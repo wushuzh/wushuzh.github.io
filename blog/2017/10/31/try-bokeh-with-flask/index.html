@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Bokeh 可视化入门</title>
+<meta name="description" content="个人技术站点">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.theme.css">
+
+
+  <link href="https://wushuzh.github.io/css/style.sea.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://wushuzh.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-102509506-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="/">小强会武术</a></h1>
+    
+      <p class="sidebar-p">工程师</p>
+    
+      <p class="sidebar-p">记录每一个自己填平的坑</p>
+    
+    <ul class="sidebar-menu">
+      
+      
+        <li><a href="https://wushuzh.github.io/">Home</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  
+  
+  <a href="https://twitter.com/Xiao_Qiang" data-animate-hover="pulse" class="external twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  
+  
+  
+  <a href="mailto:wushuzh@outlook.com" data-animate-hover="pulse" class="email">
+    <i class="fa fa-envelope"></i>
+  </a>
+  
+  
+  
+  
+
+  
+  <a href="https://wushuzh.github.io/index.xml" data-animate-hover="pulse">
+    <i class='fa fa-rss'></i>
+  </a>
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2017 wushuzh
+        
+        | Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="/">小强会武术</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="content-column-content">
+
+      <div class="row">
+        <div class="col-sm-6">
+          
+            <div class="image">
+              <img src="https://wushuzh.github.io//img/blog/try-bokeh-with-flask/bokeh-bgs.gif" class="img-responsive" alt="">
+            </div>
+          
+        </div>
+        <div class="col-md-6">
+            <h2>Bokeh 可视化入门</h2>
+                <p>
+                  小强会武术
+                </p>
+
+                <time datetime="2017-10-31 20:59:31 &#43;0800 CST">
+                <i class="fa fa-calendar-o fa-fw"></i> 2017-10-31
+                </time>
+                &middot;
+                1477 字
+                &middot;
+                3 分钟
+
+        </div>
+      </div>
+      <br />
+
+         <p>使用 Python 生成交互式图表
+</p>
+
+<h2 id="python-可视化">Python 可视化</h2>
+
+<p>Python 可视化是一个很大的话题。对其总结概括的最为全面的是 PyCon 2017 Jake VanderPlas 的主题讲演 <a href="https://youtu.be/FytuB8nFHPQ">The Python Visualization Landscape</a> 重点讨论了</p>
+
+<ul>
+<li>团结在 matplotlib 为核心的领域模块</li>
+<li>围绕在 javascript 周围的各种 json 序列化方案</li>
+<li>代表着可视化未来方向的 Vega 和 Altair</li>
+</ul>
+
+<p><img alt="py-vis" src="/img/blog/try-bokeh-with-flask/py-vis.png" class="img-responsive"></p>
+
+<h2 id="bokeh-入門">Bokeh 入門</h2>
+
+<p>这部分是对 Matt Makai (2017-07-30) <a href="https://www.fullstackpython.com/blog/responsive-bar-charts-bokeh-flask-python-3.html">Responsive Bar Charts with Bokeh, Flask and Python 3</a> 的实践版。基本步骤是</p>
+
+<ul>
+<li>在虚拟环境中搭建脚手架</li>
+<li>模拟数据并 DF 化</li>
+<li>将数据做最基础的展示</li>
+<li>添加鼠标悬浮时的网页交互配置</li>
+<li>微调各种可显示元素</li>
+</ul>
+
+<p>我实践中和原文的主要的区别有</p>
+
+<ul>
+<li>使用当下最新的 bokeh 版本 0.12.10</li>
+<li>模拟数据时对 x 数值字符化，否则 FactorRange 报错</li>
+<li>实现上拆分基本画图和微调到多步</li>
+<li>借助接口填充 html 模板中 js 和 css 部分</li>
+</ul>
+
+<p>具体代码见 <a href="https://github.com/wushuzh/barchart">github</a></p>
+
+<h3 id="基础架构">基础架构</h3>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ pipenv --three
+$ pipenv install flask bokeh pandas
+$ mkdir -p barchart/templates
+$ tocuh bootstrap.sh
+$ touch barchart/__init__.py
+$ touch barchart/app.py
+$ touch barchart/templates/chart.html
+...
+$ ./bootstrap.sh &amp;
+$ curl http://localhost:5000/42/
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Bar charts with Bokeh!&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;Bugs found over the past 42 days&lt;/h1&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre></div>
+
+<h3 id="显示设定">显示设定</h3>
+
+<p>学习新知识，最重要的是知晓新领域中的重要概念和术语，这对于理解工具的最佳使用方式，乃至定制高阶解决方案至关重要。Bokeh 用户手册专門有一章介绍了<a href="https://bokeh.pydata.org/en/latest/docs/user_guide/concepts.html">术语和接口</a>，应该反复阅读。</p>
+
+<ul>
+<li>Bokeh 参考手册中 <a href="https://bokeh.pydata.org/en/latest/docs/reference/models.html">models 章节</a> 包含了所有底层接口，全面负责作图和小工具配置</li>
+<li>plotting 包含了高层接口，创建各种 glyphs 最终组装(add_glygh)成最终的 plot</li>
+</ul>
+
+<h2 id="bokeh-服务器">Bokeh 服务器</h2>
+
+<p><a href="https://bokeh.pydata.org/en/latest/docs/user_guide/server.html">Bokeh 服务器</a>是一个可选组件，引入它可以获得获得更多交互功能、连接后端做实时数据更新，甚至使用各种相关事件的回调什么的。</p>
+
+<p>找到一个入门案例 Alan &ldquo;AJ&rdquo; Pryor (2017-09-24) <a href="http://alanpryorjr.com/2017-09-24-stockstreamer/">Building an interactive, data-driven web-application using Amazon EC2 and Python</a> 原文创建的一个应用的功能是抓取股票价格存入数据库，并将最新更新数据在前端展示。应用框架如下:</p>
+
+<p><img alt="stocks-app" src="/img/blog/try-bokeh-with-flask/stocks-app.png" class="img-responsive"></p>
+
+<p>我的准备在自己的平台实践一下，预计和原文相比主要不同为:</p>
+
+<ul>
+<li>不使用 AWS ，但会做容器化封装</li>
+<li>尝试更换数据库 mariadb</li>
+</ul>
+
+<h3 id="准备数据库">准备数据库</h3>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ pipenv install bokeh pandas psycopg2 --three
+$ mkdir -p project/db
+$ touch project/db/create.sql
+$ touch project/db/Dockerfile
+# prepare content for db
+
+$ docker build -t stock-db .
+# hava a try
+$ docker run --rm -d -e POSTGRES_PASSWORD=postgres stock-db
+&lt;hash-id&gt;
+# note it takes a while for db full startup, so it need to 
+#   add check health when we turn it into a service 
+
+$ docker exec -ti &lt;hash-id&gt; psql -U postgres</code></pre></div>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-psql" data-lang="psql">psql (10.0)
+Type &#34;help&#34; for help.
+
+postgres=# \c stocks
+You are now connected to database &#34;stocks&#34; as user &#34;postgres&#34;.
+postgres=# \dt
+              List of relations
+ Schema |       Name       | Type  |  Owner   
+--------+------------------+-------+----------
+ public | stock_highlow    | table | postgres
+ public | stock_image_urls | table | postgres
+ public | stock_prices     | table | postgres
+(3 rows)
+
+postgres=# \q</code></pre></div>
+
+<h3 id="抓取程序">抓取程序</h3>
+
+<p>通过股票代码获得其价格使用了 IEX API，按照原教程，将其封装为一个通用的接口，使得我们保有将其替换为其他 API 的能力。具体做法首先利用 abc 模块创建一个抽象类 StockFetcher 并定义好抓取不同信息的接口。</p>
+
+<p>之后就可以编写 IEXStockFetcher 类了。 通过 urllib.request ，参考 <a href="https://iextrading.com/developer/docs">IEX API</a> URL 格式和返回 json 数据结构，返回当前价，股票标志，年内价格区间。注意:</p>
+
+<ol>
+<li>urllib 会自动应用系统的网络代理。</li>
+<li>原教程的无限重试 try except 会产生 stack overflow ，我尝试了其他几种的重试方式:
+
+<ul>
+<li><a href="https://github.com/wushuzh/stockstreamer/commit/995bfa2c73fac357c270102c59092695912b6ce7">循环休眠跳出</a></li>
+<li><a href="https://github.com/wushuzh/stockstreamer/commit/2f6aef5011b31a7ce2b223d45f7f9bb9663045c4">函数式调用</a></li>
+<li><a href="https://github.com/wushuzh/stockstreamer/commit/54ff0d2474ec20583b91d05fd7f3a0b039745ea4">借助 retrying 模块</a></li>
+</ul></li>
+</ol>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">Fatal Python error: Cannot recover from stack overflow.
+
+Current thread 0x00007ff742c72540 (most recent call first):
+  ...
+  File &#34;~/somepath/stockstreamer/project/data_fetcher.py&#34;, line xx in fetchPrice
+  ...
+Aborted (core dumped)</code></pre></div>
+
+<p>完成了抓取解析数据的核心功能，下面开始考虑怎么做的更有效率。一个基本需求是获取一系列的股票的信息，但是使用普通循环的问题是每个查询请求在获得结果前都会阻塞余下的查询。</p>
+
+<ul>
+<li>这个问题可以通过引入线程解决: 即等待网络结果的时候，线程调度器自动切换到各个线程上下文执行相应工作。</li>
+<li>考虑到从线程获得返回值比较麻烦，所有这里采用的方法是就向每个线程传入同一个 dict 集成所有的结果。</li>
+<li>functools.partial 使得目标函数可以直接通过实例方法引用(即便没有将 IEXStockFetcher 实例化)</li>
+</ul>
+
+<p>这部分代码见 <a href="https://github.com/wushuzh/stockstreamer/commit/513177294464dcf6f8f3a7a214efb927ad61c15a">5131772</a></p>
+
+<blockquote>
+<p>TODO: 貌似 IEX API 只能获得美股情报，以后找找是否有适用于全球(尤其中国、香港)的 API</p>
+</blockquote>
+
+<h3 id="存储数据">存储数据</h3>
+
+<p>本节是将抓好的数据入库表，构建基类 Manager 调用 Fetcher 并入库，和原教程不同，我打算后续尝试更换数据库——换成 mariadb 的意义可能不大，甚至子类 PostgreSQLStockManager 基本可以改造为通吃的方式(根据 dburl 判定使用连接驱动？)，但如果尝试换成 Mongodb 或 Cassandra 可能变得更为简单。</p>
+
+<p>针对每个表:</p>
+
+<ol>
+<li>首先获取所有股票代码的数据</li>
+<li>将每股的数据逐一拆出入库，然后休眠一定时间无限重复</li>
+</ol>
+
+<p>参考文档</p>
+
+<blockquote>
+<ul>
+<li>RealPython <a href="https://github.com/realpython/flask-bokeh-example/">Flask Bokeh Example</a></li>
+<li>Ethan Cerami (2017-04-13) <a href="http://biobits.org/bokeh-flask.html">Creating Interactive Bokeh Applications with Flask</a></li>
+<li>Dan Bader <a href="https://dbader.org/blog/abstract-base-classes-in-python">Abstract Base Classes in Python</a></li>
+<li>Quora <a href="https://www.quora.com/Are-there-any-open-APIs-for-free-accurate-real-time-financial-market-data">Are there any open APIs for free, accurate, real-time financial market data?</a></li>
+<li>Jake VanderPlas (PyCon2017 2017-05-21) <a href="https://speakerdeck.com/jakevdp/pythons-visualization-landscape-pycon-2017">Python&rsquo;s Visualization Landscape</a></li>
+</ul>
+</blockquote>
+
+<p>封面图片来自 <a href="https://dribbble.com/shots/2056186-Free-Bokeh-Backgrounds">Free Bokeh Backgrounds</a> <a href="https://dribbble.com/Graphicsoulz"><i class="fa fa-dribbble" aria-hidden="true"></i> Graphicsoulz</a></p>
+         <div id="disqus_thread">
+  <a href="#" onclick="disqus();return false;">enable VPN and click here to <i class="fa fa-comments" aria-hidden="true"></i></a>
+</div>
+
+<script type="text/javascript">
+var disqus_loaded = false;
+function disqus() {
+  if (!disqus_loaded) {
+    
+    
+    
+    
+
+    disqus_loaded = true;
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'wushuzh';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }
+};
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </div>
+  </div>
+</div>
+<noscript>
+  <style>.jsonly { display: none }</style>
+</noscript>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://wushuzh.github.io/js/jquery.min.js"></script>
+<script src="https://wushuzh.github.io/js/bootstrap.min.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.cookie.js"> </script>
+<script src="https://wushuzh.github.io/js/ekko-lightbox.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://wushuzh.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/owl.carousel.min.js"></script>
+<script src="https://wushuzh.github.io/js/front.js"></script>
+
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</body>
+</html>

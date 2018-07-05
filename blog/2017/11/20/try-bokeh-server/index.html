@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Bokeh 服务器</title>
+<meta name="description" content="个人技术站点">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.theme.css">
+
+
+  <link href="https://wushuzh.github.io/css/style.sea.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://wushuzh.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-102509506-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="/">小强会武术</a></h1>
+    
+      <p class="sidebar-p">工程师</p>
+    
+      <p class="sidebar-p">记录每一个自己填平的坑</p>
+    
+    <ul class="sidebar-menu">
+      
+      
+        <li><a href="https://wushuzh.github.io/">Home</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  
+  
+  <a href="https://twitter.com/Xiao_Qiang" data-animate-hover="pulse" class="external twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  
+  
+  
+  <a href="mailto:wushuzh@outlook.com" data-animate-hover="pulse" class="email">
+    <i class="fa fa-envelope"></i>
+  </a>
+  
+  
+  
+  
+
+  
+  <a href="https://wushuzh.github.io/index.xml" data-animate-hover="pulse">
+    <i class='fa fa-rss'></i>
+  </a>
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2017 wushuzh
+        
+        | Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="/">小强会武术</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="content-column-content">
+
+      <div class="row">
+        <div class="col-sm-6">
+          
+            <div class="image">
+              <img src="https://wushuzh.github.io//img/blog/try-bokeh-server/wired-money.png" class="img-responsive" alt="">
+            </div>
+          
+        </div>
+        <div class="col-md-6">
+            <h2>Bokeh 服务器</h2>
+                <p>
+                  小强会武术
+                </p>
+
+                <time datetime="2017-11-20 21:02:10 &#43;0800 CST">
+                <i class="fa fa-calendar-o fa-fw"></i> 2017-11-20
+                </time>
+                &middot;
+                1547 字
+                &middot;
+                4 分钟
+
+        </div>
+      </div>
+      <br />
+
+         <p>用 Bokeh 服务器对可视化进行控制
+</p>
+
+<h2 id="bokeh-服务器应用">Bokeh 服务器应用</h2>
+
+<h3 id="应用验证">应用验证</h3>
+
+<p>Bokeh 架构是用 python 生成 Model 对象，然后 JSON 序列化后发送到 JS 客户端。这样的设计使得我们可以
+- 将用户界面的事件通过 python 的一系列操作完成;
+- 自动将服务器端的更新发送到客户端;
+- 使用间歇、超时或是异步回调驱动流式更新;</p>
+
+<p>这里我们先生成一个显示框架(无数据)，然后启动 bokeh 服务器验证环境。</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> bokeh.plotting <span style="color:#f92672">import</span> figure, curdoc
+<span style="color:#f92672">from</span> bokeh.models <span style="color:#f92672">import</span> Range1d
+
+
+p <span style="color:#f92672">=</span> figure(title<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;STOCKSTREAMER v0.0&#34;</span>,
+           plot_width<span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span>, plot_height<span style="color:#f92672">=</span><span style="color:#ae81ff">680</span>,
+           x_range<span style="color:#f92672">=</span>Range1d(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>), y_range<span style="color:#f92672">=</span>Range1d(<span style="color:#f92672">-</span><span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">1200</span>),
+           toolbar_location<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;below&#39;</span>, toolbar_sticky<span style="color:#f92672">=</span>False)
+
+curdoc()<span style="color:#f92672">.</span>add_root(p)</code></pre></div>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">(stockstreamer-HdJ_HpJT) $ bokeh serve stockstreamer.py 
+ts Starting Bokeh server version 0.12.10 (running on Tornado
+ts Bokeh app running at: http://localhost:5006/stockstreamer
+ts Starting Bokeh server with process id: 16387</code></pre></div>
+
+<h3 id="读取已有数据展示">读取已有数据展示</h3>
+
+<p>从数据库中获取静态和动态数据并清洗转化数据为图像元素</p>
+
+<p>数据转化主要借助强大的 pandas 库</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; import psycopg2
+&gt;&gt;&gt; dburl = &#34;postgres://postgres:postgres@192.168.99.100:5432/stocks&#34;
+&gt;&gt;&gt; conn = psycopg2.conn(dburl)
+
+&gt;&gt;&gt; import pandas as pd
+&gt;&gt;&gt; image_urls = pd.read_sql(&#34;select * from stock_image_urls&#34;, conn)
+&gt;&gt;&gt; image_urls
+  stock_name                                          image_url
+0      GOOGL  https://storage.googleapis.com/iex/api/logos/G...
+1         FB  https://storage.googleapis.com/iex/api/logos/F...
+2       AAPL  https://storage.googleapis.com/iex/api/logos/A...
+3       AMZN  https://storage.googleapis.com/iex/api/logos/A...
+4       BABA  https://storage.googleapis.com/iex/api/logos/B...
+
+&gt;&gt;&gt; image_urls.set_index(&#39;stock_name&#39;, inplace=True)
+&gt;&gt;&gt; image_urls
+                                                    image_url
+stock_name
+GOOGL       https://storage.googleapis.com/iex/api/logos/G...
+FB          https://storage.googleapis.com/iex/api/logos/F...
+AAPL        https://storage.googleapis.com/iex/api/logos/A...
+AMZN        https://storage.googleapis.com/iex/api/logos/A...
+BABA        https://storage.googleapis.com/iex/api/logos/B...
+
+&gt;&gt;&gt; df = pd.read_sql(&#34;SELECT * FROM stock_prices&#34;, conn)
+&gt;&gt;&gt; df.groupby(&#39;stock_name&#39;).groups
+{
+&#39;AAPL&#39;: Int64Index([4,8,11,...619], dtype=&#39;int64&#39;, length=124),
+&#39;AMZN&#39;: Int64Index([0,5,12,...615], dtype=&#39;int64&#39;, length=124),
+&#39;BABA&#39;: Int64Index([2,9,13,...617], dtype=&#39;int64&#39;, length=124),
+&#39;FB&#39;: Int64Index([1,7,14,...618], dtype=&#39;int64&#39;, length=124),
+&#39;GOOGL&#39;: Int64Index([3,6,10,...616], dtype=&#39;int64&#39;, length=124)
+}</code></pre></div>
+
+<p>股价数据的清洗稍微复杂一点，主要思路是只保留有变化的采样数据，清洗掉一直持续不变的记录: 比如那些休市期间的采集的记录:</p>
+
+<p>保留的点存储于 important_indices</p>
+
+<ul>
+<li>将相同股票的数据聚集 (df.groupby)在一起，并选出那些和上一条价格不同的记录 (df.diff)</li>
+<li>基于这些记录，再加入这些记录的上一个点 (df.shift(-1))</li>
+</ul>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df[<span style="color:#e6db74">&#39;important_indices&#39;</span>] <span style="color:#f92672">=</span> 
+  df<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#39;stock_name&#39;</span>)[<span style="color:#e6db74">&#39;price&#39;</span>]<span style="color:#f92672">.</span>diff() <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>
+df[<span style="color:#e6db74">&#39;important_indices&#39;</span>] <span style="color:#f92672">=</span> 
+  (df[<span style="color:#e6db74">&#39;important_indices&#39;</span>] <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) \
+  <span style="color:#f92672">|</span> (df<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#39;stock_name&#39;</span>)[<span style="color:#e6db74">&#39;important_indices&#39;</span>]<span style="color:#f92672">.</span>shift(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>))
+
+df <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>loc[df<span style="color:#f92672">.</span>important_indices, ]</code></pre></div>
+
+<p>这样清洗后得到的 Dataframe 其记录数量至少减少 <sup>2</sup>&frasl;<sub>3</sub> ，这种从数据本身出发的优化使得不需要再针对<a href="https://en.wikipedia.org/wiki/List_of_stock_exchange_trading_hours">不同市场开闭市时间</a> 以及时区、节假日等做任何特殊处理。</p>
+
+<blockquote>
+<ul>
+<li>TODO: 数据表是否设定一个 partition 规则，然后定期删除或是压减记录</li>
+<li>TODO: 如何将 Presgresql 的容器的数据保存在外部，以便以后可以随时挂载上进行测试</li>
+</ul>
+</blockquote>
+
+<p>显示每个股票的方法是用最大最小值和时间周期画出一个长方形，对于各个时间点的股价结合折线和圆圈标注:</p>
+
+<ul>
+<li>ColumnDataSource 是 bokeh.models.sources 最重要的从列名到序列/数组的映射，可从 dict 或 df 转化而来</li>
+<li>线、点、多边形、椭圆、各种弧都属于 Glyphs ，各自端点/顶点都可借助 ColumnDataSource 指定</li>
+<li>时间横轴的起始点适当放大——放置各股的图标</li>
+</ul>
+
+<h3 id="用最新数据更新图表">用最新数据更新图表</h3>
+
+<p>更新图表更新相应的 glyph 的数据源即可:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">update_figure</span>():
+  xs, ys, max_ys, unique_names <span style="color:#f92672">=</span> get_data()
+  <span style="color:#66d9ef">for</span> i, (x, y, max_y, name) <span style="color:#f92672">in</span> enumerate(zip(xs, ys, max_ys, unique_names)):
+    lines[i]<span style="color:#f92672">.</span>data_source<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>update(
+      x<span style="color:#f92672">=</span>x,
+      y<span style="color:#f92672">=</span>y,
+      stock_name<span style="color:#f92672">=</span>[name_mapper[name]] <span style="color:#f92672">*</span> len(x),
+      timestamp<span style="color:#f92672">=</span>[a<span style="color:#f92672">.</span>strftime(<span style="color:#e6db74">&#39;%Y-%m-</span><span style="color:#e6db74">%d</span><span style="color:#e6db74"> %H-%M-%S&#39;</span>) <span style="color:#66d9ef">for</span> a <span style="color:#f92672">in</span> x])
+
+
+update_figure()
+curdoc()<span style="color:#f92672">.</span>add_periodic_callback(update_figure, <span style="color:#ae81ff">5000</span>)</code></pre></div>
+
+<p>因为中美时区相差较大，如果你在美股闭市时开发测试脚本，就无法获得当下动态的股价，因此增加一个 pestgresql function (存储过程) 用来模拟向数据库中插入几条数据，然后测试 bokeh 服务器的动态加载数据的功能:</p>
+
+<ul>
+<li>插入数据的时间戳要保持从老到新，不然画图时会出现横向折返(尤其是 data_fetcher.py 同时运行时)</li>
+<li>因为使用了容器数据库，所以其内部的时区和外部不同</li>
+<li>因为 bokeh 服务器会不断通过数据库链接读取数据，不要妄图做表的重建、改名等操作</li>
+<li>Postgresql 的存储过程不仅可用 plpgsql，也可以用 python</li>
+</ul>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plpgsql" data-lang="plpgsql"><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">OR</span> <span style="color:#66d9ef">REPLACE</span> <span style="color:#66d9ef">FUNCTION</span> add_records() <span style="color:#66d9ef">RETURNS</span> VOID <span style="color:#66d9ef">AS</span> <span style="color:#960050;background-color:#1e0010">$$</span>
+  <span style="color:#66d9ef">BEGIN</span>
+    <span style="color:#66d9ef">SET</span> TIMEZONE<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Asia/Shanghai&#39;</span>;
+    <span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> stock_prices
+      <span style="color:#66d9ef">SELECT</span> 
+        stock_name,
+        max(price) <span style="color:#f92672">+</span> round(random()<span style="color:#f92672">*</span><span style="color:#ae81ff">100</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">as</span> price,
+        max(time) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;1 second&#39;</span><span style="color:#f92672">::</span>interval
+      <span style="color:#66d9ef">FROM</span> stock_prices <span style="color:#66d9ef">group</span> <span style="color:#66d9ef">by</span> stock_name;
+  <span style="color:#66d9ef">END</span>;
+<span style="color:#960050;background-color:#1e0010">$$</span> <span style="color:#66d9ef">LANGUAGE</span> plpgsql;
+
+<span style="color:#75715e">/*
+</span><span style="color:#75715e">DO $$ BEGIN
+</span><span style="color:#75715e">    PERFORM add_records();
+</span><span style="color:#75715e">END $$;
+</span><span style="color:#75715e">
+</span><span style="color:#75715e">UPDATE stock_highlow AS hl
+</span><span style="color:#75715e">SET high_val52wk = updhl.max
+</span><span style="color:#75715e">FROM ( SELECT stock_name, MAX(price), MIN(price) FROM stock_prices GROUP BY stock_name) AS updhl
+</span><span style="color:#75715e">WHERE updhl.stock_name = hl.stock_name and updhl.max &gt; hl.high_val52wk
+</span><span style="color:#75715e">
+</span><span style="color:#75715e">UPDATE stock_highlow AS hl
+</span><span style="color:#75715e">SET low_val52wk = updhl.min
+</span><span style="color:#75715e">FROM ( SELECT stock_name, MAX(price), MIN(price) FROM stock_prices GROUP BY stock_name) AS updhl
+</span><span style="color:#75715e">WHERE updhl.stock_name = hl.stock_name and updhl.min &lt; hl.low_val52wk
+</span><span style="color:#75715e">*/</span></code></pre></div>
+
+<p>至此，所有关键部分都搞定了，下面就是针对图表显示的各种微调了。</p>
+
+<h3 id="可视化的微调">可视化的微调</h3>
+
+<ul>
+<li>工具栏和横纵轴标识</li>
+<li>将近一年最大最小价格以长方形形式呈现</li>
+<li>添加图例和股票图片</li>
+</ul>
+
+<h3 id="容器封装">容器封装</h3>
+
+<p>这部分是跟当下容器的风，将上述的各个组件封装到容器中，通过 docker-compose 定义服务整体启动执行。</p>
+
+<p>按照基本功能的划分，将抓取程序、展示程序和数据库作为 3 个容器，前两个共享一个镜像， 后一个数据库镜像则加入初始化库表及存储过程的sql脚本。</p>
+
+<p>注意: 以前数据库链接串是硬编码在源程序中，现在则需要通过环境变量读入，并将 host 替换为服务容器名</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> python:3</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> mkdir -p /usr/src/app<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">WORKDIR</span><span style="color:#e6db74"> /usr/src/app</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ADD</span><span style="color:#e6db74"> ./requirements.txt /usr/src/app/requirements.txt</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> pip install -r requirements.txt<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ADD</span><span style="color:#e6db74"> ./project/data_fetcher.py /usr/src/app</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ADD</span><span style="color:#e6db74"> ./project/stockstreamer.py /usr/src/app</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">CMD</span><span style="color:#e6db74"> python data_fetcher.py</span></code></pre></div>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">docker build -t bokeh-service --build-arg https_proxy=ip:port .</code></pre></div>
+
+<p>除了引入 wait-for-it 等待数据库，chart-service 也应该等待 fetch-service 插入数据后再启动比较合适，通过在程序内部增加检测等待实现。</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">version: <span style="color:#e6db74">&#34;3.2&#34;</span>
+
+services:
+
+    stock-db:
+        container_name: stock-db
+        <span style="color:#75715e"># build: ./project/db</span>
+        image: stock-db
+        <span style="color:#75715e">#ports:</span>
+        <span style="color:#75715e">#    - 5435:5432 # expose ports - HOST:CONTAINER</span>
+        environment:
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=postgres
+        healthcheck:
+            test: <span style="color:#e6db74">&#34;pg_isready -U postgres&#34;</span>
+
+    fetch-service:
+        container_name: fetch-service
+        image: bokeh-service
+        environment:
+            - DATABASE_URL=postgres://postgres:postgres@stock-db:<span style="color:#ae81ff">5432</span>/stocks
+            - HTTPS_PROXY=proxyip:port
+        depends_on:
+            - stock-db
+        command: [<span style="color:#e6db74">&#34;./wait-for-it.sh&#34;</span>, <span style="color:#e6db74">&#34;stock-db:5432&#34;</span>, <span style="color:#e6db74">&#34;-t&#34;</span>, <span style="color:#e6db74">&#34;90&#34;</span>, <span style="color:#e6db74">&#34;--&#34;</span>, <span style="color:#e6db74">&#34;python&#34;</span>, <span style="color:#e6db74">&#34;data_fetcher.py&#34;</span>]
+        links:
+            - stock-db
+
+    chart-service:
+        container_name: chart-service
+        image: bokeh-service
+        ports:
+            - <span style="color:#ae81ff">5006</span>:<span style="color:#ae81ff">5006</span> <span style="color:#75715e"># expose ports - HOST:CONTAINER</span>
+        environment:
+            - DATABASE_URL=postgres://postgres:postgres@stock-db:<span style="color:#ae81ff">5432</span>/stocks
+        depends_on:
+            - fetch-service
+        command: [<span style="color:#e6db74">&#34;./wait-for-it.sh&#34;</span>, <span style="color:#e6db74">&#34;stock-db:5432&#34;</span>, <span style="color:#e6db74">&#34;-t&#34;</span>, <span style="color:#e6db74">&#34;90&#34;</span>, <span style="color:#e6db74">&#34;--&#34;</span>, <span style="color:#e6db74">&#34;bokeh&#34;</span>, <span style="color:#e6db74">&#34;serve&#34;</span>, <span style="color:#e6db74">&#34;stockstreamer.py&#34;</span>, <span style="color:#e6db74">&#34;--allow-websocket-origin=192.168.99.100:5006&#34;</span>]
+        links:
+            - stock-db</code></pre></div>
+
+<p>参考文档</p>
+
+<blockquote>
+<ul>
+<li>Bokeh User Guide <a href="https://bokeh.pydata.org/en/latest/docs/user_guide/server.html">Running a Bokeh Server</a></li>
+<li>Tutorialspoint <a href="https://www.tutorialspoint.com/postgresql/postgresql_functions.htm">PostgreSQL - Functions</a></li>
+</ul>
+</blockquote>
+
+<p>封面图片来自 <a href="https://dribbble.com/shots/993632-Wired-Money">Wired Money</a> <a href="https://dribbble.com/goranfactory"><i class="fa fa-dribbble" aria-hidden="true"></i> Marco Goran Romano</a></p>
+         <div id="disqus_thread">
+  <a href="#" onclick="disqus();return false;">enable VPN and click here to <i class="fa fa-comments" aria-hidden="true"></i></a>
+</div>
+
+<script type="text/javascript">
+var disqus_loaded = false;
+function disqus() {
+  if (!disqus_loaded) {
+    
+    
+    
+    
+
+    disqus_loaded = true;
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'wushuzh';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }
+};
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </div>
+  </div>
+</div>
+<noscript>
+  <style>.jsonly { display: none }</style>
+</noscript>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://wushuzh.github.io/js/jquery.min.js"></script>
+<script src="https://wushuzh.github.io/js/bootstrap.min.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.cookie.js"> </script>
+<script src="https://wushuzh.github.io/js/ekko-lightbox.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://wushuzh.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/owl.carousel.min.js"></script>
+<script src="https://wushuzh.github.io/js/front.js"></script>
+
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</body>
+</html>

@@ -31,11 +31,15 @@
 
 
 <script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-102509506-1', 'auto');
-ga('send', 'pageview');
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-102509506-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 </head>
 <body>
@@ -125,7 +129,7 @@ ga('send', 'pageview');
                 <i class="fa fa-calendar-o fa-fw"></i> 2017-08-03
                 </time>
                 &middot;
-                1120 字
+                1387 字
                 &middot;
                 3 分钟
 
@@ -141,29 +145,33 @@ ga('send', 'pageview');
 <p>我感觉自己工作用的笔记本快不行了，同时开个浏览器和 IDE ，风扇的动静像直升机起飞，键盘周围也是非常暖和，每天都像是在做免费的腕部热敷。</p>
 
 <ul>
-<li>Intel i5 2.6 GHz 处理器 ( 2 核 4 线程 )</li>
-<li>DDR3 4 G 798 MHz 内存</li>
+<li><del>Intel i5 2.6 GHz 处理器 ( 2 核 4 线程 ) DDR3 4G 内存 ( HP 6470b Win7)</del></li>
+<li>Intel i5-7300U 2.6 GHz ( 2 核 4 线程 ) DDR4 8G 内存 (201805 联想 T470 Win10）</li>
 </ul>
 
-<p>找来个老台式机分担一些工作负荷：准备装双系统，因为你总有一些时刻依赖 Windows 或 IE ，而 Linux 则用来应对偶尔 Lab 断网没服务器用的情况。</p>
+<p>于是找来个老台式机分担一些工作负荷：准备装双系统，因为你总有一些时刻依赖 Windows 或 IE ，而 Linux 则用来应对偶尔 Lab 断网没服务器用的情况。</p>
 
 <ul>
-<li>Intel i5 3.2 GHz 处理器 ( 2 核 4 线程 )</li>
-<li>DDR3 8 G 665 MHz 内存</li>
-<li>Nvidia Quadro NVS 290 显卡 内含 DDR2 256 MB 显存 (不知这点显存能实验点啥？)</li>
+<li><del>Intel i5 3.2 GHz 处理器 ( 2 核 4 线程 )</del></li>
+<li><del>DDR3 8G 665 MHz 内存</del></li>
+<li><del>Nvidia Quadro [NVS 290] 256MB显存</del></li>
+<li>Intel Xeon X5650 2.67 GHz</li>
+<li>DDR3 12G 内存</li>
+<li>NVIDIA GT218 [NVS 300] 512MB</li>
+<li>NVIDIA GT216GL [Quadro 400] 512MB</li>
 </ul>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #75715e">REM CMD 直接运行</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bat" data-lang="bat"><span style="color:#75715e">REM CMD 直接运行</span>
 msinfo32
 dxdiag
 
-<span style="color: #75715e">REM 第三方工具 CPU-Z 或 GPU-Z 查看则需安装</span>
-</pre></div>
-
+<span style="color:#75715e">REM 第三方工具 CPU-Z 或 GPU-Z 查看则需安装</span></code></pre></div>
 
 <p>对于双系统，网上大部分建议都是先装 Windows，再装 Linux。而多数 PC 预装 Windows (据说少数还预装 Linux )。但我这台 PC 原装 Windows 已经没了，公司 IT 一般都是用克隆，不知道是不是绑定硬件的一种特定的批量 license 授权。</p>
 
 <p>好在我自己之前买过一份正版 Win 8，先拿来用。下载 Win 8 安装介质做成一个可启动 U 盘——这年头光驱算古董。Windows 的安装没什么可说，一步步照提示确认就能安装好。现在 Windows 安装挺简洁，半小时绝对搞定了。</p>
+
+<p>硬件大换血后 Windows 系统需要重新人工认证，这部分大概需要联系微软，回头走一边流程后再补上来。</p>
 
 <h2 id="系统更新">系统更新</h2>
 
@@ -185,17 +193,39 @@ dxdiag
 
 <ul>
 <li>7zip</li>
-<li>ConEmu</li>
+<li>listary</li>
+<li>Cmder (但中文内容显示的问题尚未解决)</li>
+<li>openssh</li>
 <li>Google Chrome</li>
 <li>Firefox</li>
-<li>Git</li>
-<li>SourceTree</li>
-<li>notepadplusplus</li>
-<li>virtualbox</li>
+<li>vlc</li>
 <li>vagrant</li>
+<li>virtualbox</li>
+<li>vim</li>
+<li>notepadplusplus</li>
+<li>gimp</li>
+<li>greenshot</li>
 </ul>
 
 <p><br /></p>
+
+
+<figure>
+    
+        <img src="/img/blog/dual-os-1-install-win/platinum.png" />
+    
+    
+    <figcaption>
+        <h4>linux foundation platinum member</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<blockquote>
+<p>最近(2018-06)新闻提到腾讯成为了 Linux 基金会的铂金会员(最高等级)，然后去查看了一下当下 <a href="https://www.linuxfoundation.org/membership/">15 个白金玩家</a>，这里面居然有微软……不过公平的说，微软这几年确实在开源世界屡放大招，代码编辑器 vscode 可用于全平台，开发出 <a href="https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux">Windows Subsystem for Linux (WSL)</a> ，包括最近收购 github，而其股价也从 2014 年初的 40 升至 2018年6月 100 美元每股)</p>
+</blockquote>
 
 <h2 id="准备-linux-分区">准备 Linux 分区</h2>
 
@@ -220,7 +250,7 @@ dxdiag
 <p>依然是准备一个可启动的 U 盘，写入 Linux 的安装介质。步骤按照<a href="https://wiki.archlinux.org/index.php/USB_flash_installation_media">USB flash installation media</a></p>
 
 
-<figure >
+<figure>
     
         <img src="/img/blog/dual-os-1-install-win/Cold_HybridBoot.png" />
     
@@ -238,6 +268,8 @@ dxdiag
 <blockquote>
 <ul>
 <li>One Transistor (2015-12-03) <a href="https://onetransistor.blogspot.fr/2015/03/dual-boot-windows-and-ubuntu.html">Dual booting Windows and Ubuntu [MBR]</a></li>
+<li>jdhao (2017-12-29) <a href="https://jdhao.github.io/2017/12/29/cmder-usage/">cmder &mdash; the Ultimate Command Line Tool for Windows</a></li>
+<li>jdhao (2017-03-01) <a href="https://jdhao.github.io/2017/03/01/Listary_intro/">An Introduction to Listary: A Blazing Fast Search Tool</a></li>
 </ul>
 </blockquote>
 

@@ -31,11 +31,15 @@
 
 
 <script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-102509506-1', 'auto');
-ga('send', 'pageview');
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-102509506-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 </head>
 <body>
@@ -125,7 +129,7 @@ ga('send', 'pageview');
                 <i class="fa fa-calendar-o fa-fw"></i> 2017-06-15
                 </time>
                 &middot;
-                1785 字
+                1862 字
                 &middot;
                 4 分钟
 
@@ -138,11 +142,13 @@ ga('send', 'pageview');
 
 <h2 id="svn-是什么">SVN 是什么</h2>
 
-<p>当然是一个版本管理工具，虽然被 Linus Torvalds 奚落，但它还是非常很有影响力的。<strong>Apache软件基金会</strong> 就主推 SVN ，当然这也是它旗下的一个顶级项目。</p>
+<p>当然是一个版本管理工具，虽然被 Linus Torvalds 奚落:</p>
 
 <blockquote>
-<p>Linus 在某次访谈时提到了对 CVS 的极度厌恶，并提示台下 SVN 的用户也该离开。然后他说  Subversion 是史上最没有意义的项目，SVN曾经有一段打出的口号是“正确地使用 CVS ”，这个目标毫无意思，因为照 CVS 的方式根本就不可能做的对……</p>
+<p>Linus 在某次访谈时提到了对 CVS 的极度厌恶，并提示台下 SVN 的用户也该离开。然后他说  Subversion 是史上最没有意义的项目，SVN(作为 CVS 理念的继任者和替代品)曾经有一段打出的口号是“正确地使用 CVS ”，但这个目标毫无意思，因为以 CVS 的方式管理源代码根本就不可能做对……</p>
 </blockquote>
+
+<p>但它还是非常很有影响力的。<strong>Apache软件基金会</strong> 就主推 SVN ，当然这也许是因为它本身就是这个基金会旗下的顶级项目。</p>
 
 <h2 id="为啥迁移">为啥迁移</h2>
 
@@ -178,20 +184,18 @@ ga('send', 'pageview');
 
 <h2 id="建议和常见问题">建议和常见问题</h2>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span># 日志消息 <span style="color: #ae81ff">1</span>：
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console"># 日志消息 1：
   Failed to load the AuthzSVNAccessFile:
       Can&#39;t open file &#39;/svn/authz&#39;: Permission denied
 
-# 日志消息 <span style="color: #ae81ff">2</span>：
+# 日志消息 2：
   Can&#39;t open file &#39;/svn/repo1/format&#39;: Permission denied
 
-# 日志消息 <span style="color: #ae81ff">3</span>：
+# 日志消息 3：
   Could not open the requested SVN filesystem
 
 # 解决方式：设定相关文件的 SElinux security context
-chcon -Rv --type=httpd_sys_content_t /SVN_ROOT_PATH
-</pre></div>
-
+chcon -Rv --type=httpd_sys_content_t /SVN_ROOT_PATH</code></pre></div>
 
 <ul>
 <li>身份验证时和浏览仓库时，浏览器提示无法访问，服务器端httpd的error日志中显示无权限。</li>
@@ -220,11 +224,13 @@ B. 使用 svnsync 在另外一台机器上生成当前数据的只读镜像</p>
 <li>两台服务器上执行 svnlook youngest REPO_PATH 结果应该是一样</li>
 </ol>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>svnlook <span style="color: #f8f8f2">history</span> REPO_PATH --show-ids --limit <span style="color: #ae81ff">10</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">svnlook history REPO_PATH --show-ids --limit <span style="color:#ae81ff">10</span>
 svnlook info -r SOME_REVISION_ID
-svnlook info REPO_PATH <span style="color: #75715e"># 查看仓库最新一次提交</span>
-</pre></div>
+svnlook info REPO_PATH # 查看仓库最新一次提交</code></pre></div>
 
+<blockquote>
+<p>如果是 svn client，则使用<code>svn info</code>查看远端中央仓库的 URL 以及最后当下仓库的最后更新时间。</p>
+</blockquote>
 
 <p>方案 B svnsync</p>
 
@@ -237,10 +243,8 @@ svnlook info REPO_PATH <span style="color: #75715e"># 查看仓库最新一次�
 </ol>
 
 <p>这个方法也可以用于增量备份:
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>svnsync initialize --allow-non-empty file:///MIRROR_PATH SOURCE_URL
-svnsync sync file:///MIRROR_PATH
-</pre></div>
-</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">svnsync initialize --allow-non-empty file:///MIRROR_PATH SOURCE_URL
+svnsync sync file:///MIRROR_PATH</code></pre></div></p>
 
 <p>但它也有一个小缺陷，即对于已同步过的历史的一些属性不会再同步，需要通过 svnsync 子命令 copy-revprops 显式完成。</p>
 
@@ -254,65 +258,49 @@ svnsync sync file:///MIRROR_PATH
 
 <h3 id="linux">Linux</h3>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>sudo yum update
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo yum update
 sudo shutdown -r now
 sudo yum install httpd
-sudo sed -i <span style="color: #e6db74">&#39;s/^/#&amp;/g&#39;</span> /etc/httpd/conf.d/welcome.conf
-sudo sed -i <span style="color: #ae81ff">\</span>
-  <span style="color: #e6db74">&quot;s/Options Indexes FollowSymLinks/Options FollowSymLinks/&quot;</span> <span style="color: #ae81ff">\</span>
-  /etc/httpd/conf/httpd.conf
-</pre></div>
+sudo sed -i <span style="color:#e6db74">&#39;s/^/#&amp;/g&#39;</span> /etc/httpd/conf.d/welcome.conf
+sudo sed -i <span style="color:#ae81ff">\</span>
+  <span style="color:#e6db74">&#34;s/Options Indexes FollowSymLinks/Options FollowSymLinks/&#34;</span> <span style="color:#ae81ff">\</span>
+  /etc/httpd/conf/httpd.conf</code></pre></div>
 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo yum install subversion mod_dav_svn
+sudo vi /etc/httpd/conf.modules.d/10-subversion.conf</code></pre></div>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>sudo yum install subversion mod_dav_svn
-sudo vi /etc/httpd/conf.modules.d/10-subversion.conf
-</pre></div>
-
-
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>sudo mkdir /svn
-<span style="color: #f8f8f2">cd</span> /svn
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo mkdir /svn
+cd /svn
 sudo svnadmin create repo1
-sudo chown -R apache:apache repo1
-</pre></div>
+sudo chown -R apache:apache repo1</code></pre></div>
 
-
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>sudo mkdir /etc/svn
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo mkdir /etc/svn
 sudo htpasswd -cm /etc/svn/svn-auth user001
 sudo chown root:apache /etc/svn/svn-auth
-sudo chmod <span style="color: #ae81ff">640</span> /etc/svn/svn-auth
+sudo chmod <span style="color:#ae81ff">640</span> /etc/svn/svn-auth
 sudo htpasswd -m /etc/svn/svn-auth user002
 sudo htpasswd -m /etc/svn/svn-auth user003
 sudo cp /svn/repo1/conf/authz /svn/authz
-sudo vi /svn/authz
-</pre></div>
+sudo vi /svn/authz</code></pre></div>
 
-
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>sudo systemctl start httpd.service
-sudo systemctl <span style="color: #f8f8f2">enable</span> httpd.service
-sudo firewall-cmd --zone<span style="color: #f92672">=</span>public --permanent --add-service<span style="color: #f92672">=</span>http
-sudo firewall-cmd --reload
-</pre></div>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo systemctl start httpd.service
+sudo systemctl enable httpd.service
+sudo firewall-cmd --zone<span style="color:#f92672">=</span>public --permanent --add-service<span style="color:#f92672">=</span>http
+sudo firewall-cmd --reload</code></pre></div>
 
 <hr />
 
 <h3 id="solaris">Solaris</h3>
 
 <p>查看某个文件从属的软件包
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>pkgchk -lp /usr/local/bin/svnserve
-</pre></div>
-</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pkgchk -lp /usr/local/bin/svnserve</code></pre></div></p>
 
 <p>查看软件包中所有内容(文件)
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>pkgchk -l SMCsvn1612
-pkgchk -l SMCap2221
-</pre></div>
-</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pkgchk -l SMCsvn1612
+pkgchk -l SMCap2221</code></pre></div></p>
 
 <p>查看已经系统中所有已安装的软件包
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>pkginfo
-</pre></div>
-</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pkginfo</code></pre></div></p>
 
 <p>缩略语解释</p>
 

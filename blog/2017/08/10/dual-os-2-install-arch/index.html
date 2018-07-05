@@ -31,11 +31,15 @@
 
 
 <script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-102509506-1', 'auto');
-ga('send', 'pageview');
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-102509506-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 </head>
 <body>
@@ -125,9 +129,9 @@ ga('send', 'pageview');
                 <i class="fa fa-calendar-o fa-fw"></i> 2017-08-10
                 </time>
                 &middot;
-                1660 字
+                2143 字
                 &middot;
-                4 分钟
+                5 分钟
 
         </div>
       </div>
@@ -139,7 +143,7 @@ ga('send', 'pageview');
 <h2 id="linux-版本">Linux 版本</h2>
 
 
-<figure >
+<figure>
     
         <img src="/img/blog/dual-os-2-install-arch/linux-flavour.jpg" />
     
@@ -159,7 +163,7 @@ ga('send', 'pageview');
 <p><a href="https://www.archlinux.org/download/">官网</a>下载安装介质 ：我下载的是 2017.08.01 的版本，内核 4.12.3，ISO 大小 516 MB。
 等待下载的同时，开个浏览器阅读 <a href="https://wiki.archlinux.org/index.php/USB_flash_installation_media#In_Windows">USB flash installation media</a>, 然后从中挑一种顺眼的方法——我选 dd for Windows——将安装介质写入 U 盘。</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>choco install dd -y
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">choco install dd -y
 
 wmic diskdrive list brief
   Caption           DeviceID            Model  Partitions  Size
@@ -170,9 +174,17 @@ dd if=archlinux-2017.08.01-x86_64.iso of=\\.\PHYSICALDRIVE1 bs=4M
   rawwrite dd for windows version 0.5
   ......
   129+0 records in
-  129+0 records out
-</pre></div>
+  129+0 records out</code></pre></div>
 
+<blockquote>
+<p>有人在 SO 上问为什么软件的 32 bit 版本用 x86 标识，64 bit 版本用 x64 标识。Daniel C. Sobral 回顾的<a href="https://serverfault.com/a/188203">历史渊源</a>大概如下:</p>
+
+<p>早先 IBM PC 使用 16 bit CPU ，型号包括 8086、8088、80186、80286 , 后来 Intel 开发出 32 bit 兼容型的 CPU : 80386 它可以兼容运行先前为 16 bit CPU 开发的软件，既然和之前的都兼容，大家就将这些 CPU 统称 80x86，这次“瞻前顾后&rdquo;的产品让 Intel 获得巨大成功，随后继续推出性能不断攀升的产品, 当市场普遍接受了产品，兼容性不成问题的时候索性把 <del>80</del> 去掉，直接将新产品叫做 <del>80</del>486(我的第一台为了学习买的电脑)、<del>80</del>586 &hellip;</p>
+
+<p>Intel 终于开发了 64 bit CPU，命名为 IA64，并同时将 &ldquo;x86&rdquo; 叫做 IA32。然而它大概了是忘了之前是怎么成功的。这次 IA64 居然无法兼容 IA32 或者叫做 x86，结果大家都不买。这时 AMD 适时地推出的可以兼容 x86 的 64 bit CPU，让市场易于理解其兼容性，推广时称其为 x86-64 , 果然大获成功。Intel 只能赶紧补课。再后兼容性已经不是个事了。于是又把 86 省略，即 <del>86</del>x64</p>
+
+<p>这种 承上启下的创新 -&gt; 市场接受成为爆款 -&gt; 抛开历史的创新 -&gt; 市场漠视被人赶超 的循环似乎到处都有</p>
+</blockquote>
 
 <p><br /></p>
 
@@ -197,10 +209,8 @@ dd if=archlinux-2017.08.01-x86_64.iso of=\\.\PHYSICALDRIVE1 bs=4M
 
 <p>BIOS 设好 U 盘启动，进入系统(命令行终端)开始做安装前配置。值得一提的是系统提供多个虚拟终端间供你自由切换，按下 <code>Alt + 方向键</code> ，设好代理，启动一个文本型的 Web 浏览器查看安装在线文档。最好只看英文，图片当然也看不了。</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">export</span> <span style="color: #f8f8f2">http_proxy</span><span style="color: #f92672">=</span>YOUR_PROXY
-elinks wiki.archlinux.org/index.php/Installation_guide
-</pre></div>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">export http_proxy<span style="color:#f92672">=</span>YOUR_PROXY
+elinks wiki.archlinux.org/index.php/Installation_guide</code></pre></div>
 
 <p><br /></p>
 
@@ -230,21 +240,19 @@ elinks wiki.archlinux.org/index.php/Installation_guide
 
 <h4 id="文件系统格式化和挂载">文件系统格式化和挂载</h4>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #75715e"># 文件系统格式化</span>
-mkfs.ext3 /dev/sda5
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 文件系统格式化
+</span><span style="color:#75715e"></span>mkfs.ext3 /dev/sda5
 mkfs.ext4 /dev/sda6
 mkswap /dev/sda7
 mkfs.vfat /dev/sda8
 
-<span style="color: #75715e"># 挂载</span>
-mount /dev/sda6 /mnt
+<span style="color:#75715e"># 挂载
+</span><span style="color:#75715e"></span>mount /dev/sda6 /mnt
 mkdir /mnt/boot
 mount /dev/sda5 /mnt/boot
 swapon /dev/sda7
 mkdir /mnt/greenzone
-mount -t vfat /dev/sda8 /mnt/greenzone
-</pre></div>
-
+mount -t vfat /dev/sda8 /mnt/greenzone</code></pre></div>
 
 <blockquote>
 <p>后面专门再写一篇如何通过 LVM 进行分区。</p>
@@ -254,31 +262,37 @@ mount -t vfat /dev/sda8 /mnt/greenzone
 
 <p>Archlinux 追新：安装的软件都从网上下载最新版：这里修改其镜像文件<code>/etc/pacman.d/mirrorlist</code>，将自己所在国家的地址移到最上边就可以了。</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #75715e"># 安装核心软件</span>
-pacstrap /mnt base
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 安装核心软件
+</span><span style="color:#75715e"></span>pacstrap /mnt base
 
-<span style="color: #75715e"># 生成文件系统挂载表</span>
-genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
+<span style="color:#75715e"># 生成文件系统挂载表
+</span><span style="color:#75715e"></span>genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
 
-<span style="color: #75715e"># 切换到新安装到硬盘的文件系统上</span>
-arch-chroot /mnt
+<span style="color:#75715e"># 切换到新安装到硬盘的文件系统上
+</span><span style="color:#75715e"></span>arch-chroot /mnt
 
-<span style="color: #75715e"># 配置时间</span>
-ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+<span style="color:#75715e"># 配置时间
+</span><span style="color:#75715e"></span>ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 hwclock --systohc
 
-<span style="color: #75715e"># 配置本地化字符</span>
-vi /etc/locale.gen
+<span style="color:#75715e"># 配置本地化字符
+</span><span style="color:#75715e"></span>vi /etc/locale.gen
 locale-gen
 
-<span style="color: #75715e"># 配置主机名</span>
-/etc/hostname
-/etc/hosts  
+<span style="color:#75715e"># 配置主机名
+</span><span style="color:#75715e"></span>hostnamectl set-hostname wushuzh
+cat /etc/hostname
+<span style="color:#75715e"># exit current session and relogin to chk
+</span><span style="color:#75715e"></span>/etc/hosts
 
-<span style="color: #75715e"># 配置 root 密码</span>
-passwd
-</pre></div>
+<span style="color:#75715e"># 配置键盘布局
+</span><span style="color:#75715e"></span>localectl set-keymap us
+cat /etc/vconsole.conf
+localectl set-locale LANG<span style="color:#f92672">=</span>en_US.UTF-8
+cat /etc/locale.conf
 
+<span style="color:#75715e"># 配置 root 密码
+</span><span style="color:#75715e"></span>passwd</code></pre></div>
 
 <h3 id="引导区设定">引导区设定</h3>
 
@@ -288,29 +302,25 @@ passwd
 <p>尚不知道是否每次更新 Linux 内核时都需要做这一系列的操作</p>
 </blockquote>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>pacman -S grub
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pacman -S grub
 
-grub-install --target<span style="color: #f92672">=</span>i386-pc <span style="color: #ae81ff">\</span>
-    --grub-setup<span style="color: #f92672">=</span>/bin/true --recheck --debug /dev/sda5
+grub-install --target<span style="color:#f92672">=</span>i386-pc <span style="color:#ae81ff">\</span>
+    --grub-setup<span style="color:#f92672">=</span>/bin/true --recheck --debug /dev/sda5
 chattr +i /boot/grub/i386-pc/core.img
 pacman -S linux
 grub-mkconfig -o /boot/grub/grub.cfg
 
-dd <span style="color: #66d9ef">if</span><span style="color: #f92672">=</span>/dev/sda5 <span style="color: #f8f8f2">of</span><span style="color: #f92672">=</span>/greenzone/linux.bin <span style="color: #f8f8f2">bs</span><span style="color: #f92672">=</span><span style="color: #ae81ff">512</span> <span style="color: #f8f8f2">count</span><span style="color: #f92672">=</span><span style="color: #ae81ff">1</span>
-</pre></div>
-
+dd <span style="color:#66d9ef">if</span><span style="color:#f92672">=</span>/dev/sda5 of<span style="color:#f92672">=</span>/greenzone/linux.bin bs<span style="color:#f92672">=</span><span style="color:#ae81ff">512</span> count<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span></code></pre></div>
 
 <p>重启回到 Windows 8，打开一个带有管理员权限的命令行，拷贝刚才准备的引导区文件 linux.bin，在使用 Windows 的 bootLoader 更新配置，为其追加一个 Linux 启动项。将其和 GRUB 的 bootloader 级联，达到启动 Linux 的目的。重启，测试 Windows 和 Linux 的引导。</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #75715e">REM copy the file linux.bin from F: to C:</span>
-bcdedit /create /d <span style="color: #e6db74">&quot;Linux&quot;</span> /application BOOTSECTOR
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bat" data-lang="bat"><span style="color:#75715e">REM copy the file linux.bin from F: to C:</span>
+bcdedit /create /d <span style="color:#e6db74">&#34;Linux&#34;</span> /application BOOTSECTOR
 
 bcdedit /set {ID} device partition=c:
 bcdedit /set {ID}  path \linux.bin
 bcdedit /displayorder {ID} /addlast
-bcdedit /timeout 30
-</pre></div>
-
+bcdedit /timeout 30</code></pre></div>
 
 <p><br /></p>
 

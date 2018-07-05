@@ -31,11 +31,15 @@
 
 
 <script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-102509506-1', 'auto');
-ga('send', 'pageview');
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-102509506-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 </head>
 <body>
@@ -150,10 +154,8 @@ ga('send', 'pageview');
 
 <p>无论如何你需要先把 synergy 安装在这三台系统上，并以服务器模式运行在其中一个系统上(比如 W)，而在其他系统上(A 和 M)都以客户端模式运行。记得将它们的主机名全部都写在各自本地解析文件中。</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>$ sudo pacman -S synergy
-$ sudo vi /etc/hosts
-</pre></div>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo pacman -S synergy
+$ sudo vi /etc/hosts</code></pre></div>
 
 <p><br /></p>
 
@@ -163,12 +165,10 @@ $ sudo vi /etc/hosts
 
 <p>选择将屏幕位置和共享偏好等都保存在 synergy.sgc。然后通过定义 Windows Service 或 bat 文件的方式将下面启动指令固化到系统中。</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>C:\Program Files\Synergy+\bin\synergys.exe  -f --debug ERROR \
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">C:\Program Files\Synergy+\bin\synergys.exe  -f --debug ERROR \
   --log c:\windows\synergy.log
   -c C:/windows/synergy.sgc
-  --address xx.xx.xx.xx:24800
-</pre></div>
-
+  --address xx.xx.xx.xx:24800</code></pre></div>
 
 <p><br /></p>
 
@@ -176,7 +176,7 @@ $ sudo vi /etc/hosts
 
 <p>其他主机 W、A 都以客户端模式运行，可以打开命令行，直接运行，可以定义为 systemd 的用户级别的 service。</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>$ synergyc -f server-host-name  <span style="color: #75715e">## foreground</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ synergyc -f server-host-name  ## foreground
 
 $ cat ~/.config/systemd/user/synergyc.service
 [Unit]
@@ -189,9 +189,7 @@ ExecStart=/usr/bin/synergyc --no-daemon server-name
 [Install]
 WantedBy=multi-user.target
 
-$ systemctl --user start synergyc
-</pre></div>
-
+$ systemctl --user start synergyc</code></pre></div>
 
 <p><br /></p>
 

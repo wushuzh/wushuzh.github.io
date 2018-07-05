@@ -6,7 +6,6 @@
     <description>Recent content in Howto on 小强会武术</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <copyright>&amp;copy;2017 wushuzh</copyright>
     <lastBuildDate>Mon, 26 Jun 2017 22:31:22 +0800</lastBuildDate>
     
 	<atom:link href="https://wushuzh.github.io/tags/howto/index.xml" rel="self" type="application/rss+xml" />
@@ -18,7 +17,7 @@
       <pubDate>Mon, 26 Jun 2017 22:31:22 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/06/26/deal-with-kernel-panic/</guid>
-      <description>&lt;p&gt;Kernel Panic，应该能撑起&amp;rdquo;咋整&amp;rdquo;系列开篇的门面。
+      <description>&lt;p&gt;Kernel Panic 才能撑起&amp;rdquo;咋整&amp;rdquo;系列开篇的门面。
 &lt;/p&gt;</description>
     </item>
     

@@ -2,7 +2,7 @@
 <html lang="zh-cn">
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>从 SVN 迁移到 Git</title>
+<title>从 SVN 到 Git</title>
 <meta name="description" content="个人技术站点">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="all,follow">
@@ -31,11 +31,15 @@
 
 
 <script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-102509506-1', 'auto');
-ga('send', 'pageview');
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-102509506-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 </head>
 <body>
@@ -116,7 +120,7 @@ ga('send', 'pageview');
           
         </div>
         <div class="col-md-6">
-            <h2>从 SVN 迁移到 Git</h2>
+            <h2>从 SVN 到 Git</h2>
                 <p>
                   小强会武术
                 </p>
@@ -125,7 +129,7 @@ ga('send', 'pageview');
                 <i class="fa fa-calendar-o fa-fw"></i> 2017-08-06
                 </time>
                 &middot;
-                1091 字
+                1120 字
                 &middot;
                 3 分钟
 
@@ -182,79 +186,77 @@ ga('send', 'pageview');
 
 <h3 id="首先-1">首先 1</h3>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>java -jar ~/svn-migration-scripts.jar verify
-java -jar ~/svn-migration-scripts.jar authors <span style="color: #ae81ff">\</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">java -jar ~/svn-migration-scripts.jar verify
+java -jar ~/svn-migration-scripts.jar authors <span style="color:#ae81ff">\</span>
     &lt;svn-repo&gt;/&lt;project&gt; &gt; authors.txt
-<span style="color: #75715e"># edit authors.txt with git account and email addr</span>
-</pre></div>
-
+# edit authors.txt with git account and email addr</code></pre></div>
 
 <hr />
 
 <h3 id="其次-2">其次 2</h3>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>git --version
-git version <span style="color: #ae81ff">2</span>.13.3
-<span style="color: #75715e"># due to svn-migration-scripts.jar only work for git versions v1.x</span>
-<span style="color: #75715e">#    you need to add options &#39;--prefix=&quot;&quot;&#39; with git svn clone cmd</span>
-<span style="color: #75715e">#    otherwise you cannot generate local branches in later step</span>
-git svn clone --prefix<span style="color: #f92672">=</span><span style="color: #e6db74">&quot;&quot;</span> --stdlayout --authors-file<span style="color: #f92672">=</span>authors.txt
-    &lt;svn-repo&gt;/&lt;project&gt; &lt;git-repo-name&gt;
-</pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">git --version
+git version 2.13.3
+# =====================================================
+# due to svn-migration-scripts.jar only work for git v1.x
+#   you need to add options &#39;--prefix=&#34;&#34;&#39; to git svn clone cmd
+#   otherwise you cannot generate local branches needed
+# =====================================================
+git svn clone --prefix=&#34;&#34; --stdlayout --authors-file=authors.txt
+    &lt;svn-repo&gt;/&lt;project&gt; &lt;git-repo-name&gt;</code></pre></div>
 
-
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">cd</span> &lt;git-repo-name&gt;
-<span style="color: #75715e"># only remote branches are available, check by git branch -r</span>
-<span style="color: #75715e"># dry run vs for real</span>
-java -Dfile.encoding<span style="color: #f92672">=</span>utf-8 -jar ~/svn-migration-scripts.jar <span style="color: #ae81ff">\</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd &lt;git-repo-name&gt;
+<span style="color:#75715e"># only remote branches are available, check by git branch -r
+</span><span style="color:#75715e"># dry run vs for real
+</span><span style="color:#75715e"></span>java -Dfile.encoding<span style="color:#f92672">=</span>utf-8 -jar ~/svn-migration-scripts.jar <span style="color:#ae81ff">\</span>
         clean-git
-java -Dfile.encoding<span style="color: #f92672">=</span>utf-8 -jar ~/svn-migration-scripts.jar <span style="color: #ae81ff">\</span>
+java -Dfile.encoding<span style="color:#f92672">=</span>utf-8 -jar ~/svn-migration-scripts.jar <span style="color:#ae81ff">\</span>
         clean-git --force
-<span style="color: #75715e"># check again with git branch without options r</span>
-</pre></div>
-
+# check again with git branch without options r</code></pre></div>
 
 <hr />
 
 <h3 id="再次-3">再次 3</h3>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #75715e"># keep sync with latest svn changes</span>
-git svn fetch
-java -Dfile.encoding<span style="color: #f92672">=</span>utf-8 -jar ~/svn-migration-scripts.jar <span style="color: #ae81ff">\</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># keep sync with latest svn changes
+</span><span style="color:#75715e"></span>git svn fetch
+java -Dfile.encoding<span style="color:#f92672">=</span>utf-8 -jar ~/svn-migration-scripts.jar <span style="color:#ae81ff">\</span>
         sync-rebase
-java -Dfile.encoding<span style="color: #f92672">=</span>utf-8 -jar ~/svn-migration-scripts.jar <span style="color: #ae81ff">\</span>
-        clean-git --force
-</pre></div>
-
+java -Dfile.encoding<span style="color:#f92672">=</span>utf-8 -jar ~/svn-migration-scripts.jar <span style="color:#ae81ff">\</span>
+        clean-git --force</code></pre></div>
 
 <hr />
 
 <h3 id="然后-4">然后 4</h3>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #75715e"># after the remote shared git repo is created, do following</span>
-git remote add origin https://&lt;user&gt;@host/.../&lt;repo&gt;.git
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># after the remote shared git repo is created, do following
+</span><span style="color:#75715e"></span>git remote add origin https://&lt;user&gt;@host/.../&lt;repo&gt;.git
 git push -u origin --all
-git push --tags
+<span style="color:#75715e"># git push --set-upstream origin master -f
+</span><span style="color:#75715e"></span>git push --tags
 
-<span style="color: #75715e"># grant the access rights for team members</span>
-<span style="color: #75715e">#   and how they get their own local copy of shared repo</span>
-git clone https://&lt;user&gt;@host/.../&lt;project&gt;.git &lt;localdest&gt;
-</pre></div>
-
+<span style="color:#75715e"># grant the access rights for team members
+</span><span style="color:#75715e">#   and how they get their own local copy of shared repo
+</span><span style="color:#75715e"></span>git clone https://&lt;user&gt;@host/.../&lt;project&gt;.git &lt;localdest&gt;</code></pre></div>
 
 <hr />
 
 <h3 id="最终-5">最终 5</h3>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span># freeze svn and make a final backup
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console"># freeze svn and make a final backup
 svnadmin dump &lt;svn-repo&gt; | gzip -9 &gt; &lt;backup-file&gt;
 
+# ==== option 1 ====
 # editing your SVN repo’s conf/svnserve.conf file.
-# It’s <span style="color: #f92672">[</span>general<span style="color: #f92672">]</span> section should contain the following lines:
+# It’s [general] section should contain the following lines:
 anon-access = read
 auth-access = read
-</pre></div>
 
+# ==== option 2 ====
+# edit authz for project
+# https://stackoverflow.com/a/2411347/4393386
+[reponame:/]
+* = r</code></pre></div>
 <br /></p>
 
 <h2 id="其他建议">其他建议</h2>

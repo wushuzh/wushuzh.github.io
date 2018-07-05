@@ -31,11 +31,15 @@
 
 
 <script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-102509506-1', 'auto');
-ga('send', 'pageview');
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-102509506-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 </head>
 <body>
@@ -125,7 +129,7 @@ ga('send', 'pageview');
                 <i class="fa fa-calendar-o fa-fw"></i> 2017-08-07
                 </time>
                 &middot;
-                1962 字
+                1974 字
                 &middot;
                 4 分钟
 
@@ -152,7 +156,7 @@ ga('send', 'pageview');
 
 <p>其中解决方案是 a. 通过 uuid 制定磁盘、b. 显式重置磁盘元数据 <code>clearpart --all --initlabel</code>，这和我当下 ks 文件的做法一致。</p>
 
-<p>另外，从 <a href="https://github.com/rhinstaller/anaconda/releases">rhinstaller anaconda releases</a> 上看，我使用的版本也并非最新版，我猜这个问题也存于安装程序的底层的块设备配置模块 <a href="https://github.com/storaged-project/blivet">storaged-project/blivet</a>。</p>
+<p>另外，从 <a href="https://github.com/rhinstaller/anaconda/releases">rhinstaller anaconda releases</a> 上看，我使用的版本也并非最新版，所以我觉得也许这个问题来自安装程序的底层的块设备的配置模块 <a href="https://github.com/storaged-project/blivet">storaged-project/blivet</a>。</p>
 
 <h2 id="求援外部">求援外部</h2>
 
@@ -172,7 +176,7 @@ ga('send', 'pageview');
 <blockquote>
 <p>而我见到的对上报 bug 最好的建议来自 Simon Tatham (Putty作者) <a href="https://www.chiark.greenend.org.uk/~sgtatham/bugs.html">How to Report Bugs Effectively</a> 这个文章有<a href="https://www.chiark.greenend.org.uk/~sgtatham/bugs-cn.html">中文翻译</a>，建议打印一份放在贴在工位上，随时反复阅读。</p>
 
-<p>在更为宽泛的定下，对于如何提问的最好建议来自 Eric Steven Raymond 和 Rick Moen 的 <a href="http://www.catb.org/esr/faqs/smart-questions.html">How To Ask Questions The Smart Way</a>，也有中文翻译：<a href="https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way">ryanhanwu</a> 和 <a href="http://doc.zengrong.net/smart-questions/cn.html">ZRONG</a></p>
+<p>在更为宽泛的定下，对于如何提问的最好建议来自 Eric Steven Raymond 和 Rick Moen 的 <a href="http://www.catb.org/esr/faqs/smart-questions.html">How To Ask Questions The Smart Way</a>，也有中文翻译：<a href="https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way">ryanhanwu</a> 和 <a href="http://doc.zengrong.net/smart-questions/cn.html">ZRONG</a> 两个版本</p>
 </blockquote>
 
 <p>这么大张旗鼓的引用了这些如何提问、提 bug 的建议，还是觉得这是技术工作者一个重要的基本素质。从结果看，凡是提问前做充分思考的同学，不但自身技术提高得快，同时也能得到其所在组织和同事的认可、肯定。</p>
@@ -194,16 +198,14 @@ ga('send', 'pageview');
 
 <p>执行指令产生更多的日志并打包:</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span># dmesg <span style="color: #f8f8f2">&amp;</span>&gt; /tmp/dmesg.log
-# fdisk -l <span style="color: #f8f8f2">&amp;</span>&gt; /tmp/fdisk.log
-# parted -sl <span style="color: #f8f8f2">&amp;</span>&gt; /tmp/parted.log
-# cat /proc/partitions <span style="color: #f8f8f2">&amp;</span>&gt; /tmp/proc_part.log
-# multipath -ll <span style="color: #f8f8f2">&amp;</span>&gt; /tmp/mpath.log
-# ls -lR /dev <span style="color: #f8f8f2">&amp;</span>&gt; /tmp/dev.log
-# cat /proc/scsi/scsi <span style="color: #f8f8f2">&amp;</span>&gt; /tmp/proc_scsi.log
-# tar cvf installation_logs.tar /tmp/*log*
-</pre></div>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console"># dmesg &amp;&gt; /tmp/dmesg.log
+# fdisk -l &amp;&gt; /tmp/fdisk.log
+# parted -sl &amp;&gt; /tmp/parted.log
+# cat /proc/partitions &amp;&gt; /tmp/proc_part.log
+# multipath -ll &amp;&gt; /tmp/mpath.log
+# ls -lR /dev &amp;&gt; /tmp/dev.log
+# cat /proc/scsi/scsi &amp;&gt; /tmp/proc_scsi.log
+# tar cvf installation_logs.tar /tmp/*log*</code></pre></div>
 
 <p><br /></p>
 
@@ -211,12 +213,12 @@ ga('send', 'pageview');
 
 <p>除了上述在问题服务器 A 上逐条执行命令，最后打包的方式，还可以在其他服务器 B 上准备好一个 shell 脚本，包含所有需要执行的指令。这样只要服务器 A 配好网络，就可以将此脚本从服务器 B 上拷贝回来，执行生成日志后，在拷出到服务器 B 上。</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #75715e">#!/bin/bash</span>
-<span style="color: #75715e"># prepare this shell script named LogCapture on server B</span>
-<span style="color: #f8f8f2">cd</span> /tmp<span style="color: #f8f8f2">;</span> mkdir cmd-outputs
-W<span style="color: #f92672">()</span> <span style="color: #f92672">{</span> <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">OutputFile</span><span style="color: #f92672">=</span><span style="color: #66d9ef">$(</span>tr <span style="color: #e6db74">&#39; /&#39;</span> <span style="color: #e6db74">&#39;_&#39;</span> <span style="color: #f92672">&lt;&lt;&lt;</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$@</span><span style="color: #e6db74">&quot;</span><span style="color: #66d9ef">)</span><span style="color: #f8f8f2">;</span> <span style="color: #f8f8f2">$@</span> &gt;cmd-outputs/<span style="color: #f8f8f2">$OutputFile;</span> <span style="color: #f92672">}</span>
-<span style="color: #f92672">[[</span> ! -f ks.cfg <span style="color: #f92672">]]</span> <span style="color: #f92672">&amp;&amp;</span> <span style="color: #f8f8f2">echo</span> No /tmp/ks.cfg present &gt;ks.cfg
-ls anaconda-tb-* <span style="color: #f8f8f2">&amp;</span>&gt;/dev/null <span style="color: #f92672">||</span> <span style="color: #f8f8f2">kill</span> -USR2 <span style="color: #66d9ef">$(</span>&lt;/var/run/anaconda.pid<span style="color: #66d9ef">)</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/bash
+</span><span style="color:#75715e"></span><span style="color:#75715e"># prepare this shell script named LogCapture on server B
+</span><span style="color:#75715e"></span>cd /tmp; mkdir cmd-outputs
+W<span style="color:#f92672">()</span> <span style="color:#f92672">{</span> local OutputFile<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>tr <span style="color:#e6db74">&#39; /&#39;</span> <span style="color:#e6db74">&#39;_&#39;</span> <span style="color:#f92672">&lt;&lt;&lt;</span><span style="color:#e6db74">&#34;</span>$@<span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">)</span>; $@ &gt;cmd-outputs/$OutputFile; <span style="color:#f92672">}</span>
+<span style="color:#f92672">[[</span> ! -f ks.cfg <span style="color:#f92672">]]</span> <span style="color:#f92672">&amp;&amp;</span> echo No /tmp/ks.cfg present &gt;ks.cfg
+ls anaconda-tb-* &amp;&gt;/dev/null <span style="color:#f92672">||</span> kill -USR2 <span style="color:#66d9ef">$(</span>&lt;/var/run/anaconda.pid<span style="color:#66d9ef">)</span>
 W cat /mnt/sysimage/root/anaconda-ks.cfg
 W date
 W dmesg
@@ -238,21 +240,17 @@ W lsof
 W ip -s li
 W ip a
 W ip r
-<span style="color: #f8f8f2">date</span><span style="color: #f92672">=</span><span style="color: #66d9ef">$(</span>date +%F<span style="color: #66d9ef">)</span>
-tar cvjf install-logs-<span style="color: #f8f8f2">$date</span>.tbz *log cmd-outputs anaconda-tb-* ks.cfg
-<span style="color: #f8f8f2">echo</span> -e <span style="color: #e6db74">&quot;\nFinished gathering data\nUpload /tmp/install-logs-</span><span style="color: #f8f8f2">$date</span><span style="color: #e6db74">.tbz to another system\n&quot;</span>
-</pre></div>
-
+date<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>date +%F<span style="color:#66d9ef">)</span>
+tar cvjf install-logs-$date.tbz *log cmd-outputs anaconda-tb-* ks.cfg
+echo -e <span style="color:#e6db74">&#34;\nFinished gathering data\nUpload /tmp/install-logs-</span>$date<span style="color:#e6db74">.tbz to another system\n&#34;</span></code></pre></div>
 
 <p>查看当前你的服务器 A 是否已经获得了有效的网络地址，如果没有，你需要通过 dhcp 或是指令配置好服务器的 ip addr。然后通过 scp、rsync 将之前生成的日志回传。</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>server A # dhclient -v eth0
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">server A # dhclient -v eth0
 server A # ifconfig eth0 xx.xx.xx.xx/24 up
 server A # rsync -v User@Remote:LogCapture /tmp
 server A # bash /tmp/LogCapture
-server A # rsync -v /tmp/install-logs-*.tbz User@Remote:
-</pre></div>
-
+server A # rsync -v /tmp/install-logs-*.tbz User@Remote:</code></pre></div>
 
 <p><br /></p>
 
@@ -269,7 +267,7 @@ server A # rsync -v /tmp/install-logs-*.tbz User@Remote:
 
 <p>最后答案揭晓，经过两位 Redhat 工程师的支持，最终发现了一块磁盘的大小设置过大的错误——一块 300 GB 的硬盘实际能使用的大小只有 286 GB。在 <code>storage.log</code> 中相关日志如下：</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span># <span style="color: #f92672">=================</span> storage.log <span style="color: #f92672">=================</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console"># ================= storage.log =================
 
 DEBUG blivet: allocating partition: raid.18 ; id: 617 ;
   disks: [u&#39;sdo&#39;] ;
@@ -282,18 +280,14 @@ DEBUG blivet: getBestFreeSpaceRegion: disk=/dev/sdo
 DEBUG blivet: checking 63-585871963 (286070)
 DEBUG blivet: current free range is 63-585871963 (286070)
 DEBUG blivet:
-  not enough free space for primary -- trying logical
-</pre></div>
+  not enough free space for primary -- trying logical</code></pre></div>
 
+<p>这几行报错信息和最后爆出磁盘不够的错误信息都在 storage.log 中，但它们之间居然相差了大概 2000 行日志，这也就是这个问题一开始我没能准确定位错误的原因。遇到存储相关的问题还是要细读 storage 日志，并考虑用下面的指令过滤出相关行做逐一分析是这次分析获得宝贵经验。</p>
 
-<p>这几行报错信息离最终爆出的磁盘不够的错误信息都在 storage.log 中，但之间相差了大概 2000 行日志，这也就是这个问题一开始我没能准确定位错误的原因。遇到存储相关的问题还是要细读 storage 日志，并考虑用下面的指令过滤出相关行做逐一分析是这次分析获得宝贵经验。</p>
-
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span># grep -e <span style="color: #e6db74">&quot;allocatePartitions&quot;</span> -e <span style="color: #e6db74">&quot;allocating partition&quot;</span> <span style="color: #ae81ff">\</span>
-  -e <span style="color: #e6db74">&quot;checking freespace&quot;</span> -e <span style="color: #e6db74">&quot;new free&quot;</span> <span style="color: #ae81ff">\</span>
-  -e <span style="color: #e6db74">&quot;current free range is&quot;</span> -e max_size <span style="color: #ae81ff">\</span>
-  storage.log
-</pre></div>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console"># grep -e &#34;allocatePartitions&#34; -e &#34;allocating partition&#34; \
+  -e &#34;checking freespace&#34; -e &#34;new free&#34; \
+  -e &#34;current free range is&#34; -e max_size \
+  storage.log</code></pre></div>
 
 <h3 id="参考文档">参考文档</h3>
 

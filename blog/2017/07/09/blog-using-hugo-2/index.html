@@ -31,11 +31,15 @@
 
 
 <script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-102509506-1', 'auto');
-ga('send', 'pageview');
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-102509506-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 </head>
 <body>
@@ -125,7 +129,7 @@ ga('send', 'pageview');
                 <i class="fa fa-calendar-o fa-fw"></i> 2017-07-09
                 </time>
                 &middot;
-                1069 字
+                1063 字
                 &middot;
                 3 分钟
 
@@ -151,11 +155,9 @@ ga('send', 'pageview');
 </details></p>
 
 <p>Markdown 中直接使用 html 插入动图片:
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="background-color: #f0f0f0; padding: 0 5px 0 5px">1 </span>&lt;<span style="color: #1e90ff; font-weight: bold">a</span> <span style="color: #1e90ff">href</span>=<span style="color: #aa5500">&quot;https://zh.wikipedia.org/wiki/路人超能100&quot;</span>&gt;
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">2 </span>  &lt;<span style="color: #1e90ff; font-weight: bold">img</span> <span style="color: #1e90ff">src</span>=<span style="color: #aa5500">&quot;gifname&quot;</span> <span style="color: #1e90ff">class</span>=<span style="color: #aa5500">&quot;img-responsive&quot;</span> &gt;
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">3 </span>&lt;/<span style="color: #1e90ff; font-weight: bold">a</span>&gt;
-</pre></div>
-
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>&lt;<span style="color:#1e90ff;font-weight:bold">a</span> <span style="color:#1e90ff">href</span>=<span style="color:#a50">&#34;https://zh.wikipedia.org/wiki/路人超能100&#34;</span>&gt;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>  &lt;<span style="color:#1e90ff;font-weight:bold">img</span> <span style="color:#1e90ff">src</span>=<span style="color:#a50">&#34;gifname&#34;</span> <span style="color:#1e90ff">class</span>=<span style="color:#a50">&#34;img-responsive&#34;</span> &gt;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>&lt;/<span style="color:#1e90ff;font-weight:bold">a</span>&gt;</code></pre></div>
 进阶教程：<a href="http://www.ebadf.net/2016/10/19/centering-images-in-hugo/">方法1</a>,
 <a href="https://www.adamwills.io/blog/responsive-images-hugo/">方法2</a></p>
 
@@ -168,9 +170,9 @@ ga('send', 'pageview');
 <details>
   <summary>油管上 GIMP GAP 教学视频</summary>
     
-<div style="position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;">
-  <iframe src="//www.youtube.com/embed/-sZYGwfcJ3A" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" allowfullscreen frameborder="0"></iframe>
- </div>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="//www.youtube.com/embed/-sZYGwfcJ3A" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
 
 </details></li>
 </ol>
@@ -194,17 +196,15 @@ ga('send', 'pageview');
   </div>
 </details></p>
 
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="background-color: #f0f0f0; padding: 0 5px 0 5px">1 </span>&lt;<span style="color: #1e90ff; font-weight: bold">div</span> <span style="color: #1e90ff">class</span>=<span style="color: #aa5500">&quot;embed-responsive embed-responsive-4by3&quot;</span>&gt;
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">2 </span>  &lt;<span style="color: #1e90ff; font-weight: bold">iframe</span>
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">3 </span>    <span style="color: #1e90ff">class</span>=<span style="color: #aa5500">&quot;embed-responsive-item&quot;</span>
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">4 </span>    <span style="color: #1e90ff">frameborder</span>=<span style="color: #aa5500">&quot;0&quot;</span>
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">5 </span>    <span style="color: #1e90ff">width</span>=<span style="color: #aa5500">&quot;640&quot;</span> <span style="color: #1e90ff">height</span>=<span style="color: #aa5500">&quot;498&quot;</span>
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">6 </span>    <span style="color: #1e90ff">src</span>=<span style="color: #aa5500">&quot;https://v.qq.com/iframe/player.html?vid=k0353qun5ey&amp;tiny=0&amp;auto=0&quot;</span>
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">7 </span>    <span style="color: #1e90ff">allowfullscreen</span>&gt;
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">8 </span>  &lt;/<span style="color: #1e90ff; font-weight: bold">iframe</span>&gt;
-<span style="background-color: #f0f0f0; padding: 0 5px 0 5px">9 </span>&lt;/<span style="color: #1e90ff; font-weight: bold">div</span>&gt;
-</pre></div>
-
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>&lt;<span style="color:#1e90ff;font-weight:bold">div</span> <span style="color:#1e90ff">class</span>=<span style="color:#a50">&#34;embed-responsive embed-responsive-4by3&#34;</span>&gt;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>  &lt;<span style="color:#1e90ff;font-weight:bold">iframe</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>    <span style="color:#1e90ff">class</span>=<span style="color:#a50">&#34;embed-responsive-item&#34;</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span>    <span style="color:#1e90ff">frameborder</span>=<span style="color:#a50">&#34;0&#34;</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span>    <span style="color:#1e90ff">width</span>=<span style="color:#a50">&#34;640&#34;</span> <span style="color:#1e90ff">height</span>=<span style="color:#a50">&#34;498&#34;</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span>    <span style="color:#1e90ff">src</span>=<span style="color:#a50">&#34;https://v.qq.com/iframe/player.html?vid=k0353qun5ey&amp;tiny=0&amp;auto=0&#34;</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span>    <span style="color:#1e90ff">allowfullscreen</span>&gt;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span>  &lt;/<span style="color:#1e90ff;font-weight:bold">iframe</span>&gt;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9</span>&lt;/<span style="color:#1e90ff;font-weight:bold">div</span>&gt;</code></pre></div>
 
 <h2 id="版式校对">版式校对</h2>
 

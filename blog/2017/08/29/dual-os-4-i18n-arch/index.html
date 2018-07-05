@@ -31,11 +31,15 @@
 
 
 <script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-102509506-1', 'auto');
-ga('send', 'pageview');
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-102509506-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 </head>
 <body>
@@ -125,7 +129,7 @@ ga('send', 'pageview');
                 <i class="fa fa-calendar-o fa-fw"></i> 2017-08-29
                 </time>
                 &middot;
-                1092 字
+                1225 字
                 &middot;
                 3 分钟
 
@@ -141,10 +145,8 @@ ga('send', 'pageview');
 <p><a href="/blog/2017/08/15/dual-os-3-setup-arch/">&ldquo;上篇&rdquo;</a>
 的最后安装了 Chrome 浏览器，为了能上网，首先要正确的设置代理。如果设置浏览器代理的时候发现这样的报错信息<code>The NetworkManager needs to be running</code>，则需要确认系统是否安装并启动了相应的网络管理服务。</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>pacman -Q networkmanager
-systemctl status NetworkManager
-</pre></div>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">pacman -Q networkmanager
+systemctl status NetworkManager</code></pre></div>
 
 <p>为了让浏览掐用的更顺手，还需要安装一些扩展插件。
 &gt; 如果你的 Chrome 已经用的很顺手，那 google 自己的浏览器同步服务可以很好的将你的书签，浏览历史，安装插件都无差别的同步到新登录的浏览器上。</p>
@@ -174,9 +176,7 @@ systemctl status NetworkManager
 
 <p>在 Archlinux Wiki 的 <a href="https://wiki.archlinux.org/index.php/Fonts">Font</a> 页面中非拉丁字符中挑选自己喜欢的字体。比如我选择了一揽子解决方案 Adobe 的 <a href="https://github.com/adobe-fonts/source-han-sans">Source Han Sans</a></p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>$ sudo pacman -S adobe-source-han-sans-otc-fonts
-</pre></div>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo pacman -S adobe-source-han-sans-otc-fonts</code></pre></div>
 
 <p><br /></p>
 
@@ -195,28 +195,48 @@ systemctl status NetworkManager
 </ul>
 </blockquote>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>$ sudo pacman -Syu fcitx-im fcitx-configtool
-<span style="color: #75715e"># when U in trouble, exec diagnosis tool and focus on red lines</span>
-$ fcitx-diagnose
-</pre></div>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo pacman -Syu fcitx-im fcitx-configtool
+<span style="color:#75715e"># when U in trouble, exec diagnosis tool and focus on red lines
+</span><span style="color:#75715e"></span>$ fcitx-diagnose</code></pre></div>
 
 <p><br /></p>
 
 <h3 id="文本编辑器">文本编辑器</h3>
 
-<p>作为一名不太坚定的 vim 用户。我优先安装了 atom ，并且我发现年纪越大，对这种将那些最基本的设置在出厂时就配置个八九不离十的编辑器有了由衷的好感。唉，是不是老了……下定了半点决心，还是决定安装 oni : 一个尚处于初级阶段，但集成了前端和常用插件的 neovim</p>
+<p>作为一名不太坚定的 vim 用户。我优先安装了 atom 。</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>$ sudo pacman -S atom
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo pacman -S atom</code></pre></div>
 
-$ <span style="color: #f8f8f2">cd</span> /tmp
-$ git clone https://aur.archlinux.org/oni.git
-$ <span style="color: #f8f8f2">cd</span> oni
-$ makepkg -si
+<p>我发现年纪越大，对这种将那些最基本的设置在出厂时就配置个八九不离十的编辑器有了由衷的好感。唉，是不是老了……下定了半点决心，还是决定安装 oni : 一个尚处于初级阶段，但集成了前端和常用插件的 neovim:</p>
 
-$ sudo pacman -S hugo gimp ...
-</pre></div>
+<ul>
+<li>如 <C-p> 激活 Fuzzy Finder ，在当前工作目录下查找查找文件</li>
+<li>如 <C-c> <C-v> 复制、粘贴，并默认工作在系统剪切板</li>
+<li>出厂集成代码补全，安装<a href="https://github.com/bryphe/oni/wiki/Language-Support">相应的 Language Server Protocal</a>即支持其他语言</li>
+<li>注意 oni 界面上的 tab 和 vim 的 buffer 不同，尝试用 [b 切换而不是 gt[T]</li>
+<li>其他配置通过 config.js 配置</li>
+</ul>
 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// $HOME/.oni/config.js
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">activate</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">oni</span>) =&gt; {};
+
+<span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+    <span style="color:#a6e22e">activate</span>,
+    <span style="color:#e6db74">&#34;editor.fontSize&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;14px&#34;</span>,
+    <span style="color:#e6db74">&#34;editor.maximizeScreenOnStart&#34;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+}
+</code></pre></div>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cd /tmp
+$ cower -d oni neovim-git
+<span style="color:#75715e"># install one by one
+</span><span style="color:#75715e"></span>
+$ cower -d python-language-server python-json-rpc pydocstyle
+<span style="color:#75715e"># install one by one
+</span><span style="color:#75715e"></span>$ which pysl
+/usr/bin/pysl
+
+$ sudo pacman -S hugo gimp ...</code></pre></div>
 
 <p><br /></p>
 
