@@ -20,17 +20,18 @@ pygmentsUseClassic = true
 
   [[params.navlinks]]
   name = "Home"
-  url = ""
+  url = "blog/"
+  home = true
 
   [params.social]
     twitter      = "https://twitter.com/Xiao_Qiang"
     email        = "wushuzh@outlook.com"
     rss          = "index.xml"
 
-[permalinks]
-  blog = "/blog/:year/:month/:day/:filename/"
+  [permalinks]
+    blog = "/blog/:year/:month/:day/:filename/"
 
-[taxonomies]
-  tag = "tags"
-  category = "categories"
-  series = "series"
+  [taxonomies]
+    tag = "tags"
+    category = "categories"
+    series = "series"
