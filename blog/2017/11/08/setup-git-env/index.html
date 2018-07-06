@@ -129,7 +129,7 @@ if (!doNotTrack) {
                 <i class="fa fa-calendar-o fa-fw"></i> 2017-11-08
                 </time>
                 &middot;
-                781 字
+                933 字
                 &middot;
                 2 分钟
 
@@ -194,6 +194,16 @@ $ cd git_immersion/git_tutorial/html/index.html &amp;&amp; \
 <li>45 本地追踪远端分支 branch &ndash;track</li>
 <li>46-50 原始仓库 &ndash;bare、remote add、push、pull &ndash;track、daemon</li>
 </ul>
+
+<h3 id="进阶操作">进阶操作</h3>
+
+<p>有时候你发现新建一个 git 仓库，有了几次 commit 但是 author 和 email 却错了。这时可以使用 git-filter-branch 可以重写之前的提交历史，但之前所有提交的 SHA1 也都会变化，所以更使用于本地修改尚未提交到远端的情况。 详见 <a href="https://gist.github.com/ecentinela/199670/7fdb39cbfc2890820c8e8ef64e1184716a24f1cc">change author / commiter details in all commits (WARNING: Will change all SHA1s)</a></p>
+
+<blockquote>
+<p>What is the difference between author and committer in Git? <a href="https://stackoverflow.com/a/6755848">1</a> and <a href="https://stackoverflow.com/a/18754896">2</a></p>
+</blockquote>
+
+<p>此指令还会对修改前的历史做相应备份，方便你修改后发现问题的回滚。详见 <a href="https://stackoverflow.com/a/27975288">Undo git filter-branch</a></p>
 
 <p>参考文档</p>
 
