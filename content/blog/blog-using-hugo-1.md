@@ -48,12 +48,12 @@ Huge 使用步骤和 Jekyll 差不多：相似的创建站点命令，相似的�
 
 具体步骤不再敷述，基本步骤包括
 
-1. 新建仓库，命名为 username.github.io ，添加并设定 br:sources 为默认分支
-2. 克隆仓库至本地，hugo 建站，并克隆心怡的主题
-3. 一方面令分支 sources 忽略 public 子目录，同时让分支 master 仅包含 public 子目录
+1. 新建仓库，命名为 username.github.io ，添加并设定 br:hugo 为默认主分支
+2. 克隆仓库至本地，hugo 建站，克隆心怡的主题和其他配置
+3. 一方面利用 .gitignore 让 hugo 分支忽略 public 子目录，另一方面用 git-worktree 指令让 public 子目录专用于显示 master 分支的内容(生产的静态站点文件)
 4. 添加开篇博客 Hello World ，在[本地](localhost:1313)确认后将 public [部署](https://hjdskes.github.io/blog/update-deploying-hugo-on-personal-gh-pages/)到 GitHab ，将浏览器指向[远端](https://username.github.io)再次查看确认
 
-上述步骤仅仅是个 dry-run ，所以尽量在最短时限内完成。千万不要纠结在各种细节上不能自拔。后面有的是微调优化的时间。
+上述步骤仅仅是个 dry-run ，所以尽量在最短时限内完成。切莫纠结在各种细节上不能自拔。后面有的是微调优化的时间。
 
 <img alt="editorial-story" src="/img/blog/blog-using-hugo-1/editor.jpg"  style="width:70%; height:70%; display:block; margin: auto;">
 
