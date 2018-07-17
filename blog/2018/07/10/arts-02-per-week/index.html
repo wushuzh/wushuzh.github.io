@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>ARTS 2018w28</title>
+<meta name="description" content="个人技术站点">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.theme.css">
+
+
+  <link href="https://wushuzh.github.io/css/style.sea.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://wushuzh.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-102509506-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="https://wushuzh.github.io/">小强会武术</a></h1>
+    
+      <p class="sidebar-p">工程师</p>
+    
+      <p class="sidebar-p">记录每一个自己填平的坑</p>
+    
+    <ul class="sidebar-menu">
+      
+      
+        <li><a href="https://wushuzh.github.io/blog/">Home</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  
+  
+  <a href="https://twitter.com/Xiao_Qiang" data-animate-hover="pulse" class="external twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  
+  
+  
+  <a href="mailto:wushuzh@outlook.com" data-animate-hover="pulse" class="email">
+    <i class="fa fa-envelope"></i>
+  </a>
+  
+  
+  
+  
+  
+  
+  <a href="https://wushuzh.github.io/index.xml" data-animate-hover="pulse">
+    <i class='fa fa-rss'></i>
+  </a>
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2017 wushuzh
+        
+        | Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="https://wushuzh.github.io/">小强会武术</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="content-column-content">
+         
+      <div class="row">
+        <div class="col-sm-6">
+          
+            <div class="image">
+              <img src="https://wushuzh.github.io//img/blog/arts-02-per-week/missinglink.png" class="img-responsive" alt="">
+            </div>
+          
+        </div>
+        <div class="col-md-6">
+            <h2>ARTS 2018w28</h2>
+                <p>
+                  小强会武术
+                </p>
+
+                <time datetime="2018-07-10 22:59:17 &#43;0800 CST">
+                <i class="fa fa-calendar-o fa-fw"></i> 2018-07-10
+                </time>
+                &middot;
+                2554 字
+                &middot;
+                6 分钟
+
+        </div>
+      </div>
+      <br />
+
+         <p>如何模拟数据、以及大数据处理
+</p>
+
+<h2 id="algorithm">Algorithm</h2>
+
+<p>本周解析两道 leetcode 试题: <a href="https://leetcode.com/problems/remove-duplicates-from-sorted-array/description/">26. Remove Duplicates from Sorted Array</a> 和 <a href="https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/description/">80. Remove Duplicates from Sorted Array II</a></p>
+
+<p>放在一起是因为解题思路完全一致，还是双指针法: 快指针<code>j</code>&ldquo;勇往直前&rdquo;，轮询所有元素，慢指针<code>i</code>标记当前符合题设要求的最新元素索引位置，通过两个指针标记的元素们的关系，判断<code>j</code>的位置上是否是一个新的符合题设的元素，若是，就将<code>i</code>增加 1 ，将新元素拷贝到索引<code>i</code>上。</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 026_rm_dup_from_sorted_array</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">rm_duplicates</span>(nums: List[int]) <span style="color:#f92672">-&gt;</span> int:
+    <span style="color:#66d9ef">if</span> len(nums) <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">1</span>:
+        <span style="color:#66d9ef">return</span> len(nums)
+    i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+    j <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">while</span> j <span style="color:#f92672">&lt;</span> len(nums):
+        <span style="color:#66d9ef">if</span> nums[j] <span style="color:#f92672">&gt;</span> nums[i]:
+            i <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+            nums[i] <span style="color:#f92672">=</span> nums[j]
+        j <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">return</span> i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span></code></pre></div>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 080_rm_dup_from_sorted_arr_2  </span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">rm_dups</span>(nums: List[int]) <span style="color:#f92672">-&gt;</span> int:
+    <span style="color:#66d9ef">if</span> len(nums) <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">2</span>:
+        <span style="color:#66d9ef">return</span> len(nums)
+    i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+    j <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+    <span style="color:#66d9ef">while</span> j <span style="color:#f92672">&lt;</span> len(nums):
+        <span style="color:#66d9ef">if</span> nums[j] <span style="color:#f92672">&gt;</span> nums[i] <span style="color:#f92672">or</span> nums[j] <span style="color:#f92672">&gt;</span> nums[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>]:
+            i <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+            nums[i] <span style="color:#f92672">=</span> nums[j]
+        j <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">return</span> i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span></code></pre></div>
+
+<p>leetcode 的题目关注算法和运行效率，代码微调不可避免，所以最好为算法建立测试集。</p>
+
+<p>但除了用于测试边界的用例外，测试集还需要覆盖哪些情况才算完备？我的做法是通过程序自动生成符合题设规则数据，原则上这要生成的数组足够多，就能覆盖所有情况。</p>
+
+<p>比如，下面用例就是重复进行1000 次测试，每次生成一个 100 个以内、依次递增的不同元素组成的数组<code>a</code>的测试函数。</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># test_solution.py for 026_rm_dup_from_sorted_array</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_multi</span>(random_chk<span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span>):
+    <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(random_chk):
+        a <span style="color:#f92672">=</span> []
+        no_dup <span style="color:#f92672">=</span> randint(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">100</span>)
+        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(no_dup):
+            repeat <span style="color:#f92672">=</span> randint(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">5</span>)
+            [a<span style="color:#f92672">.</span>append(i) <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(repeat)]
+        <span style="color:#66d9ef">assert</span> rm_duplicates(a) <span style="color:#f92672">==</span> no_dup
+        <span style="color:#66d9ef">assert</span> a[:no_dup] <span style="color:#f92672">==</span> list(range(no_dup))
+    <span style="color:#75715e"># TODO: get the branchmark of a function</span></code></pre></div>
+
+<h2 id="review">Review</h2>
+
+<p>本周学习 Kafka 时看到几篇讨论其设计的博客都引用了一张比较硬盘和内存在随机和连续模式下读取数据速度的图示。</p>
+
+<p><img alt="Random vs Sequential" src="/img/blog/arts-02-per-week/comparsion.png" class="img-responsive"></p>
+
+<p>图上写着 Figure 3 , 那么其他图又会是什么？原文为何做了这种比较，具体上下文是什么？好奇驱使去查了一下图片原始来源。</p>
+
+<p>原文是刊登在 ACM Queue 杂志 2009-07 Volume 7 Issue 6 的一篇文章 <a href="https://queue.acm.org/detail.cfm?id=1563874">The Pathologies of Big Data</a> 作者是来自 <a href="https://www.1010data.com/company/our-story/">1010data Inc.</a> 的 <a href="https://www.1010data.com/company/leadership/dr-adam-jacobs/">Dr. Adam Jacobs</a>。网上搜了一下，1010data 的最重要客户是纽交所，对于大数据分析应该是很有一套，而 Adam Jacobs 现在已是公司的首席科学家。</p>
+
+<p>回顾历史，Google 在 2003 年发布了著名的关于其文件系统以及 MapReduce 的论文。三年后，也就是 2006 年，业界基本将论文消化完成，发布了 Hadoop 项目 1.0 版本。在经过 3 年，工业界有了一些大数据应用。</p>
+
+<p>设想你如果此时希望写一篇关于存储和处理大数据的科普文章，该如何切入话题呢？</p>
+
+<p>Adam 采用了实验实证的方式。</p>
+
+<p>他首先提到了美国 1980 年的人口普查，全部数据达到了 100 GB ，这些记录被存放在 IBM MSS(Mass Storage System) 系统内，每 GB 的存储成本高达 4 万美元——当时看来硕大无比的数据，30年后再看呢？容量 1T 的硬盘，电脑城俯拾皆是，100 美元就能带回家。再说数据处理，作者模拟了一次全世界人口普查，每人占用一条大小为 128 bits 的记录，全球按 60~70 亿的人口数量计算，刚好是一个 100 GB 大小的数据集:</p>
+
+<ul>
+<li>7 bits 记录年龄 (最大 127 岁)</li>
+<li>1 bit 存放性别</li>
+<li>8 bits 标识国家 (现下全世界 195 个国家)</li>
+<li>&hellip;</li>
+</ul>
+
+<p>计算目标设定为找出各国男女人口各自的年龄中值。采用最平实的算法，瓶颈是硬盘读取速度，运行 15 分钟可以得到结果——期间 CPU 基本赋闲，紧接着 Adam 又将全部数据导入一台刚好拥有 128 GB 内存的 Dell 服务器中，同样的算法，不到一分钟就能得到了结果。</p>
+
+<p><img alt="Simulation" src="/img/blog/arts-02-per-week/fake_data.png" class="img-responsive"></p>
+
+<p>在作者看来，能这样处理的数据根本算不上大数据。但公平的地说，这种规模的数据用常规关系型数据库处理已经非常有挑战了。为了证明这一观点，作者又准备了另一个实验：找一台苹果工作站: 20 GB 内存，2 TB 硬盘，将这 6~7 十亿条数据导入 PostgreSQL 数据库，首次尝试以失败告终，因为持续 6 个小时的导入将硬盘写满了，然而数据还没有全导完。第二次只好将仅含国家、年龄、性别三个字段的 10 亿条记录导入库中，这相当于原来 2 % 的数据量，然而 DBMS 存储也花费了 40 GB硬盘——这叫做“数据通胀” ^_^</p>
+
+<p>而下图中这条 SQL 语句的执行花费了 24 小时。作者在使用 EXPLAIN 工具分析了这个聚合操作的执行计划后，解释了其算法在处理十亿量级的数据的局限，说明了传统数据库一大问题在于其设计目标本来就是用于高效地执行小批量数据的事务型操作的，对于海量的、整体累计型的聚合计算则显示出了严重的不适应。</p>
+
+<p><img alt="linear cost" src="/img/blog/arts-02-per-week/query-cost.png" class="img-responsive"></p>
+
+<p>之后作者提出了大数据在时间、空间上<strong>连续性</strong>的本质，并花费大量篇幅说明只有在存储和算法上都遵从、顺应这一本质的处理策略才有前途。要考虑不同介质的存储成本、空间大小、级联传输效率等因素的影响，尤其要考虑如何利用好如前图 3中不同介质在随机和连续两种模式下时读取速度的指数级的差异。</p>
+
+<p>之后作者又分析了分布式计算的应用策略和需要注意的问题。最后阐述了他对于大数据内涵的元定义。整篇文章绝对是科普佳品，在我看来即使放在今日，其可读性和知识性都很高。建议大家找来阅读。</p>
+
+<h2 id="tip">Tip</h2>
+
+<p><a href="https://en.wikipedia.org/wiki/Tmux">tmux</a> 是 linux 的命令行神器。(然而我还没有完全用起来)</p>
+
+<p>而 Windows 下一个类似得命令行工具也很值得推荐: <a href="http://cmder.net/">cmder</a> 它深度整合了 Conemu 、clink、git for windows 三个工具于一身: 提供了可更换的主题，命令行修改回查的增强，使得 Windows 命令行爱好者也可以获得类似 tmux 的体验?</p>
+
+<p>对我来说常用的操作有:</p>
+
+<ul>
+<li>像 Quake 一样用热键随时唤起 cmder</li>
+<li>自定义热键(如双 Ctrl)复制一个当前 shell ，平铺于当前面板右侧</li>
+<li>向在当前面板的所有 shell 中同时发送指令</li>
+</ul>
+
+<blockquote>
+<p>默认的热键定义大量使用了 <a href="https://conemu.github.io/en/AppsKey.html">Apps Key</a> 通常在全尺寸键盘的 RWin 和 RCtrl 键之间，但对于 Thinkpad 这样的笔记本键盘上这个键并不存在，需要借助 Sharpkey 这样的工具将另一个不常用的键映射为 Apps Key 才可使用，详见 <a href="https://blogs.msdn.microsoft.com/timid/2013/09/19/lenovo-w530-and-the-context-menu-key/">Lenovo W530 and the Context Menu Key</a></p>
+</blockquote>
+
+<h2 id="share">Share</h2>
+
+<p>本周点评文章中提到了美国人口普查，我发现它还真是计算机发展的一个重要现实推手。</p>
+
+<p>在<a href="https://www.youtube.com/playlist?list=PL8dPuuaLjXtNlUrzyH5r6jN9ulIgZBpdo">PBS 的计算机科学速成课</a> 中第二集就提到美国人口普查办公室委托 <a href="https://en.wikipedia.org/wiki/Herman_Hollerith">Herman Hollerith</a> 实现的打孔卡片制表机(现在计算机的雏形)使得 1890 年的人口普查工作得以在 1 年内完成。(相比 1880 年却花了 8 年)</p>
+
+<p>经常听到人们夸耀美国真最牛啊:自由、民主、三权分立，政治制度设计完备。但有没有可能这些其实都是表象，甚至是噱头。这背后的本质是它拥有比其他政府强大的多的管理能力。信息技术才是它的核心硬实力——保持在多维、海量数据的收集和处理能力上的绝对领先，然后再在这之上再构建什么几乎都能成功。所以说无论是对组织，对个人，拥有理工科思维，能尝试用概率统计的角度去理解世界真的非常重要。</p>
+
+<p>最近看了不少贸易战、中兴事件的报道，也挺有意思: 如果你是班级里第一名，不但自己觉得风光，大家也都很羡慕。第一名能力大，大家也愿意也赋予其更多的职责权力，提出的建议大家也都附和，而且当了这么多年一哥也慢慢摸清了里面的门道，行走江湖基本能做到名利双收，不太会赔本赚吆喝。然而这么风光的位置，其他人也想上啊，尤其是第二名，但这么多年过去了，仍然是没有一个能真正威胁到一哥。最新的竞争者是一副东方面孔，据说特点是“勤劳勇敢”，嗯，之前也有过另一位来自东方的同学竞选过一哥：爱干净，懂礼貌，但性格有点阴郁……</p>
+
+
+<figure>
+    
+        <img src="/img/blog/arts-02-per-week/father.jpg" />
+    
+    
+    <figcaption>
+        <h4>罗立中 《父亲》</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<p>封面图片来自 <a href="https://dribbble.com/shots/4008681-The-Missing-Link">The Missing Link</a> <a href="https://dribbble.com/BenStafford"><i class="fa fa-dribbble" aria-hidden="true"></i> Ben Stafford</a></p>
+         <div id="disqus_thread">
+  <a href="#" onclick="disqus();return false;">enable VPN and click here to <i class="fa fa-comments" aria-hidden="true"></i></a>
+</div>
+
+<script type="text/javascript">
+var disqus_loaded = false;
+function disqus() {
+  if (!disqus_loaded) {
+    
+    
+    
+    
+
+    disqus_loaded = true;
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'wushuzh';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }
+};
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </div>
+  </div>
+</div>
+<noscript>
+  <style>.jsonly { display: none }</style>
+</noscript>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://wushuzh.github.io/js/jquery.min.js"></script>
+<script src="https://wushuzh.github.io/js/bootstrap.min.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.cookie.js"> </script>
+<script src="https://wushuzh.github.io/js/ekko-lightbox.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://wushuzh.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/owl.carousel.min.js"></script>
+<script src="https://wushuzh.github.io/js/front.js"></script>
+
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</body>
+</html>
