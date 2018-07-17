@@ -10,9 +10,17 @@ weight = 9999
 全新的分布式平台设计思路
 <!--more-->
 
+## 为什么快
+
+Kafka 尽量避免随机访问，而采用连续读写模式。利用硬盘在此模式下能达到较高吞吐量的优势，尽量将所有东西全写入磁盘。
+Kafka 运行在 JVM 上，如果数据放入内存中作为对象存储，1. 额外开销很很大，占用的空间可能会翻倍；2. 垃圾收集导致 [Heap](https://www.yourkit.com/docs/kb/sizes.jsp)上对象创建/销毁都非常“昂贵”。
+
 ## 基本元素
 
-
+Producer, Consumer, Zookeeper (Boker)
+API: Kafka Connect Source and Sink, Kakfa Stream, Mirror Maker
+Kafka Registry and Avro and Kafka REST Proxy
+GUI: Topics/Schema/Connect UI, Kakfa Manager, Burrow, Exhibitor, Monitor, Tools, Kafkat, JMX Dump and other paid tools
 
 ## Schema registry 引入背景
 
@@ -56,6 +64,12 @@ avsc字段：Type, Name, Namespace, Doc, Fields (Name, Doc, Type, Default)
 
 - 架构和 API
 - Producer Consumer 中使用二进制、JSON 或 AVRO 格式
+
+python 支持
+https://github.com/dpkp/kafka-python
+
+https://github.com/confluentinc/confluent-kafka-python 官方尚未支持 Windows 平台
+https://github.com/confluentinc/confluent-kafka-python/issues/132
 
 ### 参考文档
 

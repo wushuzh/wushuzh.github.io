@@ -286,6 +286,8 @@ gpg:               imported: 1
 $ cower -vdu
 {{< /highlight >}}
 
+> 最近尝试安装一个画示意图的软件 AUR: drawio-desktop 需要安装大量的 npm 包，利用 `npm config set [strict-ssl|proxy|https-proxy]`指令后才可以下载。见 so 的回答[Is there a way to make npm install to work behind proxy](https://stackoverflow.com/a/18346387)
+
 ### 关于 keyring
 
 你每次打开 Chrome 等应用时，系统可能都会提示你输入 keyring 密码。按照 [GNOME/Keyring Passwords are not remembered](https://wiki.archlinux.org/index.php/GNOME/Keyring#Passwords_are_not_remembered) 可以了解更多，并设定为无密码提示。
