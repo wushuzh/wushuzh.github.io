@@ -4,7 +4,7 @@ title = "“调用”可视化"
 showonlyimage = false
 image = "/img/blog/draw-py-call-graph/schema.png"
 topImage = "/img/blog/draw-py-call-graph/schema.gif"
-draft = false
+draft = true
 weight = 110
 +++
 

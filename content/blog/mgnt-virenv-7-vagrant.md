@@ -148,7 +148,7 @@ $ sudo usermod -a -G vboxsf user
 
 有连接就有鉴权，libvirt 软件包提供了 policy 文件 ```/usr/share/polkit-1/actions/org.libvirt.unix.policy```。而在 arch 中只要是属于 wheel 组的用户就可以做 VM 管理。
 
-在之前的一篇 ["Archlinux 配置"]({{< relref "blog/dual-os-3-setup-arch.md" >}}) 中专門建立了 kvm 用户组，这里则通过创建```/etc/polkit-1/rules.d/50-libvirt.rules```的 polkit rule 文件为 kvm 的组成员做免密配置。
+在之前的一篇 ["Archlinux 配置"]({{< ref "/blog/dual-os-3-setup-arch.md" >}}) 中专門建立了 kvm 用户组，这里则通过创建```/etc/polkit-1/rules.d/50-libvirt.rules```的 polkit rule 文件为 kvm 的组成员做免密配置。
 
 {{< highlight javascript >}}
 // Allow users in kvm group to manage

@@ -4,7 +4,7 @@ date = "2018-02-23T21:35:44+08:00"
 title = "设置反向代理"
 showonlyimage = false
 image = "/img/blog/setup-the-reverse-proxy/the_middle_man.png"
-draft = false
+draft = true
 weight = 703
 +++
 

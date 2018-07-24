@@ -13,9 +13,9 @@ weight = 101
 
 ## 性能问题
 
-上篇 ["python 并发 (2)"]({{< relref "blog/try-io-multiplexing-py.md" >}}) 最后实现的服务端版本已经能同时服务多个客户端，而不借助多线程。
+上篇 ["python 并发 (2)"]({{< ref "/blog/try-io-multiplexing-py.md" >}}) 最后实现的服务端版本已经能同时服务多个客户端，而不借助多线程。
 
-本篇我们继续对其执行 ["python 并发 (1)"]({{< relref "blog/intro-to-py-socket.md" >}}) 中的性能测试。
+本篇我们继续对其执行 ["python 并发 (1)"]({{< ref "/blog/intro-to-py-socket.md" >}}) 中的性能测试。
 
 首先是连续请求 fib(30) 的相应时长:
 

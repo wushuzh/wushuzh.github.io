@@ -3,7 +3,7 @@ date = "2018-03-14T21:47:15+08:00"
 title = "组织代码架构"
 showonlyimage = false
 image = "/img/blog/org-flask-app-structure/safe.png"
-draft = false
+draft = true
 weight = 603
 +++
 

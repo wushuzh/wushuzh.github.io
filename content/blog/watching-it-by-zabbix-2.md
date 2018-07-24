@@ -14,7 +14,7 @@ weight = 72
 
 监控产品的一个重要特性是一定要满足监控指标的定制化：比如现在 Docker 很火，那么如果有一台机器作为容器的宿主服务器，那么除了常规的监控指标，你还需要定制一些专用于监控这些容器的性能指标。
 
-本文基于 ["Zabbix 综合监控"]({{< relref "blog/watching-it-by-zabbix-1.md" >}}) 的环境接续使用，并着重记录一下相关的操作实践。
+本文基于 ["Zabbix 综合监控"]({{< ref "/blog/watching-it-by-zabbix-1.md" >}}) 的环境接续使用，并着重记录一下相关的操作实践。
 
 首先是对虚拟机 D 做配置，按照 finid (2016-11-02) [How To Install and Use Docker on CentOS 7](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-centos-7) 安装配置 Docker 服务及相关命令的试车。尤其是如果你下载 images 需要添加代理，请参考 Stackoverflow 上 [Cannot download Docker images behind a proxy](https://stackoverflow.com/a/28093517/4393386) 的解决方案。
 

@@ -3,7 +3,7 @@ date = "2018-03-13T22:29:29+08:00"
 title = "异步翻译"
 showonlyimage = false
 image = "/img/blog/ajax-in-spa-translation/babel.png"
-draft = false
+draft = true
 weight = 603
 +++
 

@@ -3,7 +3,7 @@ date = "2018-03-26T21:19:28+08:00"
 title = "地理空间数据分析"
 showonlyimage = false
 image = "/img/blog/machine-learning-for-mobility/map.png"
-draft = false
+draft = true
 weight = 605
 +++
 

@@ -69,7 +69,7 @@ def rm_elem_swap(nums: List[int], val: int) -> int:
 看到阮一峰老师发的亚马逊工作法，去原 blog 读了下，十多年前的帖子了。只是简单总价了一下，没做啥点评。 
 
 不过最近正在看 BDD ，觉得背后的理念有点像，就顺带总结了一下 cucumber 的核心概念，就算 Tip 
-详见 [测试驱动开发]({{< relref "blog/head-first-cucumber.md" >}})
+详见 [测试驱动开发]({{< ref "/blog/head-first-cucumber.md" >}})
 
 ## Share
 

@@ -3,7 +3,7 @@ date = "2018-02-07T14:15:32+08:00"
 title = "数据分析预备"
 showonlyimage = false
 image = "/img/blog/intro-statistics-by-python/math.png"
-draft = false
+draft = true
 weight = 51
 +++
 

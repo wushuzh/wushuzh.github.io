@@ -3,7 +3,7 @@ date = "2017-12-07T13:17:31+08:00"
 title = "网页式的演讲文稿"
 showonlyimage = false
 image = "/img/blog/make-slides-by-markdown/presentation.png"
-draft = false
+draft = true
 weight = 601
 +++
 

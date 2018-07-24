@@ -79,7 +79,7 @@ Attempting Boot From Hard Drive (C:)
 
 > 不知道有没有什么更改和补救措施改进这个顺序问题。可以继续深挖 TODO
 
-案例 3 见下篇 [磁盘错误，咋整？]({{< relref "blog/deal-with-disk-error.md" >}})
+案例 3 见下篇 [磁盘错误，咋整？]({{< ref "/blog/deal-with-disk-error.md" >}})
 
 ## 结论
 

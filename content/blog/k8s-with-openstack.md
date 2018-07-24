@@ -3,7 +3,7 @@ date = "2018-03-28T22:24:01+08:00"
 title = "容器化的Openstack"
 showonlyimage = false
 image = "/img/blog/k8s-with-openstack/ironman.png"
-draft = false
+draft = true
 weight = 609
 +++
 

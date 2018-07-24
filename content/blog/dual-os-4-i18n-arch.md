@@ -12,7 +12,7 @@ weight = 65
 
 ## 扩展 Chrome
 
-["上篇"]({{< relref "blog/dual-os-3-setup-arch.md" >}})
+["上篇"]({{< ref "/blog/dual-os-3-setup-arch.md" >}})
 的最后安装了 Chrome 浏览器，为了能上网，首先要正确的设置代理。如果设置浏览器代理的时候发现这样的报错信息```The NetworkManager needs to be running```，则需要确认系统是否安装并启动了相应的网络管理服务。
 
 {{< highlight console >}}

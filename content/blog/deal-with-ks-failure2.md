@@ -45,7 +45,7 @@ RedHat 大部分产品开源，其商业模式主要来自对其产品的商业�
 
 ## 日志收集
 
-有的同学遇到 OS 安装错误，习惯于直接拿出手机对着出错屏幕拍摄，但其实上篇 “[安装失败，咋整？]({{< relref "blog/deal-with-ks-failure1.md" >}})” 中已经提到用户可以通过进入各个预设的虚拟终端做相应的日志查看和命令执行的。
+有的同学遇到 OS 安装错误，习惯于直接拿出手机对着出错屏幕拍摄，但其实上篇 “[安装失败，咋整？]({{< ref "/blog/deal-with-ks-failure1.md" >}})” 中已经提到用户可以通过进入各个预设的虚拟终端做相应的日志查看和命令执行的。
 
 比如当你撰写问题描述时不可避免的要收集服务器错误发生时已经产生的所有日志，按照 [What log files should I gather to troubleshoot a kickstart or manual installation issue with Anaconda?](https://access.redhat.com/solutions/20358) 的要求，你需要收集已有日志
 

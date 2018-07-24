@@ -3,7 +3,7 @@ date = "2018-02-08T10:39:04+08:00"
 title = "Linux 内幕"
 showonlyimage = false
 image = "/img/blog/linux-under-the-hood/supercomputer.png"
-draft = false
+draft = true
 weight = 701
 +++
 

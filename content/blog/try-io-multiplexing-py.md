@@ -13,7 +13,7 @@ weight = 101
 
 ## 生成器简介
 
-在上篇 ["python 并发 (1)"]({{< relref "blog/intro-to-py-socket.md" >}}) ，我们之所以要引入线程，是因为下列三个阻塞调用：
+在上篇 ["python 并发 (1)"]({{< ref "/blog/intro-to-py-socket.md" >}}) ，我们之所以要引入线程，是因为下列三个阻塞调用：
 
 - 用于等待 socket 连接的 accept
 - 建立的 socket 连接后等待 client 发送时的 recv

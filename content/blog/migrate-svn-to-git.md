@@ -11,7 +11,7 @@ weight = 12
 以下实施过程和命令，亲测有效，供参考
 <!--more-->
 
-本篇作为  “[SVN 数据迁移]({{< relref "blog/migrate-svn-repo-data.md" >}})” 的续篇，讨论将 svn 代码仓库的异构迁移：即从 SVN 全面转到 Git
+本篇作为  “[SVN 数据迁移]({{< ref "/blog/migrate-svn-repo-data.md" >}})” 的续篇，讨论将 svn 代码仓库的异构迁移：即从 SVN 全面转到 Git
 
 ## 主要步骤
 

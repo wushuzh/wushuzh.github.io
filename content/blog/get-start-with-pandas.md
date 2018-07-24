@@ -4,7 +4,7 @@ title = "Pandas 入门"
 showonlyimage = false
 image = "/img/blog/get-start-with-pandas/bambfood.png"
 topImage = "/img/blog/get-start-with-pandas/bambfood.gif"
-draft = false
+draft = true
 weight = 1000
 +++
 

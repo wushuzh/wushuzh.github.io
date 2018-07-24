@@ -4,7 +4,7 @@ title = "用安赛波自动化管理"
 showonlyimage = false
 image = "/img/blog/mgnt-os-8-ansible/ansible-wave.png"
 topImage = "/img/blog/mgnt-os-8-ansible/2voice_recognition_process_by_gleb.gif"
-draft = false
+draft = true
 weight = 69
 +++
 
@@ -13,7 +13,7 @@ weight = 69
 
 ## 缘起
 
-上篇 ["打造虚拟实验厂"]({{< relref "blog/mgnt-virenv-7-vagrant.md" >}}) 是借助 Vagrant 创建虚拟机。本篇则是借助 ansible 自动化的完成配置、部署。
+上篇 ["打造虚拟实验厂"]({{< ref "/blog/mgnt-virenv-7-vagrant.md" >}}) 是借助 Vagrant 创建虚拟机。本篇则是借助 ansible 自动化的完成配置、部署。
 
 提升效率最关键的办法就是将“一次投入，多次使用”
 

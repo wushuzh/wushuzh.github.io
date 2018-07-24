@@ -3,7 +3,7 @@ date = "2017-11-21T22:37:31+08:00"
 title = "数据可视化"
 showonlyimage = false
 image = "/img/blog/make-amazing-charts/media_plan.png"
-draft = false
+draft = true
 weight = 110
 +++
 

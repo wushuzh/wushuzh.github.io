@@ -52,7 +52,7 @@ dd if=archlinux-2017.08.01-x86_64.iso of=\\.\PHYSICALDRIVE1 bs=4M
 
 先上个双保险——就算 Linux 安装失败——仍能回到 Windows ，再次确认计算机的引导模式。
 
-- 使用```diskpart```，详见["双系统 1: 微软视窗"]({{< relref "blog/dual-os-1-install-win.md" >}}) ；
+- 使用```diskpart```，详见["双系统 1: 微软视窗"]({{< ref "/blog/dual-os-1-install-win.md" >}}) ；
 - 使用```msinfo32```，选择根节点“系统摘要”，查看右侧面板中的 BIOS 模式的值，如果为"传统"或"Legacy"，就是 BIOS-MBR 模式，若为 UEFI，就是 UEFI-GPT 模式。
 
 然后根据这个信息和当前 Windows 版本反复阅读 [ArchLinux 双启动 wiki](https://wiki.archlinux.org/index.php/Dual_boot_with_Windows) 相关章节——同学们，这里面全是知识点啊: chainload、bootloader、GRUB、GRUB Legacy、Syslinux、UEFI、BIOS、GPT、MBR——反正务必做到谋定而后动。

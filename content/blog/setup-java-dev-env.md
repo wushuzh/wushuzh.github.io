@@ -3,7 +3,7 @@ date = "2017-11-24T11:37:35+08:00"
 title = "Java 开发环境"
 showonlyimage = false
 image = "/img/blog/setup-java-dev-env/dev.png"
-draft = false
+draft = true
 weight = 701
 +++
 

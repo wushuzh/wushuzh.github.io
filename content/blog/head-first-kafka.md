@@ -3,7 +3,7 @@ date = "2018-06-25T21:12:23+08:00"
 title = "流处理平台 Kakfa"
 showonlyimage = false
 image = "/img/blog/head-first-kafka/pipe.png"
-draft = false
+draft = true
 weight = 9999
 +++
 

@@ -189,10 +189,13 @@ $ curl http://$(docker-machine ip dev):5000/incomes
 
 {{< /highlight >}}
 
-<details>
-  <summary>阮一峰: 远程通信的三代方法</summary>
-    tweet 924517735832285184
-</details>
+阮一峰 (2017-10-29 tweet): 远程通信的三代方法
+
+  - 过去：SOAP ( HTTP + XML )
+  - 现在：REST ( HTTP + JSON )
+  - 未来：gRPC +  Protocol Buffers
+
+  [Google’s gRPC: A Lean and Mean Communication Protocol for Microservices](https://thenewstack.io/grpc-lean-mean-communication-protocol-microservices/)
 
 参考文档
 

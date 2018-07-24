@@ -4,7 +4,7 @@ title = "看不懂报错，咋整？"
 showonlyimage = false
 image = "/img/blog/deal-with-wired-errmsgs/pc-gone-2.png"
 draft = false
-weight = 41
+weight = 42
 tags = [ "kvm", "Linux" ]
 +++
 

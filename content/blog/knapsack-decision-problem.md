@@ -3,7 +3,7 @@ date = "2017-12-06T20:11:31+08:00"
 title = "决策树:背包问题"
 showonlyimage = false
 image = "/img/blog/knapsack-decision-problem/gear.png"
-draft = false
+draft = true
 weight = 402
 +++
 

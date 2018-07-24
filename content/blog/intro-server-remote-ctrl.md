@@ -3,7 +3,7 @@ date = "2017-08-04T22:24:11+08:00"
 title = "服务器远程管理"
 showonlyimage = false
 image = "/img/blog/intro-server-remote-ctrl/remote-ctrl.jpg"
-draft = false
+draft = true
 weight = 75
 +++
 

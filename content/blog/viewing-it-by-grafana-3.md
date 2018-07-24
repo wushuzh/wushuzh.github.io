@@ -4,7 +4,7 @@ title = "替换 Zabbix 前端"
 showonlyimage = false
 image = "/img/blog/viewing-it-by-grafana-3/scifi-itf.png"
 topImage = "/img/blog/viewing-it-by-grafana-3/scifi-itf.gif"
-draft = false
+draft = true
 weight = 73
 +++
 
