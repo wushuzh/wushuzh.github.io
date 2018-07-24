@@ -191,7 +191,7 @@ $ curl http://$(docker-machine ip dev):5000/incomes
 
 <details>
   <summary>阮一峰: 远程通信的三代方法</summary>
-    {{< tweet 924517735832285184 >}}
+    tweet 924517735832285184
 </details>
 
 参考文档

@@ -7,7 +7,7 @@ draft = false
 weight = 48
 +++
 
-Linux 引导的关键步骤和相关工具简介
+委婉草稿——Linux 引导的关键步骤和相关工具简介
 <!--more-->
 
 

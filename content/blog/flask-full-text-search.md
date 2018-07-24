@@ -7,7 +7,7 @@ draft = false
 weight = 603
 +++
 
-利用 ELK 为应用加入全文搜索
+未完草稿——利用 ELK 为应用加入全文搜索
 <!--more-->
 
 sudo pacman -S elasticsearch

@@ -64,6 +64,17 @@ $ cd git_immersion/git_tutorial/html/index.html && \
 - 45 本地追踪远端分支 branch --track
 - 46-50 原始仓库 --bare、remote add、push、pull --track、daemon
 
+{{< highlight shell >}}
+git config --global core.excludesfile $HOME/.gitignore
+{{< /highlight >}}
+
+Gerrit 也常见于公司的部署
+
+{{< highlight shell >}}
+pip install --user git-review
+git config --global gitreview.remote origin
+{{< /highlight >}}
+
 ### 进阶操作
 
 有时候你发现新建一个 git 仓库，有了几次 commit 但是 author 和 email 却错了。这时可以使用 git-filter-branch 可以重写之前的提交历史，但之前所有提交的 SHA1 也都会变化，所以更使用于本地修改尚未提交到远端的情况。 详见 [change author / commiter details in all commits (WARNING: Will change all SHA1s)](https://gist.github.com/ecentinela/199670/7fdb39cbfc2890820c8e8ef64e1184716a24f1cc)

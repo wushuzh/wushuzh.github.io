@@ -7,7 +7,7 @@ draft = false
 weight = 605
 +++
 
-获取开源地图行政区域和接到数据
+未完草稿——获取开源地图行政区域和接到数据
 <!--more-->
 
 Geo 字根为地球，graphy 意为描述。按照 Dr. Heath Robinson 的宏大说法，地理学的核心可以描述为对我们的世界综合而全面的理解。(A comprehensive and holistic understanding of the entire world)。而其最常见的问题都是以 Where 开头，相应的分析分为两个层次: 

@@ -7,7 +7,7 @@ draft = false
 weight = 605
 +++
 
-空间地理基础介绍和移动迁移预测
+未完草稿——空间地理基础介绍和移动迁移预测
 <!--more-->
 
 Space segmenttation

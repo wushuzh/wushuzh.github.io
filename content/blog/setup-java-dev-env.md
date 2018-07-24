@@ -7,7 +7,7 @@ draft = false
 weight = 701
 +++
 
-设定 JDK 和 Eclipse 集成开发环境
+未完草稿——设定 JDK 和 Eclipse 集成开发环境
 <!--more-->
 
 ### JDK 和 IDE

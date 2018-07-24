@@ -7,7 +7,7 @@ draft = false
 weight = 603
 +++
 
-使用 Ajax 做在线翻译页面部分更新
+未完草稿——使用 Ajax 做在线翻译页面部分更新
 <!--more-->
 
 

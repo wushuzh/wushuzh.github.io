@@ -7,7 +7,7 @@ draft = false
 weight = 701
 +++
 
-深入探索 Linux 系统的各种细节
+未完草稿——深入探索 Linux 系统的各种细节
 <!--more-->
 
 lsmod

@@ -8,7 +8,7 @@ draft = false
 weight = 1000
 +++
 
-Python 中 Excel 级别的数据操作库
+未完草稿——Python 中 Excel 级别的数据操作库
 <!--more-->
 
 ## Data type

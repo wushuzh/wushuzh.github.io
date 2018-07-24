@@ -133,11 +133,11 @@ Carmack 同样会称赞其他的游戏图形引擎，比如 [Ken Silverman](http
 
 还有就是 Carmack 很喜欢披萨，他在 id 工作期间，几乎每天都会从达美乐叫一份中号意大利辣香肠披萨，达美乐 15 年来从未对 Carmack 的订单涨过价，披萨也一直是由同一名的快递员送达。
 
-如果对 John Carmack 和 id software 由更多兴趣，建议阅读 2012 年 slashdot 上的[专访](https://games.slashdot.org/story/99/10/15/1012230/John-Carmack-Answers)以及 David Kushner 的书[《 Masters of Doom 》](https://en.wikipedia.org/wiki/Masters_of_Doom)
+如果对 John Carmack 和 id software 由更多兴趣，建议阅读 2012 年 slashdot 上的[专访](https://games.slashdot.org/story/99/10/15/1012230/John-Carmack-Answers)——作答得体，思虑全面，和《生活大爆炸》被戏剧化后 nerds 形象完全不同。还有 David Kushner 的书[《 Masters of Doom 》](https://en.wikipedia.org/wiki/Masters_of_Doom)/《 DOOM 启示录 》—— 我还没读过，Goodreads 4.2/5 (9k) Douban 9.1/10 (1k)
 
 ## Tip
 
-本周继续学习 Kafka ，全局图景仍未梳理出来，但看和安全相关的 TLS/SSL 部分真是十分复杂，先将数据加密的步骤列出来，后续实践后再补充原理和细节。
+本周继续学习 Kafka ，全局图景仍未梳理出来，但看和安全相关的 TLS/SSL 部分真是十分复杂，先将 JAVA 应用的数据加密的步骤列出来，后续实践后再补充原理和细节。
 
 **加密原因**：未经加密的数据对途径的路由完全透明，所以一般发送方要先对数据进行加密再发送，而接收方收到数据后，会先解密再使用。要想实现 Java 服务器客户端的 TLS/SSL 数据加密传输，还要借助一个可以被广大人民群众信任的 CA ，它另一个职责是负责为服务器端颁发签名证书。
 
@@ -147,11 +147,11 @@ Carmack 同样会称赞其他的游戏图形引擎，比如 [Ken Silverman](http
 openssl req -new -newkey rsa:4096 -days 365 -x509 -subj "/CN=My-Security-CA" -keyout ca-key -out ca-cert -nodes
 {{< /highlight >}}
 
-之后轮到希望实现数据加密的服务方，由它自己先创建一个 keystore (myserver.keystore.jks) 并借此为自己生成一个证书 cert-file ，然后将这个文件(和密码？)通过邮件发送给 CA
+之后轮到希望实现数据加密的服务方，使用 JDK 中的 keytool 工具，自己先创建一个 keystore (myserver.keystore.jks) 然后为自己生成一个证书 cert-file ，然后将这个文件（是否需要 SRVPASS?)通过邮件发送给 CA
 {{< highlight shell >}}
 export SRVPASS=sercet
 
-keytool -genkey -keystore myserver.keystore.jks -validity 365 -storepass $SRVPASS -keypass $SRVPASS -dname "CN=myserver-dns" -storetype pkcsl2
+keytool -genkey -keystore myserver.keystore.jks -validity 365 -storepass $SRVPASS -keypass $SRVPASS -dname "CN=myserver-dns" -storetype pkcs12
 
 # keytool -list -v -keystore myserver.jks
 
@@ -176,6 +176,8 @@ keytool -keystore mysever.keystore.jks -import -file cert-signed -storepass $SRV
 {{< /highlight >}}
 
 此时在任意一个客户端试图访问相应端口测试，只要它的 truststore 有 CA 的证书，并告知 JAVA 客户端 trustore 文件位置和访问密码即可实现加密传输数据
+
+这种[链式信任](https://en.wikipedia.org/wiki/Chain_of_trust)的方式使得客户端无需安装除 CA 之外额外的证书。
 
 {{< highlight shell >}}
 openssl s_client -connect myserver-dns:sslport
@@ -204,5 +206,12 @@ keytool -list -v -keystore myclient.truststore.jks
 
 虽然表面上大家都互相张工、王工、李工的叫，但事实上相邻级别之间的输出成果最小估计也能差出十倍(指数级)。读完吴军老师的文章才体会到工程师这个头衔的重量，按吴军老师的说法，“4 级工程师在中国其实非常缺乏，不少人之所以得到机会，是因为他们和上下级之间较强的沟通能力帮助了他们”。
 
+参考文档
+
+阮一峰 博客文章
+
+> - 2014-9-20 [图解SSL/TLS协议](http://www.ruanyifeng.com/blog/2014/09/illustration-ssl.html)
+> - 2014-2-5 [SSL/TLS协议运行机制的概述](http://www.ruanyifeng.com/blog/2014/02/ssl_tls.html)
+> - 2016-8-26 [HTTPS 升级指南](http://www.ruanyifeng.com/blog/2016/08/migrate-from-http-to-https.html)
 
 封面图片来自 [Gears Ink](https://dribbble.com/shots/2967240-Gears-Ink) <a href="https://dribbble.com/jayemsee"><i class="fa fa-dribbble" aria-hidden="true"></i> joshua corliss</a>

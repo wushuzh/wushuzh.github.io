@@ -7,7 +7,7 @@ draft = false
 weight = 51
 +++
 
-python 科学计算生态的体系化学习
+未完草稿——python 科学计算生态的体系化学习
 <!--more-->
 
 https://github.com/scipy-lectures/scipy-lecture-notes
