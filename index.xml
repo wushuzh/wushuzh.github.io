@@ -187,7 +187,7 @@
       <pubDate>Thu, 01 Feb 2018 18:22:09 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2018/02/01/intro-linux-startup/</guid>
-      <description>&lt;p&gt;Linux 引导的关键步骤和相关工具简介
+      <description>&lt;p&gt;委婉草稿——Linux 引导的关键步骤和相关工具简介
 &lt;/p&gt;</description>
     </item>
     
@@ -217,7 +217,7 @@
       <pubDate>Tue, 10 Oct 2017 19:18:20 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/10/10/get-start-with-scipy/</guid>
-      <description>&lt;p&gt;python 科学计算生态的体系化学习
+      <description>&lt;p&gt;未完草稿——python 科学计算生态的体系化学习
 &lt;/p&gt;</description>
     </item>
     
@@ -337,7 +337,7 @@
       <pubDate>Tue, 06 Mar 2018 20:52:04 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2018/03/06/create-stack-8-hot/</guid>
-      <description>&lt;p&gt;利用编排模板初始化一个复杂的集群
+      <description>&lt;p&gt;未完草稿——利用编排模板初始化一个复杂的集群
 &lt;/p&gt;</description>
     </item>
     
@@ -377,7 +377,7 @@
       <pubDate>Fri, 25 Aug 2017 21:00:32 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/08/25/viewing-it-by-grafana-3/</guid>
-      <description>&lt;p&gt;狂拽酷炫的 Grafana 前端仪表盘
+      <description>&lt;p&gt;未完草稿——狂拽酷炫的 Grafana 前端仪表盘
 &lt;/p&gt;</description>
     </item>
     
@@ -657,7 +657,7 @@
       <pubDate>Tue, 20 Mar 2018 20:34:43 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2018/03/20/flask-full-text-search/</guid>
-      <description>&lt;p&gt;利用 ELK 为应用加入全文搜索
+      <description>&lt;p&gt;未完草稿——利用 ELK 为应用加入全文搜索
 &lt;/p&gt;</description>
     </item>
     
@@ -667,7 +667,7 @@
       <pubDate>Wed, 14 Mar 2018 21:47:15 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2018/03/14/org-flask-app-structure/</guid>
-      <description>&lt;p&gt;为代码结构做更好的蓝图设计
+      <description>&lt;p&gt;未完草稿——为代码结构做更好的蓝图设计
 &lt;/p&gt;</description>
     </item>
     
@@ -677,7 +677,7 @@
       <pubDate>Tue, 13 Mar 2018 22:29:29 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2018/03/13/ajax-in-spa-translation/</guid>
-      <description>&lt;p&gt;使用 Ajax 做在线翻译页面部分更新
+      <description>&lt;p&gt;未完草稿——使用 Ajax 做在线翻译页面部分更新
 &lt;/p&gt;</description>
     </item>
     
@@ -767,7 +767,7 @@
       <pubDate>Fri, 09 Feb 2018 11:16:59 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2018/02/09/manipulate-with-pdfs/</guid>
-      <description>&lt;p&gt;PDF 文件的页面转向、合并和其他高阶操作
+      <description>&lt;p&gt;未完草稿——PDF 文件的页面转向、合并和其他操作
 &lt;/p&gt;</description>
     </item>
     
@@ -777,7 +777,7 @@
       <pubDate>Mon, 26 Mar 2018 21:19:28 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2018/03/26/machine-learning-for-mobility/</guid>
-      <description>&lt;p&gt;空间地理基础介绍和移动迁移预测
+      <description>&lt;p&gt;未完草稿——空间地理基础介绍和移动迁移预测
 &lt;/p&gt;</description>
     </item>
     
@@ -787,7 +787,7 @@
       <pubDate>Thu, 22 Mar 2018 20:55:21 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2018/03/22/download-street-network/</guid>
-      <description>&lt;p&gt;获取开源地图行政区域和接到数据
+      <description>&lt;p&gt;未完草稿——获取开源地图行政区域和接到数据
 &lt;/p&gt;</description>
     </item>
     
@@ -797,7 +797,7 @@
       <pubDate>Wed, 28 Mar 2018 22:24:01 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2018/03/28/k8s-with-openstack/</guid>
-      <description>&lt;p&gt;女王来临
+      <description>&lt;p&gt;未完草稿——女王来临
 &lt;/p&gt;</description>
     </item>
     
@@ -807,7 +807,7 @@
       <pubDate>Thu, 08 Feb 2018 10:39:04 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2018/02/08/linux-under-the-hood/</guid>
-      <description>&lt;p&gt;深入探索 Linux 系统的各种细节
+      <description>&lt;p&gt;未完草稿——深入探索 Linux 系统的各种细节
 &lt;/p&gt;</description>
     </item>
     
@@ -817,7 +817,7 @@
       <pubDate>Fri, 24 Nov 2017 11:37:35 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/11/24/setup-java-dev-env/</guid>
-      <description>&lt;p&gt;设定 JDK 和 Eclipse 集成开发环境
+      <description>&lt;p&gt;未完草稿——设定 JDK 和 Eclipse 集成开发环境
 &lt;/p&gt;</description>
     </item>
     
@@ -827,7 +827,7 @@
       <pubDate>Fri, 23 Feb 2018 21:35:44 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2018/02/23/setup-the-reverse-proxy/</guid>
-      <description>&lt;p&gt;利用中间服务器做 HTTP(S) 反向代理
+      <description>&lt;p&gt;未完草稿:利用中间服务器做 HTTP(S) 代理
 &lt;/p&gt;</description>
     </item>
     
@@ -837,7 +837,7 @@
       <pubDate>Sun, 03 Dec 2017 09:04:10 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/12/03/get-start-with-pandas/</guid>
-      <description>&lt;p&gt;Python 中 Excel 级别的数据操作库
+      <description>&lt;p&gt;未完草稿——Python 中 Excel 级别的数据操作库
 &lt;/p&gt;</description>
     </item>
     
@@ -882,12 +882,22 @@
     </item>
     
     <item>
+      <title>ARTS 2018w29</title>
+      <link>https://wushuzh.github.io/blog/2018/07/16/arts-03-per-week/</link>
+      <pubDate>Mon, 16 Jul 2018 21:31:01 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2018/07/16/arts-03-per-week/</guid>
+      <description>&lt;p&gt;链表入门、以及工程师的能级跃迁
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>流处理平台 Kakfa</title>
       <link>https://wushuzh.github.io/blog/2018/06/25/head-first-kafka/</link>
       <pubDate>Mon, 25 Jun 2018 21:12:23 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2018/06/25/head-first-kafka/</guid>
-      <description>&lt;p&gt;全新的分布式平台设计思路
+      <description>&lt;p&gt;未完草稿——全新的分布式平台设计思路
 &lt;/p&gt;</description>
     </item>
     

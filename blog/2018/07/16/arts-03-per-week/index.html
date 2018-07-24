@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>ARTS 2018w29</title>
+<meta name="description" content="个人技术站点">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.theme.css">
+
+
+  <link href="https://wushuzh.github.io/css/style.sea.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://wushuzh.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-102509506-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="https://wushuzh.github.io/">小强会武术</a></h1>
+    
+      <p class="sidebar-p">工程师</p>
+    
+      <p class="sidebar-p">记录每一个自己填平的坑</p>
+    
+    <ul class="sidebar-menu">
+      
+      
+        <li><a href="https://wushuzh.github.io/blog/">Home</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  
+  
+  <a href="https://twitter.com/Xiao_Qiang" data-animate-hover="pulse" class="external twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  
+  
+  
+  <a href="mailto:wushuzh@outlook.com" data-animate-hover="pulse" class="email">
+    <i class="fa fa-envelope"></i>
+  </a>
+  
+  
+  
+  
+  
+  
+  <a href="https://wushuzh.github.io/index.xml" data-animate-hover="pulse">
+    <i class='fa fa-rss'></i>
+  </a>
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2017 wushuzh
+        
+        | Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="https://wushuzh.github.io/">小强会武术</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="content-column-content">
+         
+      <div class="row">
+        <div class="col-sm-6">
+          
+            <div class="image">
+              <img src="https://wushuzh.github.io//img/blog/arts-03-per-week/game.gif" class="img-responsive" alt="">
+            </div>
+          
+        </div>
+        <div class="col-md-6">
+            <h2>ARTS 2018w29</h2>
+                <p>
+                  小强会武术
+                </p>
+
+                <time datetime="2018-07-16 21:31:01 &#43;0800 CST">
+                <i class="fa fa-calendar-o fa-fw"></i> 2018-07-16
+                </time>
+                &middot;
+                2782 字
+                &middot;
+                6 分钟
+
+        </div>
+      </div>
+      <br />
+
+         <p>链表入门、以及工程师的能级跃迁
+</p>
+
+<h2 id="algorithm">Algorithm</h2>
+
+<p>本周解析的题目是 <a href="https://leetcode.com/problems/remove-duplicates-from-sorted-list/description/">83. Remove Duplicates from Sorted List</a></p>
+
+<p>题目通过注释给出了数据结构的最简实现，增加的 <code>dunder str</code> 方法纯粹是为了打印调试。</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ListNode</span>:
+    <span style="color:#66d9ef">def</span> __init__(self, x):
+        self<span style="color:#f92672">.</span>val <span style="color:#f92672">=</span> x
+        self<span style="color:#f92672">.</span>next <span style="color:#f92672">=</span> None
+
+    <span style="color:#66d9ef">def</span> __str__(self):
+        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;ListNode(&#39;</span> <span style="color:#f92672">+</span> str(self<span style="color:#f92672">.</span>val) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;)&#39;</span>
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">printSSL</span>(lst):
+    <span style="color:#66d9ef">if</span> lst:
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;{} -&gt; &#34;</span><span style="color:#f92672">.</span>format(lst), end<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>)
+        printSSL(lst<span style="color:#f92672">.</span>next)
+    <span style="color:#66d9ef">else</span>:
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;None&#39;</span>)</code></pre></div>
+
+<p>首先是形成测试数据集，python list 是直觉之选，但使用时要注意一些操作的特殊特性，比如</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#f92672">&gt;&gt;&gt;</span> s <span style="color:#f92672">=</span> [[<span style="color:#ae81ff">42</span>]]<span style="color:#f92672">*</span><span style="color:#ae81ff">3</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> s
+[[<span style="color:#ae81ff">42</span>], [<span style="color:#ae81ff">42</span>], [<span style="color:#ae81ff">42</span>]]
+<span style="color:#f92672">&gt;&gt;&gt;</span> s[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>append(<span style="color:#ae81ff">0</span>)
+<span style="color:#f92672">&gt;&gt;&gt;</span> s
+[[<span style="color:#ae81ff">42</span>, <span style="color:#ae81ff">0</span>], [<span style="color:#ae81ff">42</span>, <span style="color:#ae81ff">0</span>], [<span style="color:#ae81ff">42</span>, <span style="color:#ae81ff">0</span>]]</code></pre></div>
+
+<p>向链表的添加元素操作，如果是向头部添加比向尾部添加容易的多，所以可以先将 list 倒序在逐一添加，最终获得头部元素 head;</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">cons</span>(v, tail):
+    head <span style="color:#f92672">=</span> ListNode(v)
+    head<span style="color:#f92672">.</span>next <span style="color:#f92672">=</span> tail
+    <span style="color:#66d9ef">return</span> head
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">mklist</span>(<span style="color:#f92672">*</span>args):
+    <span style="color:#66d9ef">return</span> reduce(<span style="color:#66d9ef">lambda</span> tail, v: cons(v, tail), reversed(args), None)</code></pre></div>
+
+<p>将链表转换回 list 的方法
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">convert_array</span>(head):
+    a <span style="color:#f92672">=</span> []
+    succ <span style="color:#f92672">=</span> head
+    <span style="color:#66d9ef">while</span> succ:
+        a<span style="color:#f92672">.</span>append(succ<span style="color:#f92672">.</span>val)
+        succ <span style="color:#f92672">=</span> succ<span style="color:#f92672">.</span>next
+    <span style="color:#66d9ef">return</span> a</code></pre></div></p>
+
+<p>此时就可以模拟生成任意个排好序的链表作为测试数据集了</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_multi</span>(check_itr<span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span>):
+    <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(check_itr):
+        a <span style="color:#f92672">=</span> []
+        no_dup <span style="color:#f92672">=</span> randint(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">100</span>)
+        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(no_dup):
+            repeat <span style="color:#f92672">=</span> randint(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>)
+            a <span style="color:#f92672">+=</span> [i] <span style="color:#f92672">*</span> repeat
+        new_head <span style="color:#f92672">=</span> deleteDuplicates(mklist(<span style="color:#f92672">*</span>a))
+        <span style="color:#66d9ef">assert</span> convert_array(new_head) <span style="color:#f92672">==</span> list(range(no_dup))</code></pre></div>
+
+<p>本题解法：</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">deleteDuplicates</span>(head: ListNode) <span style="color:#f92672">-&gt;</span> ListNode:
+    cur <span style="color:#f92672">=</span> head
+    <span style="color:#66d9ef">while</span> cur <span style="color:#f92672">and</span> cur<span style="color:#f92672">.</span>next:
+        <span style="color:#66d9ef">if</span> cur<span style="color:#f92672">.</span>next<span style="color:#f92672">.</span>val <span style="color:#f92672">==</span> cur<span style="color:#f92672">.</span>val:
+            cur<span style="color:#f92672">.</span>next <span style="color:#f92672">=</span> cur<span style="color:#f92672">.</span>next<span style="color:#f92672">.</span>next
+        <span style="color:#66d9ef">else</span>:
+            cur <span style="color:#f92672">=</span> cur<span style="color:#f92672">.</span>next
+    <span style="color:#66d9ef">return</span> head</code></pre></div>
+
+<p>另外看了一下 leetcode 的专题学习卡片，也许这是开始做相关的数据结构试题前，入门的好方法，比如<a href="https://leetcode.com/explore/learn/card/linked-list/">链表</a>。</p>
+
+<h2 id="review">Review</h2>
+
+<p>本周刷微博，看到 John Carmack 这个名字，然而我并不知道是这是哪位大神——除了 Linus Torvalds 以外，CS名人堂的前辈我居然说不出半打，简直就是个外行。刺激之下就在 wiki 上读了一下他的<a href="https://en.wikipedia.org/wiki/John_D._Carmack">词条</a>，因为我对计算机图形学和游戏开发比较陌生，就摘录一些有趣的部分。</p>
+
+<p>John D. Carmack 于 1970 年出生，父亲是本地电视台新闻记者，8、9 岁时通过游戏厅接触到了那些最早的射击、迷宫类的经典游戏，对宫本茂很是仰慕。14 岁被劳教一年，原因是帮一群孩子偷 Apple II 电脑，在“行动”中他成功地使用铝热法融化了学校的窗户，却因为一个猪队友的开窗操作触发警报而导致被捕，他大学仅上了 2 个学期，然后就退学去做了程序员。在 Softdisk 公司工作时，开发了游戏<a href="https://en.wikipedia.org/wiki/Commander_Keen">“指挥官基恩”</a>，也认识了 <a href="https://en.wikipedia.org/wiki/John_Romero">John Romero</a>, <a href="https://en.wikipedia.org/wiki/Adrian_Carmack">Adrian Carmack</a> 等人；21 岁时创建 <a href="https://en.wikipedia.org/wiki/Id_Software">id Software</a> 公司，之后领导开发了 <a href="https://en.wikipedia.org/wiki/Wolfenstein_3D">“重返德军总部 3D”</a>，<a href="https://en.wikipedia.org/wiki/Doom_(1993_video_game)">“毁灭战士”</a>，<a href="https://en.wikipedia.org/wiki/Quake_(video_game)">“雷神之锤”</a>，<a href="https://en.wikipedia.org/wiki/Rage_(video_game)">“狂怒”</a>等经典游戏。</p>
+
+<p>由 Carmack 率先使用或推广的技术有</p>
+
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Adaptive_tile_refresh">adaptive tile refresh</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Raycasting">raycasting</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Binary_space_partitioning">binary space partitioning</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Surface_caching">suface caching</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Shadow_volume">Carmack&rsquo;s Reverse</a></li>
+<li><a href="https://en.wikipedia.org/wiki/MegaTexture">MegaTexture</a></li>
+</ul>
+
+<p>他开发的图形引擎还被授权使用在<a href="https://en.wikipedia.org/wiki/Half-Life_(video_game)">“半条命”</a>，<a href="https://en.wikipedia.org/wiki/Call_of_Duty">“使命召唤”</a>，<a href="https://en.wikipedia.org/wiki/Medal_of_Honor_(1999_video_game)">“荣誉勋章”</a>等游戏上。</p>
+
+<p>2000 年，当他发现将他在定制法拉利上花的钱，放在火箭研究上足以完成很多事情后，就成立了 <a href="https://en.wikipedia.org/wiki/Armadillo_Aerospace">Armadillo Aerospace</a> 公司，每年从自己腰包中拿出一百多万美元支撑公司研发运营，然后在 2008 年参加了 NASA 举行的<a href="https://en.wikipedia.org/wiki/Lunar_Lander_Challenge">月球垂直起落飞行器挑战赛</a>，获得常规难度组的第一名，并在次年完成了该比赛的终极难度挑战，获得相应奖金。</p>
+
+<p>2013 年底 Carmack 正式离开 id ，作为 CTO 加入 Oculus VR 公司。这之后 id 的母公司 ZeniMax 将 Oculus 和其收购者 Facebook 告上法庭，认为其侵犯了前者的知识产权，最终陪审团认为除了 Carmack 之外的其他相关人等都有责任，需要对 ZeniMax 支付赔偿。</p>
+
+<p>Carmack 一直推崇开源软件的理念并付诸实践:</p>
+
+<ul>
+<li>1995 公布“重返德军总部 3D”源代码；</li>
+<li>1997 公布“毁灭公爵”源代码；</li>
+<li>1996 一位和 id software 无关的程序员基于“雷神之锤”被泄露的源码将游戏迁移到 linux，还将补丁发给 Carmack ，Carmack 则指示基于这个补丁来实现官方迁移，而没有对补丁作者采取任何法律行动；</li>
+</ul>
+
+<p>Carmack 同样会称赞其他的游戏图形引擎，比如 <a href="https://en.wikipedia.org/wiki/Ken_Silverman">Ken Silverman</a> 的 <a href="https://en.wikipedia.org/wiki/Build_(game_engine)">Build Engine</a>、<a href="https://en.wikipedia.org/wiki/Tim_Sweeney_(game_developer)">Tim Sweeney</a> 的 <a href="https://en.wikipedia.org/wiki/Unreal_Engine">Unreal Engine</a> 。</p>
+
+<p>还有就是 Carmack 很喜欢披萨，他在 id 工作期间，几乎每天都会从达美乐叫一份中号意大利辣香肠披萨，达美乐 15 年来从未对 Carmack 的订单涨过价，披萨也一直是由同一名的快递员送达。</p>
+
+<p>如果对 John Carmack 和 id software 由更多兴趣，建议阅读 2012 年 slashdot 上的<a href="https://games.slashdot.org/story/99/10/15/1012230/John-Carmack-Answers">专访</a>——作答得体，思虑全面，和《生活大爆炸》被戏剧化后 nerds 形象完全不同。还有 David Kushner 的书<a href="https://en.wikipedia.org/wiki/Masters_of_Doom">《 Masters of Doom 》</a>/《 DOOM 启示录 》—— 我还没读过，Goodreads 4.<sup>2</sup>&frasl;<sub>5</sub> (9k) Douban 9.<sup>1</sup>&frasl;<sub>10</sub> (1k)</p>
+
+<h2 id="tip">Tip</h2>
+
+<p>本周继续学习 Kafka ，全局图景仍未梳理出来，但看和安全相关的 TLS/SSL 部分真是十分复杂，先将 JAVA 应用的数据加密的步骤列出来，后续实践后再补充原理和细节。</p>
+
+<p><strong>加密原因</strong>：未经加密的数据对途径的路由完全透明，所以一般发送方要先对数据进行加密再发送，而接收方收到数据后，会先解密再使用。要想实现 Java 服务器客户端的 TLS/SSL 数据加密传输，还要借助一个可以被广大人民群众信任的 CA ，它另一个职责是负责为服务器端颁发签名证书。</p>
+
+<p>我们可以通过下面指令模拟一个私立 CA ,产生文件为 ca-cert 和 ca-key</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">openssl req -new -newkey rsa:4096 -days <span style="color:#ae81ff">365</span> -x509 -subj <span style="color:#e6db74">&#34;/CN=My-Security-CA&#34;</span> -keyout ca-key -out ca-cert -nodes</code></pre></div>
+
+<p>之后轮到希望实现数据加密的服务方，使用 JDK 中的 keytool 工具，自己先创建一个 keystore (myserver.keystore.jks) 然后为自己生成一个证书 cert-file ，然后将这个文件（是否需要 SRVPASS?)通过邮件发送给 CA
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">export SRVPASS<span style="color:#f92672">=</span>sercet
+
+keytool -genkey -keystore myserver.keystore.jks -validity <span style="color:#ae81ff">365</span> -storepass $SRVPASS -keypass $SRVPASS -dname <span style="color:#e6db74">&#34;CN=myserver-dns&#34;</span> -storetype pkcs12
+
+<span style="color:#75715e"># keytool -list -v -keystore myserver.jks
+</span><span style="color:#75715e"></span>
+keytool -keystore myserver.keystore.jks -certreq -file cert-file -storepass $SRVPASS -keypass $SRVPASS</code></pre></div></p>
+
+<p>CA 借助自己的证书和密钥，对收到的证书进行签名，产生 cert-signed 文件，发回给服务器申请方</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">openssl x509 -req -CA ca-cert -CAkey ca-key -in cert-file -out cert-signed -days <span style="color:#ae81ff">365</span> -CAcreateserial -passin pass:$SRVPASS
+
+# keytool -printcert -v -file cert-signed</code></pre></div>
+
+<p>服务器端将收到的证书导入 keystore 中，并向 JAVA 应用告知 keystore 和 truststore 的位置和访问密码。</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># keytool -keystore mysever.truststore.jks -alias CARoot -import -file ca-cert -storepass $SRVPASS -keypass $SRVPASS -noprompt
+</span><span style="color:#75715e"># keytool -keystore mysever.keystore.jks -alias CARoot -import -file ca-cert -storepass $SRVPASS -keypass $SRVPASS -noprompt
+</span><span style="color:#75715e"></span>keytool -keystore mysever.keystore.jks -import -file cert-signed -storepass $SRVPASS -keypass $SRVPASS -noprompt</code></pre></div>
+
+<p>此时在任意一个客户端试图访问相应端口测试，只要它的 truststore 有 CA 的证书，并告知 JAVA 客户端 trustore 文件位置和访问密码即可实现加密传输数据</p>
+
+<p>这种<a href="https://en.wikipedia.org/wiki/Chain_of_trust">链式信任</a>的方式使得客户端无需安装除 CA 之外额外的证书。</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">openssl s_client -connect myserver-dns:sslport
+
+<span style="color:#75715e"># export CLIPASS=clipass
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e"># keytool -keystore myclient.truststore.jks -alias CARoot -import -file ca-cert -storepass $CLIPASS -keypass $CLIPASS -noprompt
+</span><span style="color:#75715e"></span>
+keytool -list -v -keystore myclient.truststore.jks</code></pre></div>
+
+<h2 id="share">Share</h2>
+
+<p>本周阅读维基百科 John Carmack 词条的时候，回忆起小时候我也很喜欢玩游戏，但最复杂的操作也只限于使用内存修改工具修改金钱，或是在 config.sys 中添加诸如 memmaker 的调用，使得我的 486 DOS 系统能跑起来一个新的需要更多内存的盗版游戏。大家中学时肯定都学过铝镁反应，但 Carmack 居然用来融窗户……人和人真的很不一样。</p>
+
+<p>以前我无视房地产行业，对任志强的了解仅限于新闻转载了他的“开炮”言论——然后听说是说的太过火而受到党内处分。这周课余时间读了几页任志强的《野心优雅》，才知道这位任大炮年轻时也算是“白手起家”，然后也蹲过看守所，后来又用十几年的时间，将一个注册资金 1500 万的公司做成了净资产 30 亿，总资产 80 亿的明星地产企业，再后来二次创业……这是一位能在退休的时候“惊动”国家总理做出批示的老总。看他复盘自己日常决策和思考，才觉得他身处环境和所面对问题的复杂程度不是我这种职场小白能想象的，无论是面对强势的资本、保守的政府、还是企图将其踩下的后辈，都能坚持原则，进退有度，令人钦佩。</p>
+
+<p>吴军老师在《5级工程师和职业发展》中提到前苏联物理学家<a href="https://en.wikipedia.org/wiki/Lev_Landau">朗道</a>有一个小名单，用于将他所知的物理学家进行分级 1 - 5 级，特殊的有牛顿，在最高 0 级，爱因斯坦 0.5 级……吴军老师仿照此法也将工程师划分为 5 级：</p>
+
+<ul>
+<li>第五级： 能独立解决问题，完成工程工作；</li>
+<li>第四级： 能指导和带领其他人一同完成更有影响力的工作；</li>
+<li>第三级： 能独立设计和实现产品，并且在市场上获得成功；</li>
+<li>第二季： 能设计和实现别人不能做出的产品，也就是说他的作用很难取代；</li>
+<li>第一级：开创一个产业；</li>
+</ul>
+
+<p>虽然表面上大家都互相张工、王工、李工的叫，但事实上相邻级别之间的输出成果最小估计也能差出十倍(指数级)。读完吴军老师的文章才体会到工程师这个头衔的重量，按吴军老师的说法，“4 级工程师在中国其实非常缺乏，不少人之所以得到机会，是因为他们和上下级之间较强的沟通能力帮助了他们”。</p>
+
+<p>参考文档</p>
+
+<p>阮一峰 博客文章</p>
+
+<blockquote>
+<ul>
+<li>2014-9-20 <a href="http://www.ruanyifeng.com/blog/2014/09/illustration-ssl.html">图解SSL/TLS协议</a></li>
+<li>2014-2-5 <a href="http://www.ruanyifeng.com/blog/2014/02/ssl_tls.html">SSL/TLS协议运行机制的概述</a></li>
+<li>2016-8-26 <a href="http://www.ruanyifeng.com/blog/2016/08/migrate-from-http-to-https.html">HTTPS 升级指南</a></li>
+</ul>
+</blockquote>
+
+<p>封面图片来自 <a href="https://dribbble.com/shots/2967240-Gears-Ink">Gears Ink</a> <a href="https://dribbble.com/jayemsee"><i class="fa fa-dribbble" aria-hidden="true"></i> joshua corliss</a></p>
+         <div id="disqus_thread">
+  <a href="#" onclick="disqus();return false;">enable VPN and click here to <i class="fa fa-comments" aria-hidden="true"></i></a>
+</div>
+
+<script type="text/javascript">
+var disqus_loaded = false;
+function disqus() {
+  if (!disqus_loaded) {
+    
+    
+    
+    
+
+    disqus_loaded = true;
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'wushuzh';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }
+};
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </div>
+  </div>
+</div>
+<noscript>
+  <style>.jsonly { display: none }</style>
+</noscript>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://wushuzh.github.io/js/jquery.min.js"></script>
+<script src="https://wushuzh.github.io/js/bootstrap.min.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.cookie.js"> </script>
+<script src="https://wushuzh.github.io/js/ekko-lightbox.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://wushuzh.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/owl.carousel.min.js"></script>
+<script src="https://wushuzh.github.io/js/front.js"></script>
+
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</body>
+</html>
