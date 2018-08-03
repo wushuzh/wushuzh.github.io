@@ -112,22 +112,22 @@
     </item>
     
     <item>
-      <title>看不懂报错，咋整？</title>
-      <link>https://wushuzh.github.io/blog/2017/06/30/deal-with-wired-errmsgs/</link>
-      <pubDate>Fri, 30 Jun 2017 19:19:19 +0800</pubDate>
-      
-      <guid>https://wushuzh.github.io/blog/2017/06/30/deal-with-wired-errmsgs/</guid>
-      <description>&lt;p&gt;追踪本质，别被报错信息带歪了方向……
-&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>删错了，咋整？</title>
       <link>https://wushuzh.github.io/blog/2017/06/29/deal-with-violent-rm/</link>
       <pubDate>Thu, 29 Jun 2017 21:38:48 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/06/29/deal-with-violent-rm/</guid>
       <description>&lt;p&gt;蛮力卸载后，啥都不能用了……
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>看不懂报错，咋整？</title>
+      <link>https://wushuzh.github.io/blog/2017/06/30/deal-with-wired-errmsgs/</link>
+      <pubDate>Fri, 30 Jun 2017 19:19:19 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/06/30/deal-with-wired-errmsgs/</guid>
+      <description>&lt;p&gt;追踪本质，别被报错信息带歪了方向……
 &lt;/p&gt;</description>
     </item>
     
@@ -173,10 +173,10 @@
     
     <item>
       <title>洪水报文，咋整？</title>
-      <link>https://wushuzh.github.io/blog/2017/09/05/deal-with-floor-logs/</link>
+      <link>https://wushuzh.github.io/blog/2017/09/05/deal-with-flood-logs/</link>
       <pubDate>Tue, 05 Sep 2017 22:50:33 +0800</pubDate>
       
-      <guid>https://wushuzh.github.io/blog/2017/09/05/deal-with-floor-logs/</guid>
+      <guid>https://wushuzh.github.io/blog/2017/09/05/deal-with-flood-logs/</guid>
       <description>&lt;p&gt;如何过滤无用的系统日志……
 &lt;/p&gt;</description>
     </item>
@@ -187,37 +187,7 @@
       <pubDate>Thu, 01 Feb 2018 18:22:09 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2018/02/01/intro-linux-startup/</guid>
-      <description>&lt;p&gt;委婉草稿——Linux 引导的关键步骤和相关工具简介
-&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Linux 安全审计</title>
-      <link>https://wushuzh.github.io/blog/2017/09/05/intro-linux-log-audit/</link>
-      <pubDate>Tue, 05 Sep 2017 22:50:33 +0800</pubDate>
-      
-      <guid>https://wushuzh.github.io/blog/2017/09/05/intro-linux-log-audit/</guid>
-      <description>&lt;p&gt;如何过滤无用的系统日志……
-&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>数据分析预备</title>
-      <link>https://wushuzh.github.io/blog/2018/02/07/intro-statistics-by-python/</link>
-      <pubDate>Wed, 07 Feb 2018 14:15:32 +0800</pubDate>
-      
-      <guid>https://wushuzh.github.io/blog/2018/02/07/intro-statistics-by-python/</guid>
-      <description>&lt;p&gt;复习统计基础知识、常用编程技巧
-&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Scipy 学习笔记</title>
-      <link>https://wushuzh.github.io/blog/2017/10/10/get-start-with-scipy/</link>
-      <pubDate>Tue, 10 Oct 2017 19:18:20 +0800</pubDate>
-      
-      <guid>https://wushuzh.github.io/blog/2017/10/10/get-start-with-scipy/</guid>
-      <description>&lt;p&gt;未完草稿——python 科学计算生态的体系化学习
+      <description>&lt;p&gt;未完草稿——Linux 引导的关键步骤和相关工具简介
 &lt;/p&gt;</description>
     </item>
     
@@ -342,16 +312,6 @@
     </item>
     
     <item>
-      <title>用安赛波自动化管理</title>
-      <link>https://wushuzh.github.io/blog/2017/09/21/mgnt-os-8-ansible/</link>
-      <pubDate>Thu, 21 Sep 2017 21:07:09 +0800</pubDate>
-      
-      <guid>https://wushuzh.github.io/blog/2017/09/21/mgnt-os-8-ansible/</guid>
-      <description>&lt;p&gt;学着像 Ender 一样高效操控战队
-&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>Zabbix 综合监控</title>
       <link>https://wushuzh.github.io/blog/2017/08/18/watching-it-by-zabbix-1/</link>
       <pubDate>Fri, 18 Aug 2017 20:51:17 +0800</pubDate>
@@ -368,26 +328,6 @@
       
       <guid>https://wushuzh.github.io/blog/2017/08/24/watching-it-by-zabbix-2/</guid>
       <description>&lt;p&gt;定制监控指标的高阶操作和注意事项
-&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>替换 Zabbix 前端</title>
-      <link>https://wushuzh.github.io/blog/2017/08/25/viewing-it-by-grafana-3/</link>
-      <pubDate>Fri, 25 Aug 2017 21:00:32 +0800</pubDate>
-      
-      <guid>https://wushuzh.github.io/blog/2017/08/25/viewing-it-by-grafana-3/</guid>
-      <description>&lt;p&gt;未完草稿——狂拽酷炫的 Grafana 前端仪表盘
-&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>服务器远程管理</title>
-      <link>https://wushuzh.github.io/blog/2017/08/04/intro-server-remote-ctrl/</link>
-      <pubDate>Fri, 04 Aug 2017 22:24:11 +0800</pubDate>
-      
-      <guid>https://wushuzh.github.io/blog/2017/08/04/intro-server-remote-ctrl/</guid>
-      <description>&lt;p&gt;应该该如何实现服务器的远程管理
 &lt;/p&gt;</description>
     </item>
     
@@ -492,42 +432,12 @@
     </item>
     
     <item>
-      <title>Nmap 扫描</title>
-      <link>https://wushuzh.github.io/blog/2017/11/28/use-nmap-to-scan/</link>
-      <pubDate>Tue, 28 Nov 2017 20:44:11 +0800</pubDate>
-      
-      <guid>https://wushuzh.github.io/blog/2017/11/28/use-nmap-to-scan/</guid>
-      <description>&lt;p&gt;成片扫描网段和端口/服务的快捷方法
-&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>“调用”可视化</title>
-      <link>https://wushuzh.github.io/blog/2017/11/24/draw-py-call-graph/</link>
-      <pubDate>Fri, 24 Nov 2017 11:37:35 +0800</pubDate>
-      
-      <guid>https://wushuzh.github.io/blog/2017/11/24/draw-py-call-graph/</guid>
-      <description>&lt;p&gt;追踪代码调用，生成 call grapy
-&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>JWT 身份认证</title>
       <link>https://wushuzh.github.io/blog/2017/11/22/try-jwt-in-flask/</link>
       <pubDate>Wed, 22 Nov 2017 23:13:51 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/11/22/try-jwt-in-flask/</guid>
       <description>&lt;p&gt;JSON Web Token 身份验证
-&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>数据可视化</title>
-      <link>https://wushuzh.github.io/blog/2017/11/21/make-amazing-charts/</link>
-      <pubDate>Tue, 21 Nov 2017 22:37:31 +0800</pubDate>
-      
-      <guid>https://wushuzh.github.io/blog/2017/11/21/make-amazing-charts/</guid>
-      <description>&lt;p&gt;跟着知名民调网站学数据可视化
 &lt;/p&gt;</description>
     </item>
     
@@ -572,32 +482,12 @@
     </item>
     
     <item>
-      <title>决策树:背包问题</title>
-      <link>https://wushuzh.github.io/blog/2017/12/06/knapsack-decision-problem/</link>
-      <pubDate>Wed, 06 Dec 2017 20:11:31 +0800</pubDate>
-      
-      <guid>https://wushuzh.github.io/blog/2017/12/06/knapsack-decision-problem/</guid>
-      <description>&lt;p&gt;如何高效解决经典的背包问题
-&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>Flask 开发 0</title>
       <link>https://wushuzh.github.io/blog/2018/05/17/a-dev-env-of-webapp-0/</link>
       <pubDate>Thu, 17 May 2018 21:17:18 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2018/05/17/a-dev-env-of-webapp-0/</guid>
       <description>&lt;p&gt;按官方教程，用TDD的方式写一个迷你博客
-&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>网页式的演讲文稿</title>
-      <link>https://wushuzh.github.io/blog/2017/12/07/make-slides-by-markdown/</link>
-      <pubDate>Thu, 07 Dec 2017 13:17:31 +0800</pubDate>
-      
-      <guid>https://wushuzh.github.io/blog/2017/12/07/make-slides-by-markdown/</guid>
-      <description>&lt;p&gt;转化 Markdown 为 HTML slides
 &lt;/p&gt;</description>
     </item>
     
@@ -658,26 +548,6 @@
       
       <guid>https://wushuzh.github.io/blog/2018/03/20/flask-full-text-search/</guid>
       <description>&lt;p&gt;未完草稿——利用 ELK 为应用加入全文搜索
-&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>组织代码架构</title>
-      <link>https://wushuzh.github.io/blog/2018/03/14/org-flask-app-structure/</link>
-      <pubDate>Wed, 14 Mar 2018 21:47:15 +0800</pubDate>
-      
-      <guid>https://wushuzh.github.io/blog/2018/03/14/org-flask-app-structure/</guid>
-      <description>&lt;p&gt;未完草稿——为代码结构做更好的蓝图设计
-&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>异步翻译</title>
-      <link>https://wushuzh.github.io/blog/2018/03/13/ajax-in-spa-translation/</link>
-      <pubDate>Tue, 13 Mar 2018 22:29:29 +0800</pubDate>
-      
-      <guid>https://wushuzh.github.io/blog/2018/03/13/ajax-in-spa-translation/</guid>
-      <description>&lt;p&gt;未完草稿——使用 Ajax 做在线翻译页面部分更新
 &lt;/p&gt;</description>
     </item>
     
@@ -762,86 +632,6 @@
     </item>
     
     <item>
-      <title>操作 PDF</title>
-      <link>https://wushuzh.github.io/blog/2018/02/09/manipulate-with-pdfs/</link>
-      <pubDate>Fri, 09 Feb 2018 11:16:59 +0800</pubDate>
-      
-      <guid>https://wushuzh.github.io/blog/2018/02/09/manipulate-with-pdfs/</guid>
-      <description>&lt;p&gt;未完草稿——PDF 文件的页面转向、合并和其他操作
-&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>地理空间数据分析</title>
-      <link>https://wushuzh.github.io/blog/2018/03/26/machine-learning-for-mobility/</link>
-      <pubDate>Mon, 26 Mar 2018 21:19:28 +0800</pubDate>
-      
-      <guid>https://wushuzh.github.io/blog/2018/03/26/machine-learning-for-mobility/</guid>
-      <description>&lt;p&gt;未完草稿——空间地理基础介绍和移动迁移预测
-&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>获取OSM街道信息</title>
-      <link>https://wushuzh.github.io/blog/2018/03/22/download-street-network/</link>
-      <pubDate>Thu, 22 Mar 2018 20:55:21 +0800</pubDate>
-      
-      <guid>https://wushuzh.github.io/blog/2018/03/22/download-street-network/</guid>
-      <description>&lt;p&gt;未完草稿——获取开源地图行政区域和接到数据
-&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>容器化的Openstack</title>
-      <link>https://wushuzh.github.io/blog/2018/03/28/k8s-with-openstack/</link>
-      <pubDate>Wed, 28 Mar 2018 22:24:01 +0800</pubDate>
-      
-      <guid>https://wushuzh.github.io/blog/2018/03/28/k8s-with-openstack/</guid>
-      <description>&lt;p&gt;未完草稿——女王来临
-&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Linux 内幕</title>
-      <link>https://wushuzh.github.io/blog/2018/02/08/linux-under-the-hood/</link>
-      <pubDate>Thu, 08 Feb 2018 10:39:04 +0800</pubDate>
-      
-      <guid>https://wushuzh.github.io/blog/2018/02/08/linux-under-the-hood/</guid>
-      <description>&lt;p&gt;未完草稿——深入探索 Linux 系统的各种细节
-&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Java 开发环境</title>
-      <link>https://wushuzh.github.io/blog/2017/11/24/setup-java-dev-env/</link>
-      <pubDate>Fri, 24 Nov 2017 11:37:35 +0800</pubDate>
-      
-      <guid>https://wushuzh.github.io/blog/2017/11/24/setup-java-dev-env/</guid>
-      <description>&lt;p&gt;未完草稿——设定 JDK 和 Eclipse 集成开发环境
-&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>设置反向代理</title>
-      <link>https://wushuzh.github.io/blog/2018/02/23/setup-the-reverse-proxy/</link>
-      <pubDate>Fri, 23 Feb 2018 21:35:44 +0800</pubDate>
-      
-      <guid>https://wushuzh.github.io/blog/2018/02/23/setup-the-reverse-proxy/</guid>
-      <description>&lt;p&gt;未完草稿:利用中间服务器做 HTTP(S) 代理
-&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Pandas 入门</title>
-      <link>https://wushuzh.github.io/blog/2017/12/03/get-start-with-pandas/</link>
-      <pubDate>Sun, 03 Dec 2017 09:04:10 +0800</pubDate>
-      
-      <guid>https://wushuzh.github.io/blog/2017/12/03/get-start-with-pandas/</guid>
-      <description>&lt;p&gt;未完草稿——Python 中 Excel 级别的数据操作库
-&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>Vim 学习</title>
       <link>https://wushuzh.github.io/blog/2017/11/29/vim-day-by-day/</link>
       <pubDate>Wed, 29 Nov 2017 11:37:35 +0800</pubDate>
@@ -892,12 +682,12 @@
     </item>
     
     <item>
-      <title>流处理平台 Kakfa</title>
-      <link>https://wushuzh.github.io/blog/2018/06/25/head-first-kafka/</link>
-      <pubDate>Mon, 25 Jun 2018 21:12:23 +0800</pubDate>
+      <title>ARTS 2018w30</title>
+      <link>https://wushuzh.github.io/blog/2018/07/23/arts-04-per-week/</link>
+      <pubDate>Mon, 23 Jul 2018 22:47:27 +0800</pubDate>
       
-      <guid>https://wushuzh.github.io/blog/2018/06/25/head-first-kafka/</guid>
-      <description>&lt;p&gt;未完草稿——全新的分布式平台设计思路
+      <guid>https://wushuzh.github.io/blog/2018/07/23/arts-04-per-week/</guid>
+      <description>&lt;p&gt;Sketchnote 更有效的笔记记录方式？
 &lt;/p&gt;</description>
     </item>
     

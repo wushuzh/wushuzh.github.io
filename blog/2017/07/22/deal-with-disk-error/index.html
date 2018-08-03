@@ -146,7 +146,7 @@ if (!doNotTrack) {
 
 <h3 id="案例-3-磁盘受损">案例 3 磁盘受损</h3>
 
-<p>(案例 1， 2 见 <a href="/blog/2017/07/19/deal-with-boot-failure/">启动错误，咋整？</a> )</p>
+<p>(案例 1， 2 见 <a href="https://wushuzh.github.io/blog/2017/07/19/deal-with-boot-failure/">启动错误，咋整？</a> )</p>
 
 <p>问题描述：这是一台用于模拟客户生产环境的服务器，一年多没重装，仅通过常规产品升级维护着。上电后，据说遇到了磁盘错误，被强制进入维护模式，之后管理员将问题分区从 fstab 中注释掉，系统可以正常启动，但在修复磁盘和恢复软 RAID 遇到了麻烦。</p>
 
@@ -350,7 +350,7 @@ md5 : active raid10 sds1[0] sdk1[2] sdg1[3]
 
 <p>而下属的各个磁盘，除 /dev/sdo1 以外，Event # 都已同步。</p>
 
-<h2 id="hahahugoshortcode-0xc042194a00-12-hbhb"><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">[root@hostC temp]# mdadm -E /dev/sd[gkos]1 \
+<h2 id="hahahugoshortcode-0xc042a2a000-12-hbhb"><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">[root@hostC temp]# mdadm -E /dev/sd[gkos]1 \
     | grep [Events|Update|Array State|]
 
 /dev/sdg1:

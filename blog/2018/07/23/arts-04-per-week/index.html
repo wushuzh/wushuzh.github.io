@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>ARTS 2018w30</title>
+<meta name="description" content="个人技术站点">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.theme.css">
+
+
+  <link href="https://wushuzh.github.io/css/style.sea.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://wushuzh.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-102509506-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="https://wushuzh.github.io/">小强会武术</a></h1>
+    
+      <p class="sidebar-p">工程师</p>
+    
+      <p class="sidebar-p">记录每一个自己填平的坑</p>
+    
+    <ul class="sidebar-menu">
+      
+      
+        <li><a href="https://wushuzh.github.io/blog/">Home</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  
+  
+  <a href="https://twitter.com/Xiao_Qiang" data-animate-hover="pulse" class="external twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  
+  
+  
+  <a href="mailto:wushuzh@outlook.com" data-animate-hover="pulse" class="email">
+    <i class="fa fa-envelope"></i>
+  </a>
+  
+  
+  
+  
+  
+  
+  <a href="https://wushuzh.github.io/index.xml" data-animate-hover="pulse">
+    <i class='fa fa-rss'></i>
+  </a>
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2017 wushuzh
+        
+        | Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="https://wushuzh.github.io/">小强会武术</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="content-column-content">
+         
+      <div class="row">
+        <div class="col-sm-6">
+          
+            <div class="image">
+              <img src="https://wushuzh.github.io//img/blog/arts-04-per-week/rule1.png" class="img-responsive" alt="">
+            </div>
+          
+        </div>
+        <div class="col-md-6">
+            <h2>ARTS 2018w30</h2>
+                <p>
+                  小强会武术
+                </p>
+
+                <time datetime="2018-07-23 22:47:27 &#43;0800 CST">
+                <i class="fa fa-calendar-o fa-fw"></i> 2018-07-23
+                </time>
+                &middot;
+                1430 字
+                &middot;
+                3 分钟
+
+        </div>
+      </div>
+      <br />
+
+         <p>Sketchnote 更有效的笔记记录方式？
+</p>
+
+<h2 id="algorithm">Algorithm</h2>
+
+<p>本周解析的题目是 <a href="https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/description/">82. Remove Duplicates from Sorted List Ⅱ</a></p>
+
+<p>和上周 83 题相比，唯一的区别是对重复元素的处理——这次要求彻底清除。但两题解法完全不同</p>
+
+<ol>
+<li>引入一个 dummy ListNode 作为头部，如此才能删除输入链表的任意元素</li>
+<li>推动两个指针 p(prev) q(curr) 前移的过程中，通过变更 next 进行重复元素删除</li>
+</ol>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">deleteDuplicates</span>(head: ListNode) <span style="color:#f92672">-&gt;</span> ListNode:
+    dummy <span style="color:#f92672">=</span> ListNode(<span style="color:#ae81ff">0</span>)
+    dummy<span style="color:#f92672">.</span>next <span style="color:#f92672">=</span> head
+    p, q <span style="color:#f92672">=</span> dummy, dummy<span style="color:#f92672">.</span>next
+
+    <span style="color:#66d9ef">while</span> p <span style="color:#f92672">and</span> q:
+        found_duplicate <span style="color:#f92672">=</span> False
+        <span style="color:#66d9ef">while</span> q<span style="color:#f92672">.</span>next <span style="color:#f92672">and</span> q<span style="color:#f92672">.</span>next<span style="color:#f92672">.</span>val <span style="color:#f92672">==</span> q<span style="color:#f92672">.</span>val:
+            found_duplicate <span style="color:#f92672">=</span> True
+            p<span style="color:#f92672">.</span>next <span style="color:#f92672">=</span> q<span style="color:#f92672">.</span>next
+            q <span style="color:#f92672">=</span> q<span style="color:#f92672">.</span>next
+
+        <span style="color:#66d9ef">if</span> found_duplicate:
+            p<span style="color:#f92672">.</span>next <span style="color:#f92672">=</span> q<span style="color:#f92672">.</span>next
+        <span style="color:#66d9ef">else</span>:
+            p <span style="color:#f92672">=</span> p<span style="color:#f92672">.</span>next
+
+        q <span style="color:#f92672">=</span> q<span style="color:#f92672">.</span>next
+
+    <span style="color:#66d9ef">return</span> dummy<span style="color:#f92672">.</span>next</code></pre></div>
+
+<p>测试数据的生成函数和上次基本相同。但以后要考虑如何将公用函数提出来，供相同数据结构的题目使用。</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_multi</span>(check_itr<span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span>):
+    <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(check_itr):
+        in_a <span style="color:#f92672">=</span> []
+        expect_a <span style="color:#f92672">=</span> []
+        last_num <span style="color:#f92672">=</span> randint(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">100</span>)
+        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(last_num):
+            repeat <span style="color:#f92672">=</span> randint(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>)
+            <span style="color:#66d9ef">if</span> repeat <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>:
+                expect_a <span style="color:#f92672">+=</span> [i]
+            in_a <span style="color:#f92672">+=</span> [i] <span style="color:#f92672">*</span> repeat
+        new_head <span style="color:#f92672">=</span> deleteDuplicates(mklist(<span style="color:#f92672">*</span>in_a))
+        <span style="color:#66d9ef">assert</span> convert_array(new_head) <span style="color:#f92672">==</span> expect_a</code></pre></div>
+
+<h2 id="review">Review</h2>
+
+<p>看到一篇文章，介绍一位外国妹子<a href="https://twitter.com/TessFerrandez">Tess</a>学习<a href="https://www.coursera.org/instructor/andrewng">吴恩达的机器学习课程</a>后，做的一系列<a href="https://www.slideshare.net/TessFerrandez/notes-from-coursera-deep-learning-courses-by-andrew-ng">笔记</a>。</p>
+
+<p>原来这种笔记叫做 sketchnote ，在此领域比较出名布道者大概算是 Mike Rohde ? 他出过书，繁体翻译版的书名为“<a href="https://www.jianshu.com/p/ca5cf7102c94">直覺式塗鴉筆記</a>”， Mike Rohde 在 Youtube 上视频:</p>
+
+<blockquote>
+<p><a href="https://youtu.be/39Xq4tSQ31A">Sketchnote Mini Workshop - Interaction South America 2017</a></p>
+</blockquote>
+
+<p>正在 Peachpit 上看视频课程 The Advanced techniques for taking visual notes you can use anywhere , 觉得这种方式笔记方式非常有意思。但这些视频居然没有倍速播放的设置，其他操作也不太好用。</p>
+
+
+<figure>
+    
+        <img src="/img/blog/arts-04-per-week/sketchnote.jpg" />
+    
+    
+    <figcaption>
+        <h4>Sketchnote from Chris Spalton</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<h2 id="tip">Tip</h2>
+
+<p>去年的这个时候连续碰到了几次操作维护的问题，然后弄了一个“咋整”系列。</p>
+
+<p>前几天同事在一次系统大升级时遇到问题，然后试图重启服务器就一直在进度条处。我当时没时间参与分析，提了一些建议，然后在事后交流了一下。 因为公司购买了 Redhat 技术支持，这种问题不怕解决不了，总有 Redhat 兜底。</p>
+
+<ol>
+<li>启动服务器，注意观察自检期间的硬件报错/异常</li>
+<li>如果 GRUB 有问题，就通过一个烧有安装介质的U盘或光盘启动，比如 <a href="https://www.tecmint.com/recover-or-rescue-corrupted-grub-boot-loader-in-centos-7/">How to Recover or Rescue Corrupted Grub Boot Loader in CentOS 7</a></li>
+<li>如果能进入 GRUB2 启动菜单，首先可以去除 rhgb 和 quiet 属性，并设置日志级别后继续启动，比如 <a href="https://www.thegeekdiary.com/centos-rhel-7-how-to-change-the-verbosity-of-debug-logs-during-booting/">CentOS / RHEL 7 : How to change the verbosity of debug logs during booting</a></li>
+<li>发现了问题点后，可以尝试进入救援模式对系统进行修复，比如 <a href="https://www.thegeekdiary.com/centos-rhel-7-how-to-boot-into-rescue-mode-or-emergency-mode/">CentOS / RHEL 7 : How to boot into Rescue Mode or Emergency Mode</a></li>
+<li>对于 Redhat 的服务器，救援模式下它的 sosreport 工具直接可用，可以一键收集系统所有的日志，详见<a href="https://access.redhat.com/solutions/2872">How to generate sosreport from the rescue environment</a></li>
+<li>收集完日志就可以启动网络，将日志传出来，详见 <a href="https://access.redhat.com/solutions/2626631">Enabling networking in rescue environment without chrooting</a></li>
+<li>之后就需要在本地研读各种日志找出具体的问题了，这部分最有技术含量，根据各人对系统启动整个流程的熟悉程度，找问题的时长可能差出几个数量级</li>
+</ol>
+
+<p>最后发现问题是一个错误设置的系统参数，Redhat Solution 也早有答案 <a href="https://access.redhat.com/solutions/24725">Getting lots of &ldquo;kernel: VFS: file-max limit XXXXX reached&rdquo; messages in logs, how do I fix it?</a> 初步分析找到了一个脚本，在系统在非正常的状态下，本身实现中缺少防御保护，算出了一个极其不合理的值并写入了 sysctl.conf 中，然后机器就不能启动了。</p>
+
+<h2 id="share">Share</h2>
+
+<p>Mike Rohde 说他曾经记过很多很多传统意义上的笔记：记得越快，忘得越快，而且是记完后就扔到了一边，再也没有看过。</p>
+
+<p>我对这句话印象很深刻，可能是因为这样的经历在我身上也重演过很多遍，为什么会造成这种结果？</p>
+
+<ol>
+<li>学习的内容不在自己当下的技术路径上，虽说任何知识都“有用”，但若不能经过<strong>实践</strong>、<strong>总结</strong>、<strong>重学</strong>形成一个可反馈的闭环，就会使当初投入的时间、精力迅速贬值；</li>
+<li>冗长单调的文字叙述使人麻木，其实不仅限于 sketchnote 还有思维导图、手动实验、复述交流等，都能重新激活思考，提升学习效率；</li>
+<li>单页的涂鸦笔记其实是“浓缩”后的知识，强制自己找出内部关联，形成高阶视角，是一个把书读薄的过程——若是能对着这页笔记滔滔不绝讲上两个钟头，就完成了把书再读厚；</li>
+</ol>
+
+<p>行动指南：</p>
+
+<ul>
+<li>在随身笔记本上，对看到、听到的一切内容练习这种涂鸦笔记;</li>
+<li>关注效率提升，看视频听音频可以选择倍速播放，多尝试浓缩知识，节省他人和自己的时间；</li>
+<li>不要放任自己去追技术热点，成体系的知识更有价值——按照陈皓老师的说法，一步步按攻略来，两三年必有小成。</li>
+</ul>
+
+<p>封面图片来自 <a href="https://dribbble.com/shots/2513889-Sketchnotebasics">Sketchnotebasics</a> <a href="https://dribbble.com/ChrisSpalton"><i class="fa fa-dribbble" aria-hidden="true"></i> Chris Spalton</a></p>
+         <div id="disqus_thread">
+  <a href="#" onclick="disqus();return false;">enable VPN and click here to <i class="fa fa-comments" aria-hidden="true"></i></a>
+</div>
+
+<script type="text/javascript">
+var disqus_loaded = false;
+function disqus() {
+  if (!disqus_loaded) {
+    
+    
+    
+    
+
+    disqus_loaded = true;
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'wushuzh';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }
+};
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </div>
+  </div>
+</div>
+<noscript>
+  <style>.jsonly { display: none }</style>
+</noscript>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://wushuzh.github.io/js/jquery.min.js"></script>
+<script src="https://wushuzh.github.io/js/bootstrap.min.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.cookie.js"> </script>
+<script src="https://wushuzh.github.io/js/ekko-lightbox.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://wushuzh.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/owl.carousel.min.js"></script>
+<script src="https://wushuzh.github.io/js/front.js"></script>
+
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</body>
+</html>
