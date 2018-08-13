@@ -5,6 +5,7 @@ showonlyimage = false
 image = "/img/blog/knapsack-decision-problem/gear.png"
 draft = true
 weight = 402
+tags = ["algorithm"]
 +++
 
 如何高效解决经典的背包问题

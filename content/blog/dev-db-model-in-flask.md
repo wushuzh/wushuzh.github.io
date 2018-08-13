@@ -5,6 +5,7 @@ showonlyimage = false
 image = "/img/blog/dev-db-model-in-flask/db.png"
 draft = false
 weight = 603
+tags = ["flask"]
 +++
 
 flask 教程: 创建一个类微博原型站点

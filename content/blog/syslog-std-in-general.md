@@ -5,6 +5,7 @@ showonlyimage = false
 image = "/img/blog/syslog-std-in-general/ps_largeconsole.png"
 draft = false
 weight = 31
+tags = ["linux"]
 +++
 
 syslog 标准和常见工业实现

@@ -5,6 +5,7 @@ showonlyimage = false
 image = "/img/blog/linux-under-the-hood/supercomputer.png"
 draft = true
 weight = 701
+tags = ["linux"]
 +++
 
 未完草稿——深入探索 Linux 系统的各种细节

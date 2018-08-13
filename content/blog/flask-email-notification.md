@@ -3,8 +3,9 @@ date = "2018-02-22T22:17:34+08:00"
 title = "Flask 教程6"
 showonlyimage = false
 image = "/img/blog/flask-email-notification/mail5.png"
-draft = false
+draft = true
 weight = 603
+tags = ["flask"]
 +++
 
 实现邮件注册、密码重置等自助功能

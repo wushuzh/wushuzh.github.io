@@ -6,6 +6,7 @@ image = "/img/blog/head-first-cucumber/cucumber.png"
 topImage =  "/img/blog/head-first-cucumber/cucumber.gif"
 draft = false
 weight = 1201
+tags = ["test"]
 +++
 
 使用[业务术语](https://en.wikipedia.org/wiki/Domain-specific_language)定义测试产品行为

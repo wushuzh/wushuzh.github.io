@@ -5,6 +5,7 @@ showonlyimage = false
 image = "/img/blog/machine-learning-for-mobility/map.png"
 draft = true
 weight = 605
+tags = ["map"]
 +++
 
 未完草稿——空间地理基础介绍和移动迁移预测

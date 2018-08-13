@@ -5,6 +5,7 @@ showonlyimage = false
 image = "/img/blog/dual-os-5-wifi-ap/freewifi.png"
 draft = false
 weight = 66
+tags = ["tools"]
 +++
 
 利用无线网卡创建热点，共享网络访问

@@ -5,6 +5,7 @@ showonlyimage = false
 image = "/img/blog/get-start-with-py/python.png"
 draft = false
 weight = 102
+tags = ["python"]
 +++
 
 如何在不同的环境下自由穿行

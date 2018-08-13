@@ -6,6 +6,7 @@ image = "/img/blog/draw-py-call-graph/schema.png"
 topImage = "/img/blog/draw-py-call-graph/schema.gif"
 draft = true
 weight = 110
+tags = ["python"]
 +++
 
 追踪代码调用，生成 call grapy

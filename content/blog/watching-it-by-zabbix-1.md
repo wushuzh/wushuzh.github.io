@@ -5,6 +5,7 @@ showonlyimage = false
 image = "/img/blog/watching-it-by-zabbix-1/power_system_icon_1x.jpg"
 draft = false
 weight = 71
+tags = ["monitor"]
 +++
 
 其名和监控，大概能有个十万八千里的距离？

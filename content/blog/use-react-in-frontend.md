@@ -5,6 +5,7 @@ showonlyimage = false
 image = "/img/blog/use-react-in-frontend/react.png"
 draft = false
 weight = 602
+tags = ["flask", "react"]
 +++
 
 从现在开始 React 复杂前端

@@ -5,6 +5,7 @@ showonlyimage = false
 image = "/img/blog/use-nmap-to-scan/site_zero.png"
 draft = true
 weight = 110
+tags = ["security"]
 +++
 
 成片扫描网段和端口/服务的快捷方法

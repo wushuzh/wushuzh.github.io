@@ -5,6 +5,7 @@ showonlyimage = false
 image = "/img/blog/intro-to-py-socket/sorting_kit8-net.png"
 draft = false
 weight = 101
+tags = ["python", "async"]
 +++
 
 [David Beazley](http://www.dabeaz.com/) 的[直播讲解](https://www.youtube.com/watch?v=MCs5OvhV9S4) Socket 并发

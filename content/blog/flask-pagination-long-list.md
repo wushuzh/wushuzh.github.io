@@ -3,8 +3,9 @@ date = "2018-02-22T21:45:12+08:00"
 title = "Flask 教程6"
 showonlyimage = false
 image = "/img/blog/flask-pagination-long-list/pagenation.png"
-draft = false
+draft = true
 weight = 603
+tags = ["flask"]
 +++
 
 提交微博，通过分页处理长列表

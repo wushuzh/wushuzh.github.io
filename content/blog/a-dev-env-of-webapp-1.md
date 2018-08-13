@@ -5,6 +5,7 @@ showonlyimage = false
 image = "/img/blog/a-dev-env-of-webapp-1/multitasking.png"
 draft = false
 weight = 602
+tags = ["flask"]
 +++
 
 麻雀虽小但五脏俱全的开发环境

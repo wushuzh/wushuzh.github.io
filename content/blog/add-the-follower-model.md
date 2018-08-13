@@ -3,8 +3,9 @@ date = "2018-02-06T20:17:19+08:00"
 title = "Flask 教程5"
 showonlyimage = false
 image = "/img/blog/add-the-follower-model/friends.png"
-draft = false
+draft = true
 weight = 603
+tags = ["flask"]
 +++
 
 如何添加更为复杂的多对多关系模型

@@ -3,8 +3,9 @@ date = "2018-03-06T20:52:04+08:00"
 title = "HEAT 部署编排"
 showonlyimage = false
 image = "/img/blog/create-stack-8-hot/stack.png"
-draft = false
+draft = true
 weight = 69
+tags = ["openstack"]
 +++
 
 未完草稿——利用编排模板初始化一个复杂的集群

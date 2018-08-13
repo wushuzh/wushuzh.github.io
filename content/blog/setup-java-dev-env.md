@@ -5,6 +5,7 @@ showonlyimage = false
 image = "/img/blog/setup-java-dev-env/dev.png"
 draft = true
 weight = 701
+tags = ["java"]
 +++
 
 未完草稿——设定 JDK 和 Eclipse 集成开发环境

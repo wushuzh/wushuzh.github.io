@@ -5,6 +5,7 @@ showonlyimage = false
 image = "/img/blog/intro-linux-log-audit/audit-guide.png"
 draft = true
 weight = 48
+tags = ["linux", "log"]
 +++
 
 如何过滤无用的系统日志……

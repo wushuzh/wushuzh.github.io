@@ -5,6 +5,7 @@ showonlyimage = false
 image = "/img/blog/ajax-in-spa-translation/babel.png"
 draft = true
 weight = 603
+tags = ["flask"]
 +++
 
 未完草稿——使用 Ajax 做在线翻译页面部分更新

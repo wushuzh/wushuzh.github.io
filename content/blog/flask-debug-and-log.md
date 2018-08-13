@@ -4,8 +4,9 @@ title = "Flask 教程4"
 showonlyimage = false
 image = "/img/blog/flask-debug-and-log/bugsplat_castle.png"
 topImage = "/img/blog/flask-debug-and-log/bugsplat_castle.gif"
-draft = false
+draft = true
 weight = 603
+tags = ["flask"]
 +++
 
 如何进行错误排查和记录日志、及邮件通知

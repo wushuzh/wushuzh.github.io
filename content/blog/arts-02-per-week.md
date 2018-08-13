@@ -5,6 +5,7 @@ showonlyimage = false
 image = "/img/blog/arts-02-per-week/missinglink.png"
 draft = false
 weight = 1828
+tags = ["ARTS", "bigdata", "tools"]
 +++
 
 如何模拟数据、以及大数据处理

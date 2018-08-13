@@ -5,6 +5,7 @@ showonlyimage = false
 image = "/img/blog/manipulate-with-pdfs/pdf-squeezer.png"
 draft = true
 weight = 604
+tags = ["pdf", "tools"]
 +++
 
 未完草稿——PDF 文件的页面转向、合并和其他操作

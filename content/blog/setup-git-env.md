@@ -5,6 +5,7 @@ showonlyimage = false
 image = "/img/blog/setup-git-env/kimonotocat.png"
 draft = false
 weight = 15
+tags = ["git"]
 +++
 
 简单介绍 git 入門向导和协作流程

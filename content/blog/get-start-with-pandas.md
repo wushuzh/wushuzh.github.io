@@ -6,6 +6,7 @@ image = "/img/blog/get-start-with-pandas/bambfood.png"
 topImage = "/img/blog/get-start-with-pandas/bambfood.gif"
 draft = true
 weight = 1000
+tags = ["python"]
 +++
 
 未完草稿——Python 中 Excel 级别的数据操作库

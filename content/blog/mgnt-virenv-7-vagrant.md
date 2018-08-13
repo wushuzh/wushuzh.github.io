@@ -6,6 +6,7 @@ image = "/img/blog/mgnt-virenv-7-vagrant/400.png"
 topImage = "/img/blog/mgnt-virenv-7-vagrant/400.gif"
 draft = false
 weight = 68
+tags = ["linux", "virtulization"]
 +++
 
 QEMU/KVM、Libvirt、Vagrant 的安装配置

@@ -6,6 +6,7 @@ image = "/img/blog/loop-tree-by-stack-queue/tree.png"
 topImage = "/img/blog/loop-tree-by-stack-queue/tree.gif"
 draft = false
 weight = 401
+tags = ["tree"]
 +++
 
 学习栈和队列在树搜索中的使用

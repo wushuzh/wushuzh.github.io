@@ -5,6 +5,7 @@ showonlyimage = false
 image = "/img/blog/vim-day-by-day/vim.png"
 draft = false
 weight = 1000
+tags = ["vim"]
 +++
 
 珍爱生命，每天学一点 vim 技巧

@@ -5,6 +5,7 @@ showonlyimage = false
 image = "/img/blog/a-dev-env-of-webapp-0/flask-do.png"
 draft = false
 weight = 601
+tags = ["flask"]
 +++
 
 按官方教程，用TDD的方式写一个迷你博客

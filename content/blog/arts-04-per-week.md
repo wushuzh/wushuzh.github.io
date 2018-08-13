@@ -5,6 +5,7 @@ showonlyimage = false
 image = "/img/blog/arts-04-per-week/rule1.png"
 draft = false
 weight = 1830
+tags = ["ARTS", "sketchnote", "redhat"]
 +++
 
 Sketchnote 更有效的笔记记录方式？

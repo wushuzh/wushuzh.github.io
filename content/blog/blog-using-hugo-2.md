@@ -5,7 +5,7 @@ showonlyimage = false
 image = "/img/blog/blog-using-hugo-2/canvas.png"
 draft = false
 weight = 21
-tags = [ "Blogging", "Hugo", "Image", "Video" ]
+tags = ["Hugo"]
 categories = [ "Writing" ]
 series = [ "Blog like a Pro" ]
 +++

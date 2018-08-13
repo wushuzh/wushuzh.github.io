@@ -5,6 +5,7 @@ showonlyimage = false
 image = "/img/blog/deal-with-ks-failure1/it_specialist.png"
 draft = false
 weight = 45
+tags = [ "sysadm", "linux", "redhat" ]
 +++
 
 如何调查 RedHat 上失败的 Kickstart 安装？

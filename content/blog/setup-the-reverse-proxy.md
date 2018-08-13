@@ -6,6 +6,7 @@ showonlyimage = false
 image = "/img/blog/setup-the-reverse-proxy/the_middle_man.png"
 draft = true
 weight = 703
+tags = ["proxy"]
 +++
 
 未完草稿:利用中间服务器做 HTTP(S) 代理

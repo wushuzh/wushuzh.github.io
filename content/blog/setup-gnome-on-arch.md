@@ -3,8 +3,9 @@ date = "2018-05-29T20:13:36+08:00"
 title = "GNOME桌面环境"
 showonlyimage = false
 image = "/img/blog/setup-gnome-on-arch/onestep450.png"
-draft = false
+draft = true
 weight = 69
+tags = ["linux", "GUI"]
 +++
 
 多显示器、图形化工作环境的设置

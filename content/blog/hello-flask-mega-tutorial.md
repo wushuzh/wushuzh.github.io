@@ -6,6 +6,7 @@ image = "/img/blog/hello-flask-mega-tutorial/list.png"
 topImage = "/img/blog/hello-flask-mega-tutorial/list.gif"
 draft = false
 weight = 603
+tags = ["flask"]
 +++
 
 flask 教程: 创建一个类微博原型站点

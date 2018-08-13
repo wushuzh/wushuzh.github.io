@@ -3,8 +3,9 @@ date = "2018-02-28T21:48:56+08:00"
 title = "Flask 教程7"
 showonlyimage = false
 image = "/img/blog/flask-integrate-bootstrap/front-end.png"
-draft = false
+draft = true
 weight = 603
+tags = ["flask"]
 +++
 
 利用 Bootstrap 美化界面元素，简化表单

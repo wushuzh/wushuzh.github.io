@@ -6,7 +6,7 @@ image = "/img/blog/deal-with-boot-failure/disk-err.png"
 topImage = "/img/blog/deal-with-boot-failure/disk-err.gif"
 draft = false
 weight = 43
-tags = [ "Howto", "Storage", "Linux" ]
+tags = [ "Storage", "Linux" ]
 +++
 
 记录下最近和启动、存储相关的修复处理。

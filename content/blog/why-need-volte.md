@@ -5,7 +5,7 @@ showonlyimage = false
 image = "/img/blog/why-need-volte/telecom_zh.jpg"
 draft = false
 weight = 91
-
+tags = [ "telecom"]
 +++
 
 已经买了 4G 套餐，还需要 VoLTE 套餐么？

@@ -5,6 +5,7 @@ showonlyimage = false
 image = "/img/blog/setup-a-gitlab-ce-service/lab_notebook.png"
 draft = false
 weight = 13
+tags = ["git"]
 +++
 
 如何搭建 GitLab 以获得类似 GitHub 的服务

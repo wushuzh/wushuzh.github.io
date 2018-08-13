@@ -5,6 +5,7 @@ showonlyimage = false
 image = "/img/blog/deal-with-ks-failure2/q-encil.png"
 draft = false
 weight = 46
+tags = [ "sysadm", "linux", "redhat" ]
 +++
 
 在搞不定而向他人求援时，该做些什么？

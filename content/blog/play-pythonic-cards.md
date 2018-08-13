@@ -5,6 +5,7 @@ showonlyimage = false
 image = "/img/blog/play-pythonic-cards/playing-cards.png"
 draft = false
 weight = 103
+tags = ["python", "collection"]
 +++
 
 愿敲代码终有一天能比斗地主更 666

@@ -6,6 +6,7 @@ image = "/img/blog/arts-01-per-week/infinite-trip.png"
 topImage =  "/img/blog/arts-01-per-week/infinite-trip.gif"
 draft = false
 weight = 1827
+tags = ["ARTS"]
 +++
 
 关于宇宙意志、文明等级的假说

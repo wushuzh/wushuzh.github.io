@@ -1,0 +1,56 @@
+{{ define "main" }}
+<div class="col-xs-12 col-sm-12 col-md-12 content-column white-background">
+  {{ partial "mobile_nav_toggle.html" . }}
+  <div class="row">
+    <div class="col-lg-10 col-lg-offset-1">
+      <div class="content-column-content">
+      {{ partial "header.html" . }}
+      <div class="row">
+        <div class="col-sm-4">
+          {{ if .Params.topImage }}
+            <div class="image">
+              <img src="{{ .Site.BaseURL }}{{ .Params.topImage }}" class="img-responsive" alt="">
+            </div>
+          {{else}}
+            <div class="image">
+              <img src="{{ .Site.BaseURL }}{{ .Params.image }}" class="img-responsive" alt="">
+            </div>
+          {{ end }}
+        </div>
+        <div class="col-md-6">
+            <h2>{{ .Title }}</h2>
+                <p>
+                  <i class="fa fa-share-square-o fa-fw"></i><a href="{{ relURL .Site.BaseURL }}"> {{ .Site.Title }}</a>
+                </p>
+
+                <p>
+                <time datetime="{{ .Date }}">
+                <i class="fa fa-calendar-o fa-fw"></i> {{ .Date.Format "2006-01-02" }}
+                </time>
+                &middot;
+                {{ .WordCount }} 字
+                &middot;
+                {{ .ReadingTime }} 分钟
+                </p>
+
+                {{ with .Params.tags }}
+                <p>
+                  <i class="fa fa-tags fa-fw" aria-hidden="true"></i>
+                  {{ range $i, $e := . }}{{ if $i }} &nbsp;&nbsp; {{ end }}<a href="{{ relURL (print "/tags/" $e | urlize) }}">{{ $e }}</a>{{ end }}
+                </p>
+                {{ end }}
+
+        </div>
+      </div>
+      <br />
+
+         {{ .Content }}
+         {{ partial "disqus.html" . }}
+      </div>
+    </div>
+  </div>
+</div>
+<noscript>
+  <style>.jsonly { display: none }</style>
+</noscript>
+{{ end }}

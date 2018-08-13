@@ -4,8 +4,9 @@ title = "番外篇：密码演化史"
 showonlyimage = false
 image = "/img/blog/pitfalls-of-the-passwd/try-passwd.png"
 topImage = "/img/blog/pitfalls-of-the-passwd/try-passwd.gif"
-draft = false
+draft = true
 weight = 93
+tags = ["security"]
 +++
 
 这些年我们用过的那些密码……

@@ -4,8 +4,9 @@ title = "JWT 身份认证"
 showonlyimage = false
 image = "/img/blog/try-jwt-in-flask/auth.png"
 topImage = "/img/blog/try-jwt-in-flask/auth.gif"
-draft = false
+draft = true
 weight = 110
+tags = ["flask", "JWT", "security"]
 +++
 
 JSON Web Token 身份验证

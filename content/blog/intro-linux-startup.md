@@ -5,6 +5,7 @@ showonlyimage = false
 image = "/img/blog/intro-linux-startup/init.png"
 draft = false
 weight = 48
+tags = ["linux"]
 +++
 
 未完草稿——Linux 引导的关键步骤和相关工具简介

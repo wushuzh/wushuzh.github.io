@@ -5,6 +5,7 @@ showonlyimage = false
 image = "/img/blog/make-amazing-charts/media_plan.png"
 draft = true
 weight = 110
+tags = ["visualization"]
 +++
 
 跟着知名民调网站学数据可视化

@@ -5,6 +5,7 @@ showonlyimage = false
 image = "/img/blog/intro-server-remote-ctrl/remote-ctrl.jpg"
 draft = true
 weight = 75
+tags = ["sysadm"]
 +++
 
 应该该如何实现服务器的远程管理

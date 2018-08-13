@@ -5,6 +5,7 @@ showonlyimage = false
 image = "/img/blog/dual-os-2-install-arch/linux-m.png"
 draft = false
 weight = 63
+tags = ["tools"]
 +++
 
 选择哪个 Linux 版本？是个问题

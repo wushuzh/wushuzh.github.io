@@ -5,6 +5,7 @@ showonlyimage = false
 image = "/img/blog/intro-statistics-by-python/math.png"
 draft = true
 weight = 51
+tags = ["python"]
 +++
 
 复习统计基础知识、常用编程技巧

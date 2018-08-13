@@ -5,7 +5,7 @@ showonlyimage = false
 image = "/img/blog/deal-with-disk-error/hw-repair.png"
 draft = false
 weight = 44
-tags = [ "Howto", "Storage", "Linux" ]
+tags = [ "storage", "linux" ]
 +++
 
 磁盘错误导致进入紧急模式，该如何恢复？

@@ -6,6 +6,7 @@ image = "/img/blog/get-start-with-sci-computing/lab-boy.png"
 topImage =  "/img/blog/get-start-with-sci-computing/lab-boy.gif"
 draft = false
 weight = 51
+tags = ["python"]
 +++
 
 使用 Fedora 定制版也能快速上手科学计算

@@ -5,6 +5,7 @@ showonlyimage = false
 image = "/img/blog/download-vids-using-youtube-dl/ladder.png"
 draft = false
 weight = 68
+tags = ["tools"]
 +++
 
 油管视频下载和播放的利器

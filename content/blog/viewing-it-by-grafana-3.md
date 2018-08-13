@@ -6,6 +6,7 @@ image = "/img/blog/viewing-it-by-grafana-3/scifi-itf.png"
 topImage = "/img/blog/viewing-it-by-grafana-3/scifi-itf.gif"
 draft = true
 weight = 73
+tags = ["grafana"]
 +++
 
 未完草稿——狂拽酷炫的 Grafana 前端仪表盘

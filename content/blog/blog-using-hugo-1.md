@@ -5,7 +5,7 @@ showonlyimage = false
 image = "/img/blog/blog-using-hugo-1/desktop.png"
 draft = false
 weight = 20
-tags = [ "Blogging", "Hugo", "GitHub" ]
+tags = ["Hugo", "GitHub" ]
 categories = [ "Writing" ]
 series = [ "Blog like a Pro" ]
 +++

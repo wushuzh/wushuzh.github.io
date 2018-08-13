@@ -5,6 +5,7 @@ showonlyimage = false
 image = "/img/blog/make-slides-by-markdown/presentation.png"
 draft = true
 weight = 601
+tags = ["tools", "presetation"]
 +++
 
 转化 Markdown 为 HTML slides

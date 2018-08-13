@@ -5,6 +5,7 @@ showonlyimage = false
 image = "/img/blog/usr-login-and-register/pingu-login.png"
 draft = false
 weight = 603
+tags = ["flask"]
 +++
 
 flask 教程: 创建一个类微博原型站点

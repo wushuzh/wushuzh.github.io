@@ -5,6 +5,7 @@ showonlyimage = false
 image = "/img/blog/try-bokeh-server/wired-money.png"
 draft = false
 weight = 110
+tags = ["bokeh", "visualization"]
 +++
 
 用 Bokeh 服务器对可视化进行控制

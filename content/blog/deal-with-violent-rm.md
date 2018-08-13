@@ -5,7 +5,7 @@ showonlyimage = false
 image = "/img/blog/deal-with-violent-rm/pc-gone.png"
 draft = false
 weight = 41
-tags = [ "Howto", "rpm", "Linux" ]
+tags = [ "rpm", "Linux" ]
 +++
 
 蛮力卸载后，啥都不能用了……

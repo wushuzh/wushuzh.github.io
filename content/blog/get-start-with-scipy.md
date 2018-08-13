@@ -5,6 +5,7 @@ showonlyimage = false
 image = "/img/blog/get-start-with-scipy/learn.png"
 draft = true
 weight = 51
+tags = ["python"]
 +++
 
 未完草稿——python 科学计算生态的体系化学习

@@ -6,6 +6,7 @@ Image = "/img/blog/py-async-socket/seatedsuperman.png"
 topImage = "/img/blog/py-async-socket/seatedsuperman.gif"
 draft = false
 weight = 101
+tags = ["python", "async"]
 +++
 
 最终版本的 AsyncSocket 及总结

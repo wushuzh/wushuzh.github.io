@@ -5,6 +5,7 @@ showonlyimage = false
 image = "/img/blog/deal-with-flood-logs/taxes.png"
 draft = false
 weight = 47
+tags = ["sysadm", "linux" ]
 +++
 
 如何过滤无用的系统日志……

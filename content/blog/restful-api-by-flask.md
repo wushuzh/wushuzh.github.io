@@ -6,6 +6,7 @@ image = "/img/blog/restful-api-by-flask/rest.png"
 topImage =  "/img/blog/restful-api-by-flask/rest.gif"
 draft = false
 weight = 106
+tags = ["flask", "restful"]
 +++
 
 当下还在流行使用的远程通信方式

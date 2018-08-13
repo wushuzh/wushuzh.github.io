@@ -6,6 +6,7 @@ image = "/img/blog/microservices-and-K8s/captain_dock.png"
 topImage = "/img/blog/microservices-and-K8s/captain_dock.gif"
 draft = false
 weight = 110
+tags = ["kubernetes", "minikube"]
 +++
 
 啊，船长，啊，我的船长……

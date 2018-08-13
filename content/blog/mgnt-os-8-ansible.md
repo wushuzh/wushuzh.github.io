@@ -6,6 +6,7 @@ image = "/img/blog/mgnt-os-8-ansible/ansible-wave.png"
 topImage = "/img/blog/mgnt-os-8-ansible/2voice_recognition_process_by_gleb.gif"
 draft = true
 weight = 69
+tags = ["ansible"]
 +++
 
 学着像 Ender 一样高效操控战队

@@ -5,6 +5,7 @@ showonlyimage = false
 image = "/img/blog/k8s-with-openstack/ironman.png"
 draft = true
 weight = 609
+tags = ["kubernetes", "openstack"]
 +++
 
 未完草稿——女王来临

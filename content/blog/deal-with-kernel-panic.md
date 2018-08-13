@@ -5,7 +5,7 @@ showonlyimage = false
 image = "/img/blog/deal-with-kernel-panic/dead-comp.jpg"
 draft = false
 weight = 40
-tags = [ "Howto", "rpm", "Linux" ]
+tags = [ "sysadm", "linux" ]
 +++
 
 Kernel Panic 才能撑起"咋整"系列开篇的门面。

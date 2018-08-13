@@ -5,6 +5,7 @@ showonlyimage = false
 image = "/img/blog/download-street-network/map.png"
 draft = true
 weight = 605
+tags = ["python", "map"]
 +++
 
 未完草稿——获取开源地图行政区域和接到数据

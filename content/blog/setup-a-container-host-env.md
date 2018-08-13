@@ -5,6 +5,7 @@ showonlyimage = false
 image = "/img/blog/setup-a-container-host-env/redhat-docker.png"
 draft = false
 weight = 51
+tags = ["virtulization", "redhat"]
 +++
 
 Docker 简介和 Atomic 服务器的搭建

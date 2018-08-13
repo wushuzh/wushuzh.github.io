@@ -5,6 +5,7 @@ showonlyimage = false
 image = "/img/blog/dual-os-4-i18n-arch/journey-chinese-chars.png"
 draft = false
 weight = 65
+tags = ["tools"]
 +++
 
 重点是在 Archlinux Gnome 中显示和输入中文

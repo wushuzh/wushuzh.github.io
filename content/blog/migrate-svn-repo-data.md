@@ -5,6 +5,7 @@ showonlyimage = false
 image = "/img/blog/migrate-svn-repo-data/tran-inventory.png"
 draft = false
 weight = 11
+tags = ["svn"]
 +++
 
 以下实施过程和命令，亲测有效，供参考

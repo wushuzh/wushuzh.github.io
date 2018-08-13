@@ -6,6 +6,7 @@ image = "/img/blog/arts-05-per-week/chaos.png"
 topImage = "/img/blog/arts-05-per-week/chaos.gif"
 draft = false
 weight = 1831
+tags = ["ARTS", "test", "tools"]
 +++
 
 找一个“杠精”帮助你设计、执行测试

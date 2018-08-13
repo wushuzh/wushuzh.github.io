@@ -5,6 +5,7 @@ showonlyimage = false
 image = "/img/blog/dual-os-6-soft-kvm/computer_desk.png"
 draft = false
 weight = 67
+tags = ["tools"]
 +++
 
 使用一套鼠标键盘操作多个系统

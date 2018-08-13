@@ -5,6 +5,7 @@ showonlyimage = false
 image = "/img/blog/a-dev-env-of-webapp-3/blue-print.png"
 draft = false
 weight = 602
+tags = ["flask"]
 +++
 
 运用蓝图和测试集将原应用拆解为多个组件

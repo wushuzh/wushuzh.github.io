@@ -5,6 +5,7 @@ showonlyimage = false
 image = "/img/blog/org-flask-app-structure/safe.png"
 draft = true
 weight = 603
+tags = ["flask"]
 +++
 
 未完草稿——为代码结构做更好的蓝图设计

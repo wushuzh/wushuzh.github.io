@@ -6,6 +6,7 @@ image = "/img/blog/try-io-multiplexing-py/pantone_color_picker.png"
 topImage = "/img/blog/try-io-multiplexing-py/pantone_color_picker.gif"
 draft = false
 weight = 101
+tags = ["python", "async"]
 +++
 
 仅通过调度器实现服务复用——免线程版

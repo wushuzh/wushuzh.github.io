@@ -5,7 +5,7 @@ showonlyimage = false
 image = "img/blog/telecom-transition-to-5g/tip_illo.jpg"
 draft = false
 weight = 92
-
+tags = [ "telecom"]
 +++
 
 5G 通信多快，未来会是啥样？

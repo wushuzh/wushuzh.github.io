@@ -5,6 +5,7 @@ showonlyimage = false
 image = "/img/blog/watching-it-by-zabbix-2/energy_system_icon_03.png"
 draft = false
 weight = 72
+tags = ["monitor"]
 +++
 
 定制监控指标的高阶操作和注意事项

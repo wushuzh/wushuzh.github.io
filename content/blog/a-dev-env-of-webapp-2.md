@@ -6,6 +6,7 @@ image = "/img/blog/a-dev-env-of-webapp-2/user-testing.png"
 topImage = "/img/blog/a-dev-env-of-webapp-2/user-testing.gif"
 draft = false
 weight = 602
+tags = ["flask"]
 +++
 
 集成容器数据库，为应用创建测试集

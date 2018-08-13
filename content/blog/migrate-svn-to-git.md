@@ -6,6 +6,7 @@ image = "/img/blog/migrate-svn-to-git/upg-2-git.png"
 topImage = "/img/blog/migrate-svn-to-git/char-upd.gif"
 draft = false
 weight = 12
+tags = ["git", "svn"]
 +++
 
 以下实施过程和命令，亲测有效，供参考

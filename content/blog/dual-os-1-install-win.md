@@ -6,6 +6,7 @@ image = "/img/blog/dual-os-1-install-win/mss_hero.png"
 topImage = "/img/blog/dual-os-1-install-win/ms_surface.gif"
 draft = false
 weight = 61
+tags = ["tools"]
 +++
 
 谁都不太可能绕得过 Windows ……

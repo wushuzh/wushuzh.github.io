@@ -3,8 +3,9 @@ date = "2018-03-20T20:34:43+08:00"
 title = "全文搜索"
 showonlyimage = false
 image = "/img/blog/flask-full-text-search/xploro_icon.png"
-draft = false
+draft = true
 weight = 603
+tags = ["flask"]
 +++
 
 未完草稿——利用 ELK 为应用加入全文搜索

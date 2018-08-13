@@ -5,6 +5,7 @@ showonlyimage = false
 image = "/img/blog/head-first-kafka/pipe.png"
 draft = true
 weight = 9999
+tags = ["kafka"]
 +++
 
 未完草稿——全新的分布式平台设计思路

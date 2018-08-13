@@ -6,6 +6,7 @@ image = "/img/blog/try-bokeh-with-flask/bokeh-bgs.png"
 topImage = "/img/blog/try-bokeh-with-flask/bokeh-bgs.gif"
 draft = false
 weight = 110
+tags = ["flask", "bokeh", "visualization"]
 +++
 
 使用 Python 生成交互式图表

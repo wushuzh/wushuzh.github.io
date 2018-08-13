@@ -5,6 +5,7 @@ showonlyimage = false
 image = "/img/blog/dual-os-3-setup-arch/setup-Arch.png"
 draft = false
 weight = 64
+tags = ["tools"]
 +++
 
 从 0 到 1 设定 Archlinux 桌面环境
