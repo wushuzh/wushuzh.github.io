@@ -14,7 +14,7 @@ tags = ["ARTS", "test", "tools"]
 
 ## Algorithm
 
-本周题目 [1. Two Sum](https://leetcode.com/problems/two-sum/description/) 返回数组中的两个元素索引位置，使得他们的和为指定值(原数组中一定有解且唯一）。
+本周 leetocode 题目 [1. Two Sum](https://leetcode.com/problems/two-sum/description/) 返回数组中的两个元素索引位置，使得他们的和为指定值(原数组中一定有解且唯一）。
 
 {{< highlight python >}}
 def twoSum(nums, target):
