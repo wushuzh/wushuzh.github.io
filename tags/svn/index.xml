@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Svn on 小强会武术</title>
+    <link>https://wushuzh.github.io/tags/svn/</link>
+    <description>Recent content in Svn on 小强会武术</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 15 Jun 2017 20:50:27 +0800</lastBuildDate>
+    
+	<atom:link href="https://wushuzh.github.io/tags/svn/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>SVN 数据迁移</title>
+      <link>https://wushuzh.github.io/blog/2017/06/15/migrate-svn-repo-data/</link>
+      <pubDate>Thu, 15 Jun 2017 20:50:27 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/06/15/migrate-svn-repo-data/</guid>
+      <description>&lt;p&gt;以下实施过程和命令，亲测有效，供参考
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>从 SVN 到 Git</title>
+      <link>https://wushuzh.github.io/blog/2017/08/06/migrate-svn-to-git/</link>
+      <pubDate>Sun, 06 Aug 2017 16:12:21 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/08/06/migrate-svn-to-git/</guid>
+      <description>&lt;p&gt;以下实施过程和命令，亲测有效，供参考
+&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

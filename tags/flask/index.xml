@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Flask on 小强会武术</title>
+    <link>https://wushuzh.github.io/tags/flask/</link>
+    <description>Recent content in Flask on 小强会武术</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 30 Oct 2017 11:24:09 +0800</lastBuildDate>
+    
+	<atom:link href="https://wushuzh.github.io/tags/flask/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>RestFul API</title>
+      <link>https://wushuzh.github.io/blog/2017/10/30/restful-api-by-flask/</link>
+      <pubDate>Mon, 30 Oct 2017 11:24:09 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/10/30/restful-api-by-flask/</guid>
+      <description>&lt;p&gt;当下还在流行使用的远程通信方式
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Bokeh 可视化入门</title>
+      <link>https://wushuzh.github.io/blog/2017/10/31/try-bokeh-with-flask/</link>
+      <pubDate>Tue, 31 Oct 2017 20:59:31 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/10/31/try-bokeh-with-flask/</guid>
+      <description>&lt;p&gt;使用 Python 生成交互式图表
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Flask 开发 0</title>
+      <link>https://wushuzh.github.io/blog/2018/05/17/a-dev-env-of-webapp-0/</link>
+      <pubDate>Thu, 17 May 2018 21:17:18 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2018/05/17/a-dev-env-of-webapp-0/</guid>
+      <description>&lt;p&gt;按官方教程，用TDD的方式写一个迷你博客
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Flask 开发 4</title>
+      <link>https://wushuzh.github.io/blog/2017/12/07/use-react-in-frontend/</link>
+      <pubDate>Thu, 07 Dec 2017 22:01:09 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/12/07/use-react-in-frontend/</guid>
+      <description>&lt;p&gt;从现在开始 React 复杂前端
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Flask 开发 4</title>
+      <link>https://wushuzh.github.io/blog/2017/12/01/a-dev-env-of-webapp-4/</link>
+      <pubDate>Fri, 01 Dec 2017 21:27:56 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/12/01/a-dev-env-of-webapp-4/</guid>
+      <description>&lt;p&gt;集成容器数据库，为应用创建测试集
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Flask 开发 3</title>
+      <link>https://wushuzh.github.io/blog/2017/11/15/a-dev-env-of-webapp-3/</link>
+      <pubDate>Wed, 15 Nov 2017 19:01:33 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/11/15/a-dev-env-of-webapp-3/</guid>
+      <description>&lt;p&gt;运用蓝图和测试集将原应用拆解为多个组件
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Flask 开发 2</title>
+      <link>https://wushuzh.github.io/blog/2017/11/14/a-dev-env-of-webapp-2/</link>
+      <pubDate>Tue, 14 Nov 2017 22:47:09 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/11/14/a-dev-env-of-webapp-2/</guid>
+      <description>&lt;p&gt;集成容器数据库，为应用创建测试集
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Flask 开发 1</title>
+      <link>https://wushuzh.github.io/blog/2017/10/16/a-dev-env-of-webapp-1/</link>
+      <pubDate>Mon, 16 Oct 2017 20:26:19 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/10/16/a-dev-env-of-webapp-1/</guid>
+      <description>&lt;p&gt;麻雀虽小但五脏俱全的开发环境
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Flask 教程3</title>
+      <link>https://wushuzh.github.io/blog/2018/02/01/usr-login-and-register/</link>
+      <pubDate>Thu, 01 Feb 2018 20:19:27 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2018/02/01/usr-login-and-register/</guid>
+      <description>&lt;p&gt;flask 教程: 创建一个类微博原型站点
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Flask 教程2</title>
+      <link>https://wushuzh.github.io/blog/2018/01/30/dev-db-model-in-flask/</link>
+      <pubDate>Tue, 30 Jan 2018 21:17:49 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2018/01/30/dev-db-model-in-flask/</guid>
+      <description>&lt;p&gt;flask 教程: 创建一个类微博原型站点
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Flask 教程1</title>
+      <link>https://wushuzh.github.io/blog/2018/01/29/hello-flask-mega-tutorial/</link>
+      <pubDate>Mon, 29 Jan 2018 22:07:11 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2018/01/29/hello-flask-mega-tutorial/</guid>
+      <description>&lt;p&gt;flask 教程: 创建一个类微博原型站点
+&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

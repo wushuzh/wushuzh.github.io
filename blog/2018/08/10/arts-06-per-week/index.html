@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>ARTS 2018w32</title>
+<meta name="description" content="个人技术站点">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.theme.css">
+
+
+  <link href="https://wushuzh.github.io/css/style.sea.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://wushuzh.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-102509506-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              
+              
+<div class="col-xs-12 col-sm-12 col-md-12 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="https://wushuzh.github.io/">小强会武术</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-10 col-lg-offset-1">
+      <div class="content-column-content">
+      
+      <div class="row">
+        <div class="col-sm-4">
+          
+            <div class="image">
+              <img src="https://wushuzh.github.io//img/blog/arts-06-per-week/cafe-hugo.jpg" class="img-responsive" alt="">
+            </div>
+          
+        </div>
+        <div class="col-md-6">
+            <h2>ARTS 2018w32</h2>
+                <p>
+                  <i class="fa fa-share-square-o fa-fw"></i><a href="/"> 小强会武术</a>
+                </p>
+
+                <p>
+                <time datetime="2018-08-10 22:28:13 &#43;0800 CST">
+                <i class="fa fa-calendar-o fa-fw"></i> 2018-08-10
+                </time>
+                &middot;
+                900 字
+                &middot;
+                2 分钟
+                </p>
+
+                
+                <p>
+                  <i class="fa fa-tags fa-fw" aria-hidden="true"></i>
+                  <a href="/tags/arts">ARTS</a> &nbsp;&nbsp; <a href="/tags/hugo">Hugo</a>
+                </p>
+                
+
+        </div>
+      </div>
+      <br />
+
+         <p>终于动手修改了本博客的版式
+</p>
+
+<h2 id="algorithm">Algorithm</h2>
+
+<p>本周 leetcode 题目 <a href="https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/">167. Two Sum II - Input array is sorted</a> 和上周做过的 <a href="https://leetcode.com/problems/two-sum/description/">1. Two Sum</a> 不同点在于：</p>
+
+<ul>
+<li>给定数组已经做过升序排序</li>
+<li>返回的索引要从 1 开始计数</li>
+<li>返回的索引要保证先小后大的顺序</li>
+</ul>
+
+<p>因为原题未要求必须使用<a href="https://en.wikipedia.org/wiki/In-place_algorithm">原地算法</a>，依然借助 dict 作为缓存</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">twoSum2_cache</span>(numbers, target):
+    dic <span style="color:#f92672">=</span> {}
+    <span style="color:#66d9ef">for</span> i, part <span style="color:#f92672">in</span> enumerate(numbers):
+        prev_part <span style="color:#f92672">=</span> target <span style="color:#f92672">-</span> part
+        <span style="color:#66d9ef">if</span> prev_part <span style="color:#f92672">in</span> dic:
+            <span style="color:#66d9ef">return</span> [dic[prev_part]<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>]
+        dic[part] <span style="color:#f92672">=</span> i</code></pre></div>
+
+<p>或不引入更多空间占用，通过“二分法”利用数组已排序的特性快速寻找潜在的匹配解:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">twoSum2_binary_search</span>(numbers, target):
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(numbers)):
+        l, r <span style="color:#f92672">=</span> i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, len(numbers)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+        wanted <span style="color:#f92672">=</span> target <span style="color:#f92672">-</span> numbers[i]
+        <span style="color:#66d9ef">while</span> l <span style="color:#f92672">&lt;=</span> r:
+            mid <span style="color:#f92672">=</span> l <span style="color:#f92672">+</span> (r<span style="color:#f92672">-</span>l)<span style="color:#f92672">//</span><span style="color:#ae81ff">2</span>
+            <span style="color:#66d9ef">if</span> numbers[mid] <span style="color:#f92672">==</span> wanted:
+                <span style="color:#66d9ef">return</span> [i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, mid<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>]
+            <span style="color:#66d9ef">elif</span> numbers[mid] <span style="color:#f92672">&lt;</span> wanted:
+                l <span style="color:#f92672">=</span> mid<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>
+            <span style="color:#66d9ef">else</span>:
+                r <span style="color:#f92672">=</span> mid<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span></code></pre></div>
+
+<p>最后，利用“奇数和偶数之和一定为奇数”设定测试用例</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#a6e22e">@pytest.fixture</span>(params<span style="color:#f92672">=</span>[twoSum2_cache, twoSum2_binary_search])
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">diff_solution</span>(request):
+    <span style="color:#66d9ef">return</span> request<span style="color:#f92672">.</span>param
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_1_even_with_many_odd</span>(diff_solution):
+    chk_iter <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span>
+    <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(chk_iter):
+        len_a <span style="color:#f92672">=</span> randint(<span style="color:#ae81ff">2</span>, chk_iter)
+        even_i <span style="color:#f92672">=</span> randint(<span style="color:#ae81ff">0</span>, len_a<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+
+        input_a <span style="color:#f92672">=</span> [<span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>, even_i)]
+        input_a<span style="color:#f92672">.</span>append(<span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>even_i)
+        input_a <span style="color:#f92672">+=</span> [<span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(even_i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, len_a)]
+
+        odd_j <span style="color:#f92672">=</span> randint(<span style="color:#ae81ff">0</span>, len_a<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+        <span style="color:#66d9ef">while</span> odd_j <span style="color:#f92672">==</span> even_i:
+            odd_j <span style="color:#f92672">=</span> randint(<span style="color:#ae81ff">0</span>, len_a<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+
+        expect_i <span style="color:#f92672">=</span> [even_i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, odd_j<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>]
+        expect_i<span style="color:#f92672">.</span>sort()
+
+        m, n <span style="color:#f92672">=</span> diff_solution(input_a, input_a[even_i] <span style="color:#f92672">+</span> input_a[odd_j])
+        <span style="color:#66d9ef">assert</span> [m, n] <span style="color:#f92672">==</span> expect_i</code></pre></div>
+
+<p>TODO: 采集不同算法的性能数据，并用<a href="https://rakyll.org/pprof-ui/">可视化工具查看</a></p>
+
+<h2 id="review">Review</h2>
+
+<p>本周看了 Giraffe Academy 录制的 <a href="https://www.youtube.com/playlist?list=PLLAZ4kZ9dFpOnyRlyS-liKL5ReHDcj4G3">Hugo - Static Site Generator Tutorial</a> 算是对 gohugo 有一个大概的了解：</p>
+
+
+<figure>
+    
+        <img src="/img/blog/arts-06-per-week/hugo.jpg" />
+    
+    
+    <figcaption>
+        <h4>Hugo Sketchnote</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<p>更改的版式包括：</p>
+
+<ul>
+<li>去除单篇文章的左边栏，使用全屏独占模式</li>
+<li>为文章加入标签，点击可以查看带有相同标签的所有文章</li>
+</ul>
+
+<h2 id="tip">Tip</h2>
+
+<p>Gerrit 是网页版的代码审查工具，但也可以安装一个 python 工具 git-review 通过命令行做相应操作。</p>
+
+<p>可以跟随 Tutorialpoint 上的 <a href="https://www.tutorialspoint.com/gerrit/index.htm">Gerrit Tutorial</a> 做安装使用的学习。</p>
+
+<h2 id="share">Share</h2>
+
+<p>本月的一则新闻提到 Google 可能正在尝试开发一个能进入我国的定制版的搜索引擎。众多回应中比较醒目的有：人民日报表示欢迎但提醒要遵守我国法律。而李彦宏则表示百度有信心再赢一次。</p>
+
+<p>而从外媒也我看到两篇报道：</p>
+
+<ul>
+<li>纽约时报（2018-08-16）<a href="https://www.nytimes.com/2018/08/16/technology/google-employees-protest-search-censored-china.html">Google Employees Protest Secret Work on Censored Search Engine for China</a></li>
+<li>华盛顿邮报 (2018-08-16) <a href="https://www.washingtonpost.com/opinions/dont-be-so-quick-to-write-off-googles-censored-search-engine-for-china/2018/08/16/208a518e-a09a-11e8-b562-1db4209bd992_story.html?noredirect=on&amp;utm_term=.5a3962bcae70">Google’s censored search engine could actually help Chinese citizens</a></li>
+</ul>
+
+<p>前一篇文章说谷歌员工希望自己的公司公开透明自然没问题，担心自己的工作成果被不当使用，而且感觉这些员工谁都怼，对谷歌参与美国国防部项目也同样表示抗议。</p>
+
+<p>而后一篇文章我得承认是被标题吸引过去的，我的观点是查询技术资料方面，谷歌的搜索结果非常靠谱。只要纯技术部分能进来，应该对我们的科技发展大有脾益。而看到这篇的标题，心想我的想法居然和外媒暗合，这什么情况啊 ? 结果点进去一看，作者所谓的“对中国人民有益”还是基于意识形态、民主的考量，整篇短文散出一股股悲天悯人的救世主情怀……</p>
+
+<p>各人的思路真的很不一样。</p>
+
+<h2 id="拓展阅读">拓展阅读</h2>
+
+<blockquote>
+<ul>
+<li>yihui Xie <a href="https://github.com/yihui/hugo-xmag/">Hugo theme Xmag</a></li>
+</ul>
+</blockquote>
+
+<p>封面图片来自 <a href="https://dribbble.com/shots/1755553-Cafe-Hugo">Cafe Hugo</a> <a href="https://dribbble.com/SC_Letterpress"><i class="fa fa-dribbble" aria-hidden="true"></i> Sacrés Caractères</a></p>
+         <div id="disqus_thread">
+  <a href="#" onclick="disqus();return false;"> 点击启用 Disqus 评论文章 <i class="fa fa-comments" aria-hidden="true"></i></a>
+</div>
+
+<script type="text/javascript">
+var disqus_loaded = false;
+function disqus() {
+  if (!disqus_loaded) {
+    
+    
+    
+    
+
+    disqus_loaded = true;
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'wushuzh';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }
+};
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </div>
+  </div>
+</div>
+<noscript>
+  <style>.jsonly { display: none }</style>
+</noscript>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://wushuzh.github.io/js/jquery.min.js"></script>
+<script src="https://wushuzh.github.io/js/bootstrap.min.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.cookie.js"> </script>
+<script src="https://wushuzh.github.io/js/ekko-lightbox.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://wushuzh.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/owl.carousel.min.js"></script>
+<script src="https://wushuzh.github.io/js/front.js"></script>
+
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</body>
+</html>

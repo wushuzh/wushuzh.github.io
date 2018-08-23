@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tools on 小强会武术</title>
+    <link>https://wushuzh.github.io/tags/tools/</link>
+    <description>Recent content in Tools on 小强会武术</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 03 Aug 2017 19:48:55 +0800</lastBuildDate>
+    
+	<atom:link href="https://wushuzh.github.io/tags/tools/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>双系统 1: 微软视窗</title>
+      <link>https://wushuzh.github.io/blog/2017/08/03/dual-os-1-install-win/</link>
+      <pubDate>Thu, 03 Aug 2017 19:48:55 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/08/03/dual-os-1-install-win/</guid>
+      <description>&lt;p&gt;谁都不太可能绕得过 Windows ……
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>双系统 2: Linux</title>
+      <link>https://wushuzh.github.io/blog/2017/08/10/dual-os-2-install-arch/</link>
+      <pubDate>Thu, 10 Aug 2017 18:48:26 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/08/10/dual-os-2-install-arch/</guid>
+      <description>&lt;p&gt;选择哪个 Linux 版本？是个问题
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Archlinux 配置</title>
+      <link>https://wushuzh.github.io/blog/2017/08/15/dual-os-3-setup-arch/</link>
+      <pubDate>Tue, 15 Aug 2017 17:37:07 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/08/15/dual-os-3-setup-arch/</guid>
+      <description>&lt;p&gt;从 0 到 1 设定 Archlinux 桌面环境
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Archlinux 中文</title>
+      <link>https://wushuzh.github.io/blog/2017/08/29/dual-os-4-i18n-arch/</link>
+      <pubDate>Tue, 29 Aug 2017 22:07:31 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/08/29/dual-os-4-i18n-arch/</guid>
+      <description>&lt;p&gt;重点是在 Archlinux Gnome 中显示和输入中文
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>软件定义热点 1</title>
+      <link>https://wushuzh.github.io/blog/2017/09/01/dual-os-5-wifi-ap/</link>
+      <pubDate>Fri, 01 Sep 2017 22:01:43 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/09/01/dual-os-5-wifi-ap/</guid>
+      <description>&lt;p&gt;利用无线网卡创建热点，共享网络访问
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>跨系统超级键鼠</title>
+      <link>https://wushuzh.github.io/blog/2017/09/04/dual-os-6-soft-kvm/</link>
+      <pubDate>Mon, 04 Sep 2017 23:32:27 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/09/04/dual-os-6-soft-kvm/</guid>
+      <description>&lt;p&gt;使用一套鼠标键盘操作多个系统
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>视频下载</title>
+      <link>https://wushuzh.github.io/blog/2018/04/16/download-vids-using-youtube-dl/</link>
+      <pubDate>Mon, 16 Apr 2018 22:45:31 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2018/04/16/download-vids-using-youtube-dl/</guid>
+      <description>&lt;p&gt;油管视频下载和播放的利器
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ARTS 2018w28</title>
+      <link>https://wushuzh.github.io/blog/2018/07/10/arts-02-per-week/</link>
+      <pubDate>Tue, 10 Jul 2018 22:59:17 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2018/07/10/arts-02-per-week/</guid>
+      <description>&lt;p&gt;如何模拟数据、以及大数据处理
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ARTS 2018w31</title>
+      <link>https://wushuzh.github.io/blog/2018/08/01/arts-05-per-week/</link>
+      <pubDate>Wed, 01 Aug 2018 23:05:11 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2018/08/01/arts-05-per-week/</guid>
+      <description>&lt;p&gt;找一个“杠精”帮助你设计、执行测试
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ARTS 2018w33</title>
+      <link>https://wushuzh.github.io/blog/2018/08/15/arts-07-per-week/</link>
+      <pubDate>Wed, 15 Aug 2018 19:33:04 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2018/08/15/arts-07-per-week/</guid>
+      <description>&lt;p&gt;利用参考实现进行测试，以关于比较优势的思考
+&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

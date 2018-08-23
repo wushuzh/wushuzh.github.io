@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Virtulization on 小强会武术</title>
+    <link>https://wushuzh.github.io/tags/virtulization/</link>
+    <description>Recent content in Virtulization on 小强会武术</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 06 Jul 2017 09:28:56 +0800</lastBuildDate>
+    
+	<atom:link href="https://wushuzh.github.io/tags/virtulization/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>搭建容器的专属系统</title>
+      <link>https://wushuzh.github.io/blog/2017/07/06/setup-a-container-host-env/</link>
+      <pubDate>Thu, 06 Jul 2017 09:28:56 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/07/06/setup-a-container-host-env/</guid>
+      <description>&lt;p&gt;Docker 简介和 Atomic 服务器的搭建
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>打造虚拟实验厂</title>
+      <link>https://wushuzh.github.io/blog/2017/09/15/mgnt-virenv-7-vagrant/</link>
+      <pubDate>Fri, 15 Sep 2017 20:55:02 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/09/15/mgnt-virenv-7-vagrant/</guid>
+      <description>&lt;p&gt;QEMU/KVM、Libvirt、Vagrant 的安装配置
+&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

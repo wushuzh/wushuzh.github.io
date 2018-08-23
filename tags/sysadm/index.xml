@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sysadm on 小强会武术</title>
+    <link>https://wushuzh.github.io/tags/sysadm/</link>
+    <description>Recent content in Sysadm on 小强会武术</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 26 Jun 2017 22:31:22 +0800</lastBuildDate>
+    
+	<atom:link href="https://wushuzh.github.io/tags/sysadm/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>内核恐慌，咋整？</title>
+      <link>https://wushuzh.github.io/blog/2017/06/26/deal-with-kernel-panic/</link>
+      <pubDate>Mon, 26 Jun 2017 22:31:22 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/06/26/deal-with-kernel-panic/</guid>
+      <description>&lt;p&gt;Kernel Panic 才能撑起&amp;rdquo;咋整&amp;rdquo;系列开篇的门面。
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>安装失败，咋整？</title>
+      <link>https://wushuzh.github.io/blog/2017/08/01/deal-with-ks-failure1/</link>
+      <pubDate>Tue, 01 Aug 2017 19:12:33 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/08/01/deal-with-ks-failure1/</guid>
+      <description>&lt;p&gt;如何调查 RedHat 上失败的 Kickstart 安装？
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>需要外援，咋整？</title>
+      <link>https://wushuzh.github.io/blog/2017/08/07/deal-with-ks-failure2/</link>
+      <pubDate>Mon, 07 Aug 2017 19:18:15 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/08/07/deal-with-ks-failure2/</guid>
+      <description>&lt;p&gt;在搞不定而向他人求援时，该做些什么？
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>洪水报文，咋整？</title>
+      <link>https://wushuzh.github.io/blog/2017/09/05/deal-with-flood-logs/</link>
+      <pubDate>Tue, 05 Sep 2017 22:50:33 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/09/05/deal-with-flood-logs/</guid>
+      <description>&lt;p&gt;如何过滤无用的系统日志……
+&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

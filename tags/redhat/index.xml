@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Redhat on 小强会武术</title>
+    <link>https://wushuzh.github.io/tags/redhat/</link>
+    <description>Recent content in Redhat on 小强会武术</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 01 Aug 2017 19:12:33 +0800</lastBuildDate>
+    
+	<atom:link href="https://wushuzh.github.io/tags/redhat/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>安装失败，咋整？</title>
+      <link>https://wushuzh.github.io/blog/2017/08/01/deal-with-ks-failure1/</link>
+      <pubDate>Tue, 01 Aug 2017 19:12:33 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/08/01/deal-with-ks-failure1/</guid>
+      <description>&lt;p&gt;如何调查 RedHat 上失败的 Kickstart 安装？
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>需要外援，咋整？</title>
+      <link>https://wushuzh.github.io/blog/2017/08/07/deal-with-ks-failure2/</link>
+      <pubDate>Mon, 07 Aug 2017 19:18:15 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/08/07/deal-with-ks-failure2/</guid>
+      <description>&lt;p&gt;在搞不定而向他人求援时，该做些什么？
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>搭建容器的专属系统</title>
+      <link>https://wushuzh.github.io/blog/2017/07/06/setup-a-container-host-env/</link>
+      <pubDate>Thu, 06 Jul 2017 09:28:56 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/07/06/setup-a-container-host-env/</guid>
+      <description>&lt;p&gt;Docker 简介和 Atomic 服务器的搭建
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ARTS 2018w30</title>
+      <link>https://wushuzh.github.io/blog/2018/07/23/arts-04-per-week/</link>
+      <pubDate>Mon, 23 Jul 2018 22:47:27 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2018/07/23/arts-04-per-week/</guid>
+      <description>&lt;p&gt;Sketchnote 更有效的笔记记录方式？
+&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

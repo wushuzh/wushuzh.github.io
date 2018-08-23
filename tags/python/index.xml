@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on 小强会武术</title>
+    <link>https://wushuzh.github.io/tags/python/</link>
+    <description>Recent content in Python on 小强会武术</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 03 Aug 2017 20:48:43 +0800</lastBuildDate>
+    
+	<atom:link href="https://wushuzh.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>上手科学计算</title>
+      <link>https://wushuzh.github.io/blog/2017/08/03/get-start-with-sci-computing/</link>
+      <pubDate>Thu, 03 Aug 2017 20:48:43 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/08/03/get-start-with-sci-computing/</guid>
+      <description>&lt;p&gt;使用 Fedora 定制版也能快速上手科学计算
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>python 并发 (3)</title>
+      <link>https://wushuzh.github.io/blog/2017/09/21/py-async-socket/</link>
+      <pubDate>Thu, 21 Sep 2017 20:19:58 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/09/21/py-async-socket/</guid>
+      <description>&lt;p&gt;最终版本的 AsyncSocket 及总结
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>python 并发 (2)</title>
+      <link>https://wushuzh.github.io/blog/2017/09/14/try-io-multiplexing-py/</link>
+      <pubDate>Thu, 14 Sep 2017 21:28:44 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/09/14/try-io-multiplexing-py/</guid>
+      <description>&lt;p&gt;仅通过调度器实现服务复用——免线程版
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>python 并发 (1)</title>
+      <link>https://wushuzh.github.io/blog/2017/09/08/intro-to-py-socket/</link>
+      <pubDate>Fri, 08 Sep 2017 23:27:52 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/09/08/intro-to-py-socket/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://www.dabeaz.com/&#34;&gt;David Beazley&lt;/a&gt; 的&lt;a href=&#34;https://www.youtube.com/watch?v=MCs5OvhV9S4&#34;&gt;直播讲解&lt;/a&gt; Socket 并发
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>搭建 py 开发环境</title>
+      <link>https://wushuzh.github.io/blog/2017/09/11/get-start-with-py/</link>
+      <pubDate>Mon, 11 Sep 2017 23:00:07 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/09/11/get-start-with-py/</guid>
+      <description>&lt;p&gt;如何在不同的环境下自由穿行
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>流利 python</title>
+      <link>https://wushuzh.github.io/blog/2017/11/06/play-pythonic-cards/</link>
+      <pubDate>Mon, 06 Nov 2017 21:18:21 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/11/06/play-pythonic-cards/</guid>
+      <description>&lt;p&gt;愿敲代码终有一天能比斗地主更 666
+&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

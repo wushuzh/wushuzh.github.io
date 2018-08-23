@@ -6,10 +6,20 @@
     <description>Recent content in Linux on 小强会武术</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 26 Jun 2017 22:31:22 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 04 Jun 2017 20:40:13 +0800</lastBuildDate>
     
 	<atom:link href="https://wushuzh.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>syslog 简介</title>
+      <link>https://wushuzh.github.io/blog/2017/06/04/syslog-std-in-general/</link>
+      <pubDate>Sun, 04 Jun 2017 20:40:13 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/06/04/syslog-std-in-general/</guid>
+      <description>&lt;p&gt;syslog 标准和常见工业实现
+&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>内核恐慌，咋整？</title>
@@ -58,6 +68,66 @@
       
       <guid>https://wushuzh.github.io/blog/2017/07/22/deal-with-disk-error/</guid>
       <description>&lt;p&gt;磁盘错误导致进入紧急模式，该如何恢复？
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>安装失败，咋整？</title>
+      <link>https://wushuzh.github.io/blog/2017/08/01/deal-with-ks-failure1/</link>
+      <pubDate>Tue, 01 Aug 2017 19:12:33 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/08/01/deal-with-ks-failure1/</guid>
+      <description>&lt;p&gt;如何调查 RedHat 上失败的 Kickstart 安装？
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>需要外援，咋整？</title>
+      <link>https://wushuzh.github.io/blog/2017/08/07/deal-with-ks-failure2/</link>
+      <pubDate>Mon, 07 Aug 2017 19:18:15 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/08/07/deal-with-ks-failure2/</guid>
+      <description>&lt;p&gt;在搞不定而向他人求援时，该做些什么？
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>洪水报文，咋整？</title>
+      <link>https://wushuzh.github.io/blog/2017/09/05/deal-with-flood-logs/</link>
+      <pubDate>Tue, 05 Sep 2017 22:50:33 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/09/05/deal-with-flood-logs/</guid>
+      <description>&lt;p&gt;如何过滤无用的系统日志……
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux 启动过程</title>
+      <link>https://wushuzh.github.io/blog/2018/02/01/intro-linux-startup/</link>
+      <pubDate>Thu, 01 Feb 2018 18:22:09 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2018/02/01/intro-linux-startup/</guid>
+      <description>&lt;p&gt;未完草稿——Linux 引导的关键步骤和相关工具简介
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>打造虚拟实验厂</title>
+      <link>https://wushuzh.github.io/blog/2017/09/15/mgnt-virenv-7-vagrant/</link>
+      <pubDate>Fri, 15 Sep 2017 20:55:02 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/09/15/mgnt-virenv-7-vagrant/</guid>
+      <description>&lt;p&gt;QEMU/KVM、Libvirt、Vagrant 的安装配置
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ARTS 2018w33</title>
+      <link>https://wushuzh.github.io/blog/2018/08/15/arts-07-per-week/</link>
+      <pubDate>Wed, 15 Aug 2018 19:33:04 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2018/08/15/arts-07-per-week/</guid>
+      <description>&lt;p&gt;利用参考实现进行测试，以关于比较优势的思考
 &lt;/p&gt;</description>
     </item>
     

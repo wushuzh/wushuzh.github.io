@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>ARTS 2018w33</title>
+<meta name="description" content="个人技术站点">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.theme.css">
+
+
+  <link href="https://wushuzh.github.io/css/style.sea.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://wushuzh.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-102509506-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              
+              
+<div class="col-xs-12 col-sm-12 col-md-12 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="https://wushuzh.github.io/">小强会武术</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-10 col-lg-offset-1">
+      <div class="content-column-content">
+      
+      <div class="row">
+        <div class="col-sm-4">
+          
+            <div class="image">
+              <img src="https://wushuzh.github.io//img/blog/arts-07-per-week/satellite.jpg" class="img-responsive" alt="">
+            </div>
+          
+        </div>
+        <div class="col-md-6">
+            <h2>ARTS 2018w33</h2>
+                <p>
+                  <i class="fa fa-share-square-o fa-fw"></i><a href="/"> 小强会武术</a>
+                </p>
+
+                <p>
+                <time datetime="2018-08-15 19:33:04 &#43;0800 CST">
+                <i class="fa fa-calendar-o fa-fw"></i> 2018-08-15
+                </time>
+                &middot;
+                2330 字
+                &middot;
+                5 分钟
+                </p>
+
+                
+                <p>
+                  <i class="fa fa-tags fa-fw" aria-hidden="true"></i>
+                  <a href="/tags/arts">ARTS</a> &nbsp;&nbsp; <a href="/tags/linux">linux</a> &nbsp;&nbsp; <a href="/tags/tools">tools</a>
+                </p>
+                
+
+        </div>
+      </div>
+      <br />
+
+         <p>利用参考实现进行测试，以关于比较优势的思考
+</p>
+
+<h2 id="algorithm">Algorithm</h2>
+
+<p>本周 leetcode 题目 <a href="https://leetcode.com/problems/add-two-numbers/description/">2. Add Two Numbers</a>，本质上这道题目就是实现一个正整数的加法。</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add_two_numbers_v1</span>(l1: ListNode, l2: ListNode) <span style="color:#f92672">-&gt;</span> ListNode:
+    carry <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+    dummy <span style="color:#f92672">=</span> n <span style="color:#f92672">=</span> ListNode(<span style="color:#e6db74">&#39;dummy&#39;</span>)
+    <span style="color:#66d9ef">while</span> l1 <span style="color:#f92672">or</span> l2 <span style="color:#f92672">or</span> carry:
+        v1 <span style="color:#f92672">=</span> v2 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+        <span style="color:#66d9ef">if</span> l1:
+            v1 <span style="color:#f92672">=</span> l1<span style="color:#f92672">.</span>val
+            l1 <span style="color:#f92672">=</span> l1<span style="color:#f92672">.</span>next
+        <span style="color:#66d9ef">if</span> l2:
+            v2 <span style="color:#f92672">=</span> l2<span style="color:#f92672">.</span>val
+            l2 <span style="color:#f92672">=</span> l2<span style="color:#f92672">.</span>next
+        carry, val <span style="color:#f92672">=</span> divmod(v1 <span style="color:#f92672">+</span> v2 <span style="color:#f92672">+</span> carry, <span style="color:#ae81ff">10</span>)
+        n<span style="color:#f92672">.</span>next <span style="color:#f92672">=</span> ListNode(val)
+        n <span style="color:#f92672">=</span> n<span style="color:#f92672">.</span>next
+    <span style="color:#66d9ef">return</span> dummy<span style="color:#f92672">.</span>next</code></pre></div>
+
+<p>下面是 leetcode 用户 <a href="https://leetcode.com/problems/add-two-numbers/discuss/1102/Python-for-the-win">StefanPochmann 的解法</a> 它的算法可以接受任意多个链表作为输入。</p>
+
+<p>其中比较有趣的部分:</p>
+
+<ol>
+<li>第2、7行的 <code>a=b=c</code> 作为一种 Chained assignment 其执行顺序是怎样的？</li>
+<li>第4、5、8行的 <code>afewlls</code> 的用法值得注意: 和<a href="https://python-3-patterns-idioms-test.readthedocs.io/en/latest/Comprehensions.html">Comprehensions相关</a></li>
+</ol>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">1</span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add_two_numbers_v2</span>(<span style="color:#f92672">*</span>afewlls):
+<span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">2</span>    dummy <span style="color:#f92672">=</span> n <span style="color:#f92672">=</span> ListNode(<span style="color:#e6db74">&#34;dummy&#34;</span>)
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">3</span>    carry <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+<span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">4</span>    <span style="color:#66d9ef">while</span> afewlls <span style="color:#f92672">or</span> carry:
+</span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">5</span>        carry <span style="color:#f92672">+=</span> sum(a<span style="color:#f92672">.</span>val <span style="color:#66d9ef">for</span> a <span style="color:#f92672">in</span> afewlls)
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">6</span>        carry, val <span style="color:#f92672">=</span> divmod(carry, <span style="color:#ae81ff">10</span>)
+<span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">7</span>        n<span style="color:#f92672">.</span>next <span style="color:#f92672">=</span> n <span style="color:#f92672">=</span> ListNode(val)
+</span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">8</span>        afewlls <span style="color:#f92672">=</span> [a<span style="color:#f92672">.</span>next <span style="color:#66d9ef">for</span> a <span style="color:#f92672">in</span> afewlls <span style="color:#66d9ef">if</span> a<span style="color:#f92672">.</span>next]
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">9</span>    <span style="color:#66d9ef">return</span> dummy<span style="color:#f92672">.</span>next</code></pre></div>
+
+<p>TODO:</p>
+
+<ul>
+<li>StackOverflow 上用户 pfctdayelise 的自问<a href="https://stackoverflow.com/a/11498861/4393386">自答</a>: 维基百科上有<a href="https://en.wikipedia.org/wiki/Assignment_%28computer_science%29#Chained_assignment">说明解释</a>，或阅读 Python 官方参考文档中<a href="https://docs.python.org/reference/simple_stmts.html#assignment-statements">赋值语句符号</a> 但要先看一下<a href="https://docs.python.org/3/reference/introduction.html#notation">BNF grammar notation</a></li>
+<li>StackOverflow 上另一个答案 (<a href="https://stackoverflow.com/a/36346517/4393386">https://stackoverflow.com/a/36346517/4393386</a>) 利用 Python 标准模块 dis: <a href="https://docs.python.org/3/library/dis.html">Disassembler for Python bytecode</a> 解释该问题</li>
+</ul>
+
+<p>测试方面使用了 hypothesis 产生测试数据，并引入两个辅助函数实现 ListNode 和 正整数间的相互转换。这样我们就可以通过常规内置的 int 加法来验证 ListNode 加法。</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">rll2int</span>(l):
+    s <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
+    <span style="color:#66d9ef">while</span> l:
+        s <span style="color:#f92672">=</span> str(l<span style="color:#f92672">.</span>val) <span style="color:#f92672">+</span> s
+        l <span style="color:#f92672">=</span> l<span style="color:#f92672">.</span>next
+    <span style="color:#66d9ef">return</span> int(s)
+
+
+<span style="color:#a6e22e">@ht.settings</span>(verbosity<span style="color:#f92672">=</span>ht<span style="color:#f92672">.</span>Verbosity<span style="color:#f92672">.</span>verbose)
+<span style="color:#a6e22e">@ht.given</span>(n1<span style="color:#f92672">=</span>st<span style="color:#f92672">.</span>integers(min_value<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>), n2<span style="color:#f92672">=</span>st<span style="color:#f92672">.</span>integers(min_value<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>))
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_random</span>(n1, n2, diff_solution):
+    l1 <span style="color:#f92672">=</span> mklist(<span style="color:#f92672">*</span>map(int, reversed(str(n1))))
+    l2 <span style="color:#f92672">=</span> mklist(<span style="color:#f92672">*</span>map(int, reversed(str(n2))))
+    r <span style="color:#f92672">=</span> diff_solution(l1, l2)
+    <span style="color:#66d9ef">assert</span> rll2int(r) <span style="color:#f92672">==</span> n1 <span style="color:#f92672">+</span> n2</code></pre></div>
+
+<p>总结起来，这种测试思路，可以理解为另外完成一个原题目的参考实现：即如果两种解法的实现思路非常不同，那么针对任意一个测试用例，这两种实现同时犯错的概率是很低的。比如下面这种解法很不适宜作为面试题的解答，但作为一个参考实现是可以的。</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add_two_numbers_v3</span>(l1, l2):
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">toint</span>(node):
+        <span style="color:#66d9ef">return</span> node<span style="color:#f92672">.</span>val <span style="color:#f92672">+</span> <span style="color:#ae81ff">10</span> <span style="color:#f92672">*</span> toint(node<span style="color:#f92672">.</span>next) <span style="color:#66d9ef">if</span> node <span style="color:#66d9ef">else</span> <span style="color:#ae81ff">0</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">tolist</span>(n):
+        node <span style="color:#f92672">=</span> ListNode(n <span style="color:#f92672">%</span> <span style="color:#ae81ff">10</span>)
+        <span style="color:#66d9ef">if</span> n <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">9</span>:
+            node<span style="color:#f92672">.</span>next <span style="color:#f92672">=</span> tolist(n <span style="color:#f92672">/</span> <span style="color:#ae81ff">10</span>)
+        <span style="color:#66d9ef">return</span> node
+    <span style="color:#66d9ef">return</span> tolist(toint(l1) <span style="color:#f92672">+</span> toint(l2))</code></pre></div>
+
+<h2 id="review">Review</h2>
+
+<p>读了一下 Uber 博客 (2018-04-19) Danny Iland, Andrew Irish, Upamanyu Madhow and Brian Sandler <a href="https://eng.uber.com/rethinking-gps/">Rethinking GPS: Engineering Next-Gen Location at Uber</a></p>
+
+
+<figure>
+    
+        <img src="/img/blog/arts-07-per-week/gps.jpg" />
+    
+    
+    <figcaption>
+        <h4>Uber GPS Sketchnote</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<blockquote>
+<ul>
+<li>(2015-9-7) <a href="http://insidegnss.com/urban-localization-and-3d-mapping-using-gnss-shadows/">Urban Localization and 3D Mapping Using GNSS Shadows</a></li>
+<li>(2018-04-23) <a href="https://youtu.be/-6JZSV3jjLA">Uber Marketplace: Fixing GPS in Cities</a></li>
+</ul>
+</blockquote>
+
+<h2 id="tip">Tip</h2>
+
+<p>三个月前就激活了 Windows 10 的 WSL (Windows Subsystem for Linux) 从应用商店安装 Debian ，但直到这周看推，看到阮一峰老师推荐的终端录制工具 termtosvg ，细读之下发现<a href="https://github.com/nbedos/termtosvg/issues/13">暂不支持 Windows</a> 才下定决心进入 Debian 试一下。</p>
+
+<ol>
+<li>若习惯使用 Cmder ，可以为其<a href="https://gingter.org/2016/11/16/running-windows-10-ubuntu-bash-in-cmder/">自定义一个新任务 bash::debian</a></li>
+<li>听说 Debian 区别于 Ubuntu 的一个重要不同是默认不安装 sudo ，但 WSL 上的 Debian 已预装 sudo: <a href="https://www.cyberciti.biz/faq/how-to-list-all-installed-packages-debian-ubuntu/"><code>apt list --installed</code></a></li>
+<li>若无法直连外网，要先<a href="https://wiki.debian.org/AptConf">设置 apt 代理</a> ，然后执行 <code>sudo apt update</code> 但后续仍可能遇到<a href="https://askubuntu.com/a/709568">代理缓存过期引起的 Hash Sum Mismatch 问题</a></li>
+</ol>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt install python3 python3-pip
+
+pip3 install --user pipenv
+<span style="color:#75715e"># https://github.com/pypa/pipenv/issues/2122#issuecomment-386207878
+</span><span style="color:#75715e"></span>echo <span style="color:#e6db74">&#39;export PATH=&#34;${HOME}/.local/bin:$PATH&#34;&#39;</span> &gt;&gt; ~/.profile
+pip3 install --user termtosvg</code></pre></div>
+
+<p>下面是使用 termtosvg 录制的执行本周 leetcode 测试的操作:</p>
+
+<p><img style="width:70%; height:70%; display:block; margin: auto 10%;" alt="debian in windows" src="/img/blog/arts-07-per-week/wsl-debian.svg" class="img-responsive"></p>
+
+<h2 id="share">Share</h2>
+
+<p>关于卫星导航系统，看了知乎用户 Moien 转载的我国工程院院士，许其凤教授在2012年7月27日，天津滨海国际会展中心举办的“战略性新兴产业（滨海）国际论坛的<a href="https://www.zhihu.com/question/21092045/answer/92719534">讲演</a>。</p>
+
+<p>其中提到80年代，以东芝、夏普为代表的日本彩电品牌优势已经非常明显了，我们是否还需要发展自己的彩电产业？许院士有一个观点：即便不能做到在整体上实现全面超越，但如果可以形成某方面的相对超越也存在抢回市场的可能。日本彩电由于普遍离发射塔距离比较近，基于此前提设计的接收机灵敏度在我国就表现得“差强人意”，而国产彩电对此做出针对性的改进就能使得“雪花”比日产的更少。另外销售、服务本地化我们也可以做到更便宜快捷。</p>
+
+<p>许院士将此引申到北斗设计上的重要不利因素：</p>
+
+<ul>
+<li>在没有遍布世界的军事基地的情况下(要建立对应的地面监测站)，促使我们尝试更好的星座设计增加追踪弧度；</li>
+<li>高精度的星载原子钟的技术被封锁，我们则试着通过频繁校对做相应补偿，为我们自主的原子钟研发争取时间；</li>
+</ul>
+
+<p>而北斗性能的相对超越体现也有一些，比如：</p>
+
+<ul>
+<li>北斗2号一期的卫星利用率可以达到 80 %，即使在建设初期，投入性价比也是很高的；</li>
+<li>通过额外的同步卫星(二级监控站)来实现系统级的广域差分系统；</li>
+<li>具有按需划配的位置主动上报功能；</li>
+</ul>
+
+<p>我想起经济学中有一个重要的原理叫做“比较优势”(The principle of comparative advantage): 要将有限的资源去生产对自己来说机会成本更低的产品，然后通过交换获取其他所需，如此可以达到整个社会产品总价值最大。但遵从原理就能实现国富民强？改革开放初期缺资金、少技术，没人才，如何评估机会成本最低的项目，是不是只能搞“来料加工”？如何才能保证自己不被锁死在“劳动密集型低端制造”这个“比较优势”中无法自拔? 更重要的是谁来保证全世界的每个人/公司/国家遵从的最高原则就是将全社会的产品总价值达到最大？世界有时没有想象中理性，有时候就算你选了一个对自己来说最具比较优势的产业，你还是得问问大家是否答应让你做……</p>
+
+<p>确实，要是只抱着“若无法全面超越碾压就别瞎折腾”的想法，放弃在这些自己原本不擅长的行业中学习、跟跑、积累，指望在新机会到来后临时抱佛脚，进而完成替代和赶超才是痴人说梦。</p>
+
+<ul>
+<li>液晶面板，日本曾经占全行业9成以上份额，但现在却被韩国三星、LG掀翻在地，而我国的京东方已成为后起之秀;</li>
+<li>通信设备，若没有近年来华为、中兴的强有力竞争，国外的传统通信巨头现在日子怕是仍然过的很滋润；</li>
+<li>大飞机，据说巴西的支线飞机，进展很不错，我们呢？是花银子把飞机租借进行到底还是发展自己的系统集成能力？</li>
+<li>航天卫星，当年我们和苏联关系好，但“科罗廖夫”们能帮我们造火箭、发卫星么？高铁呢？航母呢？</li>
+</ul>
+
+<p>已然成为“世界工厂”的当下，我们再分析自己的比较优势，那些对我们机会成本最低的领域是不是已经转向到高端制造、软件服务等领域？而原有产业不管做得多么顺手，也要考虑主动转出了？</p>
+
+<p>我把自己之前看到的一些行业分析的文章，列到了下面的扩展阅读中，真希望能找到视角同样宏大，论证翔实，但观点相异的更多靠谱文章。</p>
+
+<h2 id="拓展阅读">拓展阅读</h2>
+
+<blockquote>
+<ul>
+<li>ConEmu <a href="https://conemu.github.io/en/BashOnWindows.html">Bash on Windows</a></li>
+<li>The Debian GNU/Linux FAQ <a href="https://www.debian.org/doc/manuals/debian-faq/ch-pkgtools.en.html">Chapter 8 - The Debian package management tools</a></li>
+<li>(2017-12-02) Abhishek Prakash <a href="https://itsfoss.com/apt-vs-apt-get-difference/">Difference Between apt and apt-get Explained</a></li>
+<li>SO answer from drysdam <a href="https://askubuntu.com/a/32509">How do I get a list of installed files from a package?</a></li>
+<li>2016-09-27 packagecloud <a href="https://blog.packagecloud.io/eng/2016/09/27/fixing-apt-hash-sum-mismatch-consistent-apt-repositories/">Fixing APT Hash Sum Mismatch: Consistent APT Repositories</a></li>
+<li>知乎 <a href="https://www.zhihu.com/question/21092045">北斗有 35 颗卫星，而 GPS 有 24 颗卫星，为什么二者数量不同？</a></li>
+<li>宁南山 (2017-09-03) <a href="https://zhuanlan.zhihu.com/p/29009696">又一个时代的结束&ndash;走向消亡的日本显示面板产业</a></li>
+<li>宁南山 (2018-05-20) <a href="https://zhuanlan.zhihu.com/p/37060223">技术与国家&ndash;5G eMBB编码投票战始末</a></li>
+<li>宁南山 (2017-05-18) <a href="https://zhuanlan.zhihu.com/p/26755740">大飞机是中国人开辟的新战场</a></li>
+<li>宁南山 (2018-02-08) <a href="https://zhuanlan.zhihu.com/p/33707817">SpaceX猎鹰重型火箭升空与中美差距</a></li>
+<li>察网 刘枫 (2017-09-01) <a href="http://www.cwzg.cn/politics/201709/38216.html">前铁道部长傅志寰两篇重磅文章，揭示了我国高铁成功的真正原因</a></li>
+<li>知乎 Nibelung <a href="https://www.zhihu.com/question/27406657/answer/252504498">巴西航空制造业比中国强吗？</a> 的回答</li>
+<li>秋山 (2018-03-23) <a href="https://zhuanlan.zhihu.com/p/34824855">旧日本海军金刚型战列舰 舰政篇</a></li>
+</ul>
+</blockquote>
+
+<p>封面图片来自 <a href="https://dribbble.com/shots/3358840-Satellite">Satellite</a> <a href="https://dribbble.com/septemcollium33"><i class="fa fa-dribbble" aria-hidden="true"></i>David Falter</a></p>
+         <div id="disqus_thread">
+  <a href="#" onclick="disqus();return false;"> 点击启用 Disqus 评论文章 <i class="fa fa-comments" aria-hidden="true"></i></a>
+</div>
+
+<script type="text/javascript">
+var disqus_loaded = false;
+function disqus() {
+  if (!disqus_loaded) {
+    
+    
+    
+    
+
+    disqus_loaded = true;
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'wushuzh';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }
+};
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </div>
+  </div>
+</div>
+<noscript>
+  <style>.jsonly { display: none }</style>
+</noscript>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://wushuzh.github.io/js/jquery.min.js"></script>
+<script src="https://wushuzh.github.io/js/bootstrap.min.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.cookie.js"> </script>
+<script src="https://wushuzh.github.io/js/ekko-lightbox.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://wushuzh.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/owl.carousel.min.js"></script>
+<script src="https://wushuzh.github.io/js/front.js"></script>
+
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</body>
+</html>

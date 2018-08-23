@@ -292,26 +292,6 @@
     </item>
     
     <item>
-      <title>GNOME桌面环境</title>
-      <link>https://wushuzh.github.io/blog/2018/05/29/setup-gnome-on-arch/</link>
-      <pubDate>Tue, 29 May 2018 20:13:36 +0800</pubDate>
-      
-      <guid>https://wushuzh.github.io/blog/2018/05/29/setup-gnome-on-arch/</guid>
-      <description>&lt;p&gt;多显示器、图形化工作环境的设置
-&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>HEAT 部署编排</title>
-      <link>https://wushuzh.github.io/blog/2018/03/06/create-stack-8-hot/</link>
-      <pubDate>Tue, 06 Mar 2018 20:52:04 +0800</pubDate>
-      
-      <guid>https://wushuzh.github.io/blog/2018/03/06/create-stack-8-hot/</guid>
-      <description>&lt;p&gt;未完草稿——利用编排模板初始化一个复杂的集群
-&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>Zabbix 综合监控</title>
       <link>https://wushuzh.github.io/blog/2017/08/18/watching-it-by-zabbix-1/</link>
       <pubDate>Fri, 18 Aug 2017 20:51:17 +0800</pubDate>
@@ -358,16 +338,6 @@
       
       <guid>https://wushuzh.github.io/blog/2017/06/08/general-auth-concepts/</guid>
       <description>&lt;p&gt;Diameter从属的大类是，认证协议的一种。
-&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>番外篇：密码演化史</title>
-      <link>https://wushuzh.github.io/blog/2017/07/27/pitfalls-of-the-passwd/</link>
-      <pubDate>Thu, 27 Jul 2017 18:31:59 +0800</pubDate>
-      
-      <guid>https://wushuzh.github.io/blog/2017/07/27/pitfalls-of-the-passwd/</guid>
-      <description>&lt;p&gt;这些年我们用过的那些密码……
 &lt;/p&gt;</description>
     </item>
     
@@ -428,16 +398,6 @@
       
       <guid>https://wushuzh.github.io/blog/2017/10/30/restful-api-by-flask/</guid>
       <description>&lt;p&gt;当下还在流行使用的远程通信方式
-&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>JWT 身份认证</title>
-      <link>https://wushuzh.github.io/blog/2017/11/22/try-jwt-in-flask/</link>
-      <pubDate>Wed, 22 Nov 2017 23:13:51 +0800</pubDate>
-      
-      <guid>https://wushuzh.github.io/blog/2017/11/22/try-jwt-in-flask/</guid>
-      <description>&lt;p&gt;JSON Web Token 身份验证
 &lt;/p&gt;</description>
     </item>
     
@@ -542,66 +502,6 @@
     </item>
     
     <item>
-      <title>全文搜索</title>
-      <link>https://wushuzh.github.io/blog/2018/03/20/flask-full-text-search/</link>
-      <pubDate>Tue, 20 Mar 2018 20:34:43 +0800</pubDate>
-      
-      <guid>https://wushuzh.github.io/blog/2018/03/20/flask-full-text-search/</guid>
-      <description>&lt;p&gt;未完草稿——利用 ELK 为应用加入全文搜索
-&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Flask 教程7</title>
-      <link>https://wushuzh.github.io/blog/2018/02/28/flask-integrate-bootstrap/</link>
-      <pubDate>Wed, 28 Feb 2018 21:48:56 +0800</pubDate>
-      
-      <guid>https://wushuzh.github.io/blog/2018/02/28/flask-integrate-bootstrap/</guid>
-      <description>&lt;p&gt;利用 Bootstrap 美化界面元素，简化表单
-&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Flask 教程6</title>
-      <link>https://wushuzh.github.io/blog/2018/02/22/flask-email-notification/</link>
-      <pubDate>Thu, 22 Feb 2018 22:17:34 +0800</pubDate>
-      
-      <guid>https://wushuzh.github.io/blog/2018/02/22/flask-email-notification/</guid>
-      <description>&lt;p&gt;实现邮件注册、密码重置等自助功能
-&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Flask 教程6</title>
-      <link>https://wushuzh.github.io/blog/2018/02/22/flask-pagination-long-list/</link>
-      <pubDate>Thu, 22 Feb 2018 21:45:12 +0800</pubDate>
-      
-      <guid>https://wushuzh.github.io/blog/2018/02/22/flask-pagination-long-list/</guid>
-      <description>&lt;p&gt;提交微博，通过分页处理长列表
-&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Flask 教程5</title>
-      <link>https://wushuzh.github.io/blog/2018/02/06/add-the-follower-model/</link>
-      <pubDate>Tue, 06 Feb 2018 20:17:19 +0800</pubDate>
-      
-      <guid>https://wushuzh.github.io/blog/2018/02/06/add-the-follower-model/</guid>
-      <description>&lt;p&gt;如何添加更为复杂的多对多关系模型
-&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Flask 教程4</title>
-      <link>https://wushuzh.github.io/blog/2018/02/04/flask-debug-and-log/</link>
-      <pubDate>Sun, 04 Feb 2018 19:37:21 +0800</pubDate>
-      
-      <guid>https://wushuzh.github.io/blog/2018/02/04/flask-debug-and-log/</guid>
-      <description>&lt;p&gt;如何进行错误排查和记录日志、及邮件通知
-&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>Flask 教程3</title>
       <link>https://wushuzh.github.io/blog/2018/02/01/usr-login-and-register/</link>
       <pubDate>Thu, 01 Feb 2018 20:19:27 +0800</pubDate>
@@ -698,6 +598,26 @@
       
       <guid>https://wushuzh.github.io/blog/2018/08/01/arts-05-per-week/</guid>
       <description>&lt;p&gt;找一个“杠精”帮助你设计、执行测试
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ARTS 2018w32</title>
+      <link>https://wushuzh.github.io/blog/2018/08/10/arts-06-per-week/</link>
+      <pubDate>Fri, 10 Aug 2018 22:28:13 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2018/08/10/arts-06-per-week/</guid>
+      <description>&lt;p&gt;终于动手修改了本博客的版式
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ARTS 2018w33</title>
+      <link>https://wushuzh.github.io/blog/2018/08/15/arts-07-per-week/</link>
+      <pubDate>Wed, 15 Aug 2018 19:33:04 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2018/08/15/arts-07-per-week/</guid>
+      <description>&lt;p&gt;利用参考实现进行测试，以关于比较优势的思考
 &lt;/p&gt;</description>
     </item>
     

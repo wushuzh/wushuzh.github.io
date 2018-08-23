@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Virtualization on 小强会武术</title>
+    <link>https://wushuzh.github.io/tags/virtualization/</link>
+    <description>Recent content in Virtualization on 小强会武术</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 30 Jun 2017 19:19:19 +0800</lastBuildDate>
+    
+	<atom:link href="https://wushuzh.github.io/tags/virtualization/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>看不懂报错，咋整？</title>
+      <link>https://wushuzh.github.io/blog/2017/06/30/deal-with-wired-errmsgs/</link>
+      <pubDate>Fri, 30 Jun 2017 19:19:19 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/06/30/deal-with-wired-errmsgs/</guid>
+      <description>&lt;p&gt;追踪本质，别被报错信息带歪了方向……
+&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

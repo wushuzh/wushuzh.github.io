@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Monitor on 小强会武术</title>
+    <link>https://wushuzh.github.io/tags/monitor/</link>
+    <description>Recent content in Monitor on 小强会武术</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 18 Aug 2017 20:51:17 +0800</lastBuildDate>
+    
+	<atom:link href="https://wushuzh.github.io/tags/monitor/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Zabbix 综合监控</title>
+      <link>https://wushuzh.github.io/blog/2017/08/18/watching-it-by-zabbix-1/</link>
+      <pubDate>Fri, 18 Aug 2017 20:51:17 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/08/18/watching-it-by-zabbix-1/</guid>
+      <description>&lt;p&gt;其名和监控，大概能有个十万八千里的距离？
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Zabbix自定义指标</title>
+      <link>https://wushuzh.github.io/blog/2017/08/24/watching-it-by-zabbix-2/</link>
+      <pubDate>Thu, 24 Aug 2017 22:24:51 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/08/24/watching-it-by-zabbix-2/</guid>
+      <description>&lt;p&gt;定制监控指标的高阶操作和注意事项
+&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
