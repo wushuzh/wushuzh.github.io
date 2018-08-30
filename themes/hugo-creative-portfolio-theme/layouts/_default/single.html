@@ -4,44 +4,11 @@
   <div class="row">
     <div class="col-lg-8">
       <div class="content-column-content">
-         
-      <div class="row">
-        <div class="col-sm-6">
-          {{ if .Params.topImage }}
-            <div class="image">
-              <img src="{{ .Site.BaseURL }}{{ .Params.topImage }}" class="img-responsive" alt="">
-            </div>
-          {{else}}
-            <div class="image">
-              <img src="{{ .Site.BaseURL }}{{ .Params.image }}" class="img-responsive" alt="">
-            </div>
-          {{ end }}
-        </div>
-        <div class="col-md-6">
-            <h2>{{ .Title }}</h2>
-                <p>
-                  {{ .Site.Title }}
-                </p>
-
-                <time datetime="{{ .Date }}">
-                <i class="fa fa-calendar-o fa-fw"></i> {{ .Date.Format "2006-01-02" }}
-                </time>
-                &middot;
-                {{ .WordCount }} 字
-                &middot;
-                {{ .ReadingTime }} 分钟
-
-        </div>
-      </div>
-      <br />
-
+         <h1>{{ .Title }}</h1>
          {{ .Content }}
-         {{ partial "disqus.html" . }}
+         {{ template "_internal/disqus.html" . }}
       </div>
     </div>
   </div>
 </div>
-<noscript>
-  <style>.jsonly { display: none }</style>
-</noscript>
 {{ end }}

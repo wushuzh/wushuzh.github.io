@@ -1,0 +1,48 @@
+/* your styles go here */
+
+.highlight pre{
+  background-color: #424242;
+  color: #eee9e9;
+}
+
+figure {
+  margin: 1em auto;
+  display: -webkit-inline-box;
+  display: -moz-inline-box;
+  display: inline-box;
+  display: -webkit-inline-flex;
+  display: -moz-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  box-orient: vertical;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  box-direction: normal;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-direction: column;
+  border-width: 0.0625em;
+  border-style: solid;
+  border-color: #ffffff;
+  border-top-left-radius: 0.3125em;
+  border-top-right-radius: 0.3125em;
+  border-bottom-left-radius: 0.3125em;
+  border-bottom-right-radius: 0.3125em;
+  background-color: #ffffff; }
+  figure figcaption {
+    margin: 0;
+    padding: 0 0.625em;
+    text-align: center;
+    font-size: smaller;
+    font-style: italic; }
+  figure img {
+    border-color: transparent;
+    border-width: 0.0625em;
+    max-width: 100%; }
+  figure p {
+    margin-bottom: 0; }
+  figure h4 {
+    margin: 0; }
