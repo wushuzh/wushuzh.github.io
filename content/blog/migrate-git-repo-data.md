@@ -6,7 +6,6 @@ image = "/img/blog/migrate-git-repo-data/tran-between-pc.png"
 topImage = "/img/blog/migrate-git-repo-data/tran-between-pc.gif"
 draft = true
 weight = 14
-tags = ["git"]
 +++
 
 迁移过程同样亲测有效，供参考
@@ -15,7 +14,10 @@ tags = ["git"]
 ## 搬迁原因
 
 
-
+{{<highlight >}}
+apt-mark hold gitlab-ce
+{{< /highlight >}}
+https://askubuntu.com/questions/462449/update-the-system-from-terminal
 
 
 

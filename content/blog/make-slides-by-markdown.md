@@ -11,6 +11,14 @@ tags = ["tools", "presetation"]
 转化 Markdown 为 HTML slides
 <!--more-->
 
+我试过的此类别的 slides 工具，按照 Github 的标星量排序为
+
+1. [revealjs](https://revealjs.com/)
+2. [remarkjs](http://remarkjs.com/)
+3. [marp](https://yhatt.github.io/marp/)
+
+而本篇重点说一下 remarkjs
+
 ### 安装
 
 {{< highlight console >}}
@@ -46,5 +54,6 @@ yarn add remarker
 参考文档
 
 > - Kat Marchán (2017-07-11) [Introducing npx: an npm package runner](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b)
+> - kt3k [Remark cli](https://github.com/kt3k/remarker)
 
 封面图片来自 [Presentation](https://dribbble.com/shots/3007989-Presentation) <a href="https://dribbble.com/Frizler"><i class="fa fa-dribbble" aria-hidden="true"></i> Anton Fritsler (kit8)</a>

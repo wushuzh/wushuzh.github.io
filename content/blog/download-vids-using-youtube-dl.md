@@ -45,6 +45,11 @@ PS> choco install vlc
 - `space` 暂停、`m` 静音、`v` 字幕切换
 - `f` 全屏、`t` 已播放时间和总时间
 
+https://github.com/siomiz/SoftEtherVPN
+https://github.com/hwdsl2/docker-ipsec-vpn-server
+https://github.com/hwdsl2/setup-ipsec-vpn/issues/158
+https://github.com/haoel/haoel.github.io
+https://www2.linode.com/stackscripts/view/237943
 
 
 ### 参考文档
