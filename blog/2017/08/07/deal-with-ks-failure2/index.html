@@ -30,7 +30,7 @@
 <link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
 
 
-<script>
+<script type="application/javascript">
 var doNotTrack = false;
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
@@ -93,8 +93,7 @@ if (!doNotTrack) {
       </div>
       <br />
 
-         <p>在搞不定而向他人求援时，该做些什么？
-</p>
+         <p>在搞不定而向他人求援时，该做些什么？</p>
 
 <h2 id="网上搜索">网上搜索</h2>
 
@@ -170,8 +169,8 @@ if (!doNotTrack) {
 <p>除了上述在问题服务器 A 上逐条执行命令，最后打包的方式，还可以在其他服务器 B 上准备好一个 shell 脚本，包含所有需要执行的指令。这样只要服务器 A 配好网络，就可以将此脚本从服务器 B 上拷贝回来，执行生成日志后，在拷出到服务器 B 上。</p>
 
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/bash
-</span><span style="color:#75715e"></span><span style="color:#75715e"># prepare this shell script named LogCapture on server B
-</span><span style="color:#75715e"></span>cd /tmp; mkdir cmd-outputs
+</span><span style="color:#75715e"></span><span style="color:#75715e"># prepare this shell script named LogCapture on server B</span>
+cd /tmp; mkdir cmd-outputs
 W<span style="color:#f92672">()</span> <span style="color:#f92672">{</span> local OutputFile<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>tr <span style="color:#e6db74">&#39; /&#39;</span> <span style="color:#e6db74">&#39;_&#39;</span> <span style="color:#f92672">&lt;&lt;&lt;</span><span style="color:#e6db74">&#34;</span>$@<span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">)</span>; $@ &gt;cmd-outputs/$OutputFile; <span style="color:#f92672">}</span>
 <span style="color:#f92672">[[</span> ! -f ks.cfg <span style="color:#f92672">]]</span> <span style="color:#f92672">&amp;&amp;</span> echo No /tmp/ks.cfg present &gt;ks.cfg
 ls anaconda-tb-* &amp;&gt;/dev/null <span style="color:#f92672">||</span> kill -USR2 <span style="color:#66d9ef">$(</span>&lt;/var/run/anaconda.pid<span style="color:#66d9ef">)</span>

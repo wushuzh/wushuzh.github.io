@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Restful on 小强会武术</title>
+    <title>restful on 小强会武术</title>
     <link>https://wushuzh.github.io/tags/restful/</link>
-    <description>Recent content in Restful on 小强会武术</description>
+    <description>Recent content in restful on 小强会武术</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Mon, 30 Oct 2017 11:24:09 +0800</lastBuildDate>
@@ -17,8 +17,7 @@
       <pubDate>Mon, 30 Oct 2017 11:24:09 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/10/30/restful-api-by-flask/</guid>
-      <description>&lt;p&gt;当下还在流行使用的远程通信方式
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;当下还在流行使用的远程通信方式&lt;/p&gt;</description>
     </item>
     
   </channel>

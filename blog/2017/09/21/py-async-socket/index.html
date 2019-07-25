@@ -30,7 +30,7 @@
 <link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
 
 
-<script>
+<script type="application/javascript">
 var doNotTrack = false;
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
@@ -77,7 +77,7 @@ if (!doNotTrack) {
                 <i class="fa fa-calendar-o fa-fw"></i> 2017-09-21
                 </time>
                 &middot;
-                1407 字
+                1406 字
                 &middot;
                 3 分钟
                 </p>
@@ -93,8 +93,7 @@ if (!doNotTrack) {
       </div>
       <br />
 
-         <p>最终版本的 AsyncSocket 及总结
-</p>
+         <p>最终版本的 AsyncSocket 及总结</p>
 
 <h2 id="性能问题">性能问题</h2>
 
@@ -192,49 +191,49 @@ tty3 $ telnet localhost 25000
 
 <p>解决方案是为 <code>future</code> 修补<strong>事件循环调度器</strong>。</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 1</span><span style="color:#f92672">--- a/aserver.py
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 2</span><span style="color:#f92672"></span><span style="color:#a6e22e">+++ b/aserver.py
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 3</span><span style="color:#a6e22e"></span><span style="color:#75715e">@@ -10,6 +10,20 @@ from concurrent.futures import ThreadPoolExecutor as Pool
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 4</span><span style="color:#75715e"></span> tasks = deque()
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 5</span> recv_wait = { }   # Mapping sockets -&gt; tasks (generators)
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 6</span> send_wait = { }
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 7</span><span style="color:#a6e22e">+future_wait = { }
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 8</span><span style="color:#a6e22e">+
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 9</span><span style="color:#a6e22e">+future_notify, future_event = socketpair()
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">10</span><span style="color:#a6e22e">+
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">11</span><span style="color:#a6e22e">+def future_done(future):
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">12</span><span style="color:#a6e22e">+    tasks.append(future_wait.pop(future))
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">13</span><span style="color:#a6e22e">+    future_notify.send(b&#39;x&#39;)
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">14</span><span style="color:#a6e22e">+
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">15</span><span style="color:#a6e22e">+def future_monitor():
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">16</span><span style="color:#a6e22e">+    while True:
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">17</span><span style="color:#a6e22e">+        yield &#39;recv&#39;, future_event
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">18</span><span style="color:#a6e22e">+        future_event.recv(100)
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">19</span><span style="color:#a6e22e">+
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">20</span><span style="color:#a6e22e">+tasks.append(future_monitor())
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">21</span><span style="color:#a6e22e"></span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">22</span> pool = Pool(10)
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">23</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">24</span><span style="color:#75715e">@@ -32,6 +46,10 @@ def run():
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">25</span><span style="color:#75715e"></span>                 recv_wait[what] = task
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">26</span>             elif why == &#39;send&#39;:
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">27</span>                 send_wait[what] = task
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">28</span><span style="color:#a6e22e">+            elif why == &#39;future&#39;:
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">29</span><span style="color:#a6e22e">+                future_wait[what] = task
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">30</span><span style="color:#a6e22e">+                what.add_done_callback(future_done)
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">31</span><span style="color:#a6e22e">+
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">32</span><span style="color:#a6e22e"></span>             else:
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">33</span>                 raise RuntimeError(&#34;ARG!&#34;)
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">34</span>         except StopIteration:
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">35</span><span style="color:#75715e">@@ -58,6 +76,7 @@ def fib_handler(client):
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">36</span><span style="color:#75715e"></span>             break
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">37</span>         n = int(req)
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">38</span>         future = pool.submit(fib, n)
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">39</span><span style="color:#a6e22e">+        yield &#39;future&#39;, future
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">40</span><span style="color:#a6e22e"></span>         result = future.result()  # blocking
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">41</span>         resq = str(result).encode(&#39;ascii&#39;) + b&#39;\n&#39;
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">42</span>         yield &#39;send&#39;, client
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">43</span></code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#f92672">--- a/aserver.py
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span style="color:#f92672"></span><span style="color:#a6e22e">+++ b/aserver.py
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span style="color:#a6e22e"></span><span style="color:#75715e">@@ -10,6 +10,20 @@ from concurrent.futures import ThreadPoolExecutor as Pool
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span style="color:#75715e"></span> tasks = deque()
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span> recv_wait = { }   # Mapping sockets -&gt; tasks (generators)
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span> send_wait = { }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span style="color:#a6e22e">+future_wait = { }
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span style="color:#a6e22e">+
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span style="color:#a6e22e">+future_notify, future_event = socketpair()
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span style="color:#a6e22e">+
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span style="color:#a6e22e">+def future_done(future):
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span style="color:#a6e22e">+    tasks.append(future_wait.pop(future))
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span style="color:#a6e22e">+    future_notify.send(b&#39;x&#39;)
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span style="color:#a6e22e">+
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span style="color:#a6e22e">+def future_monitor():
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span style="color:#a6e22e">+    while True:
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span style="color:#a6e22e">+        yield &#39;recv&#39;, future_event
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span style="color:#a6e22e">+        future_event.recv(100)
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span style="color:#a6e22e">+
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span style="color:#a6e22e">+tasks.append(future_monitor())
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span style="color:#a6e22e"></span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span> pool = Pool(10)
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span><span style="color:#75715e">@@ -32,6 +46,10 @@ def run():
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25</span><span style="color:#75715e"></span>                 recv_wait[what] = task
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26</span>             elif why == &#39;send&#39;:
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span>                 send_wait[what] = task
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28</span><span style="color:#a6e22e">+            elif why == &#39;future&#39;:
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29</span><span style="color:#a6e22e">+                future_wait[what] = task
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30</span><span style="color:#a6e22e">+                what.add_done_callback(future_done)
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31</span><span style="color:#a6e22e">+
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32</span><span style="color:#a6e22e"></span>             else:
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33</span>                 raise RuntimeError(&#34;ARG!&#34;)
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34</span>         except StopIteration:
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35</span><span style="color:#75715e">@@ -58,6 +76,7 @@ def fib_handler(client):
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36</span><span style="color:#75715e"></span>             break
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37</span>         n = int(req)
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38</span>         future = pool.submit(fib, n)
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39</span><span style="color:#a6e22e">+        yield &#39;future&#39;, future
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40</span><span style="color:#a6e22e"></span>         result = future.result()  # blocking
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41</span>         resq = str(result).encode(&#39;ascii&#39;) + b&#39;\n&#39;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42</span>         yield &#39;send&#39;, client
+</code></pre></div>
 
 <p>第 39 行: 依然是在阻塞调用前加入 yield ，目的是提示外层程序(第 28、29 行)——即将发生的阻塞是用于等待 future 的结果。继而向 future 注册<code>回调函数 future_done</code>。目的是当 future 计算完成，就将其从 <code>等待区 future_wait</code> 清出，重新放回 tasks 。</p>
 
@@ -249,7 +248,7 @@ tty3 $ telnet localhost 25000
 <p>一个有趣的现象是如果使用 ProcessPoolExecutor 而非 ThreadPoolExecutor，我得到了一个诡异的现象</p>
 </blockquote>
 
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">tty2 $python3 perf2.py
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">tty2 $python3 perf2.py
 746 reqs/sec
 769 reqs/sec
 728 reqs/sec
@@ -265,7 +264,7 @@ tty3 $ telnet localhost 25000
 
 tty3 $ telnet localhost 25000
 36
-14930352</code></pre></div></p>
+14930352</code></pre></div>
 
 <h2 id="完整示例">完整示例</h2>
 

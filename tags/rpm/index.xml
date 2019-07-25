@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Rpm on 小强会武术</title>
+    <title>rpm on 小强会武术</title>
     <link>https://wushuzh.github.io/tags/rpm/</link>
-    <description>Recent content in Rpm on 小强会武术</description>
+    <description>Recent content in rpm on 小强会武术</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Thu, 29 Jun 2017 21:38:48 +0800</lastBuildDate>
@@ -17,8 +17,7 @@
       <pubDate>Thu, 29 Jun 2017 21:38:48 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/06/29/deal-with-violent-rm/</guid>
-      <description>&lt;p&gt;蛮力卸载后，啥都不能用了……
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;蛮力卸载后，啥都不能用了……&lt;/p&gt;</description>
     </item>
     
   </channel>

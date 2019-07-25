@@ -30,7 +30,7 @@
 <link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
 
 
-<script>
+<script type="application/javascript">
 var doNotTrack = false;
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
@@ -93,22 +93,14 @@ if (!doNotTrack) {
       </div>
       <br />
 
-         <p>选择哪个 Linux 版本？是个问题
-</p>
+         <p>选择哪个 Linux 版本？是个问题</p>
 
 <h2 id="linux-版本">Linux 版本</h2>
 
-
 <figure>
-    
-        <img src="/img/blog/dual-os-2-install-arch/linux-flavour.jpg" />
-    
-    
-    <figcaption>
-        <h4>Decision Tree</h4>
-        
-    </figcaption>
-    
+    <img src="/img/blog/dual-os-2-install-arch/linux-flavour.jpg"/> <figcaption>
+            <h4>Decision Tree</h4>
+        </figcaption>
 </figure>
 
 
@@ -196,14 +188,14 @@ elinks wiki.archlinux.org/index.php/Installation_guide</code></pre></div>
 
 <h4 id="文件系统格式化和挂载">文件系统格式化和挂载</h4>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 文件系统格式化
-</span><span style="color:#75715e"></span>mkfs.ext3 /dev/sda5
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 文件系统格式化</span>
+mkfs.ext3 /dev/sda5
 mkfs.ext4 /dev/sda6
 mkswap /dev/sda7
 mkfs.vfat /dev/sda8
 
-<span style="color:#75715e"># 挂载
-</span><span style="color:#75715e"></span>mount /dev/sda6 /mnt
+<span style="color:#75715e"># 挂载</span>
+mount /dev/sda6 /mnt
 mkdir /mnt/boot
 mount /dev/sda5 /mnt/boot
 swapon /dev/sda7
@@ -218,37 +210,37 @@ mount -t vfat /dev/sda8 /mnt/greenzone</code></pre></div>
 
 <p>Archlinux 追新：安装的软件都从网上下载最新版：这里修改其镜像文件<code>/etc/pacman.d/mirrorlist</code>，将自己所在国家的地址移到最上边就可以了。</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 安装核心软件
-</span><span style="color:#75715e"></span>pacstrap /mnt base
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 安装核心软件</span>
+pacstrap /mnt base
 
-<span style="color:#75715e"># 生成文件系统挂载表
-</span><span style="color:#75715e"></span>genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
+<span style="color:#75715e"># 生成文件系统挂载表</span>
+genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
 
-<span style="color:#75715e"># 切换到新安装到硬盘的文件系统上
-</span><span style="color:#75715e"></span>arch-chroot /mnt
+<span style="color:#75715e"># 切换到新安装到硬盘的文件系统上</span>
+arch-chroot /mnt
 
-<span style="color:#75715e"># 配置时间
-</span><span style="color:#75715e"></span>ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+<span style="color:#75715e"># 配置时间</span>
+ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 hwclock --systohc
 
-<span style="color:#75715e"># 配置本地化字符
-</span><span style="color:#75715e"></span>vi /etc/locale.gen
+<span style="color:#75715e"># 配置本地化字符</span>
+vi /etc/locale.gen
 locale-gen
 
-<span style="color:#75715e"># 配置主机名
-</span><span style="color:#75715e"></span>hostnamectl set-hostname wushuzh
+<span style="color:#75715e"># 配置主机名</span>
+hostnamectl set-hostname wushuzh
 cat /etc/hostname
-<span style="color:#75715e"># exit current session and relogin to chk
-</span><span style="color:#75715e"></span>/etc/hosts
+<span style="color:#75715e"># exit current session and relogin to chk</span>
+/etc/hosts
 
-<span style="color:#75715e"># 配置键盘布局
-</span><span style="color:#75715e"></span>localectl set-keymap us
+<span style="color:#75715e"># 配置键盘布局</span>
+localectl set-keymap us
 cat /etc/vconsole.conf
 localectl set-locale LANG<span style="color:#f92672">=</span>en_US.UTF-8
 cat /etc/locale.conf
 
-<span style="color:#75715e"># 配置 root 密码
-</span><span style="color:#75715e"></span>passwd</code></pre></div>
+<span style="color:#75715e"># 配置 root 密码</span>
+passwd</code></pre></div>
 
 <h3 id="引导区设定">引导区设定</h3>
 

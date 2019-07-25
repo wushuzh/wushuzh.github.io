@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Kubernetes on 小强会武术</title>
+    <title>kubernetes on 小强会武术</title>
     <link>https://wushuzh.github.io/tags/kubernetes/</link>
-    <description>Recent content in Kubernetes on 小强会武术</description>
+    <description>Recent content in kubernetes on 小强会武术</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 24 Oct 2017 22:20:04 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 18 Feb 2019 16:41:16 +0800</lastBuildDate>
     
 	<atom:link href="https://wushuzh.github.io/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
     
@@ -17,8 +17,16 @@
       <pubDate>Tue, 24 Oct 2017 22:20:04 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/10/24/microservices-and-k8s/</guid>
-      <description>&lt;p&gt;啊，船长，啊，我的船长……
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;啊，船长，啊，我的船长……&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ARTS 2019w08</title>
+      <link>https://wushuzh.github.io/blog/2019/02/18/arts-35-per-week/</link>
+      <pubDate>Mon, 18 Feb 2019 16:41:16 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2019/02/18/arts-35-per-week/</guid>
+      <description>&lt;p&gt;linux 内存入门及一个 swap 优化案例&lt;/p&gt;</description>
     </item>
     
   </channel>

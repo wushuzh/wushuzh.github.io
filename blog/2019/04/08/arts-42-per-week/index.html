@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>ARTS 2019w15</title>
+<meta name="description" content="个人技术站点">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.theme.css">
+
+
+  <link href="https://wushuzh.github.io/css/style.sea.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://wushuzh.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-102509506-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              
+              
+<div class="col-xs-12 col-sm-12 col-md-12 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="https://wushuzh.github.io/">小强会武术</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-10 col-lg-offset-1">
+      <div class="content-column-content">
+      
+      <div class="row">
+        <div class="col-sm-4">
+          
+            <div class="image">
+              <img src="https://wushuzh.github.io//img/blog/arts-42-per-week/server.webp" class="img-responsive" alt="">
+            </div>
+          
+        </div>
+        <div class="col-md-6">
+            <h2>ARTS 2019w15</h2>
+                <p>
+                  <i class="fa fa-share-square-o fa-fw"></i><a href="/"> 小强会武术</a>
+                </p>
+
+                <p>
+                <time datetime="2019-04-08 15:57:50 &#43;0800 CST">
+                <i class="fa fa-calendar-o fa-fw"></i> 2019-04-08
+                </time>
+                &middot;
+                1662 字
+                &middot;
+                4 分钟
+                </p>
+
+                
+                <p>
+                  <i class="fa fa-tags fa-fw" aria-hidden="true"></i>
+                  <a href="/tags/arts">ARTS</a>
+                </p>
+                
+
+        </div>
+      </div>
+      <br />
+
+         <p>Linux 存储相关知识总体概述</p>
+
+<h2 id="algorithm">Algorithm</h2>
+
+<p><a href="https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/">leetcode #947 Most Stones Removed with Same Row or Column</a> 给定一些点，如果任意两点的横坐标或纵坐标相同，可删除其中一个点，求最多可以去除多少个给定点。</p>
+
+<p>Union Find 的关键依然是将给定问题转化为 Union find 的数据结构，最直接的方法当然是按题目字面要求，对两个点做连接操作。</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">rm_stones_using_union_find</span>(stones: List[List[int]]) <span style="color:#f92672">-&gt;</span> int:
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>    uf <span style="color:#f92672">=</span> UnionFind()
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>    <span style="color:#66d9ef">for</span> x, y <span style="color:#f92672">in</span> stones:
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span>        <span style="color:#66d9ef">for</span> i, j <span style="color:#f92672">in</span> stones:
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span>            <span style="color:#66d9ef">if</span> x <span style="color:#f92672">==</span> i <span style="color:#f92672">or</span> y <span style="color:#f92672">==</span> j:
+<span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span>                uf<span style="color:#f92672">.</span>union(str(x) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;-&#34;</span> <span style="color:#f92672">+</span> str(y), str(i) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;-&#34;</span> <span style="color:#f92672">+</span> str(j))
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span>    <span style="color:#66d9ef">return</span> len(uf<span style="color:#f92672">.</span>p) <span style="color:#f92672">-</span> len({uf<span style="color:#f92672">.</span>find_root(str(x) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;-&#34;</span> <span style="color:#f92672">+</span> str(y)) <span style="color:#66d9ef">for</span> x, y <span style="color:#f92672">in</span> stones})</code></pre></div>
+
+<blockquote>
+<p>提交上述做法时，竟出现了 Time Limit Exceeded （执行超时）的情况。当时使用了字符串格式化语法，不知道是不是类似操作太过耗时耗力？</p>
+</blockquote>
+
+<p>首先可能的优化：根据题目给定的坐标轴的最大范围，用更简单的算术计算将横纵坐标合并在一起，比如 x * 10000 + y。</p>
+
+<p>但是一个新视角：任何一个给定点(x, y) 是用来连接两个横纵坐标索引的：即坐标索引为最基本单元，轮询每个点时执行 union 操作即可。最终代码一次循环即可：</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">rm_stones_using_union_find</span>(stones: List[List[int]]) <span style="color:#f92672">-&gt;</span> int:
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>    uf <span style="color:#f92672">=</span> UnionFind()
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>    <span style="color:#66d9ef">for</span> x, y <span style="color:#f92672">in</span> stones:
+<span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span>        uf<span style="color:#f92672">.</span>union(x, <span style="color:#ae81ff">10000</span> <span style="color:#f92672">+</span> y)
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span>
+<span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span>    <span style="color:#66d9ef">return</span> len(stones) <span style="color:#f92672">-</span> len({uf<span style="color:#f92672">.</span>find_root(i) <span style="color:#66d9ef">for</span> i,_ <span style="color:#f92672">in</span> stones})</span></code></pre></div>
+
+<p>注意比较两种方法最后返回冗余点个数的不同算法。</p>
+
+<h2 id="review">Review</h2>
+
+<p>本周学习了 <a href="https://learning.oreilly.com/live-training/courses/linux-under-the-hood/0636920257462">Linux Under the Hood</a> 存储相关的章节——存储作为一个重要外设，掌握基本知识十分必要，先上一张来自 <a href="https://www.thomas-krenn.com/en/wiki/Linux_Storage_Stack_Diagram">Thomas-Krenn Wiki</a> 的存储全栈图。</p>
+
+<figure>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/IO_stack_of_the_Linux_kernel.svg"/> <figcaption>
+            <h4>The Linux Storage Stack Diagram</h4>
+        </figcaption>
+</figure>
+
+
+<p>虽未能在上图出现，但在计算机启动中起重要作用的部分是 <a href="https://en.wikipedia.org/wiki/Boot_sector">Boot sector(引导扇区)</a> 分为:</p>
+
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Master_boot_record">MBR(主引导分区)</a> 中可用于记录分区的空间有限（4 个）：一般是 3 个主分区，1 个扩展分区（内含多个逻辑分区），管理磁盘的最大空间为 2 TB, 一般用 fdisk 管理分区；</li>
+<li><a href="https://en.wikipedia.org/wiki/GUID_Partition_Table">GPT(全局唯一标识分区表)</a> 中预留了更多可用于记录分区的空间 (最高 128 个)，但OS 或 device driver 层面会对最终支持数量做进一步限制，比如 Linux 的 Major（内核分给每类磁盘驱动程序）/Minor Number（驱动程序分给每个设备），一般用 gdisk 管理磁盘分区；</li>
+<li>当 lsblk 不可用时，可以通过 <code>cat /proc/partitions</code> 查看块设备和分区信息，更极客的做法是通过以下命令查看磁盘引导区 <code>xxd -l 512 /dev/sda</code></li>
+</ul>
+
+<hr />
+
+<p><em>图顶端</em> ：和应用进程直接相关的是 <em>VFS</em> 和 <em>FS</em> 。据维基百科的不完全统计，100余种文件系统被发明和使用在各类操作系统中。而 <a href="https://en.wikipedia.org/wiki/Virtual_file_system">VFS(虚拟文件系统)</a> 则是 Linux 内核为上层应用提供了一致的系统调用接口来访问多种文件系统。</p>
+
+<p>这些不同文件系统在不同的技术条件和时代背景下产生和不断演化，各具特点，比如下表中的几个常见的文件系统被 Linux 内核直接支持，ext系列、xfs 和 btrfs；而通过 VFS 中的 <a href="https://en.wikipedia.org/wiki/Filesystem_in_Userspace">FUSE</a> 接口可使用那些仅能存在于用户空间的文件系统（或因许可协议和内核不符，或因功能太过超前），比如 <a href="https://en.wikipedia.org/wiki/ZFS">ZFS</a>、<a href="https://en.wikipedia.org/wiki/SSHFS">SSHFS</a>、NTFS-3G、GlusterFS</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>indexing</th>
+<th>journal</th>
+<th>extents</th>
+<th>cow</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>ext2</td>
+<td>h-tree</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>ext3</td>
+<td>h-tree</td>
+<td>+</td>
+<td>-</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>ext4</td>
+<td>h-tree</td>
+<td>+</td>
+<td>+</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>xfs</td>
+<td>b-tree</td>
+<td>+</td>
+<td>-</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>btrfs</td>
+<td>b-tree</td>
+<td>+</td>
+<td>+</td>
+<td>+</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<p><em>图中部</em> ：为了更为统一的管理组织越来越多的磁盘设备，操作系统提供了 <a href="https://en.wikipedia.org/wiki/Device_mapper">Device mapper 框架</a> 。在这个基础上，又出现了 <a href="https://en.wikipedia.org/wiki/Logical_volume_management">LVM(逻辑卷管理)</a>、<a href="https://en.wikipedia.org/wiki/RAID#Software-based">SW RAID</a>、<a href="https://en.wikipedia.org/wiki/Linux_Unified_Key_Setup">LUKS(Linux Unified Key Setup)</a> 等各具特色的存储方案。</p>
+
+<hr />
+
+<p><a href="https://wiki.archlinux.org/index.php/Identify_damaged_files">损坏文件的修复</a>是一个略微“复杂”和“危险”的操作。不同文件系统提供了各自的工具，对存储底层技术有更深的理解能保证我们不盲目行动，一些重要的概念包括:</p>
+
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Disk_sector">磁盘扇区</a> 和 <a href="https://en.wikipedia.org/wiki/Logical_block_addressing">逻辑区块地址</a> 分配</li>
+<li>磁盘管理框架 Device mapper 和 LVM 配置管理</li>
+<li>文件的数据结构 <a href="https://en.wikipedia.org/wiki/Inode">inode</a></li>
+</ul>
+
+<p>比如 StackExchange 上的这个问题
+<a href="https://unix.stackexchange.com/questions/106861/what-is-the-relationship-of-inodes-lba-logical-volumes-blocks-and-sectors">What is the relationship of inodes, LBA, Logical Volumes, blocks, and sectors?</a></p>
+
+<pre><code>               .-----------------.
+               |      inode      |
+               '-----------------'
+                        |
+               .-----------------.
+               |      EXT4       |
+               '-----------------'
+                        |
+             .---------------------.
+             | logical volume (LV) | --- part of LVM
+             '---------------------'
+                        |
+              .-------------------.
+              | volume group (VG) |  --- part of LVM
+              '-------------------'
+                        |
+                .---------------.
+                | /dev/&lt;device&gt; |
+                '---------------'
+                        |
+       .--------------------------------.
+       | Logical Block Addressing (LBA) |
+       '--------------------------------'
+                        |
+               .-----------------.
+               | blocks/sectors  |
+               '-----------------'
+                        |
+                       HDD     
+                    _.-----._  
+                  .-         -.
+                  |-_       _-|
+                  |  ~-----~  |
+                  |           |
+                  `._       _.'
+                     &quot;-----&quot;   
+</code></pre>
+
+<p>最后对于<a href="https://en.wikipedia.org/wiki/Flash_memory">闪存</a>，因为其记忆损耗的特性，需要用专门的<a href="https://en.wikipedia.org/wiki/Flash_file_system">文件系统</a>做<a href="https://en.wikipedia.org/wiki/Wear_leveling">损耗平衡</a>以延长其使用寿命，比如 Ubifs, JFFS, YAFFS 。</p>
+
+<h2 id="tip">Tip</h2>
+
+<p>借助 <a href="http://asciiflow.com/">asciiflow</a> 可以用ASCII字符画简易图示：</p>
+
+<ul>
+<li>POSIX 系统中的 inode</li>
+<li>iSCSI 的设置图示
+
+<ol>
+<li>在 Target 设置 devname baz <code>/backstore/block/</code></li>
+<li>在 Target 设置 wwn = iqn.yyyy-mm.domain:tfoo <code>/iscsi</code></li>
+<li>在 Initiator 找出 iqn （ibar) <code>/etc/iscsi/initiatorname.iscsi</code></li>
+<li>在 Target 配置 ACL 允许 Initiator wwn (ibar） <code>/iscsi/iqnfoo/tpg1/acl</code></li>
+<li>在 Target 配置 LUNS 配置共享设备 baz</li>
+<li>在 Target 上启动 target 服务</li>
+<li>在 Initiator 发现 Target LUN</li>
+<li>在 Initiator 登陆 Target</li>
+<li>在 Initiator 可以看到共享设备</li>
+</ol></li>
+</ul>
+
+<pre><code>           symlink
+              +
+              |
+              v
+2nd name   name
+hardlink   hardlink
+    +         +
+    |         |
+    |         v
+    |      +--+--+
+    +-----&gt;+inode| Everything but name
+           +--+--+
+              |
+              |
+              v
+          +-------+
+          |1|2|3|4|
+          +-------+
+
+</code></pre>
+
+<pre><code>service:   +----------+      +----------+
+target     |----------|      |----+     |
+           ||sda||sdb||      ||sda|     | tool:
+tool:      +-------+--+      +----+     | iscsiadm
+targetcli  |       v  |      |          | lsscsi
+           |      LUN |      |          |
+           |          |      |          |
+           |    SAN   |      |          |
+           |          |      |          +----+
+           |Target    |      |Initiator ||sdb|
+           +----------+      +-----+---------+
+             TCP|3260              |
+                &lt;------------------+
+                      discovery    |
+                &lt;------------------+
+                      login
+
+</code></pre>
+
+<h2 id="share">Share</h2>
+
+<figure>
+    <img src="/img/blog/arts-42-per-week/spark.webp"/> <figcaption>
+            <h4>Spark MLib now and future</h4>
+        </figcaption>
+</figure>
+
+
+<p>拓展阅读：</p>
+
+<blockquote>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Comparison_of_file_systems">不完全文件系统对比表 (Comparison of file systems)</a></li>
+<li>btrfs 被 SUSE 使用了很长时间，为其用户提供了一些很特别的功能，比如 <a href="https://en.wikipedia.org/wiki/Btrfs#Subvolumes_and_snapshots">subvolume 和 snapshot</a> 。然而 Redhat 表示 RHEL 8 中会放弃 btrfs <a href="https://access.redhat.com/discussions/3138231">why redhat abandon btrfs where SUSE makes it default.?</a></li>
+<li><a href="https://www.thomas-krenn.com/en/wiki/ISCSI_Basics">ISCSI Basics</a></li>
+</ul>
+</blockquote>
+
+<p>封面图片来自 <a href="https://dribbble.com/shots/976148-Server">Server</a> <a href="https://dribbble.com/zht"><i class="fa fa-dribbble" aria-hidden="true"></i> Zhivko Terziivanov</a></p>
+         <div id="disqus_thread">
+  <a href="#" onclick="disqus();return false;"> 点击启用 Disqus 评论文章 <i class="fa fa-comments" aria-hidden="true"></i></a>
+</div>
+
+<script type="text/javascript">
+var disqus_loaded = false;
+function disqus() {
+  if (!disqus_loaded) {
+    
+    
+    
+    
+
+    disqus_loaded = true;
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'wushuzh';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }
+};
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </div>
+  </div>
+</div>
+<noscript>
+  <style>.jsonly { display: none }</style>
+</noscript>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://wushuzh.github.io/js/jquery.min.js"></script>
+<script src="https://wushuzh.github.io/js/bootstrap.min.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.cookie.js"> </script>
+<script src="https://wushuzh.github.io/js/ekko-lightbox.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://wushuzh.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/owl.carousel.min.js"></script>
+<script src="https://wushuzh.github.io/js/front.js"></script>
+
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</body>
+</html>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Bokeh on 小强会武术</title>
+    <title>bokeh on 小强会武术</title>
     <link>https://wushuzh.github.io/tags/bokeh/</link>
-    <description>Recent content in Bokeh on 小强会武术</description>
+    <description>Recent content in bokeh on 小强会武术</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Mon, 20 Nov 2017 21:02:10 +0800</lastBuildDate>
@@ -17,8 +17,7 @@
       <pubDate>Mon, 20 Nov 2017 21:02:10 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/11/20/try-bokeh-server/</guid>
-      <description>&lt;p&gt;用 Bokeh 服务器对可视化进行控制
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;用 Bokeh 服务器对可视化进行控制&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -27,8 +26,7 @@
       <pubDate>Tue, 31 Oct 2017 20:59:31 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/10/31/try-bokeh-with-flask/</guid>
-      <description>&lt;p&gt;使用 Python 生成交互式图表
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;使用 Python 生成交互式图表&lt;/p&gt;</description>
     </item>
     
   </channel>

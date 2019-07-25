@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Linux on 小强会武术</title>
+    <title>linux on 小强会武术</title>
     <link>https://wushuzh.github.io/tags/linux/</link>
-    <description>Recent content in Linux on 小强会武术</description>
+    <description>Recent content in linux on 小强会武术</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 04 Jun 2017 20:40:13 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 04 Mar 2019 20:10:31 +0800</lastBuildDate>
     
 	<atom:link href="https://wushuzh.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     
@@ -17,8 +17,7 @@
       <pubDate>Sun, 04 Jun 2017 20:40:13 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/06/04/syslog-std-in-general/</guid>
-      <description>&lt;p&gt;syslog 标准和常见工业实现
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;syslog 标准和常见工业实现&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -27,8 +26,7 @@
       <pubDate>Mon, 26 Jun 2017 22:31:22 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/06/26/deal-with-kernel-panic/</guid>
-      <description>&lt;p&gt;Kernel Panic 才能撑起&amp;rdquo;咋整&amp;rdquo;系列开篇的门面。
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;Kernel Panic 才能撑起&amp;rdquo;咋整&amp;rdquo;系列开篇的门面。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -37,8 +35,7 @@
       <pubDate>Thu, 29 Jun 2017 21:38:48 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/06/29/deal-with-violent-rm/</guid>
-      <description>&lt;p&gt;蛮力卸载后，啥都不能用了……
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;蛮力卸载后，啥都不能用了……&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -47,8 +44,7 @@
       <pubDate>Fri, 30 Jun 2017 19:19:19 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/06/30/deal-with-wired-errmsgs/</guid>
-      <description>&lt;p&gt;追踪本质，别被报错信息带歪了方向……
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;追踪本质，别被报错信息带歪了方向……&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -57,8 +53,7 @@
       <pubDate>Wed, 19 Jul 2017 18:45:13 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/07/19/deal-with-boot-failure/</guid>
-      <description>&lt;p&gt;记录下最近和启动、存储相关的修复处理。
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;记录下最近和启动、存储相关的修复处理。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -67,8 +62,7 @@
       <pubDate>Sat, 22 Jul 2017 20:14:43 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/07/22/deal-with-disk-error/</guid>
-      <description>&lt;p&gt;磁盘错误导致进入紧急模式，该如何恢复？
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;磁盘错误导致进入紧急模式，该如何恢复？&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -77,8 +71,7 @@
       <pubDate>Tue, 01 Aug 2017 19:12:33 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/08/01/deal-with-ks-failure1/</guid>
-      <description>&lt;p&gt;如何调查 RedHat 上失败的 Kickstart 安装？
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;如何调查 RedHat 上失败的 Kickstart 安装？&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -87,8 +80,7 @@
       <pubDate>Mon, 07 Aug 2017 19:18:15 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/08/07/deal-with-ks-failure2/</guid>
-      <description>&lt;p&gt;在搞不定而向他人求援时，该做些什么？
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;在搞不定而向他人求援时，该做些什么？&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -97,8 +89,7 @@
       <pubDate>Tue, 05 Sep 2017 22:50:33 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/09/05/deal-with-flood-logs/</guid>
-      <description>&lt;p&gt;如何过滤无用的系统日志……
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;如何过滤无用的系统日志……&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -107,8 +98,7 @@
       <pubDate>Thu, 01 Feb 2018 18:22:09 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2018/02/01/intro-linux-startup/</guid>
-      <description>&lt;p&gt;未完草稿——Linux 引导的关键步骤和相关工具简介
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;未完草稿——Linux 引导的关键步骤和相关工具简介&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -117,8 +107,7 @@
       <pubDate>Fri, 15 Sep 2017 20:55:02 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/09/15/mgnt-virenv-7-vagrant/</guid>
-      <description>&lt;p&gt;QEMU/KVM、Libvirt、Vagrant 的安装配置
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;QEMU/KVM、Libvirt、Vagrant 的安装配置&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -127,8 +116,25 @@
       <pubDate>Wed, 15 Aug 2018 19:33:04 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2018/08/15/arts-07-per-week/</guid>
-      <description>&lt;p&gt;利用参考实现进行测试，以关于比较优势的思考
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;利用参考实现进行测试，以关于比较优势的思考&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ARTS 2019w08</title>
+      <link>https://wushuzh.github.io/blog/2019/02/18/arts-35-per-week/</link>
+      <pubDate>Mon, 18 Feb 2019 16:41:16 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2019/02/18/arts-35-per-week/</guid>
+      <description>&lt;p&gt;linux 内存入门及一个 swap 优化案例&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ARTS 2019w10</title>
+      <link>https://wushuzh.github.io/blog/2019/03/04/arts-37-per-week/</link>
+      <pubDate>Mon, 04 Mar 2019 20:10:31 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2019/03/04/arts-37-per-week/</guid>
+      <description>&lt;p&gt;如何给定条件，做更多的推导判断&lt;/p&gt;</description>
     </item>
     
   </channel>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Bigdata on 小强会武术</title>
+    <title>bigdata on 小强会武术</title>
     <link>https://wushuzh.github.io/tags/bigdata/</link>
-    <description>Recent content in Bigdata on 小强会武术</description>
+    <description>Recent content in bigdata on 小强会武术</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Tue, 10 Jul 2018 22:59:17 +0800</lastBuildDate>
@@ -17,8 +17,7 @@
       <pubDate>Tue, 10 Jul 2018 22:59:17 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2018/07/10/arts-02-per-week/</guid>
-      <description>&lt;p&gt;如何模拟数据、以及大数据处理
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;如何模拟数据、以及大数据处理&lt;/p&gt;</description>
     </item>
     
   </channel>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>linkedlist on 小强会武术</title>
+    <link>https://wushuzh.github.io/tags/linkedlist/</link>
+    <description>Recent content in linkedlist on 小强会武术</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 15 Aug 2018 19:33:04 +0800</lastBuildDate>
+    
+	<atom:link href="https://wushuzh.github.io/tags/linkedlist/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>ARTS 2018w33</title>
+      <link>https://wushuzh.github.io/blog/2018/08/15/arts-07-per-week/</link>
+      <pubDate>Wed, 15 Aug 2018 19:33:04 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2018/08/15/arts-07-per-week/</guid>
+      <description>&lt;p&gt;利用参考实现进行测试，以关于比较优势的思考&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

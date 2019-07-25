@@ -30,7 +30,7 @@
 <link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
 
 
-<script>
+<script type="application/javascript">
 var doNotTrack = false;
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
@@ -93,8 +93,7 @@ if (!doNotTrack) {
       </div>
       <br />
 
-         <p>如何搭建 GitLab 以获得类似 GitHub 的服务
-</p>
+         <p>如何搭建 GitLab 以获得类似 GitHub 的服务</p>
 
 <h2 id="git-简介">Git 简介</h2>
 
@@ -132,95 +131,46 @@ if (!doNotTrack) {
 <li>另外，你还可以直接查看部署服务器的负荷的曲线图，回看总结本次“从产生想法到做最终部署”各阶段所用的时间</li>
 </ol>
 
-<p>
-<figure>
-    
-        <img src="/img/blog/setup-a-gitlab-ce-service/gitlab-pages.png" />
-    
-    
-    <figcaption>
-        <h4>GitLab Pages</h4>
-        
-    </figcaption>
-    
+<p><figure>
+    <img src="/img/blog/setup-a-gitlab-ce-service/gitlab-pages.png"/> <figcaption>
+            <h4>GitLab Pages</h4>
+        </figcaption>
 </figure>
 
-
 <figure>
-    
-        <img src="/img/blog/setup-a-gitlab-ce-service/gitlab-issues.png" />
-    
-    
-    <figcaption>
-        <h4>GitLab Issues</h4>
-        
-    </figcaption>
-    
+    <img src="/img/blog/setup-a-gitlab-ce-service/gitlab-issues.png"/> <figcaption>
+            <h4>GitLab Issues</h4>
+        </figcaption>
 </figure>
 
-
 <figure>
-    
-        <img src="/img/blog/setup-a-gitlab-ce-service/gitlab-issue-board.png" />
-    
-    
-    <figcaption>
-        <h4>GitLab Issues Board</h4>
-        
-    </figcaption>
-    
+    <img src="/img/blog/setup-a-gitlab-ce-service/gitlab-issue-board.png"/> <figcaption>
+            <h4>GitLab Issues Board</h4>
+        </figcaption>
 </figure>
 
-
 <figure>
-    
-        <img src="/img/blog/setup-a-gitlab-ce-service/gitlab-merge-conflicts.png" />
-    
-    
-    <figcaption>
-        <h4>GitLab Merge</h4>
-        
-    </figcaption>
-    
+    <img src="/img/blog/setup-a-gitlab-ce-service/gitlab-merge-conflicts.png"/> <figcaption>
+            <h4>GitLab Merge</h4>
+        </figcaption>
 </figure>
 
-
 <figure>
-    
-        <img src="/img/blog/setup-a-gitlab-ce-service/gitlab-review-apps.png" />
-    
-    
-    <figcaption>
-        <h4>GitLab Review</h4>
-        
-    </figcaption>
-    
+    <img src="/img/blog/setup-a-gitlab-ce-service/gitlab-review-apps.png"/> <figcaption>
+            <h4>GitLab Review</h4>
+        </figcaption>
 </figure>
 
-
 <figure>
-    
-        <img src="/img/blog/setup-a-gitlab-ce-service/gitlab-pipelines.png" />
-    
-    
-    <figcaption>
-        <h4>GitLab Pipeline</h4>
-        
-    </figcaption>
-    
+    <img src="/img/blog/setup-a-gitlab-ce-service/gitlab-pipelines.png"/> <figcaption>
+            <h4>GitLab Pipeline</h4>
+        </figcaption>
 </figure>
 
-
 <figure>
-    
-        <img src="/img/blog/setup-a-gitlab-ce-service/gitlab-cycle-analytics.png" />
-    
-    
-    <figcaption>
-        <h4>GitLab Analysis</h4>
-        
-    </figcaption>
-    
+    <img src="/img/blog/setup-a-gitlab-ce-service/gitlab-cycle-analytics.png"/> <figcaption>
+            <h4>GitLab Analysis</h4>
+        </figcaption>
 </figure>
 </p>
 
@@ -230,17 +180,10 @@ if (!doNotTrack) {
 
 <p>网上普遍都是<a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-gitlab-on-ubuntu-16-04">基于 Ubuntu 的安装指南</a>，那就按照最普遍的系统进行实践：</p>
 
-
 <figure>
-    
-        <img src="/img/blog/setup-a-gitlab-ce-service/ubuntu-16-04-xenial-xerus-squirrel.jpg" />
-    
-    
-    <figcaption>
-        <h4>Ubuntu 1604 LTS</h4>
-        
-    </figcaption>
-    
+    <img src="/img/blog/setup-a-gitlab-ce-service/ubuntu-16-04-xenial-xerus-squirrel.jpg"/> <figcaption>
+            <h4>Ubuntu 1604 LTS</h4>
+        </figcaption>
 </figure>
 
 
@@ -281,17 +224,10 @@ if (!doNotTrack) {
 
 <p>文中图片来源网络
 GitLab 吉祥物是一个抽象的 “貉”/“狸”脸，但我觉的如果能请来 Megan Fox 为其代言，一定会大获成功
-
 <figure>
-    
-        <img src="/img/blog/setup-a-gitlab-ce-service/megan-fox.jpg" />
-    
-    
-    <figcaption>
-        <h4>Megan Fox</h4>
-        
-    </figcaption>
-    
+    <img src="/img/blog/setup-a-gitlab-ce-service/megan-fox.jpg"/> <figcaption>
+            <h4>Megan Fox</h4>
+        </figcaption>
 </figure>
 </p>
          <div id="disqus_thread">

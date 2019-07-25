@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Union-Find on 小强会武术</title>
+    <link>https://wushuzh.github.io/tags/union-find/</link>
+    <description>Recent content in Union-Find on 小强会武术</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 10 Jun 2019 13:50:54 +0800</lastBuildDate>
+    
+	<atom:link href="https://wushuzh.github.io/tags/union-find/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>ARTS 2019w24</title>
+      <link>https://wushuzh.github.io/blog/2019/06/10/arts-51-per-week/</link>
+      <pubDate>Mon, 10 Jun 2019 13:50:54 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2019/06/10/arts-51-per-week/</guid>
+      <description>&lt;p&gt;提高学习效率，少做无用功的一些技巧&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

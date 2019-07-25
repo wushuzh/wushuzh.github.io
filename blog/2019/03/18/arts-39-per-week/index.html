@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>ARTS 2019w12</title>
+<meta name="description" content="个人技术站点">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.theme.css">
+
+
+  <link href="https://wushuzh.github.io/css/style.sea.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://wushuzh.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-102509506-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              
+              
+<div class="col-xs-12 col-sm-12 col-md-12 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="https://wushuzh.github.io/">小强会武术</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-10 col-lg-offset-1">
+      <div class="content-column-content">
+      
+      <div class="row">
+        <div class="col-sm-4">
+          
+            <div class="image">
+              <img src="https://wushuzh.github.io//img/blog/arts-39-per-week/overload.gif" class="img-responsive" alt="">
+            </div>
+          
+        </div>
+        <div class="col-md-6">
+            <h2>ARTS 2019w12</h2>
+                <p>
+                  <i class="fa fa-share-square-o fa-fw"></i><a href="/"> 小强会武术</a>
+                </p>
+
+                <p>
+                <time datetime="2019-03-18 19:32:29 &#43;0800 CST">
+                <i class="fa fa-calendar-o fa-fw"></i> 2019-03-18
+                </time>
+                &middot;
+                1138 字
+                &middot;
+                3 分钟
+                </p>
+
+                
+                <p>
+                  <i class="fa fa-tags fa-fw" aria-hidden="true"></i>
+                  <a href="/tags/arts">ARTS</a>
+                </p>
+                
+
+        </div>
+      </div>
+      <br />
+
+         <p>使用并查集，找寻无向图中冗余的连接</p>
+
+<h2 id="algorithm">Algorithm</h2>
+
+<p><a href="https://leetcode.com/problems/redundant-connection/">leetcode #684 Redundant Connection</a>：给定一组连接关系（连接无方向），去除其中的冗余连接，使得最终图形不会形成<a href="https://en.wikipedia.org/wiki/Cycle_(graph_theory)">环(回路)</a></p>
+
+<p>本题用 Union-Find 数据结构解决，主要思路是按给定顺序在 UF 数据结构中做链接，当此次连接操作无效——没有连接未知节点，即找到了冗余连接。</p>
+
+<p>此题首先注意：</p>
+
+<ul>
+<li>节点 id 题目中已经给定，是从 1 到 n —— 这样数组的索引就不能直接作为节点 id，考虑用更加直接的 dict 数据结构；</li>
+<li>union 操作的返回值设定为布尔型，表示此次链接是否真正做了链接；</li>
+</ul>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">find_redundant_conn_by_union_find</span>(edges: List[List[int]]) <span style="color:#f92672">-&gt;</span> List[int]:
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>    uf <span style="color:#f92672">=</span> UnionFind(len(edges))
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>    <span style="color:#66d9ef">for</span> a, b <span style="color:#f92672">in</span> edges:
+<span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> uf<span style="color:#f92672">.</span>union(a, b):
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span>            <span style="color:#66d9ef">return</span> [a, b]</code></pre></div>
+
+<h2 id="review">Review</h2>
+
+<p><a href="https://engineering.grab.com/structured-logging">Structured Logging: The Best Friend You’ll Want When Things Go Wrong</a> ：讲述了 Grab 从开始直接使用第三方的 SaaS 日志存储服务，到后来开发自己的日志库，使用 Elastic Stack 作为存储后端，实现了更丰富的查询，更灵活的配置，更精准的复原追踪的历程。</p>
+
+<figure>
+    <img src="/img/blog/arts-39-per-week/grab-log.jpg"/> <figcaption>
+            <h4>Grab log</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="tip">Tip</h2>
+
+<p>两个有业务关联的组：财务(account)和销售(sales)</p>
+
+<ol>
+<li>各自组内的人员应该都有查阅，修改，删除的权限，特别是组内人员创建的文件显示组别应该是组名: GUID实现；</li>
+<li>跨组人员应该有查阅权限: ACL实现；</li>
+</ol>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 0. setup env</span>
+<span style="color:#75715e"># add 4 users with supplementary 2 groups</span> 
+groupadd account
+useradd -G account adams
+useradd -G account abcd
+
+groupadd sales
+useradd -G sales sams
+useradd -G sales stevens
+
+<span style="color:#75715e"># setup share folder</span>
+mkdir -p /data/<span style="color:#f92672">{</span>account,sales<span style="color:#f92672">}</span>
+chmod <span style="color:#ae81ff">770</span> /data/*
+chgrp account /data/account
+chgrp sales /data/sales
+
+ls -l /data/*
+<span style="color:#f92672">||</span> drwxrwx---  <span style="color:#ae81ff">2</span> root sales   <span style="color:#ae81ff">4096</span> Jul <span style="color:#ae81ff">18</span> <span style="color:#ae81ff">09</span>:18 sales
+<span style="color:#f92672">||</span> drwxrwx---  <span style="color:#ae81ff">2</span> root account <span style="color:#ae81ff">4096</span> Jul <span style="color:#ae81ff">18</span> <span style="color:#ae81ff">09</span>:18 account
+
+<span style="color:#75715e"># 1. group member cannot modify each other files</span>
+su - stevens -c <span style="color:#e6db74">&#34;touch /data/sales/stevens_file&#34;</span>
+su - stevens -c <span style="color:#e6db74">&#34;ls -l /data/sales/stevens_file&#34;</span>
+<span style="color:#f92672">||</span> -rw-rw-r-- <span style="color:#ae81ff">1</span> stevens stevens <span style="color:#ae81ff">8</span> Jul <span style="color:#ae81ff">18</span> <span style="color:#ae81ff">09</span>:19 /data/sales/stevens_file
+su - sams -c <span style="color:#e6db74">&#34;echo sams &gt; /data/sales/stevens_file&#34;</span>
+<span style="color:#f92672">||</span> -bash: /data/sales/stevens_file: Permission denied
+
+<span style="color:#75715e"># fix by setGID: change default group of new file as same as folder group</span>
+chmod g+s /data/*
+su - sams -c <span style="color:#e6db74">&#34;echo sams &gt; /data/sales/sams_file&#34;</span>
+su - sams -c <span style="color:#e6db74">&#34;ls -l /data/sales/sams_file&#34;</span>
+<span style="color:#f92672">||</span> -rw-rw-r-- <span style="color:#ae81ff">1</span> sams sales <span style="color:#ae81ff">5</span> Jul <span style="color:#ae81ff">18</span> <span style="color:#ae81ff">09</span>:51 /data/sales/sams_file
+su - stevens -c <span style="color:#e6db74">&#34;echo stevens &gt;&gt; /data/sales/sams_file&#34;</span>
+<span style="color:#75715e"># write successfully</span>
+
+<span style="color:#75715e"># 2. But account group members cannot read sales team files</span>
+su - abcd -c <span style="color:#e6db74">&#34;cat /data/sales/stevens_file&#34;</span>
+<span style="color:#f92672">||</span> cat: /data/sales/stevens_file: Permission denied
+
+<span style="color:#75715e"># fixed by ACL add account group for sales folder</span>
+setfacl -m g:account:rx /data/sales
+getfacl /data/sales
+<span style="color:#f92672">||</span> <span style="color:#75715e"># file: sales</span>
+<span style="color:#f92672">||</span> <span style="color:#75715e"># owner: root</span>
+<span style="color:#f92672">||</span> <span style="color:#75715e"># group: sales</span>
+<span style="color:#f92672">||</span> <span style="color:#75715e"># flags: -s-</span>
+<span style="color:#f92672">||</span> user::rwx
+<span style="color:#f92672">||</span> group::rwx
+<span style="color:#f92672">||</span> group:account:r-x
+<span style="color:#f92672">||</span> mask::rwx
+<span style="color:#f92672">||</span> other::---
+su - abcd -c <span style="color:#e6db74">&#34;cat /data/sales/stevens_file&#34;</span>
+<span style="color:#f92672">||</span> sams
+<span style="color:#f92672">||</span> stevens</code></pre></div>
+
+<h2 id="share">Share</h2>
+
+<p><a href="https://youtu.be/mF6J-VQHPxA">Intro to SSH and SSH Keys</a> 是一个介绍 SSH KEY 的视频。</p>
+
+<figure>
+    <img src="/img/blog/arts-39-per-week/ssh-host-and-user-key.jpg"/> <figcaption>
+            <h4>SSH KEYS</h4>
+        </figcaption>
+</figure>
+
+
+<p>SSH Key 用于标识服务器</p>
+
+<ul>
+<li>任何一台服务器上的 SSHD 服务都要生成自己专属的 Server key (一对，公钥+私钥)用于辨识自己 <code>/etc/ssh/ssh_host_&lt;rsa&gt;_key[.pub]</code>和传输数据的加密；</li>
+<li>客户端首次连接服务器时，服务器会被要求传输公钥到客户端，客户端 ssh 连接工具从中提取出相应的 fingerprint 要求客户端确认这是自己希望连接的服务器；</li>
+<li>正规流程时我们联系管理员，提供 fingerprint 要求确认这台服务器可信，将其保存到客户端 <code>/etc/ssh/known_hosts</code> 及 <code>$HOME/.ssh/known_hosts</code> 里</li>
+</ul>
+
+<p>SSH Key 用于标识用户</p>
+
+<ul>
+<li>用户在本地生成一对自己的专属 User Key （一对，公钥+私钥）<code>$HOME/.ssh/id_ras[.pub]</code>;</li>
+<li>用户如果能够在对端服务器上添加自己的公钥到 <code>~/.ssh/authorized_keys</code> ，比如 <code>ssh-copy-id</code>，就可以实现自动登陆；</li>
+</ul>
+
+<p>日常使用不规范的操作：</p>
+
+<ol>
+<li>我们首次连接服务器时，很少去找管理员核实；</li>
+<li>没有专门用户保存 ssh key inventory；</li>
+<li>ssh key 不设轮换机制；</li>
+<li>很久以前通过不强壮算法生成的 key 大量存在；</li>
+<li>缺少管理，即使离职员工仍可以通过 key 访问系统，然后通过中转登陆更多系统；</li>
+</ol>
+
+<p>封面图片来自 <a href="https://dribbble.com/shots/3418553-Guidline-Overload">Guidline Overload</a> <a href="https://dribbble.com/Tmotion"><i class="fa fa-dribbble" aria-hidden="true"></i> Tigran Manukyan</a></p>
+         <div id="disqus_thread">
+  <a href="#" onclick="disqus();return false;"> 点击启用 Disqus 评论文章 <i class="fa fa-comments" aria-hidden="true"></i></a>
+</div>
+
+<script type="text/javascript">
+var disqus_loaded = false;
+function disqus() {
+  if (!disqus_loaded) {
+    
+    
+    
+    
+
+    disqus_loaded = true;
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'wushuzh';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }
+};
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </div>
+  </div>
+</div>
+<noscript>
+  <style>.jsonly { display: none }</style>
+</noscript>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://wushuzh.github.io/js/jquery.min.js"></script>
+<script src="https://wushuzh.github.io/js/bootstrap.min.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.cookie.js"> </script>
+<script src="https://wushuzh.github.io/js/ekko-lightbox.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://wushuzh.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/owl.carousel.min.js"></script>
+<script src="https://wushuzh.github.io/js/front.js"></script>
+
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</body>
+</html>

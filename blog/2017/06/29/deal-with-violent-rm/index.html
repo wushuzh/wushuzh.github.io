@@ -30,7 +30,7 @@
 <link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
 
 
-<script>
+<script type="application/javascript">
 var doNotTrack = false;
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
@@ -93,8 +93,7 @@ if (!doNotTrack) {
       </div>
       <br />
 
-         <p>蛮力卸载后，啥都不能用了……
-</p>
+         <p>蛮力卸载后，啥都不能用了……</p>
 
 <h2 id="问题背景">问题背景</h2>
 
@@ -103,7 +102,7 @@ if (!doNotTrack) {
 <p>通过 MDN 快速了解一下这个核心库：
 基本上所有和因特网安全的标准协议都离不开这个库，平时大家常用的一些集成、依赖此库的产品有 Firefox , Thunderbird , Pidgin , 开源Office , RedHat Apache SSL module , Oracle Java System 旗下的各种产品。</p>
 
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rpm -qi nss # get metadata of a installed pkg</code></pre></div>
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rpm -qi nss <span style="color:#75715e"># get metadata of a installed pkg</span></code></pre></div>
 <br /></p>
 
 <h2 id="问题重现">问题重现</h2>
@@ -150,8 +149,8 @@ virt-copy-in -d guestvm srcfile-on-host targt-vm-path</code></pre></div>
 <p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo virt-ls -l -d guestvm /usr/lib64/ |wc -l
 sudo virt-ls -l -d guestvm /usr/lib64/libnss3.so
 sudo virt-copy-in -d guestvm /tmp/libnss3.so /usr/lib64/
-virsh console guestvm <span style="color:#75715e"># to exec yum install nss
-</span><span style="color:#75715e"></span>rpm --root /mnt/sysimage nss</code></pre></div>
+virsh console guestvm <span style="color:#75715e"># to exec yum install nss</span>
+rpm --root /mnt/sysimage nss</code></pre></div>
 <br /></p>
 
 <h2 id="经验总结">经验总结</h2>

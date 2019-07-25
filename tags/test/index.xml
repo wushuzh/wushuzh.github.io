@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Test on 小强会武术</title>
+    <title>test on 小强会武术</title>
     <link>https://wushuzh.github.io/tags/test/</link>
-    <description>Recent content in Test on 小强会武术</description>
+    <description>Recent content in test on 小强会武术</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 01 Jul 2018 22:13:07 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 01 Aug 2018 23:05:11 +0800</lastBuildDate>
     
 	<atom:link href="https://wushuzh.github.io/tags/test/index.xml" rel="self" type="application/rss+xml" />
     
@@ -17,8 +17,7 @@
       <pubDate>Sun, 01 Jul 2018 22:13:07 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2018/07/01/head-first-cucumber/</guid>
-      <description>&lt;p&gt;使用&lt;a href=&#34;https://en.wikipedia.org/wiki/Domain-specific_language&#34;&gt;业务术语&lt;/a&gt;定义测试产品行为
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;使用&lt;a href=&#34;https://en.wikipedia.org/wiki/Domain-specific_language&#34;&gt;业务术语&lt;/a&gt;定义测试产品行为&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -27,8 +26,7 @@
       <pubDate>Wed, 01 Aug 2018 23:05:11 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2018/08/01/arts-05-per-week/</guid>
-      <description>&lt;p&gt;找一个“杠精”帮助你设计、执行测试
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;找一个“杠精”帮助你设计、执行测试&lt;/p&gt;</description>
     </item>
     
   </channel>

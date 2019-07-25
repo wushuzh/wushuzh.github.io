@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Git on 小强会武术</title>
+    <title>git on 小强会武术</title>
     <link>https://wushuzh.github.io/tags/git/</link>
-    <description>Recent content in Git on 小强会武术</description>
+    <description>Recent content in git on 小强会武术</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 06 Aug 2017 16:12:21 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 08 Nov 2017 20:11:49 +0800</lastBuildDate>
     
 	<atom:link href="https://wushuzh.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
     
@@ -17,8 +17,7 @@
       <pubDate>Sun, 06 Aug 2017 16:12:21 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/08/06/migrate-svn-to-git/</guid>
-      <description>&lt;p&gt;以下实施过程和命令，亲测有效，供参考
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;以下实施过程和命令，亲测有效，供参考&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -27,8 +26,7 @@
       <pubDate>Sun, 18 Jun 2017 21:18:51 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/06/18/setup-a-gitlab-ce-service/</guid>
-      <description>&lt;p&gt;如何搭建 GitLab 以获得类似 GitHub 的服务
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;如何搭建 GitLab 以获得类似 GitHub 的服务&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -37,8 +35,7 @@
       <pubDate>Wed, 08 Nov 2017 20:11:49 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/11/08/setup-git-env/</guid>
-      <description>&lt;p&gt;简单介绍 git 入門向导和协作流程
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;简单介绍 git 入門向导和协作流程&lt;/p&gt;</description>
     </item>
     
   </channel>

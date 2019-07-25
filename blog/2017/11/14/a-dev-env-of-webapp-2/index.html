@@ -30,7 +30,7 @@
 <link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
 
 
-<script>
+<script type="application/javascript">
 var doNotTrack = false;
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
@@ -93,8 +93,7 @@ if (!doNotTrack) {
       </div>
       <br />
 
-         <p>集成容器数据库，为应用创建测试集
-</p>
+         <p>集成容器数据库，为应用创建测试集</p>
 
 <p>本系列是 <a href="https://testdriven.io/">Microservices with Docker, Flask, and React</a> 我的实践版——只要能达到相同效果，我会尝试替换更新原教程中的工具，升级版本，并简述填过或待填的坑。</p>
 
@@ -121,7 +120,7 @@ index 0000000..dc1815a
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">+CREATE DATABASE users_prod;
 </span><span style="color:#a6e22e">+CREATE DATABASE users_dev;
 </span><span style="color:#a6e22e">+CREATE DATABASE users_test;
-</span><span style="color:#a6e22e"></span></code></pre></div>
+</span></code></pre></div>
 
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ cd db 
 $ docker build -t users-db .</code></pre></div>
@@ -164,7 +163,7 @@ index 2369320..51972f9 100644
 </span><span style="color:#a6e22e">+        links:
 </span><span style="color:#a6e22e">+            - users-db
 </span><span style="color:#a6e22e">+
-</span><span style="color:#a6e22e"></span></code></pre></div>
+</span></code></pre></div>
 <br /></p>
 
 <h3 id="model-层">Model 层</h3>
@@ -231,7 +230,7 @@ index 45cd669..1f4d324 100644
          &#39;message&#39;: &#39;pong!&#39;
      })
 <span style="color:#a6e22e">+
-</span><span style="color:#a6e22e"></span></code></pre></div>
+</span></code></pre></div>
 
 <p>重新打包最新 users-service 的镜像，启动各个服务，查看相关日志，并在 users-service 容器中执行重建库表的指令。</p>
 
@@ -348,7 +347,7 @@ users_dev=# \q</code></pre></div>
 <p>我不得不在每次代码改动后都通过 docker cli 单独编译 image ，其实如果 bind mount 可以工作，是可以直接先行测试结果的。而且 docker-compose 也可以帮助编译，但我的 compose 中 build 选项却一直注释掉，主要是因为 image 安装新的软件包在出入编译时环境变量 (https_proxy) ，但 build 和 &ndash;build-arg 一切使用必须明确制定 service 名字，结果是 image 的名字被强行加入 project 前缀</p>
 </blockquote>
 
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ docker build -t users-service --build-arg https_proxy=ip:port .
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ docker build -t users-service --build-arg https_proxy=ip:port .
 ...
 # restart won&#39;t take new built image into account
 $ docker-compose down 
@@ -365,7 +364,7 @@ Ensure the /ping route behaves correctly. ... ok
 ----------------------------------------------------------------------
 Ran 4 tests in 0.349s
 
-OK</code></pre></div></p>
+OK</code></pre></div>
 
 <p>参考文档</p>
 

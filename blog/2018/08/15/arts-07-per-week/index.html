@@ -30,7 +30,7 @@
 <link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
 
 
-<script>
+<script type="application/javascript">
 var doNotTrack = false;
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
@@ -77,7 +77,7 @@ if (!doNotTrack) {
                 <i class="fa fa-calendar-o fa-fw"></i> 2018-08-15
                 </time>
                 &middot;
-                2330 字
+                2396 字
                 &middot;
                 5 分钟
                 </p>
@@ -85,7 +85,7 @@ if (!doNotTrack) {
                 
                 <p>
                   <i class="fa fa-tags fa-fw" aria-hidden="true"></i>
-                  <a href="/tags/arts">ARTS</a> &nbsp;&nbsp; <a href="/tags/linux">linux</a> &nbsp;&nbsp; <a href="/tags/tools">tools</a>
+                  <a href="/tags/arts">ARTS</a> &nbsp;&nbsp; <a href="/tags/linux">linux</a> &nbsp;&nbsp; <a href="/tags/tools">tools</a> &nbsp;&nbsp; <a href="/tags/linkedlist">linkedlist</a>
                 </p>
                 
 
@@ -93,12 +93,15 @@ if (!doNotTrack) {
       </div>
       <br />
 
-         <p>利用参考实现进行测试，以关于比较优势的思考
-</p>
+         <p>利用参考实现进行测试，以关于比较优势的思考</p>
 
 <h2 id="algorithm">Algorithm</h2>
 
-<p>本周 leetcode 题目 <a href="https://leetcode.com/problems/add-two-numbers/description/">2. Add Two Numbers</a>，本质上这道题目就是实现一个正整数的加法。</p>
+<p>本周 leetcode 题目 <a href="https://leetcode.com/problems/add-two-numbers/description/">2. Add Two Numbers</a>，两个“加数”和它们之“和”都存在链表数据结构中——链表头部为最低位，尾部为最高位——本质上这道题目就是实现一个正整数的<a href="https://en.wikipedia.org/wiki/Addition">加法</a>。</p>
+
+<p>Input: (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br />
+Output: 7 -&gt; 0 -&gt; 8<br />
+Explanation: 342 + 465 = 807</p>
 
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add_two_numbers_v1</span>(l1: ListNode, l2: ListNode) <span style="color:#f92672">-&gt;</span> ListNode:
     carry <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
@@ -125,15 +128,15 @@ if (!doNotTrack) {
 <li>第4、5、8行的 <code>afewlls</code> 的用法值得注意: 和<a href="https://python-3-patterns-idioms-test.readthedocs.io/en/latest/Comprehensions.html">Comprehensions相关</a></li>
 </ol>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">1</span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add_two_numbers_v2</span>(<span style="color:#f92672">*</span>afewlls):
-<span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">2</span>    dummy <span style="color:#f92672">=</span> n <span style="color:#f92672">=</span> ListNode(<span style="color:#e6db74">&#34;dummy&#34;</span>)
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">3</span>    carry <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
-<span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">4</span>    <span style="color:#66d9ef">while</span> afewlls <span style="color:#f92672">or</span> carry:
-</span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">5</span>        carry <span style="color:#f92672">+=</span> sum(a<span style="color:#f92672">.</span>val <span style="color:#66d9ef">for</span> a <span style="color:#f92672">in</span> afewlls)
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">6</span>        carry, val <span style="color:#f92672">=</span> divmod(carry, <span style="color:#ae81ff">10</span>)
-<span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">7</span>        n<span style="color:#f92672">.</span>next <span style="color:#f92672">=</span> n <span style="color:#f92672">=</span> ListNode(val)
-</span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">8</span>        afewlls <span style="color:#f92672">=</span> [a<span style="color:#f92672">.</span>next <span style="color:#66d9ef">for</span> a <span style="color:#f92672">in</span> afewlls <span style="color:#66d9ef">if</span> a<span style="color:#f92672">.</span>next]
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">9</span>    <span style="color:#66d9ef">return</span> dummy<span style="color:#f92672">.</span>next</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add_two_numbers_v2</span>(<span style="color:#f92672">*</span>afewlls):
+<span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>    dummy <span style="color:#f92672">=</span> n <span style="color:#f92672">=</span> ListNode(<span style="color:#e6db74">&#34;dummy&#34;</span>)
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>    carry <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+<span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span>    <span style="color:#66d9ef">while</span> afewlls <span style="color:#f92672">or</span> carry:
+</span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span>        carry <span style="color:#f92672">+=</span> sum(a<span style="color:#f92672">.</span>val <span style="color:#66d9ef">for</span> a <span style="color:#f92672">in</span> afewlls)
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span>        carry, val <span style="color:#f92672">=</span> divmod(carry, <span style="color:#ae81ff">10</span>)
+<span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span>        n<span style="color:#f92672">.</span>next <span style="color:#f92672">=</span> n <span style="color:#f92672">=</span> ListNode(val)
+</span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span>        afewlls <span style="color:#f92672">=</span> [a<span style="color:#f92672">.</span>next <span style="color:#66d9ef">for</span> a <span style="color:#f92672">in</span> afewlls <span style="color:#66d9ef">if</span> a<span style="color:#f92672">.</span>next]
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9</span>    <span style="color:#66d9ef">return</span> dummy<span style="color:#f92672">.</span>next</code></pre></div>
 
 <p>TODO:</p>
 
@@ -168,7 +171,7 @@ if (!doNotTrack) {
     <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">tolist</span>(n):
         node <span style="color:#f92672">=</span> ListNode(n <span style="color:#f92672">%</span> <span style="color:#ae81ff">10</span>)
         <span style="color:#66d9ef">if</span> n <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">9</span>:
-            node<span style="color:#f92672">.</span>next <span style="color:#f92672">=</span> tolist(n <span style="color:#f92672">/</span> <span style="color:#ae81ff">10</span>)
+            node<span style="color:#f92672">.</span>next <span style="color:#f92672">=</span> tolist(n <span style="color:#f92672">//</span> <span style="color:#ae81ff">10</span>)
         <span style="color:#66d9ef">return</span> node
     <span style="color:#66d9ef">return</span> tolist(toint(l1) <span style="color:#f92672">+</span> toint(l2))</code></pre></div>
 
@@ -176,17 +179,10 @@ if (!doNotTrack) {
 
 <p>读了一下 Uber 博客 (2018-04-19) Danny Iland, Andrew Irish, Upamanyu Madhow and Brian Sandler <a href="https://eng.uber.com/rethinking-gps/">Rethinking GPS: Engineering Next-Gen Location at Uber</a></p>
 
-
 <figure>
-    
-        <img src="/img/blog/arts-07-per-week/gps.jpg" />
-    
-    
-    <figcaption>
-        <h4>Uber GPS Sketchnote</h4>
-        
-    </figcaption>
-    
+    <img src="/img/blog/arts-07-per-week/gps.jpg"/> <figcaption>
+            <h4>Uber GPS Sketchnote</h4>
+        </figcaption>
 </figure>
 
 
@@ -210,8 +206,8 @@ if (!doNotTrack) {
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt install python3 python3-pip
 
 pip3 install --user pipenv
-<span style="color:#75715e"># https://github.com/pypa/pipenv/issues/2122#issuecomment-386207878
-</span><span style="color:#75715e"></span>echo <span style="color:#e6db74">&#39;export PATH=&#34;${HOME}/.local/bin:$PATH&#34;&#39;</span> &gt;&gt; ~/.profile
+<span style="color:#75715e"># https://github.com/pypa/pipenv/issues/2122#issuecomment-386207878</span>
+echo <span style="color:#e6db74">&#39;export PATH=&#34;${HOME}/.local/bin:$PATH&#34;&#39;</span> &gt;&gt; ~/.profile
 pip3 install --user termtosvg</code></pre></div>
 
 <p>下面是使用 termtosvg 录制的执行本周 leetcode 测试的操作:</p>

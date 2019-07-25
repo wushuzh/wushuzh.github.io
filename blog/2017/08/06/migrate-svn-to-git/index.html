@@ -30,7 +30,7 @@
 <link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
 
 
-<script>
+<script type="application/javascript">
 var doNotTrack = false;
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
@@ -93,8 +93,7 @@ if (!doNotTrack) {
       </div>
       <br />
 
-         <p>以下实施过程和命令，亲测有效，供参考
-</p>
+         <p>以下实施过程和命令，亲测有效，供参考</p>
 
 <p>本篇作为  “<a href="https://wushuzh.github.io/blog/2017/06/15/migrate-svn-repo-data/">SVN 数据迁移</a>” 的续篇，讨论将 svn 代码仓库的异构迁移：即从 SVN 全面转到 Git</p>
 
@@ -145,7 +144,7 @@ if (!doNotTrack) {
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">java -jar ~/svn-migration-scripts.jar verify
 java -jar ~/svn-migration-scripts.jar authors <span style="color:#ae81ff">\</span>
     &lt;svn-repo&gt;/&lt;project&gt; &gt; authors.txt
-# edit authors.txt with git account and email addr</code></pre></div>
+<span style="color:#75715e"># edit authors.txt with git account and email addr</span></code></pre></div>
 
 <hr />
 
@@ -162,20 +161,20 @@ git svn clone --prefix=&#34;&#34; --stdlayout --authors-file=authors.txt
     &lt;svn-repo&gt;/&lt;project&gt; &lt;git-repo-name&gt;</code></pre></div>
 
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd &lt;git-repo-name&gt;
-<span style="color:#75715e"># only remote branches are available, check by git branch -r
-</span><span style="color:#75715e"># dry run vs for real
-</span><span style="color:#75715e"></span>java -Dfile.encoding<span style="color:#f92672">=</span>utf-8 -jar ~/svn-migration-scripts.jar <span style="color:#ae81ff">\</span>
+<span style="color:#75715e"># only remote branches are available, check by git branch -r</span>
+<span style="color:#75715e"># dry run vs for real</span>
+java -Dfile.encoding<span style="color:#f92672">=</span>utf-8 -jar ~/svn-migration-scripts.jar <span style="color:#ae81ff">\</span>
         clean-git
 java -Dfile.encoding<span style="color:#f92672">=</span>utf-8 -jar ~/svn-migration-scripts.jar <span style="color:#ae81ff">\</span>
         clean-git --force
-# check again with git branch without options r</code></pre></div>
+<span style="color:#75715e"># check again with git branch without options r</span></code></pre></div>
 
 <hr />
 
 <h3 id="再次-3">再次 3</h3>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># keep sync with latest svn changes
-</span><span style="color:#75715e"></span>git svn fetch
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># keep sync with latest svn changes</span>
+git svn fetch
 java -Dfile.encoding<span style="color:#f92672">=</span>utf-8 -jar ~/svn-migration-scripts.jar <span style="color:#ae81ff">\</span>
         sync-rebase
 java -Dfile.encoding<span style="color:#f92672">=</span>utf-8 -jar ~/svn-migration-scripts.jar <span style="color:#ae81ff">\</span>
@@ -185,15 +184,15 @@ java -Dfile.encoding<span style="color:#f92672">=</span>utf-8 -jar ~/svn-migrati
 
 <h3 id="然后-4">然后 4</h3>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># after the remote shared git repo is created, do following
-</span><span style="color:#75715e"></span>git remote add origin https://&lt;user&gt;@host/.../&lt;repo&gt;.git
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># after the remote shared git repo is created, do following</span>
+git remote add origin https://&lt;user&gt;@host/.../&lt;repo&gt;.git
 git push -u origin --all
-<span style="color:#75715e"># git push --set-upstream origin master -f
-</span><span style="color:#75715e"></span>git push --tags
+<span style="color:#75715e"># git push --set-upstream origin master -f</span>
+git push --tags
 
-<span style="color:#75715e"># grant the access rights for team members
-</span><span style="color:#75715e">#   and how they get their own local copy of shared repo
-</span><span style="color:#75715e"></span>git clone https://&lt;user&gt;@host/.../&lt;project&gt;.git &lt;localdest&gt;</code></pre></div>
+<span style="color:#75715e"># grant the access rights for team members</span>
+<span style="color:#75715e">#   and how they get their own local copy of shared repo</span>
+git clone https://&lt;user&gt;@host/.../&lt;project&gt;.git &lt;localdest&gt;</code></pre></div>
 
 <hr />
 

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>GitLab 数据迁移</title>
+<meta name="description" content="个人技术站点">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.theme.css">
+
+
+  <link href="https://wushuzh.github.io/css/style.sea.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://wushuzh.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-102509506-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              
+              
+<div class="col-xs-12 col-sm-12 col-md-12 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="https://wushuzh.github.io/">小强会武术</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-10 col-lg-offset-1">
+      <div class="content-column-content">
+      
+      <div class="row">
+        <div class="col-sm-4">
+          
+            <div class="image">
+              <img src="https://wushuzh.github.io//img/blog/migrate-git-repo-data/tran-between-pc.gif" class="img-responsive" alt="">
+            </div>
+          
+        </div>
+        <div class="col-md-6">
+            <h2>GitLab 数据迁移</h2>
+                <p>
+                  <i class="fa fa-share-square-o fa-fw"></i><a href="/"> 小强会武术</a>
+                </p>
+
+                <p>
+                <time datetime="2017-06-20 22:17:17 &#43;0800 CST">
+                <i class="fa fa-calendar-o fa-fw"></i> 2017-06-20
+                </time>
+                &middot;
+                1251 字
+                &middot;
+                3 分钟
+                </p>
+
+                
+
+        </div>
+      </div>
+      <br />
+
+         <p>迁移过程同样亲测有效，供参考</p>
+
+<p>之前从 digital ocean 申请的 VPS ，网络代理的使用感受是无论是使用日本还是新加坡的数据中心，网络代理的质量都非常差。</p>
+
+<p>记得之前有人提到过 linode 从联通北京到日本的网络质量更有保证，之前 gitlab 数据备份时，经常因为内存不够，导致备份失败（需要重启各种重试），而这次比较了两家相同价位的机器，linode 居然内存更多，终于坚定了我迁移的决心。</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">root@mydo:/tmp# gitlab-rake gitlab:backup:create
+rake aborted!
+Errno::ENOMEM: Cannot allocate memory - whoami
+/opt/gitlab/embedded/service/gitlab-rails/lib/gitlab/popen.rb:23:in `popen&#39;
+/opt/gitlab/embedded/service/gitlab-rails/lib/tasks/gitlab/task_helpers.rake:73:in `run&#39;
+/opt/gitlab/embedded/service/gitlab-rails/lib/tasks/gitlab/task_helpers.rake:94:in `warn_user_is_not_gitlab&#39;
+/opt/gitlab/embedded/service/gitlab-rails/lib/tasks/gitlab/backup.rake:8:in `block (3 levels) in &lt;top (required)&gt;&#39;
+Tasks: TOP =&gt; gitlab:backup:create
+(See full trace by running task with --trace)</code></pre></div>
+
+<p>VPS 自己搭建的 gitlab ，上面又一些自己创建的 repo ，是迁移唯一需要处理的数据。</p>
+
+<p>操作系统用的 Ubuntu 14.04.4 LTS ，gitlab 8.3.2 搭建好后也没有做过大版本升级。这次打算把 gitlab 升级和数据迁移一起做了。</p>
+
+<p>大概流程：</p>
+
+<ol>
+<li>备份 gitlab 配置文件 <code>sudo sh -c 'umask 0077; tar -cf $(date &quot;+etc-gitlab-%s.tar&quot;) -C / etc/gitlab'</code>；</li>
+<li>反复启动 VM，启停 gitlab <code>sudo gitlab-ctl stop/start</code>（因为内存不够，不重启直接备份经常失败），备份代码仓库直到成功；</li>
+<li>确认升级路径，因为长时间没有升级，gitlab 已经版本号已经到达 9，需要两步升级；
+
+<ul>
+<li>升级 gitlab 到 8.x.x 上的最后一个版本；</li>
+<li>升级 gitlab 到 9.x.x ；</li>
+</ul></li>
+<li>在 linode 上建立一个实例，操作系统使用新版本的 LTS 16.xx ，安装 gitlab 9.x.x ，在上面恢复之前的备份数据；</li>
+</ol>
+
+<p>将第三步的一些操作日志截取如下：</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">apt-mark hold gitlab-ce
+
+sudo apt-get install gitlab-ce
+
+<span style="color:#75715e"># The following packages will be upgraded:</span>
+<span style="color:#75715e">#   gitlab-ce</span>
+<span style="color:#75715e"># 1 upgraded</span>
+
+
+<span style="color:#75715e"># gitlab preinstall: Automatically backing up only the GitLab SQL database (excluding everything else!)</span>
+<span style="color:#75715e"># Dumping database ...</span>
+<span style="color:#75715e"># Dumping PostgreSQL database gitlabhq_production ... [DONE]</span>
+<span style="color:#75715e"># Creating backup archive: 1497655521_gitlab_backup.tar ... done</span>
+
+<span style="color:#75715e"># Unpacking gitlab-ce (9.2.6-ce.0) over (8.3.2-ce.0) ...</span>
+<span style="color:#75715e"># Setting up gitlab-ce (9.2.6-ce.0) ...</span>
+<span style="color:#75715e"># Installing Cookbook Gems:</span>
+<span style="color:#75715e"># Compiling Cookbooks...</span>
+
+<span style="color:#75715e"># Shutting down all GitLab services except those needed for migrations</span>
+<span style="color:#75715e"># ok: down: gitlab-workhorse: 0s, normally up</span>
+<span style="color:#75715e"># ok: down: logrotate: 1s, normally up</span>
+<span style="color:#75715e"># ok: down: nginx: 0s, normally up</span>
+<span style="color:#75715e"># ok: down: postgresql: 1s, normally up</span>
+<span style="color:#75715e"># ok: down: redis: 0s, normally up</span>
+<span style="color:#75715e"># ok: down: sidekiq: 0s, normally up</span>
+<span style="color:#75715e"># ok: down: unicorn: 1s, normally up</span>
+<span style="color:#75715e"># ok: run: postgresql: (pid 9117) 0s</span>
+<span style="color:#75715e"># ok: run: redis: (pid 9119) 0s</span>
+<span style="color:#75715e"># run: postgresql: (pid 9117) 0s; run: log: (pid 1031) 725215s</span>
+<span style="color:#75715e"># run: redis: (pid 9119) 0s; run: log: (pid 1027) 725215s</span>
+<span style="color:#75715e"># Reconfiguring GitLab to apply migrations</span>
+
+<span style="color:#75715e"># 中间应该是 chef 控制</span>
+<span style="color:#75715e">#   比如将 gitlab 9 中新增的配置合并到已有的配置文件中</span>
+<span style="color:#75715e">#   猜测这里的更新脚本都是从某个版本到某个版本固定的，</span>
+<span style="color:#75715e">#   比如 从 8.1.2 -&gt; 8.2.3 -&gt; 8.3.4 ... -&gt; 8.9.9</span>
+#   
+
+<span style="color:#75715e"># Recipe: gitlab::postgresql-bin</span>
+<span style="color:#75715e"># Recipe: gitlab::default</span>
+<span style="color:#75715e"># Recipe: gitlab::web-server</span>
+<span style="color:#75715e"># Recipe: gitlab::users</span>
+<span style="color:#75715e"># Recipe: gitlab::gitlab-shell</span>
+<span style="color:#75715e"># Recipe: gitlab::gitlab-rails</span>
+<span style="color:#75715e"># Recipe: gitlab::add_trusted_certs</span>
+<span style="color:#75715e"># Recipe: gitlab::default</span>
+<span style="color:#75715e"># Recipe: runit::upstart</span>
+<span style="color:#75715e"># Recipe: gitlab::redis</span>
+# 
+<span style="color:#75715e"># Recipe: gitlab::postgresql_user</span>
+<span style="color:#75715e"># Recipe: gitlab::postgresql</span>
+<span style="color:#75715e"># Recipe: gitlab::postgresql-bin</span>
+<span style="color:#75715e"># Recipe: gitlab::database_migrations</span>
+# 
+<span style="color:#75715e"># Recipe: gitlab::gitlab-rails</span>
+<span style="color:#75715e"># Recipe: gitlab::logrotate_folders_and_configs</span>
+<span style="color:#75715e"># Recipe: gitlab::unicorn</span>
+<span style="color:#75715e"># Recipe: gitlab::sidekiq</span>
+<span style="color:#75715e"># Recipe: gitlab::gitaly</span>
+<span style="color:#75715e"># Recipe: gitlab::gitlab-workhorse</span>
+<span style="color:#75715e"># Recipe: gitlab::mailroom_disable</span>
+<span style="color:#75715e"># Recipe: gitlab::nginx</span>
+<span style="color:#75715e"># Recipe: gitlab::remote-syslog_disable</span>
+<span style="color:#75715e"># Recipe: gitlab::logrotate</span>
+<span style="color:#75715e"># Recipe: gitlab::mattermost_disable</span>
+<span style="color:#75715e"># Recipe: gitlab::gitlab-pages_disable</span>
+<span style="color:#75715e"># Recipe: gitlab::registry_disable</span>
+<span style="color:#75715e"># Recipe: gitlab::gitlab-healthcheck</span>
+<span style="color:#75715e"># Recipe: gitlab::prometheus_user</span>
+<span style="color:#75715e"># Recipe: gitlab::prometheus</span>
+<span style="color:#75715e"># Recipe: gitlab::node-exporter</span>
+<span style="color:#75715e"># Recipe: gitlab::redis-exporter</span>
+<span style="color:#75715e"># Recipe: gitlab::postgres-exporter</span>
+<span style="color:#75715e"># Recipe: gitlab::gitlab-monitor</span>
+<span style="color:#75715e"># Recipe: gitlab::default</span>
+<span style="color:#75715e"># Recipe: gitlab::gitlab-rails</span>
+<span style="color:#75715e"># Recipe: gitlab::gitaly</span>
+<span style="color:#75715e"># Recipe: gitlab::gitlab-workhorse</span>
+
+<span style="color:#75715e"># Chef Client finished, 8/394 resources updated in 12 seconds</span>
+<span style="color:#75715e"># Running reconfigure: OK</span>
+<span style="color:#75715e"># Database upgrade is complete, running analyze_new_cluster.sh</span>
+<span style="color:#75715e"># ==== Upgrade has completed ====</span>
+<span style="color:#75715e"># Please verify everything is working and run the following if so</span>
+<span style="color:#75715e"># rm -rf /var/opt/gitlab/postgresql/data.9.2.18</span>
+<span style="color:#75715e"># Toggling deploy page:rm -f /opt/gitlab/embedded/service/gitlab-rails/public/index.html</span>
+<span style="color:#75715e"># Toggling deploy page: OK</span>
+<span style="color:#75715e"># Toggling services:ok: run: gitaly: (pid 10722) 0s</span>
+<span style="color:#75715e"># ok: run: gitlab-monitor: (pid 10727) 0s</span>
+<span style="color:#75715e"># ok: run: logrotate: (pid 10729) 0s</span>
+<span style="color:#75715e"># ok: run: node-exporter: (pid 10735) 0s</span>
+<span style="color:#75715e"># ok: run: postgres-exporter: (pid 10740) 0s</span>
+<span style="color:#75715e"># ok: run: prometheus: (pid 10744) 0s</span>
+<span style="color:#75715e"># ok: run: redis-exporter: (pid 10748) 0s</span>
+<span style="color:#75715e"># ok: run: sidekiq: (pid 10752) 0s</span>
+<span style="color:#75715e"># Toggling services: OK</span>
+<span style="color:#75715e"># Ensuring PostgreSQL is updated: OK</span>
+<span style="color:#75715e"># Restarting previously running GitLab services</span>
+<span style="color:#75715e"># ok: run: gitlab-workhorse: (pid 9883) 62s</span>
+<span style="color:#75715e"># ok: run: logrotate: (pid 10729) 1s</span>
+<span style="color:#75715e"># ok: run: nginx: (pid 10757) 0s</span>
+<span style="color:#75715e"># ok: run: postgresql: (pid 10759) 0s</span>
+<span style="color:#75715e"># ok: run: redis: (pid 9629) 187s</span>
+<span style="color:#75715e"># ok: run: sidekiq: (pid 10752) 1s</span>
+<span style="color:#75715e"># ok: run: unicorn: (pid 10766) 0s</span>
+# 
+<span style="color:#75715e"># Upgrade complete! If your GitLab server is misbehaving try running</span>
+# 
+<span style="color:#75715e">#    sudo gitlab-ctl restart</span>
+# 
+<span style="color:#75715e"># before anything else. If you need to roll back to the previous version you can</span>
+<span style="color:#75715e"># use the database backup made during the upgrade (scroll up for the filename).</span>
+
+
+gitlab-rake gitlab:env:info
+
+<span style="color:#75715e"># System information</span>
+<span style="color:#75715e"># System:         Ubuntu 14.04</span>
+<span style="color:#75715e"># Current User:   git</span>
+<span style="color:#75715e"># Using RVM:      no</span>
+<span style="color:#75715e"># Ruby Version:   2.3.3p222</span>
+<span style="color:#75715e"># Gem Version:    2.6.6</span>
+<span style="color:#75715e"># Bundler Version:1.13.7</span>
+<span style="color:#75715e"># Rake Version:   10.5.0</span>
+<span style="color:#75715e"># Redis Version:  3.2.5</span>
+<span style="color:#75715e"># Git Version:    2.11.1</span>
+<span style="color:#75715e"># Sidekiq Version:5.0.0</span>
+# 
+<span style="color:#75715e"># GitLab information</span>
+<span style="color:#75715e"># Version:        9.2.6</span>
+<span style="color:#75715e"># Revision:       332a71d</span>
+<span style="color:#75715e"># Directory:      /opt/gitlab/embedded/service/gitlab-rails</span>
+<span style="color:#75715e"># DB Adapter:     postgresql</span>
+<span style="color:#75715e"># URL:            http://mydo</span>
+<span style="color:#75715e"># HTTP Clone URL: http://mydo/some-group/some-project.git</span>
+<span style="color:#75715e"># SSH Clone URL:  git@mydo:some-group/some-project.git</span>
+<span style="color:#75715e"># Using LDAP:     no</span>
+<span style="color:#75715e"># Using Omniauth: no</span>
+# 
+<span style="color:#75715e"># GitLab Shell</span>
+<span style="color:#75715e"># Version:        5.0.4</span>
+<span style="color:#75715e"># Repository storage paths:</span>
+<span style="color:#75715e"># - default:      /var/opt/gitlab/git-data/repositories</span>
+<span style="color:#75715e"># Hooks:          /opt/gitlab/embedded/service/gitlab-shell/hooks</span>
+<span style="color:#75715e"># Git:            /opt/gitlab/embedded/bin/git</span>
+
+
+sudo gitlab-rake gitlab:backup:create</code></pre></div>
+
+<p>关于如何升级 Ubuntu 操作系统:</p>
+
+<p><a href="https://askubuntu.com/questions/462449/update-the-system-from-terminal">Update the system from terminal</a></p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get dist-upgrade</code></pre></div>
+
+<p>我并没有做这一步，直接在 linode 上申请自带特定 OS 版本的 image 启动实例即可。</p>
+
+<p>封面图片来自 <a href="https://dribbble.com/shots/2617161-License-Transfer">License Transfer</a> <a href="https://dribbble.com/zacdixon"><i class="fa fa-dribbble" aria-hidden="true"></i> Zac Dixon</a></p>
+         <div id="disqus_thread">
+  <a href="#" onclick="disqus();return false;"> 点击启用 Disqus 评论文章 <i class="fa fa-comments" aria-hidden="true"></i></a>
+</div>
+
+<script type="text/javascript">
+var disqus_loaded = false;
+function disqus() {
+  if (!disqus_loaded) {
+    
+    
+    
+    
+
+    disqus_loaded = true;
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'wushuzh';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }
+};
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </div>
+  </div>
+</div>
+<noscript>
+  <style>.jsonly { display: none }</style>
+</noscript>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://wushuzh.github.io/js/jquery.min.js"></script>
+<script src="https://wushuzh.github.io/js/bootstrap.min.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.cookie.js"> </script>
+<script src="https://wushuzh.github.io/js/ekko-lightbox.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://wushuzh.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/owl.carousel.min.js"></script>
+<script src="https://wushuzh.github.io/js/front.js"></script>
+
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</body>
+</html>

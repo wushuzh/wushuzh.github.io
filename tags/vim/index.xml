@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Vim on 小强会武术</title>
+    <title>vim on 小强会武术</title>
     <link>https://wushuzh.github.io/tags/vim/</link>
-    <description>Recent content in Vim on 小强会武术</description>
+    <description>Recent content in vim on 小强会武术</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Wed, 29 Nov 2017 11:37:35 +0800</lastBuildDate>
@@ -17,8 +17,7 @@
       <pubDate>Wed, 29 Nov 2017 11:37:35 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/11/29/vim-day-by-day/</guid>
-      <description>&lt;p&gt;珍爱生命，每天学一点 vim 技巧
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;珍爱生命，每天学一点 vim 技巧&lt;/p&gt;</description>
     </item>
     
   </channel>

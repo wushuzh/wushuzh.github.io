@@ -30,7 +30,7 @@
 <link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
 
 
-<script>
+<script type="application/javascript">
 var doNotTrack = false;
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
@@ -93,8 +93,7 @@ if (!doNotTrack) {
       </div>
       <br />
 
-         <p>追踪本质，别被报错信息带歪了方向……
-</p>
+         <p>追踪本质，别被报错信息带歪了方向……</p>
 
 <h3 id="现象分析">现象分析</h3>
 
@@ -122,13 +121,13 @@ libvirtError: Unable to read from monitor: Connection reset by peer
 
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">qemu-img create -f qcow2 wushuzh.qcow2 10G
 
-<span style="color:#75715e"># prepare a kickstart file, a few notes:
-</span><span style="color:#75715e">#  1. set cdrom as the installation media
-</span><span style="color:#75715e">#  2. set text so no vnc/gui is needed
-</span><span style="color:#75715e">#  3. use dhcp for network (activate) , set local ntp
-</span><span style="color:#75715e">#  4. set hostname and crypted passwd of root
-</span><span style="color:#75715e">#  5. use autopart and minimal installation to speed up progress
-</span><span style="color:#75715e"></span>
+<span style="color:#75715e"># prepare a kickstart file, a few notes:</span>
+<span style="color:#75715e">#  1. set cdrom as the installation media</span>
+<span style="color:#75715e">#  2. set text so no vnc/gui is needed</span>
+<span style="color:#75715e">#  3. use dhcp for network (activate) , set local ntp</span>
+<span style="color:#75715e">#  4. set hostname and crypted passwd of root</span>
+<span style="color:#75715e">#  5. use autopart and minimal installation to speed up progress</span>
+
 virt-install --name wushuzh  --vcpus<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span> --ram <span style="color:#ae81ff">4096</span> <span style="color:#ae81ff">\</span>
   --os-type<span style="color:#f92672">=</span>linux --os-variant rhel7 <span style="color:#ae81ff">\</span>
   --disk /kvm/vmimg/wushuzh.qcow2,device<span style="color:#f92672">=</span>disk,bus<span style="color:#f92672">=</span>virtio <span style="color:#ae81ff">\</span>
@@ -138,8 +137,8 @@ virt-install --name wushuzh  --vcpus<span style="color:#f92672">=</span><span st
 
 <p>结果安装一切顺利，虚拟机成功启动。</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># consider add this into /etc/profile
-</span><span style="color:#75715e"></span>export LIBVIRT_DEFAULT_URI<span style="color:#f92672">=</span>qemu:///system
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># consider add this into /etc/profile</span>
+export LIBVIRT_DEFAULT_URI<span style="color:#f92672">=</span>qemu:///system
 
 virsh console wushuzh</code></pre></div>
 

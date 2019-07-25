@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kafka on 小强会武术</title>
+    <link>https://wushuzh.github.io/tags/kafka/</link>
+    <description>Recent content in Kafka on 小强会武术</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 11 Mar 2019 21:41:39 +0800</lastBuildDate>
+    
+	<atom:link href="https://wushuzh.github.io/tags/kafka/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>ARTS 2019w11</title>
+      <link>https://wushuzh.github.io/blog/2019/03/11/arts-38-per-week/</link>
+      <pubDate>Mon, 11 Mar 2019 21:41:39 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2019/03/11/arts-38-per-week/</guid>
+      <description>&lt;p&gt;KAFKA 加密、认证、权限的相关知识总结&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -30,7 +30,7 @@
 <link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
 
 
-<script>
+<script type="application/javascript">
 var doNotTrack = false;
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
@@ -93,8 +93,7 @@ if (!doNotTrack) {
       </div>
       <br />
 
-         <p>如何过滤无用的系统日志……
-</p>
+         <p>如何过滤无用的系统日志……</p>
 
 <p><a href="https://wushuzh.github.io/blog/2017/06/04/syslog-std-in-general/">&ldquo;syslog 标准及其实现&rdquo;</a> 中最后提到了一种 syslog 的实现:“快火箭日志”。本篇就针对它说说遇到“洪水报文消息”的处理方法。</p>
 
@@ -165,17 +164,10 @@ if (!doNotTrack) {
 <li>optional 一般用于日志记录</li>
 </ul>
 
-
 <figure>
-    
-        <img src="/img/blog/deal-with-flood-logs/pam-run_stack.png" />
-    
-    
-    <figcaption>
-        <h4>ctrl flow from Oracle</h4>
-        
-    </figcaption>
-    
+    <img src="/img/blog/deal-with-flood-logs/pam-run_stack.png"/> <figcaption>
+            <h4>ctrl flow from Oracle</h4>
+        </figcaption>
 </figure>
 
 

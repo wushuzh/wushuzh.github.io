@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Arts on 小强会武术</title>
+    <title>ARTS on 小强会武术</title>
     <link>https://wushuzh.github.io/tags/arts/</link>
-    <description>Recent content in Arts on 小强会武术</description>
+    <description>Recent content in ARTS on 小强会武术</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 01 Jul 2018 22:13:07 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 10 Jun 2019 13:50:54 +0800</lastBuildDate>
     
 	<atom:link href="https://wushuzh.github.io/tags/arts/index.xml" rel="self" type="application/rss+xml" />
     
@@ -17,8 +17,7 @@
       <pubDate>Sun, 01 Jul 2018 22:13:07 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2018/07/01/arts-01-per-week/</guid>
-      <description>&lt;p&gt;关于宇宙意志、文明等级的假说
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;关于宇宙意志、文明等级的假说&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -27,8 +26,7 @@
       <pubDate>Tue, 10 Jul 2018 22:59:17 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2018/07/10/arts-02-per-week/</guid>
-      <description>&lt;p&gt;如何模拟数据、以及大数据处理
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;如何模拟数据、以及大数据处理&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -37,8 +35,7 @@
       <pubDate>Mon, 16 Jul 2018 21:31:01 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2018/07/16/arts-03-per-week/</guid>
-      <description>&lt;p&gt;链表入门、以及工程师的能级跃迁
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;链表入门、以及工程师的能级跃迁&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -47,8 +44,7 @@
       <pubDate>Mon, 23 Jul 2018 22:47:27 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2018/07/23/arts-04-per-week/</guid>
-      <description>&lt;p&gt;Sketchnote 更有效的笔记记录方式？
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;Sketchnote 更有效的笔记记录方式？&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -57,8 +53,7 @@
       <pubDate>Wed, 01 Aug 2018 23:05:11 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2018/08/01/arts-05-per-week/</guid>
-      <description>&lt;p&gt;找一个“杠精”帮助你设计、执行测试
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;找一个“杠精”帮助你设计、执行测试&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -67,8 +62,7 @@
       <pubDate>Fri, 10 Aug 2018 22:28:13 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2018/08/10/arts-06-per-week/</guid>
-      <description>&lt;p&gt;终于动手修改了本博客的版式
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;终于动手修改了本博客的版式&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -77,8 +71,106 @@
       <pubDate>Wed, 15 Aug 2018 19:33:04 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2018/08/15/arts-07-per-week/</guid>
-      <description>&lt;p&gt;利用参考实现进行测试，以关于比较优势的思考
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;利用参考实现进行测试，以关于比较优势的思考&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ARTS 2018w34</title>
+      <link>https://wushuzh.github.io/blog/2018/08/25/arts-08-per-week/</link>
+      <pubDate>Sat, 25 Aug 2018 19:33:04 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2018/08/25/arts-08-per-week/</guid>
+      <description>&lt;p&gt;翻译石碑 vs 通天塔，以及避免无效争论&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ARTS 2018w35</title>
+      <link>https://wushuzh.github.io/blog/2018/08/30/arts-09-per-week/</link>
+      <pubDate>Thu, 30 Aug 2018 21:33:21 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2018/08/30/arts-09-per-week/</guid>
+      <description>&lt;p&gt;在 Hugo 中配置应用多个主题&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ARTS 2019w08</title>
+      <link>https://wushuzh.github.io/blog/2019/02/18/arts-35-per-week/</link>
+      <pubDate>Mon, 18 Feb 2019 16:41:16 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2019/02/18/arts-35-per-week/</guid>
+      <description>&lt;p&gt;linux 内存入门及一个 swap 优化案例&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ARTS 2019w09</title>
+      <link>https://wushuzh.github.io/blog/2019/02/25/arts-36-per-week/</link>
+      <pubDate>Mon, 25 Feb 2019 14:49:01 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2019/02/25/arts-36-per-week/</guid>
+      <description>&lt;p&gt;分布式系统：存储设计三种形式&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ARTS 2019w10</title>
+      <link>https://wushuzh.github.io/blog/2019/03/04/arts-37-per-week/</link>
+      <pubDate>Mon, 04 Mar 2019 20:10:31 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2019/03/04/arts-37-per-week/</guid>
+      <description>&lt;p&gt;如何给定条件，做更多的推导判断&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ARTS 2019w11</title>
+      <link>https://wushuzh.github.io/blog/2019/03/11/arts-38-per-week/</link>
+      <pubDate>Mon, 11 Mar 2019 21:41:39 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2019/03/11/arts-38-per-week/</guid>
+      <description>&lt;p&gt;KAFKA 加密、认证、权限的相关知识总结&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ARTS 2019w13</title>
+      <link>https://wushuzh.github.io/blog/2019/03/25/arts-40-per-week/</link>
+      <pubDate>Mon, 25 Mar 2019 12:52:49 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2019/03/25/arts-40-per-week/</guid>
+      <description>&lt;p&gt;保持硬件感知力才能写出高性能程序&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ARTS 2019w12</title>
+      <link>https://wushuzh.github.io/blog/2019/03/18/arts-39-per-week/</link>
+      <pubDate>Mon, 18 Mar 2019 19:32:29 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2019/03/18/arts-39-per-week/</guid>
+      <description>&lt;p&gt;使用并查集，找寻无向图中冗余的连接&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ARTS 2019w14</title>
+      <link>https://wushuzh.github.io/blog/2019/04/01/arts-41-per-week/</link>
+      <pubDate>Mon, 01 Apr 2019 23:37:10 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2019/04/01/arts-41-per-week/</guid>
+      <description>&lt;p&gt;强烈推荐李永乐老师的科普视频&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ARTS 2019w15</title>
+      <link>https://wushuzh.github.io/blog/2019/04/08/arts-42-per-week/</link>
+      <pubDate>Mon, 08 Apr 2019 15:57:50 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2019/04/08/arts-42-per-week/</guid>
+      <description>&lt;p&gt;Linux 存储相关知识总体概述&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ARTS 2019w24</title>
+      <link>https://wushuzh.github.io/blog/2019/06/10/arts-51-per-week/</link>
+      <pubDate>Mon, 10 Jun 2019 13:50:54 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2019/06/10/arts-51-per-week/</guid>
+      <description>&lt;p&gt;提高学习效率，少做无用功的一些技巧&lt;/p&gt;</description>
     </item>
     
   </channel>

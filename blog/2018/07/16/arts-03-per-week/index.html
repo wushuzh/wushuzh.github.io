@@ -30,7 +30,7 @@
 <link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
 
 
-<script>
+<script type="application/javascript">
 var doNotTrack = false;
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
@@ -93,8 +93,7 @@ if (!doNotTrack) {
       </div>
       <br />
 
-         <p>链表入门、以及工程师的能级跃迁
-</p>
+         <p>链表入门、以及工程师的能级跃迁</p>
 
 <h2 id="algorithm">Algorithm</h2>
 
@@ -224,21 +223,21 @@ if (!doNotTrack) {
 
 keytool -genkey -keystore myserver.keystore.jks -validity <span style="color:#ae81ff">365</span> -storepass $SRVPASS -keypass $SRVPASS -dname <span style="color:#e6db74">&#34;CN=myserver-dns&#34;</span> -storetype pkcs12
 
-<span style="color:#75715e"># keytool -list -v -keystore myserver.jks
-</span><span style="color:#75715e"></span>
+<span style="color:#75715e"># keytool -list -v -keystore myserver.jks</span>
+
 keytool -keystore myserver.keystore.jks -certreq -file cert-file -storepass $SRVPASS -keypass $SRVPASS</code></pre></div></p>
 
 <p>CA 借助自己的证书和密钥，对收到的证书进行签名，产生 cert-signed 文件，发回给服务器申请方</p>
 
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">openssl x509 -req -CA ca-cert -CAkey ca-key -in cert-file -out cert-signed -days <span style="color:#ae81ff">365</span> -CAcreateserial -passin pass:$SRVPASS
 
-# keytool -printcert -v -file cert-signed</code></pre></div>
+<span style="color:#75715e"># keytool -printcert -v -file cert-signed</span></code></pre></div>
 
 <p>服务器端将收到的证书导入 keystore 中，并向 JAVA 应用告知 keystore 和 truststore 的位置和访问密码。</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># keytool -keystore mysever.truststore.jks -alias CARoot -import -file ca-cert -storepass $SRVPASS -keypass $SRVPASS -noprompt
-</span><span style="color:#75715e"># keytool -keystore mysever.keystore.jks -alias CARoot -import -file ca-cert -storepass $SRVPASS -keypass $SRVPASS -noprompt
-</span><span style="color:#75715e"></span>keytool -keystore mysever.keystore.jks -import -file cert-signed -storepass $SRVPASS -keypass $SRVPASS -noprompt</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># keytool -keystore mysever.truststore.jks -alias CARoot -import -file ca-cert -storepass $SRVPASS -keypass $SRVPASS -noprompt</span>
+<span style="color:#75715e"># keytool -keystore mysever.keystore.jks -alias CARoot -import -file ca-cert -storepass $SRVPASS -keypass $SRVPASS -noprompt</span>
+keytool -keystore mysever.keystore.jks -import -file cert-signed -storepass $SRVPASS -keypass $SRVPASS -noprompt</code></pre></div>
 
 <p>此时在任意一个客户端试图访问相应端口测试，只要它的 truststore 有 CA 的证书，并告知 JAVA 客户端 trustore 文件位置和访问密码即可实现加密传输数据</p>
 
@@ -246,10 +245,10 @@ keytool -keystore myserver.keystore.jks -certreq -file cert-file -storepass $SRV
 
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">openssl s_client -connect myserver-dns:sslport
 
-<span style="color:#75715e"># export CLIPASS=clipass
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e"># keytool -keystore myclient.truststore.jks -alias CARoot -import -file ca-cert -storepass $CLIPASS -keypass $CLIPASS -noprompt
-</span><span style="color:#75715e"></span>
+<span style="color:#75715e"># export CLIPASS=clipass</span>
+
+<span style="color:#75715e"># keytool -keystore myclient.truststore.jks -alias CARoot -import -file ca-cert -storepass $CLIPASS -keypass $CLIPASS -noprompt</span>
+
 keytool -list -v -keystore myclient.truststore.jks</code></pre></div>
 
 <h2 id="share">Share</h2>

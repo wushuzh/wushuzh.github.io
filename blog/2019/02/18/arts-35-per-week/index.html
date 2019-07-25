@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>ARTS 2019w08</title>
+<meta name="description" content="个人技术站点">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.theme.css">
+
+
+  <link href="https://wushuzh.github.io/css/style.sea.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://wushuzh.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-102509506-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              
+              
+<div class="col-xs-12 col-sm-12 col-md-12 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="https://wushuzh.github.io/">小强会武术</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-10 col-lg-offset-1">
+      <div class="content-column-content">
+      
+      <div class="row">
+        <div class="col-sm-4">
+          
+            <div class="image">
+              <img src="https://wushuzh.github.io//img/blog/arts-35-per-week/matrix.gif" class="img-responsive" alt="">
+            </div>
+          
+        </div>
+        <div class="col-md-6">
+            <h2>ARTS 2019w08</h2>
+                <p>
+                  <i class="fa fa-share-square-o fa-fw"></i><a href="/"> 小强会武术</a>
+                </p>
+
+                <p>
+                <time datetime="2019-02-18 16:41:16 &#43;0800 CST">
+                <i class="fa fa-calendar-o fa-fw"></i> 2019-02-18
+                </time>
+                &middot;
+                2387 字
+                &middot;
+                5 分钟
+                </p>
+
+                
+                <p>
+                  <i class="fa fa-tags fa-fw" aria-hidden="true"></i>
+                  <a href="/tags/arts">ARTS</a> &nbsp;&nbsp; <a href="/tags/linux">linux</a> &nbsp;&nbsp; <a href="/tags/memory">memory</a> &nbsp;&nbsp; <a href="/tags/kubernetes">kubernetes</a> &nbsp;&nbsp; <a href="/tags/unionfind">unionfind</a>
+                </p>
+                
+
+        </div>
+      </div>
+      <br />
+
+         <p>linux 内存入门及一个 swap 优化案例</p>
+
+<h2 id="algorithm">Algorithm</h2>
+
+<p><a href="https://leetcode.com/problems/longest-consecutive-sequence/">leetcode #128 Longest Consecutive Sequence</a> ：给定任意一维数组，求其元素可能组成的最长递增1的数列长度。</p>
+
+<p>如依然通过 Union Find 数据结构求解。思考的重点放在如何将给定数组向 union find 数据结构映射：</p>
+
+<ul>
+<li>Union-Find 内部数组 parent 的索引<strong>必须</strong>和给定数组一致，用于唯一标识各个节点，而索引指代的值<strong>必须</strong>为父节点的索引；</li>
+<li>为了求解最大递增序列的长度，在 Union-Find 内部再引入一个数组 nodesNum，表示各个节点下挂接的子节点数量(这个属性后续可以用于数据结构扁平化)；</li>
+<li>为了更方便的检测连续，需要引入一个 dict ：key 为给定数组的各个元素值，这样就可以快速判定比当前元素大1的元素是否存在，value 为给定数组的索引；</li>
+</ul>
+
+<p>特别注意：</p>
+
+<ul>
+<li>合并两个不同的 root 时，新选出的 root 的 nodesNum 要更新为之前两个 root 各自已有子节点数量之和</li>
+<li>python 将 0 视为 false，考虑到 -1 + 1 = 0 ，判断条件要严格限定为<code>dict.get(any int) is not None</code>，而不是简单的判定<code>dict.get(any int)</code> 为 true</li>
+</ul>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">longest_consecutive_by_union_find</span>(nums: List[int]) <span style="color:#f92672">-&gt;</span> int:
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> nums:
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span>        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span>    
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span>    uf <span style="color:#f92672">=</span> UnionFind(nums)
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span>    valToIdx <span style="color:#f92672">=</span> {nums[i]: i <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(nums))}
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span>    <span style="color:#66d9ef">for</span> v <span style="color:#f92672">in</span> valToIdx<span style="color:#f92672">.</span>keys():
+<span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span>        <span style="color:#66d9ef">if</span> valToIdx<span style="color:#f92672">.</span>get(v <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> None:
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span>            uf<span style="color:#f92672">.</span>union(valToIdx[v], valToIdx[v<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>])
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span>    <span style="color:#66d9ef">return</span> uf<span style="color:#f92672">.</span>largest_one_union()</code></pre></div>
+
+<h2 id="review">Review</h2>
+
+<p>本周学习了 <a href="https://learning.oreilly.com/live-training/courses/linux-under-the-hood/0636920257462">Linux Under the Hood</a> 内存相关的章节</p>
+
+<p>从上层应用角度看，<a href="https://en.wikipedia.org/wiki/Memory_management">管理内存</a> 的对象其实是 <a href="https://en.wikipedia.org/wiki/Virtual_memory">Virtual memory</a>。</p>
+
+<p>从操作系统角度看：<br />
+- <a href="https://en.wikipedia.org/wiki/Memory_management_(operating_systems)">管理内存</a> 的主要对象是 <a href="https://en.wikipedia.org/wiki/Computer_data_storage#Primary_storage">Primary memory（如内存）</a>；<br />
+- 额外地，为了能高效利用 <a href="https://en.wikipedia.org/wiki/Computer_data_storage#Secondary_storage">Secondary storage（如硬盘）</a> 支持大型程序的运行，引入了 <a href="https://en.wikipedia.org/wiki/Paging">Paging（分页）</a><br />
+- 硬盘的容量大，但随机读取速度慢，为了完成更高效查找而引入的 <a href="https://en.wikipedia.org/wiki/Page_table">Page table（分页表）</a>、<a href="https://en.wikipedia.org/wiki/Translation_lookaside_buffer">TLB（页表缓存）</a> 和 <a href="https://en.wikipedia.org/wiki/Page_cache">Page cache</a> ——一系列以 <a href="https://en.wikipedia.org/wiki/Page_(computer_memory)">Page</a> 的核心的高效操作；</p>
+
+<pre><code>                USER
+                 ^
+                 |
+                 |
+                 |
+          +------v------+               +--------+
+          |        PAGE CACHE           |        |
+          |   PROC DATA |&lt;--------------+        |
+          |   PAGE TBL  |     PAGING    |        |
+PROCESS +-+     (TLB)   |               |  HDD   |
+          |             +--------------&gt;|        |
+          |       DIRTY CACHE           |        |
+          +------^------+               +--------+
+              RAM|
+                 |
+             +---v----+
+             |     |L1|
+             |     +--+
+             | CPU |L2|
+             |     +--+
+             |     |L3|
+             +--------+
+</code></pre>
+
+<p>拓展阅读：</p>
+
+<blockquote>
+<ul>
+<li>Michael Boelen (2016-10-31, last updated 2018-7-3) <a href="https://linux-audit.com/understanding-memory-information-on-linux-systems/">Understanding memory information on Linux systems</a></li>
+<li>Mel Gorman free book <a href="https://www.kernel.org/doc/gorman/">Understanding the Linux Virtual Memory Manager</a></li>
+<li>torvalds/linux @github <a href="https://github.com/torvalds/linux/blob/master/Documentation/filesystems/proc.txt"> T H E  /proc   F I L E S Y S T E M</a></li>
+<li>Redhat Knowledge base <a href="https://access.redhat.com/solutions/406773">Interpreting /proc/meminfo and free output for Red Hat Enterprise Linux 5, 6 and 7</a></li>
+<li>Robert Love answer @ Quora <a href="https://qr.ae/TWT9eO">What is the difference between Buffers and Cached columns in /proc/meminfo output?</a></li>
+<li>Doug Breaker (2015-4-10) <a href="https://scoutapm.com/blog/understanding-page-faults-and-memory-swap-in-outs-when-should-you-worry">Understanding page faults and memory swap-in/outs: when should you worry?</a></li>
+<li>Thomas-Krenn wiki <a href="https://www.thomas-krenn.com/en/wiki/Linux_Page_Cache_Basics">Linux Page Cache Basics</a></li>
+</ul>
+</blockquote>
+
+<p>课程描述了一个内存优化的实例：先用 <code>free -m</code> 查看内存整体情况：16 GB 物理内存，1 GB SWAP，SWAP  100 %使用；进而通过<code>cat /proc/meminfo |grep -i active</code> 查看内存整体占用中其中 anno 内存（用于进程）活跃内存的仅 1GB，不活跃的居然白白占用了 14 GB空间；</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">cat /proc/meminfo |grep -i active
+Active:           2 GB
+Inactive:        15 GB
+Active(anon):     1 GB  # process request
+<span style="display:block;width:100%;background-color:#3c3d38">Inactive(anon):  14 GB  #   shall be put into swap and free for other usage
+</span>Active(file):   0.5 GB  # cache/buffer
+Inactive(file):   0 GB</code></pre></div>
+
+<p>解决方案就是增加 SWAP 内存：从 1G 升到 16 GB，并同时调整 swappiness 参数 <code>echo 90 &gt; /proc/sys/vm/swappiness</code>，然操作系统更激进的将 anno inactive 内存放入 SWAP；立刻查看 <code>vmstat 3</code> 观察 swap
+ in/out 数值，后续运行几天后，总体呈现了一个健康的内存分配情况：</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">cat /proc/meminfo |grep -i active
+Active:           4 GB
+Inactive:         9 GB
+Active(anon):     1 GB  # process request
+<span style="display:block;width:100%;background-color:#3c3d38">Inactive(anon):   1 GB  #   is more eager to swap in
+</span>Active(file):     3 GB  # cache/buffer
+Inactive(file):   8 GB</code></pre></div>
+
+<p><strong>因此，一些确定swap大小的简单规则：</strong></p>
+
+<ul>
+<li>通用服务器起始值，50% 物理内存（<4GB)，25 %（>4GB）；</li>
+<li>服务器稳定运行后 inactive anno 内存的量，应该等于 swap 大小；</li>
+<li>特殊大型应用，比如 Oracle ，swap 大小直接设为物理内存的 1.5 倍；</li>
+<li>需要使用休眠功能的笔记本，swap 大小至少设为和物理内存一样；</li>
+</ul>
+
+<p>增加 swap 的相关指令：</p>
+
+<ul>
+<li><code>fdisk /dev/sdx</code> 创建 partition type 为 82 （swap）的分区；</li>
+<li><code>mkswap /dev/sdx1</code> 初始化 swap 文件系统；</li>
+<li><code>swapon /dev/sdx1</code> 开启 swap 分区；</li>
+<li><code>free -m</code> 或 <code>swapon -s</code> 查看 swap 空间；</li>
+<li><code>/etc/fstab</code> 按 <code>fs-mntpoint-type-options-dump-pass</code> 格式添加新行 <code>/dev/sdx1  none  swap   sw  0   0</code></li>
+</ul>
+
+<h2 id="tip">Tip</h2>
+
+<p>top 可以用来查看系统中进程列表，支持的操作有</p>
+
+<ul>
+<li>展开查看在每个 CPU core 上的负载，按 <code>1</code>；</li>
+<li>杀掉进程，按 <code>k</code> 输入进程号；</li>
+<li>按内存、CPU等其他列排序，<code>M</code>（内存）、<code>P</code>（CPU）……；</li>
+<li>更通用的方法，<code>f</code> 进入显示配置页面，上下选择感兴趣的列，<code>d</code>显示开关，<code>s</code>为排序；</li>
+<li>切换线程视图，按<code>H</code>来回切换；</li>
+<li>显示完整进程命令行，按<code>c</code>；</li>
+<li>切换为父子关系的进程视图，按<code>V</code>；</li>
+<li>仅列出某个用户的进程，按<code>u</code>,输入用户名；</li>
+<li>高级过滤，按&rsquo;O&rsquo;,输入表达式，<code>COMMAND=getty</code> 或 <code>%CPU&gt;10.0</code></li>
+</ul>
+
+<p>详见 <a href="https://www.booleanworld.com/guide-linux-top-command/">A Guide to the Linux “Top” Command</a> 以及 <a href="http://man7.org/linux/man-pages/man1/top.1.html">top manpage</a></p>
+
+<h2 id="share">Share</h2>
+
+<p>Brendan Burns et al., &ldquo;Borg, Omega, and Kubernetes: Lessons Learned from Three Container-Management Systems over a Decade&rdquo;, ACM Queue 14 (2016): 70–93.</p>
+
+<p>文章是 Google 在开发了 Borg, Omega, k8s 后的总结，我快速读完，列出一些我认为的要点：</p>
+
+<ul>
+<li>容器技术达到了“质变”：容器使得依赖和应用运行环境管理，标记(anno)，资源分配和限制、负载均衡等等都是面向“应用”的（和现实世界映射更容易），比如资源分配和性能监控，完全不用先从主机角度收集，之后再分离了到各应用上。同时 POD 代表的一个应用实例，如果应用比较复杂，完全可以拆分不同功能到多个容器中，既保证了紧凑工作，又可以分别同步开发。</li>
+<li>k8s 所有 API 设计都非常一致：内容由 Objmetadata、Spec(desired state)、Status(read-only) 组成。API 不但用于从外部访问（无论是普通用户或是外部工具），而且 k8s 的控制面内部也都是通过相同的 API 实现所有功能；</li>
+<li>k8s 的 API 功能足够分离，一些高阶功能直接依赖底层功能，比如 Horizontal Pod Autoscaler 仅负责应用需求收集和预测，决定是否加减实例数目，而 ReplicationController 来保证实例数量；再比如 ReplicationController、DaemonSet、Job 内部都依赖于 Pod ，在 Pod 之上针对不同需求各自实现不同特性；</li>
+<li>各种对象的状态靠独立观察，没有内部状态留存，这样管理组件遇到问题，直接重启也没有问题；</li>
+</ul>
+
+<p>关于什么不要做的教训：</p>
+
+<ul>
+<li>不要试图管理容器的端口：不然，ip+port的方式和 dns url 都不一致，各种转换会变成“灾难”；</li>
+<li>不要试图对容器按数字命名，要用标签：不然，处理死掉的实例、多集群协同、对于分片(sharding)应用的升级都不好处理；而标签管理则强大的多：动态增删改，分组可重叠，对于 statefulset 可以同时使用 idx 和 label；</li>
+<li>要小心设计“从属关系”：单一的父子关系看似简单，但只要设计合理，基于标签的松耦合可能更为灵活(svc 和 rs 一起管理)；</li>
+<li>不要暴露原始状态：对于开源系统来说，暴露太多的原始信息就意味着会和某个具体实现发生关联，k8s 通过中控 API server 来做内部验证，对外保持高度一致性，屏蔽不必要细节，使得组件可替换；</li>
+</ul>
+
+<p>关于那些 Google 觉得也还没解决好的问题：应用配置、依赖管理（启动配置所依赖的服务）</p>
+
+<p>封面图片来自 <a href="https://dribbble.com/shots/6206009-Zest-Matrix">Zest Matrix</a> <a href="https://dribbble.com/johnwlong"><i class="fa fa-dribbble" aria-hidden="true"></i> John W. Long</a></p>
+         <div id="disqus_thread">
+  <a href="#" onclick="disqus();return false;"> 点击启用 Disqus 评论文章 <i class="fa fa-comments" aria-hidden="true"></i></a>
+</div>
+
+<script type="text/javascript">
+var disqus_loaded = false;
+function disqus() {
+  if (!disqus_loaded) {
+    
+    
+    
+    
+
+    disqus_loaded = true;
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'wushuzh';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }
+};
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </div>
+  </div>
+</div>
+<noscript>
+  <style>.jsonly { display: none }</style>
+</noscript>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://wushuzh.github.io/js/jquery.min.js"></script>
+<script src="https://wushuzh.github.io/js/bootstrap.min.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.cookie.js"> </script>
+<script src="https://wushuzh.github.io/js/ekko-lightbox.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://wushuzh.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/owl.carousel.min.js"></script>
+<script src="https://wushuzh.github.io/js/front.js"></script>
+
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</body>
+</html>

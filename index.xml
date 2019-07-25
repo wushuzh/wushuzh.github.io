@@ -6,7 +6,7 @@
     <description>Recent content on 小强会武术</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 15 Jun 2017 20:50:27 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 10 Jun 2019 13:50:54 +0800</lastBuildDate>
     
 	<atom:link href="https://wushuzh.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -17,8 +17,7 @@
       <pubDate>Thu, 15 Jun 2017 20:50:27 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/06/15/migrate-svn-repo-data/</guid>
-      <description>&lt;p&gt;以下实施过程和命令，亲测有效，供参考
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;以下实施过程和命令，亲测有效，供参考&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -27,8 +26,7 @@
       <pubDate>Sun, 06 Aug 2017 16:12:21 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/08/06/migrate-svn-to-git/</guid>
-      <description>&lt;p&gt;以下实施过程和命令，亲测有效，供参考
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;以下实施过程和命令，亲测有效，供参考&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -37,8 +35,16 @@
       <pubDate>Sun, 18 Jun 2017 21:18:51 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/06/18/setup-a-gitlab-ce-service/</guid>
-      <description>&lt;p&gt;如何搭建 GitLab 以获得类似 GitHub 的服务
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;如何搭建 GitLab 以获得类似 GitHub 的服务&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>GitLab 数据迁移</title>
+      <link>https://wushuzh.github.io/blog/2017/06/20/migrate-git-repo-data/</link>
+      <pubDate>Tue, 20 Jun 2017 22:17:17 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2017/06/20/migrate-git-repo-data/</guid>
+      <description>&lt;p&gt;迁移过程同样亲测有效，供参考&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -47,8 +53,7 @@
       <pubDate>Wed, 08 Nov 2017 20:11:49 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/11/08/setup-git-env/</guid>
-      <description>&lt;p&gt;简单介绍 git 入門向导和协作流程
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;简单介绍 git 入門向导和协作流程&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -57,8 +62,7 @@
       <pubDate>Wed, 28 Jun 2017 19:18:51 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/06/28/blog-using-hugo-1/</guid>
-      <description>&lt;p&gt;记录下如何用 GitHub 和 Hugo 搭建博客。
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;记录下如何用 GitHub 和 Hugo 搭建博客。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -67,8 +71,7 @@
       <pubDate>Sun, 09 Jul 2017 10:11:21 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/07/09/blog-using-hugo-2/</guid>
-      <description>&lt;p&gt;最要紧的是准备和插入那些漂亮的图片。
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;最要紧的是准备和插入那些漂亮的图片。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -77,8 +80,7 @@
       <pubDate>Mon, 10 Jul 2017 19:08:01 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/07/10/blog-using-hugo-3/</guid>
-      <description>&lt;p&gt;想写论文？那看看如何插入代码、图及公式。
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;想写论文？那看看如何插入代码、图及公式。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -87,8 +89,7 @@
       <pubDate>Thu, 13 Jul 2017 20:01:51 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/07/13/blog-using-hugo-4/</guid>
-      <description>&lt;p&gt;如何开放评论，以及知晓谁在访问我的网站
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;如何开放评论，以及知晓谁在访问我的网站&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -97,8 +98,7 @@
       <pubDate>Sun, 04 Jun 2017 20:40:13 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/06/04/syslog-std-in-general/</guid>
-      <description>&lt;p&gt;syslog 标准和常见工业实现
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;syslog 标准和常见工业实现&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -107,8 +107,7 @@
       <pubDate>Mon, 26 Jun 2017 22:31:22 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/06/26/deal-with-kernel-panic/</guid>
-      <description>&lt;p&gt;Kernel Panic 才能撑起&amp;rdquo;咋整&amp;rdquo;系列开篇的门面。
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;Kernel Panic 才能撑起&amp;rdquo;咋整&amp;rdquo;系列开篇的门面。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -117,8 +116,7 @@
       <pubDate>Thu, 29 Jun 2017 21:38:48 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/06/29/deal-with-violent-rm/</guid>
-      <description>&lt;p&gt;蛮力卸载后，啥都不能用了……
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;蛮力卸载后，啥都不能用了……&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -127,8 +125,7 @@
       <pubDate>Fri, 30 Jun 2017 19:19:19 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/06/30/deal-with-wired-errmsgs/</guid>
-      <description>&lt;p&gt;追踪本质，别被报错信息带歪了方向……
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;追踪本质，别被报错信息带歪了方向……&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -137,8 +134,7 @@
       <pubDate>Wed, 19 Jul 2017 18:45:13 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/07/19/deal-with-boot-failure/</guid>
-      <description>&lt;p&gt;记录下最近和启动、存储相关的修复处理。
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;记录下最近和启动、存储相关的修复处理。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -147,8 +143,7 @@
       <pubDate>Sat, 22 Jul 2017 20:14:43 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/07/22/deal-with-disk-error/</guid>
-      <description>&lt;p&gt;磁盘错误导致进入紧急模式，该如何恢复？
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;磁盘错误导致进入紧急模式，该如何恢复？&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -157,8 +152,7 @@
       <pubDate>Tue, 01 Aug 2017 19:12:33 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/08/01/deal-with-ks-failure1/</guid>
-      <description>&lt;p&gt;如何调查 RedHat 上失败的 Kickstart 安装？
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;如何调查 RedHat 上失败的 Kickstart 安装？&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -167,8 +161,7 @@
       <pubDate>Mon, 07 Aug 2017 19:18:15 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/08/07/deal-with-ks-failure2/</guid>
-      <description>&lt;p&gt;在搞不定而向他人求援时，该做些什么？
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;在搞不定而向他人求援时，该做些什么？&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -177,8 +170,7 @@
       <pubDate>Tue, 05 Sep 2017 22:50:33 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/09/05/deal-with-flood-logs/</guid>
-      <description>&lt;p&gt;如何过滤无用的系统日志……
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;如何过滤无用的系统日志……&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -187,8 +179,7 @@
       <pubDate>Thu, 01 Feb 2018 18:22:09 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2018/02/01/intro-linux-startup/</guid>
-      <description>&lt;p&gt;未完草稿——Linux 引导的关键步骤和相关工具简介
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;未完草稿——Linux 引导的关键步骤和相关工具简介&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -197,8 +188,7 @@
       <pubDate>Thu, 03 Aug 2017 20:48:43 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/08/03/get-start-with-sci-computing/</guid>
-      <description>&lt;p&gt;使用 Fedora 定制版也能快速上手科学计算
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;使用 Fedora 定制版也能快速上手科学计算&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -207,8 +197,7 @@
       <pubDate>Thu, 06 Jul 2017 09:28:56 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/07/06/setup-a-container-host-env/</guid>
-      <description>&lt;p&gt;Docker 简介和 Atomic 服务器的搭建
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;Docker 简介和 Atomic 服务器的搭建&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -217,8 +206,7 @@
       <pubDate>Thu, 03 Aug 2017 19:48:55 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/08/03/dual-os-1-install-win/</guid>
-      <description>&lt;p&gt;谁都不太可能绕得过 Windows ……
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;谁都不太可能绕得过 Windows ……&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -227,8 +215,7 @@
       <pubDate>Thu, 10 Aug 2017 18:48:26 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/08/10/dual-os-2-install-arch/</guid>
-      <description>&lt;p&gt;选择哪个 Linux 版本？是个问题
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;选择哪个 Linux 版本？是个问题&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -237,8 +224,7 @@
       <pubDate>Tue, 15 Aug 2017 17:37:07 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/08/15/dual-os-3-setup-arch/</guid>
-      <description>&lt;p&gt;从 0 到 1 设定 Archlinux 桌面环境
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;从 0 到 1 设定 Archlinux 桌面环境&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -247,8 +233,7 @@
       <pubDate>Tue, 29 Aug 2017 22:07:31 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/08/29/dual-os-4-i18n-arch/</guid>
-      <description>&lt;p&gt;重点是在 Archlinux Gnome 中显示和输入中文
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;重点是在 Archlinux Gnome 中显示和输入中文&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -257,8 +242,7 @@
       <pubDate>Fri, 01 Sep 2017 22:01:43 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/09/01/dual-os-5-wifi-ap/</guid>
-      <description>&lt;p&gt;利用无线网卡创建热点，共享网络访问
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;利用无线网卡创建热点，共享网络访问&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -267,8 +251,7 @@
       <pubDate>Mon, 04 Sep 2017 23:32:27 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/09/04/dual-os-6-soft-kvm/</guid>
-      <description>&lt;p&gt;使用一套鼠标键盘操作多个系统
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;使用一套鼠标键盘操作多个系统&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -277,8 +260,7 @@
       <pubDate>Mon, 16 Apr 2018 22:45:31 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2018/04/16/download-vids-using-youtube-dl/</guid>
-      <description>&lt;p&gt;油管视频下载和播放的利器
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;油管视频下载和播放的利器&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -287,8 +269,7 @@
       <pubDate>Fri, 15 Sep 2017 20:55:02 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/09/15/mgnt-virenv-7-vagrant/</guid>
-      <description>&lt;p&gt;QEMU/KVM、Libvirt、Vagrant 的安装配置
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;QEMU/KVM、Libvirt、Vagrant 的安装配置&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -297,8 +278,7 @@
       <pubDate>Fri, 18 Aug 2017 20:51:17 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/08/18/watching-it-by-zabbix-1/</guid>
-      <description>&lt;p&gt;其名和监控，大概能有个十万八千里的距离？
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;其名和监控，大概能有个十万八千里的距离？&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -307,8 +287,7 @@
       <pubDate>Thu, 24 Aug 2017 22:24:51 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/08/24/watching-it-by-zabbix-2/</guid>
-      <description>&lt;p&gt;定制监控指标的高阶操作和注意事项
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;定制监控指标的高阶操作和注意事项&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -317,8 +296,7 @@
       <pubDate>Thu, 01 Jun 2017 20:09:06 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/06/01/why-need-volte/</guid>
-      <description>&lt;p&gt;已经买了 4G 套餐，还需要 VoLTE 套餐么？
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;已经买了 4G 套餐，还需要 VoLTE 套餐么？&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -327,8 +305,7 @@
       <pubDate>Mon, 09 Oct 2017 22:14:57 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/10/09/telecom-transition-to-5g/</guid>
-      <description>&lt;p&gt;5G 通信多快，未来会是啥样？
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;5G 通信多快，未来会是啥样？&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -337,8 +314,7 @@
       <pubDate>Thu, 08 Jun 2017 21:49:02 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/06/08/general-auth-concepts/</guid>
-      <description>&lt;p&gt;Diameter从属的大类是，认证协议的一种。
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;Diameter从属的大类是，认证协议的一种。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -347,8 +323,7 @@
       <pubDate>Thu, 21 Sep 2017 20:19:58 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/09/21/py-async-socket/</guid>
-      <description>&lt;p&gt;最终版本的 AsyncSocket 及总结
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;最终版本的 AsyncSocket 及总结&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -357,8 +332,7 @@
       <pubDate>Thu, 14 Sep 2017 21:28:44 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/09/14/try-io-multiplexing-py/</guid>
-      <description>&lt;p&gt;仅通过调度器实现服务复用——免线程版
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;仅通过调度器实现服务复用——免线程版&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -367,8 +341,7 @@
       <pubDate>Fri, 08 Sep 2017 23:27:52 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/09/08/intro-to-py-socket/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;http://www.dabeaz.com/&#34;&gt;David Beazley&lt;/a&gt; 的&lt;a href=&#34;https://www.youtube.com/watch?v=MCs5OvhV9S4&#34;&gt;直播讲解&lt;/a&gt; Socket 并发
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;a href=&#34;http://www.dabeaz.com/&#34;&gt;David Beazley&lt;/a&gt; 的&lt;a href=&#34;https://www.youtube.com/watch?v=MCs5OvhV9S4&#34;&gt;直播讲解&lt;/a&gt; Socket 并发&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -377,8 +350,7 @@
       <pubDate>Mon, 11 Sep 2017 23:00:07 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/09/11/get-start-with-py/</guid>
-      <description>&lt;p&gt;如何在不同的环境下自由穿行
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;如何在不同的环境下自由穿行&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -387,8 +359,7 @@
       <pubDate>Mon, 06 Nov 2017 21:18:21 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/11/06/play-pythonic-cards/</guid>
-      <description>&lt;p&gt;愿敲代码终有一天能比斗地主更 666
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;愿敲代码终有一天能比斗地主更 666&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -397,8 +368,7 @@
       <pubDate>Mon, 30 Oct 2017 11:24:09 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/10/30/restful-api-by-flask/</guid>
-      <description>&lt;p&gt;当下还在流行使用的远程通信方式
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;当下还在流行使用的远程通信方式&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -407,8 +377,7 @@
       <pubDate>Mon, 20 Nov 2017 21:02:10 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/11/20/try-bokeh-server/</guid>
-      <description>&lt;p&gt;用 Bokeh 服务器对可视化进行控制
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;用 Bokeh 服务器对可视化进行控制&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -417,8 +386,7 @@
       <pubDate>Tue, 31 Oct 2017 20:59:31 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/10/31/try-bokeh-with-flask/</guid>
-      <description>&lt;p&gt;使用 Python 生成交互式图表
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;使用 Python 生成交互式图表&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -427,8 +395,7 @@
       <pubDate>Tue, 24 Oct 2017 22:20:04 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/10/24/microservices-and-k8s/</guid>
-      <description>&lt;p&gt;啊，船长，啊，我的船长……
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;啊，船长，啊，我的船长……&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -437,8 +404,7 @@
       <pubDate>Fri, 01 Dec 2017 20:11:31 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/12/01/loop-tree-by-stack-queue/</guid>
-      <description>&lt;p&gt;学习栈和队列在树搜索中的使用
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;学习栈和队列在树搜索中的使用&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -447,8 +413,7 @@
       <pubDate>Thu, 17 May 2018 21:17:18 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2018/05/17/a-dev-env-of-webapp-0/</guid>
-      <description>&lt;p&gt;按官方教程，用TDD的方式写一个迷你博客
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;按官方教程，用TDD的方式写一个迷你博客&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -457,8 +422,7 @@
       <pubDate>Thu, 07 Dec 2017 22:01:09 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/12/07/use-react-in-frontend/</guid>
-      <description>&lt;p&gt;从现在开始 React 复杂前端
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;从现在开始 React 复杂前端&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -467,8 +431,7 @@
       <pubDate>Fri, 01 Dec 2017 21:27:56 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/12/01/a-dev-env-of-webapp-4/</guid>
-      <description>&lt;p&gt;集成容器数据库，为应用创建测试集
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;集成容器数据库，为应用创建测试集&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -477,8 +440,7 @@
       <pubDate>Wed, 15 Nov 2017 19:01:33 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/11/15/a-dev-env-of-webapp-3/</guid>
-      <description>&lt;p&gt;运用蓝图和测试集将原应用拆解为多个组件
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;运用蓝图和测试集将原应用拆解为多个组件&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -487,8 +449,7 @@
       <pubDate>Tue, 14 Nov 2017 22:47:09 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/11/14/a-dev-env-of-webapp-2/</guid>
-      <description>&lt;p&gt;集成容器数据库，为应用创建测试集
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;集成容器数据库，为应用创建测试集&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -497,8 +458,7 @@
       <pubDate>Mon, 16 Oct 2017 20:26:19 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/10/16/a-dev-env-of-webapp-1/</guid>
-      <description>&lt;p&gt;麻雀虽小但五脏俱全的开发环境
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;麻雀虽小但五脏俱全的开发环境&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -507,8 +467,7 @@
       <pubDate>Thu, 01 Feb 2018 20:19:27 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2018/02/01/usr-login-and-register/</guid>
-      <description>&lt;p&gt;flask 教程: 创建一个类微博原型站点
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;flask 教程: 创建一个类微博原型站点&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -517,8 +476,7 @@
       <pubDate>Tue, 30 Jan 2018 21:17:49 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2018/01/30/dev-db-model-in-flask/</guid>
-      <description>&lt;p&gt;flask 教程: 创建一个类微博原型站点
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;flask 教程: 创建一个类微博原型站点&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -527,8 +485,7 @@
       <pubDate>Mon, 29 Jan 2018 22:07:11 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2018/01/29/hello-flask-mega-tutorial/</guid>
-      <description>&lt;p&gt;flask 教程: 创建一个类微博原型站点
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;flask 教程: 创建一个类微博原型站点&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -537,8 +494,7 @@
       <pubDate>Wed, 29 Nov 2017 11:37:35 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/11/29/vim-day-by-day/</guid>
-      <description>&lt;p&gt;珍爱生命，每天学一点 vim 技巧
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;珍爱生命，每天学一点 vim 技巧&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -547,8 +503,7 @@
       <pubDate>Sun, 01 Jul 2018 22:13:07 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2018/07/01/head-first-cucumber/</guid>
-      <description>&lt;p&gt;使用&lt;a href=&#34;https://en.wikipedia.org/wiki/Domain-specific_language&#34;&gt;业务术语&lt;/a&gt;定义测试产品行为
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;使用&lt;a href=&#34;https://en.wikipedia.org/wiki/Domain-specific_language&#34;&gt;业务术语&lt;/a&gt;定义测试产品行为&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -557,8 +512,7 @@
       <pubDate>Sun, 01 Jul 2018 22:13:07 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2018/07/01/arts-01-per-week/</guid>
-      <description>&lt;p&gt;关于宇宙意志、文明等级的假说
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;关于宇宙意志、文明等级的假说&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -567,8 +521,7 @@
       <pubDate>Tue, 10 Jul 2018 22:59:17 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2018/07/10/arts-02-per-week/</guid>
-      <description>&lt;p&gt;如何模拟数据、以及大数据处理
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;如何模拟数据、以及大数据处理&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -577,8 +530,7 @@
       <pubDate>Mon, 16 Jul 2018 21:31:01 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2018/07/16/arts-03-per-week/</guid>
-      <description>&lt;p&gt;链表入门、以及工程师的能级跃迁
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;链表入门、以及工程师的能级跃迁&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -587,8 +539,7 @@
       <pubDate>Mon, 23 Jul 2018 22:47:27 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2018/07/23/arts-04-per-week/</guid>
-      <description>&lt;p&gt;Sketchnote 更有效的笔记记录方式？
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;Sketchnote 更有效的笔记记录方式？&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -597,8 +548,7 @@
       <pubDate>Wed, 01 Aug 2018 23:05:11 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2018/08/01/arts-05-per-week/</guid>
-      <description>&lt;p&gt;找一个“杠精”帮助你设计、执行测试
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;找一个“杠精”帮助你设计、执行测试&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -607,8 +557,7 @@
       <pubDate>Fri, 10 Aug 2018 22:28:13 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2018/08/10/arts-06-per-week/</guid>
-      <description>&lt;p&gt;终于动手修改了本博客的版式
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;终于动手修改了本博客的版式&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -617,8 +566,115 @@
       <pubDate>Wed, 15 Aug 2018 19:33:04 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2018/08/15/arts-07-per-week/</guid>
-      <description>&lt;p&gt;利用参考实现进行测试，以关于比较优势的思考
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;利用参考实现进行测试，以关于比较优势的思考&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ARTS 2018w34</title>
+      <link>https://wushuzh.github.io/blog/2018/08/25/arts-08-per-week/</link>
+      <pubDate>Sat, 25 Aug 2018 19:33:04 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2018/08/25/arts-08-per-week/</guid>
+      <description>&lt;p&gt;翻译石碑 vs 通天塔，以及避免无效争论&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ARTS 2018w35</title>
+      <link>https://wushuzh.github.io/blog/2018/08/30/arts-09-per-week/</link>
+      <pubDate>Thu, 30 Aug 2018 21:33:21 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2018/08/30/arts-09-per-week/</guid>
+      <description>&lt;p&gt;在 Hugo 中配置应用多个主题&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ARTS 2019w08</title>
+      <link>https://wushuzh.github.io/blog/2019/02/18/arts-35-per-week/</link>
+      <pubDate>Mon, 18 Feb 2019 16:41:16 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2019/02/18/arts-35-per-week/</guid>
+      <description>&lt;p&gt;linux 内存入门及一个 swap 优化案例&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ARTS 2019w09</title>
+      <link>https://wushuzh.github.io/blog/2019/02/25/arts-36-per-week/</link>
+      <pubDate>Mon, 25 Feb 2019 14:49:01 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2019/02/25/arts-36-per-week/</guid>
+      <description>&lt;p&gt;分布式系统：存储设计三种形式&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ARTS 2019w10</title>
+      <link>https://wushuzh.github.io/blog/2019/03/04/arts-37-per-week/</link>
+      <pubDate>Mon, 04 Mar 2019 20:10:31 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2019/03/04/arts-37-per-week/</guid>
+      <description>&lt;p&gt;如何给定条件，做更多的推导判断&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ARTS 2019w11</title>
+      <link>https://wushuzh.github.io/blog/2019/03/11/arts-38-per-week/</link>
+      <pubDate>Mon, 11 Mar 2019 21:41:39 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2019/03/11/arts-38-per-week/</guid>
+      <description>&lt;p&gt;KAFKA 加密、认证、权限的相关知识总结&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ARTS 2019w13</title>
+      <link>https://wushuzh.github.io/blog/2019/03/25/arts-40-per-week/</link>
+      <pubDate>Mon, 25 Mar 2019 12:52:49 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2019/03/25/arts-40-per-week/</guid>
+      <description>&lt;p&gt;保持硬件感知力才能写出高性能程序&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ARTS 2019w12</title>
+      <link>https://wushuzh.github.io/blog/2019/03/18/arts-39-per-week/</link>
+      <pubDate>Mon, 18 Mar 2019 19:32:29 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2019/03/18/arts-39-per-week/</guid>
+      <description>&lt;p&gt;使用并查集，找寻无向图中冗余的连接&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ARTS 2019w14</title>
+      <link>https://wushuzh.github.io/blog/2019/04/01/arts-41-per-week/</link>
+      <pubDate>Mon, 01 Apr 2019 23:37:10 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2019/04/01/arts-41-per-week/</guid>
+      <description>&lt;p&gt;强烈推荐李永乐老师的科普视频&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ARTS 2019w15</title>
+      <link>https://wushuzh.github.io/blog/2019/04/08/arts-42-per-week/</link>
+      <pubDate>Mon, 08 Apr 2019 15:57:50 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2019/04/08/arts-42-per-week/</guid>
+      <description>&lt;p&gt;Linux 存储相关知识总体概述&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ARTS 2019w24</title>
+      <link>https://wushuzh.github.io/blog/2019/06/10/arts-51-per-week/</link>
+      <pubDate>Mon, 10 Jun 2019 13:50:54 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2019/06/10/arts-51-per-week/</guid>
+      <description>&lt;p&gt;提高学习效率，少做无用功的一些技巧&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes in Action</title>
+      <link>https://wushuzh.github.io/slides/kubernetes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://wushuzh.github.io/slides/kubernetes/</guid>
+      <description> Kubernetes </description>
     </item>
     
   </channel>

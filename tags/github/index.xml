@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Github on 小强会武术</title>
+    <title>GitHub on 小强会武术</title>
     <link>https://wushuzh.github.io/tags/github/</link>
-    <description>Recent content in Github on 小强会武术</description>
+    <description>Recent content in GitHub on 小强会武术</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Wed, 28 Jun 2017 19:18:51 +0800</lastBuildDate>
@@ -17,8 +17,7 @@
       <pubDate>Wed, 28 Jun 2017 19:18:51 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/06/28/blog-using-hugo-1/</guid>
-      <description>&lt;p&gt;记录下如何用 GitHub 和 Hugo 搭建博客。
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;记录下如何用 GitHub 和 Hugo 搭建博客。&lt;/p&gt;</description>
     </item>
     
   </channel>

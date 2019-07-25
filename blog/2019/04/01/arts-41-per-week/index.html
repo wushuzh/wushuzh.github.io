@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>ARTS 2019w14</title>
+<meta name="description" content="个人技术站点">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.theme.css">
+
+
+  <link href="https://wushuzh.github.io/css/style.sea.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://wushuzh.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-102509506-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              
+              
+<div class="col-xs-12 col-sm-12 col-md-12 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="https://wushuzh.github.io/">小强会武术</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-10 col-lg-offset-1">
+      <div class="content-column-content">
+      
+      <div class="row">
+        <div class="col-sm-4">
+          
+            <div class="image">
+              <img src="https://wushuzh.github.io//img/blog/arts-41-per-week/hexagon.gif" class="img-responsive" alt="">
+            </div>
+          
+        </div>
+        <div class="col-md-6">
+            <h2>ARTS 2019w14</h2>
+                <p>
+                  <i class="fa fa-share-square-o fa-fw"></i><a href="/"> 小强会武术</a>
+                </p>
+
+                <p>
+                <time datetime="2019-04-01 23:37:10 &#43;0800 CST">
+                <i class="fa fa-calendar-o fa-fw"></i> 2019-04-01
+                </time>
+                &middot;
+                895 字
+                &middot;
+                2 分钟
+                </p>
+
+                
+                <p>
+                  <i class="fa fa-tags fa-fw" aria-hidden="true"></i>
+                  <a href="/tags/arts">ARTS</a>
+                </p>
+                
+
+        </div>
+      </div>
+      <br />
+
+         <p>强烈推荐李永乐老师的科普视频</p>
+
+<h2 id="algorithm">Algorithm</h2>
+
+<p><a href="https://leetcode.com/problems/regions-cut-by-slashes/">leetcode #959 Regions Cut By Slashes</a> 在 N*N 正方形区域中挑选一部分小格，并选择两条对角线中的一条划实，求解最终图形中不连通的区域数量。</p>
+
+<p>通过题目标签可知可以用 Union Find 解决，像任何一个用并查集算法的问题一样，关键在于如何将问题(中的图形)转化为 Union Find 数据结构。</p>
+
+<ul>
+<li>将所有小格分为上、下、左、右 4 个三角形，将这些三角形作为基本的合并单元；</li>
+<li>所有垂直、水平相邻两个三角形都一定要 union；</li>
+<li>含对角线的小格内部，三角形两两做 union；</li>
+<li>完全不含对角线的小格内部，4 个三角形互相 union；</li>
+<li>上面最后的两个情况，可以考虑合并，简化代码；</li>
+</ul>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">regions_by_slashes_using_union_find</span>(grid: List[str]) <span style="color:#f92672">-&gt;</span> int:
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> grid:
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span>        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span>    uf <span style="color:#f92672">=</span> UnionFind(grid)
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span>    N <span style="color:#f92672">=</span> len(grid)
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span>    <span style="color:#66d9ef">for</span> i, row <span style="color:#f92672">in</span> enumerate(grid):
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span>        <span style="color:#66d9ef">for</span> j, slash <span style="color:#f92672">in</span> enumerate(row):
+<span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span>            ijIdx <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span> <span style="color:#f92672">*</span> (i <span style="color:#f92672">*</span> N <span style="color:#f92672">+</span> j)
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span>            <span style="color:#75715e">#    1</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span>            <span style="color:#75715e"># 0     3</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span>            <span style="color:#75715e">#    2</span>
+<span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span>            <span style="color:#66d9ef">if</span> slash <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;/&#39;</span>:
+</span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span>                uf<span style="color:#f92672">.</span>union(ijIdx <span style="color:#f92672">+</span> <span style="color:#ae81ff">0</span>, ijIdx <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+</span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span>                uf<span style="color:#f92672">.</span>union(ijIdx <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>, ijIdx <span style="color:#f92672">+</span> <span style="color:#ae81ff">3</span>)
+</span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span>            <span style="color:#66d9ef">elif</span> slash <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">&#39;</span>:
+</span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span>                uf<span style="color:#f92672">.</span>union(ijIdx <span style="color:#f92672">+</span> <span style="color:#ae81ff">0</span>, ijIdx <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>)
+</span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span>                uf<span style="color:#f92672">.</span>union(ijIdx <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, ijIdx <span style="color:#f92672">+</span> <span style="color:#ae81ff">3</span>)
+</span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span>            <span style="color:#66d9ef">else</span>:
+</span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span>                uf<span style="color:#f92672">.</span>union(ijIdx, ijIdx <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+</span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span>                uf<span style="color:#f92672">.</span>union(ijIdx, ijIdx <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>)
+</span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span>                uf<span style="color:#f92672">.</span>union(ijIdx, ijIdx <span style="color:#f92672">+</span> <span style="color:#ae81ff">3</span>)
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25</span>            <span style="color:#75715e"># union down 1/4 cell except last row N - 1</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26</span>            <span style="color:#66d9ef">if</span> i <span style="color:#f92672">&lt;</span> N <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>:
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span>                uf<span style="color:#f92672">.</span>union(ijIdx <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>, ijIdx <span style="color:#f92672">+</span> <span style="color:#ae81ff">4</span> <span style="color:#f92672">*</span> N <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29</span>            <span style="color:#75715e"># union up 1/4 cell except first row 0</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30</span>            <span style="color:#66d9ef">if</span> i <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">1</span>:
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31</span>                uf<span style="color:#f92672">.</span>union(ijIdx <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, ijIdx <span style="color:#f92672">-</span> <span style="color:#ae81ff">4</span> <span style="color:#f92672">*</span> N <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>)
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33</span>            <span style="color:#75715e"># union right 1/4 cell except first column N - 1</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34</span>            <span style="color:#66d9ef">if</span> j <span style="color:#f92672">&lt;</span> N <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>:
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35</span>                uf<span style="color:#f92672">.</span>union(ijIdx <span style="color:#f92672">+</span> <span style="color:#ae81ff">3</span>, ijIdx <span style="color:#f92672">+</span> <span style="color:#ae81ff">4</span>)
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37</span>            <span style="color:#75715e"># union left 1/4 cell except last column 0</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38</span>            <span style="color:#66d9ef">if</span> j <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">1</span>:
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39</span>                uf<span style="color:#f92672">.</span>union(ijIdx <span style="color:#f92672">+</span> <span style="color:#ae81ff">0</span>, ijIdx <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>)
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41</span>    <span style="color:#66d9ef">return</span> sum(uf<span style="color:#f92672">.</span>find_root(i) <span style="color:#f92672">==</span> i <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">4</span> <span style="color:#f92672">*</span> N <span style="color:#f92672">*</span> N))</code></pre></div>
+
+<h2 id="review">Review</h2>
+
+<p>学习 Anghel Lenoard 的《Data Stream Development with Apache Spark, Kafka, and Spring Boot》</p>
+
+<p><strong>流式数据接入</strong>的几种方式：</p>
+
+<ul>
+<li>Webhooks</li>
+<li>HTTP Long Polling</li>
+<li>Server Sent Events</li>
+<li>WebSocket</li>
+</ul>
+
+<figure>
+    <img src="/img/blog/arts-41-per-week/ingestion.jpg"/> <figcaption>
+            <h4>Streaming data collection</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="tip">Tip</h2>
+
+<p>最近碰到一个和 cron 相关的问题，在服务器上安装启动了 <a href="https://pcp.io/docs/pcpintro.html">Performance Co-Pilot</a>: pcp日常运行中会在 <code>/var/log/pcp/pmlogger/&lt;host&gt;</code> 下生成一些存档文件，而在 <code>/etc/cron.d/</code> 下也配置了相应的周期性清理。</p>
+
+<p>但是我们服务器上使用的 pcp 清理脚本存在问题：在一些特殊情况下，其处理的半拉子日志文件能造成 purge 脚本运行时提前退出，无法正常完成清理工作，造成最后日志分区爆满。Redhat 确认了在我们使用的 pcp 版本中的问题(<a href="https://bugzilla.redhat.com/show_bug.cgi?id=1697182">pmlogger_daily is unable to discard or compress older files which failed compression for some reason</a>)，提供了一个新版本 pcp-4.3.2-2，然而只在 RHEL8 中提供，RHEL7 还要等一段时间。好在这个问题有方法绕过，即手动清理掉半拉子日志文件，之后的清理脚本就可以正常工作。</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">::::::::::::::
+/etc/cron.d/pcp-pmlogger
+::::::::::::::
+# daily processing of archive logs (with compression enabled)
+10     0  *  *  *  pcp  /usr/libexec/pcp/bin/pmlogger_daily -X xz -x 3</code></pre></div>
+
+<figure>
+    <img src="https://imgs.xkcd.com/comics/cron_mail.png"/> <figcaption>
+            <h4>XKCD #1728: CRON MAIL</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="share">Share</h2>
+
+<p>李永乐老师的科普视频 <a href="https://youtu.be/adIN_RjIrmY">石墨烯是什么？</a></p>
+
+<figure>
+    <img src="/img/blog/arts-41-per-week/carbon.jpg"/> <figcaption>
+            <h4>Graphene</h4>
+        </figcaption>
+</figure>
+
+
+<p>李老师的科普视频真的好棒，强烈推荐。</p>
+
+<p>封面图片来自 <a href="https://dribbble.com/shots/2851969-Hexagonal-Hard-Candy-Revisited-20">Hexagonal Hard Candy Revisited - 20</a> <a href="https://dribbble.com/AdmiralPotato"><i class="fa fa-dribbble" aria-hidden="true"></i> Admiral Potato</a></p>
+         <div id="disqus_thread">
+  <a href="#" onclick="disqus();return false;"> 点击启用 Disqus 评论文章 <i class="fa fa-comments" aria-hidden="true"></i></a>
+</div>
+
+<script type="text/javascript">
+var disqus_loaded = false;
+function disqus() {
+  if (!disqus_loaded) {
+    
+    
+    
+    
+
+    disqus_loaded = true;
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'wushuzh';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }
+};
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </div>
+  </div>
+</div>
+<noscript>
+  <style>.jsonly { display: none }</style>
+</noscript>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://wushuzh.github.io/js/jquery.min.js"></script>
+<script src="https://wushuzh.github.io/js/bootstrap.min.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.cookie.js"> </script>
+<script src="https://wushuzh.github.io/js/ekko-lightbox.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://wushuzh.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/owl.carousel.min.js"></script>
+<script src="https://wushuzh.github.io/js/front.js"></script>
+
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</body>
+</html>
