@@ -14,6 +14,13 @@ tags = ["tools"]
 ## 工具安装
 
 {{< highlight console >}}
+## windows ##
+
+PS> choco install youtube-dl 
+# install ffmpeg when ffprobe not found during audio extract
+PS> choco install ffmpeg
+
+## arch ##
 pacman -S youtube-dl
 
 youtube-dl -o '%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s' --all-subs URL_youtube_playlist
@@ -23,7 +30,24 @@ youtube-dl 默认先分别下载最高品质的视频和音频文件，然后将
 
 youtube-dl 有很多可选参数，对我比较有用的是下载字幕，甚至可以将字幕合并到最终文件中。
 
-常用的下载配置可以保存在用户配置目录中。
+常用的下载配置可以保存在用户配置目录中：
+
+- Linux `$HOME/.config/youtube-dl.conf`
+- Windows `%APPDATA%/youtube-dl/config.txt`
+
+{{< highlight console >}}
+-o '~/Videos/%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s'
+
+--sub-lang en,zh-CN,zh-TW
+
+--write-sub
+
+--write-thumbnail
+
+--embed-thumbnail
+
+--download-archive archive.txt 
+{{< /highlight >}}
 
 ## 播放器
 

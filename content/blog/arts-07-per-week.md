@@ -5,7 +5,7 @@ showonlyimage = false
 image = "/img/blog/arts-07-per-week/satellite.jpg"
 draft = false
 weight = 1833
-tags = ["ARTS", "linux", "tools"]
+tags = ["ARTS", "linux", "tools", "linkedlist"]
 +++
 
 利用参考实现进行测试，以关于比较优势的思考
@@ -13,7 +13,11 @@ tags = ["ARTS", "linux", "tools"]
 
 ## Algorithm
 
-本周 leetcode 题目 [2. Add Two Numbers](https://leetcode.com/problems/add-two-numbers/description/)，本质上这道题目就是实现一个正整数的加法。
+本周 leetcode 题目 [2. Add Two Numbers](https://leetcode.com/problems/add-two-numbers/description/)，两个“加数”和它们之“和”都存在链表数据结构中——链表头部为最低位，尾部为最高位——本质上这道题目就是实现一个正整数的[加法](https://en.wikipedia.org/wiki/Addition)。
+
+Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)  
+Output: 7 -> 0 -> 8  
+Explanation: 342 + 465 = 807
 
 {{< highlight python >}}
 def add_two_numbers_v1(l1: ListNode, l2: ListNode) -> ListNode:
@@ -87,7 +91,7 @@ def add_two_numbers_v3(l1, l2):
     def tolist(n):
         node = ListNode(n % 10)
         if n > 9:
-            node.next = tolist(n / 10)
+            node.next = tolist(n // 10)
         return node
     return tolist(toint(l1) + toint(l2))
 {{< /highlight >}}
