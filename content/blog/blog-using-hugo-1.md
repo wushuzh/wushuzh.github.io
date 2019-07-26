@@ -49,7 +49,7 @@ Huge 使用步骤和 Jekyll 差不多：相似的创建站点命令，相似的�
 具体步骤不再敷述，基本步骤包括
 
 1. 新建仓库，命名为 username.github.io ，添加并设定 br:hugo 为默认主分支
-2. 克隆仓库至本地，hugo 建站，克隆心怡的主题和其他配置
+2. 克隆仓库至本地，hugo 建站，将需要的主题作为 submodule 引入和其他配置
 3. 一方面利用 .gitignore 让 hugo 分支忽略 public 子目录，另一方面用 git-worktree 指令让 public 子目录专用于显示 master 分支的内容(生产的静态站点文件)
 4. 添加开篇博客 Hello World ，在[本地](localhost:1313)确认后将 public [部署](https://hjdskes.github.io/blog/update-deploying-hugo-on-personal-gh-pages/)到 GitHab ，将浏览器指向[远端](https://username.github.io)再次查看确认
 
@@ -57,8 +57,19 @@ Huge 使用步骤和 Jekyll 差不多：相似的创建站点命令，相似的�
 
 <img alt="editorial-story" src="/img/blog/blog-using-hugo-1/editor.jpg"  style="width:70%; height:70%; display:block; margin: auto;">
 
+因为主题都是通过 submodule 引入的，所以下面命令可能有用：
+
+```
+# first time
+git submodule update --init --recursive
+
+# updating
+git submodule update --recursive --remote
+```
+
 参考文档
 
+> - Jente Hidskes 2017-2-26 [Update: deploying Hugo-generated websites on personal GitHub Pages](https://www.hjdskes.nl/blog/update-deploying-hugo-on-personal-gh-pages/)
 > - Henry Jenkins (2008-04-07) [Why Academics Should Blog](http://henryjenkins.org/2008/04/why_academics_should_blog.html)
 > - 刘未鹏，(2009-02-15) [为什么你应该（从现在开始就）写博客](
 http://mindhacks.cn/2009/02/15/why-you-should-start-blogging-now/)
