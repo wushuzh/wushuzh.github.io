@@ -47,9 +47,31 @@ def find_num_islands_with_uf(grid: List[List[str]]) -> int:
     return uf.count
 {{< /highlight >}}
 
-## Review 
+## Review  
+
+Stéphane Maarek 的 Kafka 系列课程 Kafka Stream 学习总结：
+
+{{< figure src="/img/blog/arts-34-per-week/kafka-stream.jpg" title="Kafka Stream" >}}
 
 ## Tip
+
+Golang 声明主要两种形式，但都能明确确定下来变量的类型：
+
+- 正式的 `var varName anyType` 分配内存后，值被初始化为 **zero value**；
+- 内部的 `var varName := inferableVal` 只有典型值，但编译器可以从值推断出类型；
+
+以 struct 类型为例，定义一个复合型数据结构 struct 语法：
+
+```
+struct T structName {
+    fieldName fieldType
+    // other fields with type per line
+}
+```
+
+struct literal
+
+
 
 ## Share
 

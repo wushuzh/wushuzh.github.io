@@ -22,9 +22,9 @@ java8 date time
 
 ## Share
 
-Stéphane Maarek 的 Kafka 系列课程 Kafka Core 学习总结：
+Stéphane Maarek 的 Kafka 系列课程 Kafka Connect 学习总结：
 
-{{< figure src="/img/blog/arts-32-per-week/kafka-basic.jpg" title="Kafka Basic" >}}
+{{< figure src="/img/blog/arts-32-per-week/kafka-connect.jpg" title="Kafka connect" >}}
 
 
 封面图片来自 [Time Zones App - Interaction](https://dribbble.com/shots/5454099-Time-Zones-App-Interaction) <a href="https://dribbble.com/mac_yjak"><i class="fa fa-dribbble" aria-hidden="true"></i> Maciej Dyjak</a>
