@@ -16,9 +16,7 @@ Terraform 简介
 
 ## Review 
 
-Terraform
-
-choco install terraform
+{{< figure src="/img/blog/arts-30-per-week/openshift-app-mgnt.jpg" title="Openshift Application Management" >}}
 
 ## Tip
 
@@ -27,5 +25,9 @@ choco install terraform
 choco install webp icaros
 
 ## Share
+
+Terraform
+
+choco install terraform
 
 封面图片来自 [Terraform](https://dribbble.com/shots/4075903-Terraform) <a href="https://dribbble.com/thatryanjones"><i class="fa fa-dribbble" aria-hidden="true"></i> Ryan Mason Jones</a>
