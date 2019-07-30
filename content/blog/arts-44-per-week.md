@@ -70,10 +70,11 @@ def min_malware_spread_II_using_unionfind(graph: List[List[int]],
 
 ## Review
 
-拓展阅读：
 
-> - Justin Ellingwood and Mitchell Anicas from digitalocean [An Introduction to Managing DNS](https://www.digitalocean.com/community/tutorial_series/an-introduction-to-managing-dns)
-> - 鸟哥的 Linux 私房菜 [主机名控制者：DNS 服务器](http://cn.linux.vbird.org/linux_server/0350dns_1.php)
+{{< figure src="/img/blog/arts-44-per-week/openstack-overview.webp" title="Openstack overview" >}}
+
+
+
 
 ## Tip
 
@@ -86,8 +87,9 @@ def min_malware_spread_II_using_unionfind(graph: List[List[int]],
 ## Share
 
 
+拓展阅读：
 
-
-
+> - Justin Ellingwood and Mitchell Anicas from digitalocean [An Introduction to Managing DNS](https://www.digitalocean.com/community/tutorial_series/an-introduction-to-managing-dns)
+> - 鸟哥的 Linux 私房菜 [主机名控制者：DNS 服务器](http://cn.linux.vbird.org/linux_server/0350dns_1.php)
 
 封面图片来自 [1.1.1.1](https://dribbble.com/shots/4441857-1-1-1-1) <a href="https://dribbble.com/karilinder"><i class="fa fa-dribbble" aria-hidden="true"></i> Kari Linder</a>

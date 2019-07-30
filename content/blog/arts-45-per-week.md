@@ -60,7 +60,7 @@ def num_similiar_groups_using_union_find(A: List[str]) -> int:
 
 ## Review
 
-
+{{< figure src="/img/blog/arts-45-per-week/openstack-redhat.webp" title="Openstack Redhat Deployment" >}}
 
 ## Tip
 

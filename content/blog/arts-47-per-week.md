@@ -68,6 +68,7 @@ MIT 6.006 第一课首先讲的就是此题，进一步还讲解如何查找 2 �
 
 ## Share
 
+{{< figure src="/img/blog/arts-47-per-week/openstack-cli.jpg" title="Openstack CLI Management" >}}
 
 
 封面图片来自 []() <a href=""><i class="fa fa-dribbble" aria-hidden="true"></i> </a>

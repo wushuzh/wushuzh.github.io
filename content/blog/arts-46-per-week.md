@@ -41,5 +41,7 @@ choco feature enable -n=useRememberedArgumentsForUpgrades
 
 https://www.quora.com/What-does-192-168-0-1-32-mean
 
+{{< figure src="/img/blog/arts-46-per-week/openstack-horizon-gui.jpg" title="Openstack Horizon Management" >}}
+
 
 封面图片来自 [G-cake](https://dribbble.com/shots/2974506-G-cake) <a href="https://dribbble.com/TomislavZvonaric"><i class="fa fa-dribbble" aria-hidden="true"></i> Tomislav Zvonaric</a>
