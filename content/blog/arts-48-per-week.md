@@ -17,6 +17,7 @@ tags = ["ARTS"]
 
 ## Review
 
+{{< figure src="/img/blog/arts-48-per-week/swift-obj-storage.jpg" title="Swift Object Storage" >}}
 
 ## Tip
 

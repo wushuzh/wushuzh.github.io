@@ -18,6 +18,7 @@ leetcode 上最简单的题目来了 771_jewels_and_stones
 
 ## Review
 
+{{< figure src="/img/blog/arts-49-per-week/Ceph.jpg" title="Ceph Overview" >}}
 
 ## Tip
 
