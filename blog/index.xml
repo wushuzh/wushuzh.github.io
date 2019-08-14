@@ -6,7 +6,7 @@
     <description>Recent content in Blogs on 小强会武术</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 10 Jun 2019 13:50:54 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 24 Jun 2019 14:57:30 +0800</lastBuildDate>
     
 	<atom:link href="https://wushuzh.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
@@ -98,7 +98,7 @@
       <pubDate>Sun, 04 Jun 2017 20:40:13 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/06/04/syslog-std-in-general/</guid>
-      <description>&lt;p&gt;syslog 标准和常见工业实现&lt;/p&gt;</description>
+      <description>&lt;p&gt;syslog 标准和常见的实现框架&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -170,7 +170,7 @@
       <pubDate>Tue, 05 Sep 2017 22:50:33 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/09/05/deal-with-flood-logs/</guid>
-      <description>&lt;p&gt;如何过滤无用的系统日志……&lt;/p&gt;</description>
+      <description>&lt;p&gt;无法改变源代码时，过滤多余的日志……&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -260,7 +260,7 @@
       <pubDate>Mon, 16 Apr 2018 22:45:31 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2018/04/16/download-vids-using-youtube-dl/</guid>
-      <description>&lt;p&gt;油管视频下载和播放的利器&lt;/p&gt;</description>
+      <description>&lt;p&gt;油管视频的下载及在线调速插件&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -350,7 +350,7 @@
       <pubDate>Mon, 11 Sep 2017 23:00:07 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/09/11/get-start-with-py/</guid>
-      <description>&lt;p&gt;如何在不同的环境下自由穿行&lt;/p&gt;</description>
+      <description>&lt;p&gt;如何在不同的py环境下自由穿行&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -386,7 +386,7 @@
       <pubDate>Tue, 31 Oct 2017 20:59:31 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/10/31/try-bokeh-with-flask/</guid>
-      <description>&lt;p&gt;使用 Python 生成交互式图表&lt;/p&gt;</description>
+      <description>&lt;p&gt;使用 Python bokeh 生成交互式图表&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -395,7 +395,7 @@
       <pubDate>Tue, 24 Oct 2017 22:20:04 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/10/24/microservices-and-k8s/</guid>
-      <description>&lt;p&gt;啊，船长，啊，我的船长……&lt;/p&gt;</description>
+      <description>&lt;p&gt;啊，船长，啊，我的船长……启航吧&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -422,7 +422,7 @@
       <pubDate>Thu, 07 Dec 2017 22:01:09 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/12/07/use-react-in-frontend/</guid>
-      <description>&lt;p&gt;从现在开始 React 复杂前端&lt;/p&gt;</description>
+      <description>&lt;p&gt;引入 React 实现来前端相关功能&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -557,7 +557,7 @@
       <pubDate>Fri, 10 Aug 2018 22:28:13 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2018/08/10/arts-06-per-week/</guid>
-      <description>&lt;p&gt;终于动手修改了本博客的版式&lt;/p&gt;</description>
+      <description>&lt;p&gt;终于动手修改了本博客的版式风格&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -584,7 +584,7 @@
       <pubDate>Thu, 30 Aug 2018 21:33:21 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2018/08/30/arts-09-per-week/</guid>
-      <description>&lt;p&gt;在 Hugo 中配置应用多个主题&lt;/p&gt;</description>
+      <description>&lt;p&gt;在 Hugo 中同时配置应用多个主题&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -656,7 +656,7 @@
       <pubDate>Mon, 08 Apr 2019 15:57:50 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2019/04/08/arts-42-per-week/</guid>
-      <description>&lt;p&gt;Linux 存储相关知识总体概述&lt;/p&gt;</description>
+      <description>&lt;p&gt;Linux 存储相关知识的总体概述&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -666,6 +666,24 @@
       
       <guid>https://wushuzh.github.io/blog/2019/06/10/arts-51-per-week/</guid>
       <description>&lt;p&gt;提高学习效率，少做无用功的一些技巧&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ARTS 2019w25</title>
+      <link>https://wushuzh.github.io/blog/2019/06/17/arts-52-per-week/</link>
+      <pubDate>Mon, 17 Jun 2019 14:14:47 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2019/06/17/arts-52-per-week/</guid>
+      <description>&lt;p&gt;学会专注既定目标，屏蔽无关吵杂干扰&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ARTS 2019w26</title>
+      <link>https://wushuzh.github.io/blog/2019/06/24/arts-53-per-week/</link>
+      <pubDate>Mon, 24 Jun 2019 14:57:30 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2019/06/24/arts-53-per-week/</guid>
+      <description>&lt;p&gt;红帽的统一基础容器镜像是如何创建的？&lt;/p&gt;</description>
     </item>
     
   </channel>

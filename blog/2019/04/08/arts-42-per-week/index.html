@@ -77,7 +77,7 @@ if (!doNotTrack) {
                 <i class="fa fa-calendar-o fa-fw"></i> 2019-04-08
                 </time>
                 &middot;
-                1662 字
+                1663 字
                 &middot;
                 4 分钟
                 </p>
@@ -93,7 +93,7 @@ if (!doNotTrack) {
       </div>
       <br />
 
-         <p>Linux 存储相关知识总体概述</p>
+         <p>Linux 存储相关知识的总体概述</p>
 
 <h2 id="algorithm">Algorithm</h2>
 
@@ -269,7 +269,8 @@ if (!doNotTrack) {
 
 <ul>
 <li>POSIX 系统中的 inode</li>
-<li>iSCSI 的设置图示
+
+<li><p>iSCSI 的设置图示</p>
 
 <ol>
 <li>在 Target 设置 devname baz <code>/backstore/block/</code></li>
@@ -280,49 +281,50 @@ if (!doNotTrack) {
 <li>在 Target 上启动 target 服务</li>
 <li>在 Initiator 发现 Target LUN</li>
 <li>在 Initiator 登陆 Target</li>
-<li>在 Initiator 可以看到共享设备</li>
-</ol></li>
-</ul>
 
-<pre><code>           symlink
-              +
-              |
-              v
+<li><p>在 Initiator 可以看到共享设备</p>
+
+<pre><code>   symlink
+      +
+      |
+      v
 2nd name   name
 hardlink   hardlink
-    +         +
-    |         |
-    |         v
-    |      +--+--+
-    +-----&gt;+inode| Everything but name
-           +--+--+
-              |
-              |
-              v
-          +-------+
-          |1|2|3|4|
-          +-------+
++         +
+|         |
+|         v
+|      +--+--+
++-----&gt;+inode| Everything but name
+   +--+--+
+      |
+      |
+      v
+  +-------+
+  |1|2|3|4|
+  +-------+
 
 </code></pre>
 
 <pre><code>service:   +----------+      +----------+
 target     |----------|      |----+     |
-           ||sda||sdb||      ||sda|     | tool:
+   ||sda||sdb||      ||sda|     | tool:
 tool:      +-------+--+      +----+     | iscsiadm
 targetcli  |       v  |      |          | lsscsi
-           |      LUN |      |          |
-           |          |      |          |
-           |    SAN   |      |          |
-           |          |      |          +----+
-           |Target    |      |Initiator ||sdb|
-           +----------+      +-----+---------+
-             TCP|3260              |
-                &lt;------------------+
-                      discovery    |
-                &lt;------------------+
-                      login
+   |      LUN |      |          |
+   |          |      |          |
+   |    SAN   |      |          |
+   |          |      |          +----+
+   |Target    |      |Initiator ||sdb|
+   +----------+      +-----+---------+
+     TCP|3260              |
+        &lt;------------------+
+              discovery    |
+        &lt;------------------+
+              login
 
-</code></pre>
+</code></pre></li>
+</ol></li>
+</ul>
 
 <h2 id="share">Share</h2>
 

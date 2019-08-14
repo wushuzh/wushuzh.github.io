@@ -17,7 +17,7 @@
       <pubDate>Sun, 04 Jun 2017 20:40:13 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/06/04/syslog-std-in-general/</guid>
-      <description>&lt;p&gt;syslog 标准和常见工业实现&lt;/p&gt;</description>
+      <description>&lt;p&gt;syslog 标准和常见的实现框架&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -89,7 +89,7 @@
       <pubDate>Tue, 05 Sep 2017 22:50:33 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/09/05/deal-with-flood-logs/</guid>
-      <description>&lt;p&gt;如何过滤无用的系统日志……&lt;/p&gt;</description>
+      <description>&lt;p&gt;无法改变源代码时，过滤多余的日志……&lt;/p&gt;</description>
     </item>
     
     <item>

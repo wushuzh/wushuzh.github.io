@@ -26,7 +26,7 @@
       <pubDate>Tue, 31 Oct 2017 20:59:31 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/10/31/try-bokeh-with-flask/</guid>
-      <description>&lt;p&gt;使用 Python 生成交互式图表&lt;/p&gt;</description>
+      <description>&lt;p&gt;使用 Python bokeh 生成交互式图表&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -44,7 +44,7 @@
       <pubDate>Thu, 07 Dec 2017 22:01:09 +0800</pubDate>
       
       <guid>https://wushuzh.github.io/blog/2017/12/07/use-react-in-frontend/</guid>
-      <description>&lt;p&gt;从现在开始 React 复杂前端&lt;/p&gt;</description>
+      <description>&lt;p&gt;引入 React 实现来前端相关功能&lt;/p&gt;</description>
     </item>
     
     <item>
