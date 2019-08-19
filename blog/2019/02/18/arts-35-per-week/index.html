@@ -77,7 +77,7 @@ if (!doNotTrack) {
                 <i class="fa fa-calendar-o fa-fw"></i> 2019-02-18
                 </time>
                 &middot;
-                2387 字
+                2389 字
                 &middot;
                 5 分钟
                 </p>
@@ -184,7 +184,7 @@ Active(anon):     1 GB  # process request
 </span>Active(file):   0.5 GB  # cache/buffer
 Inactive(file):   0 GB</code></pre></div>
 
-<p>解决方案就是增加 SWAP 内存：从 1G 升到 16 GB，并同时调整 swappiness 参数 <code>echo 90 &gt; /proc/sys/vm/swappiness</code>，然操作系统更激进的将 anno inactive 内存放入 SWAP；立刻查看 <code>vmstat 3</code> 观察 swap
+<p>解决方案就是增加 SWAP 内存：从 1G 升到 16 GB，并同时调整 swappiness 参数 <code>echo 90 &gt; /proc/sys/vm/swappiness</code>，使得操作系统能更激进地将 anno inactive 数据放入 SWAP；立刻查看 <code>vmstat 3</code> 观察 swap
  in/out 数值，后续运行几天后，总体呈现了一个健康的内存分配情况：</p>
 
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">cat /proc/meminfo |grep -i active
