@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>glusterfs on 小强会武术</title>
+    <link>https://wushuzh.github.io/tags/glusterfs/</link>
+    <description>Recent content in glusterfs on 小强会武术</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 29 Apr 2019 19:09:37 +0800</lastBuildDate>
+    
+	<atom:link href="https://wushuzh.github.io/tags/glusterfs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>ARTS 2019w18</title>
+      <link>https://wushuzh.github.io/blog/2019/04/29/arts-45-per-week/</link>
+      <pubDate>Mon, 29 Apr 2019 19:09:37 +0800</pubDate>
+      
+      <guid>https://wushuzh.github.io/blog/2019/04/29/arts-45-per-week/</guid>
+      <description>&lt;p&gt;Glusterfs 基本架构、及简单试验环境搭建&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

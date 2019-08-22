@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>ARTS 2019w18</title>
+<meta name="description" content="个人技术站点">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.theme.css">
+
+
+  <link href="https://wushuzh.github.io/css/style.sea.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://wushuzh.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-102509506-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              
+              
+<div class="col-xs-12 col-sm-12 col-md-12 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="https://wushuzh.github.io/">小强会武术</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-10 col-lg-offset-1">
+      <div class="content-column-content">
+      
+      <div class="row">
+        <div class="col-sm-4">
+          
+            <div class="image">
+              <img src="https://wushuzh.github.io//img/blog/arts-45-per-week/grid.gif" class="img-responsive" alt="">
+            </div>
+          
+        </div>
+        <div class="col-md-6">
+            <h2>ARTS 2019w18</h2>
+                <p>
+                  <i class="fa fa-share-square-o fa-fw"></i><a href="/"> 小强会武术</a>
+                </p>
+
+                <p>
+                <time datetime="2019-04-29 19:09:37 &#43;0800 CST">
+                <i class="fa fa-calendar-o fa-fw"></i> 2019-04-29
+                </time>
+                &middot;
+                748 字
+                &middot;
+                2 分钟
+                </p>
+
+                
+                <p>
+                  <i class="fa fa-tags fa-fw" aria-hidden="true"></i>
+                  <a href="/tags/arts">ARTS</a> &nbsp;&nbsp; <a href="/tags/glusterfs">glusterfs</a> &nbsp;&nbsp; <a href="/tags/openstack">Openstack</a>
+                </p>
+                
+
+        </div>
+      </div>
+      <br />
+
+         <p>Glusterfs 基本架构、及简单试验环境搭建</p>
+
+<h2 id="algorithm">Algorithm</h2>
+
+<p><a href="https://leetcode.com/problems/similar-string-groups/">leetcode #839 Similar String Groups</a> 给定一些由同样字母组成的单词，只需将两个不同位置的字母交换一次的得到的两个单词定义为相似，将给定的单词列表按照上述相似条件分组，求最终有多少不同的组。</p>
+
+<p>这道题是典型的 Union Find 问题，若两个单词相似，就将其 union 起来。</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">is_similiar</span>(w1, w2):
+    cnt <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+    <span style="color:#66d9ef">for</span> i1, i2 <span style="color:#f92672">in</span> zip(w1, w2):
+        cnt <span style="color:#f92672">+=</span> (i1 <span style="color:#f92672">!=</span> i2)
+    <span style="color:#66d9ef">return</span> cnt <span style="color:#f92672">in</span> (<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">2</span>)</code></pre></div>
+
+<p>但解法提交后，总是标识超时。主要是在两两比较单词（双层嵌套loop)太过耗时，选出两个单词，然后逐一对比字符串。当单词量特别大时，应该尝试转换为单层循环，然后主动将其中的两个字母交换顺序，然后查看是否需要 union。这样性能至少可以被 leetcode 提交系统接受。</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">num_similiar_groups_using_union_find</span>(A: List[str]) <span style="color:#f92672">-&gt;</span> int:
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">is_similiar</span>(w1, w2):
+        cnt <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+        <span style="color:#66d9ef">for</span> i1, i2 <span style="color:#f92672">in</span> zip(w1, w2):
+            cnt <span style="color:#f92672">+=</span> (i1 <span style="color:#f92672">!=</span> i2)
+            <span style="color:#66d9ef">if</span> cnt <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">2</span>:
+                <span style="color:#66d9ef">return</span> False
+        <span style="color:#66d9ef">return</span> cnt <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span>
+
+    uf <span style="color:#f92672">=</span> UnionFind(A)
+
+    strlen, wordlen <span style="color:#f92672">=</span> len(A[<span style="color:#ae81ff">0</span>]), len(A)
+    <span style="color:#66d9ef">if</span> wordlen <span style="color:#f92672">&lt;</span> strlen <span style="color:#f92672">*</span> strlen:
+        <span style="color:#66d9ef">for</span> i, w1 <span style="color:#f92672">in</span> enumerate(A[:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]):
+            <span style="color:#66d9ef">for</span> w2 <span style="color:#f92672">in</span> A[i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>:]:
+                <span style="color:#66d9ef">if</span> is_similiar(w1, w2):
+                    uf<span style="color:#f92672">.</span>union(w1, w2)
+    <span style="color:#66d9ef">else</span>:
+        given_words <span style="color:#f92672">=</span> set(A)
+        <span style="color:#66d9ef">for</span> w <span style="color:#f92672">in</span> given_words:
+            <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(strlen):
+                <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, strlen):
+                    new <span style="color:#f92672">=</span> w[:i] <span style="color:#f92672">+</span> w[j] <span style="color:#f92672">+</span> w[i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>:j] <span style="color:#f92672">+</span> w[i] <span style="color:#f92672">+</span> w[j <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>:]
+                    <span style="color:#66d9ef">if</span> new <span style="color:#f92672">in</span> given_words:
+                        uf<span style="color:#f92672">.</span>union(w, new)
+
+    <span style="color:#66d9ef">return</span> len({uf<span style="color:#f92672">.</span>find_root(w) <span style="color:#66d9ef">for</span> w <span style="color:#f92672">in</span> uf<span style="color:#f92672">.</span>p})</code></pre></div>
+
+<h2 id="review">Review</h2>
+
+<figure>
+    <img src="/img/blog/arts-45-per-week/openstack-redhat.webp"/> <figcaption>
+            <h4>Openstack Redhat Deployment</h4>
+        </figcaption>
+</figure>
+
+
+<p>Openstack 红帽版本可以用 packstack 安装</p>
+
+<h2 id="tip">Tip</h2>
+
+<p>Linux 用于控制限制用户资源的文件是 <code>pam_limits.so</code>，各项资源的限制被被持久化在配置文件中 <code>/etc/security/limits.conf</code></p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">ulimit -a
+
+core file size          (blocks, -c) 0 
+data seg size           (kbytes, -d) unlimited 
+file size               (blocks, -f) unlimited 
+pending signals                 (-i) 8191 
+max locked memory       (kbytes, -l) 32 
+max memory size         (kbytes, -m) unlimited 
+open files                      (-n) 1024 
+pipe size            (512 bytes, -p) 8 
+POSIX message queues     (bytes, -q) 819200 
+stack size              (kbytes, -s) 8192 
+cpu time               (seconds, -t) unlimited 
+max user processes              (-u) 8191 
+virtual memory          (kbytes, -v) unlimited 
+file locks                      (-x) unlimited 
+
+cat /etc/security/limits.conf
+*     -    maxlogins 2   # restrict concurrent user logins
+user1 hard nproc 1000
+user1 soft nproc 500</code></pre></div>
+
+<p>可以配置的 item （第三列）包括：</p>
+
+<ul>
+<li>core - limits the core file size (KB)</li>
+<li>data - max data size (KB)</li>
+<li>fsize - maximum filesize (KB)</li>
+<li>memlock - max locked-in-memory address space (KB)</li>
+<li>nofile - max number of open files</li>
+<li>rss - max resident set size (KB)</li>
+<li>stack - max stack size (KB)</li>
+<li>cpu - max CPU time (MIN)</li>
+<li>nproc - max number of processes</li>
+<li>as - address space limit (KB)</li>
+<li>maxlogins - max number of logins for this user</li>
+<li>maxsyslogins - max number of logins on the system</li>
+<li>priority - the priority to run user process with</li>
+<li>locks - max number of file locks the user can hold</li>
+<li>sigpending - max number of pending signals</li>
+<li>msgqueue - max memory used by POSIX message queues (bytes)</li>
+<li>nice - max nice priority allowed to raise to values: [-20, 19]</li>
+<li>rtprio - max realtime priority</li>
+</ul>
+
+<h2 id="share">Share</h2>
+
+<figure>
+    <img src="/img/blog/arts-45-per-week/glusterfs.jpg"/> <figcaption>
+            <h4>Glusterfs 概述</h4>
+        </figcaption>
+</figure>
+
+
+<p>拓展阅读：</p>
+
+<blockquote>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Gluster">Gluster</a> <a href="https://docs.gluster.org/en/latest/Quick-Start-Guide/Architecture/">架构文档</a></li>
+<li><a href="https://youtu.be/h86zGibyndM">Performance and Sizing with Red Hat Gluster Storage</a></li>
+<li><a href="http://www.taocloudx.com/index.php?a=shows&amp;catid=4&amp;id=66">GlusterFS文件系统弹性哈希算法</a></li>
+</ul>
+</blockquote>
+
+<p>封面图片来自 <a href="https://dribbble.com/shots/4060778-Breath">Breath</a> <a href="https://dribbble.com/BestServedBold"><i class="fa fa-dribbble" aria-hidden="true"></i> 𝔅𝔢𝔰𝔱𝔖𝔢𝔯𝔳𝔢𝔡𝔅𝔬𝔩𝔡</a></p>
+         <div id="disqus_thread">
+  <a href="#" onclick="disqus();return false;"> 点击启用 Disqus 评论文章 <i class="fa fa-comments" aria-hidden="true"></i></a>
+</div>
+
+<script type="text/javascript">
+var disqus_loaded = false;
+function disqus() {
+  if (!disqus_loaded) {
+    
+    
+    
+    
+
+    disqus_loaded = true;
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'wushuzh';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }
+};
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </div>
+  </div>
+</div>
+<noscript>
+  <style>.jsonly { display: none }</style>
+</noscript>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://wushuzh.github.io/js/jquery.min.js"></script>
+<script src="https://wushuzh.github.io/js/bootstrap.min.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.cookie.js"> </script>
+<script src="https://wushuzh.github.io/js/ekko-lightbox.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://wushuzh.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/owl.carousel.min.js"></script>
+<script src="https://wushuzh.github.io/js/front.js"></script>
+
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</body>
+</html>
