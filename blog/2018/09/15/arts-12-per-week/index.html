@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>ARTS 2018w38</title>
+<meta name="description" content="个人技术站点">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.theme.css">
+
+
+  <link href="https://wushuzh.github.io/css/style.sea.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://wushuzh.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-102509506-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              
+              
+<div class="col-xs-12 col-sm-12 col-md-12 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="https://wushuzh.github.io/">小强会武术</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-10 col-lg-offset-1">
+      <div class="content-column-content">
+      
+      <div class="row">
+        <div class="col-sm-4">
+          
+            <div class="image">
+              <img src="https://wushuzh.github.io//img/blog/arts-12-per-week/princess.jpg" class="img-responsive" alt="">
+            </div>
+          
+        </div>
+        <div class="col-md-6">
+            <h2>ARTS 2018w38</h2>
+                <p>
+                  <i class="fa fa-share-square-o fa-fw"></i><a href="/"> 小强会武术</a>
+                </p>
+
+                <p>
+                <time datetime="2018-09-15 07:30:04 &#43;0800 CST">
+                <i class="fa fa-calendar-o fa-fw"></i> 2018-09-15
+                </time>
+                &middot;
+                898 字
+                &middot;
+                2 分钟
+                </p>
+
+                
+                <p>
+                  <i class="fa fa-tags fa-fw" aria-hidden="true"></i>
+                  <a href="/tags/arts">ARTS</a>
+                </p>
+                
+
+        </div>
+      </div>
+      <br />
+
+         <p>育儿即是育己——先做更好的自己</p>
+
+<h2 id="algorithm">Algorithm</h2>
+
+<p><a href="https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/">leetcode #448 Find All Numbers Disappeared in an Array</a> 长度为 N 的数组，其元素值一定处于 [1, N] 区间内，但有些元素出现了 2 次——导致其他有些在此范围内的值未能出现。</p>
+
+<p>要求找出未能出现的元素列表。</p>
+
+<p>解法思路：如果给定数组其中的元素没有重复，则它们每一个的值都能对应上一个 idx (idx + 1)。</p>
+
+<p>通过轮循这些值，将其对应的 idx 的值做特殊标记，那么重复的值指向的 idx 元素就会被标记多次。而有些 idx 下的值却没有标记，这些没有被标记的值就是要求的解。</p>
+
+<p>标记方法可以选择加 N，那么原来范围是 [1, N] ，变更为 [1 + N, 2N]。</p>
+
+<p>而对这个加过 N 的值取余数，又可以消除标记的影响——余数仍然可以对应同一数组 idx 位置。</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-pythong3" data-lang="pythong3">def find_disapppeared_nums(nums: List[int]) -&gt; List[int]:
+    N = len(nums)
+    for i in range(N):
+        nums[nums[i % N] - 1] += N
+    
+    return [i + 1 for i in range(N) if nums[N] &lt;= N]</code></pre></div>
+
+<h2 id="review">Review</h2>
+
+<figure>
+    <img src="/img/blog/arts-12-per-week/general-storage.jpg"/> <figcaption>
+            <h4>存储概述</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="tip">Tip</h2>
+
+<p>autofs 是用来自动挂载文件系统的工具：它可以在你访问特定配置目录时，按照约定设置，自动挂载(mount)各式文件系统：比如光驱、U盘、远程NFS，而在用户一段时间不访问的时候，自动卸载相应文件系统，在 <code>/etc/autofs.conf</code> 中设定了这些时间间隔。</p>
+
+<ul>
+<li>主配置文件 <code>/etc/autofs.master</code> 里面配置了目录(例如 <code>/misc</code>)，和其对应的配置文件(<code>/etc/auto.misc</code>)的映射关系；</li>
+<li>在目录配置文件 <code>/etc/autofs.misc</code> 有各个子目录(例如 <code>cd</code>), 和挂载参数和设备；</li>
+</ul>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yum install autofs
+
+cat /etc/autofs.misc |grep cd
+cd     -fstype<span style="color:#f92672">=</span>iso9660,ro,nosuid,nodev   :/dev/cdrom
+
+systemctl restart autofs</code></pre></div>
+
+<p>实验：在一台服务器上建立 NFS 服务，在另一台安装 aufofs 服务，自动挂载共享目录：</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># NFS server setup</span>
+yum install nfs-utils
+
+firewall-cmd --permanent --add-service<span style="color:#f92672">=</span>nfs
+firewall-cmd --reload
+systemctl enable --now rpcbind nfs-server
+
+mkdir /share
+find /usr/share/doc -name <span style="color:#e6db74">&#34;*pdf&#34;</span> -exec cp <span style="color:#f92672">{}</span> /share <span style="color:#ae81ff">\;</span>
+echo <span style="color:#e6db74">&#34;/share *(ro)&#34;</span> &gt;&gt; /etc/exports
+exportfs -r <span style="color:#75715e"># re-share</span>
+exportfs -s <span style="color:#75715e"># give summary display of all shared folder</span></code></pre></div>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># NFS Client autofs setup</span>
+cat /etc/autofs.misc |grep pdf
+pdf    -ro,soft,intr  nfsserver:/share
+
+<span style="color:#75715e"># option soft means report error when nsfserver is not available</span>
+<span style="color:#75715e"># option intr means request can be interrupted in case nfsserver cannot be reached</span>
+
+cd /misc/pdf
+ls *pdf</code></pre></div>
+
+<h2 id="share">Share</h2>
+
+<figure>
+    <img src="/img/blog/arts-12-per-week/openstack-overview.jpg"/> <figcaption>
+            <h4>Openstack 总体概览</h4>
+        </figcaption>
+</figure>
+
+
+<ul>
+<li>IaaS 不止是 VM ，它带来更高效的管理、更方便的拓展；</li>
+<li>Openstack distribution 负责实现 Openstack foundation 定义的 spec；</li>
+<li>核心服务包括 Nova、Netutron、Glance、Cinder、Swift；</li>
+<li>管理界面 Horizon ，用户及权限 Keystone , 编排 Heat</li>
+<li>另外还有容器管理 Magnum、大数据集群 Sahara、DBaaS (SQL &amp; NoSQL DB)、DNSaaS (Designate)</li>
+</ul>
+
+<p>其核心组件需要一个消息中间件通信，通常是 RabbitMQ 或 ZeroMQ ，另外还有一个用于数据持久化的数据库；</p>
+
+<p>《0-6岁A+育儿法》是刘未鹏豆瓣书单<a href="https://www.douban.com/doulist/1327794/">『只读经典』育儿即育己</a>上的第一本，下面是我的读书笔记</p>
+
+<p><figure>
+    <img src="/img/blog/arts-12-per-week/parenting-1.jpg"/> <figcaption>
+            <h4>六个重要的心理素质</h4>
+        </figcaption>
+</figure>
+
+<figure>
+    <img src="/img/blog/arts-12-per-week/parenting-2.jpg"/> <figcaption>
+            <h4>育儿路线图</h4>
+        </figcaption>
+</figure>
+</p>
+
+<p>封面图片来自 <a href="https://dribbble.com/shots/3442813-Little-Wolf-Princess">Little Wolf Princess</a> <a href="https://dribbble.com/jmaruyama"><i class="fa fa-dribbble" aria-hidden="true"></i> Jerrod Maruyama</a></p>
+         <div id="disqus_thread">
+  <a href="#" onclick="disqus();return false;"> 点击启用 Disqus 评论文章 <i class="fa fa-comments" aria-hidden="true"></i></a>
+</div>
+
+<script type="text/javascript">
+var disqus_loaded = false;
+function disqus() {
+  if (!disqus_loaded) {
+    
+    
+    
+    
+
+    disqus_loaded = true;
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'wushuzh';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }
+};
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </div>
+  </div>
+</div>
+<noscript>
+  <style>.jsonly { display: none }</style>
+</noscript>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://wushuzh.github.io/js/jquery.min.js"></script>
+<script src="https://wushuzh.github.io/js/bootstrap.min.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.cookie.js"> </script>
+<script src="https://wushuzh.github.io/js/ekko-lightbox.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://wushuzh.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/owl.carousel.min.js"></script>
+<script src="https://wushuzh.github.io/js/front.js"></script>
+
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</body>
+</html>

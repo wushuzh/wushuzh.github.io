@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>ARTS 2018w39</title>
+<meta name="description" content="个人技术站点">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://wushuzh.github.io/css/owl.theme.css">
+
+
+  <link href="https://wushuzh.github.io/css/style.sea.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://wushuzh.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://wushuzh.github.io/img/favicon.png">
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-102509506-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              
+              
+<div class="col-xs-12 col-sm-12 col-md-12 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="https://wushuzh.github.io/">小强会武术</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-10 col-lg-offset-1">
+      <div class="content-column-content">
+      
+      <div class="row">
+        <div class="col-sm-4">
+          
+            <div class="image">
+              <img src="https://wushuzh.github.io//img/blog/arts-13-per-week/aircraft-carrier.jpg" class="img-responsive" alt="">
+            </div>
+          
+        </div>
+        <div class="col-md-6">
+            <h2>ARTS 2018w39</h2>
+                <p>
+                  <i class="fa fa-share-square-o fa-fw"></i><a href="/"> 小强会武术</a>
+                </p>
+
+                <p>
+                <time datetime="2018-09-15 07:30:04 &#43;0800 CST">
+                <i class="fa fa-calendar-o fa-fw"></i> 2018-09-15
+                </time>
+                &middot;
+                1169 字
+                &middot;
+                3 分钟
+                </p>
+
+                
+                <p>
+                  <i class="fa fa-tags fa-fw" aria-hidden="true"></i>
+                  <a href="/tags/arts">ARTS</a>
+                </p>
+                
+
+        </div>
+      </div>
+      <br />
+
+         <p>那些令人咋舌、惊奇的特殊经历</p>
+
+<h2 id="algorithm">Algorithm</h2>
+
+<p><a href="https://leetcode.com/problems/majority-element/">leetcode #169 Majority Element</a> 找出那个出现次数超过一半的元素。</p>
+
+<p>思路是使用 dictionary 的 key 对重复元素计数，计数值超过半数就是希望得到的结果。</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">majority_element_using_dict</span>(nums: List[int]) <span style="color:#f92672">-&gt;</span> int:
+    dic <span style="color:#f92672">=</span> {}
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> nums:
+        <span style="color:#66d9ef">if</span> i <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> dic:
+            dic[i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+        <span style="color:#66d9ef">else</span>:
+            dic[i] <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+        
+        <span style="color:#66d9ef">if</span> dic[i] <span style="color:#f92672">&gt;</span> len(nums)<span style="color:#f92672">//</span><span style="color:#ae81ff">2</span>:
+            <span style="color:#66d9ef">return</span> i</code></pre></div>
+
+<h2 id="review">Review</h2>
+
+<figure>
+    <img src="/img/blog/arts-13-per-week/03-Pods_running_containers_in_Kubernetes.jpg"/> <figcaption>
+            <h4>Pods running containers in Kubernetes</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="tip">Tip</h2>
+
+<p>复习 一下 selinux 和 file ACL 的基本设置：</p>
+
+<figure>
+    <img src="/img/blog/arts-13-per-week/selinux_and_facl.jpg"/> <figcaption>
+            <h4>setup both SElinux and File for httpd</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="share">Share</h2>
+
+<p>关于 SELinux 的更全面的总结：</p>
+
+<p>有时我们对 linux 服务的自定义配置，可能会因为缺少增加、变更相应的 selinux 的规则，而无法使用。在测试环境下，我们可能直接全局禁止 selinux 了事，但在正规环境下，这确实是最不推荐的做法。</p>
+
+<p>举个例子，比如我们建立一个 samba 服务，使得 windows 用户可以直接访问服务器的设定一个自定义的共享目录，但仅仅设定 777 的目录权限并不够。</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yum install 
+
+mkdir -m <span style="color:#ae81ff">1777</span> /share <span style="color:#75715e"># add stick bit so that only owner can delete or renanme the files within folder</span>
+
+tail /etc/samba/smb.conf
+<span style="color:#f92672">[</span>share<span style="color:#f92672">]</span>
+path <span style="color:#f92672">=</span> /share
+writeable <span style="color:#f92672">=</span> yes
+
+testparm <span style="color:#75715e"># test the smb.conf syntax is correct and dump all svc settings</span>
+
+systemctl enable nmb smb --now
+
+smbpasswd -a root <span style="color:#75715e"># set smb passwd for user root</span> 
+smbclient -L //localhost <span style="color:#75715e"># list the share folders</span>
+<span style="color:#75715e"># try to connect and list the content</span>
+smbclient //locahost/share MYPASSWD
+smb: <span style="color:#ae81ff">\&gt;</span> pwd
+Current directory is <span style="color:#ae81ff">\\</span>localhost<span style="color:#ae81ff">\s</span>hare<span style="color:#ae81ff">\</span>
+smb: <span style="color:#ae81ff">\&gt;</span> ls
+NT_STATUS_ACCESS_DENIED listing <span style="color:#ae81ff">\*</span></code></pre></div>
+
+<p>诊断步骤及修复办法：</p>
+
+<p>首先确认系统的 selinux 的运行模式是 Enforce，查看最新的 audit 日志，确认有相关的selinux记录：</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">getenforce
+ausearch -m avc -t recent<span style="color:#f92672">(</span>10min<span style="color:#f92672">)</span>/today/yesterday/boot</code></pre></div>
+
+<p>暂时的解决办法，使用 <code>chcon</code> 对目录变更 selinux 配置，但这些设定会在后续执行 <code>restorecon</code> 或 relabel 后失效</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ls -dZ /share/
+chcon -t samba_share_t /share
+ls -dZ /share/</code></pre></div>
+
+<p>永久的方法是使用 semanage 工具增加对目录<code>share</code>的相应规则：</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yum whatprovides <span style="color:#e6db74">&#34;*/semanage&#34;</span>
+yum install policycoreutils-python
+
+semanage fcontext -a -t samba_share_t <span style="color:#e6db74">&#39;/share/(.*)?&#39;</span>
+restorecon -Rv /share</code></pre></div>
+
+<p>另一个办法是改变 selinux 的开关，这样就不用对 samba 共享目录做逐一设定：
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">setsebool -P samba_export_all_rw <span style="color:#ae81ff">1</span>
+systemctl restart smb</code></pre></div></p>
+
+<p>最后预期将整个系统 selinux 设定为 Permissive，我们可仅仅将 samba 服务设置为 Permissive 模式：</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yum install setools-console
+
+seinfo --permissive <span style="color:#75715e"># list all the services in permissive mode</span>
+
+semanage permissive -a smbd_t <span style="color:#75715e"># add smb service into this list</span>
+seinfo --permissive <span style="color:#75715e"># check again</span></code></pre></div>
+
+<p>另外，这几天读了一本闲书，一个北京小伙，罗雪写的《我在美国航母当大兵》：这兄弟去美国海军当了几年大兵，十年沉淀后写出之前的经历。</p>
+
+<p>他不是美国公民，但美国因为军队招不到人，大大放宽了入伍限制。然后他对美国航母上的不同部门相互关系，武器什么的写的还挺详细，我甚至感觉他有点给咱们提供情报的意思。另外中国人真的很优秀，到哪里都非常靠得住，他成为了作为优秀士兵，获得了将自己的名字打印到航母的飞机上的荣誉。这应该获得此殊荣的第一个中国人。结果美国那边将这件事托了很久，终于落实的时候，还把“不小心”他的信息打印错了。</p>
+
+<p>其实任何一个其他国籍的人加入他国军队，躲不开的一个问题就是如果被派去和自己的祖国打仗，你该怎么做？这个问题确实也有点困扰作者，我读到后来，发现这个兄弟入伍前，家庭生活有点郁闷，当时和妻子的关系到冰点，绿卡也没有着落，骨子里又有一些冒险基因，于是加入了美国海军。入伍后，战友也时不时问他，如果中美真的在战场上兵戎相见，他会如何做？所幸，直到他第一期征兵期满退伍，所在的舰队也没有被委派类似的任务。他自己认为，自己生活不太顺利的时候，加入军队，锻炼了自己，服役期间没有被委派到战场面对真实的生死，家庭问题慢慢的解决，退役后自己也拿到了身份，总体算是很幸运的。</p>
+
+<p>封面图片来自 <a href="https://dribbble.com/shots/3320525-Aircraft-carrier">Aircraft carrier</a> <a href="https://dribbble.com/quarternative"><i class="fa fa-dribbble" aria-hidden="true"></i> Christopher Smith</a></p>
+         <div id="disqus_thread">
+  <a href="#" onclick="disqus();return false;"> 点击启用 Disqus 评论文章 <i class="fa fa-comments" aria-hidden="true"></i></a>
+</div>
+
+<script type="text/javascript">
+var disqus_loaded = false;
+function disqus() {
+  if (!disqus_loaded) {
+    
+    
+    
+    
+
+    disqus_loaded = true;
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'wushuzh';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }
+};
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </div>
+  </div>
+</div>
+<noscript>
+  <style>.jsonly { display: none }</style>
+</noscript>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://wushuzh.github.io/js/jquery.min.js"></script>
+<script src="https://wushuzh.github.io/js/bootstrap.min.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.cookie.js"> </script>
+<script src="https://wushuzh.github.io/js/ekko-lightbox.js"></script>
+<script src="https://wushuzh.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://wushuzh.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://wushuzh.github.io/js/owl.carousel.min.js"></script>
+<script src="https://wushuzh.github.io/js/front.js"></script>
+
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</body>
+</html>
