@@ -18,15 +18,17 @@ python 也是云配置的首选语言: openstack ansible 各种公有云配置�
 
 ## Windows 10
 
-- python2 即将[退休](https://pythonclock.org/)，用 choco 直接安装 python3
+- python2 即将[退休](https://pythonclock.org/)，推荐用 choco 直接安装 python3
 - IDE 开发环境使用 vscode 及其 [python 拓展](https://github.com/Microsoft/vscode-python)
-- 在当前用户空间下 pip 安装 pipenv 工具, 通过 site 模块找到相应目录，将其加入 PATH
+- 在当前用户空间下 pip 安装 pipenv 工具, 通过 site 模块找到相应目录，将其加入 PATH —— 在 Windows 的 cmd 下用 setx 可以持久保存
 
 {{< highlight console >}}
-choco install python3
+choco install python
 py -m pip install -U pip
 pip install --user pipenv
 py -m site --user-base
+setx PATH "%PATH%;C:\Users\username\AppData\Roaming\Python\Python37\Scripts"
+
 
 choco install vscode
 

@@ -26,12 +26,20 @@ ansible 最大的特点是它不需要 agent，文档健全，容易上手。
 
 {{< highlight console >}}
 $ sudo pacman -S ansible
+{{< /highlight >}}
 
+{{< highlight console >}}
+wsl -d debian -u jiaqiang
+sudo apt install ansible
 {{< /highlight >}}
 
 ## 迷你环境
 
 使用 vagrant 创建一个小集群
+
+vagrant -v
+
+
 
 ## 仿真环境
 
@@ -61,7 +69,7 @@ blockinfile
 参考文档
 
 > - Justin Weissig Ansible series
-  - [1 Intro  Ansible](https://sysadmincasts.com/episodes/43-19-minutes-with-ansible-part-1-4)
+  - [1 Intro Ansible](https://sysadmincasts.com/episodes/43-19-minutes-with-ansible-part-1-4)
   - [2 Learning with Vagrant ](https://sysadmincasts.com/episodes/45-learning-ansible-with-vagrant-part-2-4)
   - [3 Conf Mgmt](https://sysadmincasts.com/episodes/46-configuration-management-with-ansible-part-3-4)
   - [4 Zero-downtime Deployment](https://sysadmincasts.com/episodes/47-zero-downtime-deployments-with-ansible-part-4-4)

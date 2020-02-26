@@ -109,6 +109,13 @@ def add_two_numbers_v3(l1, l2):
 
 三个月前就激活了 Windows 10 的 WSL (Windows Subsystem for Linux) 从应用商店安装 Debian ，但直到这周看推，看到阮一峰老师推荐的终端录制工具 termtosvg ，细读之下发现[暂不支持 Windows](https://github.com/nbedos/termtosvg/issues/13) 才下定决心进入 Debian 试一下。
 
+0. 激活 WSL，命令行安装 Debian
+{{< highlight powershell >}}
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
+Invoke-WebRequest -Uri https://aka.ms/wsl-debian-gnulinux -OutFile wsl-debian.appx -UseBasicParsing
+Add-AppxPackage .\wsl-debian.appx
+{{< /highlight >}}
+
 1. 若习惯使用 Cmder ，可以为其[自定义一个新任务 bash::debian](https://gingter.org/2016/11/16/running-windows-10-ubuntu-bash-in-cmder/)
 2. 听说 Debian 区别于 Ubuntu 的一个重要不同是默认不安装 sudo ，但 WSL 上的 Debian 已预装 sudo: [`apt list --installed`](https://www.cyberciti.biz/faq/how-to-list-all-installed-packages-debian-ubuntu/)
 3. 若无法直连外网，要先[设置 apt 代理](https://wiki.debian.org/AptConf) ，然后执行 `sudo apt update` 但后续仍可能遇到[代理缓存过期引起的 Hash Sum Mismatch 问题](https://askubuntu.com/a/709568)
