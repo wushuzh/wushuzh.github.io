@@ -1,7 +1,7 @@
 +++
 date = "2020-02-17T14:51:08+08:00"
 title = "ARTS 2020w07"
-image = "/img/blog/arts-87-per-week/"
+image = "/img/blog/arts-88-per-week/"
 draft = true
 weight = 2007
 tags = ["ARTS"]
