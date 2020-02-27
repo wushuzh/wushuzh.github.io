@@ -48,6 +48,11 @@ $ virsh net-dumpxml vagrant-libvirt
 
 ## Share
 
+https://benebsworth.com/getting-started-with-tekton/
+https://benebsworth.com/kubernetes-cicd-part-2/
+
+
+
 
 {{< highlight txt >}}
 $ sudo groupadd docker
@@ -56,8 +61,12 @@ Adding user myuser to group docker
 $ id myuser
 uid=1000(myuser) gid=985(users) groups=985(users),998(wheel),1000(docker)
 
-minikube start --insecure-registry=registry.kube-system.svc.cluster.local:80 --image-mirror-country=cn --registry-mirror=https://registry.docker-cn.com --image-repository=registry.cn-hangzhou.aliyuncs.com/google_containers
-minikube addons enable registry
+$ minikube start --insecure-registry=registry.kube-system.svc.cluster.local:80 --image-mirror-country=cn --registry-mirror=https://registry.docker-cn.com --image-repository=registry.cn-hangzhou.aliyuncs.com/google_containers
+$ minikube addons enable registry
+
+[fail to pull the image for addon registry #6352](https://github.com/kubernetes/minikube/issues/6352)
+
+
 ✅  registry was successfully enabled
 $ kubectl get svc --namespace=kube-system
 NAME       TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)                  AGE

@@ -16,10 +16,10 @@ tags = ["ARTS"]
 
 ## Tip
 
+比较两个文本文件
 
-{{< highlight txt >}}
-{{< /highlight >}}
-
+- vscode 直接支持此功能，两个文件都保持打开状态，在相应 panel 右键选择“比较选定文件”，选择位置有点隐蔽，参见 [SO](https://stackoverflow.com/a/30142010)
+- Notepad++ 需要单独安装插件 [Compare Two Files Using Notepad++](http://www.technicaloverload.com/compare-two-files-using-notepad/)
 
 ## Share
 
