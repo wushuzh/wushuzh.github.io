@@ -36,6 +36,9 @@ pygmentsUseClassic = true
     category = "categories"
     series = "series"
 
+[markup.goldmark.renderer]
+unsafe = true
+
 [outputFormats.Reveal]
 baseName = "index"
 mediaType = "text/html"

@@ -1,0 +1,13 @@
+docker run --privileged  -ti -e container=docker  -v /sys/fs/cgroup:/sys/fs/cgroup  c7-systemd /usr/sbin/init
+
+
+docker run -it --rm --name a-dhcpd --init --net host -v "/root/data":/data networkboot/dhcpd enp0s8
+
+
+docker run -it --rm --init --net host -v "/root/data":/data docker.io/networkboot/dhcpd enp0s8
+
+docker run --net host -v /root/tftpboot:/var/tftpboot -i -t pghalliday/tftp
+
+docker run -p 0.0.0.0:69:69/udp -v /root/tftpboot:/var/tftpboot -i -t pghalliday/tftp
+
+youtube-dl https://www.youtube.com/playlist?list=PL0VQfgvTnJRD5MV7rt3mVjkFRE1Cgjrbe

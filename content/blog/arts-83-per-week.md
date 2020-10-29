@@ -199,5 +199,8 @@ $ virsh net-dumpxml vagrant-libvirt
 
 ## Share
 
+吴军《智能时代》第一章，数据基石
+
+{{< figure src="/img/blog/arts-83-per-week/data-foundation.jpg" title="智能时代-数据基石" >}}
 
 封面图片来自 []() <a href="h"><i class="fa fa-dribbble" aria-hidden="true"></i> </a>

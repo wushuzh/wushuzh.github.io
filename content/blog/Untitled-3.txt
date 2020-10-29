@@ -1,0 +1,110 @@
+vagrant up
+
+vagrant ssh
+
+sudo -i
+
+docker run -it --rm --network=host --name=pxedhcp docker.io/centos:7 sh
+
+        docker run -it --name pxedhcp docker.io/centos:7 sh
+
+
+
+yum install -y dhcp
+
+/etc/dhcp/dhcpd.conf
+
+option space pxelinux;
+option pxelinux.magic code 208 = string;
+option pxelinux.configfile code 209 = text;
+option pxelinux.pathprefix code 210 = text;
+option pxelinux.reboottime code 211 = unsigned integer 32;
+option architecture-type code 93 = unsigned integer 16;
+
+subnet 192.168.0.0 netmask 255.255.255.0 {
+  range 192.168.0.100 192.168.0.110;
+
+  class "pxeclients" {
+    match if substring (option vendor-class-identifier, 0, 9) = "PXEClient";
+    next-server 192.168.0.9;
+
+    if option architecture-type = 00:07 {
+      filename "shim.efi";
+    } else {
+      filename "pxelinux/pxelinux.0";
+    }
+  }
+}
+
+docker build -t pxe-dhcpd .
+
+option space pxelinux;
+option pxelinux.magic code 208 = string;
+option pxelinux.configfile code 209 = text;
+option pxelinux.pathprefix code 210 = text;
+option pxelinux.reboottime code 211 = unsigned integer 32;
+option architecture-type code 93 = unsigned integer 16;
+
+subnet 192.168.0.0 netmask 255.255.0.0 {
+  range 192.168.0.10 192.168.255.190;
+
+  class "pxeclients" {
+    match if substring (option vendor-class-identifier, 0, 9) = "PXEClient";
+    next-server 192.168.33.195;
+
+    if option architecture-type = 00:07 {
+      filename "shim.efi";
+    } else {
+      filename "pxelinux/pxelinux.0";
+    }
+  }
+}
+
+
+/usr/sbin/dhcpd -f -cf /etc/dhcp/dhcpd.conf
+
+
+docker run -d --name=mydhcpd --rm --network=host pxe-dhcpd
+
+===================================================================
+
+docker build -t pxe-tftp .
+
+docker run -it --privileged --rm --network=host --name=pxetftp --volume=/tmp/pxelinux:/var/lib/tftpboot/pxelinux:rw docker.io/centos:7 sh
+
+
+docker run -d --name=mytftp --rm --network=host pxe-tftp
+
+
+yum install -y tftp-server
+
+/usr/sbin/in.tftpd -L -s /var/lib/tftpboot
+
+/var/lib/tftpboot/grub.cfg
+
+set default="CentOS-UEFI"
+set timeout=10
+set hidden_timeout_quiet=false
+
+menuentry 'CentOS-UEFI' {
+  linuxefi vmlinuz-zte ip=dhcp
+  initrdefi initrd-zte.img
+}
+
+menuentry 'CentOS-NIC' {
+  linuxefi vmlinuz-zte ip=:::::eno3:dhcp
+  initrdefi initrd-zte.img
+}
+
+
+/var/lib/tftpboot/pxelinux/pxelinux.cfg/default
+
+default CENTOS-BIOS
+timeout 600
+
+display boot.msg
+
+label CENTOS-BIOS
+  menu label ^Install debug
+  kernel vmlinuz-zte ip=dhcp
+  append initrd=initrd-zte.img text

@@ -1,0 +1,20 @@
+
+config.vm.box - OS
+config.vm.network - how your host see your box
+config.vm.synced_folder - how you access files from your computer
+config.vm.provider - virtualbox - cpu, memory
+config.vm.provision - what we want to setup
+
+
+mkdir vgdemo && cd vgdemo
+vagrant init ubuntu/trusty64
+
+    Vagrantfile
+
+vagrant up
+vagrant reload (after cpu memory changes)
+vagrant ssh
+
+vagrant suspend
+vagrant resume
+vagrant destory
